@@ -1,0 +1,23 @@
+language: node_js
+node_js:
+- 8.11.4
+branches:
+  only:
+  - release
+cache:
+  yarn: true
+  directories: "$HOME/google-cloud-sdk"
+
+before_install:
+  - openssl aes-256-cbc -K $encrypted_a7e9b599f877_key -iv $encrypted_a7e9b599f877_iv -in secrets.tar.enc -out secrets.tar -d
+  - tar xvf secrets.tar
+
+install:
+  - yarn
+  - npm run compile
+
+deploy:
+  provider: script
+  skip_cleanup: true
+  script: npm run publish
+  on: release
