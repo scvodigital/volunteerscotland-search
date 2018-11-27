@@ -1,0 +1,9 @@
+{{#if @root.data.searches.items.[0] ~}}
+  {{~#with @root.data.searches.items.[0] ~}}
+    {{~#each (split "sunday,monday,tuesday,wednesday,thursday,friday,saturday" ",")~}}
+      {{~#if (contains ../days (add @index 1))~}}
+        {{~ this ~}},
+      {{~/if~}}
+    {{~/each~}}
+  {{~/with~}}
+{{~/if}}

@@ -1,7 +1,7 @@
 {{#if @root.data.auth ~}}
   {{#> ajax_chip
-    onUrl=(concat "/add-to-favourties?id=" id)
-    offUrl=(concat "/remove-from-favourties?id=" id)
+    onUrl=(concat "/add-to-favourites?id=" id)
+    offUrl=(concat "/remove-from-favourites?id=" id)
     onText="Favourite"
     offText="Favourite"
     iconClasses="far fa-heart"

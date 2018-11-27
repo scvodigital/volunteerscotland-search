@@ -31,7 +31,7 @@
       }
     };
     var currentUser;
-    goodmoves.app.auth().onAuthStateChanged(function(user) {
+    volunteerscotland.app.auth().onAuthStateChanged(function(user) {
       currentUser = user;
       if (user) {
         checkProviders();
@@ -92,7 +92,7 @@
           }
         }
       });
-    }); 
+    });
 
     function checkProviders() {
       var enabled = currentUser.providerData.length > 1;
@@ -104,7 +104,7 @@
         })
         .attr('title', !enabled ? 'You cannot unlink your social account as you are using it to sign in' : '');
     }
-  
+
     $changePassword.on('click', changePassword);
     $password1.on('keypress', function(evt) {
       if (evt.which === 13) {
@@ -121,14 +121,14 @@
       var password1 = $password1.val();
       var password2 = $password2.val();
 
-      goodmoves.disable([$changePassword, $password1, $password2]);
+      volunteerscotland.disable([$changePassword, $password1, $password2]);
 
       if (password1 !== password2) {
-        goodmoves.disable([$changePassword, $password1, $password2], false);
+        volunteerscotland.disable([$changePassword, $password1, $password2], false);
         $password1.val('');
         $password2.val('');
         $password1.focus();
-        goodmoves.snackbarShow({
+        volunteerscotland.snackbarShow({
           message: 'The two passwords entered do not match'
         });
         return;
@@ -136,15 +136,15 @@
 
       var hasEmailProvider = false;
       currentUser.updatePassword(password1).then(function(result) {
-        goodmoves.snackbarShow({
+        volunteerscotland.snackbarShow({
           message: 'Password changed, please wait',
         });
         window.setTimeout(function() {
           window.location.reload();
         }, 1000);
       }).catch(function(err) {
-        goodmoves.disable([$changePassword, $password1, $password2], false);
-        goodmoves.snackbarShow({
+        volunteerscotland.disable([$changePassword, $password1, $password2], false);
+        volunteerscotland.snackbarShow({
           message: err.message,
           backgroundColor: '#dd4b39'
         });

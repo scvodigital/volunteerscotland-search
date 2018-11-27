@@ -1,0 +1,38 @@
+{
+  "name": "export-user-data",
+  "pattern": "/export-user-data",
+  "defaultParams": {
+    "context": "results"
+  },
+  "tasks": [
+    "context.metaData.commonTasks.authRequired",
+    "context.metaData.commonTasks.searchesData",
+    "context.metaData.commonTasks.favouritesData",
+    "context.metaData.commonTasks.notesData",
+    {
+      "name": "opportunity_lookup",
+      "taskModule": "elasticsearch",
+      "config": {
+        "connectionStringTemplate": "{$../../elasticsearch-url.txt}",
+        "elasticsearchConfig": {
+          "apiVersion": "5.6"
+        },
+        "queryTemplates": {
+          "index": "web-content-production",
+          "type": "milo-volunteering-opportunity",
+          "template": ">context.metaData.handlebars.queries.account_favourites"
+        }
+      },
+      "renderer": "handlebars"
+    },
+    {
+      "name": "export_user_data",
+      "taskModule": "render",
+      "renderer": "handlebars",
+      "config": {
+        "output": "body",
+        "template": ">context.metaData.handlebars.templates.account_export-user-data"
+      }
+    }
+  ]
+}

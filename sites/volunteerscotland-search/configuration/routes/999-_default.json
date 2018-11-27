@@ -4,6 +4,7 @@
   "metaData": {
     "title": "404: Page not found – Volunteer Scotland"
   },
+  "debug": true,
   "tasks": [
     "context.metaData.commonTasks.authNotRequired",
     {

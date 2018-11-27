@@ -3,7 +3,7 @@ node_js:
 - 8.11.4
 branches:
   only:
-  - release
+  - production
 cache:
   yarn: true
   directories: "$HOME/google-cloud-sdk"
@@ -19,4 +19,4 @@ deploy:
   provider: script
   skip_cleanup: true
   script: npm run publish
-  on: release
+  on: production

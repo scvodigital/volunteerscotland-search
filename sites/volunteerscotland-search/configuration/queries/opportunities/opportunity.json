@@ -11,6 +11,7 @@
     "end_date",
     "expenses_paid",
     "experience_required",
+    "frequency_commitment_details",
     "geo_coords",
     "geo",
     "minimum_age",
@@ -56,12 +57,13 @@
     "sunday_afternoon",
     "sunday_evening",
     "sunday_morning",
+    "availability",
+    "availability_slugs",
     "taster_available",
     "volunteersearch_age_group",
     "volunteersearch_age_group_slugs",
     "volunteersearch_support_option",
     "volunteersearch_support_option_slugs"
-
   ],
   "query": {
     "bool": {

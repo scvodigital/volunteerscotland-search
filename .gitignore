@@ -64,5 +64,8 @@ typings/
 # next.js build output
 .next
 
+# Webstorm setup info
+.idea/
+
 service-accounts/
 secrets.tar

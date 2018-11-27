@@ -1,0 +1,145 @@
+<div id="detailed-results-container" class="container-content content-saved-searches">
+  {{#compare (length @root.data.searches.items.[0]) ">" 0 ~}}
+  <div class="settings mdc-typography--body1">
+    <span class="settings-heading">Email frequency</span>
+    {{> email_frequency}}
+  </div>
+  {{/compare}}
+  <h1 class="mdc-typography--headline3 v-margin-full">
+    Saved searches &amp; email
+  </h1>
+
+  {{#compare (length @root.data.searches.items.[0]) ">" 0 ~}}
+  <ul class="mdc-list mdc-list--two-line mdc-list--avatar-list mdc-elevation--z3">
+    <li class="mdc-list-item mdc-list-item--header">
+      <span class="mdc-list-item__graphic far" aria-hidden="true"></span>
+      <div class="mdc-layout-grid">
+        <div class="mdc-layout-grid__inner">
+          <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone saved-search">
+            <span class="mdc-list-item__text">
+              <strong>Search</strong>
+            </span>
+          </div>
+          <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-2-desktop mdc-layout-grid__cell--span-2-tablet mdc-layout-grid__cell--span-2-phone align-centre">
+            <span class="mdc-list-item__text">
+              <strong>Email</strong>
+            </span>
+          </div>
+          <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-2-desktop mdc-layout-grid__cell--span-2-tablet mdc-layout-grid__cell--span-2-phone align-centre">
+            <span class="mdc-list-item__text">
+              <strong>Delete</strong>
+            </span>
+          </div>
+        </div>
+      </div>
+    </li>
+    {{#each @root.data.searches.items.[0] ~}}
+      <li class="mdc-list-item mdc-ripple-upgraded">
+        <span class="mdc-list-item__graphic far fa-search fa-2x" aria-hidden="true"></span>
+        <div class="mdc-layout-grid">
+          <div class="mdc-layout-grid__inner">
+            <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone saved-search">
+              <span class="mdc-list-item__text">
+                <a href="/search?{{{this.querystring}}}">{{{partition}}}</a>
+                <div class="mdc-list-item__secondary-text">
+                  {{#with (querystring querystring) ~}}
+                    {{#if keywords ~}}
+                      Keywords: <strong>{{{keywords}}}</strong>
+                    {{/if ~}}
+
+                    {{#if regions ~}}
+                      {{inflect (length (arrayify regions)) "Region" "Regions"}}:
+                      {{#each (arrayify regions) ~}}
+                        <strong>{{{getProperty @root.data.termsMaps.regions.slugsMap (concat this ".term")}}}{{#unless @last}}, {{/unless}}</strong>
+                      {{/each ~}}
+                    {{/if ~}}
+
+                    {{#if work_types ~}}
+                      {{inflect (length (arrayify work_types)) "Activities" "work_types"}}:
+                      {{#each (arrayify work_types) ~}}
+                        <strong>{{{getProperty @root.data.termsMaps.work_types.slugsMap (concat this ".term")}}}{{#unless @last}}, {{/unless}}</strong>
+                      {{/each ~}}
+                    {{/if ~}}
+
+                    {{#if client_groups ~}}
+                      {{inflect (length (arrayify client_groups)) "Client Groups" "client_groups"}}:
+                      {{#each (arrayify client_groups) ~}}
+                        <strong>{{{getProperty @root.data.termsMaps.client_groups.slugsMap (concat this ".term")}}}{{#unless @last}}, {{/unless}}</strong>
+                      {{/each ~}}
+                    {{/if ~}}
+
+                    {{#if services ~}}
+                      {{inflect (length (arrayify services)) "Services" "services"}}:
+                      {{#each (arrayify services)}}
+                        <strong>{{{getProperty @root.data.termsMaps.services.slugsMap (concat this ".term")}}}{{#unless @last}}, {{/unless}}</strong>
+                      {{/each ~}}
+                    {{/if ~}}
+
+                    {{#if age_groups ~}}
+                      {{inflect (length (arrayify age_groups)) "Volunteer Age Groups" "age_groups"}}:
+                      {{#each (arrayify age_groups)}}
+                        <strong>{{{getProperty @root.data.termsMaps.age_groups.slugsMap (concat this ".term")}}}{{#unless @last}}, {{/unless}}</strong>
+                      {{/each ~}}
+                    {{/if ~}}
+
+                    {{#if availability ~}}
+                      {{inflect (length (arrayify availability)) "Availability" "availability"}}:
+                      {{#each (arrayify availability)}}
+                        <strong>{{{getProperty @root.data.termsMaps.availability.slugsMap (concat this ".term")}}}{{#unless @last}}, {{/unless}}</strong>
+                      {{/each ~}}
+                    {{/if ~}}
+
+                    {{#ifAll location distance ~}}
+                      {{#ifAny work_types client_groups services age_groups availability ~}}
+                        Within
+                      {{else}}
+                        within
+                      {{/ifAny ~}}
+                      <strong>{{round (multiply distance 0.62137)}}</strong>
+                      miles of
+                      <strong>{{{location}}}</strong>
+                    {{/ifAll ~}}
+                  {{/with ~}}
+                </div>
+              </span>
+            </div>
+            <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-2-desktop mdc-layout-grid__cell--span-2-tablet mdc-layout-grid__cell--span-2-phone align-centre">
+              <div class="mdc-chip-set mdc-chip-set--filter">
+                {{#> ajax_chip
+                  onUrl="/toggle-subscription"
+                  offUrl="/toggle-subscription"
+                  onText="Email"
+                  offText="Email"
+                  onMethod="POST"
+                  offMethod="POST"
+                  iconClasses="far fa-envelope"
+                  on=partitionActive
+                }}
+                {
+                  "onData": {
+                    "name": {{{stringify ../partition}}}
+                  },
+                  "offData": {
+                    "name": {{{stringify ../partition}}}
+                  }
+                }
+                {{/ajax_chip}}
+              </div>
+            </div>
+            <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-2-desktop mdc-layout-grid__cell--span-2-tablet mdc-layout-grid__cell--span-2-phone">
+              {{> delete_search name=partition}}
+            </div>
+          </div>
+        </div>
+      </li>
+      {{#unless @last}}
+        <li class="mdc-list-divider" role="separator"></li>
+      {{/unless ~}}
+    {{/each ~}}
+  </ul>
+  {{else}}
+  <p class="mdc-typography--body1">
+    You don't yet have any searches saved. To save a search, click the &ensp;<strong><span class="far fa-search-plus mdc-chip__icon mdc-chip__icon--leading" aria-hidden="true"></span>Save/email this search</strong>&ensp;button once you've entered some search parameters.
+  </p>
+  {{/compare ~}}
+</div>

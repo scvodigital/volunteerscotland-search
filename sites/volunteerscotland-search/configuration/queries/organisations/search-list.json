@@ -58,8 +58,8 @@
       {{/compare ~}}
     {{else}}
       {
-        "title_sort": "asc"
-      }
+      "date_last_modified": "desc"
+    }
     {{/if ~}}
   ]
 }

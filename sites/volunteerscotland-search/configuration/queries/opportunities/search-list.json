@@ -65,7 +65,7 @@
         {{/ifAll ~}}
       {{else}}
         {{#compare @root.request.params.query.sort "===" "relevance" ~}}
-          "_score",
+          "_score"
         {{/compare ~}}
       {{/compare ~}}
     {{else}}

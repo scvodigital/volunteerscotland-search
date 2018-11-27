@@ -1,10 +1,162 @@
+<aside id="save-search-dialog"
+       class="mdc-dialog"
+       role="alertdialog"
+       aria-labelledby="save-search-dialog-label"
+       aria-describedby="save-search-dialog-description"
+       data-mdc-auto-init="MDCDialog">
+  <div class="mdc-dialog__container">
+    <form action="/save-search{{{@root.request.url.search}}}" method="POST" class="mdc-dialog__surface">
+      <h2 id="save-search-dialog-label" class="mdc-dialog__title">
+        Give your search a name
+      </h2>
+      <section id="save-search-dialog-description" class="mdc-dialog__content">
+        <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
+          <input type="text" id="saved-search-name" name="name" class="mdc-text-field__input" value="
+{{~#with @root.request.params.query~}}
+
+            {{~#if keywords~}}
+              {{~keywords~}}
+              {{~#ifAny work_types client_groups services age_groups availability}}, {{/ifAny~}}
+            {{~/if~}}
+            {{~#if work_types~}}
+              {{~#each (arrayify work_types)~}}
+                {{~getProperty (getProperty @root.data.termsMaps.work_types.slugsMap this) "term"~}}
+                {{~#unless @last}}, {{/unless~}}
+              {{~/each~}}
+              {{~#ifAny client_groups services age_groups availability}}, {{/ifAny~}}
+            {{~/if~}}
+            {{~#if client_groups~}}
+              {{~#each (arrayify client_groups)~}}
+                {{~getProperty (getProperty @root.data.termsMaps.client_groups.slugsMap this) "term"~}}
+                {{~#unless @last}}, {{/unless~}}
+              {{~/each~}}
+              {{~#ifAny services age_groups availability}}, {{/ifAny~}}
+            {{~/if~}}
+            {{~#if services~}}
+              {{~#each (arrayify services)~}}
+                {{~getProperty (getProperty @root.data.termsMaps.services.slugsMap this) "term"~}}
+                {{~#unless @last}}, {{/unless~}}
+              {{~/each~}}
+              {{~#ifAny age_groups availability}}, {{/ifAny~}}
+            {{~/if}}
+            {{~#if age_groups~}}
+              {{~#each (arrayify age_groups)~}}
+                {{~getProperty (getProperty @root.data.termsMaps.age_groups.slugsMap this) "term"~}}
+                {{~#unless @last}}, {{/unless~}}
+              {{~/each~}}
+              {{~#ifAny availability}}, {{/ifAny~}}
+            {{~/if}}
+            {{~#if availability~}}
+              {{~#each (arrayify availability)~}}
+                {{~getProperty (getProperty @root.data.termsMaps.availability.slugsMap this) "term"~}}
+                {{~#unless @last}}, {{/unless~}}
+              {{~/each~}}
+            {{~/if}}
+
+            {{~#if location~}}&nbsp;near {{location}} {{/if~}}
+          {{~/with~}}">
+          <label for="saved-search-name" class="mdc-floating-label">Save search</label>
+          <div class="mdc-line-ripple"></div>
+        </div>
+        <div class="mdc-form-field">
+          <div class="mdc-checkbox">
+            <input type="checkbox"
+                   class="mdc-checkbox__native-control"
+                   name="subscribe"
+                   id="email-on"/>
+            <div class="mdc-checkbox__background">
+              <svg class="mdc-checkbox__checkmark"
+                   viewBox="0 0 24 24">
+                <path class="mdc-checkbox__checkmark-path"
+                      fill="none"
+                      d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+              </svg>
+              <div class="mdc-checkbox__mixedmark"></div>
+            </div>
+          </div>
+          <label for="email-on">Send jobs matching this search by email</label>
+        </div>
+      </section>
+      <footer class="mdc-dialog__actions">
+        <button type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="close">Cancel</button>
+        <button type="submit" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="accept">Save</button>
+      </footer>
+    </form>
+  </div>
+  <div class="mdc-dialog__scrim"></div>
+</aside>
+
+<aside id="edit-search-dialog"
+       class="mdc-dialog"
+       role="alertdialog"
+       aria-labelledby="edit-search-dialog-label"
+       aria-describedby="edit-search-dialog-description"
+       data-mdc-auto-init="MDCDialog">
+  <div class="mdc-dialog__container">
+    <div class="mdc-dialog__surface">
+      {{#if @root.data.auth ~}}
+        {{#with (
+                  querystringify (obj)
+                  keywords=@root.request.params.query.keywords
+                  work_types=(sort @root.request.params.query.work_types)
+                  client_groups=(sort @root.request.params.query.client_groups)
+                  services=(sort @root.request.params.query.services)
+                  age_groups=@root.request.params.query.age_groups
+                  availability=@root.request.params.query.availability
+                  distance=@root.request.params.query.distance
+                  lat=@root.request.params.query.lat
+                  lng=@root.request.params.query.lng
+                  location=@root.request.params.query.location
+
+                ) ~}}
+          {{#if (itemAt @root.data.searches.items.[0] (indexOf (map @root.data.searches.items.[0] (getProp 'querystring')) this)) ~}}
+            {{#with (itemAt @root.data.searches.items.[0] (indexOf (map @root.data.searches.items.[0] (getProp 'querystring')) this)) ~}}
+              <h2 id="edit-search-dialog-label" class="mdc-dialog__title">
+                Your search&ensp;
+                <span class="mdc-typography--body1">
+                <strong>{{{partition}}}</strong>
+              </span>
+              </h2>
+              <section id="edit-search-dialog-description" class="mdc-dialog__content">
+                <div class="mdc-chip-set mdc-chip-set--filter">
+                  {{#> ajax_chip
+                    onUrl="/toggle-subscription"
+                    offUrl="/toggle-subscription"
+                    onText="Send jobs matching this search by email"
+                    offText="Send jobs matching this search by email"
+                    onMethod="POST"
+                    offMethod="POST"
+                    iconClasses="far fa-envelope"
+                    on=partitionActive
+                  }}
+                    {
+                    "onData": {
+                    "name": {{{stringify ../partition}}}
+                    },
+                    "offData": {
+                    "name": {{{stringify ../partition}}}
+                    }
+                    }
+                  {{/ajax_chip}}
+                </div>
+              </section>
+              <footer class="mdc-dialog__actions">
+                <button type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="close">Close</button>
+              </footer>
+            {{/with ~}}
+          {{/if ~}}
+        {{/with ~}}
+      {{/if ~}}
+    </div>
+  </div>
+  <div class="mdc-dialog__scrim"></div>
+</aside>
+
+
 <div class="mdc-layout-grid head">
   <div class="mdc-layout-grid__inner">
     <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
       {{> search_info paging=@root.data.search_data.detailed_results.pagination}}
-    </div>
-    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
-      {{> pagination paging=@root.data.search_data.detailed_results.pagination}}
     </div>
   </div>
   <div class="mdc-layout-grid__inner">
@@ -15,43 +167,91 @@
       {{/components_tab_bar}}
     </div>
     <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-5-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone pagination-desktop">
+      {{#if @root.data.auth ~}}
+        {{#with (
+                  querystringify (obj)
+                  keywords=@root.request.params.query.keywords
+                  work_types=@root.request.params.query.work_types
+                  client_groups=@root.request.params.query.client_groups
+                  services=@root.request.params.query.services
+                  age_groups=@root.request.params.query.age_groups
+                  availability=@root.request.params.query.availability
+                  distance=@root.request.params.query.distance
+                  lat=@root.request.params.query.lat
+                  lng=@root.request.params.query.lng
+                  location=@root.request.params.query.location
+                ) ~}}
+          <script>
+            document.addEventListener('DOMContentLoaded', function() {
+              console.log('Current Query String:', {{{stringify this}}});
+              console.log('Saved Search Query Strings:', {{{stringify (map @root.data.searches.items.[0] (getProp 'querystring'))}}});
+            });
+          </script>
+          {{#if (itemAt @root.data.searches.items.[0] (indexOf (map @root.data.searches.items.[0] (getProp 'querystring')) this)) ~}}
+            {{#with (itemAt @root.data.searches.items.[0] (indexOf (map @root.data.searches.items.[0] (getProp 'querystring')) this))}}
+              <h3 class="mdc-typography--headline6">
+                Your search&ensp;
+                <span class="mdc-typography--body1">
+                  <a name="#" data-dialog-target="#edit-search-dialog" style="cursor:pointer;">{{{partition}}}</a>
+                </span>
+              </h3>
+            {{/with ~}}
+          {{else}}
+            <button class="mdc-button mdc-button--raised mdc-button--large save-search hide-sm hide-md" id="save-search-button" data-dialog-target="#save-search-dialog">
+              <span class="far fa-search-plus mdc-list-item__graphic" aria-hidden="true"></span>
+              Save/email this search
+            </button>
+            <button class="mdc-button mdc-button--raised mdc-button--large filter-search hide-lg filter-search-button" id="filter-search-button">
+              <span class="far fa-search mdc-list-item__graphic" aria-hidden="true"></span>
+              Search filters
+            </button>
+          {{/if ~}}
+        {{/with ~}}
+      {{else}}
+        <a href="/sign-up" class="mdc-button mdc-button--raised mdc-button--large save-search hide-sm hide-md" id="save-search-button">
+          <span class="far fa-sign-in-alt mdc-list-item__graphic" aria-hidden="true"></span>
+          Sign up to create email alerts
+        </a>
+        <button class="mdc-button mdc-button--raised mdc-button--large filter-search hide-lg filter-search-button" id="filter-search-button" data-drawer-target="#sidebar-temporary">
+          <span class="far fa-search mdc-list-item__graphic" aria-hidden="true"></span>
+          Search filters
+        </button>
+      {{/if ~}}
+
     </div>
     <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone action">
       {{#compare @root.data.search_data.detailed_results.hits.total ">" 0 ~}}
-      <form action="{{{@root.request.url.path}}}" method="GET">
-        {{#each (split "working_patterns,regions,roles,sectors" ",")}}
-          {{#if (getProperty @root.request.params.query this) ~}}
-            {{#each (arrayify (getProperty @root.request.params.query this)) ~}}
-              <input type="hidden" name="{{../this}}[]" value="{{this}}" />
-            {{/each ~}}
-          {{/if ~}}
-        {{/each ~}}
-        {{#each (split "keywords,location,lat,lng,salary_min,salary_max" ",")}}
-          {{#if (getProperty @root.request.params.query this) ~}}
-            <input type="hidden" name="{{this}}" value="{{getProperty @root.request.params.query this}}" />
-          {{/if ~}}
-        {{/each ~}}
-        <input type="hidden" name="distance" value="{{#if @root.request.params.query.distance}}{{@root.request.params.query.distance}}{{else}}16.09344{{/if}}" />
-        <div class="mdc-select mdc-select--box pull-right" data-mdc-auto-init="MDCSelect">
-          <select class="mdc-select__native-control" id="sort" name="sort" onchange="this.form.submit();">
-            <option value="relevance"{{#compare @root.request.params.query.sort "===" "relevance"}} selected{{/compare}}>Relevance</option>
-            <option value="distance"{{#compare @root.request.params.query.sort "===" "distance"}} selected{{/compare}}{{#if @root.request.params.query.location}}{{#compare @root.request.params.query.location "===" ""}} disabled{{/compare}}{{else}} disabled{{/if}}>Distance</option>
-          </select>
-          <label class="mdc-floating-label mdc-select__label--float-above" for="sort">
-            Sort
-          </label>
-        </div>
-      </form>
+        <form action="{{{@root.request.url.path}}}" method="GET">
+          {{#each (split "regions,work_types,client_groups,services,age_groups" ",")}}
+            {{#if (getProperty @root.request.params.query this) ~}}
+              {{#each (arrayify (getProperty @root.request.params.query this)) ~}}
+                <input type="hidden" name="{{../this}}[]" value="{{this}}" />
+              {{/each ~}}
+            {{/if ~}}
+          {{/each ~}}
+          {{#each (split "keywords,location,lat,lng" ",")}}
+            {{#if (getProperty @root.request.params.query this) ~}}
+              <input type="hidden" name="{{this}}" value="{{getProperty @root.request.params.query this}}" />
+            {{/if ~}}
+          {{/each ~}}
+          <input type="hidden" name="distance" value="{{#if @root.request.params.query.distance}}{{@root.request.params.query.distance}}{{else}}16.09344{{/if}}" />
+          <div class="mdc-select mdc-select--box pull-right" data-mdc-auto-init="MDCSelect">
+            <select class="mdc-select__native-control" id="sort" name="sort" onchange="this.form.submit();">
+              <option value="relevance"{{#compare @root.request.params.query.sort "===" "relevance"}} selected{{/compare}}>Relevance</option>
+              {{#if @root.request.params.query.location}}<option value="distance"{{#compare @root.request.params.query.sort "===" "distance"}} selected{{/compare}}{{#compare @root.request.params.query.location "===" ""}}{{/compare}}>Distance</option>{{/if}}
+            </select>
+            <label class="mdc-floating-label mdc-select__label--float-above" for="sort">
+              Sort
+            </label>
+          </div>
+        </form>
       {{/compare ~}}
-    </div>
-    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone pagination-mobile">
-      {{> pagination paging=@root.data.search_data.detailed_results.pagination}}
     </div>
   </div>
 </div>
 
 {{#each @root.data.search_data.detailed_results.hits.hits ~}}
-{{> opportunity_search_result _source sort=sort distance=fields.distance.[0]}}
+  {{> opportunity_search_result _source sort=sort distance=fields.distance.[0]}}
 {{/each ~}}
 
 <div class="foot">

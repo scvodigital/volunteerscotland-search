@@ -24,8 +24,27 @@
               {{> term_checkbox slug=key field="regions" selected=@root.request.params.query.regions instance_id=../../../instance_id value=(lookup ../this.regions.buckets @index)}}
             {{/if ~}}
           {{/each ~}}
+        {{else}}
+          <div class="mdc-typography--headline7 checkbox-collapse-element">Other</div>
+          {{#each this.regions_slugs.buckets ~}}
+            {{#if key ~}}
+              {{> term_checkbox slug=key field="regions" selected=@root.request.params.query.regions instance_id=../../../instance_id value=(lookup ../this.regions.buckets @index)}}
+            {{/if ~}}
+          {{/each ~}}
         {{/compare ~}}
+
       {{/each ~}}
+      {{#ifAny (length @root.data.opportunitySupplimentary.types.aggregations.home_based.buckets) (length @root.data.opportunitySupplimentary.types.aggregations.various_locations.buckets) ~}}
+        {{!-- #compare (length @root.data.opportunitySupplimentary.types.aggregations.countries.buckets) ">=" 1 ~}}
+          <h3 class="mdc-typography--headline7">Other</h3>
+        {{/compare ~ --}}
+        {{#compare (length @root.data.opportunitySupplimentary.types.aggregations.home_based.buckets) ">=" 1 ~}}
+          {{> term_checkbox slug="true" field="home_based" selected=@root.request.params.query.home_based instance_id=../instance_id value="Home-based"}}
+        {{/compare ~}}
+        {{#compare (length @root.data.opportunitySupplimentary.types.aggregations.various_locations.buckets) ">=" 1 ~}}
+          {{> term_checkbox slug="true" field="various_locations" selected=@root.request.params.query.various_locations instance_id=../instance_id value="Various locations"}}
+        {{/compare ~}}
+      {{/ifAny ~}}
     {{/if ~}}
   {{else}}
     {{#each (getProperty @root.data.opportunitySupplimentary.types.aggregations (concat type "_slugs.buckets")) ~}}
@@ -48,6 +67,7 @@
     {{>opportunity_availability_selector type="availability"}}
   </div>
 {{/inline}}
+
 {{#*inline "term_checkbox"}}
   <div class="mdc-form-field">
     <div class="mdc-checkbox">
@@ -68,71 +88,76 @@
   </div>
 {{/inline}}
 
+
 <div class="mdc-drawer__content">
   <!-- <h2 class="mdc-drawer__content-heading hide-sm mdc-drawer--occasional">Search opportunities</h2> -->
 
-  <form action="/{{#compare @root.request.url.pathname "/map"}}map{{else}}search{{/compare}}" method="GET" class="search-form" novalidate>
+  <form id="opportunity-search-form" action="/{{#compare @root.request.url.pathname "/map"}}map{{else}}search{{/compare}}" method="GET" class="search-form" novalidate>
     <input type="hidden" name="sort" value="{{@root.request.params.query.sort}}" id="{{instance_id}}-sort">
     <div class="h-padding">
       <div class="mdc-layout-grid">
         <div class="mdc-layout-grid__inner">
-          <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
-            <div class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon" data-mdc-auto-init="MDCTextField">
+          <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
+            <div class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon" data-mdc-auto-init="MDCTextField" style="z-index:5;">
               <span class="far fa-map-marker-alt mdc-text-field__icon geo-lookup" tabindex="0" title="Find my location" role="button" style="pointer-events: initial !important;"></span>
               <input type="text" id="{{instance_id}}-location" name="location" class="mdc-text-field__input mdc-text-field--fullwidth search-location" value="{{#ifAll @root.request.params.query.lat @root.request.params.query.lng}}{{@root.request.params.query.location}}{{/ifAll}}" placeholder="" data-lpignore="true" data-location-search='{
-                  "googleMapsOptions": {
-                    "type": ["(regions)"],
-                    "componentRestrictions": {
-                      "country": "gb"
-                    }
-                  },
-                  "latSelector": "[name=\"lat\"]",
-                  "lngSelector": "[name=\"lng\"]",
-                  "locationServicesSelector": ".geo-lookup"
-                }'>
+                "latSelector": "[name=\"lat\"]",
+                "lngSelector": "[name=\"lng\"]",
+                "locationServicesSelector": ".geo-lookup"
+              }'>
               <label class="mdc-floating-label" for="{{instance_id}}-location">
                 Location
               </label>
               <div class="mdc-line-ripple"></div>
             </div>
           </div>
-          <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
-            <div class="mdc-select mdc-select--box mdc-drawer--occasional-ie11" data-mdc-auto-init="MDCSelect">
-              <select data-location="{{instance_id}}-location" class="mdc-select__native-control search-distance" id="{{instance_id}}-distance" name="distance">
-                <option value="8.04672"{{#compare @root.request.params.query.distance "8.04672"}} selected{{/compare}}>5 miles</option>
-                <option value="16.09344"{{#compare @root.request.params.query.distance "16.09344"}} selected{{/compare}}>10 miles</option>
-                <option value="40.2336"{{#compare @root.request.params.query.distance "40.2336"}} selected{{/compare}}>25 miles</option>
-                <option value="80.4672"{{#compare @root.request.params.query.distance "80.4672"}} selected{{/compare}}>50 miles</option>
-                <option value=""{{#compare @root.request.params.query.distance ""}} selected{{/compare}}>no limit</option>
-              </select>
-              <label class="mdc-floating-label" for="{{instance_id}}-distance">
-                Within
-              </label>
-              <div class="mdc-line-ripple"></div>
+        </div>
+        <div class="h-padding">
+          Within
+        </div>
+        <div class="mdc-layout-grid__inner">
+          <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-9-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
+            <div data-slider data-slider-target="#slider-distance" class="mdc-slider mdc-slider--discrete" tabindex="0" role="slider"
+                 aria-valuemin="5" aria-valuemax="50" data-step="5" aria-valuenow="{{@root.request.params.query.distance}}"
+                 aria-label="Select Value">
+              <div class="mdc-slider__track-container">
+                <div class="mdc-slider__track"></div>
+              </div>
+              <div class="mdc-slider__thumb-container">
+                <div class="mdc-slider__pin">
+                  <span class="mdc-slider__pin-value-marker"></span>
+                </div>
+                <svg class="mdc-slider__thumb" width="21" height="21">
+                  <circle cx="10.5" cy="10.5" r="7.875"></circle>
+                </svg>
+                <div class="mdc-slider__focus-ring"></div>
+              </div>
             </div>
+            <div class="mdc-line-ripple"></div>
           </div>
+          <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone">
+            Miles
+          </div>
+          <input type="hidden" name="distance" id="slider-distance" value="{{@root.request.params.query.distance}}">
+
         </div>
       </div>
     </div>
     <input type="hidden" name="lat" value="{{@root.request.params.query.lat}}">
     <input type="hidden" name="lng" value="{{@root.request.params.query.lng}}">
 
-    {{> availability_filter instance_id=instance_id ~}}
-
-
-    {{> term_filter type="regions" instance_id=instance_id ~}}
-
     <div class="h-padding">
       <strong>Refine by</strong>
     </div>
 
     <div class="h-padding">
-      <div class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon" data-mdc-auto-init="MDCTextField">
-        <span class="far fa-search mdc-text-field__icon" tabindex="-1"></span>
+      <div class="mdc-text-field mdc-text-field--box mdc-text-field--with-trailing-icon" data-mdc-auto-init="MDCTextField">
+
         <input type="text" id="{{instance_id}}-keywords" name="keywords" class="mdc-text-field__input mdc-text-field--fullwidth" value="{{@root.request.params.query.keywords}}" data-lpignore="true" autocomplete="off">
         <label class="mdc-floating-label" for="keywords">
           Keywords
         </label>
+        <span class="far fa-search active-search-icon mdc-text-field__icon" role="button" onclick=" $(this).parents('form:first').submit();" style="pointer-events: initial !important; z-index: 500;" tabindex="-1"></span></a>
         <div class="mdc-line-ripple"></div>
       </div>
     </div>
@@ -141,9 +166,7 @@
       {{> term_filter type=this instance_id=instance_id ~}}
     {{/each ~}}
 
-    <div class="v-margin-full">
-      {{> term_checkbox slug="true" field="recently_updated" selected=@root.request.params.query.recently_updated instance_id=instance_id value="Only show opportunities updated in the last year" ~}}
-    </div>
+    {{> availability_filter instance_id=instance_id ~}}
 
     <div class="h-margin mdc-drawer--occasional-ie11">
       <button class="mdc-button mdc-button--raised mdc-button--large mdc-button--fullwidth mdc-ripple-surface mdc-ripple-surface--primary" type="submit" id="{{instance_id}}-search-submit" data-mdc-auto-init="MDCRipple">

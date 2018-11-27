@@ -1,7 +1,6 @@
 {
   "name": "organisation",
   "pattern": "/organisation/:slug",
-  "debug": true,
   "defaultParams": {
     "context": "detail"
   },
@@ -25,7 +24,7 @@
         },
         "queryTemplates": {
           "index": "web-content-production",
-          "type": "milo-organisation",
+          "type": "milo-volunteering-organisation",
           "template": ">context.metaData.handlebars.queries.organisations_organisation"
         }
       },

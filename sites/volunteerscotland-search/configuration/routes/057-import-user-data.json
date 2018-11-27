@@ -1,0 +1,42 @@
+{
+  "name": "import-user-data",
+  "pattern": "/import-user-data",
+  "acceptedVerbs": "POST",
+  "defaultParams": {
+    "context": "results"
+  },
+  "tasks": [
+    "context.metaData.commonTasks.authRequired",
+    {
+      "name": "notes",
+      "taskModule": "firebaseRtbSet",
+      "renderer": "handlebars",
+      "config": {
+        "appName": "volunteerscotland-search",
+        "pathTemplate": "/notes/{{data.auth.uid}}",
+        "setOrUpdate": "update",
+        "dataTemplate": ">context.metaData.handlebars.templates.account_import-notes"
+      }
+    },
+    {
+      "name": "dynamic_notifications_task",
+      "taskModule": "render",
+      "renderer": "handlebars",
+      "config": {
+        "output": "data",
+        "parseJson": true,
+        "template": ">context.metaData.handlebars.templates.account_dynamic-notifications-task"
+      }
+    },
+    "data.dynamic_notifications_task",
+    {
+      "name": "destination",
+      "taskModule": "render",
+      "renderer": "handlebars",
+      "config": {
+        "output": "body",
+        "template": "Imported"
+      }
+    }
+  ]
+}

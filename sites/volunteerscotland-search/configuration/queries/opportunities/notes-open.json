@@ -1,0 +1,63 @@
+{
+  "size": 100,
+  "_source": [
+    "Id",
+    "slug",
+    "milo_ref",
+    "available_from",
+    "client_group",
+    "client_group_slugs",
+    "description",
+    "end_date",
+    "geo_coords",
+    "geo",
+    "postcode",
+    "organisation_slug",
+    "organisation_name",
+    "organisation_aims_and_objectives",
+    "title",
+    "travel_expenses",
+    "work_location",
+    "work_type",
+    "work_type_slugs"
+  ],
+  "query": {
+    "bool": {
+      "filter": [
+        {{>queries_opportunity_common_filters @root.request.params.query}}
+      ],
+      "must": [
+        {{>queries_terms field="Id" terms=(getKeys data.notes)}}
+      ]
+    }
+  },
+  "sort": [
+    {{#if @root.request.params.query.sort ~}}
+    {{#compare @root.request.params.query.sort "===" "newest" ~}}
+    {
+      "available_from": "desc"
+    }
+    {{else}}
+    {{#compare @root.request.params.query.sort "===" "oldest" ~}}
+    {
+      "available_from": "asc"
+    }
+    {{else}}
+    {{#compare @root.request.params.query.sort "===" "closing_soon" ~}}
+    {
+      "end_date": "asc"
+    }
+    {{else}}
+    {
+      "available_from": "desc"
+    }
+    {{/compare ~}}
+    {{/compare ~}}
+    {{/compare ~}}
+    {{else}}
+    {
+      "available_from": "desc"
+    }
+    {{/if ~}}
+  ]
+}

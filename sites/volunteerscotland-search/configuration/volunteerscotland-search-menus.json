@@ -15,12 +15,6 @@
 
   ],
   "upper-not-signed-in": [
-    {
-      "label": "My Volunteer Account",
-      "icon": "sign-in-alt",
-      "path": "/sign-in",
-      "route": "^/sign-in"
-    }
   ],
   "upper-signed-in": [
     {
@@ -77,6 +71,18 @@
     }
   ],
   "user-not-signed-in": [
+    {
+      "label": "Sign in",
+      "icon": "sign-in-alt",
+      "path": "/sign-in",
+      "route": "^/sign-in"
+    },
+    {
+      "label": "Sign up",
+      "icon": "list-alt",
+      "path": "/sign-up",
+      "route": "^/sign-up"
+    }
   ],
   "footer-help": [
     {

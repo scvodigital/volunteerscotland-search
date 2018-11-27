@@ -1,0 +1,42 @@
+{{#if @root.data.auth ~}}
+  {{#with @root.data.searches.items.[0].[0] ~}}
+    {{#>components_radio_button
+        id="daily"
+        name="frequency"
+        label="Daily"
+        active=(compare days "1234567")~}}
+      {
+        "url": "/update-email-preferences",
+        "method": "POST",
+        "successMessage": "You will now recieve an email every day if there are new jobs matching your preferences",
+        "failureMessage": "Failed to update email frequency setting to daily",
+        "postBody": {
+          {{~#each (split "sunday,monday,tuesday,wednesday,thursday,friday,saturday" ",")~}}
+            "{{this}}": true
+            {{~#unless @last}},{{/unless~}}
+          {{~/each~}}
+        }
+      }
+    {{~/components_radio_button}}
+    {{#>components_radio_button
+        id="weekly"
+        name="frequency"
+        label="Weekly"
+        active=(compare (length days) 1)~}}
+      {
+        "url": "/update-email-preferences",
+        "method": "POST",
+        "successMessage": "You will now recieve an email every every {{momentFormat (moment (dateMath "now+1d") "x") "dddd"}} (starting tomorrow) if there are new jobs matching your preferences",
+        "failureMessage": "Failed to update email frequency setting to weekly",
+        "postBody": {
+          "{{lowercase (momentFormat (moment (dateMath "now+1d") "x") "dddd")}}": true
+        }
+      }
+    {{~/components_radio_button}}
+  {{else}}
+    <div class="mdc-form-field">
+      <label>You don't have any saved searches</label>
+    </div>
+  {{/with}}
+{{/if ~}}
+

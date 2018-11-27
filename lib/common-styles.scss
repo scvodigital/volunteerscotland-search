@@ -20,6 +20,7 @@ $desktop-landscape-breakpoint: 1280px;
 
 @import url('//cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css');
 @import url('//fonts.googleapis.com/css?family=Montserrat:500,600,700|Open+Sans:400,500,600');
+@import 'bump.scss';
 
 html {
   overflow-y: scroll;
@@ -783,6 +784,10 @@ a {
   position: relative;
   left: 0;
   margin-right: $unit/2;
+}
+.mdc-tab__icon,
+.mdc-list-item__graphic {
+  font-size: inherit;
 }
 
 .mdc-button--raised {

@@ -1,6 +1,8 @@
 {
   "name": "four_oh_four",
   "pattern": "/404",
+  "debug": true,
+
   "defaultStatusCode": 404,
   "tasks": [
     "context.metaData.commonTasks.authNotRequired",

@@ -1,0 +1,63 @@
+{{#*inline "noop"}}
+  {
+    "name": "notifications",
+    "taskModule": "render",
+    "renderer": "handlebars",
+    "config": {
+      "output": "data",
+      "template": "{ \"status\": \"No saved searches\" }",
+      "parseJson": true
+    }
+  }
+{{/inline}}
+{{#if @root.request.body.json}}
+  {{#with (parse @root.request.body.json)}}
+    {{#ifAny (any savedSearches.items) (any favourites.items)}}
+      {
+        "name": "notifications",
+        "taskModule": "mysql",
+        "config": {
+          "connectionName": "volunteerscotland_notifications",
+          "queryTemplates": {
+            {{#if (any savedSearches.items)}}
+              {{#each savedSearches.items}}
+                {{{stringify partition}}}: {{#blockStringify this}}
+                  CALL _addSubscriptionParameters(
+                    {{{stringify @root.data.auth.email}}},
+                    {{{stringify campaign}}},
+                    {{{stringify querystring}}},
+                    {{{stringify partition}}},
+                    {{#if active}}1{{else}}0{{/if}}
+                  );
+                {{/blockStringify}}
+                {{#unless @last}},{{else}}{{#if (any ../favourites.items)}},{{/if}}{{/unless}}
+              {{/each}}
+            {{/if}}
+            {{#if (any favourites.items)}}
+              {{#each favourites.items}}
+                {{{stringify (concat "favourites-" value)}}}: {{#blockStringify this}}
+                  CALL _addSubscriptionParameter(
+                    {{{stringify @root.data.auth.email}}},
+                    {{{stringify campaign}}},
+                    {{{stringify parameter}}},
+                    {{{stringify value}}},
+                    {{{stringify partition}}},
+                    {{#if active}}1{{else}}0{{/if}}
+                  );
+                {{/blockStringify}}
+                {{#unless @last}},{{/unless}}
+              {{/each}}
+            {{/if}}
+          }
+        },
+        "renderer": "handlebars"
+      }
+    {{else}}
+      {{> noop}}
+    {{/ifAny}}
+  {{else}}
+    {{> noop}}
+  {{/with}}
+{{else}}
+  {{> noop}}
+{{/if}}

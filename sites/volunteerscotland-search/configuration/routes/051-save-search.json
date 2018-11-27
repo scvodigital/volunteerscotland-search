@@ -1,0 +1,37 @@
+{
+  "name": "save-search",
+  "pattern": "/save-search",
+  "acceptedVerbs": "POST",
+  "debug": true,
+  "tasks": [
+    "context.metaData.commonTasks.authRequired",
+    {
+      "name": "notifications",
+      "taskModule": "mysql",
+      "config": {
+        "connectionName": "volunteerscotland_notifications",
+        "queryTemplates": {
+          "add_saved_search_parameters": ">context.metaData.handlebars.queries.notifications_add-saved-search"
+        }
+      },
+      "renderer": "handlebars"
+    },
+    {
+      "name": "searchUrl",
+      "taskModule": "render",
+      "renderer": "handlebars",
+      "config": {
+        "output": "data",
+        "template": "/search{{{request.url.search}}}"
+      }
+    },
+    {
+      "name": "destination",
+      "taskModule": "redirect",
+      "config": {
+        "location": ">data.searchUrl",
+        "statusCode": 307
+      }
+    }
+  ]
+}

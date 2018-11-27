@@ -1,6 +1,6 @@
 {
   "name": "@scvo/assets",
-  "version": "0.0.26",
+  "version": "0.0.100",
   "description": "Assets for SCVO's web properties (JS, CSS, images, dependencies, etc)",
   "main": "index.js",
   "scripts": {
@@ -14,7 +14,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "if [ $(git rev-parse --abbrev-ref HEAD) == \"dev\" ]; then npm --no-git-tag-version version patch; git add .; git commit -m \"Bumping version number\"; fi"
+      "pre-push": "if [ $(git rev-parse --abbrev-ref HEAD) = \"development\" ]; then npm --no-git-tag-version version patch; git add .; git commit -m \"Bumping version number\"; fi",
+      "post-merge": "echo \"/* $(date -u) */\" > ./lib/bump.js; echo \"/* $(date -u) */\" > ./lib/bump.scss"
     }
   },
   "repository": {
@@ -70,7 +71,7 @@
     "leaflet.markercluster": "^1.4.1",
     "loader-utils": "^1.1.0",
     "mapbox.js": "^3.1.1",
-    "material-components-web": "^0.39.3",
+    "material-components-web": "^0.41.0",
     "pako": "^1.0.6",
     "simplemde": "^1.11.2",
     "string": "^3.3.3",

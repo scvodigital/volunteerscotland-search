@@ -1,7 +1,6 @@
 {
   "name": "organisation_map",
   "pattern": "/organisations/map",
-  "debug": true,
   "metaData": {
     "sidebarButton": {
       "icon": "search",
@@ -22,14 +21,13 @@
       "config": {
         "connectionStringTemplate": "{$../../elasticsearch-url.txt}",
         "elasticsearchConfig": {
-          "apiVersion": "5.6",
-          "log": "debug"
+          "apiVersion": "5.6"
         },
         "queryTemplates": [
           {
             "name": "map_results",
             "index": "web-content-production",
-            "type": "milo-organisation",
+            "type": "milo-volunteering-organisation",
             "template": ">context.metaData.handlebars.queries.organisations_search-map"
           }
         ]

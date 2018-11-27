@@ -1,6 +1,6 @@
 <div class="container-content content-secondary">
   {{#compare data.primaryResponse.hits.total ">" 0 ~}}
-  {{> dialog_shortlist}}
+  {{> dialog_favourites}}
 
   {{#with @root.data.primaryResponse.hits.hits.[0]._source as |organisation| ~}}
 

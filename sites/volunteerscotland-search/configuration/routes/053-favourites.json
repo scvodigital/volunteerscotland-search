@@ -1,7 +1,6 @@
 {
   "name": "favourites",
   "pattern": "/favourites",
-  "debug": true,
   "metaData": {
     "sidebarButton": {
       "icon": "search",
@@ -28,7 +27,7 @@
           {
             "name": "current",
             "index": "web-content-production",
-            "type": "goodmoves-vacancy",
+            "type": "milo-volunteering-opportunity",
             "template": ">context.metaData.handlebars.queries.opportunities_favourites-current"
           }
         ]

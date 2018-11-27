@@ -3,6 +3,7 @@
     "localhost",
     "volunteerscotland-search.local",
     "127.0.0.1",
+    "router-dot-scvo-net.appspot.com",
     "test.getinvolved.scot"
   ],
   "routes": [
@@ -10,14 +11,15 @@
   ],
   "metaData": {
     "assetsVersion": "{:../../../package.json@version}",
-    "assetsBase": "https://storage.googleapis.com/scvo-assets/volunteerscotland-search/",
+    "assetsBase": "https://storage.googleapis.com/scvo-assets/test/volunteerscotland-search/",
     "favouritesCampaignName": "vs-favourites",
+    "emailCampaignName": "vs-saved-searches",
     "menus": "{:./volunteerscotland-search-menus.json}",
     "elasticsearchUrl": "{$../elasticsearch-url.txt}",
     "termTypeLabels": {
       "age_groups": {
-        "singular": "Age Group",
-        "plural": "Age Groups"
+        "singular": "Volunteer Age Group",
+        "plural": "Volunteer Age Groups"
       },
       "availability": {
         "singular": "Availability",
@@ -69,7 +71,7 @@
             "maxAge": 1209600000,
             "secure": true
           },
-          "appName": "volunteerscotland",
+          "appName": "volunteerscotland-search",
           "noTokenRoute": "",
           "notAuthenticatedRoute": ""
         }
@@ -84,7 +86,7 @@
             "maxAge": 1209600000,
             "secure": true
           },
-          "appName": "volunteerscotland",
+          "appName": "volunteerscotland-search",
           "noTokenRoute": "sign_in",
           "notAuthenticatedRoute": "sign_in"
         }
@@ -98,17 +100,6 @@
           "output": "data",
           "parseJson": true
         }
-      },
-      "favouritesData": {
-        "name": "favourites",
-        "taskModule": "mysql",
-        "config": {
-          "connectionName": "notifications",
-          "queryTemplates": {
-            "items": ">context.metaData.handlebars.queries.notifications_get-favourites"
-          }
-        },
-        "renderer": "handlebars"
       },
       "opportunitySupplimentary": {
         "name": "opportunitySupplimentary",
@@ -147,13 +138,13 @@
             {
               "name": "types",
               "index": "web-content-production",
-              "type": "milo-organisation",
+              "type": "milo-volunteering-organisation",
               "template": ">context.metaData.handlebars.queries.organisations_types"
             },
             {
               "name": "not_found",
               "index": "web-content-production",
-              "type": "milo-organisation",
+              "type": "milo-volunteering-organisation",
               "template": ">context.metaData.handlebars.queries.pages_not-found"
             }
           ]
@@ -178,19 +169,50 @@
           ]
         },
         "renderer": "handlebars"
+      },
+      "searchesData": {
+        "name": "searches",
+        "taskModule": "mysql",
+        "config": {
+          "connectionName": "volunteerscotland_notifications",
+          "queryTemplates": {
+            "items": ">context.metaData.handlebars.queries.notifications_get-saved-searches"
+          }
+        },
+        "renderer": "handlebars"
+      },
+      "favouritesData": {
+        "name": "favourites",
+        "taskModule": "mysql",
+        "config": {
+          "connectionName": "volunteerscotland_notifications",
+          "queryTemplates": {
+            "items": ">context.metaData.handlebars.queries.notifications_get-favourites"
+          }
+        },
+        "renderer": "handlebars"
+      },
+      "notesData": {
+        "name": "notes",
+        "taskModule": "firebaseRtbGet",
+        "renderer": "handlebars",
+        "config": {
+          "appName": "volunteerscotland-search",
+          "pathTemplate": "/notes/{{data.auth.uid}}"
+        }
       }
     },
     "firebaseDefaultDomain": {
-      "name": "volunteerscotland",
+      "name": "volunteerscotland-search",
       "label": "Volunteer Scotland",
       "logoUrl": "",
-      "config": {
-        "apiKey": "AIzaSyDCHiGp3FllVnjPcn0_LjcZrUe_5nC7LAc",
-        "authDomain": "auth.getinvolved.scot",
-        "databaseURL": "https://scvo-getinvolved.firebaseio.com",
-        "projectId": "scvo-getinvolved",
-        "storageBucket": "scvo-getinvolved.appspot.com",
-        "messagingSenderId": "815398681377"
+      "config" : {
+        "apiKey": "AIzaSyAwCMOrTj2eq8tVAdgD3vrgRqz9oIluiYk",
+        "authDomain": "scvo-volunteerscotland-search.firebaseapp.com",
+        "databaseURL": "https://scvo-volunteerscotland-search.firebaseio.com",
+        "projectId": "scvo-volunteerscotland-search",
+        "storageBucket": "scvo-volunteerscotland-search.appspot.com",
+        "messagingSenderId": "7952458796"
       }
     }
   }

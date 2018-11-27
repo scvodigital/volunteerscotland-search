@@ -1,7 +1,6 @@
 {
   "name": "home",
   "pattern": "/",
-  "debug": true,
   "metaData": {
     "title": "Volunteer Scotland"
   },

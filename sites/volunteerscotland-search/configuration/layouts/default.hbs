@@ -301,7 +301,7 @@
                 <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone about">
                   <h3>About</h3>
                   <p>
-                    This site is run in partnership between <a href="http://volunteerscotland.net">Volunteer Scotland</a> and the <a href="https://scvo.org">Scottish Council for Voluntary Organisations</a>. <a href="/about">Read more</a>
+                    This site is run in partnership between <a href="https://volunteerscotland.net">Volunteer Scotland</a> and the <a href="https://scvo.org">Scottish Council for Voluntary Organisations</a>. <a href="/about">Read more</a>
                   </p>
                 </div>
               </div>
@@ -359,12 +359,12 @@
     var volunteerscotland = null; readyListeners = [];
     $(document).ready(function() {
       volunteerscotland = new VolunteerScotlandSearch.VolunteerScotlandSearch({
-        apiKey: "AIzaSyDCHiGp3FllVnjPcn0_LjcZrUe_5nC7LAc",
-        authDomain: "auth.getinvolved.scot",
-        databaseURL: "https://scvo-getinvolved.firebaseio.com",
-        projectId: "scvo-getinvolved",
-        storageBucket: "scvo-getinvolved.appspot.com",
-        messagingSenderId: "815398681377"
+        "apiKey": "AIzaSyAwCMOrTj2eq8tVAdgD3vrgRqz9oIluiYk",
+        "authDomain": "scvo-volunteerscotland-search.firebaseapp.com",
+        "databaseURL": "https://scvo-volunteerscotland-search.firebaseio.com",
+        "projectId": "scvo-volunteerscotland-search",
+        "storageBucket": "scvo-volunteerscotland-search.appspot.com",
+        "messagingSenderId": "7952458796"
       });
       ready = true;
       readyListeners.forEach(function(listener) {
@@ -380,13 +380,13 @@
       }
     }
 
-    function initMap() {
-      registerReadyListener(function() {
-        volunteerscotland.componentsInitialiser.initialiseGMapsDependents('AIzaSyCT7vZkJdto5JoAUDx3asuHu7mHcl8UanQ');
-      });
-    }
+    // function initMap() {
+    //   registerReadyListener(function() {
+    //     volunteerscotland.componentsInitialiser.initialiseGMapsDependents('AIzaSyCT7vZkJdto5JoAUDx3asuHu7mHcl8UanQ');
+    //   });
+    // }
   </script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJdxcQpVKQ6HdrjnPXycUoZqsmp-Ep3l0&libraries=places&region=uk&callback=initMap" async defer></script>
+  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJdxcQpVKQ6HdrjnPXycUoZqsmp-Ep3l0&libraries=places&region=uk&callback=initMap" async defer></script> -->
 
   {{{layoutParts.foot}}}
 </body>

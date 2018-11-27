@@ -1,3 +1,4 @@
+{{#if @root.data.search_data.map_results.pagination.totalResults ~}}
 <div id="detailed-results-container" class="container-content content-primary-search container-map">
   <div class="mdc-layout-grid head h-padding-full v-margin-full">
     <div class="mdc-layout-grid__inner">
@@ -11,7 +12,32 @@
   </div>
   <div id="detailed-results-container" class="container-content container-map">
     <div id="map-full" data-map-name="fullMap" data-map-clustered-options='{
-    "query" : {{jsStringify @root.request.params.query}}, "queryUrl" : "map_data", "aggregationKey" : "admin_district"}'>
+     {{#ifAll @root.request.params.query.distance @root.request.params.query.lat @root.request.params.query.lng ~}}
+      "circle": {
+        "lat": {{@root.request.params.query.lat}},
+        "lng": {{@root.request.params.query.lng}},
+        "radius": {{default @root.request.params.query.distance 0}},
+        "color": "#7bc143"
+      }
+    {{/ifAll ~}}
+    }'>
+      <!-- Markers for map -->
+      {{#each @root.data.search_data.map_results.hits.hits ~}}
+        {{#if _source.geo_coords ~}}
+          {{#each (arrayify _source.geo_coords) ~}}
+          <marker style="display:none;" data-map="fullMap" data-lat="{{lat}}" data-lng="{{lon}}" data-shortlisted="{{#each @root.data.favourites.items}}{{#compare id "===" ../../_source.Id}}true{{/compare}}{{/each}}" data-title="{{../_source.title}}">
+            {{>opportunity_map ../_source}}
+          </marker>
+          {{/each}}
+        {{/if}}
+      {{/each}}
     </div>
   </div>
 </div>
+{{else}}
+<div id="detailed-results-container" class="container-content content-primary-search">
+  <div class="search-info mdc-elevation--z1">
+    No results could be found, please try a different search query
+  </div>
+</div>
+{{/if ~}}

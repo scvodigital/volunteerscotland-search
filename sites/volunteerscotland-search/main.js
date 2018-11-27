@@ -7,7 +7,7 @@ import { default as Headroom } from 'headroom.js';
 import * as mdc from 'material-components-web';
 import { ComponentsInitialiser } from '../../lib/components-initialiser';
 
-import * as cookieInfoScript from '../../lib/cookie-info-script';
+import * as cookieInfoScript from '../../lib/cookie-info-script' ;
 
 window.firebase = firebase;
 

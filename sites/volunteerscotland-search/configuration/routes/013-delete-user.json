@@ -7,7 +7,7 @@
       "name": "notifications",
       "taskModule": "mysql",
       "config": {
-        "connectionName": "notifications",
+        "connectionName": "volunteerscotland_notifications",
         "queryTemplates": {
           "delete_user": ">context.metaData.handlebars.queries.notifications_delete-user"
         }

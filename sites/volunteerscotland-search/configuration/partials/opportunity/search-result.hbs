@@ -1,7 +1,12 @@
 <div class="mdc-card content-primary search-result{{if top_job " top-job"}}" data-opportunity-id="{{Id}}">
   {{> opportunity_key_info}}
   <hr class="mdc-list-divider" />
-  {{> opportunity_description limit="6rem" description=description}}
+  {{#compare (trim (getProperty @root.data.notes Id)) "!==" "" ~}}
+    {{> opportunity_description limit="3rem" description=description}}
+    {{> opportunity_notes limit="3rem"}}
+  {{else}}
+    {{> opportunity_description limit="6rem" description=description}}
+  {{/compare ~}}
   {{> opportunity_actions slug=slug Id=Id home_based=home_based distance=distance}}
 </div>
 {{>ga documentType="milo-volunteering-opportunity" documentId=Id hitType=(default hitContext "search-result")}}

@@ -1,7 +1,6 @@
 {
   "name": "browse",
   "pattern": "/browse",
-  "debug": true,
   "metaData": {
     "sidebarButton": {
       "icon": "search",

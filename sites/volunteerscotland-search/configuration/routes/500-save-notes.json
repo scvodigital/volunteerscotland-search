@@ -1,0 +1,29 @@
+{
+  "name": "save-notes",
+  "pattern": "/save-notes",
+  "debug" : true,
+  "acceptedVerbs": "POST",
+  "tasks": [
+    "context.metaData.commonTasks.authRequired",
+    {
+      "name": "notes",
+      "taskModule": "firebaseRtbSet",
+      "renderer": "handlebars",
+      "config": {
+        "appName": "volunteerscotland-search",
+        "pathTemplate": "/notes/{{data.auth.uid}}/{{request.body.id}}",
+        "setOrUpdate": "set",
+        "dataTemplate": "{{{stringify (stripTags @root.request.body.notes)}}}"
+      }
+    },
+    {
+      "name": "destination",
+      "taskModule": "render",
+      "renderer": "handlebars",
+      "config": {
+        "output": "body",
+        "template": "Saved"
+      }
+    }
+  ]
+}

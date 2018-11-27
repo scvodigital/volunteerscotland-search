@@ -1,8 +1,8 @@
 {
   "@context": "http://schema.org",
   "@type": "JobPosting",
-  "@id": "https://getinvolved.scot/opportunity/{{slug}}",
-  "url": "https://getinvolved.scot/opportunity/{{slug}}",
+  "@id": "https://test.getinvolved.scot/opportunity/{{slug}}",
+  "url": "https://test.getinvolved.scot/opportunity/{{slug}}",
   "identifier": "{{reference_number}}",
   "baseSalary": {
     "@type": "MonetaryAmount",

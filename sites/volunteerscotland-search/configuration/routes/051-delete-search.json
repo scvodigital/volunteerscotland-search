@@ -1,0 +1,26 @@
+{
+  "name": "delete-search",
+  "pattern": "/delete-search",
+  "acceptedVerbs": "POST",
+  "tasks": [
+    "context.metaData.commonTasks.authRequired",
+    {
+      "name": "notifications",
+      "taskModule": "mysql",
+      "config": {
+        "connectionName": "volunteerscotland_notifications",
+        "queryTemplates": {
+          "delete_search": ">context.metaData.handlebars.queries.notifications_delete-search"
+        }
+      },
+      "renderer": "handlebars"
+    },
+    {
+      "name": "destination",
+      "taskModule": "redirect",
+      "config": {
+        "location": ">request.headers.referer"
+      }
+    }
+  ]
+}

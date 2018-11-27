@@ -1,5 +1,5 @@
 {{~#if @root.context.metaData.live~}}
-{{@root.context.metaData.assetsBase}}
+{{@root.context.metaData.assetsBase}}{{{replace url "VERSION" @root.context.metaData.assetsVersion}}}
 {{~else~}}
-/assets/
-{{~/if~}}{{{replace url "VERSION" @root.context.metaData.assetsVersion}}}
+/assets/{{{url}}}
+{{~/if~}}

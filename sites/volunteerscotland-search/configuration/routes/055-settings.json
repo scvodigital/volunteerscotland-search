@@ -1,5 +1,6 @@
 {
   "name": "settings",
+  "debug" : true,
   "pattern": "/settings",
   "metaData": {
     "sidebarButton": {
@@ -15,6 +16,42 @@
     "context.metaData.commonTasks.authRequired",
     "context.metaData.commonTasks.favouritesData",
     "context.metaData.commonTasks.opportunitySupplimentary",
+    "context.metaData.commonTasks.searchesData",
+    "context.metaData.commonTasks.notesData",
+    {
+      "name": "email_days",
+      "taskModule": "render",
+      "renderer": "handlebars",
+      "config": {
+        "output": "data",
+        "template": ">context.metaData.handlebars.partials.email_days"
+      }
+    },
+    {
+      "name": "export_user_data",
+      "taskModule": "render",
+      "renderer": "handlebars",
+      "config": {
+        "output": "data",
+        "template": ">context.metaData.handlebars.templates.account_export-user-data"
+      }
+    },
+    {
+      "name": "opportunity_lookup",
+      "taskModule": "elasticsearch",
+      "config": {
+        "connectionStringTemplate": "{$../../elasticsearch-url.txt}",
+        "elasticsearchConfig": {
+          "apiVersion": "5.6"
+        },
+        "queryTemplates": {
+          "index": "web-content-production",
+          "type": "milo-volunteering-opportunity",
+          "template": ">context.metaData.handlebars.queries.account_favourites"
+        }
+      },
+      "renderer": "handlebars"
+    },
     {
       "name": "destination",
       "taskModule": "renderLayout",
@@ -33,7 +70,7 @@
               "head": ">context.metaData.handlebars.templates.pages_page-head-tags",
               "body": ">context.metaData.handlebars.templates.account_settings",
               "foot": ">context.metaData.handlebars.templates.account_settings-foot",
-              "sidebar": ">context.metaData.handlebars.templates.vacancies_search-form"
+              "sidebar": ">context.metaData.handlebars.templates.opportunities_search-form"
 
             },
             "contentType": "text/html"

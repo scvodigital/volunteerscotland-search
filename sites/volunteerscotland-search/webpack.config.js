@@ -57,7 +57,7 @@ function getConfig(site, library) {
       './sites/' + site + '/main.js', 
     ],
     output: {
-      filename: 'build/' + site + '/main-' + package.version + '.js',
+      filename: 'build/' + site + '/main-VERSION.js',
       library: library,
       libraryTarget: 'var'
     },
@@ -68,7 +68,7 @@ function getConfig(site, library) {
           use: [{
               loader: 'file-loader',
               options: {
-                name: 'build/' + site + '/main-' + package.version + '.css',
+                name: 'build/' + site + '/main-VERSION.css',
               },
             },
             {

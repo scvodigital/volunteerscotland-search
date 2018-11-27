@@ -17,7 +17,7 @@ const BUILD_DIR = path.join(__dirname, 'build');
 const BUCKET = 'scvo-assets';
 const DESTINATION_DIR = 'test';
 const VERSION = package.version;
-const VERSION_TEST = new RegExp('-' + VERSION.replace(/\./g, '\\.') + '\.[0-9a-z]+$', 'gi');
+const VERSION_TEST = new RegExp('-VERSION\.[0-9a-z]+$', 'i');
 
 const storage = new Storage({
   projectId: 'scvo-net'
@@ -34,6 +34,7 @@ const app = admin.initializeApp({
   console.log('Publishing the following sites:', sites.join(', '));
   await uploadAssets(sites);
   await uploadConfigs(sites);
+  process.exit();
 })();
 
 async function uploadAssets(sites) {
@@ -64,6 +65,9 @@ async function uploadAssets(sites) {
       await storage.bucket(BUCKET).upload(uploadOption.path, uploadOption.options);
       successful++;
       message = 'SUCCESS -> ' + uploadOption.options.destination;
+      if (uploadOption.gzipped) {
+        const response = await storage.bucket(BUCKET).file(uploadOption.options.destination).setMetadata(uploadOption.options.metaData);
+      }
     } catch(err) {
       failed++;
       message = 'FAILED -> ' + uploadOption.options.destination + ':\n' + stringify(err, null, 2);
@@ -102,9 +106,11 @@ function getUploadOptions(sites) {
 
         if (!!versioned) {
           options.metaData.cacheControl = 'public, max-age=31536000';
+          options.destination = options.destination.replace('VERSION', VERSION);
         }
 
         if (gzipped) {
+          //options.gzip = 'auto'; 
           options.metaData.contentEncoding = 'gzip';
         }
 
