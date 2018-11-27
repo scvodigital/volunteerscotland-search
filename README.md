@@ -1,3 +1,3 @@
-# assets
+# Volunteer Scotland Search
 
-Assets for SCVOs web properties (JS, CSS, images, dependencies, etc)
+Assets (JS, CSS, images, dependencies, etc.) for Volunteer Scotland Search
