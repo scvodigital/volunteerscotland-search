@@ -1,5 +1,5 @@
 {
-  "name": "remove-from-favourites",
+  "name": "remove-from-favourites-2",
   "pattern": "/remove-from-favourites",
   "acceptedVerbs": "GET",
   "tasks": [
