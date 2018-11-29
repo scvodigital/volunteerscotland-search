@@ -1796,9 +1796,10 @@ body.shortlist {
   }
 }
 
-.head .pagination {
+.pagination {
   padding: 0;
   margin-top: $unit/4;
+  .pagination-distance-3,
   .pagination-distance-4,
   .pagination-distance-5,
   .pagination-distance-6,
