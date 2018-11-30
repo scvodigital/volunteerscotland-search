@@ -11,6 +11,12 @@
     </div>
   </div>
   <div id="detailed-results-container" class="container-content container-map">
+    <div class="card-loader" id="opportunity-map-loader" style="display: flex">
+      <div class="card-loader-inner">
+        <span class="far fa-2x fa-circle-notch fa-spin"></span>
+      </div>
+    </div>
+
     <div id="map-full" data-map-name="fullMap" data-map-clustered-options='{
      {{#ifAll @root.request.params.query.distance @root.request.params.query.lat @root.request.params.query.lng ~}}
       "circle": {
@@ -41,3 +47,10 @@
   </div>
 </div>
 {{/if ~}}
+
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var $loader = $('#opportunity-map-loader');
+    $loader.css('display', 'none');
+  });
+</script>
