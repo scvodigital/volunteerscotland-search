@@ -69,3 +69,4 @@ typings/
 
 service-accounts/
 secrets.tar
+lib/bump.*
