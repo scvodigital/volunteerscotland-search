@@ -47,7 +47,7 @@
         <div class="detailed-info">
           {{#if description ~}}
             <h4 class="mdc-typography--headline6">Description</h4>
-            <div class="mdc-typography--body1" style="white-space: pre-line">
+            <div class="mdc-typography--body1">
               {{#if description_html}}{{{description_html}}}{{else}}{{description}}{{/if}}
             </div>
           {{/if ~}}
@@ -88,6 +88,13 @@
             </div>
           {{/if}}
 
+          {{#if frequency_commitment_details ~}}
+            <h4 class="mdc-typography--headline6">Frequency and Commitment Details</h4>
+              <div class="mdc-typography--body1">
+                {{{frequency_commitment_details}}}
+              </div>
+          {{/if ~}}
+
           {{#ifAny experience_required travel_details minimum_age ~}}
             <h4 class="mdc-typography--headline6">Restrictions</h4>
             {{#if experience_required ~}}
@@ -99,12 +106,6 @@
             {{#if travel_details ~}}
               <div class="mdc-typography--body1">
                 <strong>Travel Details: </strong> {{{travel_details}}}
-              </div>
-            {{/if ~}}
-
-            {{#if frequency_commitment_details ~}}
-              <div class="mdc-typography--body1">
-                <strong>Frequency and Commitment Details: </strong> {{{frequency_commitment_details}}}
               </div>
             {{/if ~}}
 
@@ -162,7 +163,9 @@
           {{/ifAny ~}}
 
           <div class="mdc-typography--body1">
-            <a href="mailto:alex.nuttgens@scvo.org.uk?subject=Report%20on%20Volunteering%20Opportunity%20{{milo_ref}}&body=I%20would%20like%20to%20report%20this%20Volunteering%20Opportunity%20for%20the%20following%20reasons:%20">Report this opportunity</a>
+            <a target="_blank" href="mailto:milosupport@scvo.org.uk?subject=Report%20on%20Volunteering%20Opportunity%20{{milo_ref}}{{#if title}}:%20{{title}}{{/if}}%20-%20{{organisation_name}}%20on%Volunteer%Scotland&body=I%20would%20like%20to%20report%20this%20opportunity%20for%20the%20following%20reasons:">
+              Report this opportunity
+            </a>
           </div>
 
         </div>
