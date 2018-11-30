@@ -59,6 +59,28 @@
             </div>
           {{/if ~}}
 
+          {{#ifAny organisation_contact_last_name organisation_contact_email organisation_website ~}}
+            <h4 class="mdc-typography--headline6">Contact</h4>
+            {{#ifAny organisation_contact_first_name organisation_contact_last_name ~}}
+              <div class="mdc-typography--body1">
+                <strong>Name: </strong> {{{organisation_contact_first_name}}} {{{organisation_contact_last_name}}}
+              </div>
+            {{/ifAny ~}}
+
+            {{#if organisation_contact_email ~}}
+              <div class="mdc-typography--body1">
+                <strong>Email: </strong> <a href="mailto:{{{organisation_contact_email}}}">{{{organisation_contact_email}}}</a>
+              </div>
+            {{/if ~}}
+
+            {{#if organisation_website ~}}
+              <div class="mdc-typography--body1">
+                <strong>Website: </strong> <a href="{{fixUrl organisation_website 'http'}}">{{{organisation_website}}}</a>
+              </div>
+            {{/if ~}}
+
+          {{/ifAny ~}}
+
           {{#if availability_slugs.length}}
             <h4 class="mdc-typography--headline6">Availability</h4>
             <div class="mdc-typography--body1">
@@ -138,29 +160,6 @@
             {{/if ~}}
 
           {{/ifAny ~}}
-
-          {{#ifAny organisation_contact_last_name organisation_contact_email organisation_website ~}}
-            <h4 class="mdc-typography--headline6">Contact</h4>
-            {{#ifAny organisation_contact_first_name organisation_contact_last_name ~}}
-              <div class="mdc-typography--body1">
-                <strong>Name: </strong> {{{organisation_contact_first_name}}} {{{organisation_contact_last_name}}}
-              </div>
-            {{/ifAny ~}}
-
-            {{#if organisation_contact_email ~}}
-              <div class="mdc-typography--body1">
-                <strong>Email: </strong> <a href="mailto:{{{organisation_contact_email}}}">{{{organisation_contact_email}}}</a>
-              </div>
-            {{/if ~}}
-
-            {{#if organisation_website ~}}
-              <div class="mdc-typography--body1">
-                <strong>Website: </strong> <a href="{{fixUrl organisation_website 'http'}}">{{{organisation_website}}}</a>
-              </div>
-            {{/if ~}}
-
-          {{/ifAny ~}}
-
         </div>
       </div>
       {{!--

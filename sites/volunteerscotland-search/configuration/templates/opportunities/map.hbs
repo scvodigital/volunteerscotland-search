@@ -1,17 +1,23 @@
 {{#if @root.data.search_data.map_results.pagination.totalResults ~}}
-<div id="detailed-results-container" class="container-content content-primary-search container-map">
-  <div class="mdc-layout-grid head h-padding-full v-margin-full">
-    <div class="mdc-layout-grid__inner">
-      <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone action">
-        {{#>components_tab_bar}}
-          {{>components_tab url=(concat "/search" @root.request.url.search) iconClasses="far fa-list fa-fw" label="List" active=(compare @root.request.url.pathname "===" "/search")}}
-          {{>components_tab url=(concat "/map" @root.request.url.search) iconClasses="far fa-map-marker-alt fa-fw" label="Map" active=(compare @root.request.url.pathname "===" "/map")}}
-        {{/components_tab_bar}}
+  <div id="detailed-results-container" class="container-content content-primary-search container-map">
+    <div class="mdc-layout-grid head h-padding-full v-margin-full">
+      <div class="mdc-layout-grid__inner">
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone action">
+          {{#>components_tab_bar}}
+            {{>components_tab url=(concat "/search" @root.request.url.search) iconClasses="far fa-list fa-fw" label="List" active=(compare @root.request.url.pathname "===" "/search")}}
+            {{>components_tab url=(concat "/map" @root.request.url.search) iconClasses="far fa-map-marker-alt fa-fw" label="Map" active=(compare @root.request.url.pathname "===" "/map")}}
+          {{/components_tab_bar}}
+        </div>
       </div>
     </div>
-  </div>
-  <div id="detailed-results-container" class="container-content container-map">
-    <div id="map-full" data-map-name="fullMap" data-map-clustered-options='{
+
+    <div id="detailed-results-container" class="container-content container-map">
+      <div class="card-loader" id="opportunity-map-loader" style="display: flex">
+        <div class="card-loader-inner">
+          <span class="far fa-2x fa-circle-notch fa-spin"></span>
+        </div>
+      </div>
+      <div id="map-full" data-map-name="fullMap" data-map-clustered-options='{
      {{#ifAll @root.request.params.query.distance @root.request.params.query.lat @root.request.params.query.lng ~}}
       "circle": {
         "lat": {{@root.request.params.query.lat}},
@@ -21,23 +27,30 @@
       }
     {{/ifAll ~}}
     }'>
-      <!-- Markers for map -->
-      {{#each @root.data.search_data.map_results.hits.hits ~}}
-        {{#if _source.geo_coords ~}}
-          {{#each (arrayify _source.geo_coords) ~}}
-          <marker style="display:none;" data-map="fullMap" data-lat="{{lat}}" data-lng="{{lon}}" data-shortlisted="{{#each @root.data.favourites.items}}{{#compare id "===" ../../_source.Id}}true{{/compare}}{{/each}}" data-title="{{../_source.title}}">
-            {{>opportunity_map ../_source}}
-          </marker>
-          {{/each}}
-        {{/if}}
-      {{/each}}
+        <!-- Markers for map -->
+        {{#each @root.data.search_data.map_results.hits.hits ~}}
+          {{#if _source.geo_coords ~}}
+            {{#each (arrayify _source.geo_coords) ~}}
+              <marker style="display:none;" data-map="fullMap" data-lat="{{lat}}" data-lng="{{lon}}" data-shortlisted="{{#each @root.data.favourites.items}}{{#compare id "===" ../../_source.Id}}true{{/compare}}{{/each}}" data-title="{{../_source.title}}">
+                {{>opportunity_map ../_source}}
+              </marker>
+            {{/each}}
+          {{/if}}
+        {{/each}}
+      </div>
     </div>
   </div>
-</div>
 {{else}}
-<div id="detailed-results-container" class="container-content content-primary-search">
-  <div class="search-info mdc-elevation--z1">
-    No results could be found, please try a different search query
+  <div id="detailed-results-container" class="container-content content-primary-search">
+    <div class="search-info mdc-elevation--z1">
+      No results could be found, please try a different search query
+    </div>
   </div>
-</div>
 {{/if ~}}
+<script>
+
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var $loader = $('#opportunity-map-loader');
+    $loader.css('display', 'none');
+  });
+</script>
