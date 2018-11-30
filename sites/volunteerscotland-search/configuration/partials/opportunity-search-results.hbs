@@ -255,7 +255,7 @@
 {{/each ~}}
 
 <div class="foot">
-  {{> pagination paging=@root.data.search_data.detailed_results.pagination}}
+  {{> pagination firstLastNavigation=true paging=@root.data.search_data.detailed_results.pagination}}
 
   <button class="mdc-button mdc-button--raised mdc-button--large save-search hide-lg" id="save-search-button-foot" data-dialog-target="#save-search-dialog">
     <span class="far fa-search-plus mdc-list-item__graphic" aria-hidden="true"></span>
