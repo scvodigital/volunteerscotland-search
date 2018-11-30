@@ -24,7 +24,7 @@
               <li class="mdc-card__info--content-primary-work-type reference mdc-typography--body1">
                 <span class="fa-li"><span class="far fa-briefcase fa-fw" title="Activites"></span></span>
                 {{#each work_type}}
-                  <a href="/search?work_types%5B%5D={{urlencode (slugify (replace this "/" "-"))}}">{{{this}}}</a>{{#unless @last}}, {{/unless}}
+                  <a href="/search?work_types%205B%205D={{urlencode (slugify (replace this "/" "-"))}}">{{{this}}}</a>{{#unless @last}}, {{/unless}}
                 {{/each}}
               </li>
             {{/compare ~}}
@@ -32,7 +32,7 @@
               <li class="mdc-card__info--content-primary-client-group mdc-typography--body1">
                 <span class="fa-li"><span class="far fa-users fa-fw" title="Client groups"></span></span>
                 {{#each client_group}}
-                  <a href="/search?client_groups%5B%5D={{urlencode (slugify (replace this "/" "-"))}}">{{{this}}}</a>{{#unless @last}}, {{/unless}}
+                  <a href="/search?client_groups%205B%205D={{urlencode (slugify (replace this "/" "-"))}}">{{{this}}}</a>{{#unless @last}}, {{/unless}}
                 {{/each}}
               </li>
             {{/compare ~}}
@@ -48,7 +48,7 @@
           {{#if description ~}}
             <h4 class="mdc-typography--headline6">Description</h4>
             <div class="mdc-typography--body1" style="white-space: pre-line">
-              {{{description}}}
+              {{#if description_html}}{{{description_html}}}{{else}}{{description}}{{/if}}
             </div>
           {{/if ~}}
 
@@ -160,6 +160,11 @@
             {{/if ~}}
 
           {{/ifAny ~}}
+
+          <div class="mdc-typography--body1">
+            <a href="mailto:alex.nuttgens@scvo.org.uk?subject=Report%20on%20Volunteering%20Opportunity%20{{milo_ref}}&body=I%20would%20like%20to%20report%20this%20Volunteering%20Opportunity%20for%20the%20following%20reasons:%20">Report this opportunity</a>
+          </div>
+
         </div>
       </div>
       {{!--
@@ -297,6 +302,7 @@
         </div>
       </div>
     </div>
+
     {{> opportunity_actions slug=slug Id=Id action="organisation"}}
   </div>
 </div>

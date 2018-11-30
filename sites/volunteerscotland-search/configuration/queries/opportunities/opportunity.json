@@ -8,6 +8,7 @@
     "client_group",
     "client_group_slugs",
     "description",
+    "description_html",
     "end_date",
     "expenses_paid",
     "experience_required",
