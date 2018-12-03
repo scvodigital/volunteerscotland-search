@@ -524,8 +524,8 @@ footer h3,
     position: relative;
   }
   .middle-line-text {
-    margin: $unit*2 0 $unit;
-    border-bottom: 2px solid #dfdfdf;
+    margin: $unit*2 0 $unit*2;
+    border-bottom: 2px solid $brand-primary-grey;
     line-height: 0;
     text-align: center;
     vertical-align: middle;
@@ -3135,14 +3135,13 @@ header {
   }
 }
 
-
 .sign-in-form,
 .reset-password-form {
   .middle-line-text {
-    border-bottom: 2px solid #dfdfdf;
+    border-bottom: 2px solid $brand-primary-grey;
     span {
-      background-color: $mdc-theme-secondary-light;
-      color: #555;
+      background-color: white;
+      color: $brand-primary-black;
     }
   }
   .mdc-button {
@@ -3156,8 +3155,6 @@ header {
     color: $mdc-theme-primary-dark;
   }
 }
-
-
 
 .content-primary-search {
   .head {
