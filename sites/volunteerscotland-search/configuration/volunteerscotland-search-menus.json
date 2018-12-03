@@ -84,24 +84,11 @@
       "route": "^/sign-up"
     }
   ],
-  "footer-help": [
+  "footer-cookies-terms": [
     {
-      "label": "Contact",
-      "icon": "at",
-      "path": "/contact",
-      "route": "^/contact"
-    }
-  ],
-  "footer-info": [
-    {
-      "label": "Accessibility",
-      "path": "/accessibility",
-      "route": "^/accessibility"
-    },
-    {
-      "label": "Privacy",
-      "path": "/privacy",
-      "route": "^/privacy"
+      "label": "Privacy Notices",
+      "path": "https://www.volunteerscotland.net/terms-conditions/privacy-notices/",
+      "route": "^https://www.volunteerscotland.net/terms-conditions/privacy-notices/"
     },
     {
       "label": "Cookies",
@@ -110,8 +97,52 @@
     },
     {
       "label": "Terms &amp; conditions",
-      "path": "/terms",
-      "route": "^/terms"
+      "path": "https://www.volunteerscotland.net/terms-conditions/",
+      "route": "^https://www.volunteerscotland.net/terms-conditions/"
+    }
+
+  ],
+  "footer-contact" : [
+    {
+      "label": "Contact Us",
+      "icon": "at",
+      "path": "https://www.volunteerscotland.net/about-us/contact-us/",
+      "route": "^https://www.volunteerscotland.net/about-us/contact-us/"
+    },
+    {
+      "label": "Sign up to hear from us",
+      "icon": "envelope",
+      "path": "https://www.volunteerscotland.net/about-us/contact-us/tick-to-hear-from-us",
+      "route": "^https://www.volunteerscotland.net/about-us/contact-us/tick-to-hear-from-us"
+    }
+
+  ],
+  "footer-info": [
+    {
+      "label": "Volunteer Scotland Charter",
+      "path": "https://www.volunteerscotland.net/terms-conditions/charter/",
+      "route": "^https://www.volunteerscotland.net/terms-conditions/charter/"
+    },
+    {
+      "label": "Accessibility",
+      "path": "/accessibility",
+      "route": "^/accessibility"
+    },
+    {
+      "label": "Complaints Procedure",
+      "path": "https://www.volunteerscotland.net/accessibility/complaints-procedure/",
+      "route": "^https://www.volunteerscotland.net/accessibility/complaints-procedure/"
+    },
+    {
+      "label": "Brand Guidelines",
+      "path": "https://www.volunteerscotland.net/accessibility/brand-guidelines/",
+      "route": "^https://www.volunteerscotland.net/accessibility/brand-guidelines/"
+    },
+    {
+      "label": "Charter Text",
+      "path": "https://www.volunteerscotland.net/terms-conditions/charter-text/",
+      "route": "https://www.volunteerscotland.net/terms-conditions/charter-text/"
     }
   ]
+
 }
