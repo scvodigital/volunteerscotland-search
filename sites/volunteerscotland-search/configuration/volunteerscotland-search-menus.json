@@ -1,13 +1,13 @@
 {
   "main": [
     {
-      "label": "Search opportunities",
+      "label": "Find opportunities",
       "icon": "search",
       "path": "/search",
       "route": "^/search$"
     },
     {
-      "label": "Search organisations",
+      "label": "Find organisations",
       "icon": "list-alt",
       "path": "/organisations/search",
       "route": "^/organisations/search$"
@@ -30,6 +30,12 @@
       "icon": "home",
       "path": "https://www.volunteerscotland.net",
       "route": "^https://www.volunteerscotland.net"
+    },
+    {
+      "label": "About Us",
+      "icon": "info-circle",
+      "path": "https://www.volunteerscotland.net/about-us",
+      "route": "^https://www.volunteerscotland.net/about-us"
     }
   ],
   "user-signed-in": [
