@@ -14,16 +14,6 @@
     }
 
   ],
-  "upper-not-signed-in": [
-  ],
-  "upper-signed-in": [
-    {
-      "label": "My Volunteer Account",
-      "icon": "cog",
-      "path": "/settings",
-      "route": "^/settings"
-    }
-  ],
   "upper": [
     {
       "label": "Home",
@@ -36,6 +26,36 @@
       "icon": "info-circle",
       "path": "https://www.volunteerscotland.net/about-us",
       "route": "^https://www.volunteerscotland.net/about-us"
+    }
+  ],
+  "upper-not-signed-in": [
+    {
+      "label": "My Volunteer Account",
+      "icon": "sign-in-alt",
+      "path": "/sign-in",
+      "route": "^/sign-in"
+    }
+  ],
+  "upper-signed-in": [
+    {
+      "label": "My Volunteer Account",
+      "icon": "cog",
+      "path": "/settings",
+      "route": "^/settings"
+    }
+  ],
+  "user-not-signed-in": [
+    {
+      "label": "Sign in",
+      "icon": "sign-in-alt",
+      "path": "/sign-in",
+      "route": "^/sign-in"
+    },
+    {
+      "label": "Sign up",
+      "icon": "list-alt",
+      "path": "/sign-up",
+      "route": "^/sign-up"
     }
   ],
   "user-signed-in": [
@@ -74,20 +94,6 @@
       "icon": "sign-out-alt",
       "path": "/sign-out",
       "route": "^/sign-out"
-    }
-  ],
-  "user-not-signed-in": [
-    {
-      "label": "Sign in",
-      "icon": "sign-in-alt",
-      "path": "/sign-in",
-      "route": "^/sign-in"
-    },
-    {
-      "label": "Sign up",
-      "icon": "list-alt",
-      "path": "/sign-up",
-      "route": "^/sign-up"
     }
   ],
   "footer-cookies-terms": [

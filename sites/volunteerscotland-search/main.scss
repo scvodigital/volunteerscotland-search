@@ -115,6 +115,33 @@ h4 {
   transform: translateY(-100%);
 }
 
+a[href^="http://"]::after,
+a[href^="https://"]::after {
+  font-family: 'Font Awesome\ 5 Pro';
+  content: "\f08e";
+  font-weight: 400;
+  margin-left: 0.25rem;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1.2rem;
+  font-size: 70%;
+  top: -0.1rem;
+  position: relative;
+}
+a.noext::after,
+a[href^="https://volunteerscotland-search.local"]::after,
+a[href^="https://test.getinvolved.scot"]::after,
+a[href^="https://search.volunteerscotland.net"]::after {
+  content: " ";
+  margin: 0;
+  top: 0;
+  display: none;
+}
+
 header {
   .container-fluid {
     padding: 0;
