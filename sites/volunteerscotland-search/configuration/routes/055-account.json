@@ -1,11 +1,11 @@
 {
-  "name": "settings",
+  "name": "account",
   "debug" : true,
-  "pattern": "/settings",
+  "pattern": "/account",
   "metaData": {
     "sidebarButton": {
       "icon": "cog",
-      "tooltip": "Settings",
+      "tooltip": "Account",
       "classes": "hide-md hide-lg"
     }
   },
@@ -68,8 +68,8 @@
             "layout": ">context.metaData.handlebars.layouts.default",
             "parts": {
               "head": ">context.metaData.handlebars.templates.pages_page-head-tags",
-              "body": ">context.metaData.handlebars.templates.account_settings",
-              "foot": ">context.metaData.handlebars.templates.account_settings-foot",
+              "body": ">context.metaData.handlebars.templates.account_account",
+              "foot": ">context.metaData.handlebars.templates.account_account-foot",
               "sidebar": ">context.metaData.handlebars.templates.opportunities_search-form"
 
             },

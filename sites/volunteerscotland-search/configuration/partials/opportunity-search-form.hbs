@@ -153,12 +153,11 @@
 
     <div class="h-padding">
       <div class="mdc-text-field mdc-text-field--box mdc-text-field--with-trailing-icon" data-mdc-auto-init="MDCTextField">
-
         <input type="text" id="{{instance_id}}-keywords" name="keywords" class="mdc-text-field__input mdc-text-field--fullwidth" value="{{@root.request.params.query.keywords}}" data-lpignore="true" autocomplete="off">
         <label class="mdc-floating-label" for="keywords">
           Keywords
         </label>
-        <span class="far fa-search active-search-icon mdc-text-field__icon" role="button" onclick=" $(this).parents('form:first').submit();" style="pointer-events: initial !important; z-index: 500;" tabindex="-1"></span></a>
+        <span class="fas fa-search active-search-icon mdc-text-field__icon" role="button" onclick=" $(this).parents('form:first').submit();" style="pointer-events: initial !important; z-index: 500;" tabindex="-1"></span></a>
         <div class="mdc-line-ripple"></div>
       </div>
     </div>
@@ -172,7 +171,7 @@
     <div class="h-margin mdc-drawer--occasional-ie11">
       <button class="mdc-button mdc-button--raised mdc-button--large mdc-button--fullwidth mdc-ripple-surface mdc-ripple-surface--primary" type="submit" id="{{instance_id}}-search-submit" data-mdc-auto-init="MDCRipple">
         Search
-        <span class="far fa-search fa-fw" aria-hidden="true"></span>
+        <span class="fas fa-search fa-fw" aria-hidden="true"></span>
       </button>
     </div>
   </form>

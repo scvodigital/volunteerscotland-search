@@ -1812,7 +1812,6 @@ body.shortlist {
   }
   .active-search-icon:hover,
   .geo-lookup:hover {
-    font-weight: 400;
     cursor: pointer;
   }
   .active-search-icon:focus,
@@ -3289,6 +3288,10 @@ header {
 }
 
 .content-settings-account {
+  margin-bottom: $unit;
+  .mdc-typography--headline6 {
+    margin-top: 0;
+  }
   .mdc-button.mdc-button--delete {
     background-color: #dd4b39 !important;
   }

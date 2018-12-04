@@ -64,8 +64,8 @@
     {
       "label": "Account",
       "icon": "cog",
-      "path": "/settings",
-      "route": "^/settings"
+      "path": "/account",
+      "route": "^/account"
     },
     {
       "label": "Sign out",
