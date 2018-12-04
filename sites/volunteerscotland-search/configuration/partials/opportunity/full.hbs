@@ -162,12 +162,10 @@
 
           {{/ifAny ~}}
 
-          <div class="mdc-typography--body1">
-            <a target="_blank" href="mailto:milosupport@scvo.org.uk?subject=Report Volunteering Opportunity {{milo_ref}}{{#if title}}: {{title}}{{/if}} - {{organisation_name}} on Volunteer Scotland&body=I would like to report this opportunity for the following reasons:">
-              Report this opportunity
-            </a>
+          <div class="mdc-typography--body1 report">
+            <span class="fas fa-flag fa-fw" title="Report this opportunity"></span>
+            <a href="mailto:milosupport@scvo.org.uk?subject=Report on opportunity: {{title}}, via Volunteer Scotland Search&body=I would like to report this opportunity for the following reasons: ">Report this opportunity</a>
           </div>
-
         </div>
       </div>
       {{!--

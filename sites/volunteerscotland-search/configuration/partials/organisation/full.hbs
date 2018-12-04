@@ -35,67 +35,68 @@
           {{/if}}
 
           {{#if website ~}}
-            {{#compare website "!==" null ~}}
-            {{#compare website "!==" "http://" ~}}
-            <li class="mdc-card__info--content-secondary-website mdc-typography--body1">
-              <span class="fa-li"><span class="far fa-link fa-fw" title="Website"></span></span>
-              <a href="{{website_url}}">{{website}}</a>
-            </li>
+          {{#compare website "!==" null ~}}
+          {{#compare website "!==" "http://" ~}}
+          <li class="mdc-card__info--content-secondary-website mdc-typography--body1">
+            <span class="fa-li"><span class="far fa-link fa-fw" title="Website"></span></span>
+            <a href="{{website_url}}">{{website}}</a>
+          </li>
+          {{/compare ~}}
+          {{/compare ~}}
+          {{/if ~}}
+          {{#if twitter ~}}
+          {{#compare twitter "!==" null ~}}
+          {{#compare twitter "!==" "http://" ~}}
+          <li class="mdc-card__info--content-secondary-twitter mdc-typography--body1">
+            <span class="fa-li"><span class="fab fa-twitter fa-fw" title="Twitter"></span></span>
+            <a href="{{twitter_url}}">{{twitter}}</a>
+          </li>
+          {{/compare ~}}
+          {{/compare ~}}
+          {{/if ~}}
+          {{#if facebook ~}}
+          {{#compare facebook "!==" null ~}}
+          {{#compare facebook "!==" "http://" ~}}
+          <li class="mdc-card__info--content-secondary-facebook mdc-typography--body1">
+            <span class="fa-li"><span class="fab fa-facebook fa-fw" title="Facebook"></span></span>
+            <a href="{{facebook_url}}">{{facebook}}</a>
+          </li>
+          {{/compare ~}}
+          {{/compare ~}}
+          {{/if ~}}
+          {{#if linkedin ~}}
+          {{#compare linkedin "!==" null ~}}
+          {{#compare linkedin "!==" "http://" ~}}
+          <li class="mdc-card__info--content-secondary-linkedin mdc-typography--body1">
+            <span class="fa-li"><span class="fab fa-linkedin fa-fw" title="LinkedIn"></span></span>
+            <a href="{{linkedin_url}}">{{linkedin}}</a>
+          </li>
+          {{/compare ~}}
+          {{/compare ~}}
+          {{/if ~}}
+          {{#if goodhq_organisation ~}}
+          {{#compare goodhq_organisation.xid "!==" null ~}}
+          <li class="mdc-card__info--content-secondary-goodhq mdc-typography--body1">
+            <span class="fa-li"><span class="fas fa-heart fa-fw" title="Good HQ"></span></span>
+            <a href="https://goodhq.org/{{goodhq_organisation.xid}}">@{{goodhq_organisation.xid}}</a>
+            {{#compare goodhq_organisation.status "===" "Open" ~}}
+            –
+            {{#compare @root.data.goodhq.reviews.hits.total ">" 0 ~}}
+            <a href="https://goodhq.org/{{goodhq_organisation.xid}}?mode=reviews">{{inflect @root.data.goodhq.reviews.hits.total "review" "reviews" true}} </a>{{#compare @root.data.goodhq.posts.hits.total ">" 0}}and {{/compare ~}}
+            {{/compare ~}}
+              {{#compare @root.data.goodhq.posts.hits.total ">" 0 ~}}
+            <a href="https://goodhq.org/{{goodhq_organisation.xid}}?mode=posts">{{inflect @root.data.goodhq.posts.hits.total "post" "posts" true}}</a>
             {{/compare ~}}
             {{/compare ~}}
-            {{/if ~}}
-            {{#if twitter ~}}
-            {{#compare twitter "!==" null ~}}
-            {{#compare twitter "!==" "http://" ~}}
-            <li class="mdc-card__info--content-secondary-twitter mdc-typography--body1">
-              <span class="fa-li"><span class="fab fa-twitter fa-fw" title="Twitter"></span></span>
-              <a href="{{twitter_url}}">{{twitter}}</a>
-            </li>
-            {{/compare ~}}
-            {{/compare ~}}
-            {{/if ~}}
-            {{#if facebook ~}}
-            {{#compare facebook "!==" null ~}}
-            {{#compare facebook "!==" "http://" ~}}
-            <li class="mdc-card__info--content-secondary-facebook mdc-typography--body1">
-              <span class="fa-li"><span class="fab fa-facebook fa-fw" title="Facebook"></span></span>
-              <a href="{{facebook_url}}">{{facebook}}</a>
-            </li>
-            {{/compare ~}}
-            {{/compare ~}}
-            {{/if ~}}
-            {{#if linkedin ~}}
-            {{#compare linkedin "!==" null ~}}
-            {{#compare linkedin "!==" "http://" ~}}
-            <li class="mdc-card__info--content-secondary-linkedin mdc-typography--body1">
-              <span class="fa-li"><span class="fab fa-linkedin fa-fw" title="LinkedIn"></span></span>
-              <a href="{{linkedin_url}}">{{linkedin}}</a>
-            </li>
-            {{/compare ~}}
-            {{/compare ~}}
-            {{/if ~}}
-            {{#if goodhq_organisation ~}}
-            {{#compare goodhq_organisation.xid "!==" null ~}}
-            <li class="mdc-card__info--content-secondary-goodhq mdc-typography--body1">
-              <span class="fa-li"><span class="fas fa-heart fa-fw" title="Good HQ"></span></span>
-              <a href="https://goodhq.org/{{goodhq_organisation.xid}}">@{{goodhq_organisation.xid}}</a>
-              {{#compare goodhq_organisation.status "===" "Open" ~}}
-              –
-              {{#compare @root.data.goodhq.reviews.hits.total ">" 0 ~}}
-              <a href="https://goodhq.org/{{goodhq_organisation.xid}}?mode=reviews">{{inflect @root.data.goodhq.reviews.hits.total "review" "reviews" true}} </a>{{#compare @root.data.goodhq.posts.hits.total ">" 0}}and {{/compare ~}}
-              {{/compare ~}}
-                {{#compare @root.data.goodhq.posts.hits.total ">" 0 ~}}
-              <a href="https://goodhq.org/{{goodhq_organisation.xid}}?mode=posts">{{inflect @root.data.goodhq.posts.hits.total "post" "posts" true}}</a>
-              {{/compare ~}}
-              {{/compare ~}}
-              on
-              <a href="https://goodhq.org/{{goodhq_organisation.xid}}">Good HQ</a>
-            </li>
-            {{/compare ~}}
-            {{/if ~}}
-            <li class="mdc-card__info--content-secondary-goodhq mdc-typography--body1">
-             <a target="_blank" href="mailto:milosupport@scvo.org.uk?subject=Report on Organisation: {{title}} on Volunteer Scotland&body=I would like to report this Organisation for the following reasons: ">Report this organisation</a>
-            </li>
+            on
+            <a href="https://goodhq.org/{{goodhq_organisation.xid}}">Good HQ</a>
+          </li>
+          {{/compare ~}}
+          {{/if ~}}
+          <li class="mdc-card__info--content-secondary-report report mdc-typography--body1">
+            <span class="fa-li"><span class="fas fa-flag fa-fw" title="Report this organisation"></span></span>
+            <a href="mailto:milosupport@scvo.org.uk?subject=Report on organisation: {{title}}, via Volunteer Scotland Search&body=I would like to report this organisation for the following reasons: ">Report this organisation</a>
+          </li>
         </ul>
       </div>
     </div>

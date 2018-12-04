@@ -501,6 +501,8 @@ footer h3,
 .mdc-button {
   height: auto;
   min-height: 36px;
+  box-shadow: none;
+  border-radius: 0;
 }
 .mdc-button--large {
   height: 56px;
@@ -629,6 +631,7 @@ footer h3,
       float: right;
       box-shadow: none;
       border-radius: 0;
+      background-color: $brand-secondary-pink !important;
       label {
         margin: 0 $unit;
       }
@@ -905,7 +908,11 @@ a {
 .mdc-button .mdc-list-item__graphic {
   position: relative;
   left: 0;
-  margin-right: $unit/2;
+  // margin-right: $unit/2;
+}
+.mdc-button .fa-search {
+  position: absolute;
+  right: $unit*(2/3);
 }
 
 .mdc-button--raised {
@@ -3271,6 +3278,16 @@ header {
   }
 }
 
+.report {
+  opacity: 0.85;
+  font-size: 85%;
+  margin-top: $unit/2;
+  .fa-fw,
+  a {
+    color: $brand-secondary-red;
+  }
+}
+
 .content-settings-account {
   .mdc-button.mdc-button--delete {
     background-color: #dd4b39 !important;
@@ -3343,12 +3360,12 @@ a {
   color: white;
 }
 
-.mdc-button--raised {
-  background-color: $brand-primary-green !important;
-}
-.mdc-button--raised:hover {
-  background-color: $brand-secondary-green !important;
-}
+// .mdc-button--raised {
+//   background-color: $brand-primary-green !important;
+// }
+// .mdc-button--raised:hover {
+//   background-color: $brand-secondary-green !important;
+// }
 
 .leaflet-container {
   a {
@@ -3603,6 +3620,9 @@ a.mdc-drawer__content-heading {
 
 .search-form {
   background: white;
+  .mdc-button {
+    background-color: $brand-secondary-turquoice;
+  }
   .geo-lookup,
   .active-search-icon {
     color: $brand-secondary-green !important;
