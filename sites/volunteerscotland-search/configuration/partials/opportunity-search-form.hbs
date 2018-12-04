@@ -112,43 +112,44 @@
             </div>
           </div>
         </div>
-        <div class="h-padding">
-          Within
-        </div>
         <div class="mdc-layout-grid__inner">
           <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-9-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
-            <div data-slider data-slider-target="#slider-distance" class="mdc-slider mdc-slider--discrete" tabindex="0" role="slider"
-                 aria-valuemin="5" aria-valuemax="50" data-step="5" name="gunyoki" aria-valuenow="{{@root.request.params.query.distance}}"
-                 aria-label="Select Value">
-              <div class="mdc-slider__track-container">
-                <div class="mdc-slider__track"></div>
-              </div>
-              <div class="mdc-slider__thumb-container">
-                <div class="mdc-slider__pin">
-                  <span class="mdc-slider__pin-value-marker"></span>
-                </div>
-                <svg class="mdc-slider__thumb" width="21" height="21">
-                  <circle cx="10.5" cy="10.5" r="7.875"></circle>
-                </svg>
-                <div class="mdc-slider__focus-ring"></div>
-              </div>
+            <div class="">
+              Within
             </div>
-            <div class="mdc-line-ripple"></div>
+          </div>
+          <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-9-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
+            <div class="h-padding">
+              <div data-slider data-slider-target="#slider-distance" class="mdc-slider mdc-slider--discrete" tabindex="0" role="slider" aria-valuemin="5" aria-valuemax="50" data-step="5" name="gunyoki" aria-valuenow="{{@root.request.params.query.distance}}" aria-label="Select distance">
+                <div class="mdc-slider__track-container">
+                  <div class="mdc-slider__track"></div>
+                </div>
+                <div class="mdc-slider__thumb-container">
+                  <div class="mdc-slider__pin">
+                    <span class="mdc-slider__pin-value-marker"></span>
+                  </div>
+                  <svg class="mdc-slider__thumb" width="21" height="21">
+                    <circle cx="10.5" cy="10.5" r="7.875"></circle>
+                  </svg>
+                  <div class="mdc-slider__focus-ring"></div>
+                </div>
+              </div>
+              <div class="mdc-line-ripple"></div>
+            </div>
           </div>
           <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone">
-            Miles
+            miles
           </div>
           <input type="hidden" name="distance" id="slider-distance" value="{{@root.request.params.query.distance}}">
-
         </div>
       </div>
     </div>
     <input type="hidden" name="lat" value="{{@root.request.params.query.lat}}">
     <input type="hidden" name="lng" value="{{@root.request.params.query.lng}}">
 
-    <div class="h-padding">
+    <!-- <div class="h-padding">
       <strong>Refine by</strong>
-    </div>
+    </div> -->
 
     <div class="h-padding">
       <div class="mdc-text-field mdc-text-field--box mdc-text-field--with-trailing-icon" data-mdc-auto-init="MDCTextField">
