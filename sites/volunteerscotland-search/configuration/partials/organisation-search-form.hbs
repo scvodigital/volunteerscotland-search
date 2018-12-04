@@ -56,7 +56,6 @@
   </div>
 {{/inline}}
 
-
 {{#*inline "term_checkbox"}}
   <div class="mdc-form-field">
     <div class="mdc-checkbox">
@@ -78,8 +77,6 @@
 {{/inline}}
 
 <div class="mdc-drawer__content">
-  <!-- <h2 class="mdc-drawer__content-heading hide-sm mdc-drawer--occasional">Search opportunities</h2> -->
-
   <form action="/{{#compare @root.request.url.pathname "organisations/map"}}organisations/map{{else}}organisations/search{{/compare}}" method="GET" class="search-form" novalidate>
     <input type="hidden" name="sort" value="{{@root.request.params.query.sort}}" id="{{instance_id}}-sort">
     <div class="h-padding">
@@ -87,7 +84,7 @@
         <div class="mdc-layout-grid__inner">
           <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
             <div class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon" data-mdc-auto-init="MDCTextField" style="z-index:5;">
-              <span class="far fa-map-marker-alt mdc-text-field__icon geo-lookup" tabindex="0" title="Find my location" role="button" style="pointer-events: initial !important;"></span>
+              <span class="fas fa-map-marker-alt mdc-text-field__icon geo-lookup" tabindex="0" title="Find my location" role="button" style="pointer-events: initial !important;"></span>
               <input type="text" id="{{instance_id}}-location" name="location" class="mdc-text-field__input mdc-text-field--fullwidth search-location" value="{{#ifAll @root.request.params.query.lat @root.request.params.query.lng}}{{@root.request.params.query.location}}{{/ifAll}}" placeholder="" data-lpignore="true" data-location-search='{
                 "latSelector": "[name=\"lat\"]",
                 "lngSelector": "[name=\"lng\"]",
@@ -123,9 +120,9 @@
     <input type="hidden" name="lat" value="{{@root.request.params.query.lat}}">
     <input type="hidden" name="lng" value="{{@root.request.params.query.lng}}">
 
-    <div class="h-padding">
+    <!-- <div class="h-padding">
       <strong>Refine by</strong>
-    </div>
+    </div> -->
 
     <div class="h-padding">
       <div class="mdc-text-field mdc-text-field--box mdc-text-field--with-trailing-icon" data-mdc-auto-init="MDCTextField">
@@ -134,7 +131,7 @@
           Keywords
         </label>
         <div class="mdc-line-ripple"></div>
-        <span class="far fa-search active-search-icon mdc-text-field__icon" role="button" onclick=" $(this).parents('form:first').submit();" style="pointer-events: initial !important; z-index: 500;" tabindex="-1"></span></a>
+        <span class="fas fa-search active-search-icon mdc-text-field__icon" role="button" onclick=" $(this).parents('form:first').submit();" style="pointer-events: initial !important; z-index: 500;" tabindex="-1"></span></a>
       </div>
     </div>
 
@@ -144,8 +141,8 @@
 
     <div class="h-margin mdc-drawer--occasional-ie11">
       <button class="mdc-button mdc-button--raised mdc-button--large mdc-button--fullwidth mdc-ripple-surface mdc-ripple-surface--primary" type="submit" id="{{instance_id}}-search-submit" data-mdc-auto-init="MDCRipple">
-        <span class="far fa-search fa-fw mdc-list-item__graphic" aria-hidden="true"></span>
         Search
+        <span class="fas fa-search fa-fw" aria-hidden="true"></span>
       </button>
     </div>
   </form>

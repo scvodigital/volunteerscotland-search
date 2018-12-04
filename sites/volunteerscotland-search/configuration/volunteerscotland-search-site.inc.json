@@ -1,6 +1,7 @@
 {
   "domains": [
     "localhost",
+    "search.volunteerscotland.net",
     "volunteerscotland-search.local",
     "127.0.0.1",
     "router-dot-scvo-net.appspot.com",

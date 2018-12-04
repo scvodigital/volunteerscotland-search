@@ -1,20 +1,37 @@
 @import url('//cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css');
 @import url('https://fonts.googleapis.com/css?family=Rambla');
 
-$brand-primary-green: rgb(123, 193, 67);
+$brand-secondary-green: rgb(123, 193, 67);
 $brand-primary-black: rgb(64, 64, 65);
 $brand-primary-grey: rgb(218, 211, 204);
-$brand-primary-lightgrey: #F2EEEC;
+$brand-primary-lightgrey: #f2eeec;
 
 $brand-secondary-purple: rgb(124, 65, 153);
+$brand-secondary-darkpurple: #5f3275;
+
 $brand-secondary-pink: rgb(230, 64, 151);
+$brand-secondary-darkpink: #d71c7e;
+
 $brand-secondary-red: rgb(239, 62, 66);
+$brand-secondary-darkred: #e71318;
+
 $brand-secondary-orange: rgb(244, 120, 54);
+$brand-secondary-darkorange: #ea5a0d;
+
 $brand-secondary-yellow: rgb(255, 222, 0);
+$brand-secondary-darkyellow: #ccb200;
+
 $brand-secondary-green: rgb(56, 124, 44);
+$brand-secondary-darkgreen: #27561f;
+
 $brand-secondary-turquoice: rgb(0, 160, 175);
-$brand-secondary-lightblue: rgb(0, 157, 220);
-$brand-secondary-blue: rgb(0, 121, 193);
+$brand-secondary-darkturquoice: #00717c;
+
+$brand-secondary-blue: rgb(0, 157, 220);
+$brand-secondary-darkblue: rgb(0, 121, 193);
+
+$mdc-theme-primary: $brand-secondary-turquoice;
+$mdc-theme-secondary: $brand-secondary-green;
 
 $unit: 1rem;
 
@@ -36,7 +53,7 @@ $footer-font-weight:                400;
 
 $unit: 1rem;
 $header-upper-height: 100px;
-$toolbar-shadow-reverse: 0px -3px 5px -1px rgba(0, 0, 0, 0.2), 0px -5px 8px 0px rgba(0, 0, 0, 0.14), 0px -1px 14px 0px rgba(0, 0, 0, 0.12);
+// $toolbar-shadow-reverse: 0px -3px 5px -1px rgba(0, 0, 0, 0.2), 0px -5px 8px 0px rgba(0, 0, 0, 0.14), 0px -1px 14px 0px rgba(0, 0, 0, 0.12);
 $header-lower-height: 38px;
 
 $mobile-breakpoint: 599px;
@@ -70,7 +87,7 @@ body {
   padding: 0;
 }
 .cookieinfo {
-  box-shadow: $toolbar-shadow-reverse;
+  // box-shadow: $toolbar-shadow-reverse;
 }
 .mdc-toolbar-fixed-adjust {
   margin: 0;
@@ -124,6 +141,10 @@ a[href^="https://"]::after {
 a.noext::after,
 a[href^="https://volunteerscotland-search.local"]::after,
 a[href^="https://test.getinvolved.scot"]::after,
+a[href^="https://goodhq.org"]::after,
+a[href^="https://scvo.org"]::after,
+a[href^="https://volunteerscotland.net"]::after,
+a[href^="https://www.volunteerscotland.net"]::after,
 a[href^="https://search.volunteerscotland.net"]::after {
   content: " ";
   margin: 0;
@@ -135,6 +156,7 @@ header {
   .container-fluid {
     padding: 0;
     .mdc-top-app-bar__section--align-end {
+      align-items: start;
       padding-right: $unit/2 !important;
     }
     .mdc-top-app-bar__title {
@@ -179,7 +201,7 @@ header {
       margin: 0;
       .mdc-tab {
         background-color: transparent;
-        font-size: 1rem;
+        font-size: 1.25rem;
         min-height: $header-lower-height;
         height: $header-lower-height;
         font-weight: 400;
@@ -200,10 +222,12 @@ header {
         display: none;
       }
     }
+    #user-not-signed-in-tab-bar,
+    .mdc-menu-surface--anchor,
     #upper-tab-bar {
       .mdc-tab {
         min-width: auto;
-        font-weight: 400;
+        font-size: 1rem;
       }
       .mdc-tab-indicator {
         display: none;
@@ -215,6 +239,27 @@ header {
       }
       .mdc-tab-indicator {
         display: none;
+      }
+    }
+    .mdc-top-app-bar__section--user {
+      .mdc-menu-surface--anchor,
+      #user-not-signed-in-tab-bar {
+        .mdc-button,
+        .mdc-tab .mdc-tab__text-label {
+          color: $brand-secondary-blue !important;
+          font-weight: $heading-font-weight;
+        }
+        .mdc-button:hover,
+        .mdc-tab:hover .mdc-tab__text-label {
+          color: $brand-secondary-darkblue !important;
+        }
+        .mdc-tab-indicator--active:hover > .mdc-tab-indicator__content--underline,
+        .mdc-tab-indicator > .mdc-tab-indicator__content--underline {
+          background-color: $brand-secondary-darkblue;
+        }
+        .mdc-tab-indicator--active > .mdc-tab-indicator__content--underline {
+          background-color: $brand-secondary-blue;
+        }
       }
     }
     .mdc-top-app-bar__main .mdc-tab-bar,
@@ -230,6 +275,7 @@ header {
       }
     }
     .mdc-top-app-bar__main,
+    .mdc-top-app-bar__upper,
     .mdc-top-app-bar__user {
       .mdc-menu-surface--anchor {
         padding: 0 $unit/4 0 $unit/2;
@@ -237,8 +283,9 @@ header {
           border-radius: 0;
           border-top: 2px solid transparent;
           border-bottom: 2px solid transparent;
-          color: black !important;
+          // color: black !important;
           height: $header-lower-height;
+          font-weight: $heading-font-weight;
           padding: 0;
           text-transform: none;
           .fa-fw {
@@ -258,11 +305,13 @@ header {
     }
     .mdc-top-app-bar__section {
       padding: 0;
+      z-index: inherit;
       .mdc-menu-surface--anchor {
         .user-avatar {
           height: 30px;
           width: 30px;
           border-radius: 50%;
+          margin-right: $unit/4;
         }
       }
       .mdc-top-app-bar__action-item {
@@ -271,7 +320,7 @@ header {
       .mdc-menu-surface--anchor .mdc-menu-surface {
         top: $header-lower-height !important;
         left: auto !important;
-        right: $unit/4 !important;
+        right: $unit*(3/4) !important;
         border-radius: 0 0 2px 2px;
       }
       .mdc-top-app-bar__action-item::before,
@@ -464,12 +513,17 @@ footer h3,
 .mdc-tab__content {
   .mdc-tab__icon,
   .mdc-tab__text-label {
-    opacity: 0.7;
+    opacity: 1;
   }
 }
 .mdc-button {
   height: auto;
   min-height: 36px;
+  box-shadow: none;
+  border-radius: 0;
+}
+.mdc-button--raised {
+  box-shadow: none;
 }
 .mdc-button--large {
   height: 56px;
@@ -551,12 +605,20 @@ footer h3,
 
 .card-loader {
   position: absolute;
-  height: 100%;
   width: 100%;
+  height: 100%;
   top: 0;
   left: 0;
-  opacity: 0.7;
   display: none;
+  .card-loader-background {
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0.7;
+  }
   .card-loader-inner {
     display: flex;
     align-items: center;
@@ -577,7 +639,7 @@ footer h3,
 }
 .content-primary-search {
   .head {
-    margin-bottom: $unit/2;
+    margin-bottom: 0;
     .mdc-button.saved-search,
     .mdc-button.filter-search,
     .mdc-button.save-search,
@@ -585,10 +647,19 @@ footer h3,
     .mdc-select {
       margin: 0;
     }
+    .mdc-button.save-search,
     .mdc-button.saved-search {
+      float: right;
+      box-shadow: none;
+      border-radius: 0;
+      background-color: $brand-secondary-pink !important;
       label {
         margin: 0 $unit;
       }
+    }
+    .mdc-button.save-search:hover,
+    .mdc-button.saved-search:hover {
+      background-color: $brand-secondary-darkpink !important;
     }
     .mdc-button.saved-search:hover {
       cursor: default;
@@ -802,7 +873,7 @@ a {
     background-color: white;
     border: none;
     border-radius: 0 0 2px 2px;
-    box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 5px 8px 0px rgba(0, 0, 0, 0.14), 0px 1px 14px 0px rgba(0, 0, 0, 0.12);
+    // box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 5px 8px 0px rgba(0, 0, 0, 0.14), 0px 1px 14px 0px rgba(0, 0, 0, 0.12);
     h3 {
       font-size: 0.8rem;
       opacity: 0.6666;
@@ -862,7 +933,11 @@ a {
 .mdc-button .mdc-list-item__graphic {
   position: relative;
   left: 0;
-  margin-right: $unit/2;
+  // margin-right: $unit/2;
+}
+.mdc-button .fa-search {
+  position: absolute;
+  right: $unit*(2/3);
 }
 
 .mdc-button--raised {
@@ -967,7 +1042,7 @@ a {
 }
 
 .search-info {
-  margin: 0 0 $unit;
+  margin: $unit 0;
   background-color: white;
   padding: 0;
   box-sizing: border-box;
@@ -1515,12 +1590,12 @@ body.shortlist {
 
 .container-content {
   width: 100%;
-  padding-right: $unit;
+  padding-right: 0;
   padding-bottom: 1px;
-  margin-left: $unit;
+  margin-left: 0;
   margin-right: $unit;
   position: relative;
-  max-width: 1200px;
+  max-width: 1100px;
   align-items: flex-end;
   z-index: 4;
   .mdc-tab-bar {
@@ -1553,7 +1628,7 @@ body.shortlist {
   }
   .mdc-card.full {
     width: 100%;
-    background-color: #fff;
+    background-color: white;
   }
   .mdc-card {
     padding: $unit;
@@ -1743,6 +1818,9 @@ body.shortlist {
     z-index: 3;
     overflow: visible;
   }
+  .mdc-text-field.mdc-text-field--with-leading-icon {
+    z-index: 4;
+  }
   .mdc-text-field,
   .mdc-select--box {
     margin: $unit/2 0 0;
@@ -1754,10 +1832,14 @@ body.shortlist {
   .mdc-floating-label {
     transform: translateY(-50%) scale(0.75);
   }
+  .mdc-select .mdc-floating-label {
+    bottom: 8px;
+  }
+  .active-search-icon:hover,
   .geo-lookup:hover {
-    font-weight: 400;
     cursor: pointer;
   }
+  .active-search-icon:focus,
   .geo-lookup:focus {
     outline: none;
   }
@@ -1914,9 +1996,8 @@ footer,
     .page-content {
       min-height: 15vh;
       .search-form {
-        background-color: rgba(255, 255, 255, 0.75);
         width: 100%;
-        padding: $unit*1.5 $unit*1.5 $unit;
+        padding: $unit $unit $unit/2;
         box-sizing: border-box;
         .mdc-text-field,
         .mdc-select,
@@ -1934,7 +2015,7 @@ footer,
       flex-direction: column;
       min-height: 15vh;
       background-color: transparent;
-      padding: $unit*2 0;
+      padding: $unit*20 0 $unit;
       .mdc-card__actions {
         margin: 0;
         padding: 0;
@@ -1963,16 +2044,20 @@ footer,
         border-radius: 2px;
         width: 100%;
         font-size: 1.2rem;
+        box-shadow: none;
+        border-radius: 0;
         .fa-search {
           position: absolute;
           right: $unit*(2/3);
         }
       }
       .search-form {
-        min-width: 48%;
-        max-width: 1080px;
+        min-width: 45%;
+        width: 100%;
+        max-width: 1280px;
         margin: 0 auto;
-        border-radius: 2px;
+        border-radius: 0;
+        box-shadow: none;
         .extra-options {
           margin: $unit/2 0;
           text-align: center;
@@ -2290,6 +2375,7 @@ footer.mdc-layout__footer {
   }
   .brand-logo.vs {
     filter: grayscale(100%);
+    filter: brightness(0%);
   }
   .mdc-layout-grid {
     padding: 0;
@@ -2556,7 +2642,6 @@ footer.mdc-layout__footer {
   }
   .home-banner .banner-search.overlay .content {
     background-image: none;
-    background-color: rgba(0, 160, 175, 0.89);
     margin: 0;
     .overlay-content {
       padding: $unit/2 0 $unit*(3/4);
@@ -2952,7 +3037,7 @@ form.inline-form {
 }
 
 .mdc-button--raised.mdc-button--warning {
-  color: #fff !important;
+  color: white !important;
 }
 
 .mdc-button--warning:disabled {
@@ -3019,37 +3104,49 @@ body {
   background-color: $brand-primary-black;
 }
 ::-moz-selection {
-  color: #fff;
-  background: $brand-secondary-green;
+  color: white;
+  background: $brand-secondary-darkgreen;
 }
 ::selection {
-  color: #fff;
-  background: $brand-secondary-green;
+  color: white;
+  background: $brand-secondary-darkgreen;
 }
 // .mdc-theme--background {
 //   background-color: $brand-secondary-yellow !important;
 // }
 .mdc-top-app-bar {
-  background-color: #fff;
+  background-color: white;
+  border-bottom: .5rem solid $brand-secondary-turquoice;
+  padding-bottom: .5rem;
 }
 
 header {
   .container-fluid {
     .mdc-tab-bar {
       .mdc-tab {
-        color: $brand-secondary-green;
+        color: $brand-secondary-darkgreen;
         .mdc-tab__text-label {
-          color: $brand-secondary-green;
+          color: $brand-secondary-darkgreen;
         }
       }
     }
     #upper-tab-bar {
-      .mdc-tab:hover .mdc-tab__text-label {
-        border-bottom-color: $brand-secondary-green;
+      .mdc-tab {
+        margin-right: 4px;
+        background-color: $brand-secondary-blue;
+        .mdc-tab__icon,
+        .mdc-tab__text-label {
+          color: white !important;
+          font-weight: $heading-font-weight;
+          opacity: 1;
+        }
       }
-      .mdc-tab.mdc-tab--active .mdc-tab__text-label {
-        border-bottom-color: $brand-secondary-green;
+      .mdc-tab:hover {
+        background-color: $brand-secondary-darkblue;
       }
+      // .mdc-tab:last-child {
+      //   margin-right: 0;
+      // }
     }
     .mdc-top-app-bar__main .mdc-tab-bar,
     .mdc-top-app-bar__user .mdc-tab-bar {
@@ -3067,11 +3164,15 @@ header {
       color: $brand-primary-black;
     }
     .mdc-top-app-bar__main,
+    .mdc-top-app-bar__upper,
     .mdc-top-app-bar__user {
       .mdc-menu-surface--anchor {
-        .mdc-button:hover {
-          border-bottom-color: $brand-primary-black;
-        }
+        // .mdc-button {
+        //   color: $brand-primary-black !important;
+        // }
+        // .mdc-button:hover {
+        //   border-bottom-color: $brand-primary-black;
+        // }
       }
     }
     .mdc-top-app-bar__section {
@@ -3089,19 +3190,19 @@ header {
 
 .mdc-drawer--temporary {
   .mdc-drawer__header-content {
-    background-color: $brand-primary-green;
+    background-color: $brand-secondary-green;
   }
 }
 .mdc-drawer--permanent {
-  background-color: #fff !important;
+  background-color: white !important;
 }
 
 .mdc-checkbox__native-control:enabled:checked ~ .mdc-checkbox__background,
 .mdc-checkbox__native-control:enabled:indeterminate ~ .mdc-checkbox__background,
 .mdc-checkbox__native-control:disabled:checked ~ .mdc-checkbox__background,
 .mdc-checkbox__native-control:disabled:indeterminate ~ .mdc-checkbox__background {
-  border-color: $brand-primary-green;
-  background-color: $brand-primary-green;
+  border-color: $brand-secondary-green;
+  background-color: $brand-secondary-green;
   .mdc-checkbox__checkmark__path {
     stroke-width: 3px;
   }
@@ -3138,20 +3239,23 @@ header {
     }
   }
   .mdc-button {
-    color: #fff;
+    color: white;
   }
 }
 
 .card-loader {
-  background-color: $brand-secondary-yellow;
+  .card-loader-background {
+    background-color: white;
+  }
   .card-loader-inner {
-    color: $brand-secondary-green;
+    color: $brand-secondary-darkgreen;
   }
 }
 
 .content-primary-search {
   .head {
-    border-bottom: 2px solid $brand-secondary-green;
+    max-width: 1100px;
+    margin-left: 0;
     .mdc-tab-bar {
       height: 56px;
     }
@@ -3162,12 +3266,24 @@ header {
         height: 56px;
       }
       .mdc-tab,
-      .mdc-tab__icon,
-      .mdc-tab__text-label {
+      .mdc-tab .mdc-tab__icon,
+      .mdc-tab .mdc-tab__text-label {
         color: $brand-secondary-green !important;
+      }
+      .mdc-tab:hover,
+      .mdc-tab:hover .mdc-tab__icon,
+      .mdc-tab:hover .mdc-tab__text-label {
+        color: $brand-secondary-darkgreen !important;
       }
       .mdc-tab--active {
         background: $brand-secondary-green;
+        .mdc-tab__icon,
+        .mdc-tab__text-label {
+          color: white !important;
+        }
+      }
+      .mdc-tab--active:hover {
+        background: $brand-secondary-darkgreen;
         .mdc-tab__icon,
         .mdc-tab__text-label {
           color: white !important;
@@ -3181,10 +3297,13 @@ header {
       color: $brand-secondary-red;
       label {
         .far {
-          color: $brand-primary-green;
+          color: $brand-secondary-green;
         }
       }
     }
+  }
+  .grid-content {
+    border-top: 2px solid $brand-secondary-green;
     .mdc-select--box {
       margin: 0;
       border: none;
@@ -3195,7 +3314,21 @@ header {
   }
 }
 
+.report {
+  opacity: 0.85;
+  font-size: 85%;
+  margin-top: $unit/2;
+  .fa-fw,
+  a {
+    color: $brand-secondary-red;
+  }
+}
+
 .content-settings-account {
+  margin-bottom: $unit;
+  .mdc-typography--headline6 {
+    margin-top: 0;
+  }
   .mdc-button.mdc-button--delete {
     background-color: #dd4b39 !important;
   }
@@ -3204,29 +3337,29 @@ header {
   .mdc-form-field {
     .mdc-radio {
       .mdc-radio__outer-circle {
-        border-color: $brand-primary-green !important;
+        border-color: $brand-secondary-green !important;
       }
       .mdc-radio__inner-circle {
-        border-color: $brand-primary-green !important;
+        border-color: $brand-secondary-green !important;
       }
     }
   }
 }
 .content-saved-searches {
   .mdc-list {
-    background-color: #fff;
+    background-color: white;
   }
 }
 .saved-search-remove .far:hover,
 .saved-search-remove:hover .far {
-  color: $brand-secondary-green !important;
+  color: $brand-secondary-darkgreen !important;
 }
 
 .icon-toggle-off {
   color: #999999;
 }
 .icon-toggle-on {
-  color: $brand-primary-green;
+  color: $brand-secondary-green;
 }
 
 .mdc-text-field--textarea .mdc-floating-label {
@@ -3238,70 +3371,70 @@ a {
 }
 
 .mdc-chip {
-  background-color: $brand-secondary-lightblue;
+  background-color: $brand-secondary-blue;
   color: white;
   .mdc-chip__icon.mdc-chip__icon--leading {
     color: white;
   }
   .mdc-chip__checkmark-path {
-    stroke: #fff !important;
+    stroke: white !important;
   }
 }
 .mdc-chip:hover {
-  background-color: $brand-secondary-blue;
+  background-color: $brand-secondary-darkblue;
 }
 .mdc-theme--on-primary a,
 .mdc-card .mdc-chip.mdc-chip--selected,
 .mdc-chip.mdc-chip--selected {
-  background-color: $brand-primary-green;
-  color: #fff;
+  background-color: $brand-secondary-green;
+  color: white;
 }
 .mdc-card .mdc-chip.mdc-chip--selected:hover,
 .mdc-chip.mdc-chip--selected:hover {
-  background-color: $brand-secondary-green;
-  color: #fff;
+  background-color: $brand-secondary-darkgreen;
+  color: white;
 }
 
 .mdc-button--raised,
 .mdc-button--raised .mdc-list-item__graphic {
-  color: #fff;
+  color: white;
 }
 
-.mdc-button--raised {
-  background-color: $brand-primary-green !important;
-}
-.mdc-button--raised:hover {
-  background-color: $brand-secondary-green !important;
-}
+// .mdc-button--raised {
+//   background-color: $brand-secondary-green !important;
+// }
+// .mdc-button--raised:hover {
+//   background-color: $brand-secondary-darkgreen !important;
+// }
 
 .leaflet-container {
   a {
-    color: $brand-primary-green;
+    color: $brand-secondary-green;
     -webkit-tap-highlight-color: transparent;
   }
   .leaflet-control.leaflet-bar a {
-    color: #000;
+    color: black;
   }
 }
 .leaflet-marker-icon {
   .marker-icon {
-    color: $brand-primary-green;
+    color: $brand-secondary-green;
     text-shadow: 3px 4px 0.75rem rgba(42,42,42,.75);
   }
   .map-marker-overlay {
-    color: $brand-primary-green;
-    background: #fff;
+    color: $brand-secondary-green;
+    background: white;
   }
   .marker-icon.shortlisted {
-    color: $brand-secondary-green;
+    color: $brand-secondary-darkgreen;
   }
   .map-marker-overlay.shortlisted {
-    color: #fff;
-    background: $brand-secondary-green;
-    border: 2px solid #fff;
+    color: white;
+    background: $brand-secondary-darkgreen;
+    border: 2px solid white;
   }
   .marker-icon.homebased {
-    color: $brand-primary-green;
+    color: $brand-secondary-green;
   }
 }
 
@@ -3310,18 +3443,19 @@ a {
 }
 
 .search-info {
-  background: #fff;
+  background: white;
   color: $brand-primary-black;
 }
 
 .mdc-card {
+  box-shadow: none;
   .mdc-card__actions {
     // background-color: $brand-secondary-turquoice;
     a {
-      color: $brand-primary-green;
+      color: $brand-secondary-green;
     }
     .mdc-card__action {
-      color: $brand-primary-green;
+      color: $brand-secondary-green;
     }
   }
 }
@@ -3336,7 +3470,7 @@ a {
   .mdc-card__actions {
     // background-color: $brand-secondary-turquoice;
     .mdc-card__action {
-      color: $brand-primary-green;
+      color: $brand-secondary-green;
     }
   }
 }
@@ -3350,21 +3484,21 @@ a {
 .content-primary.mdc-card.mini.top-content,
 .content-primary.mdc-card.gist.top-content,
 .content-primary.mdc-card.search-result.top-content {
-  // border-top-color: $brand-primary-green;
+  // border-top-color: $brand-secondary-green;
   .mdc-card__actions {
-    background-color: $brand-primary-green;
+    background-color: $brand-secondary-green;
     .mdc-card__action {
-      color: #fff;
+      color: white;
     }
     .mdc-chip.mdc-chip--selected {
-      background-color: $brand-secondary-green;
+      background-color: $brand-secondary-darkgreen;
     }
   }
 }
 
 .panel-heading {
-  background: $brand-secondary-green;
-  color: #fff;
+  background: $brand-secondary-darkgreen;
+  color: white;
 }
 .mdc-card.full {
   .editor-toolbar,
@@ -3373,22 +3507,22 @@ a {
   }
   .text-field-container.user-notes {
     .mdc-text-field--textarea .mdc-floating-label {
-      background: #fff !important;
+      background: white !important;
     }
   }
   #content-primary-tab-bar {
     background-color: $brand-secondary-turquoice;
     .mdc-tab__icon,
     .mdc-tab__text-label {
-      color: $brand-secondary-green;
+      color: $brand-secondary-darkgreen;
     }
     .mdc-tab-indicator__content {
-      background-color: $brand-secondary-green;
+      background-color: $brand-secondary-darkgreen;
     }
   }
   .content-primary-info-container {
     border-radius: 2px;
-    background-color: #fff;
+    background-color: white;
   }
   .mdc-card--full-content {
     .key-info-extra {
@@ -3398,10 +3532,10 @@ a {
       }
       .mdc-chip:hover {
         color: $brand-secondary-yellow;
-        background-color: $brand-secondary-green;
+        background-color: $brand-secondary-darkgreen;
       }
       a {
-        color: $brand-secondary-green;
+        color: $brand-secondary-darkgreen;
       }
     }
     .save-button-block {
@@ -3413,7 +3547,7 @@ a {
 }
 
 hr {
-  background-color: $brand-primary-green;
+  background-color: $brand-secondary-green;
 }
 
 a.mdc-drawer__content-heading {
@@ -3422,7 +3556,7 @@ a.mdc-drawer__content-heading {
 
 .mdc-icon-button {
   .far:hover {
-    color: $brand-secondary-green;
+    color: $brand-secondary-darkgreen;
   }
 }
 
@@ -3430,7 +3564,7 @@ a.mdc-drawer__content-heading {
 .mdc-text-field:not(.mdc-text-field--disabled) {
   border-radius: 0;
   border: 1px solid #999;
-  background-color: #fff;
+  background-color: white;
 }
 
 .mdc-card {
@@ -3438,19 +3572,19 @@ a.mdc-drawer__content-heading {
     .mdc-card__action--shortlist {
       .fa-stack {
         .fa-circle {
-          color: #fff;
+          color: white;
         }
       }
     }
     .mdc-chip .mdc-chip__checkmark-path {
-      stroke: #fff;
+      stroke: white;
     }
   }
 }
 .mdc-card.content-primary-shortlisted {
   .mdc-card__actions {
     .mdc-card__action--shortlist:hover .fa-heart {
-      color: $brand-secondary-green;
+      color: $brand-secondary-darkgreen;
     }
   }
 }
@@ -3458,7 +3592,9 @@ a.mdc-drawer__content-heading {
 /* Typeahead as per gm*/
 .twitter-typeahead {
   .tt-menu {
-    background-color: #fff;
+    background-color: white;
+    border: 1px solid $brand-primary-grey;
+    border-top: none;
     .tt-suggestion:hover,
     .tt-cursor {
       background-color: $brand-secondary-turquoice;
@@ -3471,7 +3607,7 @@ a.mdc-drawer__content-heading {
   .mdc-chip:hover {
     .mdc-chip__icon,
     .mdc-chip__text {
-      color: #fff;
+      color: white;
     }
   }
 }
@@ -3481,16 +3617,16 @@ a.mdc-drawer__content-heading {
 #home-tab-bar {
   .mdc-tab__icon,
   .mdc-tab__text-label {
-    color: $brand-secondary-red;
+    color: $brand-secondary-turquoice;
   }
   .mdc-tab-indicator__content {
-    background-color: $brand-secondary-red;
+    background-color: $brand-secondary-turquoice;
   }
 }
 
 .container-content.content-page {
   .mdc-card.full {
-    background-color: #fff;
+    background-color: white;
   }
 }
 
@@ -3500,7 +3636,7 @@ a.mdc-drawer__content-heading {
     .mdc-card__info--content-primary-title {
       a .top-content {
         background-color: $brand-secondary-pink !important;
-        color: #000;
+        color: black;
       }
     }
   }
@@ -3509,28 +3645,35 @@ a.mdc-drawer__content-heading {
 .mdc-card.full {
   .mdc-card__info--content-primary-row {
     .mdc-card__media--content-secondary {
-      background-color: #fff;
+      background-color: white;
     }
     .fa-li {
       .fa-fw {
-        color: $brand-secondary-red;
+        color: $brand-secondary-turquoice;
       }
     }
   }
   .mdc-card__info--content-secondary-row {
-    background-color: #fff;
+    background-color: white;
   }
 }
 
 .search-form {
   background: white;
+  .mdc-button {
+    background-color: $brand-secondary-turquoice;
+  }
+  .mdc-button:hover {
+    background-color: $brand-secondary-darkturquoice;
+    box-shadow: none;
+  }
   .geo-lookup,
-  .active-search-icon{
-    color: $brand-primary-green !important;
+  .active-search-icon {
+    color: $brand-secondary-darkgreen !important;
   }
   .geo-lookup:hover,
-  .active-search-icon:hover{
-    color: $brand-secondary-green !important;
+  .active-search-icon:hover {
+    color: $brand-secondary-darkgreen !important;
   }
   .search-distance {
     color: rgba(0, 0, 0, 0.7);
@@ -3542,26 +3685,26 @@ a.mdc-drawer__content-heading {
 .pagination {
   li {
     a {
-      color: $brand-secondary-red;
+      color: $brand-secondary-green;
     }
     a.pagination-arrow {
-      color: $brand-secondary-red;
+      color: $brand-primary-black;
     }
   }
   li.disabled a.pagination-arrow {
-    color: $brand-secondary-red;
+    color: $brand-primary-grey;
   }
   li.current-page {
-    background-color: $brand-secondary-pink;
+    background-color: $brand-secondary-green;
     a {
       color: white;
     }
   }
   li:hover,
   li.current-page:hover {
-    background-color: $brand-secondary-green;
+    background-color: $brand-secondary-darkgreen;
     a {
-      color: $brand-secondary-yellow;
+      color: white;
     }
   }
   li.disabled:hover {
@@ -3577,7 +3720,7 @@ footer,
   .mdc-list {
     .mdc-list-item {
       .mdc-list-item__text {
-        color: $brand-primary-green;
+        color: $brand-secondary-green;
       }
     }
   }
@@ -3587,7 +3730,7 @@ footer,
   .banner-search {
     .page-content {
       .search-form {
-        background-color: rgba(255, 255, 255, 0.75);
+        background-color: $brand-secondary-yellow;
         h2 {
           margin-top: 0;
         }
@@ -3598,13 +3741,13 @@ footer,
     .content {
       .mdc-card__actions {
         .mdc-button {
-          border: 0.125rem solid #fff !important;
-          color: #fff !important;
+          border: 0.125rem solid white !important;
+          color: white !important;
         }
         .mdc-button:hover {
-          background: #fff !important;
-          color: $brand-secondary-green !important;
-          border-color: $brand-secondary-green !important;
+          background: white !important;
+          color: $brand-secondary-darkgreen !important;
+          border-color: $brand-secondary-darkgreen !important;
         }
       }
       .search-form {
@@ -3618,7 +3761,7 @@ footer,
       .overlay-content {
         .header-extra,
         .header-text {
-          color: #fff;
+          color: white;
         }
       }
     }
@@ -3629,20 +3772,20 @@ footer,
   margin-top: $unit;
   .mdc-button {
     .mdc-icon-toggle {
-      color: #fff;
+      color: white;
     }
   }
 }
 
 .scroll-button {
   .scroll-icon {
-    background-color: $brand-primary-green;
-    color: #fff;
+    background-color: $brand-secondary-green;
+    color: white;
   }
 }
 .scroll-button:hover {
   .scroll-icon {
-    background-color: $brand-secondary-green;
+    background-color: $brand-secondary-darkgreen;
   }
 }
 .scroll-button.scroll-left {
@@ -3676,7 +3819,7 @@ footer.mdc-layout__footer {
   .footer-copyright a:hover,
   .about a,
   .about a:hover {
-    color: $brand-secondary-green;
+    color: $brand-secondary-darkgreen;
     font-weight: $heading-font-weight;
   }
   .mdc-layout-grid {
@@ -3697,7 +3840,7 @@ footer.mdc-layout__footer {
 }
 
 #app-snackbar {
-  background-color: $brand-secondary-green;
+  background-color: $brand-secondary-darkgreen;
 }
 
 .search-result-article__notes .faded-overflow {
@@ -3707,16 +3850,16 @@ footer.mdc-layout__footer {
 }
 
 .after-textfield-action {
-  color: $brand-secondary-green;
+  color: $brand-secondary-darkgreen;
 }
 
 .mdc-button--warning {
-  color: $brand-secondary-green !important;
+  color: $brand-secondary-darkgreen !important;
 }
 
 .mdc-button--raised.mdc-button--warning {
-  background-color: $brand-secondary-green !important;
-  color: #fff !important;
+  background-color: $brand-secondary-darkgreen !important;
+  color: white !important;
 }
 
 .header-text {

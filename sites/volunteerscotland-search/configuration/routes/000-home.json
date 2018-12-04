@@ -21,6 +21,12 @@
             "index": "web-content-production",
             "type": "milo-volunteering-opportunity",
             "template": ">context.metaData.handlebars.queries.opportunities_types"
+          },
+          {
+            "name": "recently_viewed",
+            "index": "web-content-production",
+            "type": "milo-volunteering-opportunity",
+            "template": ">context.metaData.handlebars.queries.opportunities_recently-viewed"
           }
         ]
       },

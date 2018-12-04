@@ -28,40 +28,18 @@
       "route": "^https://www.volunteerscotland.net/about-us"
     }
   ],
-  "upper-not-signed-in": [
-    {
-      "label": "My Volunteer Account",
-      "icon": "sign-in-alt",
-      "path": "/sign-in",
-      "route": "^/sign-in"
-    }
-  ],
-  "upper-signed-in": [
-    {
-      "label": "My Volunteer Account",
-      "icon": "cog",
-      "path": "/settings",
-      "route": "^/settings"
-    }
-  ],
   "user-not-signed-in": [
     {
-      "label": "Sign in",
+      "label": "My Volunteer Account",
       "icon": "sign-in-alt",
       "path": "/sign-in",
       "route": "^/sign-in"
-    },
-    {
-      "label": "Sign up",
-      "icon": "list-alt",
-      "path": "/sign-up",
-      "route": "^/sign-up"
     }
   ],
   "user-signed-in": [
     {
-      "label": "Home",
-      "icon": "home",
+      "label": "Search",
+      "icon": "search",
       "path": "/",
       "route": "^/$"
     },
@@ -72,22 +50,22 @@
       "route": "^/favourites"
     },
     {
-      "label": "Searches &amp; email",
-      "icon": "search-plus",
-      "path": "/searches",
-      "route": "^/searches"
-    },
-    {
       "label": "Notes",
       "icon": "edit",
       "path": "/notes",
       "route": "^/notes"
     },
     {
-      "label": "Settings",
+      "label": "Email alerts",
+      "icon": "search-plus",
+      "path": "/searches",
+      "route": "^/searches"
+    },
+    {
+      "label": "Account",
       "icon": "cog",
-      "path": "/settings",
-      "route": "^/settings"
+      "path": "/account",
+      "route": "^/account"
     },
     {
       "label": "Sign out",
@@ -99,8 +77,8 @@
   "footer-cookies-terms": [
     {
       "label": "Privacy Notices",
-      "path": "https://www.volunteerscotland.net/terms-conditions/privacy-notices/",
-      "route": "^https://www.volunteerscotland.net/terms-conditions/privacy-notices/"
+      "path": "/privacy",
+      "route": "/privacy"
     },
     {
       "label": "Cookies",

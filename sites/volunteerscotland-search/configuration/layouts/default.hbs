@@ -37,20 +37,15 @@
   <meta name="theme-color" content="#00838f">
   <link rel="search" type="application/opensearchdescription+xml" title="Get Involved" href="{{~>asset_url url='opensearch.xml'~}}" />
 
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-3467930-4"></script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-54T7D3G');</script>
+  <!-- End Google Tag Manager -->
+
   <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'UA-3467930-4', {
-    'send_page_view': true,
-    'anonymize_ip': true,
-    'cookieDomain': 'none',
-    'custom_map': {
-      'dimension1': 'hit_type',
-      'dimension2': 'parent_document'
-    }
-  });
   {{#ifAny request.params.query.debug (compare request.url.hostname "volunteerscotland-search.local") ~}}
   console.log('#### DEBUG MODE ON ####');
   console.log('Request:', {{{regexReplace (regexReplace (stringify request) "(<\/script)" "gi" '</scr\" + \"ipt') "(\r|\n)" "gi" ""}}});
@@ -69,6 +64,10 @@
   <link type="text/css" rel="stylesheet" href="{{~>asset_url url='main-VERSION.css'}}">
 </head>
 <body class="mdc-theme--site-bg {{#if request.params.path}}{{replace request.params.path '_' ' '}}{{else}}home{{/if}}">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-54T7D3G"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
   <volunteerscotland-search-site>
     <div class="mdc-typography">
       {{#ifAny request.params.query.debug (compare request.url.hostname "volunteerscotland-search.local") ~}}
@@ -107,40 +106,56 @@
               <span class="mdc-top-app-bar__title">
                 <h1 class="header-text">
                   <a href="/" class="noext">
-                    <img src="https://storage.googleapis.com/scvo-cms/scvo-cms-content/images/logos/volunteer_scotland_logo.png" alt="Volunteer Scotland" />
+                    <img src="https://storage.googleapis.com/scvo-cms/scvo-cms-content/images/logos/volunteer_scotland_search.png" alt="Volunteer Scotland" />
                   </a>
                 </h1>
               </span>
             </section>
-            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
+            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--user mdc-top-app-bar__section--align-end">
               <button class="mdc-top-app-bar__navigation-icon hide-lg" data-drawer-target="#mobile-menu">
                 <span class="far fa-fw fa-2x fa-bars"></span>
               </button>
               {{#>components_tab_bar
                   extraClasses="mdc-tab-bar__auto-width hide-sm hide-md"
-                  id="upper-tab-bar"}}
+                  id="upper-tab-bar" ~}}
                 {{#each @root.context.metaData.menus.upper ~}}
                   {{>components_tab
                       url=(stripTrailingSlash path)
                       active=(regexMatch @root.request.url.pathname route "gi")
-                      label=label}}
+                      iconClasses=(if (compare icon "===" "home") "fas fa-home")
+                      label=(if (compare icon "!==" "home") label)}}
                 {{/each ~}}
-                {{#if @root.data.auth ~}}
-                  {{#each @root.context.metaData.menus.upper-signed-in ~}}
+              {{/components_tab_bar ~}}
+              {{#if @root.data.auth ~}}
+                {{#>components_anchored_menu
+                    buttonClasses="mdc-theme--on-secondary"
+                    imageUrl=(default @root.data.auth.photoURL false)
+                    imageClasses="far fa-fw user-avatar"
+                    iconClasses=(if (if @root.data.auth.photoURL false else=true) "far fa-fw fa-user-circle" else=false)
+                    buttonLabel="My Volunteer Account"
+                    arrowClasses="far fa-fw fa-angle-down" ~}}
+                  {{#each @root.context.metaData.menus.user-signed-in ~}}
+                    <a class="mdc-list-item {{#if (regexMatch @root.request.url.pathname route "gi")}} mdc-list-item--activated{{/if}}" href="{{stripTrailingSlash path}}" role="menuitem">
+                      {{#if icon ~}}
+                      <span class="far fa-{{icon}} mdc-list-item__graphic" aria-hidden="true"></span>
+                      {{/if ~}}
+                      {{{label}}}
+                    </a>
+                  {{/each ~}}
+                {{/components_anchored_menu ~}}
+              {{else}}
+                {{#>components_tab_bar
+                    extraClasses="mdc-tab-bar__auto-width"
+                    id="user-not-signed-in-tab-bar" ~}}
+                  {{#each @root.context.metaData.menus.user-not-signed-in ~}}
                     {{>components_tab
                         url=(stripTrailingSlash path)
+                        labelClasses="mdc-theme--on-secondary"
                         active=(regexMatch @root.request.url.pathname route "gi")
                         label=label}}
                   {{/each ~}}
-                {{else}}
-                  {{#each @root.context.metaData.menus.upper-not-signed-in ~}}
-                    {{>components_tab
-                        url=(stripTrailingSlash path)
-                        active=(regexMatch @root.request.url.pathname route "gi")
-                        label=label}}
-                  {{/each ~}}
-                {{/if ~}}
-              {{/components_tab_bar}}
+                {{/components_tab_bar ~}}
+              {{/if ~}}
             </section>
           </div>
           <div class="mdc-top-app-bar__row mdc-top-app-bar__lower hide-sm hide-md">
@@ -163,38 +178,6 @@
                       label=label}}
                 {{/each ~}}
               {{/components_tab_bar}}
-            </section>
-            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end mdc-top-app-bar__user">
-              {{#if @root.data.auth ~}}
-                {{#>components_anchored_menu
-                    buttonClasses="mdc-theme--on-secondary"
-                    imageUrl=(default @root.data.auth.photoURL false)
-                    imageClasses="far fa-fw user-avatar"
-                    iconClasses=(if (if @root.data.auth.photoURL false else=true) "far fa-fw fa-user-circle" else=false)
-                    buttonLabel=@root.data.auth.email
-                    arrowClasses="far fa-fw fa-angle-down"}}
-                  {{#each @root.context.metaData.menus.user-signed-in ~}}
-                    <a class="mdc-list-item {{#if (regexMatch @root.request.url.pathname route "gi")}} mdc-list-item--activated{{/if}}" href="{{stripTrailingSlash path}}" role="menuitem">
-                      {{#if icon ~}}
-                      <span class="far fa-{{icon}} mdc-list-item__graphic" aria-hidden="true"></span>
-                      {{/if ~}}
-                      {{{label}}}
-                    </a>
-                  {{/each ~}}
-                {{/components_anchored_menu}}
-              {{else}}
-                {{#>components_tab_bar
-                    extraClasses="mdc-tab-bar__auto-width"
-                    id="user-not-signed-in-tab-bar"}}
-                  {{#each @root.context.metaData.menus.user-not-signed-in ~}}
-                    {{>components_tab
-                        url=(stripTrailingSlash path)
-                        labelClasses="mdc-theme--on-secondary"
-                        active=(regexMatch @root.request.url.pathname route "gi")
-                        label=label}}
-                  {{/each}}
-                {{/components_tab_bar}}
-              {{/if ~}}
             </section>
           </div>
         </div>
