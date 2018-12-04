@@ -4,6 +4,7 @@
 $brand-primary-green: rgb(123, 193, 67);
 $brand-primary-black: rgb(64, 64, 65);
 $brand-primary-grey: rgb(218, 211, 204);
+$brand-primary-lightgrey: #F2EEEC;
 
 $brand-secondary-purple: rgb(124, 65, 153);
 $brand-secondary-pink: rgb(230, 64, 151);
@@ -1178,6 +1179,9 @@ a {
     margin: $unit/2 0 $unit;
     padding: $unit/2;
     border-radius: 2px;
+  }
+  .panel {
+    background-color: $brand-primary-lightgrey;
   }
   .mdc-card__info--content-secondary-title {
     margin: 0 0 $unit/2 !important;
