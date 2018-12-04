@@ -77,8 +77,8 @@
   "footer-cookies-terms": [
     {
       "label": "Privacy Notices",
-      "path": "https://www.volunteerscotland.net/terms-conditions/privacy-notices/",
-      "route": "^https://www.volunteerscotland.net/terms-conditions/privacy-notices/"
+      "path": "/privacy",
+      "route": "/privacy"
     },
     {
       "label": "Cookies",
