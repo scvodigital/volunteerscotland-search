@@ -221,9 +221,25 @@ header {
         display: none;
       }
     }
-    #user-not-signed-in-tab-bar {
-      .mdc-tab__text-label {
-        font-weight: $heading-font-weight;
+    .mdc-top-app-bar__section--user {
+      .mdc-menu-surface--anchor,
+      #user-not-signed-in-tab-bar {
+        .mdc-button,
+        .mdc-tab .mdc-tab__text-label {
+          color: $brand-secondary-lightblue !important;
+          font-weight: $heading-font-weight;
+        }
+        .mdc-button:hover,
+        .mdc-tab:hover .mdc-tab__text-label {
+          color: $brand-secondary-blue !important;
+        }
+        .mdc-tab-indicator--active:hover > .mdc-tab-indicator__content--underline,
+        .mdc-tab-indicator > .mdc-tab-indicator__content--underline {
+          background-color: $brand-secondary-blue;
+        }
+        .mdc-tab-indicator--active > .mdc-tab-indicator__content--underline {
+          background-color: $brand-secondary-lightblue;
+        }
       }
     }
     .mdc-top-app-bar__main .mdc-tab-bar,
@@ -247,7 +263,7 @@ header {
           border-radius: 0;
           border-top: 2px solid transparent;
           border-bottom: 2px solid transparent;
-          color: black !important;
+          // color: black !important;
           height: $header-lower-height;
           font-weight: $heading-font-weight;
           padding: 0;
@@ -269,6 +285,7 @@ header {
     }
     .mdc-top-app-bar__section {
       padding: 0;
+      z-index: inherit;
       .mdc-menu-surface--anchor {
         .user-avatar {
           height: 30px;
@@ -563,12 +580,20 @@ footer h3,
 
 .card-loader {
   position: absolute;
-  height: 100%;
   width: 100%;
+  height: 100%;
   top: 0;
   left: 0;
-  opacity: 0.7;
   display: none;
+  .card-loader-background {
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0.7;
+  }
   .card-loader-inner {
     display: flex;
     align-items: center;
@@ -3101,9 +3126,9 @@ header {
     .mdc-top-app-bar__upper,
     .mdc-top-app-bar__user {
       .mdc-menu-surface--anchor {
-        .mdc-button {
-          color: $brand-primary-black !important;
-        }
+        // .mdc-button {
+        //   color: $brand-primary-black !important;
+        // }
         // .mdc-button:hover {
         //   border-bottom-color: $brand-primary-black;
         // }
@@ -3178,7 +3203,9 @@ header {
 }
 
 .card-loader {
-  background-color: $brand-secondary-yellow;
+  .card-loader-background {
+    background-color: white;
+  }
   .card-loader-inner {
     color: $brand-secondary-green;
   }
