@@ -11,6 +11,8 @@ cache:
 before_install:
   - openssl aes-256-cbc -K $encrypted_3432a4eadc06_key -iv $encrypted_3432a4eadc06_iv -in secrets.tar.enc -out secrets.tar -d
   - tar xvf secrets.tar
+  - touch lib/bump.js
+  - touch lib/bump.scss
 
 install:
   - yarn
