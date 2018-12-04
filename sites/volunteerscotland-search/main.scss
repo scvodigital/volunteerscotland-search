@@ -1,20 +1,34 @@
 @import url('//cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css');
 @import url('https://fonts.googleapis.com/css?family=Rambla');
 
-$brand-primary-green: rgb(123, 193, 67);
+$brand-secondary-green: rgb(123, 193, 67);
 $brand-primary-black: rgb(64, 64, 65);
 $brand-primary-grey: rgb(218, 211, 204);
-$brand-primary-lightgrey: #F2EEEC;
+$brand-primary-lightgrey: #f2eeec;
 
 $brand-secondary-purple: rgb(124, 65, 153);
+$brand-secondary-darkpurple: #5f3275;
+
 $brand-secondary-pink: rgb(230, 64, 151);
+$brand-secondary-darkpink: #d71c7e;
+
 $brand-secondary-red: rgb(239, 62, 66);
+$brand-secondary-darkred: #e71318;
+
 $brand-secondary-orange: rgb(244, 120, 54);
+$brand-secondary-darkorange: #ea5a0d;
+
 $brand-secondary-yellow: rgb(255, 222, 0);
+$brand-secondary-darkyellow: #ccb200;
+
 $brand-secondary-green: rgb(56, 124, 44);
+$brand-secondary-darkgreen: #27561f;
+
 $brand-secondary-turquoice: rgb(0, 160, 175);
-$brand-secondary-lightblue: rgb(0, 157, 220);
-$brand-secondary-blue: rgb(0, 121, 193);
+$brand-secondary-darkturquoice: #00717c;
+
+$brand-secondary-blue: rgb(0, 157, 220);
+$brand-secondary-darkblue: rgb(0, 121, 193);
 
 $mdc-theme-primary: $brand-secondary-turquoice;
 $mdc-theme-secondary: $brand-secondary-green;
@@ -127,6 +141,10 @@ a[href^="https://"]::after {
 a.noext::after,
 a[href^="https://volunteerscotland-search.local"]::after,
 a[href^="https://test.getinvolved.scot"]::after,
+a[href^="https://goodhq.org"]::after,
+a[href^="https://scvo.org"]::after,
+a[href^="https://volunteerscotland.net"]::after,
+a[href^="https://www.volunteerscotland.net"]::after,
 a[href^="https://search.volunteerscotland.net"]::after {
   content: " ";
   margin: 0;
@@ -228,19 +246,19 @@ header {
       #user-not-signed-in-tab-bar {
         .mdc-button,
         .mdc-tab .mdc-tab__text-label {
-          color: $brand-secondary-lightblue !important;
+          color: $brand-secondary-blue !important;
           font-weight: $heading-font-weight;
         }
         .mdc-button:hover,
         .mdc-tab:hover .mdc-tab__text-label {
-          color: $brand-secondary-blue !important;
+          color: $brand-secondary-darkblue !important;
         }
         .mdc-tab-indicator--active:hover > .mdc-tab-indicator__content--underline,
         .mdc-tab-indicator > .mdc-tab-indicator__content--underline {
-          background-color: $brand-secondary-blue;
+          background-color: $brand-secondary-darkblue;
         }
         .mdc-tab-indicator--active > .mdc-tab-indicator__content--underline {
-          background-color: $brand-secondary-lightblue;
+          background-color: $brand-secondary-blue;
         }
       }
     }
@@ -504,6 +522,9 @@ footer h3,
   box-shadow: none;
   border-radius: 0;
 }
+.mdc-button--raised {
+  box-shadow: none;
+}
 .mdc-button--large {
   height: 56px;
   .far {
@@ -635,6 +656,10 @@ footer h3,
       label {
         margin: 0 $unit;
       }
+    }
+    .mdc-button.save-search:hover,
+    .mdc-button.saved-search:hover {
+      background-color: $brand-secondary-darkpink !important;
     }
     .mdc-button.saved-search:hover {
       cursor: default;
@@ -3080,11 +3105,11 @@ body {
 }
 ::-moz-selection {
   color: white;
-  background: $brand-secondary-green;
+  background: $brand-secondary-darkgreen;
 }
 ::selection {
   color: white;
-  background: $brand-secondary-green;
+  background: $brand-secondary-darkgreen;
 }
 // .mdc-theme--background {
 //   background-color: $brand-secondary-yellow !important;
@@ -3099,16 +3124,16 @@ header {
   .container-fluid {
     .mdc-tab-bar {
       .mdc-tab {
-        color: $brand-secondary-green;
+        color: $brand-secondary-darkgreen;
         .mdc-tab__text-label {
-          color: $brand-secondary-green;
+          color: $brand-secondary-darkgreen;
         }
       }
     }
     #upper-tab-bar {
       .mdc-tab {
         margin-right: 4px;
-        background-color: $brand-secondary-lightblue;
+        background-color: $brand-secondary-blue;
         .mdc-tab__icon,
         .mdc-tab__text-label {
           color: white !important;
@@ -3117,7 +3142,7 @@ header {
         }
       }
       .mdc-tab:hover {
-        background-color: $brand-secondary-blue;
+        background-color: $brand-secondary-darkblue;
       }
       // .mdc-tab:last-child {
       //   margin-right: 0;
@@ -3165,7 +3190,7 @@ header {
 
 .mdc-drawer--temporary {
   .mdc-drawer__header-content {
-    background-color: $brand-primary-green;
+    background-color: $brand-secondary-green;
   }
 }
 .mdc-drawer--permanent {
@@ -3176,8 +3201,8 @@ header {
 .mdc-checkbox__native-control:enabled:indeterminate ~ .mdc-checkbox__background,
 .mdc-checkbox__native-control:disabled:checked ~ .mdc-checkbox__background,
 .mdc-checkbox__native-control:disabled:indeterminate ~ .mdc-checkbox__background {
-  border-color: $brand-primary-green;
-  background-color: $brand-primary-green;
+  border-color: $brand-secondary-green;
+  background-color: $brand-secondary-green;
   .mdc-checkbox__checkmark__path {
     stroke-width: 3px;
   }
@@ -3223,7 +3248,7 @@ header {
     background-color: white;
   }
   .card-loader-inner {
-    color: $brand-secondary-green;
+    color: $brand-secondary-darkgreen;
   }
 }
 
@@ -3241,12 +3266,24 @@ header {
         height: 56px;
       }
       .mdc-tab,
-      .mdc-tab__icon,
-      .mdc-tab__text-label {
+      .mdc-tab .mdc-tab__icon,
+      .mdc-tab .mdc-tab__text-label {
         color: $brand-secondary-green !important;
+      }
+      .mdc-tab:hover,
+      .mdc-tab:hover .mdc-tab__icon,
+      .mdc-tab:hover .mdc-tab__text-label {
+        color: $brand-secondary-darkgreen !important;
       }
       .mdc-tab--active {
         background: $brand-secondary-green;
+        .mdc-tab__icon,
+        .mdc-tab__text-label {
+          color: white !important;
+        }
+      }
+      .mdc-tab--active:hover {
+        background: $brand-secondary-darkgreen;
         .mdc-tab__icon,
         .mdc-tab__text-label {
           color: white !important;
@@ -3260,7 +3297,7 @@ header {
       color: $brand-secondary-red;
       label {
         .far {
-          color: $brand-primary-green;
+          color: $brand-secondary-green;
         }
       }
     }
@@ -3300,10 +3337,10 @@ header {
   .mdc-form-field {
     .mdc-radio {
       .mdc-radio__outer-circle {
-        border-color: $brand-primary-green !important;
+        border-color: $brand-secondary-green !important;
       }
       .mdc-radio__inner-circle {
-        border-color: $brand-primary-green !important;
+        border-color: $brand-secondary-green !important;
       }
     }
   }
@@ -3315,14 +3352,14 @@ header {
 }
 .saved-search-remove .far:hover,
 .saved-search-remove:hover .far {
-  color: $brand-secondary-green !important;
+  color: $brand-secondary-darkgreen !important;
 }
 
 .icon-toggle-off {
   color: #999999;
 }
 .icon-toggle-on {
-  color: $brand-primary-green;
+  color: $brand-secondary-green;
 }
 
 .mdc-text-field--textarea .mdc-floating-label {
@@ -3334,7 +3371,7 @@ a {
 }
 
 .mdc-chip {
-  background-color: $brand-secondary-lightblue;
+  background-color: $brand-secondary-blue;
   color: white;
   .mdc-chip__icon.mdc-chip__icon--leading {
     color: white;
@@ -3344,17 +3381,17 @@ a {
   }
 }
 .mdc-chip:hover {
-  background-color: $brand-secondary-blue;
+  background-color: $brand-secondary-darkblue;
 }
 .mdc-theme--on-primary a,
 .mdc-card .mdc-chip.mdc-chip--selected,
 .mdc-chip.mdc-chip--selected {
-  background-color: $brand-primary-green;
+  background-color: $brand-secondary-green;
   color: white;
 }
 .mdc-card .mdc-chip.mdc-chip--selected:hover,
 .mdc-chip.mdc-chip--selected:hover {
-  background-color: $brand-secondary-green;
+  background-color: $brand-secondary-darkgreen;
   color: white;
 }
 
@@ -3364,15 +3401,15 @@ a {
 }
 
 // .mdc-button--raised {
-//   background-color: $brand-primary-green !important;
+//   background-color: $brand-secondary-green !important;
 // }
 // .mdc-button--raised:hover {
-//   background-color: $brand-secondary-green !important;
+//   background-color: $brand-secondary-darkgreen !important;
 // }
 
 .leaflet-container {
   a {
-    color: $brand-primary-green;
+    color: $brand-secondary-green;
     -webkit-tap-highlight-color: transparent;
   }
   .leaflet-control.leaflet-bar a {
@@ -3381,23 +3418,23 @@ a {
 }
 .leaflet-marker-icon {
   .marker-icon {
-    color: $brand-primary-green;
+    color: $brand-secondary-green;
     text-shadow: 3px 4px 0.75rem rgba(42,42,42,.75);
   }
   .map-marker-overlay {
-    color: $brand-primary-green;
+    color: $brand-secondary-green;
     background: white;
   }
   .marker-icon.shortlisted {
-    color: $brand-secondary-green;
+    color: $brand-secondary-darkgreen;
   }
   .map-marker-overlay.shortlisted {
     color: white;
-    background: $brand-secondary-green;
+    background: $brand-secondary-darkgreen;
     border: 2px solid white;
   }
   .marker-icon.homebased {
-    color: $brand-primary-green;
+    color: $brand-secondary-green;
   }
 }
 
@@ -3415,10 +3452,10 @@ a {
   .mdc-card__actions {
     // background-color: $brand-secondary-turquoice;
     a {
-      color: $brand-primary-green;
+      color: $brand-secondary-green;
     }
     .mdc-card__action {
-      color: $brand-primary-green;
+      color: $brand-secondary-green;
     }
   }
 }
@@ -3433,7 +3470,7 @@ a {
   .mdc-card__actions {
     // background-color: $brand-secondary-turquoice;
     .mdc-card__action {
-      color: $brand-primary-green;
+      color: $brand-secondary-green;
     }
   }
 }
@@ -3447,20 +3484,20 @@ a {
 .content-primary.mdc-card.mini.top-content,
 .content-primary.mdc-card.gist.top-content,
 .content-primary.mdc-card.search-result.top-content {
-  // border-top-color: $brand-primary-green;
+  // border-top-color: $brand-secondary-green;
   .mdc-card__actions {
-    background-color: $brand-primary-green;
+    background-color: $brand-secondary-green;
     .mdc-card__action {
       color: white;
     }
     .mdc-chip.mdc-chip--selected {
-      background-color: $brand-secondary-green;
+      background-color: $brand-secondary-darkgreen;
     }
   }
 }
 
 .panel-heading {
-  background: $brand-secondary-green;
+  background: $brand-secondary-darkgreen;
   color: white;
 }
 .mdc-card.full {
@@ -3477,10 +3514,10 @@ a {
     background-color: $brand-secondary-turquoice;
     .mdc-tab__icon,
     .mdc-tab__text-label {
-      color: $brand-secondary-green;
+      color: $brand-secondary-darkgreen;
     }
     .mdc-tab-indicator__content {
-      background-color: $brand-secondary-green;
+      background-color: $brand-secondary-darkgreen;
     }
   }
   .content-primary-info-container {
@@ -3495,10 +3532,10 @@ a {
       }
       .mdc-chip:hover {
         color: $brand-secondary-yellow;
-        background-color: $brand-secondary-green;
+        background-color: $brand-secondary-darkgreen;
       }
       a {
-        color: $brand-secondary-green;
+        color: $brand-secondary-darkgreen;
       }
     }
     .save-button-block {
@@ -3510,7 +3547,7 @@ a {
 }
 
 hr {
-  background-color: $brand-primary-green;
+  background-color: $brand-secondary-green;
 }
 
 a.mdc-drawer__content-heading {
@@ -3519,7 +3556,7 @@ a.mdc-drawer__content-heading {
 
 .mdc-icon-button {
   .far:hover {
-    color: $brand-secondary-green;
+    color: $brand-secondary-darkgreen;
   }
 }
 
@@ -3547,7 +3584,7 @@ a.mdc-drawer__content-heading {
 .mdc-card.content-primary-shortlisted {
   .mdc-card__actions {
     .mdc-card__action--shortlist:hover .fa-heart {
-      color: $brand-secondary-green;
+      color: $brand-secondary-darkgreen;
     }
   }
 }
@@ -3626,13 +3663,17 @@ a.mdc-drawer__content-heading {
   .mdc-button {
     background-color: $brand-secondary-turquoice;
   }
+  .mdc-button:hover {
+    background-color: $brand-secondary-darkturquoice;
+    box-shadow: none;
+  }
   .geo-lookup,
   .active-search-icon {
-    color: $brand-secondary-green !important;
+    color: $brand-secondary-darkgreen !important;
   }
   .geo-lookup:hover,
   .active-search-icon:hover {
-    color: $brand-secondary-green !important;
+    color: $brand-secondary-darkgreen !important;
   }
   .search-distance {
     color: rgba(0, 0, 0, 0.7);
@@ -3644,7 +3685,7 @@ a.mdc-drawer__content-heading {
 .pagination {
   li {
     a {
-      color: $brand-primary-green;
+      color: $brand-secondary-green;
     }
     a.pagination-arrow {
       color: $brand-primary-black;
@@ -3654,14 +3695,14 @@ a.mdc-drawer__content-heading {
     color: $brand-primary-grey;
   }
   li.current-page {
-    background-color: $brand-primary-green;
+    background-color: $brand-secondary-green;
     a {
       color: white;
     }
   }
   li:hover,
   li.current-page:hover {
-    background-color: $brand-secondary-green;
+    background-color: $brand-secondary-darkgreen;
     a {
       color: white;
     }
@@ -3679,7 +3720,7 @@ footer,
   .mdc-list {
     .mdc-list-item {
       .mdc-list-item__text {
-        color: $brand-primary-green;
+        color: $brand-secondary-green;
       }
     }
   }
@@ -3705,8 +3746,8 @@ footer,
         }
         .mdc-button:hover {
           background: white !important;
-          color: $brand-secondary-green !important;
-          border-color: $brand-secondary-green !important;
+          color: $brand-secondary-darkgreen !important;
+          border-color: $brand-secondary-darkgreen !important;
         }
       }
       .search-form {
@@ -3738,13 +3779,13 @@ footer,
 
 .scroll-button {
   .scroll-icon {
-    background-color: $brand-primary-green;
+    background-color: $brand-secondary-green;
     color: white;
   }
 }
 .scroll-button:hover {
   .scroll-icon {
-    background-color: $brand-secondary-green;
+    background-color: $brand-secondary-darkgreen;
   }
 }
 .scroll-button.scroll-left {
@@ -3778,7 +3819,7 @@ footer.mdc-layout__footer {
   .footer-copyright a:hover,
   .about a,
   .about a:hover {
-    color: $brand-secondary-green;
+    color: $brand-secondary-darkgreen;
     font-weight: $heading-font-weight;
   }
   .mdc-layout-grid {
@@ -3799,7 +3840,7 @@ footer.mdc-layout__footer {
 }
 
 #app-snackbar {
-  background-color: $brand-secondary-green;
+  background-color: $brand-secondary-darkgreen;
 }
 
 .search-result-article__notes .faded-overflow {
@@ -3809,15 +3850,15 @@ footer.mdc-layout__footer {
 }
 
 .after-textfield-action {
-  color: $brand-secondary-green;
+  color: $brand-secondary-darkgreen;
 }
 
 .mdc-button--warning {
-  color: $brand-secondary-green !important;
+  color: $brand-secondary-darkgreen !important;
 }
 
 .mdc-button--raised.mdc-button--warning {
-  background-color: $brand-secondary-green !important;
+  background-color: $brand-secondary-darkgreen !important;
   color: white !important;
 }
 
