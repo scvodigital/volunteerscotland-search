@@ -2,7 +2,7 @@
 <div class="search-info">
   Your search returned <strong>{{addCommas paging.totalResults}} results</strong>
   {{#compare @root.route.name "!==" "opportunity_map" ~}}
-  {{#compare paging.totalResults ">" 10 ~}} <strong>|</strong>
+  {{#compare paging.totalResults ">" 10 ~}} - showing
   page {{addCommas paging.currentPage}} of {{addCommas paging.totalPages}}
   {{/compare ~}}
   {{/compare ~}}

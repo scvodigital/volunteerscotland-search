@@ -183,7 +183,7 @@ header {
       margin: 0;
       .mdc-tab {
         background-color: transparent;
-        font-size: 1rem;
+        font-size: 1.25rem;
         min-height: $header-lower-height;
         height: $header-lower-height;
         font-weight: 400;
@@ -204,10 +204,12 @@ header {
         display: none;
       }
     }
+    #user-not-signed-in-tab-bar,
+    .mdc-menu-surface--anchor,
     #upper-tab-bar {
       .mdc-tab {
         min-width: auto;
-        font-weight: 400;
+        font-size: 1rem;
       }
       .mdc-tab-indicator {
         display: none;
@@ -493,7 +495,7 @@ footer h3,
 .mdc-tab__content {
   .mdc-tab__icon,
   .mdc-tab__text-label {
-    opacity: 0.7;
+    opacity: 1;
   }
 }
 .mdc-button {
@@ -614,7 +616,7 @@ footer h3,
 }
 .content-primary-search {
   .head {
-    margin-bottom: $unit/2;
+    margin-bottom: 0;
     .mdc-button.saved-search,
     .mdc-button.filter-search,
     .mdc-button.save-search,
@@ -622,7 +624,11 @@ footer h3,
     .mdc-select {
       margin: 0;
     }
+    .mdc-button.save-search,
     .mdc-button.saved-search {
+      float: right;
+      box-shadow: none;
+      border-radius: 0;
       label {
         margin: 0 $unit;
       }
@@ -1004,7 +1010,7 @@ a {
 }
 
 .search-info {
-  margin: 0 0 $unit;
+  margin: $unit 0;
   background-color: white;
   padding: 0;
   box-sizing: border-box;
@@ -1552,12 +1558,12 @@ body.shortlist {
 
 .container-content {
   width: 100%;
-  padding-right: $unit;
+  padding-right: 0;
   padding-bottom: 1px;
-  margin-left: $unit;
+  margin-left: 0;
   margin-right: $unit;
   position: relative;
-  max-width: 1200px;
+  max-width: 1100px;
   align-items: flex-end;
   z-index: 4;
   .mdc-tab-bar {
@@ -1590,7 +1596,7 @@ body.shortlist {
   }
   .mdc-card.full {
     width: 100%;
-    background-color: #fff;
+    background-color: white;
   }
   .mdc-card {
     padding: $unit;
@@ -2007,6 +2013,8 @@ footer,
         border-radius: 2px;
         width: 100%;
         font-size: 1.2rem;
+        box-shadow: none;
+        border-radius: 0;
         .fa-search {
           position: absolute;
           right: $unit*(2/3);
@@ -2998,7 +3006,7 @@ form.inline-form {
 }
 
 .mdc-button--raised.mdc-button--warning {
-  color: #fff !important;
+  color: white !important;
 }
 
 .mdc-button--warning:disabled {
@@ -3065,18 +3073,20 @@ body {
   background-color: $brand-primary-black;
 }
 ::-moz-selection {
-  color: #fff;
+  color: white;
   background: $brand-secondary-green;
 }
 ::selection {
-  color: #fff;
+  color: white;
   background: $brand-secondary-green;
 }
 // .mdc-theme--background {
 //   background-color: $brand-secondary-yellow !important;
 // }
 .mdc-top-app-bar {
-  background-color: #fff;
+  background-color: white;
+  border-bottom: .5rem solid $brand-secondary-turquoice;
+  padding-bottom: .5rem;
 }
 
 header {
@@ -3153,7 +3163,7 @@ header {
   }
 }
 .mdc-drawer--permanent {
-  background-color: #fff !important;
+  background-color: white !important;
 }
 
 .mdc-checkbox__native-control:enabled:checked ~ .mdc-checkbox__background,
@@ -3198,7 +3208,7 @@ header {
     }
   }
   .mdc-button {
-    color: #fff;
+    color: white;
   }
 }
 
@@ -3213,7 +3223,8 @@ header {
 
 .content-primary-search {
   .head {
-    border-bottom: 2px solid $brand-secondary-green;
+    max-width: 1100px;
+    margin-left: 0;
     .mdc-tab-bar {
       height: 56px;
     }
@@ -3247,6 +3258,9 @@ header {
         }
       }
     }
+  }
+  .grid-content {
+    border-top: 2px solid $brand-secondary-green;
     .mdc-select--box {
       margin: 0;
       border: none;
@@ -3276,7 +3290,7 @@ header {
 }
 .content-saved-searches {
   .mdc-list {
-    background-color: #fff;
+    background-color: white;
   }
 }
 .saved-search-remove .far:hover,
@@ -3306,7 +3320,7 @@ a {
     color: white;
   }
   .mdc-chip__checkmark-path {
-    stroke: #fff !important;
+    stroke: white !important;
   }
 }
 .mdc-chip:hover {
@@ -3316,17 +3330,17 @@ a {
 .mdc-card .mdc-chip.mdc-chip--selected,
 .mdc-chip.mdc-chip--selected {
   background-color: $brand-primary-green;
-  color: #fff;
+  color: white;
 }
 .mdc-card .mdc-chip.mdc-chip--selected:hover,
 .mdc-chip.mdc-chip--selected:hover {
   background-color: $brand-secondary-green;
-  color: #fff;
+  color: white;
 }
 
 .mdc-button--raised,
 .mdc-button--raised .mdc-list-item__graphic {
-  color: #fff;
+  color: white;
 }
 
 .mdc-button--raised {
@@ -3342,7 +3356,7 @@ a {
     -webkit-tap-highlight-color: transparent;
   }
   .leaflet-control.leaflet-bar a {
-    color: #000;
+    color: black;
   }
 }
 .leaflet-marker-icon {
@@ -3352,15 +3366,15 @@ a {
   }
   .map-marker-overlay {
     color: $brand-primary-green;
-    background: #fff;
+    background: white;
   }
   .marker-icon.shortlisted {
     color: $brand-secondary-green;
   }
   .map-marker-overlay.shortlisted {
-    color: #fff;
+    color: white;
     background: $brand-secondary-green;
-    border: 2px solid #fff;
+    border: 2px solid white;
   }
   .marker-icon.homebased {
     color: $brand-primary-green;
@@ -3372,7 +3386,7 @@ a {
 }
 
 .search-info {
-  background: #fff;
+  background: white;
   color: $brand-primary-black;
 }
 
@@ -3417,7 +3431,7 @@ a {
   .mdc-card__actions {
     background-color: $brand-primary-green;
     .mdc-card__action {
-      color: #fff;
+      color: white;
     }
     .mdc-chip.mdc-chip--selected {
       background-color: $brand-secondary-green;
@@ -3427,7 +3441,7 @@ a {
 
 .panel-heading {
   background: $brand-secondary-green;
-  color: #fff;
+  color: white;
 }
 .mdc-card.full {
   .editor-toolbar,
@@ -3436,7 +3450,7 @@ a {
   }
   .text-field-container.user-notes {
     .mdc-text-field--textarea .mdc-floating-label {
-      background: #fff !important;
+      background: white !important;
     }
   }
   #content-primary-tab-bar {
@@ -3451,7 +3465,7 @@ a {
   }
   .content-primary-info-container {
     border-radius: 2px;
-    background-color: #fff;
+    background-color: white;
   }
   .mdc-card--full-content {
     .key-info-extra {
@@ -3493,7 +3507,7 @@ a.mdc-drawer__content-heading {
 .mdc-text-field:not(.mdc-text-field--disabled) {
   border-radius: 0;
   border: 1px solid #999;
-  background-color: #fff;
+  background-color: white;
 }
 
 .mdc-card {
@@ -3501,12 +3515,12 @@ a.mdc-drawer__content-heading {
     .mdc-card__action--shortlist {
       .fa-stack {
         .fa-circle {
-          color: #fff;
+          color: white;
         }
       }
     }
     .mdc-chip .mdc-chip__checkmark-path {
-      stroke: #fff;
+      stroke: white;
     }
   }
 }
@@ -3521,7 +3535,7 @@ a.mdc-drawer__content-heading {
 /* Typeahead as per gm*/
 .twitter-typeahead {
   .tt-menu {
-    background-color: #fff;
+    background-color: white;
     border: 1px solid $brand-primary-grey;
     border-top: none;
     .tt-suggestion:hover,
@@ -3536,7 +3550,7 @@ a.mdc-drawer__content-heading {
   .mdc-chip:hover {
     .mdc-chip__icon,
     .mdc-chip__text {
-      color: #fff;
+      color: white;
     }
   }
 }
@@ -3546,16 +3560,16 @@ a.mdc-drawer__content-heading {
 #home-tab-bar {
   .mdc-tab__icon,
   .mdc-tab__text-label {
-    color: $brand-secondary-red;
+    color: $brand-secondary-turquoice;
   }
   .mdc-tab-indicator__content {
-    background-color: $brand-secondary-red;
+    background-color: $brand-secondary-turquoice;
   }
 }
 
 .container-content.content-page {
   .mdc-card.full {
-    background-color: #fff;
+    background-color: white;
   }
 }
 
@@ -3565,7 +3579,7 @@ a.mdc-drawer__content-heading {
     .mdc-card__info--content-primary-title {
       a .top-content {
         background-color: $brand-secondary-pink !important;
-        color: #000;
+        color: black;
       }
     }
   }
@@ -3574,16 +3588,16 @@ a.mdc-drawer__content-heading {
 .mdc-card.full {
   .mdc-card__info--content-primary-row {
     .mdc-card__media--content-secondary {
-      background-color: #fff;
+      background-color: white;
     }
     .fa-li {
       .fa-fw {
-        color: $brand-secondary-red;
+        color: $brand-secondary-turquoice;
       }
     }
   }
   .mdc-card__info--content-secondary-row {
-    background-color: #fff;
+    background-color: white;
   }
 }
 
@@ -3607,17 +3621,17 @@ a.mdc-drawer__content-heading {
 .pagination {
   li {
     a {
-      color: $brand-secondary-red;
+      color: $brand-primary-green;
     }
     a.pagination-arrow {
-      color: $brand-secondary-red;
+      color: $brand-primary-black;
     }
   }
   li.disabled a.pagination-arrow {
-    color: $brand-secondary-red;
+    color: $brand-primary-grey;
   }
   li.current-page {
-    background-color: $brand-secondary-pink;
+    background-color: $brand-primary-green;
     a {
       color: white;
     }
@@ -3626,7 +3640,7 @@ a.mdc-drawer__content-heading {
   li.current-page:hover {
     background-color: $brand-secondary-green;
     a {
-      color: $brand-secondary-yellow;
+      color: white;
     }
   }
   li.disabled:hover {
@@ -3663,11 +3677,11 @@ footer,
     .content {
       .mdc-card__actions {
         .mdc-button {
-          border: 0.125rem solid #fff !important;
-          color: #fff !important;
+          border: 0.125rem solid white !important;
+          color: white !important;
         }
         .mdc-button:hover {
-          background: #fff !important;
+          background: white !important;
           color: $brand-secondary-green !important;
           border-color: $brand-secondary-green !important;
         }
@@ -3683,7 +3697,7 @@ footer,
       .overlay-content {
         .header-extra,
         .header-text {
-          color: #fff;
+          color: white;
         }
       }
     }
@@ -3694,7 +3708,7 @@ footer,
   margin-top: $unit;
   .mdc-button {
     .mdc-icon-toggle {
-      color: #fff;
+      color: white;
     }
   }
 }
@@ -3702,7 +3716,7 @@ footer,
 .scroll-button {
   .scroll-icon {
     background-color: $brand-primary-green;
-    color: #fff;
+    color: white;
   }
 }
 .scroll-button:hover {
@@ -3781,7 +3795,7 @@ footer.mdc-layout__footer {
 
 .mdc-button--raised.mdc-button--warning {
   background-color: $brand-secondary-green !important;
-  color: #fff !important;
+  color: white !important;
 }
 
 .header-text {
