@@ -1,20 +1,40 @@
 {
   "main": [
     {
-      "label": "Search opportunities",
+      "label": "Find opportunities",
       "icon": "search",
       "path": "/search",
       "route": "^/search$"
     },
     {
-      "label": "Search organisations",
+      "label": "Find organisations",
       "icon": "list-alt",
       "path": "/organisations/search",
       "route": "^/organisations/search$"
     }
 
   ],
+  "upper": [
+    {
+      "label": "Home",
+      "icon": "home",
+      "path": "https://www.volunteerscotland.net",
+      "route": "^https://www.volunteerscotland.net"
+    },
+    {
+      "label": "About Us",
+      "icon": "info-circle",
+      "path": "https://www.volunteerscotland.net/about-us",
+      "route": "^https://www.volunteerscotland.net/about-us"
+    }
+  ],
   "upper-not-signed-in": [
+    {
+      "label": "My Volunteer Account",
+      "icon": "sign-in-alt",
+      "path": "/sign-in",
+      "route": "^/sign-in"
+    }
   ],
   "upper-signed-in": [
     {
@@ -24,12 +44,18 @@
       "route": "^/settings"
     }
   ],
-  "upper": [
+  "user-not-signed-in": [
     {
-      "label": "Home",
-      "icon": "home",
-      "path": "https://www.volunteerscotland.net",
-      "route": "^https://www.volunteerscotland.net"
+      "label": "Sign in",
+      "icon": "sign-in-alt",
+      "path": "/sign-in",
+      "route": "^/sign-in"
+    },
+    {
+      "label": "Sign up",
+      "icon": "list-alt",
+      "path": "/sign-up",
+      "route": "^/sign-up"
     }
   ],
   "user-signed-in": [
@@ -70,38 +96,11 @@
       "route": "^/sign-out"
     }
   ],
-  "user-not-signed-in": [
+  "footer-cookies-terms": [
     {
-      "label": "Sign in",
-      "icon": "sign-in-alt",
-      "path": "/sign-in",
-      "route": "^/sign-in"
-    },
-    {
-      "label": "Sign up",
-      "icon": "list-alt",
-      "path": "/sign-up",
-      "route": "^/sign-up"
-    }
-  ],
-  "footer-help": [
-    {
-      "label": "Contact",
-      "icon": "at",
-      "path": "/contact",
-      "route": "^/contact"
-    }
-  ],
-  "footer-info": [
-    {
-      "label": "Accessibility",
-      "path": "/accessibility",
-      "route": "^/accessibility"
-    },
-    {
-      "label": "Privacy",
-      "path": "/privacy",
-      "route": "^/privacy"
+      "label": "Privacy Notices",
+      "path": "https://www.volunteerscotland.net/terms-conditions/privacy-notices/",
+      "route": "^https://www.volunteerscotland.net/terms-conditions/privacy-notices/"
     },
     {
       "label": "Cookies",
@@ -110,8 +109,52 @@
     },
     {
       "label": "Terms &amp; conditions",
-      "path": "/terms",
-      "route": "^/terms"
+      "path": "https://www.volunteerscotland.net/terms-conditions/",
+      "route": "^https://www.volunteerscotland.net/terms-conditions/"
+    }
+
+  ],
+  "footer-contact" : [
+    {
+      "label": "Contact Us",
+      "icon": "at",
+      "path": "https://www.volunteerscotland.net/about-us/contact-us/",
+      "route": "^https://www.volunteerscotland.net/about-us/contact-us/"
+    },
+    {
+      "label": "Sign up to hear from us",
+      "icon": "envelope",
+      "path": "https://www.volunteerscotland.net/about-us/contact-us/tick-to-hear-from-us",
+      "route": "^https://www.volunteerscotland.net/about-us/contact-us/tick-to-hear-from-us"
+    }
+
+  ],
+  "footer-info": [
+    {
+      "label": "Volunteer Scotland Charter",
+      "path": "https://www.volunteerscotland.net/terms-conditions/charter/",
+      "route": "^https://www.volunteerscotland.net/terms-conditions/charter/"
+    },
+    {
+      "label": "Accessibility",
+      "path": "/accessibility",
+      "route": "^/accessibility"
+    },
+    {
+      "label": "Complaints Procedure",
+      "path": "https://www.volunteerscotland.net/accessibility/complaints-procedure/",
+      "route": "^https://www.volunteerscotland.net/accessibility/complaints-procedure/"
+    },
+    {
+      "label": "Brand Guidelines",
+      "path": "https://www.volunteerscotland.net/accessibility/brand-guidelines/",
+      "route": "^https://www.volunteerscotland.net/accessibility/brand-guidelines/"
+    },
+    {
+      "label": "Charter Text",
+      "path": "https://www.volunteerscotland.net/terms-conditions/charter-text/",
+      "route": "https://www.volunteerscotland.net/terms-conditions/charter-text/"
     }
   ]
+
 }

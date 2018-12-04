@@ -4,7 +4,7 @@
   <div class="content-primary-info-container">
     <div class="mdc-layout-grid">
       <div class="mdc-layout-grid__inner">
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone action">
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone action">
           {{#>components_tab_bar id="opportunity-tab-bar" defaultTabIdentifier="tab"}}
             {{>components_tab iconClasses="far fa-list-ul fa-fw" label="Information" active=true tabName="panel-1"}}
             {{>components_tab iconClasses="far fa-edit fa-fw" label="Notes" active=false tabName="notes"}}
@@ -298,7 +298,8 @@
           {{else}}
             <div class="detailed-info">
               <p class="mdc-typography--body1">
-                If you <a href="/sign-up">sign up</a> you'll be able to save notes on active jobs.
+                If you <a href="/sign-up">sign up</a>, you can private write notes here.
+                <a href="/sign-in">Sign in</a> if you already have a My Volunteer account.
               </p>
             </div>
           {{/if ~}}

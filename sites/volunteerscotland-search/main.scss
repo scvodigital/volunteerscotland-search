@@ -1,32 +1,20 @@
 @import url('//cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css');
 @import url('https://fonts.googleapis.com/css?family=Rambla');
 
-$blue: #009ddc;
-$turquoice: #00a0af;
-$yellow: #ffde00;
-$green: #7bc143;
-$black: #404041;
-$grey: #f0f0f0;
+$brand-primary-green: rgb(123, 193, 67);
+$brand-primary-black: rgb(64, 64, 65);
+$brand-primary-grey: rgb(218, 211, 204);
+$brand-primary-lightgrey: #F2EEEC;
 
-$mdc-theme-primary: #009ddc;
-$mdc-theme-primary-light: #ffde00;
-$mdc-theme-primary-dark: #7bc143;
-
-$mdc-theme-complimentary: #ffde00;
-$mdc-theme-complimentary-light: #ffde00;
-$mdc-theme-complimentary-dark: #404041;
-
-$mdc-theme-secondary: #404041; // Gray 300
-$mdc-theme-secondary-light: #f0f0f0; // Gray 100
-$mdc-theme-secondary-dark: #404041; // Gray 900
-
-$mdc-theme-footer: #f0f0f0; // Blue Gray 800
-$mdc-theme-footer-light: #f0f0f0; // Blue Gray 700
-$mdc-theme-footer-dark: #f0f0f0; // Blue Gray 900
-
-$mdc-theme-error: #A9201E;
-
-$mdc-theme-tfn: #3b9db1;
+$brand-secondary-purple: rgb(124, 65, 153);
+$brand-secondary-pink: rgb(230, 64, 151);
+$brand-secondary-red: rgb(239, 62, 66);
+$brand-secondary-orange: rgb(244, 120, 54);
+$brand-secondary-yellow: rgb(255, 222, 0);
+$brand-secondary-green: rgb(56, 124, 44);
+$brand-secondary-turquoice: rgb(0, 160, 175);
+$brand-secondary-lightblue: rgb(0, 157, 220);
+$brand-secondary-blue: rgb(0, 121, 193);
 
 $unit: 1rem;
 
@@ -116,6 +104,33 @@ h4 {
   transform: translateY(-100%);
 }
 
+a[href^="http://"]::after,
+a[href^="https://"]::after {
+  font-family: 'Font Awesome\ 5 Pro';
+  content: "\f08e";
+  font-weight: 400;
+  margin-left: 0.25rem;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1.2rem;
+  font-size: 70%;
+  top: -0.1rem;
+  position: relative;
+}
+a.noext::after,
+a[href^="https://volunteerscotland-search.local"]::after,
+a[href^="https://test.getinvolved.scot"]::after,
+a[href^="https://search.volunteerscotland.net"]::after {
+  content: " ";
+  margin: 0;
+  top: 0;
+  display: none;
+}
+
 header {
   .container-fluid {
     padding: 0;
@@ -132,9 +147,12 @@ header {
         text-decoration: none;
       }
       .header-text {
-        margin-left: $unit*(3/4);
-        margin-top: $unit*(3/4);
+        margin-left: $unit;
+        margin-top: $unit*1.5;
         margin-right: $unit;
+        img {
+          width: 192px;
+        }
         .header-text-banner {
           font-weight: $heading-font-weight !important;
           font-size: 2.95rem;
@@ -495,8 +513,8 @@ footer h3,
     position: relative;
   }
   .middle-line-text {
-    margin: $unit*2 0 $unit;
-    border-bottom: 2px solid #dfdfdf;
+    margin: $unit*2 0 $unit*2;
+    border-bottom: 2px solid $brand-primary-grey;
     line-height: 0;
     text-align: center;
     vertical-align: middle;
@@ -565,7 +583,7 @@ footer h3,
     .mdc-button.save-search,
     .mdc-text-field,
     .mdc-select {
-      margin: $unit/2 0 $unit;
+      margin: 0;
     }
     .mdc-button.saved-search {
       label {
@@ -716,8 +734,9 @@ a:hover {
   }
 }
 .mdc-chip:hover {
+  color: white;
   .mdc-chip__icon--leading {
-    color: #000;
+    color: white;
   }
 }
 .mdc-theme--on-primary a,
@@ -948,7 +967,7 @@ a {
 }
 
 .search-info {
-  margin: 0;
+  margin: 0 0 $unit;
   background-color: white;
   padding: 0;
   box-sizing: border-box;
@@ -1017,9 +1036,9 @@ a {
   position: relative;
   z-index: 1;
   width: 100%;
-  background-color: $mdc-theme-secondary-light;
+  background-color: white;
   margin-bottom: $unit*1.5;
-  box-shadow: none;
+  // box-shadow: none;
   .mdc-card__info--content-primary-row {
     padding: $unit/2;
   }
@@ -1160,6 +1179,9 @@ a {
     margin: $unit/2 0 $unit;
     padding: $unit/2;
     border-radius: 2px;
+  }
+  .panel {
+    background-color: $brand-primary-lightgrey;
   }
   .mdc-card__info--content-secondary-title {
     margin: 0 0 $unit/2 !important;
@@ -2046,7 +2068,7 @@ footer,
 }
 .home-content-primary {
   padding: 0 $unit !important;
-  margin-bottom: $unit;
+  // margin-bottom: $unit;
   position: relative;
   .mdc-layout-grid {
     display: inline-block;
@@ -2908,12 +2930,12 @@ form.inline-form {
     content: "";
     position: absolute;
     top: 100%;
-    background: linear-gradient(rgba(240,240,240, 0), rgba(240,240,240, 1));
+    background: linear-gradient(rgba(255,255,255, 0), rgba(255,255,255, 1));
   }
 }
 .search-result-article__notes .faded-overflow {
   &:before {
-    background: linear-gradient(rgba(236, 242, 233, 0), rgba(236, 242, 233, 1));
+    background: linear-gradient(rgba(255,255,255, 0), rgba(255,255,255, 1));
   }
 }
 
@@ -2994,18 +3016,18 @@ form.inline-form {
 }
 
 body {
-  background-color: $mdc-theme-footer-dark;
+  background-color: $brand-primary-black;
 }
 ::-moz-selection {
   color: #fff;
-  background: $mdc-theme-primary-dark;
+  background: $brand-secondary-green;
 }
 ::selection {
   color: #fff;
-  background: $mdc-theme-primary-dark;
+  background: $brand-secondary-green;
 }
 // .mdc-theme--background {
-//   background-color: $mdc-theme-secondary-light !important;
+//   background-color: $brand-secondary-yellow !important;
 // }
 .mdc-top-app-bar {
   background-color: #fff;
@@ -3015,59 +3037,59 @@ header {
   .container-fluid {
     .mdc-tab-bar {
       .mdc-tab {
-        color: $mdc-theme-primary-dark;
+        color: $brand-secondary-green;
         .mdc-tab__text-label {
-          color: $mdc-theme-primary-dark;
+          color: $brand-secondary-green;
         }
       }
     }
     #upper-tab-bar {
       .mdc-tab:hover .mdc-tab__text-label {
-        border-bottom-color: $mdc-theme-primary-dark;
+        border-bottom-color: $brand-secondary-green;
       }
       .mdc-tab.mdc-tab--active .mdc-tab__text-label {
-        border-bottom-color: $mdc-theme-primary-dark;
+        border-bottom-color: $brand-secondary-green;
       }
     }
     .mdc-top-app-bar__main .mdc-tab-bar,
     .mdc-top-app-bar__user .mdc-tab-bar {
       .mdc-tab {
-        color: $mdc-theme-secondary-dark;
+        color: $brand-primary-black;
       }
       .mdc-tab:hover .mdc-tab__text-label {
-        border-bottom-color: rgba(24, 24, 24, 0.75);
+        border-bottom-color: $brand-primary-black;
       }
       .mdc-tab.mdc-tab--active .mdc-tab__text-label {
-        border-bottom-color: rgba(24, 24, 24, 0.9);
+        border-bottom-color: $brand-primary-black;
       }
     }
     .mdc-top-app-bar__navigation-icon {
-      color: $mdc-theme-secondary-dark;
+      color: $brand-primary-black;
     }
     .mdc-top-app-bar__main,
     .mdc-top-app-bar__user {
       .mdc-menu-surface--anchor {
         .mdc-button:hover {
-          border-bottom-color: rgba(24, 24, 24, 0.6);
+          border-bottom-color: $brand-primary-black;
         }
       }
     }
     .mdc-top-app-bar__section {
       .mdc-top-app-bar__action-item {
-        color: $mdc-theme-secondary !important;
+        color: $brand-secondary-orange !important;
       }
     }
   }
 }
 .mdc-tab-bar {
   .mdc-tab, .mdc-tab__text-label {
-    color: $mdc-theme-secondary-dark !important;
+    color: $brand-primary-black !important;
   }
 }
 
 .mdc-drawer--temporary {
   .mdc-drawer__header-content {
-    background-color: $mdc-theme-primary;
+    background-color: $brand-primary-green;
   }
 }
 .mdc-drawer--permanent {
@@ -3078,8 +3100,8 @@ header {
 .mdc-checkbox__native-control:enabled:indeterminate ~ .mdc-checkbox__background,
 .mdc-checkbox__native-control:disabled:checked ~ .mdc-checkbox__background,
 .mdc-checkbox__native-control:disabled:indeterminate ~ .mdc-checkbox__background {
-  border-color: $mdc-theme-primary;
-  background-color: $mdc-theme-primary;
+  border-color: $brand-primary-green;
+  background-color: $brand-primary-green;
   .mdc-checkbox__checkmark__path {
     stroke-width: 3px;
   }
@@ -3106,14 +3128,13 @@ header {
   }
 }
 
-
 .sign-in-form,
 .reset-password-form {
   .middle-line-text {
-    border-bottom: 2px solid #dfdfdf;
+    border-bottom: 2px solid $brand-primary-grey;
     span {
-      background-color: $mdc-theme-secondary-light;
-      color: #555;
+      background-color: white;
+      color: $brand-primary-black;
     }
   }
   .mdc-button {
@@ -3122,17 +3143,15 @@ header {
 }
 
 .card-loader {
-  background-color: $mdc-theme-secondary-light;
+  background-color: $brand-secondary-yellow;
   .card-loader-inner {
-    color: $mdc-theme-primary-dark;
+    color: $brand-secondary-green;
   }
 }
 
-
-
 .content-primary-search {
   .head {
-    border-bottom: 2px solid $mdc-theme-primary-dark;
+    border-bottom: 2px solid $brand-secondary-green;
     .mdc-tab-bar {
       height: 56px;
     }
@@ -3145,10 +3164,10 @@ header {
       .mdc-tab,
       .mdc-tab__icon,
       .mdc-tab__text-label {
-        color: $mdc-theme-primary-dark !important;
+        color: $brand-secondary-green !important;
       }
       .mdc-tab--active {
-        background: $mdc-theme-primary-dark;
+        background: $brand-secondary-green;
         .mdc-tab__icon,
         .mdc-tab__text-label {
           color: white !important;
@@ -3159,10 +3178,10 @@ header {
       }
     }
     .mdc-button.saved-search {
-      color: $mdc-theme-secondary-dark;
+      color: $brand-secondary-red;
       label {
         .far {
-          color: $mdc-theme-primary-light;
+          color: $brand-primary-green;
         }
       }
     }
@@ -3185,10 +3204,10 @@ header {
   .mdc-form-field {
     .mdc-radio {
       .mdc-radio__outer-circle {
-        border-color: $mdc-theme-primary !important;
+        border-color: $brand-primary-green !important;
       }
       .mdc-radio__inner-circle {
-        border-color: $mdc-theme-primary !important;
+        border-color: $brand-primary-green !important;
       }
     }
   }
@@ -3200,51 +3219,46 @@ header {
 }
 .saved-search-remove .far:hover,
 .saved-search-remove:hover .far {
-  color: $mdc-theme-error !important;
+  color: $brand-secondary-green !important;
 }
 
 .icon-toggle-off {
   color: #999999;
 }
 .icon-toggle-on {
-  color: $mdc-theme-primary-light;
+  color: $brand-primary-green;
 }
 
 .mdc-text-field--textarea .mdc-floating-label {
-  background-color: $mdc-theme-secondary-light;
+  background-color: $brand-secondary-yellow;
 }
 
 a {
-  color: $mdc-theme-primary-dark;
+  color: $brand-secondary-green;
 }
 
 .mdc-chip {
-  background-color: white;
-  color: $mdc-theme-secondary-dark;
+  background-color: $brand-secondary-lightblue;
+  color: white;
   .mdc-chip__icon.mdc-chip__icon--leading {
-    color: $mdc-theme-secondary-dark;
+    color: white;
   }
   .mdc-chip__checkmark-path {
     stroke: #fff !important;
   }
 }
 .mdc-chip:hover {
-  .mdc-chip__icon--leading {
-    color: #000;
-  }
-}
-.mdc-card .mdc-chip {
-  // background-color: $mdc-theme-complimentary-dark;
+  background-color: $brand-secondary-blue;
 }
 .mdc-theme--on-primary a,
 .mdc-card .mdc-chip.mdc-chip--selected,
 .mdc-chip.mdc-chip--selected {
-  background-color: $mdc-theme-primary;
+  background-color: $brand-primary-green;
   color: #fff;
 }
 .mdc-card .mdc-chip.mdc-chip--selected:hover,
 .mdc-chip.mdc-chip--selected:hover {
-  background-color: $mdc-theme-primary-dark;
+  background-color: $brand-secondary-green;
   color: #fff;
 }
 
@@ -3254,15 +3268,15 @@ a {
 }
 
 .mdc-button--raised {
-  background-color: $mdc-theme-primary !important;
+  background-color: $brand-primary-green !important;
 }
 .mdc-button--raised:hover {
-  background-color: $mdc-theme-primary-dark !important;
+  background-color: $brand-secondary-green !important;
 }
 
 .leaflet-container {
   a {
-    color: $mdc-theme-primary;
+    color: $brand-primary-green;
     -webkit-tap-highlight-color: transparent;
   }
   .leaflet-control.leaflet-bar a {
@@ -3271,23 +3285,23 @@ a {
 }
 .leaflet-marker-icon {
   .marker-icon {
-    color: $mdc-theme-primary;
+    color: $brand-primary-green;
     text-shadow: 3px 4px 0.75rem rgba(42,42,42,.75);
   }
   .map-marker-overlay {
-    color: $mdc-theme-primary;
+    color: $brand-primary-green;
     background: #fff;
   }
   .marker-icon.shortlisted {
-    color: $mdc-theme-primary-dark;
+    color: $brand-secondary-green;
   }
   .map-marker-overlay.shortlisted {
     color: #fff;
-    background: $mdc-theme-primary-dark;
+    background: $brand-secondary-green;
     border: 2px solid #fff;
   }
   .marker-icon.homebased {
-    color: $mdc-theme-primary-light;
+    color: $brand-primary-green;
   }
 }
 
@@ -3297,17 +3311,17 @@ a {
 
 .search-info {
   background: #fff;
-  color: $mdc-theme-secondary-dark;
+  color: $brand-primary-black;
 }
 
 .mdc-card {
   .mdc-card__actions {
-    // background-color: $mdc-theme-complimentary-light;
+    // background-color: $brand-secondary-turquoice;
     a {
-      color: $mdc-theme-primary;
+      color: $brand-primary-green;
     }
     .mdc-card__action {
-      color: $mdc-theme-primary;
+      color: $brand-primary-green;
     }
   }
 }
@@ -3317,12 +3331,12 @@ a {
 .mdc-card.gist,
 .mdc-card.search-result {
   .search-result-article__notes {
-    // background-color: $mdc-theme-complimentary-light;
+    // background-color: $brand-secondary-turquoice;
   }
   .mdc-card__actions {
-    // background-color: $mdc-theme-complimentary-light;
+    // background-color: $brand-secondary-turquoice;
     .mdc-card__action {
-      color: $mdc-theme-primary;
+      color: $brand-primary-green;
     }
   }
 }
@@ -3330,32 +3344,32 @@ a {
 .content-primary.mdc-card.mini,
 .content-primary.mdc-card.gist,
 .content-primary.mdc-card.search-result {
-  // border-top: $unit/3 solid $mdc-theme-complimentary-light;
+  // border-top: $unit/3 solid $brand-secondary-turquoice;
 }
 .content-primary.mdc-card.list.top-content,
 .content-primary.mdc-card.mini.top-content,
 .content-primary.mdc-card.gist.top-content,
 .content-primary.mdc-card.search-result.top-content {
-  // border-top-color: $mdc-theme-primary;
+  // border-top-color: $brand-primary-green;
   .mdc-card__actions {
-    background-color: $mdc-theme-primary;
+    background-color: $brand-primary-green;
     .mdc-card__action {
       color: #fff;
     }
     .mdc-chip.mdc-chip--selected {
-      background-color: $mdc-theme-primary-dark;
+      background-color: $brand-secondary-green;
     }
   }
 }
 
 .panel-heading {
-  background: $mdc-theme-error;
+  background: $brand-secondary-green;
   color: #fff;
 }
 .mdc-card.full {
   .editor-toolbar,
   .CodeMirror {
-    border-bottom: 1px solid $mdc-theme-secondary;
+    border-bottom: 1px solid $brand-secondary-orange;
   }
   .text-field-container.user-notes {
     .mdc-text-field--textarea .mdc-floating-label {
@@ -3363,13 +3377,13 @@ a {
     }
   }
   #content-primary-tab-bar {
-    background-color: $mdc-theme-complimentary-light;
+    background-color: $brand-secondary-turquoice;
     .mdc-tab__icon,
     .mdc-tab__text-label {
-      color: $mdc-theme-primary-dark;
+      color: $brand-secondary-green;
     }
     .mdc-tab-indicator__content {
-      background-color: $mdc-theme-primary-dark;
+      background-color: $brand-secondary-green;
     }
   }
   .content-primary-info-container {
@@ -3379,15 +3393,15 @@ a {
   .mdc-card--full-content {
     .key-info-extra {
       .mdc-chip {
-        color: $mdc-theme-secondary-dark;
-        background-color: $mdc-theme-complimentary-light;
+        color: $brand-secondary-red;
+        background-color: $brand-secondary-turquoice;
       }
       .mdc-chip:hover {
-        color: $mdc-theme-secondary-light;
-        background-color: $mdc-theme-primary-dark;
+        color: $brand-secondary-yellow;
+        background-color: $brand-secondary-green;
       }
       a {
-        color: $mdc-theme-primary-dark;
+        color: $brand-secondary-green;
       }
     }
     .save-button-block {
@@ -3399,7 +3413,7 @@ a {
 }
 
 hr {
-  background-color: $mdc-theme-primary-light;
+  background-color: $brand-primary-green;
 }
 
 a.mdc-drawer__content-heading {
@@ -3408,7 +3422,7 @@ a.mdc-drawer__content-heading {
 
 .mdc-icon-button {
   .far:hover {
-    color: $mdc-theme-primary-dark;
+    color: $brand-secondary-green;
   }
 }
 
@@ -3436,7 +3450,7 @@ a.mdc-drawer__content-heading {
 .mdc-card.content-primary-shortlisted {
   .mdc-card__actions {
     .mdc-card__action--shortlist:hover .fa-heart {
-      color: $mdc-theme-primary-dark;
+      color: $brand-secondary-green;
     }
   }
 }
@@ -3447,7 +3461,7 @@ a.mdc-drawer__content-heading {
     background-color: #fff;
     .tt-suggestion:hover,
     .tt-cursor {
-      background-color: $mdc-theme-complimentary-light;
+      background-color: $brand-secondary-turquoice;
     }
   }
 }
@@ -3467,10 +3481,10 @@ a.mdc-drawer__content-heading {
 #home-tab-bar {
   .mdc-tab__icon,
   .mdc-tab__text-label {
-    color: $mdc-theme-secondary-dark;
+    color: $brand-secondary-red;
   }
   .mdc-tab-indicator__content {
-    background-color: $mdc-theme-secondary-dark;
+    background-color: $brand-secondary-red;
   }
 }
 
@@ -3485,7 +3499,7 @@ a.mdc-drawer__content-heading {
   .mdc-card__info--content-primary {
     .mdc-card__info--content-primary-title {
       a .top-content {
-        background-color: $mdc-theme-complimentary-dark !important;
+        background-color: $brand-secondary-pink !important;
         color: #000;
       }
     }
@@ -3499,7 +3513,7 @@ a.mdc-drawer__content-heading {
     }
     .fa-li {
       .fa-fw {
-        color: $mdc-theme-secondary-dark;
+        color: $brand-secondary-red;
       }
     }
   }
@@ -3509,14 +3523,14 @@ a.mdc-drawer__content-heading {
 }
 
 .search-form {
-  background: $mdc-theme-secondary-light;
+  background: white;
   .geo-lookup,
   .active-search-icon{
-    color: $mdc-theme-primary !important;
+    color: $brand-primary-green !important;
   }
   .geo-lookup:hover,
   .active-search-icon:hover{
-    color: $mdc-theme-primary-dark !important;
+    color: $brand-secondary-green !important;
   }
   .search-distance {
     color: rgba(0, 0, 0, 0.7);
@@ -3528,26 +3542,26 @@ a.mdc-drawer__content-heading {
 .pagination {
   li {
     a {
-      color: $mdc-theme-secondary-dark;
+      color: $brand-secondary-red;
     }
     a.pagination-arrow {
-      color: $mdc-theme-secondary-dark;
+      color: $brand-secondary-red;
     }
   }
   li.disabled a.pagination-arrow {
-    color: $mdc-theme-secondary-dark;
+    color: $brand-secondary-red;
   }
   li.current-page {
-    background-color: $mdc-theme-complimentary-dark;
+    background-color: $brand-secondary-pink;
     a {
       color: white;
     }
   }
   li:hover,
   li.current-page:hover {
-    background-color: $mdc-theme-primary-dark;
+    background-color: $brand-secondary-green;
     a {
-      color: $mdc-theme-secondary-light;
+      color: $brand-secondary-yellow;
     }
   }
   li.disabled:hover {
@@ -3563,7 +3577,7 @@ footer,
   .mdc-list {
     .mdc-list-item {
       .mdc-list-item__text {
-        color: $mdc-theme-primary;
+        color: $brand-primary-green;
       }
     }
   }
@@ -3589,8 +3603,8 @@ footer,
         }
         .mdc-button:hover {
           background: #fff !important;
-          color: $mdc-theme-primary-dark !important;
-          border-color: $mdc-theme-primary-dark !important;
+          color: $brand-secondary-green !important;
+          border-color: $brand-secondary-green !important;
         }
       }
       .search-form {
@@ -3620,46 +3634,39 @@ footer,
   }
 }
 
-.home-content {
-  background-color: $mdc-theme-secondary-light;
-}
-.home-content-primary {
-  background-color: $mdc-theme-secondary-light;
-}
-
 .scroll-button {
   .scroll-icon {
-    background-color: $mdc-theme-primary;
+    background-color: $brand-primary-green;
     color: #fff;
   }
 }
 .scroll-button:hover {
   .scroll-icon {
-    background-color: $mdc-theme-primary-dark;
+    background-color: $brand-secondary-green;
   }
 }
 .scroll-button.scroll-left {
-  background-image: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0.1) 50%, $mdc-theme-secondary-light 50.01%, $mdc-theme-secondary-light);
+  background-image: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0.1) 50%, $brand-secondary-yellow 50.01%, $brand-secondary-yellow);
 }
 .scroll-button.scroll-right {
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0.1) 50%, $mdc-theme-secondary-light 50.01%, $mdc-theme-secondary-light);
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0.1) 50%, $brand-secondary-yellow 50.01%, $brand-secondary-yellow);
 }
 .scroll-button.scroll-left:hover {
-  background-image: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0.3) 50%, $mdc-theme-secondary-light 50.01%, $mdc-theme-secondary-light);
+  background-image: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0.3) 50%, $brand-secondary-yellow 50.01%, $brand-secondary-yellow);
 }
 .scroll-button.scroll-right:hover {
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0.3) 50%, $mdc-theme-secondary-light 50.01%, $mdc-theme-secondary-light);
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0.3) 50%, $brand-secondary-yellow 50.01%, $brand-secondary-yellow);
 }
 
 // Footer ======================================================================
 
 footer.mdc-layout__footer {
   border-top: none;
-  background-color: $mdc-theme-footer;
+  background-color: $brand-primary-grey;
   box-shadow: none;
   h3 {
     color: #555;
-    border-bottom: $unit/5 solid $mdc-theme-footer-light;
+    border-bottom: $unit/5 solid $brand-primary-grey;
   }
   a,
   a:hover {
@@ -3669,7 +3676,7 @@ footer.mdc-layout__footer {
   .footer-copyright a:hover,
   .about a,
   .about a:hover {
-    color: $mdc-theme-primary-dark;
+    color: $brand-secondary-green;
     font-weight: $heading-font-weight;
   }
   .mdc-layout-grid {
@@ -3685,12 +3692,12 @@ footer.mdc-layout__footer {
     }
   }
   .footer-copyright {
-    background-color: $mdc-theme-footer-light;
+    background-color: $brand-primary-grey;
   }
 }
 
 #app-snackbar {
-  background-color: $mdc-theme-primary-dark;
+  background-color: $brand-secondary-green;
 }
 
 .search-result-article__notes .faded-overflow {
@@ -3700,15 +3707,15 @@ footer.mdc-layout__footer {
 }
 
 .after-textfield-action {
-  color: $mdc-theme-primary-dark;
+  color: $brand-secondary-green;
 }
 
 .mdc-button--warning {
-  color: $mdc-theme-error !important;
+  color: $brand-secondary-green !important;
 }
 
 .mdc-button--raised.mdc-button--warning {
-  background-color: $mdc-theme-error !important;
+  background-color: $brand-secondary-green !important;
   color: #fff !important;
 }
 

@@ -17,10 +17,13 @@
           }
         }
       ],
-      "filter": [
+      "should": [
         {
           "term": {
-            "country": "Scotland"
+            "country": {
+              "value": "Scotland",
+              "boost": 5
+            }
           }
         }
       ]
