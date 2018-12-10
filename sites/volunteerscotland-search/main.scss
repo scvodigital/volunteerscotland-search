@@ -139,13 +139,13 @@ a[href^="https://"]::after {
   position: relative;
 }
 a.noext::after,
+a[href^="https://search.volunteerscotland.net"]::after,
 a[href^="https://volunteerscotland-search.local"]::after,
 a[href^="https://test.getinvolved.scot"]::after,
 a[href^="https://goodhq.org"]::after,
 a[href^="https://scvo.org"]::after,
 a[href^="https://volunteerscotland.net"]::after,
-a[href^="https://www.volunteerscotland.net"]::after,
-a[href^="https://search.volunteerscotland.net"]::after {
+a[href^="https://www.volunteerscotland.net"]::after {
   content: " ";
   margin: 0;
   top: 0;
@@ -1621,8 +1621,8 @@ body.shortlist {
   }
 }
 .container-content.content-page {
-  margin: $unit*1.5 auto 0;
-  padding-bottom: $unit*1.5;
+  padding: $unit 0 $unit*2;
+  margin: 0 auto;
   .x-items {
     margin-top: 0;
   }
@@ -3101,7 +3101,7 @@ form.inline-form {
 }
 
 body {
-  background-color: $brand-primary-black;
+  background-color: $brand-primary-grey;
 }
 ::-moz-selection {
   color: white;
