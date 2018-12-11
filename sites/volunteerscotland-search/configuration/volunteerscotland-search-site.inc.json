@@ -209,7 +209,7 @@
       "logoUrl": "",
       "config" : {
         "apiKey": "AIzaSyAwCMOrTj2eq8tVAdgD3vrgRqz9oIluiYk",
-        "authDomain": "scvo-volunteerscotland-search.firebaseapp.com",
+        "authDomain": "auth.search.volunteerscotland.net",
         "databaseURL": "https://scvo-volunteerscotland-search.firebaseio.com",
         "projectId": "scvo-volunteerscotland-search",
         "storageBucket": "scvo-volunteerscotland-search.appspot.com",
