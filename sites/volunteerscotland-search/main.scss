@@ -3209,16 +3209,16 @@ header {
 }
 
 .checkbox-toggle-display-all {
-  .mdc-form-field{
+  .mdc-form-field {
     display:inline-flex;
   }
   .checkbox-collapse-element {
-    display:inline-flex;
+    display: inline-flex;
   }
 }
 
 .checkbox-toggle-display-checked {
-  .mdc-form-field{
+  .mdc-form-field {
     display: none;
   }
   .checkbox-collapse-element {
