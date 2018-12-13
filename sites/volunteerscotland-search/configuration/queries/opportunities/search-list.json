@@ -8,6 +8,7 @@
     "available_from",
     "client_group",
     "client_group_slugs",
+    "date_last_modified",
     "description",
     "geo_coords",
     "geo",
@@ -20,30 +21,32 @@
     "work_type_slugs"
 ],
   "query": {
-    "bool": {
-      "filter": [
-        {{>queries_opportunity_common_filters @root.request.params.query}},
-        {{>queries_opportunity_search_filters @root.request.params.query}}
-      ],
-      "must": [
-        {{>queries_opportunity_search_must @root.request.params.query}}
+    "function_score": {
+      "query": {
+        "bool": {
+          "filter": [
+            {{>queries_opportunity_common_filters @root.request.params.query}},
+            {{>queries_opportunity_search_filters @root.request.params.query}}
+          ],
+          "must": [
+            {{>queries_opportunity_search_must @root.request.params.query}}
+          ]
+        }
+      },
+      "boost_mode": "multiply",
+      "functions" : [
+        {
+          "weight": "8",
+          "gauss": {
+            "date_last_modified": {
+              "scale": "10d",
+              "decay": "0.1"
+            }
+          }
+        }
       ]
     }
   },
-  {{#ifAll @root.request.params.query.location @root.request.params.query.lat @root.request.params.query.lng ~}}
-  "script_fields" : {
-    "distance" : {
-      "script" : {
-        "inline": "doc['geo_coords'].arcDistance(params.lat,params.lon) * 0.000621371",
-        "lang": "painless",
-        "params": {
-          "lat": {{@root.request.params.query.lat}},
-          "lon": {{@root.request.params.query.lng}}
-        }
-      }
-    }
-  },
-  {{/ifAll ~}}
   "sort": [
     {{#if @root.request.params.query.sort ~}}
       {{#compare @root.request.params.query.sort "===" "distance" ~}}
@@ -70,7 +73,7 @@
       {{/compare ~}}
     {{else}}
       {
-        "available_from": "desc"
+        "_score": "desc"
       }
     {{/if ~}}
   ]

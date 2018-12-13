@@ -120,7 +120,7 @@
           </div>
           <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-9-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
             <div class="h-padding">
-              <div data-slider data-slider-target="#slider-distance" class="mdc-slider mdc-slider--discrete" tabindex="0" role="slider" aria-valuemin="5" aria-valuemax="50" data-step="5" name="gunyoki" aria-valuenow="{{default @root.request.params.query.distance 10}}" aria-label="Select distance">
+              <div data-slider data-slider-target="#slider-distance" class="mdc-slider mdc-slider--discrete" tabindex="0" role="slider" aria-valuemin="5" aria-valuemax="50" data-step="5" name="distance" aria-valuenow="{{default @root.request.params.query.distance 10}}" aria-label="Select distance">
                 <div class="mdc-slider__track-container">
                   <div class="mdc-slider__track"></div>
                 </div>
@@ -140,7 +140,7 @@
           <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone">
             miles
           </div>
-          <input type="hidden" name="distance" id="slider-distance" value="{{@root.request.params.query.distance}}">
+          <input type="hidden" name="distance" hairy id="slider-distance" value="{{default @root.request.params.query.distance 10}}">
         </div>
       </div>
     </div>
