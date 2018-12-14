@@ -1,6 +1,8 @@
 <div class="container-content">
   {{#compare @root.data.primaryResponse.hits.total ">" 0}}
 
+
+  {{> dialog_favourites}}
   <div class="content-primary">
     {{#each @root.data.primaryResponse.hits.hits ~}}
       {{> opportunity_full _source}}

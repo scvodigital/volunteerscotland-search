@@ -14,6 +14,7 @@
     "assetsVersion": "{:../../../package.json@version}",
     "assetsBase": "https://storage.googleapis.com/scvo-assets/test/volunteerscotland-search/",
     "favouritesCampaignName": "vs-favourites",
+    "applicationsCampaignName": "vs-applications",
     "emailCampaignName": "vs-saved-searches",
     "menus": "{:./volunteerscotland-search-menus.json}",
     "elasticsearchUrl": "{$../elasticsearch-url.txt}",

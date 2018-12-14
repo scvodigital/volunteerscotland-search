@@ -1,0 +1,22 @@
+{{#if @root.data.auth ~}}
+  {{#> ajax_chip
+    onText="Interest Registered"
+    offText="Register Interest"
+    iconClasses="far fa-pencil"
+    on=(contains (map @root.data.register_interest.items.[0] (getProp "value")) id)
+  }}
+    {
+    "onClasses": {
+    ".mdc-card[data-opportunity-id=\"{{../slug}}\"]": "added-to-favourites"
+    },
+    "offClasses": {
+    ".mdc-card[data-opportunity-id=\"{{../slug}}\"]": "removed-from-favourites"
+    }
+    }
+  {{/ajax_chip}}
+{{else}}
+  <div class="mdc-chip">
+    <span class="far fa-pencil mdc-chip__icon mdc-chip__icon--leading" aria-hidden="true"></span>
+    <div class="mdc-chip__text noselect"><a href="register-interest/{{slug}}">Register Interest</a></div>
+  </div>
+{{/if ~}}

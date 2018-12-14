@@ -1,0 +1,60 @@
+{
+  "name": "register-interest",
+  "pattern": "/register-interest/:slug",
+  "metaData": {
+    "sidebarButton": {
+      "icon": "search",
+      "tooltip": "Search",
+      "classes": "hide-md hide-lg"
+    }
+  },
+  "defaultParams": {
+    "context": "detail"
+  },
+  "tasks": [
+    "context.metaData.commonTasks.authNotRequired",
+    "context.metaData.commonTasks.favouritesData",
+    "context.metaData.commonTasks.notesData",
+    {
+      "name": "primaryResponse",
+      "taskModule": "elasticsearch",
+      "config": {
+        "connectionStringTemplate": "{$../../elasticsearch-url.txt}",
+        "elasticsearchConfig": {
+          "apiVersion": "5.6"
+        },
+        "queryTemplates": {
+          "index": "web-content-production",
+          "type": "milo-volunteering-opportunity",
+          "template": ">context.metaData.handlebars.queries.opportunities_opportunity"
+        }
+      },
+      "renderer": "handlebars"
+    },
+    {
+      "name": "destination",
+      "taskModule": "renderLayout",
+      "renderer": "handlebars",
+      "config": {
+        "logic": {
+          "if": [
+            "default"
+          ]
+        },
+        "output": "body",
+        "layouts": {
+          "default": {
+            "layout": ">context.metaData.handlebars.layouts.default",
+            "parts": {
+              "head": ">context.metaData.handlebars.templates.opportunities_register-interest-head-tags",
+              "body": ">context.metaData.handlebars.templates.opportunities_register-interest",
+              "foot": ">context.metaData.handlebars.templates.opportunities_register-interest-foot",
+              "sidebar": ">context.metaData.handlebars.templates.opportunities_search-form"
+            },
+            "contentType": "text/html"
+          }
+        }
+      }
+    }
+  ]
+}

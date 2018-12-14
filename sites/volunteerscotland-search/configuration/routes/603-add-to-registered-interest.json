@@ -1,0 +1,28 @@
+{
+  "name": "add-to-registered-interest",
+  "pattern": "/add-to-registered-interest",
+  "acceptedVerbs": "GET",
+  "tasks": [
+    "context.metaData.commonTasks.authRequired",
+    {
+      "name": "notifications",
+      "taskModule": "mysql",
+      "config": {
+        "connectionName": "volunteerscotland_notifications",
+        "queryTemplates": {
+          "add_to_favourites": ">context.metaData.handlebars.queries.notifications_add-to-registered-interest"
+        }
+      },
+      "renderer": "handlebars"
+    },
+    {
+      "name": "destination",
+      "taskModule": "render",
+      "renderer": "handlebars",
+      "config": {
+        "output": "body",
+        "template": "Added {{@root.request.params.query.id}}"
+      }
+    }
+  ]
+}
