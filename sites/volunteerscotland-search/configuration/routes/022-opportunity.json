@@ -1,6 +1,7 @@
 {
   "name": "opportunity",
   "pattern": "/opportunity/:slug",
+  "debug" : true,
   "metaData": {
     "sidebarButton": {
       "icon": "search",

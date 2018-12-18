@@ -1,0 +1,150 @@
+{{#with @root.data.primaryResponse.hits.hits.0._source}}
+<form id="register-interest-form" action="/add-to-registered-interest?id={{Id}}" method="POST" class="sign-in-form">
+  <h2>Register Interest</h2>
+  <h2>{{title}} with {{organisation_name}}</h2>
+  {{#unless @root.data.auth}}
+  <h4>If you would like to save this data for future applications you must first <a href="sign-in">Sign in or Register</a></h4>
+  {{/unless}}
+
+  {{#if (contains (map @root.data.registeredInterest.items.[0] (getProp "value")) Id)}}
+    <p>You have already registered interest - <button type="button" onclick="sqlRemoveInterest()">Remove SQL recording?</button></p>
+  {{else}}
+    <p>This one is not registered interested.</p>
+  {{/if}}
+
+  {{#if @root.data.profileInfo}}
+    <p>there is profile info here {{@root.data.profileInfo}} - <button type="button" onclick="fireBaseRemoveInfo()">Purge Account info??</button></p></p>
+  {{else}}
+    <p>No profile info here!</p>
+  {{/if}}
+
+
+  <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
+    <input type="text" id="thisfield" name="first_name" class="mdc-text-field__input mdc-text-field--fullwidth" value="">
+    <label class="mdc-floating-label" for="first_name">
+      First Name
+    </label>
+  </div>
+
+  <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
+    <input type="text" id="thisfield" name="last_name" class="mdc-text-field__input mdc-text-field--fullwidth" value="">
+    <label class="mdc-floating-label" for="last_name">
+      Surname
+    </label>
+  </div>
+
+  <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
+    <input type="text" id="thisfield" name="location_address" class="mdc-text-field__input mdc-text-field--fullwidth" value="">
+    <label class="mdc-floating-label" for="address">
+      Address
+    </label>
+  </div>
+
+  <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
+    <input type="text" id="thisfield" name="location_city" class="mdc-text-field__input mdc-text-field--fullwidth" value="">
+    <label class="mdc-floating-label" for="afield">
+      Town / City
+    </label>
+  </div>
+
+  <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
+    <input type="text" id="thisfield" name="location_postcode" class="mdc-text-field__input mdc-text-field--fullwidth" value="">
+    <label class="mdc-floating-label" for="location_postcode">
+      Postcode
+    </label>
+  </div>
+
+  <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
+    <input type="text" id="thisfield" name="email" class="mdc-text-field__input mdc-text-field--fullwidth" value="">
+    <label class="mdc-floating-label" for="email">
+      Email Address
+    </label>
+  </div>
+
+  <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
+    <input type="text" id="thisfield" name="phone" class="mdc-text-field__input mdc-text-field--fullwidth" value="">
+    <label class="mdc-floating-label" for="phone">
+      Phone Number
+    </label>
+  </div>
+
+  <div class="mdc-text-field mdc-text-field--box mdc-text-field--textarea" data-mdc-auto-init="MDCTextField">
+    <textarea type="text" id="thisfield" name="message" class="mdc-text-field__input mdc-text-field--fullwidth" value="" ></textarea>
+    <label class="mdc-floating-label" for="phone">
+      Message
+    </label>
+  </div>
+
+{{#if @root.data.auth}}
+  <div class="mdc-form-field">
+    <div class="mdc-checkbox">
+      <input type="checkbox"
+             class="mdc-checkbox__native-control"
+             name="store_profile_info"
+             id="store-details"/>
+      <div class="mdc-checkbox__background">
+        <svg class="mdc-checkbox__checkmark"
+             viewBox="0 0 24 24">
+          <path class="mdc-checkbox__checkmark-path"
+                fill="none"
+                d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+        </svg>
+        <div class="mdc-checkbox__mixedmark"></div>
+      </div>
+    </div>
+    <label for="email-on">Remember details for future applications? We will not use these details for anything but volunteering applications, and you will be asked (via this form) before submitting each time.</label>
+  </div>
+{{/if}}
+  <button type="button" class="mdc-button mdc-button--raised" id="register-interest-submit" onclick="sqlSaveInterest()">
+    SQL Save
+  </button>
+
+  <button type="submit" class="mdc-button mdc-button--raised" id="register-interest-submit">
+    Profile info Save
+  </button>
+
+</form>
+<div class="detailed-info">
+{{#ifAny organisation_contact_last_name organisation_contact_email organisation_website ~}}
+  <h4 class="mdc-typography--headline6">Contact</h4>
+  {{#ifAny organisation_contact_first_name organisation_contact_last_name ~}}
+    <div class="mdc-typography--body1">
+      <strong>Name: </strong> {{{organisation_contact_first_name}}} {{{organisation_contact_last_name}}}
+    </div>
+  {{/ifAny ~}}
+
+  {{#if organisation_contact_email ~}}
+    <div class="mdc-typography--body1">
+      <strong>Email: </strong> <a href="mailto:{{{organisation_contact_email}}}">{{{organisation_contact_email}}}</a>
+    </div>
+  {{/if ~}}
+
+  {{#if organisation_website ~}}
+    <div class="mdc-typography--body1">
+      <strong>Website: </strong> <a href="{{fixUrl organisation_website 'http'}}">{{{organisation_website}}}</a>
+    </div>
+  {{/if ~}}
+</div>
+{{/ifAny ~}}
+
+
+<script>
+
+  function sqlRemoveInterest(){
+    var Id = "{{Id}}";
+    $.ajax({
+      type : "GET",
+      url: "/remove-from-registered-interest?id=" + Id,
+    })
+  }
+  function fireBaseRemoveInfo(){
+    var Id = "{{Id}}";
+      $.ajax({
+      type : "POST",
+      url: "/delete-profile-info?id=" + Id,
+    })
+  }
+</script>
+
+{{/with}}
+

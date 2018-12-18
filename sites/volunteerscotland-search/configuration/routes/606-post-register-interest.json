@@ -1,42 +1,25 @@
 {
-  "name": "account",
-  "pattern": "/account",
+  "name": "post-register-interest",
+  "debug": true,
+  "pattern": "/post-register-interest",
   "metaData": {
     "sidebarButton": {
-      "icon": "cog",
-      "tooltip": "Account",
+      "icon": "search",
+      "tooltip": "Search",
       "classes": "hide-md hide-lg"
     }
   },
   "defaultParams": {
-    "context": "results"
+    "context": "detail"
   },
   "tasks": [
-    "context.metaData.commonTasks.authRequired",
+    "context.metaData.commonTasks.authNotRequired",
     "context.metaData.commonTasks.favouritesData",
-    "context.metaData.commonTasks.opportunitySupplimentary",
-    "context.metaData.commonTasks.searchesData",
     "context.metaData.commonTasks.notesData",
+    "context.metaData.commonTasks.registeredInterestData",
+    "context.metaData.commonTasks.profileInfoData",
     {
-      "name": "email_days",
-      "taskModule": "render",
-      "renderer": "handlebars",
-      "config": {
-        "output": "data",
-        "template": ">context.metaData.handlebars.partials.email_days"
-      }
-    },
-    {
-      "name": "export_user_data",
-      "taskModule": "render",
-      "renderer": "handlebars",
-      "config": {
-        "output": "data",
-        "template": ">context.metaData.handlebars.templates.account_export-user-data"
-      }
-    },
-    {
-      "name": "opportunity_lookup",
+      "name": "primaryResponse",
       "taskModule": "elasticsearch",
       "config": {
         "connectionStringTemplate": "{$../../elasticsearch-url.txt}",
@@ -46,7 +29,7 @@
         "queryTemplates": {
           "index": "web-content-production",
           "type": "milo-volunteering-opportunity",
-          "template": ">context.metaData.handlebars.queries.account_favourites"
+          "template": ">context.metaData.handlebars.queries.opportunities_opportunity"
         }
       },
       "renderer": "handlebars"
@@ -66,11 +49,10 @@
           "default": {
             "layout": ">context.metaData.handlebars.layouts.default",
             "parts": {
-              "head": ">context.metaData.handlebars.templates.pages_page-head-tags",
-              "body": ">context.metaData.handlebars.templates.account_account",
-              "foot": ">context.metaData.handlebars.templates.account_account-foot",
+              "head": ">context.metaData.handlebars.templates.opportunities_register-interest-head-tags",
+              "body": ">context.metaData.handlebars.templates.opportunities_post-register-interest",
+              "foot": ">context.metaData.handlebars.templates.opportunities_register-interest-foot",
               "sidebar": ">context.metaData.handlebars.templates.opportunities_search-form"
-
             },
             "contentType": "text/html"
           }

@@ -14,7 +14,7 @@
     "assetsVersion": "{:../../../package.json@version}",
     "assetsBase": "https://storage.googleapis.com/scvo-assets/test/volunteerscotland-search/",
     "favouritesCampaignName": "vs-favourites",
-    "applicationsCampaignName": "vs-applications",
+    "registeredInterestCampaignName": "vs-registered-interest",
     "emailCampaignName": "vs-saved-searches",
     "menus": "{:./volunteerscotland-search-menus.json}",
     "elasticsearchUrl": "{$../elasticsearch-url.txt}",
@@ -194,6 +194,17 @@
         },
         "renderer": "handlebars"
       },
+      "registeredInterestData": {
+        "name": "registeredInterest",
+        "taskModule": "mysql",
+        "config": {
+          "connectionName": "volunteerscotland_notifications",
+          "queryTemplates": {
+            "items": ">context.metaData.handlebars.queries.notifications_get-registered-interest"
+          }
+        },
+        "renderer": "handlebars"
+      },
       "notesData": {
         "name": "notes",
         "taskModule": "firebaseRtbGet",
@@ -201,6 +212,15 @@
         "config": {
           "appName": "volunteerscotland-search",
           "pathTemplate": "/notes/{{data.auth.uid}}"
+        }
+      },
+      "profileInfoData": {
+        "name": "profileInfo",
+        "taskModule": "firebaseRtbGet",
+        "renderer": "handlebars",
+        "config": {
+          "appName": "volunteerscotland-search",
+          "pathTemplate": "/profile-info/{{data.auth.uid}}"
         }
       }
     },
@@ -210,7 +230,7 @@
       "logoUrl": "",
       "config" : {
         "apiKey": "AIzaSyAwCMOrTj2eq8tVAdgD3vrgRqz9oIluiYk",
-        "authDomain": "auth.search.volunteerscotland.net",
+        "authDomain": "scvo-volunteerscotland-search.firebaseapp.com",
         "databaseURL": "https://scvo-volunteerscotland-search.firebaseio.com",
         "projectId": "scvo-volunteerscotland-search",
         "storageBucket": "scvo-volunteerscotland-search.appspot.com",

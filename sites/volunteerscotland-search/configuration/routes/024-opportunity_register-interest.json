@@ -1,5 +1,6 @@
 {
   "name": "register-interest",
+  "debug": true,
   "pattern": "/register-interest/:slug",
   "metaData": {
     "sidebarButton": {
@@ -15,6 +16,8 @@
     "context.metaData.commonTasks.authNotRequired",
     "context.metaData.commonTasks.favouritesData",
     "context.metaData.commonTasks.notesData",
+    "context.metaData.commonTasks.registeredInterestData",
+    "context.metaData.commonTasks.profileInfoData",
     {
       "name": "primaryResponse",
       "taskModule": "elasticsearch",
