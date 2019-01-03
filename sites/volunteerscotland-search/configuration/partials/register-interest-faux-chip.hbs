@@ -1,0 +1,11 @@
+{{#unless (contains (map @root.data.registeredInterest.items.[0] (getProp "value")) id)}}
+  <div class="mdc-chip">
+    <span class="far fa-pencil mdc-chip__icon mdc-chip__icon--leading" aria-hidden="true"></span>
+    <div class="mdc-chip__text noselect"><a href="register-interest/{{slug}}">Register Interest</a></div>
+  </div>
+{{else}}
+  <div class="mdc-chip mdc-chip--selected">
+    <span class="far fa-calendar-check mdc-chip__icon" aria-hidden="true"></span>
+    <div class="mdc-chip__text noselect">Interest Registered</div>
+  </div>
+{{/unless}}

@@ -16,6 +16,7 @@
     "context.metaData.commonTasks.authNotRequired",
     "context.metaData.commonTasks.searchesData",
     "context.metaData.commonTasks.favouritesData",
+    "context.metaData.commonTasks.registeredInterestData",
     {
       "name": "search_data",
       "taskModule": "elasticsearch",

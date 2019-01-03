@@ -780,12 +780,23 @@ a:hover {
     margin: 0;
   }
 }
-#search-terms.mdc-chip-set {
+#search-terms.mdc-chip-set  {
   float: left;
   padding: 0;
   margin-bottom: 0;
   .mdc-chip {
     margin: $unit/2 $unit/2 0 0;
+  }
+}
+
+#action-chips.mdc-chip-set {
+  padding: 0;
+  margin-bottom: 0;
+  .mdc-chip {
+    margin: $unit/2 $unit/2 0 0;
+  }
+  a {
+    color: white;
   }
 }
 .mdc-chip {
@@ -3362,7 +3373,7 @@ header {
   color: $brand-secondary-green;
 }
 
-.mdc-text-field--textarea .mdc-floating-label {
+.import-user-dialog-description .mdc-text-field--textarea .mdc-floating-label {
   background-color: $brand-secondary-yellow;
 }
 

@@ -1,0 +1,60 @@
+{
+  "name": "add-to-registered-interest",
+  "debug": true,
+  "pattern": "/add-to-registered-interest",
+  "acceptedVerbs": "POST"
+,
+  "tasks": [
+    "context.metaData.commonTasks.authNotRequired",
+    {
+      "name": "reroute-no-login",
+      "taskModule": "reroute",
+      "config":
+      {
+        "if":[{"==":[{"var": "data.auth.uid"}, null]},
+        "post-register-interest",
+        null
+      ]}
+    },
+    {
+      "name": "sql-register-interest",
+      "taskModule": "mysql",
+      "config": {
+        "connectionName": "volunteerscotland_notifications",
+        "queryTemplates": {
+          "add_to_favourites": ">context.metaData.handlebars.queries.notifications_add-to-registered-interest"
+        }
+      },
+      "renderer": "handlebars"
+    },
+    {
+      "name": "reroute-no-profile-save",
+      "taskModule": "reroute",
+      "config":
+      {
+        "if":[{"or":[{"==":[{"var": "request.body.store_profile_info"}, null]},{"==":[{"var": "request.body.store_profile_info"}, false]}]},
+          "post-register-interest",
+          null
+        ]}
+    },
+    {
+      "name": "notes",
+      "taskModule": "firebaseRtbSet",
+      "renderer": "handlebars",
+      "config": {
+        "appName": "volunteerscotland-search",
+        "pathTemplate": "/profile-info/{{data.auth.uid}}",
+        "setOrUpdate": "set",
+        "dataTemplate": ">context.metaData.handlebars.queries.profile_info"
+      }
+    },
+    {
+      "name": "reroute-all-save",
+      "taskModule": "reroute",
+      "config": {
+        "if":[true, "post-register-interest", "post-register-interest"]
+      }
+    }
+
+  ]
+}
