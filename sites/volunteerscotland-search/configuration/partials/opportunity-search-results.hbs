@@ -61,16 +61,10 @@
         </div>
         <div class="mdc-form-field">
           <div class="mdc-checkbox">
-            <input type="checkbox"
-                   class="mdc-checkbox__native-control"
-                   name="subscribe"
-                   id="email-on"/>
+            <input type="checkbox" class="mdc-checkbox__native-control" name="subscribe" id="email-on"/>
             <div class="mdc-checkbox__background">
-              <svg class="mdc-checkbox__checkmark"
-                   viewBox="0 0 24 24">
-                <path class="mdc-checkbox__checkmark-path"
-                      fill="none"
-                      d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+              <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
               </svg>
               <div class="mdc-checkbox__mixedmark"></div>
             </div>
@@ -108,7 +102,6 @@
                   lat=@root.request.params.query.lat
                   lng=@root.request.params.query.lng
                   location=@root.request.params.query.location
-
                 ) ~}}
           {{#if (itemAt @root.data.searches.items.[0] (indexOf (map @root.data.searches.items.[0] (getProp 'querystring')) this)) ~}}
             {{#with (itemAt @root.data.searches.items.[0] (indexOf (map @root.data.searches.items.[0] (getProp 'querystring')) this)) ~}}
@@ -235,7 +228,7 @@
               <input type="hidden" name="{{this}}" value="{{getProperty @root.request.params.query this}}" />
             {{/if ~}}
           {{/each ~}}
-          <input type="hidden" name="distance" value="{{#if @root.request.params.query.distance}}{{@root.request.params.query.distance}}{{else}}16.09344{{/if}}" />
+          <input type="hidden" name="distance" value="{{#if @root.request.params.query.distance}}{{@root.request.params.query.distance}}{{else}}10{{/if}}" />
           <div class="mdc-select mdc-select--box pull-right" data-mdc-auto-init="MDCSelect">
             <select class="mdc-select__native-control" id="sort" name="sort" onchange="this.form.submit();">
               <option value="relevance"{{#compare @root.request.params.query.sort "===" "relevance"}} selected{{/compare}}>Relevance</option>

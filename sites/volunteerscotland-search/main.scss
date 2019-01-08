@@ -201,7 +201,7 @@ header {
       margin: 0;
       .mdc-tab {
         background-color: transparent;
-        font-size: 1.25rem;
+        font-size: 1.1rem;
         min-height: $header-lower-height;
         height: $header-lower-height;
         font-weight: 400;
@@ -786,6 +786,9 @@ a:hover {
   }
   .mdc-chip {
     margin: 0;
+  }
+  .mdc-chip:hover {
+    text-decoration: none;
   }
 }
 #search-terms.mdc-chip-set  {
@@ -3788,7 +3791,6 @@ footer,
 }
 
 .home-browse {
-  margin-top: $unit;
   .mdc-button {
     .mdc-icon-toggle {
       color: white;
