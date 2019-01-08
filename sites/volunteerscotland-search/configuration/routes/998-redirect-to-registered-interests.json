@@ -1,0 +1,26 @@
+{
+  "name": "redirect-to-registered-interest",
+  "pattern": "/redirect-to-registered-interest",
+  "debug" : true,
+  "tasks": [
+    {
+      "name": "generate_url",
+      "taskModule": "render",
+      "renderer": "handlebars",
+      "config": {
+        "output": "data",
+        "template": "registered-interest?id={{{request.params.query.id}}}"
+      }
+    },
+    {
+      "name": "destination",
+      "taskModule": "redirect",
+      "config": {
+        "location": ">data.generate_url",
+        "statusCode": 302
+      }
+    }
+
+  ]
+}
+

@@ -40,6 +40,9 @@
     {{#each @root.data.registered_interest_opportunities.current.hits.hits ~}}
       <div class="{{#compare _source.Id "===" @root.request.params.query.id}}fade-in{{/compare}}">
       {{> opportunity_search_result _source}}
+        <div class ="pull-right">
+          <a href="{{{@root.request.fullUrl}}}" onclick="sqlRemoveInterest('{{_source.Id}}')">Remove from this list</a>
+        </div>
       </div>
     {{/each ~}}
     <div class="foot">
@@ -47,3 +50,19 @@
     </div>
   {{/compare}}
 </div>
+
+<script>
+
+  function sqlRemoveInterest(Id){
+      $link = $(this);
+      $.ajax({
+      type : "GET",
+      url: "/remove-from-registered-interest?id=" + Id,
+      success: function(result){
+        window.location.href = $link.attr('href');
+      }
+
+    })
+    return false;
+  }
+</script>
