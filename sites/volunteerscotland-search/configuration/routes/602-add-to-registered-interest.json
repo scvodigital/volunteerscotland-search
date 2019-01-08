@@ -11,7 +11,7 @@
       "config":
       {
         "if":[{"==":[{"var": "data.auth.uid"}, null]},
-        "registered-interest",
+        "redirect-to-registered-interest",
         null
       ]}
     },
@@ -32,7 +32,7 @@
       "config":
       {
         "if":[{"or":[{"==":[{"var": "request.body.store_profile_info"}, null]},{"==":[{"var": "request.body.store_profile_info"}, false]}]},
-          "registered-interest",
+          "redirect-to-registered-interest",
           null
         ]}
     },
@@ -51,7 +51,7 @@
       "name": "reroute-all-save",
       "taskModule": "reroute",
       "config": {
-        "if":[true, "registered-interest", "registered-interest"]
+        "if":[true, "redirect-to-registered-interest", "redirect-to-registered-interest"]
       }
     }
   ]
