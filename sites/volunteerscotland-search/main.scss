@@ -235,7 +235,11 @@ header {
     }
     #main-tab-bar {
       .mdc-tab:first-child {
-        padding-left: $unit;
+        margin-left: $unit/2;
+      }
+      .mdc-tab .mdc-tab__text-label {
+        padding-left: $unit/2;
+        padding-right: $unit/2;
       }
       .mdc-tab-indicator {
         display: none;
@@ -265,13 +269,16 @@ header {
     .mdc-top-app-bar__main .mdc-tab-bar,
     .mdc-top-app-bar__user .mdc-tab-bar {
       .mdc-tab {
-        color: black; //d
+        color: black;
       }
       .mdc-tab:hover .mdc-tab__text-label {
-        border-bottom-color: rgba(255, 255, 255, 0.75);
+        border-bottom-color: rgba(0, 0, 0, 0);
+        // border-bottom-color: rgba(255, 255, 255, 0.75);
       }
       .mdc-tab.mdc-tab--active .mdc-tab__text-label {
-        border-bottom-color: rgba(255, 255, 255, 0.9);
+        background-color: $brand-secondary-turquoice;
+        border-bottom-color: rgba(0, 0, 0, 0);
+        // border-bottom-color: rgba(255, 255, 255, 0.9);
       }
     }
     .mdc-top-app-bar__main,
@@ -3138,8 +3145,8 @@ body {
 // }
 .mdc-top-app-bar {
   background-color: white;
-  border-bottom: .5rem solid $brand-secondary-turquoice;
-  padding-bottom: .5rem;
+  border-bottom: $unit/2 solid $brand-secondary-turquoice;
+  // padding-bottom: .5rem;
 }
 
 header {
@@ -3173,14 +3180,17 @@ header {
     .mdc-top-app-bar__main .mdc-tab-bar,
     .mdc-top-app-bar__user .mdc-tab-bar {
       .mdc-tab {
-        color: $brand-primary-black;
-      }
-      .mdc-tab:hover .mdc-tab__text-label {
-        border-bottom-color: $brand-primary-black;
+        font-weight: $heading-font-weight;
       }
       .mdc-tab.mdc-tab--active .mdc-tab__text-label {
-        border-bottom-color: $brand-primary-black;
+        color: white !important;
       }
+      // .mdc-tab:hover .mdc-tab__text-label {
+      //   border-bottom-color: $brand-primary-black;
+      // }
+      // .mdc-tab.mdc-tab--active .mdc-tab__text-label {
+      //   border-bottom-color: $brand-primary-black;
+      // }
     }
     .mdc-top-app-bar__navigation-icon {
       color: $brand-primary-black;
@@ -3205,7 +3215,8 @@ header {
   }
 }
 .mdc-tab-bar {
-  .mdc-tab, .mdc-tab__text-label {
+  .mdc-tab,
+  .mdc-tab__text-label {
     color: $brand-primary-black !important;
   }
 }
