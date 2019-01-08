@@ -3,35 +3,42 @@
   "_source": [
     "Id",
     "slug",
-    "milo_ref",
-    "available_from",
-    "client_group",
-    "client_group_slugs",
     "description",
-    "end_date",
-    "geo_coords",
-    "geo",
-    "postcode",
-    "organisation_slug",
-    "organisation_name",
-    "organisation_aims_and_objectives",
     "title",
-    "travel_expenses",
-    "work_location",
-    "work_type",
-    "work_type_slugs"
+    "geo_coords",
+    "organisation_slug",
+    "organisation_name"
   ],
   "query": {
     "bool": {
       "filter": [
-        {{>queries_opportunity_common_filters @root.request.params.query}}
+        {{>queries_opportunity_common_filters request.params.query}}
       ],
       "must": [
-        {{>queries_terms field="Id" terms=(getKeys data.notes)}}
+        {
+          "terms": {
+            "Id": {{{stringify (map @root.data.registeredInterest.items.[0] (getProp "value"))}}}
+      }
+      }
       ]
     }
   },
   "sort": [
+    {{#if @root.request.params.query.id ~}}
+    {
+      "_script": {
+        "type": "number",
+        "script": {
+          "lang": "painless",
+          "inline": "if(params.target == (doc['Id'].value)) { return 0; } return 1000;",
+          "params": {
+            "target": "{{@root.request.params.query.id}}"
+          }
+        },
+        "order": "asc"
+      }
+    }
+    {{else}}
     {{#if @root.request.params.query.sort ~}}
     {{#compare @root.request.params.query.sort "===" "newest" ~}}
     {
@@ -49,15 +56,16 @@
     }
     {{else}}
     {
-      "start_date": "desc"
+      "end_date": "asc"
     }
     {{/compare ~}}
     {{/compare ~}}
     {{/compare ~}}
     {{else}}
     {
-      "start_date": "desc"
+      "end_date": "asc"
     }
+    {{/if ~}}
     {{/if ~}}
   ]
 }

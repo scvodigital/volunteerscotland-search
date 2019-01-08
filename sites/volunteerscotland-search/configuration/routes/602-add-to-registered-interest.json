@@ -1,6 +1,5 @@
 {
   "name": "add-to-registered-interest",
-  "debug": true,
   "pattern": "/add-to-registered-interest",
   "acceptedVerbs": "POST"
 ,
@@ -12,7 +11,7 @@
       "config":
       {
         "if":[{"==":[{"var": "data.auth.uid"}, null]},
-        "post-register-interest",
+        "registered-interest",
         null
       ]}
     },
@@ -22,7 +21,7 @@
       "config": {
         "connectionName": "volunteerscotland_notifications",
         "queryTemplates": {
-          "add_to_favourites": ">context.metaData.handlebars.queries.notifications_add-to-registered-interest"
+          "add_to_registered_interest": ">context.metaData.handlebars.queries.notifications_add-to-registered-interest"
         }
       },
       "renderer": "handlebars"
@@ -33,7 +32,7 @@
       "config":
       {
         "if":[{"or":[{"==":[{"var": "request.body.store_profile_info"}, null]},{"==":[{"var": "request.body.store_profile_info"}, false]}]},
-          "post-register-interest",
+          "registered-interest",
           null
         ]}
     },
@@ -52,9 +51,8 @@
       "name": "reroute-all-save",
       "taskModule": "reroute",
       "config": {
-        "if":[true, "post-register-interest", "post-register-interest"]
+        "if":[true, "registered-interest", "registered-interest"]
       }
     }
-
   ]
 }

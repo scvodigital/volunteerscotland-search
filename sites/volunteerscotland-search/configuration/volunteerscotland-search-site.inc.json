@@ -17,6 +17,7 @@
     "registeredInterestCampaignName": "vs-registered-interest",
     "emailCampaignName": "vs-saved-searches",
     "menus": "{:./volunteerscotland-search-menus.json}",
+    "accountInfoValidation": "{:./account-info-validation.json}",
     "elasticsearchUrl": "{$../elasticsearch-url.txt}",
     "termTypeLabels": {
       "age_groups": {
