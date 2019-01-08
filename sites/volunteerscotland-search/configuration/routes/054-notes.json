@@ -17,7 +17,7 @@
     "context.metaData.commonTasks.favouritesData",
 
     {
-      "name": "notes_vacancies",
+      "name": "notes_opportunities",
       "taskModule": "elasticsearch",
       "config": {
         "connectionStringTemplate": "{$../../elasticsearch-url.txt}",
