@@ -56,6 +56,12 @@
       "route": "^/notes"
     },
     {
+      "label": "Registered Interest",
+      "icon": "envelope-open-text",
+      "path": "/registered-interest",
+      "route": "^/registered-interest"
+    },
+    {
       "label": "Email alerts",
       "icon": "search-plus",
       "path": "/searches",

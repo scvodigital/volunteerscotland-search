@@ -27,28 +27,28 @@
     {{#if @root.request.params.query.sort ~}}
     {{#compare @root.request.params.query.sort "===" "newest" ~}}
     {
-      "start_at": "desc"
+      "start_date": "desc"
     }
     {{else}}
     {{#compare @root.request.params.query.sort "===" "oldest" ~}}
     {
-      "start_at": "asc"
+      "start_date": "asc"
     }
     {{else}}
     {{#compare @root.request.params.query.sort "===" "closing_soon" ~}}
     {
-      "closing_date": "asc"
+      "end_date": "asc"
     }
     {{else}}
     {
-      "closing_date": "asc"
+      "end_date": "asc"
     }
     {{/compare ~}}
     {{/compare ~}}
     {{/compare ~}}
     {{else}}
     {
-      "closing_date": "asc"
+      "end_date": "asc"
     }
     {{/if ~}}
   ]

@@ -1,6 +1,5 @@
 {
   "name": "register-interest",
-  "debug": true,
   "pattern": "/register-interest/:slug",
   "metaData": {
     "sidebarButton": {

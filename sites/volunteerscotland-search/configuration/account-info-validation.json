@@ -1,0 +1,9 @@
+{
+  "first_name" : {"required": true, "maxlength": 64},
+  "last_name" : {"required": true, "maxlength": 64},
+  "location_address" : {"maxlength" : 256},
+  "location_city" : {"maxlength" : 64},
+  "location_postcode" : {"maxlength" : 16, "pattern" : "[A-Za-z]{1,2}[0-9][A-Za-z0-9]?\\s?[0-9][ABD-HJLNP-UW-Zabd-hjlnp-uw-z]{2}"},
+  "email" :  {"required" : true, "maxlength" : 256, "pattern": "[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)+$"},
+  "phone" : {"maxlength" : 64, "pattern" : "[0-9\\s]+"}
+}
