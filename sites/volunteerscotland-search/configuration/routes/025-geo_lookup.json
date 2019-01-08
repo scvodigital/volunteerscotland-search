@@ -11,9 +11,8 @@
           "apiVersion": "5.6"
         },
         "queryTemplates": {
-          "name": "detailed_results",
           "index": "geo_lookup",
-          "type": "postcode,place",
+          "type": "place,postcode",
           "template": ">context.metaData.handlebars.queries.geo-lookup"
         }
       },

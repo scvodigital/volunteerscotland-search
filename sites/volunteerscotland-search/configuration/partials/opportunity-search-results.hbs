@@ -230,8 +230,8 @@
               {{/each ~}}
             {{/if ~}}
           {{/each ~}}
-          {{#each (split "keywords,location,lat,lng" ",")}}
-            {{#if (getProperty @rmdc-list-item__graphicoot.request.params.query this) ~}}
+          {{#each (split "keywords,location,lat,lng,la" ",")}}
+            {{#if (getProperty @root.request.params.query this) ~}}
               <input type="hidden" name="{{this}}" value="{{getProperty @root.request.params.query this}}" />
             {{/if ~}}
           {{/each ~}}

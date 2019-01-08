@@ -54,8 +54,8 @@
           {
             "_geo_distance": {
               "geo_coords": {
-                "lat": {{request.params.query.lat}},
-                "lon": {{request.params.query.lng}}
+                "lat": {{@root.request.params.query.lat}},
+                "lon": {{@root.request.params.query.lng}}
               },
               "order": "asc",
               "unit": "km",

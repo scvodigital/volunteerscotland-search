@@ -103,6 +103,7 @@
               <input type="text" id="{{instance_id}}-location" name="location" class="mdc-text-field__input mdc-text-field--fullwidth search-location" value="{{#ifAll @root.request.params.query.lat @root.request.params.query.lng}}{{@root.request.params.query.location}}{{/ifAll}}" placeholder="" data-lpignore="true" data-location-search='{
                 "latSelector": "[name=\"lat\"]",
                 "lngSelector": "[name=\"lng\"]",
+                "laSelector": "[name=\"la\"]",
                 "locationServicesSelector": ".geo-lookup"
               }'>
               <label class="mdc-floating-label" for="{{instance_id}}-location">
@@ -144,8 +145,9 @@
         </div>
       </div>
     </div>
-    <input type="hidden" name="lat" value="{{@root.request.params.query.lat}}">
-    <input type="hidden" name="lng" value="{{@root.request.params.query.lng}}">
+    <input type="hidden" name="lat" value="{{@root.request.params.query.lat}}" id="location-lat" />
+    <input type="hidden" name="lng" value="{{@root.request.params.query.lng}}" id="location-lng" />
+    <input type="hidden" name="la" value="{{@root.request.params.query.la}}" id="location-la" />
 
     <!-- <div class="h-padding">
       <strong>Refine by</strong>
