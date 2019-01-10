@@ -1,9 +1,13 @@
 {{#*inline "term_filter"}}
 <h3 class="mdc-drawer__content-heading cursor-pointer noselect mdc-drawer--occasional-ie11" data-checkbox-collapse-target="#{{../instance_id}}-{{type}}-collapse" role="button" aria-pressed="false" aria-label="Show {{getProperty @root.context.metaData.termTypeLabels (concat type ".plural")}}" tabindex="0">
   {{#compare type "===" "regions" ~}}
-    Region
+  Regions
   {{else}}
-    {{getProperty @root.context.metaData.termTypeLabels (concat type ".plural")}}
+  {{#compare type "===" "types" ~}}
+  Types
+  {{else}}
+  {{getProperty @root.context.metaData.termTypeLabels (concat type ".plural")}}
+  {{/compare ~}}
   {{/compare ~}}
   <span class="mdc-icon-toggle pull-right">
     <i class="far fa-chevron-down" aria-hidden="true"></i>
@@ -47,11 +51,18 @@
       {{/ifAny ~}}
     {{/if ~}}
   {{else}}
-    {{#each (getProperty @root.data.opportunitySupplimentary.types.aggregations (concat type "_slugs.buckets")) ~}}
-      {{#if key ~}}
-        {{> term_checkbox slug=key field=../type selected=(getProperty @root.request.params.query ../type) instance_id=../../instance_id value=(lookup (getProperty @root.data.opportunitySupplimentary.types.aggregations (concat ../type ".buckets")) @index)}}
-      {{/if ~}}
-    {{/each ~}}
+    {{#compare type "===" "types" ~}}
+      {{> term_checkbox slug="true" field="home_based" selected=@root.request.params.query.home_based instance_id=../../instance_id value="Home-based volunteering"}}
+      {{> term_checkbox slug="true" field="suitable_for_groups" selected=@root.request.params.query.suitable_for_groups instance_id=../../instance_id value="Suitable for groups"}}
+      {{> term_checkbox slug="true" field="suitable_for_one_off" selected=@root.request.params.query.suitable_for_one_off instance_id=../../instance_id value="One-off volunteering"}}
+      {{> term_checkbox slug="true" field="board_trustee" selected=@root.request.params.query.board_trustee instance_id=../../instance_id value="Board/trustee role"}}
+    {{else}}
+      {{#each (getProperty @root.data.opportunitySupplimentary.types.aggregations (concat type "_slugs.buckets")) ~}}
+        {{#if key ~}}
+          {{> term_checkbox slug=key field=../type selected=(getProperty @root.request.params.query ../type) instance_id=../../instance_id value=(lookup (getProperty @root.data.opportunitySupplimentary.types.aggregations (concat ../type ".buckets")) @index)}}
+        {{/if ~}}
+      {{/each ~}}
+    {{/compare ~}}
   {{/compare ~}}
 </div>
 {{/inline}}
@@ -87,7 +98,6 @@
     </label>
   </div>
 {{/inline}}
-
 
 <div class="mdc-drawer__content">
   <!-- <h2 class="mdc-drawer__content-heading hide-sm mdc-drawer--occasional">Search opportunities</h2> -->
@@ -164,7 +174,7 @@
       </div>
     </div>
 
-    {{#each (split "work_types,client_groups,services,age_groups" ",") ~}}
+    {{#each (split "types,work_types,client_groups,services,age_groups" ",") ~}}
       {{> term_filter type=this instance_id=instance_id ~}}
     {{/each ~}}
 
