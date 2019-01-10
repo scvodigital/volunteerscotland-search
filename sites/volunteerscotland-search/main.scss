@@ -3242,23 +3242,27 @@ header {
 }
 
 .checkbox-toggle-display-all {
+  transform: translateZ(0);
   .mdc-form-field {
-    display:inline-flex;
+    display: inline-flex !important;
+    label {
+      transform: translateZ(0);
+    }
   }
   .checkbox-collapse-element {
-    display: inline-flex;
+    display: inline-flex !important;
   }
 }
-
 .checkbox-toggle-display-checked {
+  transform: translateZ(0);
   .mdc-form-field {
-    display: none;
+    display: none !important;
   }
   .checkbox-collapse-element {
-    display: none;
+    display: none !important;
   }
   .mdc-form-field.checked {
-    display:inline-flex;
+    display: inline-flex !important;
   }
 }
 

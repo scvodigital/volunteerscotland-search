@@ -1,5 +1,5 @@
 {{#*inline "term_filter"}}
-<h3 class="mdc-drawer__content-heading cursor-pointer noselect mdc-drawer--occasional-ie11" data-checkbox-collapse-target="#{{../instance_id}}-{{type}}-collapse" role="button" aria-pressed="false" aria-label="Show {{getProperty @root.context.metaData.termTypeLabels (concat type ".plural")}}" tabindex="0">
+<h3 class="mdc-drawer__content-heading cursor-pointer noselect mdc-drawer--occasional-ie11" data-checkbox-collapse-target="#{{instance_id}}-{{type}}-collapse" role="button" aria-pressed="false" aria-label="Show {{getProperty @root.context.metaData.termTypeLabels (concat type ".plural")}}" tabindex="0">
   {{#compare type "===" "regions" ~}}
   Regions
   {{else}}
@@ -13,7 +13,7 @@
     <i class="far fa-chevron-down" aria-hidden="true"></i>
   </span>
 </h3>
-<div class="mdc-drawer--occasional-ie11 checkbox-toggle-display-checked" id="{{../instance_id}}-{{type}}-collapse" >
+<div class="mdc-drawer--occasional-ie11 checkbox-toggle-display-checked" id="{{instance_id}}-{{type}}-collapse">
   {{#compare type "===" "regions" ~}}
     {{#if (any @root.data.opportunitySupplimentary.types.aggregations.countries.buckets) ~}}
       {{#each @root.data.opportunitySupplimentary.types.aggregations.countries.buckets ~}}
@@ -25,14 +25,14 @@
         {{#compare key "Scotland" ~}}
           {{#each this.regions_slugs.buckets ~}}
             {{#if key ~}}
-              {{> term_checkbox slug=key field="regions" selected=@root.request.params.query.regions instance_id=../../../instance_id value=(lookup ../this.regions.buckets @index)}}
+              {{> term_checkbox slug=key field="regions" selected=@root.request.params.query.regions instance_id=../../instance_id value=(lookup ../this.regions.buckets @index)}}
             {{/if ~}}
           {{/each ~}}
         {{else}}
           <div class="mdc-typography--headline7 checkbox-collapse-element">Other</div>
           {{#each this.regions_slugs.buckets ~}}
             {{#if key ~}}
-              {{> term_checkbox slug=key field="regions" selected=@root.request.params.query.regions instance_id=../../../instance_id value=(lookup ../this.regions.buckets @index)}}
+              {{> term_checkbox slug=key field="regions" selected=@root.request.params.query.regions instance_id=../../instance_id value=(lookup ../this.regions.buckets @index)}}
             {{/if ~}}
           {{/each ~}}
         {{/compare ~}}
@@ -43,23 +43,23 @@
           <h3 class="mdc-typography--headline7">Other</h3>
         {{/compare ~ --}}
         {{#compare (length @root.data.opportunitySupplimentary.types.aggregations.home_based.buckets) ">=" 1 ~}}
-          {{> term_checkbox slug="true" field="home_based" selected=@root.request.params.query.home_based instance_id=../instance_id value="Home-based"}}
+          {{> term_checkbox slug="true" field="home_based" selected=@root.request.params.query.home_based instance_id=instance_id value="Home-based"}}
         {{/compare ~}}
         {{#compare (length @root.data.opportunitySupplimentary.types.aggregations.various_locations.buckets) ">=" 1 ~}}
-          {{> term_checkbox slug="true" field="various_locations" selected=@root.request.params.query.various_locations instance_id=../instance_id value="Various locations"}}
+          {{> term_checkbox slug="true" field="various_locations" selected=@root.request.params.query.various_locations instance_id=instance_id value="Various locations"}}
         {{/compare ~}}
       {{/ifAny ~}}
     {{/if ~}}
   {{else}}
     {{#compare type "===" "types" ~}}
-      {{> term_checkbox slug="true" field="home_based" selected=@root.request.params.query.home_based instance_id=../../instance_id value="Home-based volunteering"}}
-      {{> term_checkbox slug="true" field="suitable_for_groups" selected=@root.request.params.query.suitable_for_groups instance_id=../../instance_id value="Suitable for groups"}}
-      {{> term_checkbox slug="true" field="suitable_for_one_off" selected=@root.request.params.query.suitable_for_one_off instance_id=../../instance_id value="One-off volunteering"}}
-      {{> term_checkbox slug="true" field="board_trustee" selected=@root.request.params.query.board_trustee instance_id=../../instance_id value="Board/trustee role"}}
+      {{> term_checkbox slug="true" field="home_based" selected=@root.request.params.query.home_based instance_id=instance_id value="Home-based volunteering"}}
+      {{> term_checkbox slug="true" field="suitable_for_groups" selected=@root.request.params.query.suitable_for_groups instance_id=instance_id value="Suitable for groups"}}
+      {{> term_checkbox slug="true" field="suitable_for_one_off" selected=@root.request.params.query.suitable_for_one_off instance_id=instance_id value="One-off volunteering"}}
+      {{> term_checkbox slug="true" field="board_trustee" selected=@root.request.params.query.board_trustee instance_id=instance_id value="Board/trustee role"}}
     {{else}}
       {{#each (getProperty @root.data.opportunitySupplimentary.types.aggregations (concat type "_slugs.buckets")) ~}}
         {{#if key ~}}
-          {{> term_checkbox slug=key field=../type selected=(getProperty @root.request.params.query ../type) instance_id=../../instance_id value=(lookup (getProperty @root.data.opportunitySupplimentary.types.aggregations (concat ../type ".buckets")) @index)}}
+          {{> term_checkbox slug=key field=../type selected=(getProperty @root.request.params.query ../type) instance_id=../instance_id value=(lookup (getProperty @root.data.opportunitySupplimentary.types.aggregations (concat ../type ".buckets")) @index)}}
         {{/if ~}}
       {{/each ~}}
     {{/compare ~}}
@@ -68,13 +68,13 @@
 {{/inline}}
 
 {{#*inline "availability_filter"}}
-  <h3 class="mdc-drawer__content-heading cursor-pointer noselect mdc-drawer--occasional-ie11" data-collapse-target="#{{../instance_id}}-availability-collapse" role="button" aria-pressed="false" aria-label="Show {{getProperty @root.context.metaData.termTypeLabels (concat type ".plural")}}" tabindex="0">
+  <h3 class="mdc-drawer__content-heading cursor-pointer noselect mdc-drawer--occasional-ie11" data-collapse-target="#{{instance_id}}-availability-collapse" role="button" aria-pressed="false" aria-label="Show {{getProperty @root.context.metaData.termTypeLabels (concat type ".plural")}}" tabindex="0">
       Availability
     <span class="mdc-icon-toggle pull-right">
     <i class="far fa-chevron-{{#if @root.request.params.query.availability}}up{{else}}down{{/if}}" aria-hidden="true"></i>
   </span>
   </h3>
-  <div class="mdc-drawer--occasional-ie11" id="{{../instance_id}}-availability-collapse" style="{{#unless @root.request.params.query.availability}}display:none{{/unless}}">
+  <div class="mdc-drawer--occasional-ie11" id="{{instance_id}}-availability-collapse" style="{{#unless @root.request.params.query.availability}}display:none{{/unless}}">
     {{>opportunity_availability_selector type="availability"}}
   </div>
 {{/inline}}
@@ -84,12 +84,8 @@
     <div class="mdc-checkbox">
       <input type="checkbox" class="mdc-checkbox__native-control" id="{{instance_id}}_{{field}}_{{slug}}" name="{{#compare field "===" "type"}}{{field}}{{else}}{{field}}[]{{/compare}}" value="{{slug}}"{{#if (contains selected slug)}} checked{{/if}} />
       <div class="mdc-checkbox__background">
-        <svg class="mdc-checkbox__checkmark"
-        viewBox="0 0 24 24">
-        <path class="mdc-checkbox__checkmark-path"
-        fill="none"
-        stroke="white"
-        d="M1.73,12.91 8.1,19.28 22.79,4.59"/></svg>
+        <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+        <path class="mdc-checkbox__checkmark-path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"/></svg>
         <div class="mdc-checkbox__mixedmark"></div>
       </div>
     </div>
@@ -175,7 +171,7 @@
     </div>
 
     {{#each (split "types,work_types,client_groups,services,age_groups" ",") ~}}
-      {{> term_filter type=this instance_id=instance_id ~}}
+      {{> term_filter type=this instance_id=../instance_id ~}}
     {{/each ~}}
 
     {{> availability_filter instance_id=instance_id ~}}
