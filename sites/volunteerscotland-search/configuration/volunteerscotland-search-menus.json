@@ -57,7 +57,7 @@
     },
     {
       "label": "Registered Interest",
-      "icon": "edit",
+      "icon": "hand-paper",
       "path": "/registered-interest",
       "route": "^/registered-interest"
     },
