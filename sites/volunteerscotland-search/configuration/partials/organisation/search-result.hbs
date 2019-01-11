@@ -1,10 +1,10 @@
 <div class="mdc-card search-result" data-organisation-id="{{Id}}">
   <div class="mdc-card__info--content-secondary-row">
     <div class="mdc-card__info--content-secondary">
-      {{#if has_logo ~}}
+      {{#if goodhq_organisation.image_url ~}}
       <div class="mdc-card__media mdc-card__media--content-secondary">
         <a href="/organisation/{{slug}}{{@root.request.url.search}}">
-          <img src="{{logo_url}}" alt="{{title}}" />
+          <img src="{{goodhq_organisation.image_url}}" alt="{{title}}" />
         </a>
       </div>
       {{/if ~}}
