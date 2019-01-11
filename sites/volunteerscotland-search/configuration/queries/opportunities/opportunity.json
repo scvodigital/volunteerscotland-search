@@ -32,6 +32,7 @@
     "organisation_contact_last_name",
     "organisation_contact_email",
     "support_options",
+    "goodhq_organisation.image_url",
     "title",
     "travel_expenses",
     "work_location",

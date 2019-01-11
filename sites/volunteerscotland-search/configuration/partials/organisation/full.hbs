@@ -1,9 +1,9 @@
 <div class="mdc-card full" data-organisation-id="{{Id}}">
   <div class="mdc-card__info--content-secondary-row">
     <div class="mdc-card__info--content-secondary">
-      {{#if has_logo ~}}
+      {{#if goodhq_organisation.image_url ~}}
         <div class="mdc-card__media mdc-card__media--content-secondary">
-          <img src="{{logo_url}}" alt="{{title}}" />
+          <img src="{{goodhq_organisation.image_url}}" alt="{{title}}" />
         </div>
       {{/if ~}}
       <div class="mdc-card__info--content-secondary-title mdc-typography--headline3">

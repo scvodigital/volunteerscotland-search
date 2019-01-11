@@ -1,9 +1,9 @@
 <div class="mdc-card__info--content-primary-row">
   <div class="mdc-card__info--content-primary">
-    {{#if organisation.has_logo ~}}
+    {{#if goodhq_organisation.image_url ~}}
     <div class="mdc-card__media mdc-card__media--content-secondary pull-right">
       <a href="/organisation/{{organisation_slug}}{{@root.request.url.search}}">
-        <img src="{{organisation.logo_url}}" alt="{{organisation.name}}" />
+        <img src="{{goodhq_organisation.image_url}}" alt="{{organisation.name}}" />
       </a>
     </div>
     {{/if ~}}
