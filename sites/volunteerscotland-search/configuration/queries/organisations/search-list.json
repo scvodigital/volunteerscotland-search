@@ -29,7 +29,14 @@
       ],
       "must": [
         {{>queries_organisation_search_must @root.request.params.query}}
-      ]
+      ],
+      "must_not": [
+        {{>queries_organisation_search_must_not @root.request.params.query}}
+      ],
+      "should": [
+        {{>queries_organisation_search_should @root.request.params.query}}
+      ],
+      "minimum_should_match": 0
     }
   },
   "sort": [
@@ -58,8 +65,9 @@
       {{/compare ~}}
     {{else}}
       {
-      "date_last_modified": "desc"
-    }
+        "_score": "desc",
+        "date_last_modified": "desc"
+      }
     {{/if ~}}
   ]
 }

@@ -3,9 +3,7 @@
     "localhost",
     "search.volunteerscotland.net",
     "volunteerscotland-search.local",
-    "127.0.0.1",
-    "router-dot-scvo-net.appspot.com",
-    "test.getinvolved.scot"
+    "127.0.0.1"
   ],
   "routes": [
     "{:./routes/*.json}"
