@@ -141,7 +141,6 @@ a[href^="https://"]::after {
 a.noext::after,
 a[href^="https://search.volunteerscotland.net"]::after,
 a[href^="https://volunteerscotland-search.local"]::after,
-a[href^="https://test.getinvolved.scot"]::after,
 a[href^="https://goodhq.org"]::after,
 a[href^="https://scvo.org"]::after,
 a[href^="https://volunteerscotland.net"]::after,
@@ -2143,6 +2142,9 @@ footer,
 .mdc-list-item:hover {
   text-decoration: none;
 }
+main .home-banner {
+  padding-bottom: $unit;
+}
 .home-browse,
 .browse-areas,
 .browse main {
@@ -3832,16 +3834,16 @@ footer,
   }
 }
 .scroll-button.scroll-left {
-  background-image: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0.1) 50%, $brand-secondary-yellow 50.01%, $brand-secondary-yellow);
+  background-image: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0.1) 50%, #fff 50.01%, #fff);
 }
 .scroll-button.scroll-right {
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0.1) 50%, $brand-secondary-yellow 50.01%, $brand-secondary-yellow);
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0.1) 50%, #fff 50.01%, #fff);
 }
 .scroll-button.scroll-left:hover {
-  background-image: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0.3) 50%, $brand-secondary-yellow 50.01%, $brand-secondary-yellow);
+  background-image: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0.3) 50%, #fff 50.01%, #fff);
 }
 .scroll-button.scroll-right:hover {
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0.3) 50%, $brand-secondary-yellow 50.01%, $brand-secondary-yellow);
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0.3) 50%, #fff 50.01%, #fff);
 }
 
 // Footer ======================================================================
