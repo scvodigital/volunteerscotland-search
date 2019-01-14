@@ -1190,6 +1190,7 @@ a {
     padding-bottom: 0;
   }
 }
+
 .content-primary.mdc-card.list.top-content,
 .content-primary.mdc-card.mini.top-content,
 .content-primary.mdc-card.gist.top-content,
@@ -3511,6 +3512,12 @@ a {
     }
   }
 }
+
+.content-primary.mdc-card.mini,
+.content-primary.mdc-card.gist {
+  background-color: $brand-primary-lightgrey;
+}
+
 .content-primary.mdc-card.list,
 .content-primary.mdc-card.mini,
 .content-primary.mdc-card.gist,
