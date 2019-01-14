@@ -1,11 +1,14 @@
 {
   "name": "home",
   "pattern": "/",
+  "debug" : true,
   "metaData": {
     "title": "Volunteer Scotland"
   },
   "tasks": [
     "context.metaData.commonTasks.authNotRequired",
+    "context.metaData.commonTasks.registeredInterestData",
+    "context.metaData.commonTasks.favouritesData",
     {
       "name": "opportunitySupplimentary",
       "taskModule": "elasticsearch",
@@ -26,7 +29,14 @@
             "index": "web-content-production",
             "type": "milo-volunteering-opportunity",
             "template": ">context.metaData.handlebars.queries.opportunities_recently-viewed"
+          },
+          {
+            "name": "favourites_current",
+            "index": "web-content-production",
+            "type": "milo-volunteering-opportunity",
+            "template": ">context.metaData.handlebars.queries.opportunities_favourites-current"
           }
+
         ]
       },
       "renderer": "handlebars"
