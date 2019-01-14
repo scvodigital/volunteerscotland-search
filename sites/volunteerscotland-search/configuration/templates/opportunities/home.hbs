@@ -151,4 +151,111 @@
       {{> browse eventContext="category-browser-home"}}
     </div>
   </div>
+  {{#if @root.data.auth}}
+    <div class="mdc-layout-grid home-heading">
+      <div class="mdc-layout-grid__inner">
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
+          <h2 class="mdc-typography--headline5">
+            Your favourites
+          </h2>
+        </div>
+      </div>
+    </div>
+    <div class="home-content-primary">
+      {{#>components_horizontal_card_scroller
+        outerClasses="home-favourites"
+        scrollLeftIconClasses="fal fa-fw fa-angle-left"
+        scrollRightIconClasses="fal fa-fw fa-angle-right"
+        itemClasses="favourites-primary-content"
+        items=(arrayConcat
+          (map @root.data.opportunitySupplimentary.favourites_current.hits.hits (getProp "_source"))
+        )
+        itemsPartial="opportunity_mini"
+        moreUrl="/search"
+        moreText="Find more opportunities for your favourites"}}
+        <p class="mdc-typography--body1 h-padding v-margin-none">
+          There are currently no opportunities in your favourites, if you favourite an opportunity it will appear here for easy reference.
+        </p>
+      {{/components_horizontal_card_scroller}}
+    </div>
+  {{/if}}
+
+{{#compare @root.data.opportunitySupplimentary.home_latest.hits.total ">" 0}}
+    <div class="mdc-layout-grid home-heading">
+      <div class="mdc-layout-grid__inner">
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
+          {{#compare @root.data.opportunitySupplimentary.home_latest_personalised.hits.total ">" 0}}
+            <h2 class="mdc-typography--headline5">
+              Your latest opportunities&ensp;
+              <span class="mdc-typography--body1">
+                <a href="/searches">Your searches</a>
+              </span>
+            </h2>
+          {{else}}
+            <div class="mdc-typography--headline5">
+              Latest opportunities &ensp;
+              <span class="mdc-typography--body1">
+                <a href="/search?sort=newest&page=2">Find more</a>
+              </span>
+            </div>
+          {{/compare}}
+        </div>
+      </div>
+    </div>
+    <div class="home-content-primary">
+      {{#>components_horizontal_card_scroller
+        outerClasses="home-latest"
+        scrollLeftIconClasses="fal fa-fw fa-angle-left"
+        scrollRightIconClasses="fal fa-fw fa-angle-right"
+        itemClasses="latest-primary-content latest-primary-content-personalised"
+        items=(if (any @root.data.opportunitySupplimentary.home_latest_personalised.hits.hits)
+          (map @root.data.opportunitySupplimentary.home_latest_personalised.hits.hits (getProp "_source"))
+          else=(map @root.data.opportunitySupplimentary.home_latest.hits.hits (getProp "_source"))
+        )
+        itemsPartial="opportunity_mini"
+        moreUrl=(if
+          (compare @root.data.opportunitySupplimentary.home_latest_personalised.hits.total ">" 0)
+          "/search?sort=newest"
+          else="/search?sort=newest&page=2"
+        )
+        moreText=(if
+          (compare @root.data.opportunitySupplimentary.home_latest_personalised.hits.total ">" 0)
+          "All latest jobs"
+          else="Find more jobs"
+        )}}
+      {{/components_horizontal_card_scroller}}
+    </div>
+  </div>
+{{/compare}}
+
+  {{#if @root.data.auth.email}}
+    {{#compare @root.data.opportunitySupplimentary.recently_viewed.hits.total ">" 0}}
+      <div class="mdc-layout-grid home-heading">
+        <div class="mdc-layout-grid__inner">
+          <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
+            <div class="mdc-typography--headline5">
+              Recently viewed&ensp;
+              <span class="mdc-typography--body1">
+                <a href="/search?sort=newest&page=1">Find more</a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="home-content-primary">
+        {{#>components_horizontal_card_scroller
+          outerClasses="home-latest"
+          scrollLeftIconClasses="fal fa-fw fa-angle-left"
+          scrollRightIconClasses="fal fa-fw fa-angle-right"
+          itemClasses="latest-primary-content"
+          items=(map
+            (sortByIndex @root.data.opportunitySupplimentary.recently_viewed.hits.hits (split @root.request.cookies.recently_viewed ',') '_id') (getProp "_source")
+          )
+          itemsPartial="opportunity_mini"
+          moreUrl="/search?sort=newest&page=1"
+          moreText="Find more opportunities"}}
+        {{/components_horizontal_card_scroller}}
+      </div>
+    {{/compare}}
+  {{/if ~}}
 </div>
