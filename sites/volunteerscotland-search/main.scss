@@ -156,7 +156,7 @@ header {
   .container-fluid {
     padding: 0;
     .mdc-top-app-bar__section--align-end {
-      align-items: start;
+      align-items: flex-start;
       padding-right: $unit/2 !important;
     }
     .mdc-top-app-bar__title {
@@ -1416,7 +1416,7 @@ a {
 .mdc-layout-grid.equal-height .mdc-layout-grid__cell {
   display: flex;
   .mdc-card {
-    justify-content: start;
+    justify-content: flex-start;
     .mdc-card__supporting-text {
       flex: 1 0 auto;
     }
