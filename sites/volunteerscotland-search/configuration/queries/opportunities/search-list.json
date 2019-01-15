@@ -73,9 +73,21 @@
         {{/compare ~}}
       {{/compare ~}}
     {{else}}
-      {
-        "_score": "desc"
-      }
+      "_score"
     {{/if ~}}
+    {{#ifAll @root.request.params.query.location @root.request.params.query.lat @root.request.params.query.lng ~}},
+      {
+        "_geo_distance": {
+          "geo_coords": {
+            "lat": {{@root.request.params.query.lat}},
+            "lon": {{@root.request.params.query.lng}}
+          },
+          "order": "asc",
+          "unit": "km",
+          "mode": "min",
+          "distance_type": "arc"
+        }
+      }
+    {{/ifAll ~}}
   ]
 }

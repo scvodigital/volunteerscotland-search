@@ -18,13 +18,5 @@
         {{>queries_opportunity_search_must request.params.query}}
       ]
     }
-  },
-  "aggs" : {
-    "admin_district": {
-      "terms": {
-        "field": "geo.codes.admin_district",
-        "size": 3000
-      }
-    }
   }
 }

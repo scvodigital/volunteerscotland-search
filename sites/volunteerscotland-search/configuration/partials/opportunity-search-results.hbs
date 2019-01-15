@@ -245,7 +245,7 @@
 </div>
 
 {{#each @root.data.search_data.detailed_results.hits.hits ~}}
-  {{> opportunity_search_result _source sort=sort distance=fields.distance.[0]}}
+  {{> opportunity_search_result _source distance=sort.[1]}}
 {{/each ~}}
 
 <div class="foot">
