@@ -43,6 +43,15 @@
   </div>
 
   <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
+    <input id="thisfield" name="date_of_birth"
+      {{>form_validation_attributes @root.context.metaData.accountInfoValidation.date_of_birth}} class="mdc-text-field__input mdc-text-field--fullwidth"
+           value="{{@root.data.profileInfo.date_of_birth}}">
+    <label class="mdc-floating-label" for="date_of_birth">
+      Date of Birth
+    </label>
+  </div>
+
+  <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
     <input id="location_address" name="location_address"
       {{>form_validation_attributes @root.context.metaData.accountInfoValidation.location_address}} class="mdc-text-field__input mdc-text-field--fullwidth"
            value="{{@root.data.profileInfo.location_address}}">
