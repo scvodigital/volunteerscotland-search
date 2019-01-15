@@ -36,17 +36,7 @@
           null
         ]}
     },
-    {
-      "name": "notes",
-      "taskModule": "firebaseRtbSet",
-      "renderer": "handlebars",
-      "config": {
-        "appName": "volunteerscotland-search",
-        "pathTemplate": "/profile-info/{{data.auth.uid}}",
-        "setOrUpdate": "set",
-        "dataTemplate": ">context.metaData.handlebars.queries.profile_info"
-      }
-    },
+    "context.metaData.commonTasks.storeProfileInfo",
     {
       "name": "reroute-all-save",
       "taskModule": "reroute",

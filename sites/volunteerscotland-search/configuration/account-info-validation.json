@@ -1,6 +1,7 @@
 {
   "first_name" : {"required": true, "maxlength": 64},
   "last_name" : {"required": true, "maxlength": 64},
+  "date_of_birth" : {"type" : "date"},
   "location_address" : {"maxlength" : 256},
   "location_city" : {"maxlength" : 64},
   "location_postcode" : {"maxlength" : 16, "pattern" : "[A-Za-z]{1,2}[0-9][A-Za-z0-9]?\\s?[0-9][ABD-HJLNP-UW-Zabd-hjlnp-uw-z]{2}"},
