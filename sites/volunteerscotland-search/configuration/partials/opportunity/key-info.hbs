@@ -6,6 +6,7 @@
       {{#if home_based ~}}{{else}}
       {{#if distance ~}}
       {{#compare distance "!==" "Infinity" ~}}
+      {{#compare distance "<=" @root.request.params.query.distance ~}}
       <ul class="fa-ul">
         <li class="mdc-card__info--search-distance mdc-typography--body2">
           <span class="fa-li"><span class="fas fa-location-arrow fa-fw" title="Distance"></span></span>
@@ -20,6 +21,14 @@
           {{/compare ~}}
         </li>
       </ul>
+      {{else}}
+      <ul class="fa-ul">
+        <li class="mdc-card__info--search-distance mdc-typography--body2">
+          <span class="fa-li"><span class="far fa-location-arrow fa-fw" title="Location"></span></span>
+          {{@root.request.params.query.la}}
+        </li>
+      </ul>
+      {{/compare ~}}
       {{else}}
       <ul class="fa-ul">
         <li class="mdc-card__info--search-distance mdc-typography--body2">

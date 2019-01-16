@@ -11,11 +11,11 @@
   "query": {
     "bool": {
       "filter": [
-        {{>queries_opportunity_common_filters request.params.query}},
-        {{>queries_opportunity_search_filters request.params.query}}
+        {{>queries_opportunity_common_filters @root.request.params.query}},
+        {{>queries_opportunity_search_filters @root.request.params.query}}
       ],
       "must": [
-        {{>queries_opportunity_search_must request.params.query}}
+        {{>queries_opportunity_search_must @root.request.params.query}}
       ]
     }
   },
@@ -27,15 +27,15 @@
       }
     }
   }
-  {{#ifAll request.params.query.lat request.params.query.lon}},
+  {{#ifAll @root.request.params.query.lat @root.request.params.query.lon}},
   "sort": {
     "_geo_distance": {
       "geo_coords": {
-        "lat": {{request.params.query.lat}},
-        "lon": {{request.params.query.lon}}
+        "lat": {{@root.request.params.query.lat}},
+        "lon": {{@root.request.params.query.lon}}
       },
       "order": "asc",
-      "unit": "km",
+      "unit": "mi",
       "mode": "min",
       "distance_type": "arc"
     }
