@@ -1,24 +1,23 @@
-{{#if @root.data.search_data.map_results.pagination.totalResults ~}}
-  <div id="detailed-results-container" class="container-content content-primary-search container-map">
-    <div class="mdc-layout-grid head v-margin-full">
-      <div class="mdc-layout-grid__inner">
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone action">
-          {{#>components_tab_bar}}
-            {{>components_tab url=(concat "/search" @root.request.url.search) iconClasses="far fa-list fa-fw" label="List" active=(compare @root.request.url.pathname "===" "/search")}}
-            {{>components_tab url=(concat "/map" @root.request.url.search) iconClasses="far fa-map-marker-alt fa-fw" label="Map" active=(compare @root.request.url.pathname "===" "/map")}}
-          {{/components_tab_bar}}
-        </div>
-        {{#compare (subtract @root.data.search_data.map_results.hits.total @root.data.search_data.map_results.aggregations.geo_search.buckets.[0].doc_count) ">" 0 ~}}
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone pagination-desktop">
-          <div class="mdc-typography--body2 pull-right">
-            <a href="/search{{@root.request.url.search}}&only_la=true">List {{subtract @root.data.search_data.map_results.hits.total @root.data.search_data.map_results.aggregations.geo_search.buckets.[0].doc_count}} available across {{@root.request.params.query.la}}</a>
-          </div>
-        </div>
-        {{/compare ~}}
+<div id="detailed-results-container" class="container-content content-primary-search container-map">
+  <div class="mdc-layout-grid head v-margin-full">
+    <div class="mdc-layout-grid__inner">
+      <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone action">
+        {{#>components_tab_bar}}
+          {{>components_tab url=(concat "/search" (replace @root.request.url.search "&only_la=true" "")) iconClasses="far fa-list fa-fw" label="List" active=(compare @root.request.url.pathname "===" "/search")}}
+          {{>components_tab url=(concat "/map" (replace @root.request.url.search "&only_la=true" "")) iconClasses="far fa-map-marker-alt fa-fw" label="Map" active=(compare @root.request.url.pathname "===" "/map")}}
+        {{/components_tab_bar}}
       </div>
+      {{#compare (subtract @root.data.search_data.map_results.hits.total @root.data.search_data.map_results.aggregations.geo_search.buckets.[0].doc_count) ">" 0 ~}}
+      <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone pagination-desktop">
+        <div class="mdc-typography--body2 pull-right">
+          <a href="/search{{@root.request.url.search}}&only_la=true">List {{subtract @root.data.search_data.map_results.hits.total @root.data.search_data.map_results.aggregations.geo_search.buckets.[0].doc_count}} available across {{@root.request.params.query.la}}</a>
+        </div>
+      </div>
+      {{/compare ~}}
     </div>
-
-    <div id="detailed-results-container" class="container-content grid-content container-map">
+  </div>
+  <div id="detailed-results-container" class="container-content grid-content container-map">
+    {{#if @root.data.search_data.map_results.pagination.totalResults ~}}
       <div class="card-loader" id="opportunity-map-loader" style="display: flex">
         <div class="card-loader-inner">
           <span class="far fa-2x fa-circle-notch fa-spin"></span>
@@ -47,15 +46,11 @@
           {{/compare ~}}
         {{/each}}
       </div>
-    </div>
+    {{else}}
+      {{> search_info paging=@root.data.search_data.detailed_results.pagination}}
+    {{/if ~}}
   </div>
-{{else}}
-  <div id="detailed-results-container" class="container-content content-primary-search">
-    <div class="search-info mdc-elevation--z1">
-      No results could be found, please try a different search query
-    </div>
-  </div>
-{{/if ~}}
+</div>
 
 <script>
   document.addEventListener("DOMContentLoaded", function(event) {
