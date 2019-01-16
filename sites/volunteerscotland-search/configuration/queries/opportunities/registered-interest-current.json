@@ -12,7 +12,7 @@
   "query": {
     "bool": {
       "filter": [
-        {{>queries_opportunity_common_filters request.params.query}}
+        {{>queries_opportunity_common_filters @root.request.params.query}}
       ],
       "must": [
         {

@@ -26,7 +26,7 @@
       "query": {
         "bool": {
           "filter": [
-            {{>queries_opportunity_common_filters request.params.query}}
+            {{>queries_opportunity_common_filters @root.request.params.query}}
           ],
           {{#if @root.data.primaryResponse.hits.hits.[0] ~}}
           "should": [

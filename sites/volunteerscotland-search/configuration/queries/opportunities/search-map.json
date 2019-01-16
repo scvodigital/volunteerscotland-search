@@ -19,12 +19,37 @@
       ]
     }
   },
-  "aggs" : {
-    "admin_district": {
-      "terms": {
-        "field": "geo.codes.admin_district",
-        "size": 3000
+  "aggs": {
+    "geo_search": {
+      "geo_distance": {
+        "field": "geo_coords",
+        "origin": "{{@root.request.params.query.lat}}, {{@root.request.params.query.lng}}",
+        "unit": "mi",
+        "ranges": [
+          {
+            "to": {{@root.request.params.query.distance}}
+          },
+          {
+            "from": {{@root.request.params.query.distance}}
+          }
+        ]
       }
     }
-  }
+  },
+  "sort": [
+    {{#ifAll @root.request.params.query.location @root.request.params.query.lat @root.request.params.query.lng ~}}
+      {
+        "_geo_distance": {
+          "geo_coords": {
+            "lat": {{@root.request.params.query.lat}},
+            "lon": {{@root.request.params.query.lng}}
+          },
+          "order": "asc",
+          "unit": "mi",
+          "mode": "min",
+          "distance_type": "arc"
+        }
+      }
+    {{/ifAll ~}}
+  ]
 }

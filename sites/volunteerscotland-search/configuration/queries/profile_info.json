@@ -3,6 +3,7 @@
   "last_name" : "{{@root.request.body.last_name}}",
   "location_address" : "{{@root.request.body.location_address}}",
   "location_city" : "{{@root.request.body.location_city}}",
+  "date_of_birth" : "{{@root.request.body.date_of_birth}}",
   "location_postcode" : "{{@root.request.body.location_postcode}}",
   "email" : "{{@root.request.body.email}}",
   "phone" : "{{@root.request.body.phone}}"

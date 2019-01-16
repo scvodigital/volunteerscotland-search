@@ -150,8 +150,8 @@
   <div class="mdc-layout-grid__inner">
     <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone action">
       {{#>components_tab_bar}}
-        {{>components_tab url=(concat "/search" @root.request.url.search) iconClasses="far fa-list fa-fw" label="List" active=(compare @root.request.url.pathname "===" "/search")}}
-        {{>components_tab url=(concat "/map" @root.request.url.search) iconClasses="far fa-map-marker-alt fa-fw" label="Map" active=(compare @root.request.url.pathname "===" "/map")}}
+        {{>components_tab url=(concat "/search" (replace @root.request.url.search "&only_la=true" "")) iconClasses="far fa-list fa-fw" label="List" active=(compare @root.request.url.pathname "===" "/search")}}
+        {{>components_tab url=(concat "/map" (replace @root.request.url.search "&only_la=true" "")) iconClasses="far fa-map-marker-alt fa-fw" label="Map" active=(compare @root.request.url.pathname "===" "/map")}}
       {{/components_tab_bar}}
     </div>
     <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone pagination-desktop">
@@ -245,7 +245,7 @@
 </div>
 
 {{#each @root.data.search_data.detailed_results.hits.hits ~}}
-  {{> opportunity_search_result _source sort=sort distance=fields.distance.[0]}}
+  {{> opportunity_search_result _source distance=sort.[1]}}
 {{/each ~}}
 
 <div class="foot">

@@ -1,11 +1,14 @@
 {{#if paging.totalResults ~}}
 <div class="search-info">
-  Your search returned <strong>{{addCommas paging.totalResults}} {{inflect paging.totalResults "result" "results"}}</strong>
+  Your {{if @root.request.params.query.only_la "filtered"}} search returned <strong>{{addCommas paging.totalResults}} {{inflect paging.totalResults "result" "results"}}</strong>
   {{#compare @root.route.name "!==" "opportunity_map" ~}}
-  {{#compare paging.totalResults ">" 10 ~}} - showing
+  {{#compare paging.totalResults ">" 10 ~}} -
   page {{addCommas paging.currentPage}} of {{addCommas paging.totalPages}}
   {{/compare ~}}
   {{/compare ~}}
+  {{#if @root.request.params.query.only_la ~}}
+  <a href="/search{{replace @root.request.url.search "&only_la=true" ""}}">Show all</a>
+  {{/if ~}}
 </div>
 {{else}}
 {{#ifAny @root.request.params.query.keywords @root.request.params.query.location @root.request.params.query.work_types @root.request.params.query.client_groups @root.request.params.query.organisation_activities @root.request.params.query.has_opportunities @root.request.params.query.home_based @root.request.params.query.suitable_for_groups @root.request.params.query.suitable_for_one_off @root.request.params.query.board_trustee ~}}

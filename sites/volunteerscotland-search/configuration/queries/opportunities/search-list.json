@@ -32,6 +32,19 @@
           "must": [
             {{>queries_opportunity_search_must @root.request.params.query}}
           ]
+          {{#if @root.request.params.query.only_la ~}},
+          "must_not": [
+            {
+              "geo_distance": {
+                "distance": "{{default @root.request.params.query.distance "10"}}mi",
+                "geo_coords": {
+                  "lat": {{@root.request.params.query.lat}},
+                  "lon": {{@root.request.params.query.lng}}
+                }
+              }
+            }
+          ]
+          {{/if ~}}
         }
       },
       "boost_mode": "multiply",
@@ -59,7 +72,7 @@
                 "lon": {{@root.request.params.query.lng}}
               },
               "order": "asc",
-              "unit": "km",
+              "unit": "mi",
               "mode": "min",
               "distance_type": "arc"
             }
@@ -73,9 +86,21 @@
         {{/compare ~}}
       {{/compare ~}}
     {{else}}
-      {
-        "_score": "desc"
-      }
+      "_score"
     {{/if ~}}
+    {{#ifAll @root.request.params.query.location @root.request.params.query.lat @root.request.params.query.lng ~}},
+      {
+        "_geo_distance": {
+          "geo_coords": {
+            "lat": {{@root.request.params.query.lat}},
+            "lon": {{@root.request.params.query.lng}}
+          },
+          "order": "asc",
+          "unit": "mi",
+          "mode": "min",
+          "distance_type": "arc"
+        }
+      }
+    {{/ifAll ~}}
   ]
 }
