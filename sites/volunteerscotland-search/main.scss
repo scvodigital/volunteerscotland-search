@@ -1139,7 +1139,7 @@ a {
   position: relative;
   z-index: 1;
   width: 100%;
-  background-color: white;
+  background-color: $brand-primary-lightgrey;
   margin-bottom: $unit*1.5;
   // box-shadow: none;
   .mdc-card__info--content-primary-row {
@@ -1224,7 +1224,9 @@ a {
     margin: 0 0 $unit/2;
   }
   .mdc-card__info--search-distance {
-    margin-right: $unit;
+    // margin-right: $unit;
+    color: $brand-primary-black;
+    opacity: 0.8;
   }
 }
 .mdc-card.full,
@@ -3047,12 +3049,12 @@ form.inline-form {
     content: "";
     position: absolute;
     top: 100%;
-    background: linear-gradient(rgba(255,255,255, 0), rgba(255,255,255, 1));
+    background: linear-gradient(rgba(242, 238, 236, 0), rgba(242, 238, 236, 1));
   }
 }
 .search-result-article__notes .faded-overflow {
   &:before {
-    background: linear-gradient(rgba(255,255,255, 0), rgba(255,255,255, 1));
+    background: linear-gradient(rgba(242, 238, 236, 0), rgba(242, 238, 236, 1));
   }
 }
 

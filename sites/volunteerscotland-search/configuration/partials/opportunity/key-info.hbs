@@ -1,5 +1,39 @@
 <div class="mdc-card__info--content-primary-row">
   <div class="mdc-card__info--content-primary">
+    <div class="v-margin pull-right">
+      {{#compare @root.route.name "===" "opportunity_search" ~}}
+      {{#ifAll @root.request.params.query.location @root.request.params.query.lat @root.request.params.query.lng ~}}
+      {{#if home_based ~}}{{else}}
+      {{#if distance ~}}
+      {{#compare distance "!==" "Infinity" ~}}
+      <ul class="fa-ul">
+        <li class="mdc-card__info--search-distance mdc-typography--body2">
+          <span class="fa-li"><span class="fas fa-location-arrow fa-fw" title="Distance"></span></span>
+          {{#compare distance "<" 4 ~}}
+            Less than {{inflect (round distance "up") "mile" "miles" true}} away
+          {{else}}
+            {{#compare distance "<" 10 ~}}
+              Within {{round distance "up"}} miles
+            {{else}}
+              {{round distance "up"}} miles away
+            {{/compare ~}}
+          {{/compare ~}}
+        </li>
+      </ul>
+      {{else}}
+      <ul class="fa-ul">
+        <li class="mdc-card__info--search-distance mdc-typography--body2">
+          <span class="fa-li"><span class="far fa-location-arrow fa-fw" title="Location"></span></span>
+          {{@root.request.params.query.la}}
+        </li>
+      </ul>
+      {{/compare ~}}
+      {{/if ~}}
+      {{/if ~}}
+      {{/ifAll ~}}
+      {{/compare ~}}
+    </div>
+    {{#compare @root.route.name "===" "opportunity" ~}}
     {{#if goodhq_organisation.image_url ~}}
     <div class="mdc-card__media mdc-card__media--content-secondary pull-right">
       <a href="/organisation/{{organisation_slug}}{{@root.request.url.search}}">
@@ -7,7 +41,6 @@
       </a>
     </div>
     {{/if ~}}
-    {{#compare @root.route.name "===" "opportunity" ~}}
     {{#if @root.request.url.search ~}}
     {{/if ~}}
     {{/compare ~}}
