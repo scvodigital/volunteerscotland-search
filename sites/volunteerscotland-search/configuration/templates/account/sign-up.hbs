@@ -79,6 +79,9 @@
     </div>
   </div>
 </form>
+
+{{>account_sign_up_dialog redirect=(default '/' @root.request.headers.referer )}}
+
 <script>
 document.addEventListener("DOMContentLoaded", function(event) {
   var $form = $('#sign-up-form');
@@ -90,6 +93,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
   var $passwordConfirm = $('#sign-up-password-confirm');
   var $register = $('#sign-up-submit');
   var $loader = $('#sign-up-loader');
+  var $dialog = $('#sign-up-dialog');
+
+
 
   $form.on('submit', function(evt) {
     $loader.css('display', 'flex');
@@ -116,11 +122,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     volunteerscotland.app.auth().createUserWithEmailAndPassword(email, password).then(function(user) {
       if (user) {
-        console.log('Registered user:', user);
         user.user.getIdTokenResult().then(function(idTokenResult) {
           console.log('ID Token Result', idTokenResult);
-          volunteerscotland.setCookie('gi_token', idTokenResult.token, 7);
-          window.location.href = '/';
+            var scooby = $dialog[0].MDCDialog;
+            scooby.open();
         });
       } else {
         $message.text('Something went wrong, signed up but no user?').show();

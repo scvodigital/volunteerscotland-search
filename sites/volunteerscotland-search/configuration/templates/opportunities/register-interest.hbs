@@ -1,14 +1,21 @@
 {{#with @root.data.primaryResponse.hits.hits.0._source}}
-<form id="register-interest-form" action="/add-to-registered-interest?id={{Id}}" method="POST" class="sign-in-form">
+<form id="register-interest-form" action="/test-email-display?id={{Id}}" method="POST" class="sign-in-form">
   <h2>Register Interest</h2>
   <h2>{{title}} with {{organisation_name}}</h2>
   {{#unless @root.data.auth}}
   <h4>If you would like to save this data for future applications you must first <a href="sign-in">Sign in or Register</a></h4>
   {{/unless}}
 
-  {{#if (contains (map @root.data.registeredInterest.items.[0] (getProp "value")) Id)}}
+  {{#ifNone organisation_contact_email tsi_contact_email}}
+    <p>You can't volunteer for this opportunity from this site. {{#if organisation_website }}Please contact them at
+      <a href="{{fixUrl organisation_website 'http'}}">{{{organisation_website}}}</a> for more info{{/if}}</p>
+  {{else}}
+      {{#if (contains (map @root.data.registeredInterest.items.[0] (getProp "value")) Id)}}
       <p>You have already registered interest in this opportunity</p>
-  {{/if}}
+      {{else}}
+
+
+
 
   {{!-- This is debug code, remove when all done --}}
   {{#if @root.request.params.query.debug}}
@@ -104,6 +111,17 @@
     </label>
   </div>
 
+  <input type="hidden" name="organisation_contact_first_name" value="{{organisation_contact_first_name}}">
+  <input type="hidden" name="organisation_contact_last_name" value="{{organisation_contact_last_name}}">
+        <input type="hidden" name="organisation_name" value="{{organisation_contact_last_name}}">
+  <input type="hidden" name="opportunity_milo_ref" value="{{milo_ref}}">
+        <input type="hidden" name="opportunity_title" value="{{title}}">
+        <input type="hidden" name="opportunity_minimum_age" value="{{minimum_age}}">
+  <input type="hidden" name="opportunity_maximum_age" value="{{maximum_age}}">
+  <input type="hidden" name="emailTo"
+         value="{{#compare send_register_interest_email_to '===' 'TSI'}}{{default tsi_contact_email organisation_contact_email }}{{else}}{{default organisation_contact_email tsi_contact_email}}{{/compare}}"
+  >
+
 {{#if @root.data.auth}}
   <div class="mdc-form-field">
     <div class="mdc-checkbox">
@@ -128,6 +146,8 @@
     Register Interest
   </button>
 
+      {{/if}}
+  {{/ifNone}}
 </form>
 <div class="detailed-info">
 {{#ifAny organisation_contact_last_name organisation_contact_email organisation_website ~}}

@@ -1,0 +1,25 @@
+{
+  "name": "update-newsletter-settings",
+  "pattern": "/update-newsletter-settings",
+  "debug" : true,
+  "acceptedVerbs": "POST",
+  "defaultParams": {
+    "context": "results"
+  },
+  "metaData" : {
+    "emailType" : "register-interest",
+    "emailTarget" : ""
+  },
+  "tasks": [
+    "context.metaData.commonTasks.authNotRequired",
+    {
+      "name": "destination",
+      "taskModule": "render",
+      "renderer": "handlebars",
+      "config": {
+        "output": "body",
+        "template": "N1 {{{@root.request.body.newsletter-1}}} - N2 {{{@root.request.body.newsletter-2}}}"
+      }
+    }
+  ]
+}

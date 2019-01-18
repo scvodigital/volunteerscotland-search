@@ -1,0 +1,74 @@
+<div
+  data-mdc-auto-init="MDCDialog"
+  id="sign-up-dialog"
+  class="mdc-dialog"
+  role="alertdialog"
+  aria-modal="true"
+  aria-labelledby="my-dialog-title"
+  aria-describedby="my-dialog-content">
+  <div class="mdc-dialog__container">
+    <div class="mdc-dialog__surface">
+      <!-- Title cannot contain leading whitespace due to mdc-typography-baseline-top() -->
+      <h2 class="mdc-dialog__title" id="my-dialog-title"><!--
+     -->Sign up for Newsletters?<!--
+   --></h2>
+      <div class="mdc-dialog__content" id="sign-up-dialog">
+        <form action="/update-newsletter-settings" id="newsletter-form" method="POST" data-ajax-form='{
+        "successCallback": "goRedirect",
+        "failureCallback": "goRedirect"
+      }'>
+          <div class="mdc-form-field">
+            <div class="mdc-checkbox">
+              <input type="checkbox"
+                     class="mdc-checkbox__native-control"
+                     name="newsletter-1"
+                     id="newsletter-1"/>
+              <div class="mdc-checkbox__background">
+                <svg class="mdc-checkbox__checkmark"
+                     viewBox="0 0 24 24">
+                  <path class="mdc-checkbox__checkmark-path"
+                        fill="none"
+                        d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                </svg>
+                <div class="mdc-checkbox__mixedmark"></div>
+              </div>
+            </div>
+            <label for="newsletter-1">Would you like to receive Newsletter 1?</label>
+          </div>
+
+          <div class="mdc-form-field">
+            <div class="mdc-checkbox">
+              <input type="checkbox"
+                     class="mdc-checkbox__native-control"
+                     name="newsletter-2"
+                     id="newsletter-2"/>
+              <div class="mdc-checkbox__background">
+                <svg class="mdc-checkbox__checkmark"
+                     viewBox="0 0 24 24">
+                  <path class="mdc-checkbox__checkmark-path"
+                        fill="none"
+                        d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                </svg>
+                <div class="mdc-checkbox__mixedmark"></div>
+              </div>
+            </div>
+            <label for="newsletter-2">Would you like to receive Newsletter 2?</label>
+          </div>
+
+          <button type="submit" class="mdc-button mdc-button--raised mdc-button--import mdc-button--fullwidth v-margin">Save newsletter preferences</button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="mdc-dialog__scrim"></div>
+</div>
+
+<script>
+
+
+  function goRedirect(){
+    window.location.href = '{{redirect}}' || '/';
+  }
+
+</script>

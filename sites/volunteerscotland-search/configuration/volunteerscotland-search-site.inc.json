@@ -14,6 +14,7 @@
     "favouritesCampaignName": "vs-favourites",
     "registeredInterestCampaignName": "vs-registered-interest",
     "emailCampaignName": "vs-saved-searches",
+    "emailSendSettings": "{:./email-send-settings.json}",
     "menus": "{:./volunteerscotland-search-menus.json}",
     "accountInfoValidation": "{:./account-info-validation.json}",
     "elasticsearchUrl": "{$../elasticsearch-url.txt}",

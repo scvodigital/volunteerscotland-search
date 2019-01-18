@@ -1,25 +1,5 @@
 <script src="{{~>asset_url url='downloader.js'~}}"></script>
 <script>
-  function storeProfileInfo(formid){
-    let data = $("#" + formid).serialize();
-    $.ajax({
-      type : "POST",
-      url: "/store-profile-info",
-      data: data,
-      success: function(result){
-          var vs = volunteerscotland;
-          var vssnack = vs.snackbar;
-        volunteerscotland.snackbar.show({
-          message: 'Profile information has been updated'
-        });
-      },
-      error: function(thing1, thing2, thing3){
-          console.log(thing1);
-          console.log(thing2);
-          console.log(thing3);
-      }
-    })
-  }
 
 
   function exportUserData() {

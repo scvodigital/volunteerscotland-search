@@ -1,0 +1,10 @@
+{
+  "register-interest": {
+    "mailgunConnection": "mg_volunteerscotland_net",
+    "from": "Volunteer Scotland <hello@volunteerscotland.com>",
+    "sendIfEmpty": false,
+    "subjectPartial": "emails_register_interest_subject",
+    "bodyPartial": "emails_register_interest_body",
+    "metaData": {}
+  }
+}
