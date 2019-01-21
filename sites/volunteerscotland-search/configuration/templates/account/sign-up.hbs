@@ -126,6 +126,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
           console.log('ID Token Result', idTokenResult);
             var scooby = $dialog[0].MDCDialog;
             scooby.open();
+            volunteerscotland.setCookie('gi_token', idTokenResult.token, 7);
+            window.location.href = '/';
         });
       } else {
         $message.text('Something went wrong, signed up but no user?').show();
