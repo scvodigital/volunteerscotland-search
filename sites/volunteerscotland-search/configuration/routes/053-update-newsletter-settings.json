@@ -6,10 +6,6 @@
   "defaultParams": {
     "context": "results"
   },
-  "metaData" : {
-    "emailType" : "register-interest",
-    "emailTarget" : ""
-  },
   "tasks": [
     "context.metaData.commonTasks.authNotRequired",
     {

@@ -80,9 +80,10 @@
   </div>
 </form>
 
-{{>account_sign_up_dialog redirect=(default '/' @root.request.headers.referer )}}
-
+{{>account_sign_up_newsletter_dialog}}
 <script>
+
+
 document.addEventListener("DOMContentLoaded", function(event) {
   var $form = $('#sign-up-form');
   var $message = $('#sign-up-message');
@@ -93,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   var $passwordConfirm = $('#sign-up-password-confirm');
   var $register = $('#sign-up-submit');
   var $loader = $('#sign-up-loader');
-  var $dialog = $('#sign-up-dialog');
+
 
 
 
@@ -121,13 +122,28 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
 
     volunteerscotland.app.auth().createUserWithEmailAndPassword(email, password).then(function(user) {
+      function redirect(){
+        window.location.href = '{{{@root.request.headers.referer}}}' || '/';
+      }
+
+      function dialogFailureAction(){
+        $message.text('User sign up complete, but newsletter subscription failed').show();
+        $loader.css('display', 'none');
+        setTimeout(function() {
+            redirect();
+          }, 3000);
+      }
+
       if (user) {
         user.user.getIdTokenResult().then(function(idTokenResult) {
           console.log('ID Token Result', idTokenResult);
-            var scooby = $dialog[0].MDCDialog;
-            scooby.open();
             volunteerscotland.setCookie('gi_token', idTokenResult.token, 7);
-            window.location.href = '/';
+            try {
+              runDialog(redirect, dialogFailureAction);
+            } catch (err){
+                console.error(err);
+                dialogFailureAction();
+            }
         });
       } else {
         $message.text('Something went wrong, signed up but no user?').show();

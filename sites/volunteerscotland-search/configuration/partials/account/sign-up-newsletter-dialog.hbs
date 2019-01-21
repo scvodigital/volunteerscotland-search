@@ -14,8 +14,8 @@
    --></h2>
       <div class="mdc-dialog__content" id="sign-up-dialog">
         <form action="/update-newsletter-settings" id="newsletter-form" method="POST" data-ajax-form='{
-        "successCallback": "goRedirect",
-        "failureCallback": "goRedirect"
+        "successCallback": "dialogSuccessFunction",
+        "failureCallback": "dialogFailureFunction"
       }'>
           <div class="mdc-form-field">
             <div class="mdc-checkbox">
@@ -54,7 +54,6 @@
             </div>
             <label for="newsletter-2">Would you like to receive Newsletter 2?</label>
           </div>
-
           <button type="submit" class="mdc-button mdc-button--raised mdc-button--import mdc-button--fullwidth v-margin">Save newsletter preferences</button>
 
         </form>
@@ -66,9 +65,13 @@
 
 <script>
 
+  var dialogSuccessFunction;
+  var dialogFailureFunction;
 
-  function goRedirect(){
-    window.location.href = '{{redirect}}' || '/';
+  function runDialog(success, failure){
+      var dialog = $('#sign-up-dialog')[0].MDCDialog;
+      dialogSuccessFunction = success;
+      dialogFailureFunction = failure;
+      dialog.open();
   }
-
 </script>
