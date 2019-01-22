@@ -1,32 +1,44 @@
 {
   "size": 6,
-  "_source": ["place", "display", "point", "district"],
+  "_source": ["place", "display", "point"],
   "query": {
     "bool": {
       "must": [
         {
           "query_string": {
-             "default_field": "autocomplete",
+             "fields": ["autocomplete", "textbag^5"],
              "analyzer": "autocomplete",
              "query":
-               {{~#if (regexMatch @root.request.params.query.q "^([A-Z]{1,2})(([0-9][A-Z])|([0-9]{1,2}))" "ig")~}}
-                 {{{stringify (replace @root.request.params.query.q " " "")}}}
-               {{else}}
-                 {{{stringify @root.request.params.query.q}}}
-               {{~/if~}}
+              {{~#if (regexMatch @root.request.params.query.q "^([A-Z]{1,2})(([0-9][A-Z])|([0-9]{1,2}))" "ig")~}}
+                {{{stringify (replace @root.request.params.query.q " " "")}}}
+              {{else}}
+                {{{stringify @root.request.params.query.q}}}
+              {{~/if~}}
+          }
+        },
+        {
+          "term": {
+            "country": {
+              "value": "Scotland"
+            }
           }
         }
       ],
       "should": [
         {
           "term": {
-            "country": {
-              "value": "Scotland",
-              "boost": 5
+            "textbag": {
+              "value":
+                {{~#if (regexMatch @root.request.params.query.q "^([A-Z]{1,2})(([0-9][A-Z])|([0-9]{1,2}))" "ig")~}}
+                  {{{stringify (replace @root.request.params.query.q " " "")}}}
+                {{else}}
+                  {{{stringify @root.request.params.query.q}}}
+                {{~/if~}}
             }
           }
         }
-      ]
+      ],
+      "boost": 1
     }
   }
 }
