@@ -27,7 +27,15 @@
         {{>queries_opportunity_common_filters @root.request.params.query}}
       ],
       "must": [
-        {{>queries_terms field="Id" terms=(getKeys data.notes)}}
+        {{#if data.notes}}
+          {{>queries_terms field="Id" terms=(getKeys data.notes)}}
+        {{else}}{
+          "terms": {
+            "Id": ["find_nothing"]
+          }
+        }
+        {{/if}}
+
       ]
     }
   },

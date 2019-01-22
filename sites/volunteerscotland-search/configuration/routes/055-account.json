@@ -1,5 +1,6 @@
 {
   "name": "account",
+  "debug" : true,
   "pattern": "/account",
   "metaData": {
     "sidebarButton": {

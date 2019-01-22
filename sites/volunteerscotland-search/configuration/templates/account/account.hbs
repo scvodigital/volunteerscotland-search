@@ -27,7 +27,7 @@
   <section class="settings-section content-settings-email">
 
     <h2 class="mdc-typography--headline5">
-      Profile
+      Profile information for Volunteering Applications
     </h2>
     <form action="/store-profile-info" id="profile-info-form" method="POST" data-ajax-form='{
         "successMessage": "Profile Information updated",
@@ -52,7 +52,7 @@
     </div>
 
     <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
-      <input id="thisfield" name="date_of_birth"
+      <input id="date_of_birth" name="date_of_birth"
         {{>form_validation_attributes @root.context.metaData.accountInfoValidation.date_of_birth}} class="mdc-text-field__input mdc-text-field--fullwidth"
              value="{{@root.data.profileInfo.date_of_birth}}">
       <label class="mdc-floating-label" for="date_of_birth">
@@ -79,7 +79,7 @@
     </div>
 
     <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
-      <input id="thisfield" name="location_postcode"
+      <input id="location_postcode" name="location_postcode"
         {{>form_validation_attributes @root.context.metaData.accountInfoValidation.location_postcode}} class="mdc-text-field__input mdc-text-field--fullwidth"
              value="{{@root.data.profileInfo.location_postcode}}">
       <label class="mdc-floating-label" for="location_postcode">
@@ -88,7 +88,7 @@
     </div>
 
     <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
-      <input id="thisfield" name="email" class="mdc-text-field__input mdc-text-field--fullwidth"
+      <input id="email" name="email" class="mdc-text-field__input mdc-text-field--fullwidth"
         {{>form_validation_attributes @root.context.metaData.accountInfoValidation.email}}
              value="{{@root.data.profileInfo.email}}">
       <label class="mdc-floating-label" for="email">
@@ -97,7 +97,7 @@
     </div>
 
     <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
-      <input id="thisfield" name="phone"
+      <input id="phone" name="phone"
         {{>form_validation_attributes @root.context.metaData.accountInfoValidation.phone}}
              class="mdc-text-field__input mdc-text-field--fullwidth"
              value="{{@root.data.profileInfo.phone}}">
