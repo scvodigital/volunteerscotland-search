@@ -216,6 +216,16 @@
         },
         "renderer": "handlebars"
       },
+        "newsLetterDataDummy": {
+        "name": "newsLetterDataDummy",
+        "taskModule": "render",
+        "renderer": "handlebars",
+        "config": {
+        "output": "data",
+        "template": "{\"newsletter-events\": true, \"newsletter-scotland\": false}",
+          "parseJson": "true"
+        }
+      },
       "notesData": {
         "name": "notes",
         "taskModule": "firebaseRtbGet",

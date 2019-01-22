@@ -99,62 +99,27 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 
   $form.on('submit', function(evt) {
-    $loader.css('display', 'flex');
-    evt.preventDefault();
-
-    var email = $email.val();
-    var emailConfirm = $emailConfirm.val();
-    var password = $password.val();
-    var passwordConfirm = $passwordConfirm.val();
-
-    if (email !== emailConfirm) {
-      $message.text('The two email addresses entered do not match').show();
-      $loader.css('display', 'none');
-      document.body.scrollTop = document.documentElement.scrollTop = 0;
-      return;
+// Test code
+    function redirect(){
+      window.location.href = '{{{@root.request.headers.referer}}}' || '/';
     }
 
-    if (password !== passwordConfirm) {
-      $message.text('The two passwords entered do not match').show();
+    function dialogFailureAction(){
+      $message.text('User sign up complete, but newsletter subscription failed').show();
       $loader.css('display', 'none');
-      document.body.scrollTop = document.documentElement.scrollTop = 0;
-      return;
+      setTimeout(function() {
+        redirect();
+      }, 3000);
     }
+    try {
+      runDialog(redirect, dialogFailureAction);
+    } catch (err){
+      console.error(err);
+      dialogFailureAction();
+    }
+    return false;
+// Test ends
 
-    volunteerscotland.app.auth().createUserWithEmailAndPassword(email, password).then(function(user) {
-      function redirect(){
-        window.location.href = '{{{@root.request.headers.referer}}}' || '/';
-      }
-
-      function dialogFailureAction(){
-        $message.text('User sign up complete, but newsletter subscription failed').show();
-        $loader.css('display', 'none');
-        setTimeout(function() {
-            redirect();
-          }, 3000);
-      }
-
-      if (user) {
-        user.user.getIdTokenResult().then(function(idTokenResult) {
-          console.log('ID Token Result', idTokenResult);
-            volunteerscotland.setCookie('gi_token', idTokenResult.token, 7);
-            try {
-              runDialog(redirect, dialogFailureAction);
-            } catch (err){
-                console.error(err);
-                dialogFailureAction();
-            }
-        });
-      } else {
-        $message.text('Something went wrong, signed up but no user?').show();
-        $loader.css('display', 'none');
-        document.body.scrollTop = document.documentElement.scrollTop = 0;
-      }
-    }).catch(function(err) {
-      $message.text(err.message).show();
-      $loader.css('display', 'none');
-      document.body.scrollTop = document.documentElement.scrollTop = 0;
-    });
   });
 });
 </script>
