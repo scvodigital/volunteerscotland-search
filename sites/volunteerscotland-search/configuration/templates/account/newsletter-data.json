@@ -1,0 +1,13 @@
+[
+{
+  "id" : "newsletter-scotland",
+  "name" : "Scottish Volunteering Updates",
+  "subscribed" : true
+},
+
+  {
+    "id" : "newsletter-events",
+    "name" : "Events Volunteering Updates",
+    "subscribed" : false
+  }
+]

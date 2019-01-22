@@ -216,13 +216,13 @@
         },
         "renderer": "handlebars"
       },
-        "newsLetterDataDummy": {
-        "name": "newsLetterDataDummy",
+        "newsletterDataDummy": {
+        "name": "newsletterDataDummy",
         "taskModule": "render",
         "renderer": "handlebars",
         "config": {
         "output": "data",
-        "template": "{\"newsletter-events\": true, \"newsletter-scotland\": false}",
+        "template": ">context.metaData.handlebars.templates.account_newsletter-data",
           "parseJson": "true"
         }
       },

@@ -6,7 +6,7 @@
   </div>
   {{/compare}}
   <h1 class="mdc-typography--headline3 v-margin-full">
-    Saved searches &amp; email
+    Saved searches, newsletters &amp; email
   </h1>
 
   {{#compare (length @root.data.searches.items.[0]) ">" 0 ~}}
@@ -142,4 +142,69 @@
     You don't yet have any searches saved. To save a search, click the &ensp;<strong><span class="far fa-search-plus mdc-chip__icon mdc-chip__icon--leading" aria-hidden="true"></span>Save/email this search</strong>&ensp;button once you've entered some search parameters.
   </p>
   {{/compare ~}}
+
+    <ul class="mdc-list mdc-list--two-line mdc-list--avatar-list mdc-elevation--z3">
+      <li class="mdc-list-item mdc-list-item--header">
+        <span class="mdc-list-item__graphic far" aria-hidden="true"></span>
+        <div class="mdc-layout-grid">
+          <div class="mdc-layout-grid__inner">
+            <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone saved-search">
+            <span class="mdc-list-item__text">
+              <strong>News</strong>
+            </span>
+            </div>
+            <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-2-desktop mdc-layout-grid__cell--span-2-tablet mdc-layout-grid__cell--span-2-phone align-centre">
+            <span class="mdc-list-item__text">
+              <strong>Email</strong>
+            </span>
+            </div>
+            <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-2-desktop mdc-layout-grid__cell--span-2-tablet mdc-layout-grid__cell--span-2-phone align-centre">
+            </div>
+          </div>
+        </div>
+      </li>
+
+      {{#each @root.data.newsletterDataDummy~}}
+        <li class="mdc-list-item mdc-ripple-upgraded">
+          <span class="mdc-list-item__graphic far fa-newspaper fa-2x" aria-hidden="true"></span>
+          <div class="mdc-layout-grid">
+            <div class="mdc-layout-grid__inner">
+              <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone saved-search">
+              <span class="mdc-list-item__text">
+                <p>{{{name}}}</p>
+              </span>
+              </div>
+              <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-2-desktop mdc-layout-grid__cell--span-2-tablet mdc-layout-grid__cell--span-2-phone align-centre">
+                <div class="mdc-chip-set mdc-chip-set--filter">
+                  {{#> ajax_chip
+                    onUrl="/enable-newsletter-subscription"
+                    offUrl="/disable-newsletter-subscription"
+                    onText="Email"
+                    offText="Email"
+                    onMethod="POST"
+                    offMethod="POST"
+                    iconClasses="far fa-envelope"
+                    on=subscribed
+                  }}
+                    {
+                    "onData": {
+                    "name": {{{stringify ../id}}}
+                    },
+                    "offData": {
+                    "name": {{{stringify ../id}}}
+                    }
+                    }
+                  {{/ajax_chip}}
+                </div>
+              </div>
+              <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-2-desktop mdc-layout-grid__cell--span-2-tablet mdc-layout-grid__cell--span-2-phone">
+              </div>
+            </div>
+          </div>
+        </li>
+        {{#unless @last}}
+          <li class="mdc-list-divider" role="separator"></li>
+        {{/unless ~}}
+      {{/each ~}}
+    </ul>
 </div>

@@ -1,6 +1,7 @@
 {
   "name": "searches",
   "pattern": "/searches",
+  "debug" : "true",
   "metaData": {
     "sidebarButton": {
       "icon": "search",
@@ -14,6 +15,7 @@
   "tasks": [
     "context.metaData.commonTasks.authRequired",
     "context.metaData.commonTasks.searchesData",
+    "context.metaData.commonTasks.newsletterDataDummy",
     {
       "name": "email_days",
       "taskModule": "render",
