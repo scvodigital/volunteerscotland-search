@@ -1,5 +1,7 @@
 <script src="{{~>asset_url url='downloader.js'~}}"></script>
 <script>
+
+
   function exportUserData() {
     var dataUrl = 'data:application/json;base64,{{{btoa @root.data.export_user_data}}}';
     download(dataUrl, 'user-export.json', 'application/json');
@@ -37,6 +39,8 @@
         checkProviders();
       }
     });
+
+
 
     $('[data-provider-link]').each(function(i, o) {
       var $chip = $(o);

@@ -25,12 +25,90 @@
   </h1>
 
   <section class="settings-section content-settings-email">
+
     <h2 class="mdc-typography--headline5">
       Profile
     </h2>
-    <p>
-      TODO
-    </p>
+    <form action="/store-profile-info" id="profile-info-form" method="POST" data-ajax-form='{
+        "successMessage": "Profile Information updated",
+        "failureMessage": "Failed to update Profile"
+      }'>
+    <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
+      <input id="first_name" name="first_name"
+             {{>form_validation_attributes @root.context.metaData.accountInfoValidation.first_name}}class="mdc-text-field__input mdc-text-field--fullwidth"
+             value="{{@root.data.profileInfo.first_name}}">
+      <label class="mdc-floating-label" for="first_name">
+        First Name
+      </label>
+    </div>
+
+    <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
+      <input id="last_name" name="last_name"
+        {{>form_validation_attributes @root.context.metaData.accountInfoValidation.last_name}} class="mdc-text-field__input mdc-text-field--fullwidth"
+             value="{{@root.data.profileInfo.last_name}}">
+      <label class="mdc-floating-label" for="last_name">
+        Surname
+      </label>
+    </div>
+
+    <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
+      <input id="thisfield" name="date_of_birth"
+        {{>form_validation_attributes @root.context.metaData.accountInfoValidation.date_of_birth}} class="mdc-text-field__input mdc-text-field--fullwidth"
+             value="{{@root.data.profileInfo.date_of_birth}}">
+      <label class="mdc-floating-label" for="date_of_birth">
+        Date of Birth
+      </label>
+    </div>
+
+    <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
+      <input id="location_address" name="location_address"
+        {{>form_validation_attributes @root.context.metaData.accountInfoValidation.location_address}} class="mdc-text-field__input mdc-text-field--fullwidth"
+             value="{{@root.data.profileInfo.location_address}}">
+      <label class="mdc-floating-label" for="location_address">
+        Address
+      </label>
+    </div>
+
+    <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
+      <input id="location_city" name="location_city"
+        {{>form_validation_attributes @root.context.metaData.accountInfoValidation.location_city}} class="mdc-text-field__input mdc-text-field--fullwidth"
+             value="{{@root.data.profileInfo.location_city}}">
+      <label class="mdc-floating-label" for="location_city">
+        Town / City
+      </label>
+    </div>
+
+    <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
+      <input id="thisfield" name="location_postcode"
+        {{>form_validation_attributes @root.context.metaData.accountInfoValidation.location_postcode}} class="mdc-text-field__input mdc-text-field--fullwidth"
+             value="{{@root.data.profileInfo.location_postcode}}">
+      <label class="mdc-floating-label" for="location_postcode">
+        Postcode
+      </label>
+    </div>
+
+    <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
+      <input id="thisfield" name="email" class="mdc-text-field__input mdc-text-field--fullwidth"
+        {{>form_validation_attributes @root.context.metaData.accountInfoValidation.email}}
+             value="{{@root.data.profileInfo.email}}">
+      <label class="mdc-floating-label" for="email">
+        Email Address
+      </label>
+    </div>
+
+    <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
+      <input id="thisfield" name="phone"
+        {{>form_validation_attributes @root.context.metaData.accountInfoValidation.phone}}
+             class="mdc-text-field__input mdc-text-field--fullwidth"
+             value="{{@root.data.profileInfo.phone}}">
+      <label class="mdc-floating-label" for="phone">
+        Phone Number
+      </label>
+    </div>
+
+    <button type="submit" class="mdc-button mdc-button--raised mdc-button--import mdc-button--fullwidth v-margin">Save profile information</button>
+
+    </form>
   </section>
 
   <hr />
@@ -215,8 +293,9 @@
     </section>
     <footer class="mdc-dialog__footer">
       <button type="button" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--cancel">Cancel</button>
-      <button type="submit" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept">Import User</a>
+      <button type="submit" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept">Import User</button>
     </footer>
   </form>
   <div class="mdc-dialog__backdrop"></div>
 </aside>
+

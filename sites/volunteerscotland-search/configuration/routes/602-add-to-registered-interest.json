@@ -1,10 +1,22 @@
 {
   "name": "add-to-registered-interest",
   "pattern": "/add-to-registered-interest",
-  "acceptedVerbs": "POST"
-,
+  "acceptedVerbs": "POST",
+  "metaData" : {
+     "emailType" : "register-interest"
+  },
   "tasks": [
     "context.metaData.commonTasks.authNotRequired",
+    {
+      "name": "send_email",
+      "taskModule": "mailgun",
+      "renderer": "handlebars",
+      "config": {
+        "output": "data",
+        "parseJson": true,
+        "template": ">context.metaData.handlebars.templates.email-out"
+      }
+    },
     {
       "name": "reroute-no-login",
       "taskModule": "reroute",

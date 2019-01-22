@@ -17,6 +17,7 @@
     "context.metaData.commonTasks.opportunitySupplimentary",
     "context.metaData.commonTasks.searchesData",
     "context.metaData.commonTasks.notesData",
+    "context.metaData.commonTasks.profileInfoData",
     {
       "name": "email_days",
       "taskModule": "render",
