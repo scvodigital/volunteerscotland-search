@@ -44,16 +44,17 @@
     $facebook.on('click', function(evt) { socialSignIn('facebook'); });
     $twitter.on('click', function(evt) { socialSignIn('twitter'); });
 
-    function getNewsletterRedirect(){
-        // Redirect them to newsletter settings if
-      var redirect = '{{{@root.request.headers.referer}}}'
-      var host = '{{{@root.request.headers.host}}}'
-      console.log (redirect.match(host + "/$") - "Host match");
-      console.log (redirect.match(host + "/sign-in/$") - "Sign in host match");
-      return;
+    function getRedirect(newUser){
+        // Redirect them to newsletter settings if they're new and not in the middle of something.
+      if (!newUser) return '{{{@root.request.headers.referer}}}';
+      var host = '{{{@root.request.headers.host}}}'.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      if ('{{{@root.request.headers.referer}}}'.match(host + "/$") || '{{{@root.request.headers.referer}}}'.match(host + "/sign-in/?$")) {
+        return "/searches?newuser=true";
+      } else {
+          return '{{{@root.request.headers.referer}}}';
+      }
     }
 
-    getNewsletterRedirect();
 
     function socialSignIn(providerName) {
       $loader.show();
@@ -70,7 +71,7 @@
           result.user.getIdTokenResult().then(function(idTokenResult) {
             console.log('ID Token Result', idTokenResult);
             volunteerscotland.setCookie('gi_token', idTokenResult.token, 7);
-            var redirect = getRedirect();
+            var redirect = getRedirect(result.additionalUserInfo && result.additionalUserInfo.isNewUser);
             window.location.href = redirect;
           });
         } else {
