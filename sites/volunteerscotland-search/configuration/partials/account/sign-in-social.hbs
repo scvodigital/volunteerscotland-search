@@ -11,7 +11,6 @@
 </div>
 
 <script>
-
   document.addEventListener("DOMContentLoaded", function(event) {
     var $message = $('{{messageSelector}}');
     var $loader = $('{{loaderSelector}}');
@@ -54,37 +53,13 @@
           provider.addScope(scope);
         });
       }
-
-
       volunteerscotland.app.auth().signInWithPopup(provider).then(function(result) {
-        function redirect(){
-          window.location.href = '{{{@root.request.headers.referer}}}' || '/';
-        }
-
-        function dialogFailureAction(){
-          $message.text('User sign up complete, but newsletter subscription failed').show();
-          $loader.css('display', 'none');
-          setTimeout(function() {
-            redirect();
-          }, 3000);
-        }
-
-          if (result) {
+        if (result) {
           console.log('Registered user:', result);
           result.user.getIdTokenResult().then(function(idTokenResult) {
             console.log('ID Token Result', idTokenResult);
             volunteerscotland.setCookie('gi_token', idTokenResult.token, 7);
-            if (result.additionalUserInfo.isNewUser){
-              try {
-                runDialog(redirect, dialogFailureAction);
-              } catch (err){
-                console.error(err);
-                dialogFailureAction();
-              }
-            }
-            else {
-              redirect();
-            }
+            window.location.href = '{{{@root.request.headers.referer}}}';
           });
         } else {
           $message.text('Something went wrong, registerd but no user?').show();
