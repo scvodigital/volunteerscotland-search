@@ -59,7 +59,8 @@
           result.user.getIdTokenResult().then(function(idTokenResult) {
             console.log('ID Token Result', idTokenResult);
             volunteerscotland.setCookie('gi_token', idTokenResult.token, 7);
-            window.location.href = '{{{@root.request.headers.referer}}}';
+            var redirect = '{{{@root.request.headers.referer}}}' === @root.request;
+            window.location.href = redirect;
           });
         } else {
           $message.text('Something went wrong, registerd but no user?').show();
