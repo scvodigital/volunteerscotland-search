@@ -2491,6 +2491,9 @@ footer.mdc-layout__footer {
   }
 }
 @media screen and (max-width: $mobile-landscape-breakpoint) {
+  header .container-fluid .mdc-top-app-bar__section--align-end {
+    align-items: center;
+  }
   .mdc-card.full,
   .mdc-card.search-result {
     .mdc-card__info--content-primary {

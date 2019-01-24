@@ -128,7 +128,7 @@
               {{/components_tab_bar ~}}
               {{#if @root.data.auth ~}}
                 {{#>components_anchored_menu
-                    buttonClasses="mdc-theme--on-secondary"
+                    buttonClasses="mdc-theme--on-secondary hide-sm hide-md"
                     imageUrl=(default @root.data.auth.photoURL false)
                     imageClasses="far fa-fw user-avatar"
                     iconClasses=(if (if @root.data.auth.photoURL false else=true) "far fa-fw fa-user-circle" else=false)
