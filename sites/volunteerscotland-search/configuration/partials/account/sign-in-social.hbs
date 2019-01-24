@@ -44,6 +44,17 @@
     $facebook.on('click', function(evt) { socialSignIn('facebook'); });
     $twitter.on('click', function(evt) { socialSignIn('twitter'); });
 
+    function getNewsletterRedirect(){
+        // Redirect them to newsletter settings if
+      var redirect = '{{{@root.request.headers.referer}}}'
+      var host = '{{{@root.request.headers.host}}}'
+      console.log (redirect.match(host + "/$") - "Host match");
+      console.log (redirect.match(host + "/sign-in/$") - "Sign in host match");
+      return;
+    }
+
+    getNewsletterRedirect();
+
     function socialSignIn(providerName) {
       $loader.show();
       var providerInfo = providers[providerName];
@@ -59,7 +70,7 @@
           result.user.getIdTokenResult().then(function(idTokenResult) {
             console.log('ID Token Result', idTokenResult);
             volunteerscotland.setCookie('gi_token', idTokenResult.token, 7);
-            var redirect = '{{{@root.request.headers.referer}}}' === @root.request;
+            var redirect = getRedirect();
             window.location.href = redirect;
           });
         } else {
