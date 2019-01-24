@@ -1,0 +1,21 @@
+{
+  "name": "add-newsletter-subscription",
+  "pattern": "/add-newsletter-subscription",
+  "debug" : true,
+  "acceptedVerbs": "POST",
+  "defaultParams": {
+    "context": "results"
+  },
+  "tasks": [
+    "context.metaData.commonTasks.authNotRequired",
+    {
+      "name": "destination",
+      "taskModule": "render",
+      "renderer": "handlebars",
+      "config": {
+        "output": "body",
+        "template": "This is probably an API request. Check with Matt to see if we've got anything yet."
+      }
+    }
+  ]
+}

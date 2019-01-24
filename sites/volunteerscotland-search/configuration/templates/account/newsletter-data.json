@@ -1,0 +1,16 @@
+[
+{
+  "id" : "newsletter-scotland",
+  "name" : "Scottish Volunteering Updates",
+  "subscribed" : true,
+  "description" : "The latest news, views and advice for Scotland's Volunteers"
+
+},
+
+  {
+    "id" : "newsletter-events",
+    "name" : "Events Volunteering Updates",
+    "subscribed" : false,
+    "description" : "Forthcoming volunteer events and related news"
+  }
+]

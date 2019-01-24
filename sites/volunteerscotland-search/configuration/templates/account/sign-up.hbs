@@ -59,7 +59,50 @@
           <div class="mdc-line-ripple"></div>
         </div>
       </div>
-      <div id="form-section-sign-up-buttons">
+      <p>Check the boxes below to receive regular email updates in areas that interest you.</p>
+
+
+        <div class="mdc-form-field">
+          <div class="mdc-checkbox">
+            <input type="checkbox"
+                   class="mdc-checkbox__native-control"
+                   name="newsletter-events"
+                   id="newsletter-events"/>
+            <div class="mdc-checkbox__background">
+              <svg class="mdc-checkbox__checkmark"
+                   viewBox="0 0 24 24">
+                <path class="mdc-checkbox__checkmark-path"
+                      fill="none"
+                      d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+              </svg>
+              <div class="mdc-checkbox__mixedmark"></div>
+            </div>
+          </div>
+          <label for="newsletter-events">
+            For Event Volunteers: forthcoming events and related news
+          </label>
+        </div>
+
+        <div class="mdc-form-field">
+          <div class="mdc-checkbox">
+            <input type="checkbox"
+                   class="mdc-checkbox__native-control"
+                   name="newsletter-scotland"
+                   id="newsletter-scotland"/>
+            <div class="mdc-checkbox__background">
+              <svg class="mdc-checkbox__checkmark"
+                   viewBox="0 0 24 24">
+                <path class="mdc-checkbox__checkmark-path"
+                      fill="none"
+                      d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+              </svg>
+              <div class="mdc-checkbox__mixedmark"></div>
+            </div>
+          </div>
+          <label for="newsletter-scotland">For Scotland's Volunteers: latest news, views and advice</label>
+        </div>
+
+        <div id="form-section-sign-up-buttons">
         <button class="mdc-button mdc-button--raised" type="submit" id="sign-up-submit">
           Sign up
         </button>
@@ -78,11 +121,11 @@
       </div>
     </div>
   </div>
+
 </form>
-
-{{>account_sign_up_dialog redirect=(default '/' @root.request.headers.referer )}}
-
 <script>
+
+
 document.addEventListener("DOMContentLoaded", function(event) {
   var $form = $('#sign-up-form');
   var $message = $('#sign-up-message');
@@ -93,11 +136,24 @@ document.addEventListener("DOMContentLoaded", function(event) {
   var $passwordConfirm = $('#sign-up-password-confirm');
   var $register = $('#sign-up-submit');
   var $loader = $('#sign-up-loader');
-  var $dialog = $('#sign-up-dialog');
+  var newsletterScotland = $('#newsletter-scotland').val();
+  var newsletterEvents = $('#newsletter-events').val();
 
+  function updateNewsletterSettings() {
+    if (newsletterEvents || newsletterScotland) {
+      $.ajax({
+        type: "POST",
+        url: "/update-newsletter-settings",
+        data: {
+          "newsletter-events": newsletterEvents,
+          "newsletter-scotland": newsletterScotland
+        }
+      })
+    }
+  }
 
-
-  $form.on('submit', function(evt) {
+  $form.on('submit', function (evt) {
+// Test code
     $loader.css('display', 'flex');
     evt.preventDefault();
 
@@ -105,6 +161,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     var emailConfirm = $emailConfirm.val();
     var password = $password.val();
     var passwordConfirm = $passwordConfirm.val();
+
 
     if (email !== emailConfirm) {
       $message.text('The two email addresses entered do not match').show();
@@ -120,26 +177,27 @@ document.addEventListener("DOMContentLoaded", function(event) {
       return;
     }
 
-    volunteerscotland.app.auth().createUserWithEmailAndPassword(email, password).then(function(user) {
+
+    volunteerscotland.app.auth().createUserWithEmailAndPassword(email, password).then(function (user) {
       if (user) {
-        user.user.getIdTokenResult().then(function(idTokenResult) {
+        console.log('Registered user:', user);
+        user.user.getIdTokenResult().then(function (idTokenResult) {
           console.log('ID Token Result', idTokenResult);
-            var scooby = $dialog[0].MDCDialog;
-            scooby.open();
-            volunteerscotland.setCookie('gi_token', idTokenResult.token, 7);
-            window.location.href = '/';
-        });
+          volunteerscotland.setCookie('gi_token', idTokenResult.token, 7);
+          updateNewsletterSettings();
+          window.location.href = '/';
+        })
       } else {
         $message.text('Something went wrong, signed up but no user?').show();
         $loader.css('display', 'none');
         document.body.scrollTop = document.documentElement.scrollTop = 0;
       }
-    }).catch(function(err) {
+    }).catch(function (err) {
       $message.text(err.message).show();
       $loader.css('display', 'none');
       document.body.scrollTop = document.documentElement.scrollTop = 0;
     });
   });
-});
+})
 </script>
 {{/if ~}}

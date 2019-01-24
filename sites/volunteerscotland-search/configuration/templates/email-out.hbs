@@ -2,7 +2,7 @@
 {
 "from": {{{stringify (getProperty @root.context.metaData.emailSendSettings (concat @root.route.metaData.emailType '.from'))}}},
 "h:sender": {{{stringify (getProperty @root.context.metaData.emailSendSettings (concat @root.route.metaData.emailType '.from'))}}},
-"to": "alex.nuttgens@scvo.org.uk", {{!-- @root.request.body.emailTo --}}
+"to": "anuttgens@gmail.com", {{!-- @root.request.body.emailTo --}}
 "o:tag": {{{stringify (if testEmail (concat 'test-' @root.route.metaData.emailType) else=@root.route.metaData.emailType)}}},
 "o:tracking": true,
 "o:testmode": true,

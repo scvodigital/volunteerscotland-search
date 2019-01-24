@@ -1,14 +1,10 @@
 {
-  "name": "update-newsletter-settings",
-  "pattern": "/update-newsletter-settings",
+  "name": "remove-newsletter-subscription",
+  "pattern": "/remove-newsletter-subscription",
   "debug" : true,
   "acceptedVerbs": "POST",
   "defaultParams": {
     "context": "results"
-  },
-  "metaData" : {
-    "emailType" : "register-interest",
-    "emailTarget" : ""
   },
   "tasks": [
     "context.metaData.commonTasks.authNotRequired",
@@ -18,7 +14,7 @@
       "renderer": "handlebars",
       "config": {
         "output": "body",
-        "template": "N1 {{{@root.request.body.newsletter-1}}} - N2 {{{@root.request.body.newsletter-2}}}"
+        "template": "This is probably an API request. Check with Matt to see if we've got anything yet."
       }
     }
   ]
