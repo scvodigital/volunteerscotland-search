@@ -2,7 +2,7 @@
   "name": "contact",
   "pattern": "/contact",
   "metaData": {
-    "title": "Contact – Volunteer Scotland"
+    "title": "Contact - Volunteer Scotland",
   },
   "tasks": [
     "context.metaData.commonTasks.authNotRequired",

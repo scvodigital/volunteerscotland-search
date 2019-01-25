@@ -5,6 +5,7 @@
     "context": "detail"
   },
   "metaData": {
+    "title": "Volunteer Scotland Search",
     "sidebarButton": {
       "icon": "search",
       "tooltip": "Search",
