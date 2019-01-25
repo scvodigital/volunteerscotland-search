@@ -7,8 +7,7 @@
   {{/unless}}
 
   {{#unless opportunity_contact_email}}
-  <p>You can't volunteer for this opportunity from this site. {{#if organisation_website }}Please contact them at
-    <a href="{{fixUrl organisation_website 'http'}}">{{{organisation_website}}}</a> for more info{{/if}}</p>
+  <p>You can't volunteer for this opportunity using this site. {{#if organisation_website}}Please contact the organisation directly using <a href="{{fixUrl organisation_website 'http'}}">{{{organisation_website}}}</a> for more information.{{/if}}</p>
     {{else}}
     {{#if (contains (map @root.data.registeredInterest.items.[0] (getProp "value")) Id)}}
     <p>You have already registered interest in this opportunity</p>

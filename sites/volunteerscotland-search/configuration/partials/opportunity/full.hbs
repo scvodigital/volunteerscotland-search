@@ -162,6 +162,10 @@
 
           {{/ifAny ~}}
 
+          {{#unless opportunity_contact_email}}
+          <p>You can't volunteer for this opportunity using this site. {{#if organisation_website}}Please contact the organisation directly using <a href="{{fixUrl organisation_website 'http'}}">{{{organisation_website}}}</a> for more information.{{/if}}</p>
+          {{/unless}}
+
           <div class="mdc-typography--body1 report">
             <span class="fas fa-flag fa-fw" title="Report this opportunity"></span>
             <a href="mailto:milosupport@scvo.org.uk?subject=Report on opportunity: {{title}}, via Volunteer Scotland Search&body=I would like to report this opportunity for the following reasons: ">Report this opportunity</a>
@@ -184,8 +188,7 @@
           {{else}}
           <div class="container-content v-margin-full">
             <p class="mdc-typography--body1">
-              {{stringify geo_coords}}
-              Area: {{{location}}}. Specific opportunity location not provided.
+              Specific opportunity location not provided.
             </p>
           </div>
           {{/compare ~}}
