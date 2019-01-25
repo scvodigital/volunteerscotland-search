@@ -1825,7 +1825,7 @@ body.shortlist {
     }
   }
   .mdc-card__info--content-secondary-row {
-    padding: $unit;
+    padding: 0;
   }
 }
 .content-secondary {
@@ -3736,7 +3736,7 @@ a.mdc-drawer__content-heading {
 .pagination {
   li {
     a {
-      color: $brand-secondary-green;
+      color: $brand-secondary-turquoice;
     }
     a.pagination-arrow {
       color: $brand-primary-black;
