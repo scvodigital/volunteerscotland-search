@@ -2,6 +2,9 @@
   "name": "four_oh_four",
   "pattern": "/404",
   "defaultStatusCode": 404,
+  "metaData": {
+    "title": "404: Not Found - Volunteer Scotland Search"
+  },
   "tasks": [
     "context.metaData.commonTasks.authNotRequired",
     {

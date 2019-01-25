@@ -3,6 +3,7 @@
   "debug" : true,
   "pattern": "/account",
   "metaData": {
+    "title": "Account - Volunteer Scotland Search",
     "sidebarButton": {
       "icon": "cog",
       "tooltip": "Account",

@@ -2,7 +2,7 @@
   "name": "home",
   "pattern": "/",
   "metaData": {
-    "title": "Volunteer Scotland"
+    "title": "Volunteer Scotland Search | Help Make a Difference through Volunteering"
   },
   "tasks": [
     "context.metaData.commonTasks.authNotRequired",

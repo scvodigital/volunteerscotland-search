@@ -2,7 +2,7 @@
   "name": "about",
   "pattern": "/about",
   "metaData": {
-    "title": "About – Volunteer Scotland"
+    "title": "About - Volunteer Scotland Search"
   },
   "tasks": [
     "context.metaData.commonTasks.authNotRequired",
