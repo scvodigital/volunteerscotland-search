@@ -2,10 +2,10 @@
 {
 "from": {{{stringify (getProperty @root.context.metaData.emailSendSettings (concat @root.route.metaData.emailType '.from'))}}},
 "h:sender": {{{stringify (getProperty @root.context.metaData.emailSendSettings (concat @root.route.metaData.emailType '.from'))}}},
-"to": "anuttgens@gmail.com", {{!-- @root.request.body.emailTo --}}
+"to": "alex.nuttgens@scvo.org.uk", {{!-- @root.request.body.emailTo --}}
 "o:tag": {{{stringify (if testEmail (concat 'test-' @root.route.metaData.emailType) else=@root.route.metaData.emailType)}}},
 "o:tracking": true,
-{{!-- "to:testmode": true,--> --}}
+{{!-- "o:testmode": true, --}}
 "tag": {{{stringify @root.route.metaData.emailType}}},
 "id": {{{stringify @root.route.metaData.emailType}}},
 "connectionName": {{{stringify (getProperty @root.context.metaData.emailSendSettings (concat @root.route.metaData.emailType '.mailgunConnection'))}}},
