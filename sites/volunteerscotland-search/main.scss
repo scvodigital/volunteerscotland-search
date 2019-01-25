@@ -1151,7 +1151,7 @@ a {
     flex: 1 0 auto;
   }
   .mdc-card__info--content-secondary-title {
-    padding: $unit;
+    padding: $unit/2;
   }
   .mdc-card__media--content-secondary {
     z-index: 3;
@@ -1768,7 +1768,7 @@ body.shortlist {
   flex: 1 0 auto;
   .mdc-card__media--content-secondary {
     float: right;
-    margin-right: -($unit/2);
+    // margin-right: -($unit/2);
   }
 }
 @media screen and (max-width: 1280px) {
