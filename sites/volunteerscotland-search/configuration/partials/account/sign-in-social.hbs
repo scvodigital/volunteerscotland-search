@@ -65,11 +65,13 @@
           provider.addScope(scope);
         });
       }
+      volunteerscotland.setCookie('gi_token', '');
+      volunteerscotland.setCookie('gi_cookie', '');
       volunteerscotland.app.auth().signInWithPopup(provider).then(function(result) {
         if (result) {
-          console.log('Registered user:', result);
+          // console.log('Registered user:', result);
           result.user.getIdTokenResult().then(function(idTokenResult) {
-            console.log('ID Token Result', idTokenResult);
+            // console.log('ID Token Result', idTokenResult);
             volunteerscotland.setCookie('gi_token', idTokenResult.token, 7);
             var redirect = getRedirect(result.additionalUserInfo && result.additionalUserInfo.isNewUser);
             window.location.href = redirect;

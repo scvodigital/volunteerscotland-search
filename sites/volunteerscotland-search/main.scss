@@ -1151,7 +1151,7 @@ a {
     flex: 1 0 auto;
   }
   .mdc-card__info--content-secondary-title {
-    padding: $unit;
+    padding: $unit/2;
   }
   .mdc-card__media--content-secondary {
     z-index: 3;
@@ -1768,7 +1768,7 @@ body.shortlist {
   flex: 1 0 auto;
   .mdc-card__media--content-secondary {
     float: right;
-    margin-right: -($unit/2);
+    // margin-right: -($unit/2);
   }
 }
 @media screen and (max-width: 1280px) {
@@ -1825,7 +1825,7 @@ body.shortlist {
     }
   }
   .mdc-card__info--content-secondary-row {
-    padding: $unit;
+    padding: 0;
   }
 }
 .content-secondary {
@@ -2491,6 +2491,9 @@ footer.mdc-layout__footer {
   }
 }
 @media screen and (max-width: $mobile-landscape-breakpoint) {
+  header .container-fluid .mdc-top-app-bar__section--align-end {
+    align-items: center;
+  }
   .mdc-card.full,
   .mdc-card.search-result {
     .mdc-card__info--content-primary {
@@ -3733,7 +3736,7 @@ a.mdc-drawer__content-heading {
 .pagination {
   li {
     a {
-      color: $brand-secondary-green;
+      color: $brand-secondary-turquoice;
     }
     a.pagination-arrow {
       color: $brand-primary-black;
@@ -3743,14 +3746,14 @@ a.mdc-drawer__content-heading {
     color: $brand-primary-grey;
   }
   li.current-page {
-    background-color: $brand-secondary-green;
+    background-color: $brand-secondary-turquoice;
     a {
       color: white;
     }
   }
   li:hover,
   li.current-page:hover {
-    background-color: $brand-secondary-darkgreen;
+    background-color: $brand-secondary-darkturquoice;
     a {
       color: white;
     }
@@ -3826,13 +3829,13 @@ footer,
 
 .scroll-button {
   .scroll-icon {
-    background-color: $brand-secondary-green;
+    background-color: $brand-secondary-turquoice;
     color: white;
   }
 }
 .scroll-button:hover {
   .scroll-icon {
-    background-color: $brand-secondary-darkgreen;
+    background-color: $brand-secondary-darkturquoice;
   }
 }
 .scroll-button.scroll-left {

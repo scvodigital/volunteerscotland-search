@@ -177,7 +177,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
       return;
     }
 
-
+    volunteerscotland.setCookie('gi_token', '');
+    volunteerscotland.setCookie('gi_cookie', '');
     volunteerscotland.app.auth().createUserWithEmailAndPassword(email, password).then(function (user) {
       if (user) {
         console.log('Registered user:', user);
