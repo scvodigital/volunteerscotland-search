@@ -5,7 +5,7 @@
 "to": "anuttgens@gmail.com", {{!-- @root.request.body.emailTo --}}
 "o:tag": {{{stringify (if testEmail (concat 'test-' @root.route.metaData.emailType) else=@root.route.metaData.emailType)}}},
 "o:tracking": true,
-"o:testmode": true,
+{{!-- "to:testmode": true,--> --}}
 "tag": {{{stringify @root.route.metaData.emailType}}},
 "id": {{{stringify @root.route.metaData.emailType}}},
 "connectionName": {{{stringify (getProperty @root.context.metaData.emailSendSettings (concat @root.route.metaData.emailType '.mailgunConnection'))}}},
