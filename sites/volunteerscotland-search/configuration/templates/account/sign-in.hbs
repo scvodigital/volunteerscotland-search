@@ -91,10 +91,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
     var password = $password.val();
     $loader.css('display', 'flex');
     evt.preventDefault();
-    var currentUser = goodmoves.app.auth().currentUser;
+    var currentUser = volunteerscotland.app.auth().currentUser;
 
     if (currentUser) {
-      goodmoves.app.auth().signOut().then(function() {
+      volunteerscotland.app.auth().signOut().then(function() {
         doSignin();
       }).catch(function(err) {
         console.error('Problem signing out', err);

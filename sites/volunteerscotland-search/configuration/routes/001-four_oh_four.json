@@ -14,7 +14,7 @@
         },
         "queryTemplates": {
           "index": "web-content-production",
-          "type": "goodmoves-page",
+          "type": "volunteerscotland-page",
           "template": ">context.metaData.handlebars.queries.pages_not-found"
         }
       },
