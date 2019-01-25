@@ -1,5 +1,5 @@
 {{#with @root.data.primaryResponse.hits.hits.0._source}}
-<form id="register-interest-form" action="/test-email-display?id={{Id}}" method="POST" class="sign-in-form">
+<form id="register-interest-form" action="/add-to-registered-interest?id={{Id}}" method="POST" class="sign-in-form">
   <h2>Register interest</h2>
   <h2>{{title}} with {{organisation_name}}</h2>
   {{#unless @root.data.auth}}
