@@ -1,14 +1,14 @@
 <div id="detailed-results-container" class="container-content content-saved-searches">
+  {{#unless @root.request.params.query.newuser}}
   {{#compare (length @root.data.searches.items.[0]) ">" 0 ~}}
-  <div class="settings mdc-typography--body1">
-    <span class="settings-heading">Email frequency</span>
-    {{> email_frequency}}
-  </div>
   {{/compare}}
-  <h1 class="mdc-typography--headline3 v-margin-full">
-    Saved searches, newsletters &amp; email
-  </h1>
-
+    <div class="settings mdc-typography--body1">
+      <span class="settings-heading">Search email frequency</span>
+      {{> email_frequency}}
+    </div>
+    <h1 class="mdc-typography--headline3 v-margin-full">
+      Saved searches &amp; email
+    </h1>
   {{#compare (length @root.data.searches.items.[0]) ">" 0 ~}}
   <ul class="mdc-list mdc-list--two-line mdc-list--avatar-list mdc-elevation--z3">
     <li class="mdc-list-item mdc-list-item--header">
@@ -142,7 +142,15 @@
     You don't yet have any searches saved. To save a search, click the &ensp;<strong><span class="far fa-search-plus mdc-chip__icon mdc-chip__icon--leading" aria-hidden="true"></span>Save/email this search</strong>&ensp;button once you've entered some search parameters.
   </p>
   {{/compare ~}}
-
+  {{else}}
+    <h2 class="mdc-typography--headline5 v-margin-full">Click the buttons below to receive regular email updates in areas that interest you.</h2>
+  {{/unless}}
+  <div class="settings mdc-typography--body1">
+    <span class="settings-heading">Newsletters are sent out on a weekly basis</span>
+  </div>
+  <h1 class="mdc-typography--headline3 v-margin-full">
+    Newsletters
+  </h1>
     <ul class="mdc-list mdc-list--two-line mdc-list--avatar-list mdc-elevation--z3">
       <li class="mdc-list-item mdc-list-item--header">
         <span class="mdc-list-item__graphic far" aria-hidden="true"></span>
@@ -150,7 +158,7 @@
           <div class="mdc-layout-grid__inner">
             <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone saved-search">
             <span class="mdc-list-item__text">
-              <strong>News</strong>
+              <strong>Newsletter</strong>
             </span>
             </div>
             <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-2-desktop mdc-layout-grid__cell--span-2-tablet mdc-layout-grid__cell--span-2-phone align-centre">
@@ -172,13 +180,16 @@
               <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone saved-search">
               <span class="mdc-list-item__text">
                 <p>{{{name}}}</p>
+                <div class="mdc-list-item__secondary-text">
+                {{description}}
+                </div>
               </span>
               </div>
               <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-2-desktop mdc-layout-grid__cell--span-2-tablet mdc-layout-grid__cell--span-2-phone align-centre">
                 <div class="mdc-chip-set mdc-chip-set--filter">
                   {{#> ajax_chip
-                    onUrl="/enable-newsletter-subscription"
-                    offUrl="/disable-newsletter-subscription"
+                    onUrl="/add-newsletter-subscription"
+                    offUrl="/remove-newsletter-subscription"
                     onText="Email"
                     offText="Email"
                     onMethod="POST"

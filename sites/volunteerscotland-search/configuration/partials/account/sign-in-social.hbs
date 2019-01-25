@@ -11,7 +11,6 @@
 </div>
 
 <script>
-
   document.addEventListener("DOMContentLoaded", function(event) {
     var $message = $('{{messageSelector}}');
     var $loader = $('{{loaderSelector}}');
@@ -45,6 +44,18 @@
     $facebook.on('click', function(evt) { socialSignIn('facebook'); });
     $twitter.on('click', function(evt) { socialSignIn('twitter'); });
 
+    function getRedirect(newUser){
+        // Redirect them to newsletter settings if they're new and not in the middle of something.
+      if (!newUser) return '{{{@root.request.headers.referer}}}';
+      var host = '{{{@root.request.headers.host}}}'.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      if ('{{{@root.request.headers.referer}}}'.match(host + "/$") || '{{{@root.request.headers.referer}}}'.match(host + "/sign-in/?$")) {
+        return "/searches?newuser=true";
+      } else {
+          return '{{{@root.request.headers.referer}}}';
+      }
+    }
+
+
     function socialSignIn(providerName) {
       $loader.show();
       var providerInfo = providers[providerName];
@@ -54,37 +65,14 @@
           provider.addScope(scope);
         });
       }
-
-
       volunteerscotland.app.auth().signInWithPopup(provider).then(function(result) {
-        function redirect(){
-          window.location.href = '{{{@root.request.headers.referer}}}' || '/';
-        }
-
-        function dialogFailureAction(){
-          $message.text('User sign up complete, but newsletter subscription failed').show();
-          $loader.css('display', 'none');
-          setTimeout(function() {
-            redirect();
-          }, 3000);
-        }
-
-          if (result) {
+        if (result) {
           console.log('Registered user:', result);
           result.user.getIdTokenResult().then(function(idTokenResult) {
             console.log('ID Token Result', idTokenResult);
             volunteerscotland.setCookie('gi_token', idTokenResult.token, 7);
-            if (result.additionalUserInfo.isNewUser){
-              try {
-                runDialog(redirect, dialogFailureAction);
-              } catch (err){
-                console.error(err);
-                dialogFailureAction();
-              }
-            }
-            else {
-              redirect();
-            }
+            var redirect = getRedirect(result.additionalUserInfo && result.additionalUserInfo.isNewUser);
+            window.location.href = redirect;
           });
         } else {
           $message.text('Something went wrong, registerd but no user?').show();

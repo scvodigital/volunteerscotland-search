@@ -14,7 +14,7 @@
       "renderer": "handlebars",
       "config": {
         "output": "body",
-        "template": "N1 {{{@root.request.body.newsletter-1}}} - N2 {{{@root.request.body.newsletter-2}}}"
+        "template": "N1 {{{@root.request.body.newsletter-scotland}}} - N2 {{{@root.request.body.newsletter-events}}}"
       }
     }
   ]
