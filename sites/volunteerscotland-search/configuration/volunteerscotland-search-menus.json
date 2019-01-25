@@ -4,13 +4,13 @@
       "label": "Find opportunities",
       "icon": "search",
       "path": "/search",
-      "route": "^/search$"
+      "route": "^/search|^/map|^/opportunity"
     },
     {
       "label": "Find organisations",
       "icon": "list-alt",
       "path": "/organisations/search",
-      "route": "^/organisations/search$"
+      "route": "^/organisation"
     }
 
   ],
