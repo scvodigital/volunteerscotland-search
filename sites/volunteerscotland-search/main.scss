@@ -3746,14 +3746,14 @@ a.mdc-drawer__content-heading {
     color: $brand-primary-grey;
   }
   li.current-page {
-    background-color: $brand-secondary-green;
+    background-color: $brand-secondary-turquoice;
     a {
       color: white;
     }
   }
   li:hover,
   li.current-page:hover {
-    background-color: $brand-secondary-darkgreen;
+    background-color: $brand-secondary-darkturquoice;
     a {
       color: white;
     }
@@ -3829,13 +3829,13 @@ footer,
 
 .scroll-button {
   .scroll-icon {
-    background-color: $brand-secondary-green;
+    background-color: $brand-secondary-turquoice;
     color: white;
   }
 }
 .scroll-button:hover {
   .scroll-icon {
-    background-color: $brand-secondary-darkgreen;
+    background-color: $brand-secondary-darkturquoice;
   }
 }
 .scroll-button.scroll-left {
