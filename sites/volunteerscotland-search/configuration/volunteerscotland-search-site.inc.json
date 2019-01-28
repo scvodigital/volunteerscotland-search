@@ -31,9 +31,9 @@
         "singular": "Services",
         "plural": "Services"
       },
-      "regions": {
-        "singular": "Region",
-        "plural": "Regions"
+      "types": {
+        "singular": "Type",
+        "plural": "Types"
       },
       "work_types": {
         "singular": "Activity",

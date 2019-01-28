@@ -30,7 +30,7 @@
   ],
   "user-not-signed-in": [
     {
-      "label": "My Volunteer Account",
+      "label": "My Volunteer account",
       "icon": "sign-in-alt",
       "path": "/sign-in",
       "route": "^/sign-in"
@@ -56,7 +56,7 @@
       "route": "^/notes"
     },
     {
-      "label": "Registered Interest",
+      "label": "Registered interest",
       "icon": "envelope-open-text",
       "path": "/registered-interest",
       "route": "^/registered-interest"
@@ -82,7 +82,7 @@
   ],
   "footer-cookies-terms": [
     {
-      "label": "Privacy Notices",
+      "label": "Privacy notices",
       "path": "/privacy",
       "route": "/privacy"
     },
@@ -100,7 +100,7 @@
   ],
   "footer-contact" : [
     {
-      "label": "Contact Us",
+      "label": "Contact us",
       "icon": "at",
       "path": "https://www.volunteerscotland.net/about-us/contact-us/",
       "route": "^https://www.volunteerscotland.net/about-us/contact-us/"
@@ -125,17 +125,17 @@
       "route": "^/accessibility"
     },
     {
-      "label": "Complaints Procedure",
+      "label": "Complaints procedure",
       "path": "https://www.volunteerscotland.net/accessibility/complaints-procedure/",
       "route": "^https://www.volunteerscotland.net/accessibility/complaints-procedure/"
     },
     {
-      "label": "Brand Guidelines",
+      "label": "Brand guidelines",
       "path": "https://www.volunteerscotland.net/accessibility/brand-guidelines/",
       "route": "^https://www.volunteerscotland.net/accessibility/brand-guidelines/"
     },
     {
-      "label": "Charter Text",
+      "label": "Charter text",
       "path": "https://www.volunteerscotland.net/terms-conditions/charter-text/",
       "route": "https://www.volunteerscotland.net/terms-conditions/charter-text/"
     }

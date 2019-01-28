@@ -53,7 +53,6 @@ $footer-font-weight:                400;
 
 $unit: 1rem;
 $header-upper-height: 100px;
-// $toolbar-shadow-reverse: 0px -3px 5px -1px rgba(0, 0, 0, 0.2), 0px -5px 8px 0px rgba(0, 0, 0, 0.14), 0px -1px 14px 0px rgba(0, 0, 0, 0.12);
 $header-lower-height: 38px;
 
 $mobile-breakpoint: 599px;
@@ -86,9 +85,6 @@ body {
   margin: 0 auto;
   padding: 0;
 }
-.cookieinfo {
-  // box-shadow: $toolbar-shadow-reverse;
-}
 .mdc-toolbar-fixed-adjust {
   margin: 0;
   padding-top: $header-upper-height+$header-lower-height;
@@ -97,6 +93,7 @@ body {
   background-color: white;
   z-index: 5;
   position: relative;
+  display: block;
 }
 h1,
 h2,
@@ -152,7 +149,6 @@ a[href^="https://www.volunteerscotland.net"]::after {
 }
 
 header {
-  z-index: 2;
   .container-fluid {
     padding: 0;
     .mdc-top-app-bar__section--align-end {
@@ -1673,14 +1669,6 @@ body.shortlist {
       margin-top: 0;
     }
   }
-}
-
-.mdc-top-app-bar {
-  position: relative !important;
-}
-
-.top-bar-stuck {
-  position: fixed;
 }
 
 .mdc-card {

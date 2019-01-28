@@ -35,5 +35,4 @@
 {{#if availability ~}}
 {{>queries_terms field="availability_slugs" terms=availability}},
 {{/if ~}}
-{{>queries_date_range field="date_last_modified" gt="now-12M"}},
 {{>queries_do_nothing}}
