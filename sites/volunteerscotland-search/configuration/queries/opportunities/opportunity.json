@@ -15,6 +15,7 @@
     "frequency_commitment_details",
     "geo_coords",
     "geo",
+    "advertised_areas",
     "minimum_age",
     "postcode",
     "organisation_slug",

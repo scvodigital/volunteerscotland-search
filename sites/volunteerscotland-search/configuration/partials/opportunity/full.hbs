@@ -186,9 +186,16 @@
             </div>
           </div>
           {{else}}
-          <div class="container-content v-margin-full">
+          <div class="container-content detailed-info">
             <p class="mdc-typography--body1">
-              Specific opportunity location not provided.
+              {{#if advertised_areas ~}}
+                This opportunity is not listed at a specific location but is listed in
+                {{#each advertised_areas ~}}
+                  {{this}}{{#unless @last}}, {{else}}.{{/unless}}
+                {{/each ~}}
+              {{else}}
+                This opportunity is not listed at a specific location.
+              {{/if ~}}
             </p>
           </div>
           {{/compare ~}}
