@@ -1,0 +1,9 @@
+<li class="mdc-list-item checkbox-list-parent {{#if hideParent}}checkbox-list-parent-hidden{{/if}}" data-advanced-checkbox-group="{{name}}"
+    role="checkbox" aria-checked="false" id="li-{{name}}-{{value}}">
+  <label for="cb-{{name}}-{{value}}">
+    {{label}}
+    <span class="checkbox-list-indicator" data-advanced-checkbox-group-indicator></span>
+  </label>
+  {{> components_advanced_checkbox_checkbox name=name hideName=true label=label}}
+</li>
+{{> @partial-block}}

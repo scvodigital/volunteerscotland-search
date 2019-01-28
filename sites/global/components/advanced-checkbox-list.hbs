@@ -1,0 +1,15 @@
+<div class="mdc-list-group advanced-checkbox-list" data-advanced-checkbox-list="{{name}}">
+  <h3 class="mdc-list-group__subheader cursor-pointer noselect" data-acl-collapse-trigger>
+    <span class="mdc-icon-toggle mdc-icon-toggle-xs pull-right r-padding-full" data-acl-clear>
+      <span class="far fa-trash" aria-hidden="true"></span>
+    </span>
+    {{{label}}}
+  </h3>
+  <ul class="mdc-list mdc-list--dense" style="display:none;" role="group" aria-label="{{label}}">
+    {{> @partial-block}}
+    <li class="mdc-list-item cursor-pointer noselect" data-acl-collapse-trigger>
+      <i class="fas fa-ellipsis-h fa-2x pull-centre" data-acl-collapse-icon-collapsed="fa-ellipsis-h"
+          data-acl-collapse-icon-open="fa-chevron-up"></i>
+    </li>
+  </ul>
+</div>
