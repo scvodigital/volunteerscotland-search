@@ -7,7 +7,9 @@
 <strong>{{message}}</strong>
  {{/if}}
 {{#ifAny opportunity_minimum_age opportunity_maximum_age}}
-  <p>{{first_name}}'s Date of Birth {{#if date_of_birth}}{{date_of_birth}}{{else}}was not provided.{{/if}}</p>
+  {{#if date_of_birth}}
+  <p>{{first_name}}'s Date of Birth {{date_of_birth}}{{else}}was not provided.</p>
+  {{/if}}
 {{/ifAny}}
 
 <p>You can contact {{first_name}} via their email: <a href="mailto:{{email}}">{{email}}</a>.</p>
