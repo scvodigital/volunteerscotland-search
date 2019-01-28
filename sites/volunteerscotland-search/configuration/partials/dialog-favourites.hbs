@@ -1,18 +1,20 @@
-<aside id="favourite-dialog" class="mdc-dialog" role="alertdialog" aria-labelledby="shortlist-dialog-label" aria-describedby="shortlist-dialog-description" data-mdc-auto-init="MDCDialog">
-  <div class="mdc-dialog__surface">
-    <header class="mdc-dialog__header">
-      <h2 id="shortlist-dialog-label" class="mdc-dialog__header__title">
-        Favourites
-      </h2>
-    </header>
-    <section id="shortlist-dialog-description" class="mdc-dialog__body">
-      If you have an account on Volunteer Scotland account you can favourite opportunities you are interested in.
-    </section>
-    <footer class="mdc-dialog__footer">
-      <button type="button" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--cancel">Cancel</button>
-      <a href="/sign-in" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--cancel">Sign in</a>
-      <a href="/sign-up" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept">Sign up</a>
-    </footer>
+<aside id="favourite-dialog" class="mdc-dialog" role="alertdialog" aria-labelledby="favourite-dialog-label" aria-describedby="favourite-dialog-description" data-mdc-auto-init="MDCDialog">
+  <div class="mdc-dialog__container">
+    <form class="mdc-dialog__surface">
+      <header class="mdc-dialog__header">
+        <h2 id="favourite-dialog-label" class="mdc-dialog__title">
+          Save favourite
+        </h2>
+      </header>
+      <section id="favourite-dialog-description" class="mdc-dialog__content">
+        If you have a My Volunteer account you can save opportunities you are interested in.
+      </section>
+      <footer class="mdc-dialog__actions">
+        <button type="button" class="mdc-button mdc-dialog__button mdc-ripple-upgraded" data-mdc-dialog-action="close">Cancel</button>
+        <a href="/sign-in" class="mdc-button mdc-dialog__button mdc-ripple-upgraded">Sign in</a>
+        <a href="/sign-up" class="mdc-button mdc-dialog__button mdc-ripple-upgraded">Sign up</a>
+      </footer>
+    </form>
   </div>
-  <div class="mdc-dialog__backdrop"></div>
+  <div class="mdc-dialog__scrim"></div>
 </aside>
