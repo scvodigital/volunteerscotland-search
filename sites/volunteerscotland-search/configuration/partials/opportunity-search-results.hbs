@@ -1,4 +1,7 @@
-{{> dialog_favourites}}
+
+
+
+
 <aside id="save-search-dialog"
        class="mdc-dialog"
        role="alertdialog"
@@ -14,7 +17,6 @@
         <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
           <input type="text" id="saved-search-name" name="name" class="mdc-text-field__input" value="
 {{~#with @root.request.params.query~}}
-
             {{~#if keywords~}}
               {{~keywords~}}
               {{~#ifAny work_types client_groups services age_groups availability}}, {{/ifAny~}}
