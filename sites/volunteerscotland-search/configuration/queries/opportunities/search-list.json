@@ -4,7 +4,6 @@
   "_source": [
     "Id",
     "slug",
-    "milo_ref",
     "available_from",
     "client_group",
     "client_group_slugs",
@@ -20,7 +19,11 @@
     "opportunity_contact_email",
     "title",
     "work_type",
-    "work_type_slugs"
+    "work_type_slugs",
+    "home_based",
+    "suitable_for_groups",
+    "suitable_for_one_off",
+    "board_trustee"
 ],
   "query": {
     "function_score": {

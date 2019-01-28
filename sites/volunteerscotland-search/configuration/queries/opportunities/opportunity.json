@@ -77,7 +77,11 @@
     "volunteersearch_age_group",
     "volunteersearch_age_group_slugs",
     "volunteersearch_support_option",
-    "volunteersearch_support_option_slugs"
+    "volunteersearch_support_option_slugs",
+    "home_based",
+    "suitable_for_groups",
+    "suitable_for_one_off",
+    "board_trustee"
   ],
   "query": {
     "bool": {
