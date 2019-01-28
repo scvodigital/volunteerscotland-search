@@ -3004,6 +3004,24 @@ form.inline-form {
   filter: grayscale(100%);
 }
 
+.advanced-checkbox-list {
+  .checkbox-list-parent {
+    font-weight: bold !important;
+  }
+
+  .checkbox-list-parent-hidden {
+    display: none;
+  }
+
+  .checkbox-list-child {
+    padding-left: $unit*1.5 !important;
+  }
+
+  .checkbox-list-child-no-indent {
+    padding-left: $unit/2 !important;
+  }
+}
+
 @media screen and (max-width: $mobile-breakpoint) {
   .mdc-drawer {
     height: 100% !important;

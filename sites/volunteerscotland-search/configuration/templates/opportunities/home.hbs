@@ -151,7 +151,10 @@
       {{> browse eventContext="category-browser-home"}}
     </div>
   </div>
-  {{#if @root.data.auth}}
+
+  {{> dialog_favourites}}
+
+  {{#if @root.data.auth ~}}
     <div class="mdc-layout-grid home-heading">
       <div class="mdc-layout-grid__inner">
         <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
@@ -178,9 +181,9 @@
         </p>
       {{/components_horizontal_card_scroller}}
     </div>
-  {{/if}}
+  {{/if ~}}
 
-{{#compare @root.data.opportunitySupplimentary.home_latest.hits.total ">" 0}}
+  {{#compare @root.data.opportunitySupplimentary.home_latest.hits.total ">" 0}}
     <div class="mdc-layout-grid home-heading">
       <div class="mdc-layout-grid__inner">
         <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
@@ -226,10 +229,10 @@
       {{/components_horizontal_card_scroller}}
     </div>
   </div>
-{{/compare}}
+  {{/compare}}
 
-  {{#if @root.data.auth.email}}
-    {{#compare @root.data.opportunitySupplimentary.recently_viewed.hits.total ">" 0}}
+  {{#if @root.data.auth.email ~}}
+    {{#compare @root.data.opportunitySupplimentary.recently_viewed.hits.total ">" 0 ~}}
       <div class="mdc-layout-grid home-heading">
         <div class="mdc-layout-grid__inner">
           <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
@@ -256,6 +259,6 @@
           moreText="Find more opportunities"}}
         {{/components_horizontal_card_scroller}}
       </div>
-    {{/compare}}
+    {{/compare ~}}
   {{/if ~}}
 </div>

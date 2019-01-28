@@ -5,18 +5,19 @@
     <div class="mdc-typography--headline5">
       <a href="/opportunity/{{slug}}">{{title}}</a> with <a href="/organisation/{{organisation_slug}}">{{organisation_name}}</a>
     </div>
-    {{#unless @root.data.auth}}
+    {{#unless @root.data.auth ~}}
     <div class="mdc-typography--headline6">
       If you would like to save this data for future applications you must first <a href="/sign-in">sign in</a> or <a href="/sign-up">sign up</a>.
     </div>
-    {{/unless}}
+    {{/unless ~}}
 
-    {{#unless opportunity_contact_email}}
+    {{#unless opportunity_contact_email ~}}
       <p>You can't volunteer for this opportunity using this site. {{#if organisation_website}}Please contact the organisation directly using <a href="{{fixUrl organisation_website 'http'}}">{{{organisation_website}}}</a> for more information.{{/if}}</p>
     {{else}}
       {{#if (contains (map @root.data.registeredInterest.items.[0] (getProp "value")) Id)}}
       <p>You have already registered interest in this opportunity</p>
       {{else}}
+
       {{!-- This is debug code, remove when all done --}}
       {{#if @root.request.params.query.debug}}
 
