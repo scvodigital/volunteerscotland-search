@@ -66,7 +66,7 @@
           </div>
           {{/if ~}}
 
-        {{#if (contains (map @root.data.registeredInterest.items.[0] (getProp "value")) Id)}}
+        {{!-- #if (contains (map @root.data.registeredInterest.items.[0] (getProp "value")) Id)}}
           {{#ifAny organisation_contact_last_name organisation_contact_email organisation_website ~}}
           <h4 class="mdc-typography--headline6">Contact</h4>
           {{#ifAny opportunity_contact_first_name opportunity_contact_last_name ~}}
@@ -88,7 +88,7 @@
           {{/if ~}}
 
           {{/ifAny}}
-        {{/if ~}}
+        {{/if ~ --}}
 
           {{#if availability_slugs.length ~}}
           <h4 class="mdc-typography--headline6">Availability</h4>
