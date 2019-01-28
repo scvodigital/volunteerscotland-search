@@ -1,194 +1,152 @@
-<div class="container-content">
-{{#with @root.data.primaryResponse.hits.hits.0._source}}
-<form id="register-interest-form" action="/add-to-registered-interest?id={{Id}}" method="POST" class="sign-in-form">
-  <h2>Register interest</h2>
-  <h2>{{title}} with {{organisation_name}}</h2>
-  {{#unless @root.data.auth}}
-  <h4>If you would like to save this data for future applications you must first <a href="/sign-in">sign in</a> or <a href="/sign-up">sign up</a></h4>
-  {{/unless}}
-
-  {{#unless opportunity_contact_email}}
-  <p>You can't volunteer for this opportunity using this site. {{#if organisation_website}}Please contact the organisation directly using <a href="{{fixUrl organisation_website 'http'}}">{{{organisation_website}}}</a> for more information.{{/if}}</p>
-    {{else}}
-    {{#if (contains (map @root.data.registeredInterest.items.[0] (getProp "value")) Id)}}
-    <p>You have already registered interest in this opportunity</p>
-    {{else}}
-
-
-
-
-    {{!-- This is debug code, remove when all done --}}
-    {{#if @root.request.params.query.debug}}
-
-    {{#if (contains (map @root.data.registeredInterest.items.[0] (getProp "value")) Id)}}
-    <p><button type="button" onclick="sqlRemoveInterest()">Remove SQL recording?</button></p>
-    {{/if}}
-
-    {{#if @root.data.profileInfo}}
-    <p>there is profile info here {{{stringify @root.data.profileInfo}}} - <button type="button" onclick="fireBaseRemoveInfo()">Purge Account info??</button></p></p>
-    {{else}}
-    <p>No profile info here!</p>
-    {{/if}}
-    {{/if}}
-    {{!-- debug code ends--}}
-
-    <div class="mdc-layout-grid">
-      <div class="mdc-layout-grid__inner">
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
-          <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
-            <input id="first_name" name="first_name"
-            {{>form_validation_attributes @root.context.metaData.accountInfoValidation.first_name}}class="mdc-text-field__input mdc-text-field--fullwidth"
-            value="{{@root.data.profileInfo.first_name}}">
-            <label class="mdc-floating-label" for="first_name">
-              First name
-            </label>
-          </div>
-        </div>
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
-          <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
-            <input id="last_name" name="last_name"
-            {{>form_validation_attributes @root.context.metaData.accountInfoValidation.last_name}} class="mdc-text-field__input mdc-text-field--fullwidth"
-            value="{{@root.data.profileInfo.last_name}}">
-            <label class="mdc-floating-label" for="last_name">
-              Last name
-            </label>
-          </div>
-        </div>
-      </div>
-      <div class="mdc-layout-grid__inner">
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
-          <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
-            <input id="thisfield" name="date_of_birth"
-            {{>form_validation_attributes @root.context.metaData.accountInfoValidation.date_of_birth}} class="mdc-text-field__input mdc-text-field--fullwidth"
-            value="{{@root.data.profileInfo.date_of_birth}}">
-            <label class="mdc-floating-label" for="date_of_birth">
-              Date of birth
-            </label>
-          </div>
-        </div>
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
-          <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
-            <input id="location_address" name="location_address"
-            {{>form_validation_attributes @root.context.metaData.accountInfoValidation.location_address}} class="mdc-text-field__input mdc-text-field--fullwidth"
-            value="{{@root.data.profileInfo.location_address}}">
-            <label class="mdc-floating-label" for="location_address">
-              Address
-            </label>
-          </div>
-        </div>
-      </div>
-      <div class="mdc-layout-grid__inner">
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
-          <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
-            <input id="location_city" name="location_city"
-            {{>form_validation_attributes @root.context.metaData.accountInfoValidation.location_city}} class="mdc-text-field__input mdc-text-field--fullwidth"
-            value="{{@root.data.profileInfo.location_city}}">
-            <label class="mdc-floating-label" for="location_city">
-              Town/city
-            </label>
-          </div>
-        </div>
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
-          <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
-            <input id="thisfield" name="phone"
-            {{>form_validation_attributes @root.context.metaData.accountInfoValidation.phone}}
-            class="mdc-text-field__input mdc-text-field--fullwidth"
-            value="{{@root.data.profileInfo.phone}}">
-            <label class="mdc-floating-label" for="phone">
-              Phone number
-            </label>
-          </div>
-        </div>
-      </div>
-      <div class="mdc-layout-grid__inner">
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
-          <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
-            <input id="thisfield" name="email" class="mdc-text-field__input mdc-text-field--fullwidth"
-            {{>form_validation_attributes @root.context.metaData.accountInfoValidation.email}}
-            value="{{@root.data.profileInfo.email}}">
-            <label class="mdc-floating-label" for="email">
-              Email address
-            </label>
-          </div>
-        </div>
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
-          <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
-            <input id="thisfield" name="location_postcode"
-            {{>form_validation_attributes @root.context.metaData.accountInfoValidation.location_postcode}} class="mdc-text-field__input mdc-text-field--fullwidth"
-            value="{{@root.data.profileInfo.location_postcode}}">
-            <label class="mdc-floating-label" for="location_postcode">
-              Postcode
-            </label>
-          </div>
-        </div>
-      </div>
+<div id="detailed-results-container" class="container-content content-notes">
+  {{#with @root.data.primaryResponse.hits.hits.0._source ~}}
+  <form id="register-interest-form" action="/add-to-registered-interest?id={{Id}}" method="POST">
+    <h2 class="mdc-typography--headline4">Register interest</h2>
+    <div class="mdc-typography--headline5">
+      <a href="/opportunity/{{slug}}">{{title}}</a> with <a href="/organisation/{{organisation_slug}}">{{organisation_name}}</a>
     </div>
-    <div class="mdc-text-field mdc-text-field--box mdc-text-field--textarea" data-mdc-auto-init="MDCTextField">
-      <textarea type="text" id="thisfield" name="message" class="mdc-text-field__input mdc-text-field--fullwidth" value="" ></textarea>
-      <label class="mdc-floating-label" for="phone">
-        Message
-      </label>
+    {{#unless @root.data.auth ~}}
+    <div class="mdc-typography--headline6">
+      If you would like to save this data for future applications you must first <a href="/sign-in">sign in</a> or <a href="/sign-up">sign up</a>.
     </div>
+    {{/unless ~}}
 
-  <input type="hidden" name="opportunity_contact_first_name" value="{{opportunity_contact_first_name}}">
-  <input type="hidden" name="opportunity_contact_last_name" value="{{opportunity_contact_last_name}}">
-        <input type="hidden" name="organisation_name" value="{{organisation_name}}">
+    {{#unless opportunity_contact_email ~}}
+      <p>You can't volunteer for this opportunity using this site. {{#if organisation_website}}Please contact the organisation directly using <a href="{{fixUrl organisation_website 'http'}}">{{{organisation_website}}}</a> for more information.{{/if}}</p>
+    {{else}}
+      {{#if (contains (map @root.data.registeredInterest.items.[0] (getProp "value")) Id)}}
+      <p>You have already registered interest in this opportunity</p>
+      {{else}}
+
+      <div class="mdc-layout-grid">
+        <div class="mdc-layout-grid__inner">
+          <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
+            <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
+              <input id="first_name" name="first_name"
+              {{>form_validation_attributes @root.context.metaData.accountInfoValidation.first_name}}class="mdc-text-field__input mdc-text-field--fullwidth"
+              value="{{@root.data.profileInfo.first_name}}">
+              <label class="mdc-floating-label" for="first_name">
+                First name
+              </label>
+            </div>
+          </div>
+          <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
+            <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
+              <input id="last_name" name="last_name"
+              {{>form_validation_attributes @root.context.metaData.accountInfoValidation.last_name}} class="mdc-text-field__input mdc-text-field--fullwidth"
+              value="{{@root.data.profileInfo.last_name}}">
+              <label class="mdc-floating-label" for="last_name">
+                Last name
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="mdc-layout-grid__inner">
+          <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
+            <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
+              <input id="thisfield" name="date_of_birth"
+              {{>form_validation_attributes @root.context.metaData.accountInfoValidation.date_of_birth}} class="mdc-text-field__input mdc-text-field--fullwidth"
+              value="{{@root.data.profileInfo.date_of_birth}}">
+              <label class="mdc-floating-label" for="date_of_birth">
+                Date of birth
+              </label>
+            </div>
+          </div>
+          <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
+            <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
+              <input id="location_address" name="location_address"
+              {{>form_validation_attributes @root.context.metaData.accountInfoValidation.location_address}} class="mdc-text-field__input mdc-text-field--fullwidth"
+              value="{{@root.data.profileInfo.location_address}}">
+              <label class="mdc-floating-label" for="location_address">
+                Address
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="mdc-layout-grid__inner">
+          <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
+            <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
+              <input id="location_city" name="location_city"
+              {{>form_validation_attributes @root.context.metaData.accountInfoValidation.location_city}} class="mdc-text-field__input mdc-text-field--fullwidth"
+              value="{{@root.data.profileInfo.location_city}}">
+              <label class="mdc-floating-label" for="location_city">
+                Town/city
+              </label>
+            </div>
+          </div>
+          <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
+            <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
+              <input id="thisfield" name="phone"
+              {{>form_validation_attributes @root.context.metaData.accountInfoValidation.phone}}
+              class="mdc-text-field__input mdc-text-field--fullwidth"
+              value="{{@root.data.profileInfo.phone}}">
+              <label class="mdc-floating-label" for="phone">
+                Phone number
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="mdc-layout-grid__inner">
+          <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
+            <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
+              <input id="thisfield" name="email" class="mdc-text-field__input mdc-text-field--fullwidth"
+              {{>form_validation_attributes @root.context.metaData.accountInfoValidation.email}}
+              value="{{@root.data.profileInfo.email}}">
+              <label class="mdc-floating-label" for="email">
+                Email address
+              </label>
+            </div>
+          </div>
+          <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
+            <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
+              <input id="thisfield" name="location_postcode"
+              {{>form_validation_attributes @root.context.metaData.accountInfoValidation.location_postcode}} class="mdc-text-field__input mdc-text-field--fullwidth"
+              value="{{@root.data.profileInfo.location_postcode}}">
+              <label class="mdc-floating-label" for="location_postcode">
+                Postcode
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mdc-text-field mdc-text-field--box mdc-text-field--textarea" data-mdc-auto-init="MDCTextField">
+        <textarea type="text" id="thisfield" name="message" class="mdc-text-field__input mdc-text-field--fullwidth" value="" ></textarea>
+        <label class="mdc-floating-label" for="phone">
+          Message
+        </label>
+      </div>
+
+      <input type="hidden" name="opportunity_contact_first_name" value="{{opportunity_contact_first_name}}">
+      <input type="hidden" name="opportunity_contact_last_name" value="{{opportunity_contact_last_name}}">
+      <input type="hidden" name="organisation_name" value="{{organisation_name}}">
       <input type="hidden" name="tsi_name" value="{{tsi_name}}">
       <input type="hidden" name="opportunity_contact_via_tsi" value="{{opportunity_contact_via_tsi}}">
       <input type="hidden" name="opportunity_milo_ref" value="{{milo_ref}}">
 
-        <input type="hidden" name="opportunity_title" value="{{title}}">
-        <input type="hidden" name="opportunity_minimum_age" value="{{minimum_age}}">
-  <input type="hidden" name="opportunity_maximum_age" value="{{maximum_age}}">
-  <input type="hidden" name="emailTo" value="{{opportunity_contact_email}}">
+      <input type="hidden" name="opportunity_title" value="{{title}}">
+      <input type="hidden" name="opportunity_minimum_age" value="{{minimum_age}}">
+      <input type="hidden" name="opportunity_maximum_age" value="{{maximum_age}}">
+      <input type="hidden" name="emailTo" value="{{opportunity_contact_email}}">
 
-{{#if @root.data.auth}}
-  <div class="mdc-form-field">
-    <div class="mdc-checkbox">
-      <input type="checkbox"
-             class="mdc-checkbox__native-control"
-             name="store_profile_info"
-             id="store-details"/>
-      <div class="mdc-checkbox__background">
-        <svg class="mdc-checkbox__checkmark"
-             viewBox="0 0 24 24">
-          <path class="mdc-checkbox__checkmark-path"
-          fill="none"
-          d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
-        </svg>
-        <div class="mdc-checkbox__mixedmark"></div>
+      {{#if @root.data.auth ~}}
+      <div class="mdc-form-field">
+        <div class="mdc-checkbox">
+          <input type="checkbox" class="mdc-checkbox__native-control" name="store_profile_info" id="store-details"/>
+          <div class="mdc-checkbox__background">
+            <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+            <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+          </svg>
+          <div class="mdc-checkbox__mixedmark"></div>
+        </div>
       </div>
+      <label for="store-details">Remember details for future applications? We will not use these details for anything but volunteering applications, and you will be asked (via this form) before submitting each time.</label>
     </div>
-    <label for="email-on">Remember details for future applications? We will not use these details for anything but volunteering applications, and you will be asked (via this form) before submitting each time.</label>
-  </div>
-  {{/if}}
-  <button type="submit" class="mdc-button mdc-button--raised" id="register-interest-submit">
-    Register Interest
-  </button>
-
-  {{/if}}
-  {{/unless}}
-</form>
-
-
-<script>
-
-function sqlRemoveInterest(){
-  var Id = "{{Id}}";
-  $.ajax({
-    type : "GET",
-    url: "/remove-from-registered-interest?id=" + Id,
-  })
-}
-function fireBaseRemoveInfo(){
-  var Id = "{{Id}}";
-  $.ajax({
-    type : "POST",
-    url: "/delete-profile-info?id=" + Id,
-  })
-}
-</script>
-
-{{/with}}
-
+    {{/if ~}}
+    <button type="submit" class="mdc-button mdc-button--raised" id="register-interest-submit">
+      Register Interest
+    </button>
+    {{/if ~}}
+  {{/unless ~}}
+  </form>
 </div>
+{{/with ~}}

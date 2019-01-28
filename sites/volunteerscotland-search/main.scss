@@ -152,6 +152,7 @@ a[href^="https://www.volunteerscotland.net"]::after {
 }
 
 header {
+  z-index: 2;
   .container-fluid {
     padding: 0;
     .mdc-top-app-bar__section--align-end {
