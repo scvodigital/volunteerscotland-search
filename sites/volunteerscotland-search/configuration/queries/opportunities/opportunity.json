@@ -4,7 +4,7 @@
     "Id",
     "slug",
     "milo_ref",
-    "available_from",
+    "start_date",
     "client_group",
     "client_group_slugs",
     "description",

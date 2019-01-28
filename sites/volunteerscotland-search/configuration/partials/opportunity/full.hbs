@@ -36,14 +36,15 @@
               {{/each}}
             </li>
             {{/compare ~}}
-            {{#if available_from ~}}
+            {{#if start_date ~}}
             <li class="mdc-card__info--content-primary-from mdc-typography--body1">
               <span class="fa-li"><span class="far fa-calendar-plus fa-fw" title="Start date"></span></span>
-              Advertised from {{momentFormat (moment available_from "x") "Do MMMM YYYY"}}
+              Opportunity start date:  {{momentFormat (moment start_date "x") "Do MMMM YYYY"}}
             </li>
             {{/if ~}}
           </ul>
         </div>
+
         <div class="detailed-info">
           {{#if description ~}}
           <h4 class="mdc-typography--headline6">Description</h4>
@@ -59,11 +60,12 @@
           </div>
           {{/if ~}}
 
-          {{#ifAny organisation_contact_last_name organisation_contact_email organisation_website ~}}
+
+          {{#ifAny opportunity_contact_last_name opportunity_contact_email organisation_website ~}}
           <h4 class="mdc-typography--headline6">Contact</h4>
-          {{#ifAny organisation_contact_first_name organisation_contact_last_name ~}}
+          {{#ifAny opportunity_contact_first_name opportunity_contact_last_name ~}}
           <div class="mdc-typography--body1">
-            <strong>Name: </strong> {{{organisation_contact_first_name}}} {{{organisation_contact_last_name}}}
+            <strong>Name: </strong> {{{opportunity_contact_first_name}}} {{{opportunity_contact_last_name}}}
           </div>
           {{/ifAny ~}}
 
