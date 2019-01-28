@@ -232,7 +232,8 @@
         "renderer": "handlebars",
         "config": {
           "appName": "volunteerscotland-search",
-          "pathTemplate": "/notes/{{data.auth.uid}}"
+          "pathTemplate": "/notes/{{data.auth.uid}}",
+          "defaultData": " "
         }
       },
       "profileInfoData": {
@@ -241,7 +242,8 @@
         "renderer": "handlebars",
         "config": {
           "appName": "volunteerscotland-search",
-          "pathTemplate": "/profile-info/{{data.auth.uid}}"
+          "pathTemplate": "/profile-info/{{data.auth.uid}}",
+          "defaultData": " "
         }
       }
     },
