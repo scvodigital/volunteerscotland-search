@@ -1391,6 +1391,11 @@ a {
         }
       }
     }
+    .table-responsive {
+      .mdc-checkbox {
+        pointer-events: none;
+      }
+    }
     .location-info {
       .container-map {
         height: 40vh;

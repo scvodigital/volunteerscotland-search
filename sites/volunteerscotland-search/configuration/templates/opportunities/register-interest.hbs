@@ -1,14 +1,13 @@
 {{#with @root.data.primaryResponse.hits.hits.0._source}}
-<form id="register-interest-form" action="/test-email-display?id={{Id}}" method="POST" class="sign-in-form">
+<form id="register-interest-form" action="/add-to-registered-interest?id={{Id}}" method="POST" class="sign-in-form">
   <h2>Register interest</h2>
   <h2>{{title}} with {{organisation_name}}</h2>
   {{#unless @root.data.auth}}
   <h4>If you would like to save this data for future applications you must first <a href="/sign-in">sign in</a> or <a href="/sign-up">sign up</a></h4>
   {{/unless}}
 
-  {{#ifNone organisation_contact_email tsi_contact_email}}
-  <p>You can't volunteer for this opportunity from this site. {{#if organisation_website }}Please contact them at
-    <a href="{{fixUrl organisation_website 'http'}}">{{{organisation_website}}}</a> for more info{{/if}}</p>
+  {{#unless opportunity_contact_email}}
+  <p>You can't volunteer for this opportunity using this site. {{#if organisation_website}}Please contact the organisation directly using <a href="{{fixUrl organisation_website 'http'}}">{{{organisation_website}}}</a> for more information.{{/if}}</p>
     {{else}}
     {{#if (contains (map @root.data.registeredInterest.items.[0] (getProp "value")) Id)}}
     <p>You have already registered interest in this opportunity</p>
@@ -130,27 +129,28 @@
       </label>
     </div>
 
-    <input type="hidden" name="organisation_contact_first_name" value="{{organisation_contact_first_name}}">
-    <input type="hidden" name="organisation_contact_last_name" value="{{organisation_contact_last_name}}">
-    <input type="hidden" name="organisation_name" value="{{organisation_contact_last_name}}">
-    <input type="hidden" name="opportunity_milo_ref" value="{{milo_ref}}">
-    <input type="hidden" name="opportunity_title" value="{{title}}">
-    <input type="hidden" name="opportunity_minimum_age" value="{{minimum_age}}">
-    <input type="hidden" name="opportunity_maximum_age" value="{{maximum_age}}">
-    <input type="hidden" name="emailTo"
-    value="{{#compare send_register_interest_email_to '===' 'TSI'}}{{default tsi_contact_email organisation_contact_email }}{{else}}{{default organisation_contact_email tsi_contact_email}}{{/compare}}"
-    >
+  <input type="hidden" name="opportunity_contact_first_name" value="{{opportunity_contact_first_name}}">
+  <input type="hidden" name="opportunity_contact_last_name" value="{{opportunity_contact_last_name}}">
+        <input type="hidden" name="organisation_name" value="{{organisation_name}}">
+      <input type="hidden" name="tsi_name" value="{{tsi_name}}">
+      <input type="hidden" name="opportunity_contact_via_tsi" value="{{opportunity_contact_via_tsi}}">
+      <input type="hidden" name="opportunity_milo_ref" value="{{milo_ref}}">
 
-    {{#if @root.data.auth}}
-    <div class="mdc-form-field">
-      <div class="mdc-checkbox">
-        <input type="checkbox"
-        class="mdc-checkbox__native-control"
-        name="store_profile_info"
-        id="store-details"/>
-        <div class="mdc-checkbox__background">
-          <svg class="mdc-checkbox__checkmark"
-          viewBox="0 0 24 24">
+        <input type="hidden" name="opportunity_title" value="{{title}}">
+        <input type="hidden" name="opportunity_minimum_age" value="{{minimum_age}}">
+  <input type="hidden" name="opportunity_maximum_age" value="{{maximum_age}}">
+  <input type="hidden" name="emailTo" value="{{opportunity_contact_email}}">
+
+{{#if @root.data.auth}}
+  <div class="mdc-form-field">
+    <div class="mdc-checkbox">
+      <input type="checkbox"
+             class="mdc-checkbox__native-control"
+             name="store_profile_info"
+             id="store-details"/>
+      <div class="mdc-checkbox__background">
+        <svg class="mdc-checkbox__checkmark"
+             viewBox="0 0 24 24">
           <path class="mdc-checkbox__checkmark-path"
           fill="none"
           d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
@@ -166,7 +166,7 @@
   </button>
 
   {{/if}}
-  {{/ifNone}}
+  {{/unless}}
 </form>
 <div class="detailed-info">
   {{#ifAny organisation_contact_last_name organisation_contact_email organisation_website ~}}

@@ -1,6 +1,9 @@
 {
   "name": "sign_in",
   "pattern": "/sign-in",
+  "metaData": {
+    "title": "Sign in - Volunteer Scotland Search"
+  },
   "tasks": [
     "context.metaData.commonTasks.authNotRequired",
     {

@@ -3,6 +3,7 @@
   "debug" : true,
   "pattern": "/account",
   "metaData": {
+    "title": "Account - Volunteer Scotland Search",
     "sidebarButton": {
       "icon": "cog",
       "tooltip": "Account",
@@ -17,8 +18,8 @@
     "context.metaData.commonTasks.favouritesData",
     "context.metaData.commonTasks.opportunitySupplimentary",
     "context.metaData.commonTasks.searchesData",
-    "context.metaData.commonTasks.notesData",
     "context.metaData.commonTasks.profileInfoData",
+    "context.metaData.commonTasks.newsletterDataDummy",
     {
       "name": "email_days",
       "taskModule": "render",

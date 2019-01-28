@@ -2,7 +2,7 @@
   "name": "_default",
   "pattern": "/*path",
   "metaData": {
-    "title": "404: Page not found – Volunteer Scotland"
+    "title": "Volunteer Scotland Search"
   },
   "tasks": [
     "context.metaData.commonTasks.authNotRequired",

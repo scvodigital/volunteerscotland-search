@@ -1,6 +1,9 @@
 {
   "name": "five_hundred",
   "pattern": "/500",
+  "metaData": {
+    "title": "500: Server error - Volunteer Scotland Search"
+  },
   "tasks": [
     {
       "name": "destination",
