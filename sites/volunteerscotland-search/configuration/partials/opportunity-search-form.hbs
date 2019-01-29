@@ -1,54 +1,3 @@
-{{#*inline "term_filter"}}
-<h3 class="mdc-drawer__content-heading cursor-pointer noselect mdc-drawer--occasional-ie11" data-checkbox-collapse-target="#{{instance_id}}-{{type}}-collapse" role="button" aria-pressed="false" aria-label="Show {{getProperty @root.context.metaData.termTypeLabels (concat type ".plural")}}" tabindex="0">
-  {{getProperty @root.context.metaData.termTypeLabels (concat type ".plural")}}
-  <span class="mdc-icon-toggle pull-right">
-    <i class="far fa-chevron-down" aria-hidden="true"></i>
-  </span>
-</h3>
-<div class="mdc-drawer--occasional-ie11 checkbox-toggle-display-checked" id="{{instance_id}}-{{type}}-collapse">
-  {{#compare type "===" "types" ~}}
-    {{> term_checkbox slug="true" field="home_based" selected=@root.request.params.query.home_based instance_id=instance_id value="Home-based volunteering"}}
-    {{> term_checkbox slug="true" field="suitable_for_groups" selected=@root.request.params.query.suitable_for_groups instance_id=instance_id value="Suitable for groups"}}
-    {{> term_checkbox slug="true" field="suitable_for_one_off" selected=@root.request.params.query.suitable_for_one_off instance_id=instance_id value="One-off volunteering"}}
-    {{> term_checkbox slug="true" field="board_trustee" selected=@root.request.params.query.board_trustee instance_id=instance_id value="Board/trustee role"}}
-  {{else}}
-    {{#each (getProperty @root.data.opportunitySupplimentary.types.aggregations (concat type "_slugs.buckets")) ~}}
-      {{#if key ~}}
-        {{> term_checkbox slug=key field=../type selected=(getProperty @root.request.params.query ../type) instance_id=../instance_id value=(lookup (getProperty @root.data.opportunitySupplimentary.types.aggregations (concat ../type ".buckets")) @index)}}
-      {{/if ~}}
-    {{/each ~}}
-  {{/compare ~}}
-</div>
-{{/inline}}
-
-{{#*inline "availability_filter"}}
-  <h3 class="mdc-drawer__content-heading cursor-pointer noselect mdc-drawer--occasional-ie11" data-collapse-target="#{{instance_id}}-availability-collapse" role="button" aria-pressed="false" aria-label="Show {{getProperty @root.context.metaData.termTypeLabels (concat type ".plural")}}" tabindex="0">
-      Availability
-    <span class="mdc-icon-toggle pull-right">
-    <i class="far fa-chevron-{{#if @root.request.params.query.availability}}up{{else}}down{{/if}}" aria-hidden="true"></i>
-  </span>
-  </h3>
-  <div class="mdc-drawer--occasional-ie11" id="{{instance_id}}-availability-collapse" style="{{#unless @root.request.params.query.availability}}display:none{{/unless}}">
-    {{>opportunity_availability_selector type="availability"}}
-  </div>
-{{/inline}}
-
-{{#*inline "term_checkbox"}}
-  <div class="mdc-form-field">
-    <div class="mdc-checkbox">
-      <input type="checkbox" class="mdc-checkbox__native-control" id="{{instance_id}}_{{field}}_{{slug}}" name="{{#compare field "===" "type"}}{{field}}{{else}}{{field}}[]{{/compare}}" value="{{slug}}"{{#if (contains (arrayify selected) slug)}} checked{{/if}} />
-      <div class="mdc-checkbox__background">
-        <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-        <path class="mdc-checkbox__checkmark-path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"/></svg>
-        <div class="mdc-checkbox__mixedmark"></div>
-      </div>
-    </div>
-    <label for="{{instance_id}}_{{field}}_{{slug}}">
-      {{{default value.key value}}}
-    </label>
-  </div>
-{{/inline}}
-
 <div class="mdc-drawer__content">
   <!-- <h2 class="mdc-drawer__content-heading hide-sm mdc-drawer--occasional">Search opportunities</h2> -->
 
@@ -104,37 +53,110 @@
           <input type="hidden" name="distance" id="slider-distance-value" value="{{default @root.request.params.query.distance 10}}">
         </div>
       </div>
-    </div>
-    <input type="hidden" name="lat" value="{{@root.request.params.query.lat}}" id="location-lat" />
-    <input type="hidden" name="lng" value="{{@root.request.params.query.lng}}" id="location-lng" />
-    <input type="hidden" name="la" value="{{@root.request.params.query.la}}" id="location-la" />
+      <input type="hidden" name="lat" value="{{@root.request.params.query.lat}}" id="location-lat" />
+      <input type="hidden" name="lng" value="{{@root.request.params.query.lng}}" id="location-lng" />
+      <input type="hidden" name="la" value="{{@root.request.params.query.la}}" id="location-la" />
 
-    <!-- <div class="h-padding">
-      <strong>Refine by</strong>
-    </div> -->
+      <!-- <div class="h-padding">
+        <strong>Refine by</strong>
+      </div> -->
 
-    <div class="h-padding">
-      <div class="mdc-text-field mdc-text-field--box mdc-text-field--with-trailing-icon" data-mdc-auto-init="MDCTextField">
-        <input type="text" id="{{instance_id}}-keywords" name="keywords" class="mdc-text-field__input mdc-text-field--fullwidth" value="{{@root.request.params.query.keywords}}" data-lpignore="true" autocomplete="off">
-        <label class="mdc-floating-label" for="keywords">
-          Keywords
-        </label>
+      <div class="header mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon mdc-text-field-tt" data-mdc-auto-init="MDCTextField">
+
+        <input type="text" id="what-primary-content" name="keywords" class="mdc-text-field__input" placeholder="" data-lpignore="true" data-typeahead='{
+          "typeaheadOptions": {
+            "highlight": true,
+            "minlength": 0
+          },
+          "outputs": [
+            {
+              "type": "prop",
+              "options": {
+                "selectorTemplate": "#cb-\{{item.datasetName}}-\{{item.value}}",
+                "prop": "checked",
+                "valueTemplate": "checked"
+              }
+            }
+          ],
+          "datasets": [
+            {{#each @root.context.metaData.terms}}
+          {{#each termGroups}}
+                {
+                  "name": {{{stringify @../key}}},
+                  "templates": {
+                    {{#compare (length (getKeys ../termGroups)) 1}}
+                      "header": "<h3>{{{../label}}}</h3>"
+                    {{else}}
+                      "header": "<h3>{{{../label}}} &gt; {{{label}}}</h3>"
+                    {{/compare}}
+                  },
+                  "display": "other",
+                  "items": [
+                    {{#each terms}}
+                    {
+                    "label": {{{stringify (concat @../key ' ' textBag)}}},
+                    "value": {{{stringify @key}}},
+                    "other": {{{stringify label}}}
+                    }{{#unless @last}},{{/unless}}
+          {{/each}}
+                  ]
+                }{{#unlessAll @last @../last}},{{/unlessAll}}
+          {{/each}}
+        {{/each}}
+          ]
+        }'>
         <span class="fas fa-search active-search-icon mdc-text-field__icon" role="button" onclick=" $(this).parents('form:first').submit();" style="pointer-events: initial !important; z-index: 500;" tabindex="-1"></span></a>
+        <label for="what-primary-content" class="mdc-floating-label">
+          Keywords / categories
+        </label>
+
         <div class="mdc-line-ripple"></div>
       </div>
-    </div>
+      {{#each @root.context.metaData.terms}}
+        {{#unless (getProperty @root.data.currentSite.fixedFilters @key)}}
+          {{#> components_advanced_checkbox_list name=@key label=label}}
+            {{#each termGroups}}
+              {{#> components_advanced_checkbox_group
+                name=(concat @../key '-' @key)
+                label=label
+                hideParent=(compare (length (getKeys ../../termGroups)) 1)}}
+                {{#each terms}}
+                  {{> components_advanced_checkbox_item
+                    name=@../../../../key
+                    value=@key
+                    label=label
+                    checked=(contains (getProperty @root.request.params.query @../../../../key) @key)
+                    group=(concat @../../../../key '-'  @../../../key)
+                    noIndent=(compare (length (getKeys ../../../../termGroups)) 1)}}
+                {{/each}}
+              {{/components_advanced_checkbox_group}}
+            {{/each}}
+          {{/components_advanced_checkbox_list}}
+        {{/unless}}
+      {{/each}}
 
-    {{#each (split "types,work_types,client_groups,services,age_groups" ",") ~}}
-      {{> term_filter type=this instance_id=../instance_id ~}}
-    {{/each ~}}
+      <div class="mdc-list-group">
+        <div data-collapse-target="#{{instance_id}}-availability-collapse" role="button" aria-pressed="false" aria-label="Show {{getProperty @root.context.metaData.termTypeLabels (concat type ".plural")}}" tabindex="0">
+        <h3 class="mdc-list-group__subheader cursor-pointer noselect">
+          Availability
+        </h3>
+        </div>
+        <div class="mdc-drawer--occasional-ie11" id="{{instance_id}}-availability-collapse" style="{{#unless @root.request.params.query.availability}}display:none{{/unless}}">
+          {{>opportunity_availability_selector type="availability"}}
+        </div>
+        <li class="mdc-list-item cursor-pointer noselect" data-collapse-target="#{{instance_id}}-availability-collapse">
+  <i class="fas {{#unless @root.request.params.query.availability}}fa-ellipsis-h{{else}}fa-chevron-up{{/unless}} fa-2x pull-centre" ></i>
+        </li>
 
-    {{> availability_filter instance_id=instance_id ~}}
 
-    <div class="h-margin mdc-drawer--occasional-ie11">
-      <button class="mdc-button mdc-button--raised mdc-button--large mdc-button--fullwidth mdc-ripple-surface mdc-ripple-surface--primary" type="submit" id="{{instance_id}}-search-submit" data-mdc-auto-init="MDCRipple">
-        Search
-        <span class="fas fa-search fa-fw" aria-hidden="true"></span>
-      </button>
+      </div>
+
+      <div class="v-margin">
+        <button class="mdc-button mdc-button--raised mdc-button--large mdc-button--fullwidth mdc-ripple-surface mdc-ripple-surface--primary" type="submit" id="{{instance_id}}-search-submit" data-mdc-auto-init="MDCRipple">
+          <span class="far fa-search-plus fa-fw mdc-list-item__graphic" aria-hidden="true"></span>
+          Filter
+        </button>
+      </div>
     </div>
   </form>
 </div>

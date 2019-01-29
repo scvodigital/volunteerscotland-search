@@ -12,10 +12,10 @@
 
     {{#each (split "monday,tuesday,wednesday,thursday,friday,saturday,sunday" ",")}}
       <tr>
-        <th>{{capitalize this}}</th>
+        <th><p>{{capitalize this}}</p></th>
 
         {{#each (split "morning,afternoon,evening" ",")}}
-          <td style="text-align:center;font-weight:bold;">
+          <td>
             <div class="mdc-checkbox">
               <input type="checkbox" name="availability[]"
                      class="mdc-checkbox__native-control" value="{{concat ../this "-" this}}"

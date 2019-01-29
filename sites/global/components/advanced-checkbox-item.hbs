@@ -1,0 +1,6 @@
+<li class="mdc-list-item checkbox-list-child {{#if noIndent}}checkbox-list-child-no-indent{{/if}}" data-advanced-checkbox-item="{{name}}"
+    data-advanced-checkbox-group-parent="{{group}}" role="checkbox" aria-checked="{{checked}}"
+    id="li-{{name}}-{{value}}">
+  <label for="cb-{{name}}-{{value}}">{{label}}</label>
+  {{> components_advanced_checkbox_checkbox name=name hideName=false value=value label=label checked=checked}}
+</li>
