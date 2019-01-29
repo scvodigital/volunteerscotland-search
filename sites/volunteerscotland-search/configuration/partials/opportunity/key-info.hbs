@@ -76,15 +76,14 @@
           {{milo_ref}}
         </li>
       {{/if ~}}
-      {{#ifAny home_based suitable_for_groups suitable_for_one_off board_trustee ~}}
+      {{#if volunteersearch_type ~}}
         <li class="mdc-card__info--content-primary-reference mdc-typography--body1">
           <span class="fa-li"><span class="far fa-info-circle fa-fw" title="Reference"></span></span>
-          {{#if home_based}}Home-based volunteering{{/if}}
-          {{#if suitable_for_groups}}Suitable for groups{{/if}}
-          {{#if suitable_for_one_off}}One-off volunteering{{/if}}
-          {{#if board_trustee}}Board/trustee role{{/if}}
+          {{#compare volunteersearch_type.length ">" 0 ~}}
+          {{#each volunteersearch_type ~}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}
+          {{/compare ~}}
         </li>
-      {{/ifAny ~}}
+      {{/if ~}}
     </ul>
     <ul class="fa-ul last">
       {{#compare work_location "===" "At Home" ~}}
