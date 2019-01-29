@@ -24,7 +24,7 @@
             <li class="mdc-card__info--content-primary-work-type reference mdc-typography--body1">
               <span class="fa-li"><span class="far fa-briefcase fa-fw" title="Activites"></span></span>
               {{#each work_type}}
-              <a href="/search?work_types%205B%205D={{urlencode (slugify (replace this "/" "-"))}}">{{{this}}}</a>{{#unless @last}}, {{/unless}}
+              <a href="/search?work_types={{urlencode (slugify (replace this "/" "-"))}}">{{{this}}}</a>{{#unless @last}}, {{/unless}}
               {{/each}}
             </li>
             {{/compare ~}}
@@ -32,7 +32,7 @@
             <li class="mdc-card__info--content-primary-client-group mdc-typography--body1">
               <span class="fa-li"><span class="far fa-users fa-fw" title="Client groups"></span></span>
               {{#each client_group}}
-              <a href="/search?client_groups%205B%205D={{urlencode (slugify (replace this "/" "-"))}}">{{{this}}}</a>{{#unless @last}}, {{/unless}}
+              <a href="/search?client_groups={{urlencode (slugify (replace this "/" "-"))}}">{{{this}}}</a>{{#unless @last}}, {{/unless}}
               {{/each}}
             </li>
             {{/compare ~}}
