@@ -1,11 +1,18 @@
-{{#unless (contains (map @root.data.registeredInterest.items.[0] (getProp "value")) id)}}
-  <a href="register-interest/{{slug}}" class="mdc-chip">
-    <span class="far fa-hand-paper mdc-chip__icon mdc-chip__icon--leading" aria-hidden="true"></span>
-    <span class="mdc-chip__text noselect">I want to volunteer</span>
-  </a>
+{{#if @root.data.auth ~}}
+  {{#unless (contains (map @root.data.registeredInterest.items.[0] (getProp "value")) id)}}
+    <a href="register-interest/{{slug}}" class="mdc-chip">
+      <span class="far fa-hand-paper mdc-chip__icon mdc-chip__icon--leading" aria-hidden="true"></span>
+      <span class="mdc-chip__text noselect">I want to volunteer</span>
+    </a>
+  {{else}}
+    <div class="mdc-chip mdc-chip--selected">
+      <span class="far fa-envelope mdc-chip__icon" aria-hidden="true"></span>
+      <span class="mdc-chip__text noselect">Interest registered</span>
+    </div>
+  {{/unless}}
 {{else}}
-  <div class="mdc-chip mdc-chip--selected">
-    <span class="far fa-envelope mdc-chip__icon" aria-hidden="true"></span>
-    <span class="mdc-chip__text noselect">Interest registered</span>
+  <div class="mdc-chip" data-dialog-target="#volunteer-dialog">
+    <span class="far fa-hand-paper mdc-chip__icon mdc-chip__icon--leading" aria-hidden="true"></span>
+    <div class="mdc-chip__text noselect">I want to volunteer</div>
   </div>
-{{/unless}}
+{{/if ~}}

@@ -66,7 +66,8 @@
     "volunteersearch_age_group",
     "volunteersearch_age_group_slugs",
     "volunteersearch_support_option",
-    "volunteersearch_support_option_slugs"
+    "volunteersearch_support_option_slugs",
+    "opportunity_contact_email"
   ],
   "query": {
     "bool": {

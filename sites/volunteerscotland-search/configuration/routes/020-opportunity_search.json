@@ -1,7 +1,6 @@
 {
   "name": "opportunity_search",
   "pattern": "/search",
-  "debug":true,
   "metaData": {
     "title": "Volunteer Scotland Search",
     "sidebarButton": {
