@@ -205,14 +205,14 @@
           {{else}}
           <div class="container-content detailed-info">
             <p class="mdc-typography--body1">
-              {{#if advertised_areas ~}}
+              {{#compare advertised_areas.length ">" 0 ~}}
                 This opportunity is not listed at a specific location but is listed in
                 {{#each advertised_areas ~}}
                   {{this}}{{#unless @last}}, {{else}}.{{/unless}}
                 {{/each ~}}
               {{else}}
                 This opportunity is not listed at a specific location.
-              {{/if ~}}
+              {{/compare ~}}
             </p>
           </div>
           {{/compare ~}}
