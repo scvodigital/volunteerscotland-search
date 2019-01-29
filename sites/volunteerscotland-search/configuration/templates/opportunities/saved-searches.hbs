@@ -61,10 +61,10 @@
                       {{/each ~}}
                     {{/if ~}}
 
-                    {{#if opportunity_types ~}}
-                      {{inflect (length (arrayify client_groups)) "Types" "opportunity_types"}}:
-                      {{#each (arrayify opportunity_types) ~}}
-                        <strong>{{{getProperty @root.data.termsMaps.opportunity_types.slugsMap (concat this ".term")}}}{{#unless @last}}, {{/unless}}</strong>
+                    {{#if volunteersearch_types ~}}
+                      {{inflect (length (arrayify client_groups)) "Types" "volunteersearch_types"}}:
+                      {{#each (arrayify volunteersearch_types) ~}}
+                        <strong>{{{getProperty @root.data.termsMaps.volunteersearch_types.slugsMap (concat this ".term")}}}{{#unless @last}}, {{/unless}}</strong>
                       {{/each ~}}
                     {{/if ~}}
 

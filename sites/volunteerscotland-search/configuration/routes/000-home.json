@@ -1,6 +1,7 @@
 {
   "name": "home",
   "pattern": "/",
+  "debug" : true,
   "metaData": {
     "title": "Volunteer Scotland Search | Help Make a Difference through Volunteering"
   },

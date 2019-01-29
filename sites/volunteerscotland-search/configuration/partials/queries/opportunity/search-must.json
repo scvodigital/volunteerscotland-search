@@ -29,8 +29,9 @@
 },
 {{/ifAny ~}}
 
-{{#if opportunity_types ~}}
-{{>queries_terms field="opportunity_type_slugs" terms=opportunity_types}},
+{{#if volunteersearch_types ~}}
+{{>queries_terms field="volunteersearch_type_slugs" terms=volunteersearch_types}},
+{{/if ~}}
 {{#if work_types ~}}
 {{>queries_terms field="work_type_slugs" terms=work_types}},
 {{/if ~}}

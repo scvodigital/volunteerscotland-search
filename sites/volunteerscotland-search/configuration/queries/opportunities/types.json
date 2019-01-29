@@ -9,19 +9,23 @@
     }
   },
   "aggs": {
-    "opportunity_types": {
-      "field": "volunteerscotland_types",
-      "order": {
-        "_term": "asc"
-      },
-      "size": 10000
+    "volunteersearch_types": {
+      "terms": {
+        "field": "volunteersearch_type",
+        "order": {
+          "_term": "asc"
+        },
+        "size": 10000
+      }
     },
-    "opportunity_types_slugs": {
-      "field": "volunteerscotland_types_slugs",
-      "order": {
-        "_term": "asc"
-      },
-      "size": 10000
+    "volunteersearch_types_slugs": {
+      "terms": {
+        "field": "volunteersearch_type_slugs",
+        "order": {
+          "_term": "asc"
+        },
+        "size": 10000
+      }
     },
     "client_groups": {
       "terms": {
@@ -139,26 +143,6 @@
           "_term": "asc"
         },
         "size": 10000
-      }
-    },
-    "countries": {
-      "terms": {
-        "field": "country",
-        "size": 10000
-      },
-      "aggs": {
-        "regions": {
-          "terms": {
-            "field": "region_group",
-            "size": 10000
-          }
-        },
-        "regions_slugs": {
-          "terms": {
-            "field": "region_group_slug",
-            "size": 10000
-          }
-        }
       }
     }
   }

@@ -6,7 +6,7 @@ CALL _addSubscriptionParameters(
     querystringify (obj)
       keywords=@root.request.params.query.keywords
       regions=(sort @root.request.params.query.regions)
-      opportunity_types= (sort @root.request.params.query.opportunity_types)
+      volunteersearch_types= (sort @root.request.params.query.volunteersearch_types)
       work_types=(sort @root.request.params.query.work_types)
       client_groups=(sort @root.request.params.query.client_groups)
       services=(sort @root.request.params.query.services)
