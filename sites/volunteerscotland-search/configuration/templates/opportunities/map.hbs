@@ -16,47 +16,45 @@
       {{/compare ~}}
     </div>
   </div>
-  <div id="detailed-results-container" class="container-content grid-content container-map">
-    {{#if @root.data.search_data.map_results.pagination.totalResults ~}}
-      <div class="card-loader" id="opportunity-map-loader" style="display: flex">
-        <div class="card-loader-inner">
-          <span class="far fa-2x fa-circle-notch fa-spin"></span>
-        </div>
+  {{#if @root.data.search_data.map_results.pagination.totalResults ~}}
+    <div class="card-loader" id="opportunity-map-loader" style="display: flex">
+      <div class="card-loader-inner">
+        <span class="far fa-2x fa-circle-notch fa-spin"></span>
       </div>
-      <div id="map-full" data-map-name="fullMap" data-map-clustered-options='{
-     {{#ifAll @root.request.params.query.distance @root.request.params.query.lat @root.request.params.query.lng ~}}
-      "circle": {
-        "lat": {{@root.request.params.query.lat}},
-        "lng": {{@root.request.params.query.lng}},
-        "radius": {{default (multiply @root.request.params.query.distance 1.60934) 0}},
-        "color": "#7bc143"
-      }
-    {{/ifAll ~}}
-    }'>
-        <!-- Markers for map -->
-        {{#each @root.data.search_data.map_results.hits.hits ~}}
-          {{#if _source.geo_coords ~}}
-            {{#each (arrayify _source.geo_coords) ~}}
-              {{#if @root.request.params.query.distance ~}}
-                {{#compare (itemAt ../fields.distance @index) "<" @root.request.params.query.distance ~}}
-                  <marker style="display:none;" data-map="fullMap" data-lat="{{lat}}" data-lng="{{lon}}" data-shortlisted="{{#each @root.data.favourites.items}}{{#compare id "===" ../../_source.Id}}true{{/compare}}{{/each}}" data-title="{{../_source.title}}">
-                    {{>opportunity_map ../_source}}
-                  </marker>
-                {{/compare ~}}
-              {{else}}
+    </div>
+    <div id="map-full" data-map-name="fullMap" class="grid-content" data-map-clustered-options='{
+   {{#ifAll @root.request.params.query.distance @root.request.params.query.lat @root.request.params.query.lng ~}}
+    "circle": {
+      "lat": {{@root.request.params.query.lat}},
+      "lng": {{@root.request.params.query.lng}},
+      "radius": {{default (multiply @root.request.params.query.distance 1.60934) 0}},
+      "color": "#7bc143"
+    }
+  {{/ifAll ~}}
+  }'>
+      <!-- Markers for map -->
+      {{#each @root.data.search_data.map_results.hits.hits ~}}
+        {{#if _source.geo_coords ~}}
+          {{#each (arrayify _source.geo_coords) ~}}
+            {{#if @root.request.params.query.distance ~}}
+              {{#compare (itemAt ../fields.distance @index) "<" @root.request.params.query.distance ~}}
                 <marker style="display:none;" data-map="fullMap" data-lat="{{lat}}" data-lng="{{lon}}" data-shortlisted="{{#each @root.data.favourites.items}}{{#compare id "===" ../../_source.Id}}true{{/compare}}{{/each}}" data-title="{{../_source.title}}">
-                  Distance: {{itemAt ../fields.distance @index}}
                   {{>opportunity_map ../_source}}
                 </marker>
-              {{/if ~}}
-            {{/each}}
-          {{/if}}
-        {{/each}}
-      </div>
-    {{else}}
-      {{> search_info paging=@root.data.search_data.detailed_results.pagination}}
-    {{/if ~}}
-  </div>
+              {{/compare ~}}
+            {{else}}
+              <marker style="display:none;" data-map="fullMap" data-lat="{{lat}}" data-lng="{{lon}}" data-shortlisted="{{#each @root.data.favourites.items}}{{#compare id "===" ../../_source.Id}}true{{/compare}}{{/each}}" data-title="{{../_source.title}}">
+                Distance: {{itemAt ../fields.distance @index}}
+                {{>opportunity_map ../_source}}
+              </marker>
+            {{/if ~}}
+          {{/each}}
+        {{/if}}
+      {{/each}}
+    </div>
+  {{else}}
+    {{> search_info paging=@root.data.search_data.detailed_results.pagination}}
+  {{/if ~}}
 </div>
 
 <script>
