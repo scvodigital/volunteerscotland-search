@@ -160,7 +160,7 @@
                 {{/components_anchored_menu ~}}
               {{else}}
                 {{#>components_tab_bar
-                    extraClasses="mdc-tab-bar__auto-width"
+                    extraClasses="mdc-tab-bar__auto-width hide-sm hide-md"
                     id="user-not-signed-in-tab-bar" ~}}
                   {{#each @root.context.metaData.menus.user-not-signed-in ~}}
                     {{>components_tab
