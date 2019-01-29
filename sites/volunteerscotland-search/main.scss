@@ -679,17 +679,20 @@ footer h3,
   .checkbox-list-parent {
     font-weight: bold !important;
   }
-
   .checkbox-list-parent-hidden {
     display: none;
   }
-
   .checkbox-list-child {
     padding-left: $unit*1.5 !important;
   }
-
   .checkbox-list-child-no-indent {
     padding-left: $unit/2 !important;
+  }
+  .mdc-list-item {
+    height: auto !important;
+  }
+  .mdc-list-item:last-child {
+    padding: $unit/2 0;
   }
 }
 
@@ -3974,24 +3977,6 @@ footer.mdc-layout__footer {
   max-width: 260px;
   img {
     max-width: 100%;
-  }
-}
-
-.advanced-checkbox-list {
-  .checkbox-list-parent {
-    font-weight: bold !important;
-  }
-
-  .checkbox-list-parent-hidden {
-    display: none;
-  }
-
-  .checkbox-list-child {
-    padding-left: $unit*1.5 !important;
-  }
-
-  .checkbox-list-child-no-indent {
-    padding-left: $unit/2 !important;
   }
 }
 
