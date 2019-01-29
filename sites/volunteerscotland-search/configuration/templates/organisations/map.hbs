@@ -1,4 +1,3 @@
-{{#if @root.data.search_data.map_results.pagination.totalResults ~}}
 <div id="detailed-results-container" class="container-content content-primary-search container-map">
   <div class="mdc-layout-grid head v-margin-full">
     <div class="mdc-layout-grid__inner">
@@ -11,42 +10,37 @@
     </div>
   </div>
 
-  <div id="detailed-results-container" class="container-content grid-content container-map">
-    <div class="card-loader" id="opportunity-map-loader" style="display: flex">
-      <div class="card-loader-inner">
-        <span class="far fa-2x fa-circle-notch fa-spin"></span>
-      </div>
-    </div>
-    <div id="map-full" data-map-name="fullMap" data-map-clustered-options='{
-     {{#ifAll @root.request.params.query.distance @root.request.params.query.lat @root.request.params.query.lng ~}}
-      "circle": {
-        "lat": {{@root.request.params.query.lat}},
-        "lng": {{@root.request.params.query.lng}},
-        "radius": {{default @root.request.params.query.distance 0}},
-        "color": "#7BC143"
-      }
-    {{/ifAll ~}}
-    }'>
-      <!-- Markers for map -->
-      {{#each @root.data.search_data.map_results.hits.hits ~}}
-        {{#if _source.geo_coords ~}}
-          {{#each (arrayify _source.geo_coords) ~}}
-            <marker style="display:none;" data-map="fullMap" data-lat="{{lat}}" data-lng="{{lon}}" data-shortlisted="{{#each @root.data.favourites.items}}{{#compare id "===" ../../_source.Id}}true{{/compare}}{{/each}}" data-title="{{../_source.title}}">
-              {{>organisation_map ../_source}}
-            </marker>
-          {{/each}}
-        {{/if}}
-      {{/each}}
+  {{#if @root.data.search_data.map_results.pagination.totalResults ~}}
+  <div class="card-loader" id="opportunity-map-loader" style="display: flex">
+    <div class="card-loader-inner">
+      <span class="far fa-2x fa-circle-notch fa-spin"></span>
     </div>
   </div>
-</div>
-{{else}}
-<div id="detailed-results-container" class="container-content content-primary-search">
-  <div class="search-info mdc-elevation--z1">
-    No results could be found, please try a different search query
+  <div id="map-full" data-map-name="fullMap" class="grid-content" data-map-clustered-options='{
+   {{#ifAll @root.request.params.query.distance @root.request.params.query.lat @root.request.params.query.lng ~}}
+    "circle": {
+      "lat": {{@root.request.params.query.lat}},
+      "lng": {{@root.request.params.query.lng}},
+      "radius": {{default @root.request.params.query.distance 0}},
+      "color": "#7BC143"
+    }
+  {{/ifAll ~}}
+  }'>
+    <!-- Markers for map -->
+    {{#each @root.data.search_data.map_results.hits.hits ~}}
+      {{#if _source.geo_coords ~}}
+        {{#each (arrayify _source.geo_coords) ~}}
+          <marker style="display:none;" data-map="fullMap" data-lat="{{lat}}" data-lng="{{lon}}" data-shortlisted="{{#each @root.data.favourites.items}}{{#compare id "===" ../../_source.Id}}true{{/compare}}{{/each}}" data-title="{{../_source.title}}">
+            {{>organisation_map ../_source}}
+          </marker>
+        {{/each}}
+      {{/if}}
+    {{/each}}
   </div>
+  {{else}}
+    {{> search_info paging=@root.data.search_data.detailed_results.pagination}}
+  {{/if ~}}
 </div>
-{{/if ~}}
 
 <script>
   document.addEventListener("DOMContentLoaded", function(event) {

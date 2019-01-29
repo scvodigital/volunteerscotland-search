@@ -14,7 +14,6 @@
   },
   "tasks": [
     "context.metaData.commonTasks.authNotRequired",
-    "context.metaData.commonTasks.favouritesData",
     "context.metaData.commonTasks.organisationsWithOpportunities",
     {
       "name": "search_data",

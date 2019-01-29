@@ -3913,6 +3913,24 @@ footer.mdc-layout__footer {
   }
 }
 
+.advanced-checkbox-list {
+  .checkbox-list-parent {
+    font-weight: bold !important;
+  }
+
+  .checkbox-list-parent-hidden {
+    display: none;
+  }
+
+  .checkbox-list-child {
+    padding-left: $unit*1.5 !important;
+  }
+
+  .checkbox-list-child-no-indent {
+    padding-left: $unit/2 !important;
+  }
+}
+
 // Fade-in ============
 
 @-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
@@ -3933,4 +3951,3 @@ footer.mdc-layout__footer {
   -moz-animation-duration:1s;
   animation-duration:1s;
 }
-

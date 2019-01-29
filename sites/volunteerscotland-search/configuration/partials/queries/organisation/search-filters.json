@@ -1,12 +1,5 @@
 {{#if organisation_activities ~}}
   {{>queries_terms field="main_activities_global_slugs" terms=organisation_activities}},
 {{/if ~}}
-{{#if has_opportunities ~}}
-  {
-    "terms": {
-      "Id": {{{stringify (map @root.data.organisationsWithOpportunities.opportunities.aggregations.organisations.buckets (getProp "key"))}}}
-    }
-  },
-{{/if ~}}
 {{>queries_bounding_box}},
 {{>queries_do_nothing}}
