@@ -3,11 +3,18 @@
   "_source": [
     "Id",
     "slug",
-    "description",
     "title",
     "geo_coords",
+    "opportunity_contact_first_name",
+    "opportunity_contact_last_name",
+    "organisation_contact_email",
+    "organisation_website",
     "organisation_slug",
-    "organisation_name"
+    "organisation_name",
+    "home_based",
+    "suitable_for_groups",
+    "suitable_for_one_off",
+    "board_trustee"
   ],
   "query": {
     "bool": {
@@ -18,8 +25,8 @@
         {
           "terms": {
             "Id": {{{stringify (map @root.data.registeredInterest.items.[0] (getProp "value"))}}}
-      }
-      }
+          }
+        }
       ]
     }
   },

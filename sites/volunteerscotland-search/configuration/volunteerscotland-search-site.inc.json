@@ -31,9 +31,9 @@
         "singular": "Services",
         "plural": "Services"
       },
-      "regions": {
-        "singular": "Region",
-        "plural": "Regions"
+      "types": {
+        "singular": "Type",
+        "plural": "Types"
       },
       "work_types": {
         "singular": "Activity",
@@ -48,6 +48,7 @@
         "plural": "Client groups"
       }
     },
+    "terms": "{:./terms.json}",
     "handlebars": {
       "partials": {
         "{$./partials/**/*.*}": "includeRelativePath=false&regexExpression=(-)&regexOptions=gi&regexReplace=_"
@@ -232,7 +233,8 @@
         "renderer": "handlebars",
         "config": {
           "appName": "volunteerscotland-search",
-          "pathTemplate": "/notes/{{data.auth.uid}}"
+          "pathTemplate": "/notes/{{data.auth.uid}}",
+          "defaultData": " "
         }
       },
       "profileInfoData": {
@@ -241,7 +243,8 @@
         "renderer": "handlebars",
         "config": {
           "appName": "volunteerscotland-search",
-          "pathTemplate": "/profile-info/{{data.auth.uid}}"
+          "pathTemplate": "/profile-info/{{data.auth.uid}}",
+          "defaultData": " "
         }
       }
     },

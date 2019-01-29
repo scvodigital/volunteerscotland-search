@@ -36,19 +36,26 @@
               {{/each}}
             </li>
             {{/compare ~}}
-            {{#if available_from ~}}
+            {{#if start_date ~}}
             <li class="mdc-card__info--content-primary-from mdc-typography--body1">
               <span class="fa-li"><span class="far fa-calendar-plus fa-fw" title="Start date"></span></span>
-              Advertised from {{momentFormat (moment available_from "x") "Do MMMM YYYY"}}
+              Opportunity start date:  {{momentFormat (moment start_date "x") "Do MMMM YYYY"}}
             </li>
             {{/if ~}}
           </ul>
         </div>
+
         <div class="detailed-info">
           {{#if description ~}}
           <h4 class="mdc-typography--headline6">Description</h4>
           <div class="mdc-typography--body1">
             {{#if description_html}}{{{description_html}}}{{else}}{{description}}{{/if}}
+          </div>
+          {{/if ~}}
+
+          {{#if url ~}}
+          <div class="mdc-typography--body1">
+            <a href="{{fixUrl url "http"}}"{{#if url_tooltip}} title="{{url_tooltip}}"{{/if}}>{{#if url_title}}{{url_title}}{{else}}{{url}}{{/if}}</a>
           </div>
           {{/if ~}}
 
@@ -59,11 +66,12 @@
           </div>
           {{/if ~}}
 
+        {{!-- #if (contains (map @root.data.registeredInterest.items.[0] (getProp "value")) Id)}}
           {{#ifAny organisation_contact_last_name organisation_contact_email organisation_website ~}}
           <h4 class="mdc-typography--headline6">Contact</h4>
-          {{#ifAny organisation_contact_first_name organisation_contact_last_name ~}}
+          {{#ifAny opportunity_contact_first_name opportunity_contact_last_name ~}}
           <div class="mdc-typography--body1">
-            <strong>Name: </strong> {{{organisation_contact_first_name}}} {{{organisation_contact_last_name}}}
+            <strong>Name: </strong> {{{opportunity_contact_first_name}}} {{{opportunity_contact_last_name}}}
           </div>
           {{/ifAny ~}}
 
@@ -79,24 +87,33 @@
           </div>
           {{/if ~}}
 
-          {{/ifAny ~}}
+          {{/ifAny}}
+        {{/if ~ --}}
 
-          {{#if availability_slugs.length}}
+          {{#if availability_slugs.length ~}}
           <h4 class="mdc-typography--headline6">Availability</h4>
           <div class="mdc-typography--body1">
             {{>opportunity_timings_display availability_slugs}}
           </div>
-          {{/if}}
+          {{/if ~}}
 
           {{#if frequency_commitment_details ~}}
-          <h4 class="mdc-typography--headline6">Frequency and Commitment Details</h4>
+          <h4 class="mdc-typography--headline6">Frequency and commitment details</h4>
           <div class="mdc-typography--body1">
             {{{frequency_commitment_details}}}
           </div>
           {{/if ~}}
 
-          {{#ifAny experience_required travel_details minimum_age ~}}
+          {{#ifAny restriction_details experience_required travel_details minimum_age maximum_age ~}}
           <h4 class="mdc-typography--headline6">Restrictions</h4>
+          {{#if restriction_details ~}}
+          {{#compare restriction_details "!==" "n/a" ~}}
+          <div class="mdc-typography--body1">
+            {{{restriction_details}}}
+          </div>
+          {{/compare ~}}
+          {{/if ~}}
+
           {{#if experience_required ~}}
           <div class="mdc-typography--body1">
             <strong>Experience Required: </strong> {{{experience_required}}}
@@ -125,9 +142,9 @@
 
           {{/ifAny ~}}
 
-          {{#ifAny travel_expenses expenses_paid support_options ~}}
+          {{#ifAny travel_expenses expenses_paid taster_available taster_details support_options ~}}
           <h4 class="mdc-typography--headline6">Support</h4>
-          {{#if travel_expenses~}}
+          {{#if travel_expenses ~}}
           <div class="mdc-typography--body1">
             <strong>Travel Expenses: </strong> {{{travel_expenses}}}
           </div>
@@ -150,12 +167,12 @@
           <div class="mdc-typography--body1">
             <strong>Support Options: </strong>
             <ul>
-              {{#each support_options}}
+              {{#each support_options ~}}
               <li>{{{this}}}</li>
-              {{/each}}
-              {{#compare (getType support_options) "===" "string"}}
+              {{/each ~}}
+              {{#compare (getType support_options) "===" "string" ~}}
               <li>{{{support_options}}}</li>
-              {{/compare}}
+              {{/compare ~}}
             </ul>
           </div>
           {{/if ~}}
@@ -188,14 +205,14 @@
           {{else}}
           <div class="container-content detailed-info">
             <p class="mdc-typography--body1">
-              {{#if advertised_areas ~}}
+              {{#compare advertised_areas.length ">" 0 ~}}
                 This opportunity is not listed at a specific location but is listed in
                 {{#each advertised_areas ~}}
                   {{this}}{{#unless @last}}, {{else}}.{{/unless}}
                 {{/each ~}}
               {{else}}
                 This opportunity is not listed at a specific location.
-              {{/if ~}}
+              {{/compare ~}}
             </p>
           </div>
           {{/compare ~}}

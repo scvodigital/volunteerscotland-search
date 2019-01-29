@@ -1,0 +1,434 @@
+{
+  "availability": {
+    "label": "Availability",
+    "termGroups": {
+      "monday" : {
+        "label" : "Monday",
+        "terms" : {
+          "monday-morning" : {
+            "label" : "Monday Morning",
+            "textBag" : "Monday Morning"
+          }
+        }
+      },
+      "tuesday" : {
+        "label" : "Tuesday",
+        "terms" : {
+          "tuesday-morning" : {
+            "label" : "Tuesday Morning",
+            "textBag" : "Tuesday Morning"
+          }
+        }
+      },
+      "wednesday" : {
+        "label" : "Wednesday",
+        "terms" : {
+          "wednesday-morning" : {
+            "label" : "Wednesday Morning",
+            "textBag" : "Wednesday Morning"
+          }
+        }
+      },
+      "thursday" : {
+        "label" : "Thursday",
+        "terms" : {
+          "thursday-morning" : {
+            "label" : "Thursday Morning",
+            "textBag" : "Thursday Morning"
+          }
+        }
+      },
+      "friday" : {
+        "label" : "Friday",
+        "terms" : {
+          "friday-morning" : {
+            "label" : "Friday Morning",
+            "textBag" : "Friday Morning"
+          }
+        }
+      },
+      "saturday" : {
+        "label" : "Saturday",
+        "terms" : {
+          "saturday-morning" : {
+            "label" : "Saturday Morning",
+            "textBag" : "Saturday Morning"
+          }
+        }
+      },
+      "sunday" : {
+        "label" : "Sunday",
+        "terms" : {
+          "sunday-morning" : {
+            "label" : "Sunday Morning",
+            "textBag" : "Sunday Morning"
+          }
+        }
+      }
+    }
+  },
+  "work_type": {
+    "label": "Activities",
+    "termGroups": {
+      "other": {
+        "label": "Other",
+        "terms": {
+          "administrative-office-work": {
+            "label": "Administrative / Office Work",
+            "textBag": "Administrative / Office Work"
+          },
+          "advice-information-giving": {
+            "label": "Advice / Information Giving",
+            "textBag": "Advice / Information Giving"
+          },
+          "advocacy-human-rights": {
+            "label": "Advocacy / Human Rights",
+            "textBag": "Advocacy / Human Rights"
+          },
+          "arts-music-drama-crafts": {
+            "label": "Arts (Music / Drama / Crafts)",
+            "textBag": "Arts (Music / Drama / Crafts)"
+          },
+          "befriending-mentoring": {
+            "label": "Befriending / Mentoring",
+            "textBag": "Befriending / Mentoring"
+          },
+          "campaigning-lobbying": {
+            "label": "Campaigning / Lobbying",
+            "textBag": "Campaigning / Lobbying"
+          },
+          "care-support-worker": {
+            "label": "Care / Support Worker",
+            "textBag": "Care / Support Worker"
+          },
+          "catering": {
+            "label": "Catering",
+            "textBag": "Catering"
+          },
+          "charity-shops-retail": {
+            "label": "Charity Shops / Retail",
+            "textBag": "Charity Shops / Retail"
+          },
+          "committee-work": {
+            "label": "Committee Work",
+            "textBag": "Committee Work"
+          },
+          "community-economic-development": {
+            "label": "Community / Economic Development",
+            "textBag": "Community / Economic Development"
+          },
+          "computing": {
+            "label": "Computing",
+            "textBag": "Computing"
+          },
+          "conservation-gardening": {
+            "label": "Conservation / Gardening",
+            "textBag": "Conservation / Gardening"
+          },
+          "counselling": {
+            "label": "Counselling",
+            "textBag": "Counselling"
+          },
+          "disaster-emergency-relief": {
+            "label": "Disaster / Emergency Relief",
+            "textBag": "Disaster / Emergency Relief"
+          },
+          "driving-escorting": {
+            "label": "Driving / Escorting",
+            "textBag": "Driving / Escorting"
+          },
+          "equal-opportunities-race-relations": {
+            "label": "Equal Opportunities / Race Relations",
+            "textBag": "Equal Opportunities / Race Relations"
+          },
+          "events": {
+            "label": "Events",
+            "textBag": "Events"
+          },
+          "finance-accountancy": {
+            "label": "Finance / Accountancy",
+            "textBag": "Finance / Accountancy"
+          },
+          "fundraising": {
+            "label": "Fundraising",
+            "textBag": "Fundraising"
+          },
+          "homebased-volunteering": {
+            "label": "Homebased Volunteering",
+            "textBag": "Homebased Volunteering"
+          },
+          "justice-legal-assistance": {
+            "label": "Justice / Legal Assistance",
+            "textBag": "Justice / Legal Assistance"
+          },
+          "languages-translating": {
+            "label": "Languages / Translating",
+            "textBag": "Languages / Translating"
+          },
+          "library-information-management": {
+            "label": "Library / Information Management",
+            "textBag": "Library / Information Management"
+          },
+          "management-business-skills": {
+            "label": "Management / Business Skills",
+            "textBag": "Management / Business Skills"
+          },
+          "marketing-pr-media": {
+            "label": "Marketing / PR / Media",
+            "textBag": "Marketing / PR / Media"
+          },
+          "miscellaneous": {
+            "label": "Miscellaneous",
+            "textBag": "Miscellaneous"
+          },
+          "online-volunteering": {
+            "label": "Online Volunteering",
+            "textBag": "Online Volunteering"
+          },
+          "playschemes-childrens-clubs": {
+            "label": "Playschemes / Childrens Clubs",
+            "textBag": "Playschemes / Childrens Clubs"
+          },
+          "practical-diy": {
+            "label": "Practical / DIY",
+            "textBag": "Practical / DIY"
+          },
+          "research-policy-work": {
+            "label": "Research / Policy Work",
+            "textBag": "Research / Policy Work"
+          },
+          "residential-volunteering": {
+            "label": "Residential Volunteering",
+            "textBag": "Residential Volunteering"
+          },
+          "short-term-seasonal-working": {
+            "label": "Short-Term / Seasonal Working",
+            "textBag": "Short-Term / Seasonal Working"
+          },
+          "specialist-technical": {
+            "label": "Specialist / Technical",
+            "textBag": "Specialist / Technical"
+          },
+          "sports-outdoor-activities": {
+            "label": "Sports / Outdoor Activities",
+            "textBag": "Sports / Outdoor Activities"
+          },
+          "tutoring-supporting-learners": {
+            "label": "Tutoring / Supporting Learners",
+            "textBag": "Tutoring / Supporting Learners"
+          },
+          "volunteering-for-under-16s": {
+            "label": "Volunteering for under 16s",
+            "textBag": "Volunteering for under 16s"
+          },
+          "youth-work": {
+            "label": "Youth Work",
+            "textBag": "Youth Work"
+          }
+        }
+      }
+    }
+  },
+  "client_group": {
+    "label": "Client Group",
+    "termGroups": {
+      "other": {
+        "label": "Other",
+        "terms": {
+          "animals": {
+            "label": "Animals",
+            "textBag": "Animals"
+          },
+          "anti-poverty": {
+            "label": "Anti-Poverty",
+            "textBag": "Anti-Poverty"
+          },
+          "arts-music-drama-crafts": {
+            "label": "Arts (Music / Drama / Crafts)",
+            "textBag": "Arts (Music / Drama / Crafts)"
+          },
+          "carers": {
+            "label": "Carers",
+            "textBag": "Carers"
+          },
+          "children": {
+            "label": "Children",
+            "textBag": "Children"
+          },
+          "crime-safety": {
+            "label": "Crime / Safety",
+            "textBag": "Crime / Safety"
+          },
+          "disaster-emergencies": {
+            "label": "Disaster / Emergencies",
+            "textBag": "Disaster / Emergencies"
+          },
+          "drugs-alcohol-issues": {
+            "label": "Drugs / Alcohol Issues",
+            "textBag": "Drugs / Alcohol Issues"
+          },
+          "education-literacy": {
+            "label": "Education / Literacy",
+            "textBag": "Education / Literacy"
+          },
+          "elderly": {
+            "label": "Elderly",
+            "textBag": "Elderly"
+          },
+          "environment": {
+            "label": "Environment",
+            "textBag": "Environment"
+          },
+          "ethnic-minorities": {
+            "label": "Ethnic Minorities",
+            "textBag": "Ethnic Minorities"
+          },
+          "families": {
+            "label": "Families",
+            "textBag": "Families"
+          },
+          "gender-sexuality": {
+            "label": "Gender / Sexuality",
+            "textBag": "Gender / Sexuality"
+          },
+          "general-public": {
+            "label": "General Public",
+            "textBag": "General Public"
+          },
+          "health-hospitals-hospices": {
+            "label": "Health / Hospitals / Hospices",
+            "textBag": "Health / Hospitals / Hospices"
+          },
+          "homeless-housing": {
+            "label": "Homeless / Housing",
+            "textBag": "Homeless / Housing"
+          },
+          "human-civil-rights-justice": {
+            "label": "Human / Civil Rights / Justice",
+            "textBag": "Human / Civil Rights / Justice"
+          },
+          "lgbt": {
+            "label": "LGBT",
+            "textBag": "LGBT"
+          },
+          "learning-disabilities": {
+            "label": "Learning Disabilities",
+            "textBag": "Learning Disabilities"
+          },
+          "leaving-in-care": {
+            "label": "Leaving / In Care",
+            "textBag": "Leaving / In Care"
+          },
+          "literacy-needs": {
+            "label": "Literacy Needs",
+            "textBag": "Literacy Needs"
+          },
+          "local-authority": {
+            "label": "Local Authority",
+            "textBag": "Local Authority"
+          },
+          "local-community": {
+            "label": "Local Community",
+            "textBag": "Local Community"
+          },
+          "lone-parents": {
+            "label": "Lone Parents",
+            "textBag": "Lone Parents"
+          },
+          "low-income-households": {
+            "label": "Low Income Households",
+            "textBag": "Low Income Households"
+          },
+          "mens-groups": {
+            "label": "Mens Groups",
+            "textBag": "Mens Groups"
+          },
+          "mental-health": {
+            "label": "Mental Health",
+            "textBag": "Mental Health"
+          },
+          "miscellaneous": {
+            "label": "Miscellaneous",
+            "textBag": "Miscellaneous"
+          },
+          "museums-galleries-heritage": {
+            "label": "Museums / Galleries / Heritage",
+            "textBag": "Museums / Galleries / Heritage"
+          },
+          "new-beneficiary-client-group": {
+            "label": "New Beneficiary / Client Group",
+            "textBag": "New Beneficiary / Client Group"
+          },
+          "offenders-and-ex-offenders": {
+            "label": "Offenders and Ex-Offenders",
+            "textBag": "Offenders and Ex-Offenders"
+          },
+          "older-people": {
+            "label": "Older People",
+            "textBag": "Older People"
+          },
+          "overseas-aid-developing-world": {
+            "label": "Overseas Aid / Developing World",
+            "textBag": "Overseas Aid / Developing World"
+          },
+          "parents": {
+            "label": "Parents",
+            "textBag": "Parents"
+          },
+          "people-with-ill-health": {
+            "label": "People with Ill Health",
+            "textBag": "People with Ill Health"
+          },
+          "physical-disability": {
+            "label": "Physical Disability",
+            "textBag": "Physical Disability"
+          },
+          "refugees-asylum-seekers": {
+            "label": "Refugees / Asylum Seekers",
+            "textBag": "Refugees / Asylum Seekers"
+          },
+          "religion-faith": {
+            "label": "Religion / Faith",
+            "textBag": "Religion / Faith"
+          },
+          "residents-of-disadvantaged-neighbourhoods": {
+            "label": "Residents of Disadvantaged Neighbourhoods",
+            "textBag": "Residents of Disadvantaged Neighbourhoods"
+          },
+          "sensory-impairment": {
+            "label": "Sensory Impairment",
+            "textBag": "Sensory Impairment"
+          },
+          "sport-outdoor-activities": {
+            "label": "Sport / Outdoor Activities",
+            "textBag": "Sport / Outdoor Activities"
+          },
+          "tackling-unemployment": {
+            "label": "Tackling Unemployment",
+            "textBag": "Tackling Unemployment"
+          },
+          "unemployed": {
+            "label": "Unemployed",
+            "textBag": "Unemployed"
+          },
+          "victims-of-crime": {
+            "label": "Victims of Crime",
+            "textBag": "Victims of Crime"
+          },
+          "volunteers": {
+            "label": "Volunteers",
+            "textBag": "Volunteers"
+          },
+          "womens-groups": {
+            "label": "Womens Groups",
+            "textBag": "Womens Groups"
+          },
+          "young-people": {
+            "label": "Young People",
+            "textBag": "Young People"
+          }
+        }
+      }
+    }
+  }
+}

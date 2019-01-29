@@ -48,7 +48,7 @@
         // Redirect them to newsletter settings if they're new and not in the middle of something.
       if (!newUser) return '{{{@root.request.headers.referer}}}';
       var host = '{{{@root.request.headers.host}}}'.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-      if ('{{{@root.request.headers.referer}}}'.match(host + "/$") || '{{{@root.request.headers.referer}}}'.match(host + "/sign-in/?$")) {
+      if ('{{{@root.request.headers.referer}}}'.match(host + "/$") || '{{{@root.request.headers.referer}}}'.match(host + "/sign-in/?$") || '{{{@root.request.headers.referer}}}'.match(host + "/sign-up/$") ) {
         return "/searches?newuser=true";
       } else {
           return '{{{@root.request.headers.referer}}}';

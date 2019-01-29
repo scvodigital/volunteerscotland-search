@@ -4,7 +4,6 @@
   "_source": [
     "Id",
     "slug",
-    "milo_ref",
     "available_from",
     "client_group",
     "client_group_slugs",
@@ -17,10 +16,13 @@
     "organisation_slug",
     "organisation_name",
     "organisation_aims_and_objectives",
-    "opportunity_contact_email",
     "title",
     "work_type",
-    "work_type_slugs"
+    "work_type_slugs",
+    "home_based",
+    "suitable_for_groups",
+    "suitable_for_one_off",
+    "board_trustee"
 ],
   "query": {
     "function_score": {
@@ -32,6 +34,9 @@
           ],
           "must": [
             {{>queries_opportunity_search_must @root.request.params.query}}
+          ],
+          "should": [
+            {{>queries_opportunity_search_should @root.request.params.query}}
           ]
           {{#if @root.request.params.query.only_la ~}},
           "must_not": [

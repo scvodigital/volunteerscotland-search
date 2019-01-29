@@ -1,10 +1,4 @@
-{{> dialog_favourites}}
-<aside id="save-search-dialog"
-       class="mdc-dialog"
-       role="alertdialog"
-       aria-labelledby="save-search-dialog-label"
-       aria-describedby="save-search-dialog-description"
-       data-mdc-auto-init="MDCDialog">
+<aside id="save-search-dialog" class="mdc-dialog" role="alertdialog" aria-labelledby="save-search-dialog-label" aria-describedby="save-search-dialog-description" data-mdc-auto-init="MDCDialog">
   <div class="mdc-dialog__container">
     <form action="/save-search{{{@root.request.url.search}}}" method="POST" class="mdc-dialog__surface">
       <h2 id="save-search-dialog-label" class="mdc-dialog__title">
@@ -14,7 +8,6 @@
         <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
           <input type="text" id="saved-search-name" name="name" class="mdc-text-field__input" value="
 {{~#with @root.request.params.query~}}
-
             {{~#if keywords~}}
               {{~keywords~}}
               {{~#ifAny work_types client_groups services age_groups availability}}, {{/ifAny~}}
@@ -53,7 +46,6 @@
                 {{~#unless @last}}, {{/unless~}}
               {{~/each~}}
             {{~/if}}
-
             {{~#if location~}}&nbsp;near {{location}} {{/if~}}
           {{~/with~}}">
           <label for="saved-search-name" class="mdc-floating-label">Save search</label>
@@ -69,7 +61,7 @@
               <div class="mdc-checkbox__mixedmark"></div>
             </div>
           </div>
-          <label for="email-on">Send me opportunities matching this search by email</label>
+          <label for="email-on">Send opportunities matching this search by email</label>
         </div>
       </section>
       <footer class="mdc-dialog__actions">
@@ -81,12 +73,7 @@
   <div class="mdc-dialog__scrim"></div>
 </aside>
 
-<aside id="edit-search-dialog"
-       class="mdc-dialog"
-       role="alertdialog"
-       aria-labelledby="edit-search-dialog-label"
-       aria-describedby="edit-search-dialog-description"
-       data-mdc-auto-init="MDCDialog">
+<aside id="edit-search-dialog" class="mdc-dialog" role="alertdialog" aria-labelledby="edit-search-dialog-label" aria-describedby="edit-search-dialog-description" data-mdc-auto-init="MDCDialog">
   <div class="mdc-dialog__container">
     <div class="mdc-dialog__surface">
       {{#if @root.data.auth ~}}
@@ -105,14 +92,14 @@
                 ) ~}}
           {{#if (itemAt @root.data.searches.items.[0] (indexOf (map @root.data.searches.items.[0] (getProp 'querystring')) this)) ~}}
             {{#with (itemAt @root.data.searches.items.[0] (indexOf (map @root.data.searches.items.[0] (getProp 'querystring')) this)) ~}}
-              <h2 id="edit-search-dialog-label" class="mdc-dialog__title">
-                Your search&ensp;
-                <span class="mdc-typography--body1">
+            <h2 id="edit-search-dialog-label" class="mdc-dialog__title">
+              Your search&ensp;
+              <span class="mdc-typography--body1">
                 <strong>{{{partition}}}</strong>
               </span>
-              </h2>
-              <section id="edit-search-dialog-description" class="mdc-dialog__content">
-                <div class="mdc-chip-set mdc-chip-set--filter">
+            </h2>
+            <section id="edit-search-dialog-description" class="mdc-dialog__content">
+              <div class="mdc-chip-set mdc-chip-set--filter">
                   {{#> ajax_chip
                     onUrl="/toggle-subscription"
                     offUrl="/toggle-subscription"
@@ -145,6 +132,8 @@
   </div>
   <div class="mdc-dialog__scrim"></div>
 </aside>
+
+{{> dialog_favourites}}
 
 <div class="mdc-layout-grid head v-margin-full">
   <div class="mdc-layout-grid__inner">
