@@ -63,7 +63,7 @@
     </div> -->
 
     <div class="header mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon mdc-text-field-tt" data-mdc-auto-init="MDCTextField">
-      <span class="far fa-search mdc-text-field__icon" tabindex="0" role="button"></span>
+
       <input type="text" id="what-primary-content" name="keywords" class="mdc-text-field__input" placeholder="" data-lpignore="true" data-typeahead='{
         "typeaheadOptions": {
           "highlight": true,
@@ -106,9 +106,11 @@
       {{/each}}
         ]
       }'>
+      <span class="fas fa-search active-search-icon mdc-text-field__icon" role="button" onclick=" $(this).parents('form:first').submit();" style="pointer-events: initial !important; z-index: 500;" tabindex="-1"></span></a>
       <label for="what-primary-content" class="mdc-floating-label">
         Keywords / categories
       </label>
+
       <div class="mdc-line-ripple"></div>
     </div>
 

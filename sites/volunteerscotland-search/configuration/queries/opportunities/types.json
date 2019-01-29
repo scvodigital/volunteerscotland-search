@@ -9,6 +9,20 @@
     }
   },
   "aggs": {
+    "opportunity_types": {
+      "field": "volunteerscotland_types",
+      "order": {
+        "_term": "asc"
+      },
+      "size": 10000
+    },
+    "opportunity_types_slugs": {
+      "field": "volunteerscotland_types_slugs",
+      "order": {
+        "_term": "asc"
+      },
+      "size": 10000
+    },
     "client_groups": {
       "terms": {
         "field": "client_group",

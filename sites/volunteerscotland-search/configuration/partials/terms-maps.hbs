@@ -1,5 +1,5 @@
 {
-  {{#each (split "client_groups,work_types,regions,availability,age_groups,services" ",")}}
+  {{#each (split "opportunity_types,client_groups,work_types,availability,age_groups,services" ",")}}
     "{{this}}": {
       "slugsMap": {
         {{#each (getProperty @root.data.opportunitySupplimentary.types.aggregations (concat this ".buckets")) ~}}

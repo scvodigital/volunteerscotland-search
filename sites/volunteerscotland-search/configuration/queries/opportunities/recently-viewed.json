@@ -16,6 +16,8 @@
     "geo",
     "minimum_age",
     "postcode",
+    "opportunity_type",
+    "opportunity_type_slugs",
     "organisation_slug",
     "organisation_name",
     "organisation_aims_and_objectives",

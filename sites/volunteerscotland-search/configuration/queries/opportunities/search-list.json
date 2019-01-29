@@ -13,16 +13,14 @@
     "geo_coords",
     "geo",
     "postcode",
+    "opportunity_type",
+    "opportunity_type_slugs",
     "organisation_slug",
     "organisation_name",
     "organisation_aims_and_objectives",
     "title",
     "work_type",
-    "work_type_slugs",
-    "home_based",
-    "suitable_for_groups",
-    "suitable_for_one_off",
-    "board_trustee"
+    "work_type_slugs"
 ],
   "query": {
     "function_score": {

@@ -20,6 +20,8 @@
     "minimum_age",
     "maximum_age",
     "postcode",
+    "opportunity_type",
+    "opportunity_type_slugs",
     "organisation_slug",
     "organisation_name",
     "organisation_aims_and_objectives",
@@ -64,11 +66,7 @@
     "volunteersearch_age_group",
     "volunteersearch_age_group_slugs",
     "volunteersearch_support_option",
-    "volunteersearch_support_option_slugs",
-    "home_based",
-    "suitable_for_groups",
-    "suitable_for_one_off",
-    "board_trustee"
+    "volunteersearch_support_option_slugs"
   ],
   "query": {
     "bool": {

@@ -12,6 +12,8 @@
     "geo_coords",
     "geo",
     "postcode",
+    "opportunity_type",
+    "opportunity_type_slugs",
     "organisation_slug",
     "organisation_name",
     "organisation_aims_and_objectives",
