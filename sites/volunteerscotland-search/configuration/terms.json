@@ -1,73 +1,31 @@
 {
-  "availability": {
-    "label": "Availability",
+  "volunteersearch_types": {
+    "label": "Types",
     "termGroups": {
-      "monday" : {
-        "label" : "Monday",
-        "terms" : {
-          "monday-morning" : {
-            "label" : "Monday Morning",
-            "textBag" : "Monday Morning"
-          }
-        }
-      },
-      "tuesday" : {
-        "label" : "Tuesday",
-        "terms" : {
-          "tuesday-morning" : {
-            "label" : "Tuesday Morning",
-            "textBag" : "Tuesday Morning"
-          }
-        }
-      },
-      "wednesday" : {
-        "label" : "Wednesday",
-        "terms" : {
-          "wednesday-morning" : {
-            "label" : "Wednesday Morning",
-            "textBag" : "Wednesday Morning"
-          }
-        }
-      },
-      "thursday" : {
-        "label" : "Thursday",
-        "terms" : {
-          "thursday-morning" : {
-            "label" : "Thursday Morning",
-            "textBag" : "Thursday Morning"
-          }
-        }
-      },
-      "friday" : {
-        "label" : "Friday",
-        "terms" : {
-          "friday-morning" : {
-            "label" : "Friday Morning",
-            "textBag" : "Friday Morning"
-          }
-        }
-      },
-      "saturday" : {
-        "label" : "Saturday",
-        "terms" : {
-          "saturday-morning" : {
-            "label" : "Saturday Morning",
-            "textBag" : "Saturday Morning"
-          }
-        }
-      },
-      "sunday" : {
-        "label" : "Sunday",
-        "terms" : {
-          "sunday-morning" : {
-            "label" : "Sunday Morning",
-            "textBag" : "Sunday Morning"
+      "other": {
+        "label": "Other",
+        "terms": {
+          "home-based-volunteering": {
+            "label": "Home-based volunteering",
+            "textBag": "Home-based volunteering"
+          },
+          "suitable-for-groups": {
+            "label": "Suitable for groups",
+            "textBag": "Suitable for groups"
+          },
+          "one-off-volunteering": {
+            "label": "One-off volunteering",
+            "textBag": "One-off volunteering"
+          },
+          "board-trustee-role": {
+            "label": "Board/trustee role",
+            "textBag": "Board/trustee role"
           }
         }
       }
     }
   },
-  "work_type": {
+  "work_types": {
     "label": "Activities",
     "termGroups": {
       "other": {
@@ -229,7 +187,7 @@
       }
     }
   },
-  "client_group": {
+  "client_groups": {
     "label": "Client Group",
     "termGroups": {
       "other": {
@@ -426,6 +384,186 @@
           "young-people": {
             "label": "Young People",
             "textBag": "Young People"
+          }
+        }
+      }
+    }
+  },
+  "services": {
+    "label": "Services",
+    "termGroups": {
+      "other": {
+        "label": "Other",
+        "terms": {
+          "childcare": {
+            "label": "Childcare",
+            "textBag": "Childcare"
+          },
+          "expenses-paid": {
+            "label": "Expenses Paid",
+            "textBag": "Expenses Paid"
+          },
+          "named-contact-for-volunteer": {
+            "label": "Named Contact For Volunteer",
+            "textBag": "Named Contact For Volunteer"
+          },
+          "taster-available": {
+            "label": "Taster Available",
+            "textBag": "Taster Available"
+          },
+          "wheelchair-access-disabled-access-toilet": {
+            "label": "Wheelchair Access/Disabled Access Toilet",
+            "textBag": "Wheelchair Access/Disabled Access Toilet"
+          }
+        }
+      }
+    }
+  },
+  "age_groups": {
+    "label": "Volunteer Age Groups",
+    "termGroups": {
+      "other": {
+        "label": "Other",
+        "terms": {
+          "under-12": {
+            "label": "Under 12",
+            "textBag": "Under 12"
+          },
+          "12-to-15": {
+            "label": "12 to 15 ",
+            "textBag": "12 to 15 "
+          },
+          "16-to-17": {
+            "label": "16 to 17 ",
+            "textBag": "16 to 17 "
+          },
+          "over-18": {
+            "label": "Over 18",
+            "textBag": "Over 18"
+          }
+        }
+      }
+    }
+  },
+  "availability": {
+    "label": "Availability",
+    "termGroups": {
+      "monday" : {
+        "label" : "Monday",
+        "terms" : {
+          "sunday-morning" : {
+            "label" : "Monday Morning",
+            "textBag" : "Monday Morning"
+          },
+          "sunday-afternoon" : {
+            "label" : "Monday Afternoon",
+            "textBag" : "Monday Afternoon"
+          },
+          "sunday-evening" : {
+            "label" : "Monday Evening",
+            "textBag" : "Monday Evening"
+          }
+        }
+      },
+      "tuesday" : {
+        "label" : "Tuesday",
+        "terms" : {
+          "tuesday-morning" : {
+            "label" : "Tuesday Morning",
+            "textBag" : "Tuesday Morning"
+          },
+          "tuesday-afternoon" : {
+            "label" : "Tuesday Afternoon",
+            "textBag" : "Tuesday Afternoon"
+          },
+          "tuesday-evening" : {
+            "label" : "Tuesday Evening",
+            "textBag" : "Tuesday Evening"
+          }
+        }
+      },
+      "wednesday" : {
+        "label" : "Wednesday",
+        "terms" : {
+          "wednesday-morning" : {
+            "label" : "Wednesday Morning",
+            "textBag" : "Wednesday Morning"
+          },
+          "wednesday-afternoon" : {
+            "label" : "Wednesday Afternoon",
+            "textBag" : "Wednesday Afternoon"
+          },
+          "wednesday-evening" : {
+            "label" : "Wednesday Evening",
+            "textBag" : "Wednesday Evening"
+          }
+        }
+      },
+      "thursday" : {
+        "label" : "Thursday",
+        "terms" : {
+          "thursday-morning" : {
+            "label" : "Thursday Morning",
+            "textBag" : "Thursday Morning"
+          },
+          "thursday-afternoon" : {
+            "label" : "Thursday Afternoon",
+            "textBag" : "Thursday Afternoon"
+          },
+          "thursday-evening" : {
+            "label" : "Thursday Evening",
+            "textBag" : "Thursday Evening"
+          }
+        }
+      },
+      "friday" : {
+        "label" : "Friday",
+        "terms" : {
+          "friday-morning" : {
+            "label" : "Friday Morning",
+            "textBag" : "Friday Morning"
+          },
+          "friday-afternoon" : {
+            "label" : "Friday Afternoon",
+            "textBag" : "Friday Afternoon"
+          },
+          "friday-evening" : {
+            "label" : "Friday Evening",
+            "textBag" : "Friday Evening"
+          }
+        }
+      },
+      "saturday" : {
+        "label" : "Saturday",
+        "terms" : {
+          "saturday-morning" : {
+            "label" : "Saturday Morning",
+            "textBag" : "Saturday Morning"
+          },
+          "saturday-afternoon" : {
+            "label" : "Saturday Afternoon",
+            "textBag" : "Saturday Afternoon"
+          },
+          "saturday-evening" : {
+            "label" : "Saturday Evening",
+            "textBag" : "Saturday Evening"
+          }
+        }
+      },
+      "sunday" : {
+        "label" : "Sunday",
+        "terms" : {
+          "sunday-morning" : {
+            "label" : "Sunday Morning",
+            "textBag" : "Sunday Morning"
+          },
+          "sunday-afternoon" : {
+            "label" : "Sunday Afternoon",
+            "textBag" : "Sunday Afternoon"
+          },
+          "sunday-evening" : {
+            "label" : "Sunday Evening",
+            "textBag" : "Sunday Evening"
           }
         }
       }

@@ -28,28 +28,10 @@
   }
 },
 {{/ifAny ~}}
-{{#ifAny home_based suitable_for_groups suitable_for_one_off board_trustee ~}}
-{
-  "bool": {
-    "should": [
-      {{#if home_based ~}}
-      {{>queries_boolean field="home_based"}},
-      {{/if ~}}
-      {{#if suitable_for_groups ~}}
-      {{>queries_boolean field="suitable_for_groups"}},
-      {{/if ~}}
-      {{#if suitable_for_one_off ~}}
-      {{>queries_boolean field="suitable_for_one_off"}},
-      {{/if ~}}
-      {{#if board_trustee ~}}
-      {{>queries_boolean field="board_trustee"}},
-      {{/if ~}}
-      {{>queries_do_nothing}}
-    ],
-    "minimum_should_match": 2
-  }
-},
-{{/ifAny ~}}
+
+{{#if volunteersearch_types ~}}
+{{>queries_terms field="volunteersearch_type_slugs" terms=volunteersearch_types}},
+{{/if ~}}
 {{#if work_types ~}}
 {{>queries_terms field="work_type_slugs" terms=work_types}},
 {{/if ~}}
