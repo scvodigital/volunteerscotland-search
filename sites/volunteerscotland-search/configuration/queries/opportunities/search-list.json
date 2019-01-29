@@ -34,6 +34,9 @@
           ],
           "must": [
             {{>queries_opportunity_search_must @root.request.params.query}}
+          ],
+          "should": [
+            {{>queries_opportunity_search_should @root.request.params.query}}
           ]
           {{#if @root.request.params.query.only_la ~}},
           "must_not": [
