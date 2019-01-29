@@ -48,6 +48,7 @@
         "plural": "Client groups"
       }
     },
+    "terms": "{:./terms.json}",
     "handlebars": {
       "partials": {
         "{$./partials/**/*.*}": "includeRelativePath=false&regexExpression=(-)&regexOptions=gi&regexReplace=_"
