@@ -53,94 +53,94 @@
           <input type="hidden" name="distance" id="slider-distance-value" value="{{default @root.request.params.query.distance 10}}">
         </div>
       </div>
-    </div>
-    <input type="hidden" name="lat" value="{{@root.request.params.query.lat}}" id="location-lat" />
-    <input type="hidden" name="lng" value="{{@root.request.params.query.lng}}" id="location-lng" />
-    <input type="hidden" name="la" value="{{@root.request.params.query.la}}" id="location-la" />
+      <input type="hidden" name="lat" value="{{@root.request.params.query.lat}}" id="location-lat" />
+      <input type="hidden" name="lng" value="{{@root.request.params.query.lng}}" id="location-lng" />
+      <input type="hidden" name="la" value="{{@root.request.params.query.la}}" id="location-la" />
 
-    <!-- <div class="h-padding">
-      <strong>Refine by</strong>
-    </div> -->
+      <!-- <div class="h-padding">
+        <strong>Refine by</strong>
+      </div> -->
 
-    <div class="header mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon mdc-text-field-tt" data-mdc-auto-init="MDCTextField">
+      <div class="header mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon mdc-text-field-tt" data-mdc-auto-init="MDCTextField">
 
-      <input type="text" id="what-primary-content" name="keywords" class="mdc-text-field__input" placeholder="" data-lpignore="true" data-typeahead='{
-        "typeaheadOptions": {
-          "highlight": true,
-          "minlength": 0
-        },
-        "outputs": [
-          {
-            "type": "prop",
-            "options": {
-              "selectorTemplate": "#cb-\{{item.datasetName}}-\{{item.value}}",
-              "prop": "checked",
-              "valueTemplate": "checked"
+        <input type="text" id="what-primary-content" name="keywords" class="mdc-text-field__input" placeholder="" data-lpignore="true" data-typeahead='{
+          "typeaheadOptions": {
+            "highlight": true,
+            "minlength": 0
+          },
+          "outputs": [
+            {
+              "type": "prop",
+              "options": {
+                "selectorTemplate": "#cb-\{{item.datasetName}}-\{{item.value}}",
+                "prop": "checked",
+                "valueTemplate": "checked"
+              }
             }
-          }
-        ],
-        "datasets": [
-          {{#each @root.context.metaData.terms}}
-        {{#each termGroups}}
-              {
-                "name": {{{stringify @../key}}},
-                "templates": {
-                  {{#compare (length (getKeys ../termGroups)) 1}}
-                    "header": "<h3>{{{../label}}}</h3>"
-                  {{else}}
-                    "header": "<h3>{{{../label}}} &gt; {{{label}}}</h3>"
-                  {{/compare}}
-                },
-                "display": "other",
-                "items": [
-                  {{#each terms}}
-                  {
-                  "label": {{{stringify (concat @../key ' ' textBag)}}},
-                  "value": {{{stringify @key}}},
-                  "other": {{{stringify label}}}
-                  }{{#unless @last}},{{/unless}}
-        {{/each}}
-                ]
-              }{{#unlessAll @last @../last}},{{/unlessAll}}
-        {{/each}}
-      {{/each}}
-        ]
-      }'>
-      <span class="fas fa-search active-search-icon mdc-text-field__icon" role="button" onclick=" $(this).parents('form:first').submit();" style="pointer-events: initial !important; z-index: 500;" tabindex="-1"></span></a>
-      <label for="what-primary-content" class="mdc-floating-label">
-        Keywords / categories
-      </label>
-
-      <div class="mdc-line-ripple"></div>
-    </div>
-
-    {{#each @root.context.metaData.terms}}
-      {{#unless (getProperty @root.data.currentSite.fixedFilters @key)}}
-        {{#> components_advanced_checkbox_list name=@key label=label}}
+          ],
+          "datasets": [
+            {{#each @root.context.metaData.terms}}
           {{#each termGroups}}
-            {{#> components_advanced_checkbox_group
-              name=(concat @../key '-' @key)
-              label=label
-              hideParent=(compare (length (getKeys ../../termGroups)) 1)}}
-              {{#each terms}}
-                {{> components_advanced_checkbox_item
-                  name=@../../../../key
-                  value=@key
-                  label=label
-                  checked=(contains (getProperty @root.request.params.query @../../../../key) @key)
-                  group=(concat @../../../../key '-'  @../../../key)
-                  noIndent=(compare (length (getKeys ../../../../termGroups)) 1)}}
-              {{/each}}
-            {{/components_advanced_checkbox_group}}
+                {
+                  "name": {{{stringify @../key}}},
+                  "templates": {
+                    {{#compare (length (getKeys ../termGroups)) 1}}
+                      "header": "<h3>{{{../label}}}</h3>"
+                    {{else}}
+                      "header": "<h3>{{{../label}}} &gt; {{{label}}}</h3>"
+                    {{/compare}}
+                  },
+                  "display": "other",
+                  "items": [
+                    {{#each terms}}
+                    {
+                    "label": {{{stringify (concat @../key ' ' textBag)}}},
+                    "value": {{{stringify @key}}},
+                    "other": {{{stringify label}}}
+                    }{{#unless @last}},{{/unless}}
           {{/each}}
-        {{/components_advanced_checkbox_list}}
-      {{/unless}}
-    {{/each}}
-    <div class="v-margin">
-      <button class="mdc-button mdc-button--raised mdc-button--large mdc-button--fullwidth mdc-ripple-surface mdc-ripple-surface--primary" type="submit" id="{{instance_id}}-search-submit" data-mdc-auto-init="MDCRipple">
-        <span class="far fa-search-plus fa-fw mdc-list-item__graphic" aria-hidden="true"></span>
-        Filter
-      </button>
+                  ]
+                }{{#unlessAll @last @../last}},{{/unlessAll}}
+          {{/each}}
+        {{/each}}
+          ]
+        }'>
+        <span class="fas fa-search active-search-icon mdc-text-field__icon" role="button" onclick=" $(this).parents('form:first').submit();" style="pointer-events: initial !important; z-index: 500;" tabindex="-1"></span></a>
+        <label for="what-primary-content" class="mdc-floating-label">
+          Keywords / categories
+        </label>
+
+        <div class="mdc-line-ripple"></div>
+      </div>
+
+      {{#each @root.context.metaData.terms}}
+        {{#unless (getProperty @root.data.currentSite.fixedFilters @key)}}
+          {{#> components_advanced_checkbox_list name=@key label=label}}
+            {{#each termGroups}}
+              {{#> components_advanced_checkbox_group
+                name=(concat @../key '-' @key)
+                label=label
+                hideParent=(compare (length (getKeys ../../termGroups)) 1)}}
+                {{#each terms}}
+                  {{> components_advanced_checkbox_item
+                    name=@../../../../key
+                    value=@key
+                    label=label
+                    checked=(contains (getProperty @root.request.params.query @../../../../key) @key)
+                    group=(concat @../../../../key '-'  @../../../key)
+                    noIndent=(compare (length (getKeys ../../../../termGroups)) 1)}}
+                {{/each}}
+              {{/components_advanced_checkbox_group}}
+            {{/each}}
+          {{/components_advanced_checkbox_list}}
+        {{/unless}}
+      {{/each}}
+      <div class="v-margin">
+        <button class="mdc-button mdc-button--raised mdc-button--large mdc-button--fullwidth mdc-ripple-surface mdc-ripple-surface--primary" type="submit" id="{{instance_id}}-search-submit" data-mdc-auto-init="MDCRipple">
+          <span class="far fa-search-plus fa-fw mdc-list-item__graphic" aria-hidden="true"></span>
+          Filter
+        </button>
+      </div>
     </div>
   </form>
 </div>
