@@ -75,7 +75,6 @@
     </div>
   </div>
 </form>
-{{>account_sign_up_newsletter_dialog}}
 <script>
 document.addEventListener("DOMContentLoaded", function(event) {
   var $form = $('#sign-in-form');
@@ -84,7 +83,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
   var $password = $('#sign-in-password');
   var $login = $('#sign-in-submit');
   var $loader = $('#sign-in-loader');
-
 
   $form.on('submit', function(evt) {
     var email = $email.val();

@@ -1,11 +1,11 @@
 {{#if @root.data.auth ~}}
 {{> account_sign_out_loader}}
 <script>
-  document.addEventListener("DOMContentLoaded", function(event) {
-    window.setTimeout(function() {
-      window.location.href = '/';
-    }, 100);
-  });
+document.addEventListener("DOMContentLoaded", function(event) {
+  window.setTimeout(function() {
+    window.location.href = '/';
+  }, 100);
+});
 </script>
 {{else}}
 <form id="sign-up-form" method="POST" class="sign-in-form sign-up-form">
@@ -59,50 +59,38 @@
           <div class="mdc-line-ripple"></div>
         </div>
       </div>
-      <p>Check the boxes below to receive regular email updates in areas that interest you.</p>
-
-
-        <div class="mdc-form-field">
-          <div class="mdc-checkbox">
-            <input type="checkbox"
-                   class="mdc-checkbox__native-control"
-                   name="newsletter-events"
-                   id="newsletter-events"/>
-            <div class="mdc-checkbox__background">
-              <svg class="mdc-checkbox__checkmark"
-                   viewBox="0 0 24 24">
-                <path class="mdc-checkbox__checkmark-path"
-                      fill="none"
-                      d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
-              </svg>
-              <div class="mdc-checkbox__mixedmark"></div>
-            </div>
+      <p>
+        Check the boxes below to receive regular email updates in areas that interest you.
+      </p>
+      <div class="mdc-form-field">
+        <div class="mdc-checkbox">
+          <input type="checkbox" class="mdc-checkbox__native-control" name="newsletter-events" id="newsletter-events" />
+          <div class="mdc-checkbox__background">
+            <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+              <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+            </svg>
+            <div class="mdc-checkbox__mixedmark"></div>
           </div>
-          <label for="newsletter-events">
-            For Event Volunteers: forthcoming events and related news
-          </label>
         </div>
+        <label for="newsletter-events">
+          For Event Volunteers: forthcoming events and related news
+        </label>
+      </div>
 
-        <div class="mdc-form-field">
-          <div class="mdc-checkbox">
-            <input type="checkbox"
-                   class="mdc-checkbox__native-control"
-                   name="newsletter-scotland"
-                   id="newsletter-scotland"/>
-            <div class="mdc-checkbox__background">
-              <svg class="mdc-checkbox__checkmark"
-                   viewBox="0 0 24 24">
-                <path class="mdc-checkbox__checkmark-path"
-                      fill="none"
-                      d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
-              </svg>
-              <div class="mdc-checkbox__mixedmark"></div>
-            </div>
+      <div class="mdc-form-field">
+        <div class="mdc-checkbox">
+          <input type="checkbox" class="mdc-checkbox__native-control" name="newsletter-scotland" id="newsletter-scotland" />
+          <div class="mdc-checkbox__background">
+            <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+              <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+            </svg>
+            <div class="mdc-checkbox__mixedmark"></div>
           </div>
-          <label for="newsletter-scotland">For Scotland's Volunteers: latest news, views and advice</label>
         </div>
+        <label for="newsletter-scotland">For Scotland's Volunteers: latest news, views and advice</label>
+      </div>
 
-        <div id="form-section-sign-up-buttons">
+      <div id="form-section-sign-up-buttons">
         <button class="mdc-button mdc-button--raised" type="submit" id="sign-up-submit">
           Sign up
         </button>
@@ -121,11 +109,8 @@
       </div>
     </div>
   </div>
-
 </form>
 <script>
-
-
 document.addEventListener("DOMContentLoaded", function(event) {
   var $form = $('#sign-up-form');
   var $message = $('#sign-up-message');
@@ -153,7 +138,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   }
 
   $form.on('submit', function (evt) {
-// Test code
+    // Test code
     $loader.css('display', 'flex');
     evt.preventDefault();
 
