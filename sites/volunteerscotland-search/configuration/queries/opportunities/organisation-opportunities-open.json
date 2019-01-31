@@ -19,7 +19,8 @@
     "travel_expenses",
     "work_location",
     "work_type",
-    "work_type_slugs"
+    "work_type_slugs",
+    "opportunity_contact_email"
   ],
   "query": {
     "function_score": {

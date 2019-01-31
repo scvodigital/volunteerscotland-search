@@ -378,6 +378,7 @@ footer h3,
 .mdc-floating-label,
 .mdc-card__subtitle,
 .mdc-snackbar__text,
+.mdc-dialog__content,
 .mdc-drawer__subtitle,
 .mdc-textfield__input,
 .mdc-typography--body1,
@@ -402,6 +403,7 @@ footer h3,
 .mdc-select__native-control,
 .mdc-typography--subheading2,
 .mdc-list-item__secondary-text,
+.mdc-dialog .mdc-dialog__title,
 .mdc-simple-menu .mdc-list-item,
 .mdc-temporary-drawer .mdc-list-item,
 .mdc-drawer--temporary .mdc-list-item,
@@ -642,7 +644,7 @@ footer h3,
 .mdc-list-group {
   margin: $unit 0;
   border: 1px solid #cccccc;
-  border-radius: 4px;
+  border-radius: 0;
 }
 
 .checkbox-list-indicator {
@@ -650,15 +652,16 @@ footer h3,
   font-style: italic;
 }
 
-.mdc-list-item {
-  height: auto !important;
-}
+// .mdc-list-item {
+//   height: auto !important;
+// }
 
 .mdc-list-group__subheader {
-  padding: $unit/2 0 !important;
-  font-size: 1.2rem !important;
+  padding: 0 !important;
+  font-size: 1rem !important;
+  line-height: 2rem !important;
   border-bottom: 1px solid #cccccc;
-  border-radius: 4px;
+  border-radius: 0;
   background-color: #ffffff;
 }
 
@@ -678,17 +681,20 @@ footer h3,
   .checkbox-list-parent {
     font-weight: bold !important;
   }
-
   .checkbox-list-parent-hidden {
     display: none;
   }
-
   .checkbox-list-child {
     padding-left: $unit*1.5 !important;
   }
-
   .checkbox-list-child-no-indent {
     padding-left: $unit/2 !important;
+  }
+  .mdc-list-item {
+    height: auto !important;
+  }
+  .mdc-list-item:last-child {
+    padding: $unit/2 0;
   }
 }
 
@@ -703,6 +709,7 @@ footer h3,
 }
 .content-primary-search {
   .head {
+    margin-top: $unit;
     margin-bottom: 0;
     .mdc-button.saved-search,
     .mdc-button.filter-search,
@@ -3972,24 +3979,6 @@ footer.mdc-layout__footer {
   max-width: 260px;
   img {
     max-width: 100%;
-  }
-}
-
-.advanced-checkbox-list {
-  .checkbox-list-parent {
-    font-weight: bold !important;
-  }
-
-  .checkbox-list-parent-hidden {
-    display: none;
-  }
-
-  .checkbox-list-child {
-    padding-left: $unit*1.5 !important;
-  }
-
-  .checkbox-list-child-no-indent {
-    padding-left: $unit/2 !important;
   }
 }
 

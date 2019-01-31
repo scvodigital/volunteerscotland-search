@@ -20,8 +20,9 @@
     "organisation_aims_and_objectives",
     "title",
     "work_type",
-    "work_type_slugs"
-],
+    "work_type_slugs",
+    "opportunity_contact_email"
+  ],
   "query": {
     "function_score": {
       "query": {
@@ -67,44 +68,56 @@
   },
   "sort": [
     {{#if @root.request.params.query.sort ~}}
-      {{#compare @root.request.params.query.sort "===" "distance" ~}}
-        {{#ifAll @root.request.params.query.location @root.request.params.query.lat @root.request.params.query.lng ~}}
-          {
-            "_geo_distance": {
-              "geo_coords": {
-                "lat": {{@root.request.params.query.lat}},
-                "lon": {{@root.request.params.query.lng}}
-              },
-              "order": "asc",
-              "unit": "mi",
-              "mode": "min",
-              "distance_type": "arc"
-            }
-          }
-        {{else}}
-          "_score"
-        {{/ifAll ~}}
-      {{else}}
-        {{#compare @root.request.params.query.sort "===" "relevance" ~}}
-          "_score"
-        {{/compare ~}}
-      {{/compare ~}}
+    {{#compare @root.request.params.query.sort "===" "distance" ~}}
+    {{#ifAll @root.request.params.query.location @root.request.params.query.lat @root.request.params.query.lng ~}}
+    {
+      "_geo_distance": {
+        "geo_coords": {
+          "lat": {{@root.request.params.query.lat}},
+          "lon": {{@root.request.params.query.lng}}
+        },
+        "order": "asc",
+        "unit": "mi",
+        "mode": "min",
+        "distance_type": "arc"
+      }
+    }
     {{else}}
-      "_score"
+    "_score"
+    {{/ifAll ~}}
+    {{else}}
+    {{#compare @root.request.params.query.sort "===" "newest" ~}}
+    {
+      "start_date": "desc"
+    },
+    "_score"
+    {{else}}
+    {{#compare @root.request.params.query.sort "===" "oldest" ~}}
+    {
+      "start_date": "asc"
+    },
+    "_score"
+    {{else}}
+    "_score"
+    {{/compare ~}}
+    {{/compare ~}}
+    {{/compare ~}}
+    {{else}}
+    "_score"
     {{/if ~}}
     {{#ifAll @root.request.params.query.location @root.request.params.query.lat @root.request.params.query.lng ~}},
-      {
-        "_geo_distance": {
-          "geo_coords": {
-            "lat": {{@root.request.params.query.lat}},
-            "lon": {{@root.request.params.query.lng}}
-          },
-          "order": "asc",
-          "unit": "mi",
-          "mode": "min",
-          "distance_type": "arc"
-        }
+    {
+      "_geo_distance": {
+        "geo_coords": {
+          "lat": {{@root.request.params.query.lat}},
+          "lon": {{@root.request.params.query.lng}}
+        },
+        "order": "asc",
+        "unit": "mi",
+        "mode": "min",
+        "distance_type": "arc"
       }
+    }
     {{/ifAll ~}}
   ]
 }
