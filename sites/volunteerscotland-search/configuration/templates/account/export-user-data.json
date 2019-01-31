@@ -1,6 +1,6 @@
 {
   "dataComment": {
-    "description": "This is a JSON export of ALL data we currently have stored about you and associated with your Goodmoves account. In the stored data, vacancies are only referenced by their ID. You can use the `vacancyLookup` field included in this export to find details on any vacancy still stored within our search index.",
+    "description": "This is a JSON export of ALL data we currently have stored about you and associated with your Volunteer Scotland Search account. In the stored data, opportunities are only referenced by their ID. You can use the `opportunityLookup` field included in this export to find details on any opportunity still stored within our search index.",
     "location": "Various, but all withing the Google Cloud Platform ecosystem"
   },
   "user": {
@@ -18,14 +18,14 @@
   },
   "notes": {
     "dataComment": {
-      "description": "A list of vacancy Ids with any notes you may have stored against them. See the `vacancyLookup` field for information about each Vacancy's ID",
+      "description": "A list of opportunity Ids with any notes you may have stored against them. See the `opportunityLookup` field for information about each opportunity's ID",
       "location": "Within Google's Firebase Database system. For more information visit https://firebase.google.com"
     },
     "items": {{{stringify @root.data.notes}}}
   },
   "favourites": {
     "dataComment": {
-      "description": "A list of all your shortlisted items. See the `vacancyLookup` field for information about each Vacancy's ID",
+      "description": "A list of all your shortlisted items. See the `opportunityLookup` field for information about each opportunity's ID",
       "location": "On a MySQL database located at Google's 'europe-west2-c' (London, United Kingdom) data centre. For more information visit https://cloud.google.com/compute/docs/regions-zones/"
     },
     "items": {{{stringify @root.data.favourites.items.[0]}}}
@@ -39,15 +39,15 @@
   },
   "recentlyViewed": {
     "dataComment": {
-      "description": "Here is a list of (up to) the last 10 vacancies you have viewed.",
+      "description": "Here is a list of (up to) the last 10 opportunities you have viewed.",
       "location": "Your browser's cookies though our web servers have the ability to read this information. These servers are located at Google's 'europe-west2' (London, United Kingdom) data centres. For more information visit https://cloud.google.com/computer/docs/regions-zones/"
     },
-    "items": {{{stringify (split @root.request.cookies.recently_viewed ",")}}}  
+    "items": {{{stringify (split @root.request.cookies.recently_viewed ",")}}}
   },
   "opportunityLookup": {
     "dataComment": {
-      "description": "Use this list to find details about vacancies that appear in your Notes, Shortlist, and Recently Viewed lists. Please note that if a vacancy is no longer in our search index, it will not appear in this list",
-      "location": "In an Elasticsearch index located at Google's 'europe-west3' (Frankfurt, Germany) data centre. For more information visit https://cloud.google.com/compute/docs/regions-zones/. It should be noted that only data owned by Goodmoves is stored at this location and no user's information is ever transferred there."
+      "description": "Use this list to find details about opportunities that appear in your Notes, Shortlist, and Recently Viewed lists. Please note that if an opportunity is no longer in our search index, it will not appear in this list",
+      "location": "In an Elasticsearch index located at Google's 'europe-west3' (Frankfurt, Germany) data centre. For more information visit https://cloud.google.com/compute/docs/regions-zones/. It should be noted that only data owned by Volunteer Scotland Search is stored at this location and no user's information is ever transferred there."
     },
     "items": [
       {{#each @root.data.opportunity_lookup.hits.hits}}

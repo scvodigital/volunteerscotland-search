@@ -25,7 +25,7 @@
 
   {{#compare @root.data.notes_opportunities.open.hits.total "===" 0}}
       <p class="mdc-typography--body1">
-        You don't have notes on any open opportunities. To write a note, navigate to the full details of a job then enter the&ensp;<strong><span class="far fa-edit mdc-chip__icon mdc-chip__icon--leading" aria-hidden="true"></span>Notes</strong>&ensp;tab, type out some text, then click the&ensp;<strong><span class="far fa-save mdc-chip__icon mdc-chip__icon--leading" aria-hidden="true"></span>Save notes</strong>&ensp;button.
+        You don't have notes on any open opportunities. To write a note, navigate to the full details of a opportunity then enter the&ensp;<strong><span class="far fa-edit mdc-chip__icon mdc-chip__icon--leading" aria-hidden="true"></span>Notes</strong>&ensp;tab, type out some text, then click the&ensp;<strong><span class="far fa-save mdc-chip__icon mdc-chip__icon--leading" aria-hidden="true"></span>Save notes</strong>&ensp;button.
       </p>
   {{/compare}}
 
@@ -42,7 +42,7 @@
 
   {{#compare @root.data.notes_opportunities.closed.hits.total ">" 0}}
     <h2 class="mdc-typography--headline5 v-margin-full">
-      Closed jobs
+      Closed opportunities
     </h2>
     {{#each @root.data.notes_opportunities.closed.hits.hits ~}}
       {{#compare (trim (getProperty @root.data.notes _source.Id)) "!==" "" ~}}
