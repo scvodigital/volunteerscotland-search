@@ -1,21 +1,13 @@
-{{#with emailData}}
-
 <p>Hello {{opportunity_contact_first_name}},</p>
 
 <p>{{first_name}} {{last_name}} would like to apply for opportunity {{opportunity_title}} with {{organisation_name}} (ref:{{opportunity_milo_ref}}) as advertised on Volunteer Scotland.
 {{#if message}} Please find their contact message below:</p>
 <strong>{{message}}</strong>
  {{/if}}
-{{#ifAny opportunity_minimum_age opportunity_maximum_age}}
-  {{#if date_of_birth}}
-  <p>{{first_name}}'s Date of Birth {{date_of_birth}}{{else}}was not provided.</p>
-  {{/if}}
-{{/ifAny}}
 
-<p>You can contact {{first_name}} via their email: <a href="mailto:{{email}}">{{email}}</a>.</p>
+<p>You can contact {{first_name}} via their email: <a href="mailto:{{email-user-confirmation}}">{{email-user-confirmation}}
+</a>{{#if phone}} or by phone at {{phone}}{{/if}}.</p>
 
 <p>Kind Regards,</p>
 
 <p>The Volunteer Scotland Team</p>
-
-{{/with}}

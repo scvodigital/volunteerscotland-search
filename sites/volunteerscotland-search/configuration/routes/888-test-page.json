@@ -1,14 +1,13 @@
 {
-  "name": "test-email-display",
-  "pattern": "/test-email-display",
+  "name": "testpage",
+  "pattern": "/testpage",
   "debug" : true,
   "acceptedVerbs": "POST",
   "defaultParams": {
     "context": "results"
   },
   "metaData" : {
-    "emailType" : "register-interest",
-    "emailTarget" : ""
+    "emailTypes" : ["user-confirmation", "register-interest"]
   },
   "tasks": [
     "context.metaData.commonTasks.authNotRequired",
@@ -28,7 +27,7 @@
       "renderer": "handlebars",
       "config": {
         "output": "body",
-        "template": "{{{stringify @root.data.send_email}}}"
+        "template": "{{{stringify @root.data.send_emails}}}"
       }
     }
   ]
