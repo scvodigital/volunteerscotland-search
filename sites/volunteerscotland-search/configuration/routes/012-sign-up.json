@@ -1,11 +1,13 @@
 {
   "name": "sign_up",
   "pattern": "/sign-up",
+  "debug": true,
   "metaData": {
     "title": "Sign up - Volunteer Scotland Search"
   },
   "tasks": [
     "context.metaData.commonTasks.authNotRequired",
+    "context.metaData.commonTasks.allNewsletterInfo",
     {
       "name": "destination",
       "taskModule": "renderLayout",

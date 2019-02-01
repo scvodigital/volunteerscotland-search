@@ -11,8 +11,8 @@
   },
   "tasks": [
     "context.metaData.commonTasks.authNotRequired",
-    "context.metaData.commonTasks.userNewsletterInfo",
-    "context.metaData.commonTasks.allNewsletterInfo",
+    "context.metaData.commonTasks.getRawUserSubscriptions",
+    "context.metaData.commonTasks.userNewsletterSubscriptions",
     {
       "name": "destination",
       "taskModule": "renderLayout",

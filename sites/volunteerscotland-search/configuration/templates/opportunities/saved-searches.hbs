@@ -180,39 +180,29 @@
         </div>
       </li>
 
-      {{#each @root.data.newsletterDataDummy~}}
+      {{#each @root.data.all-newsletter-info}}
         <li class="mdc-list-item mdc-ripple-upgraded">
           <span class="mdc-list-item__graphic far fa-newspaper fa-2x" aria-hidden="true"></span>
           <div class="mdc-layout-grid">
             <div class="mdc-layout-grid__inner">
               <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone saved-search">
               <span class="mdc-list-item__text">
-                <p>{{{name}}}</p>
-                <div class="mdc-list-item__secondary-text">
-                {{description}}
-                </div>
+                <p>{{{Name}}}</p>
               </span>
               </div>
               <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-2-desktop mdc-layout-grid__cell--span-2-tablet mdc-layout-grid__cell--span-2-phone align-centre">
                 <div class="mdc-chip-set mdc-chip-set--filter">
                   {{#> ajax_chip
-                    onUrl="/add-newsletter-subscription"
-                    offUrl="/remove-newsletter-subscription"
+                    onUrl=(concat "/add-newsletter-subscription/" ListID)
+                    offUrl=(concat "/remove-newsletter-subscription/" ListID)
                     onText="Email"
                     offText="Email"
                     onMethod="POST"
                     offMethod="POST"
                     iconClasses="far fa-envelope"
-                    on=subscribed
+                    on=(contains @root.data.user-newsletter-subscriptions ListID)
                   }}
-                    {
-                    "onData": {
-                    "name": {{{stringify ../id}}}
-                    },
-                    "offData": {
-                    "name": {{{stringify ../id}}}
-                    }
-                    }
+                    {}
                   {{/ajax_chip}}
                 </div>
               </div>
