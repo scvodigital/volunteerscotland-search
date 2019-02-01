@@ -55,7 +55,7 @@
           {
             "id": {{{stringify Id}}},
             "title": {{{stringify title}}},
-            "organisation": {{{stringify organisation.name}}},
+            "organisation": {{{stringify organisation_name}}},
             "url": {{{stringify (concat "https://volunteerscotland-search/opportunity/" slug)}}}
           }{{#unless @last}},{{/unless}}
         {{/with}}

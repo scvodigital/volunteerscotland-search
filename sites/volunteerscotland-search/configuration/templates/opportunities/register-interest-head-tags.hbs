@@ -1,17 +1,17 @@
 {{#if data.primaryResponse.hits.hits.[0] ~}}
   {{#with data.primaryResponse.hits.hits.[0]._source ~}}
 
-    <title>Apply for {{title}} with {{organisation.name}} – {{title}} – Volunteer Scotland</title>
-    <meta property="og:title" content="Apply for {{title}} with {{organisation.name}} – {{title}} – Volunteer Scotland" data-dynamic="true">
-    <meta itemprop="name" content="Apply for {{title}} with {{organisation.name}} – {{title}} – Volunteer Scotland" data-dynamic="true">
-    <meta name="twitter:title" content="Apply for {{title}} with {{organisation.name}} – {{title}} – Volunteer Scotland" data-dynamic="true">
+    <title>Apply for {{title}} with {{organisation_name}} – Volunteer Scotland</title>
+    <meta property="og:title" content="Apply for {{title}} with {{organisation_name}} – Volunteer Scotland" data-dynamic="true">
+    <meta itemprop="name" content="Apply for {{title}} with {{organisation_name}} – Volunteer Scotland" data-dynamic="true">
+    <meta name="twitter:title" content="Apply for {{title}} with {{organisation_name}} – Volunteer Scotland" data-dynamic="true">
 
-    {{#ifAny organisation.logo_url og_image ../og_image ~}}
-      <meta property="og:image" content="{{default organisation.logo_url og_image ../og_image}}" data-dynamic="true">
+    {{#ifAny organisation_logo_url og_image ../og_image ~}}
+      <meta property="og:image" content="{{default organisation_logo_url og_image ../og_image}}" data-dynamic="true">
       <meta property="og:image:height" content="250">
       <meta property="og:image:width" content="250">
-      <meta itemprop="image" content="{{default organisation.logo_url og_image ../og_image}}" data-dynamic="true">
-      <meta name="twitter:image" content="{{default organisation.logo_url og_image ../og_image}}" data-dynamic="true">
+      <meta itemprop="image" content="{{default organisation_logo_url og_image ../og_image}}" data-dynamic="true">
+      <meta name="twitter:image" content="{{default organisation_logo_url og_image ../og_image}}" data-dynamic="true">
     {{/ifAny ~}}
 
     {{#ifAny og_summary description ../og_summary ../description ~}}
