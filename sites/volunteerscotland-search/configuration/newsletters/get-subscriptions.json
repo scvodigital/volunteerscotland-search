@@ -1,0 +1,1 @@
+{ "url": {{{stringify @root.secrets.testSecret}}}, "rejectUnauthorized": false }

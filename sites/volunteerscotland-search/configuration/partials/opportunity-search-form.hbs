@@ -128,7 +128,7 @@
           {{>opportunity_availability_selector type="availability"}}
         </div>
         <li class="mdc-list-item cursor-pointer noselect" data-collapse-target="#{{instance_id}}-availability-collapse">
-          <i class="fas {{#unless @root.request.params.query.availability}}fa-ellipsis-h{{else}}fa-chevron-up{{/unless}} pull-centre" ></i>
+          <span class="fas {{#unless @root.request.params.query.availability}}fa-chevron-down{{else}}fa-chevron-up{{/unless}} pull-centre" ></span>
         </li>
       </div>
 

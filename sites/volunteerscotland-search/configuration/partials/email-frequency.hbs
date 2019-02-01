@@ -8,7 +8,7 @@
       {
         "url": "/update-email-preferences",
         "method": "POST",
-        "successMessage": "You will now recieve an email every day if there are new jobs matching your preferences",
+        "successMessage": "You will now recieve an email every day if there are new opportunities matching your preferences",
         "failureMessage": "Failed to update email frequency setting to daily",
         "postBody": {
           {{~#each (split "sunday,monday,tuesday,wednesday,thursday,friday,saturday" ",")~}}
@@ -26,7 +26,7 @@
       {
         "url": "/update-email-preferences",
         "method": "POST",
-        "successMessage": "You will now recieve an email every every {{momentFormat (moment (dateMath "now+1d") "x") "dddd"}} (starting tomorrow) if there are new jobs matching your preferences",
+        "successMessage": "You will now recieve an email every every {{momentFormat (moment (dateMath "now+1d") "x") "dddd"}} (starting tomorrow) if there are new opportunities matching your preferences",
         "failureMessage": "Failed to update email frequency setting to weekly",
         "postBody": {
           "{{lowercase (momentFormat (moment (dateMath "now+1d") "x") "dddd")}}": true

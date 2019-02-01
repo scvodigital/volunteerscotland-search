@@ -31,6 +31,11 @@
     "organisation_facebook_url",
     "organisation_linkedin",
     "organisation_linkedin_url",
+    "opportunity_contact_first_name",
+    "opportunity_contact_last_name",
+    "opportunity_contact_email",
+    "opportunity_contact_via_tsi",
+    "opportunity_contact_phone",
     "support_options",
     "goodhq_organisation.image_url",
     "title",
@@ -77,10 +82,14 @@
       "must": [
         {
           "term": {
+            {{#if (includes @root.request.params.query.id "-") ~}}
+           "Id": "{{request.params.query.id}}"
+            {{else}}
             {{#if (includes @root.request.params.slug "-") ~}}
             "slug": "{{request.params.slug}}"
             {{else}}
             "Id": "{{request.params.slug}}"
+            {{/if ~}}
             {{/if ~}}
           }
         }

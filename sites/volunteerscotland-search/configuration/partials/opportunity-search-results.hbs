@@ -1,9 +1,7 @@
 <aside id="save-search-dialog" class="mdc-dialog" role="alertdialog" aria-labelledby="save-search-dialog-label" aria-describedby="save-search-dialog-description" data-mdc-auto-init="MDCDialog">
   <div class="mdc-dialog__container">
     <form action="/save-search{{{@root.request.url.search}}}" method="POST" class="mdc-dialog__surface">
-      <h2 id="save-search-dialog-label" class="mdc-dialog__title">
-        Give your search a name
-      </h2>
+      <h2 id="save-search-dialog-label" class="mdc-dialog__title">Give your search a name</h2>
       <section id="save-search-dialog-description" class="mdc-dialog__content">
         <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
           <input type="text" id="saved-search-name" name="name" class="mdc-text-field__input" value="
@@ -93,12 +91,7 @@
                 ) ~}}
           {{#if (itemAt @root.data.searches.items.[0] (indexOf (map @root.data.searches.items.[0] (getProp 'querystring')) this)) ~}}
             {{#with (itemAt @root.data.searches.items.[0] (indexOf (map @root.data.searches.items.[0] (getProp 'querystring')) this)) ~}}
-            <h2 id="edit-search-dialog-label" class="mdc-dialog__title">
-              Your search&ensp;
-              <span class="mdc-typography--body1">
-                <strong>{{{partition}}}</strong>
-              </span>
-            </h2>
+            <h2 id="edit-search-dialog-label" class="mdc-dialog__title">Your search&ensp;<span class="mdc-typography--body1"><strong>{{{partition}}}</strong></span></h2>
             <section id="edit-search-dialog-description" class="mdc-dialog__content">
               <div class="mdc-chip-set mdc-chip-set--filter">
                   {{#> ajax_chip
@@ -220,7 +213,8 @@
             {{/if ~}}
           {{/each ~}}
           <input type="hidden" name="distance" value="{{#if @root.request.params.query.distance}}{{@root.request.params.query.distance}}{{else}}10{{/if}}" />
-          <div class="mdc-select mdc-select--box pull-right" data-mdc-auto-init="MDCSelect">
+          <div class="mdc-select pull-right" data-mdc-auto-init="MDCSelect">
+            <span class="mdc-select__dropdown-icon"></span>
             <select class="mdc-select__native-control" id="sort" name="sort" onchange="this.form.submit();">
               <option value="relevance"{{#compare @root.request.params.query.sort "===" "relevance"}} selected{{/compare}}>Relevance</option>
               {{#if @root.request.params.query.location}}<option value="distance"{{#compare @root.request.params.query.sort "===" "distance"}} selected{{/compare}}{{#compare @root.request.params.query.location "===" ""}}{{/compare}}>Distance</option>{{/if}}
@@ -230,6 +224,7 @@
             <label class="mdc-floating-label mdc-select__label--float-above" for="sort">
               Sort by
             </label>
+            <div class="mdc-line-ripple"></div>
           </div>
         </form>
       {{/compare ~}}

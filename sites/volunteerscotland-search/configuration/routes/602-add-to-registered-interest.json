@@ -1,9 +1,10 @@
 {
   "name": "add-to-registered-interest",
   "pattern": "/add-to-registered-interest",
+  "debug" : true,
   "acceptedVerbs": "POST",
   "metaData" : {
-     "emailType" : "register-interest"
+    "emailTypes" : ["register-interest","user-confirmation"]
   },
   "tasks": [
     "context.metaData.commonTasks.authNotRequired",
