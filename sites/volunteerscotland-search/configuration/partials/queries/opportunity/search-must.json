@@ -4,47 +4,4 @@
   fields=(split "text_bag_boost^5,text_bag" ",")
 }},
 {{/if ~}}
-{{#ifAny location la ~}}
-{
-  "bool": {
-    "should": [
-      {{#ifAll location lat lng distance ~}}
-      {
-        "geo_distance": {
-          "distance": "{{default distance "10"}}mi",
-          "geo_coords": {
-            "lat": {{lat}},
-            "lon": {{lng}}
-          }
-        }
-      },
-      {{/ifAll ~}}
-      {{#if la ~}}
-      {{>queries_term field="advertised_areas" term=la}},
-      {{/if ~}}
-      {{>queries_do_nothing}}
-    ],
-    "minimum_should_match": {{#if distance}}2{{else}}{{#if advertised_areas}}2{{else}}1{{/if}}{{/if}}
-  }
-},
-{{/ifAny ~}}
-
-{{#if volunteersearch_types ~}}
-{{>queries_terms field="volunteersearch_type_slugs" terms=volunteersearch_types}},
-{{/if ~}}
-{{#if work_types ~}}
-{{>queries_terms field="work_type_slugs" terms=work_types}},
-{{/if ~}}
-{{#if client_groups ~}}
-{{>queries_terms field="client_group_slugs" terms=client_groups}},
-{{/if ~}}
-{{#if services ~}}
-{{>queries_terms field="volunteersearch_support_option_slugs" terms=services}},
-{{/if ~}}
-{{#if age_groups ~}}
-{{>queries_terms field="volunteersearch_age_group_slugs" terms=age_groups}},
-{{/if ~}}
-{{#if availability ~}}
-{{>queries_terms field="availability_slugs" terms=availability}},
-{{/if ~}}
 {{>queries_do_nothing}}
