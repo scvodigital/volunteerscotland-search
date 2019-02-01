@@ -1,27 +1,29 @@
 [
+{{#eachJoin @root.route.metaData.emailTypes ","}}
 {
-"from": {{{stringify (getProperty @root.context.metaData.emailSendSettings (concat @root.route.metaData.emailType '.from'))}}},
-"h:sender": {{{stringify (getProperty @root.context.metaData.emailSendSettings (concat @root.route.metaData.emailType '.from'))}}},
-"to": "alex.nuttgens@scvo.org.uk", {{!-- @root.request.body.emailTo --}}
-"o:tag": {{{stringify (if testEmail (concat 'test-' @root.route.metaData.emailType) else=@root.route.metaData.emailType)}}},
+"from": {{{stringify (getProperty @root.context.metaData.emailSendSettings (concat this '.from'))}}},
+"h:sender": {{{stringify (getProperty @root.context.metaData.emailSendSettings (concat this '.from'))}}},
+"to": "anuttgens@gmail.com", {{!-- getProperty this (concat 'email-' this) --}}
+"o:tag": {{{stringify (if testEmail (concat 'test-' this) else=this)}}},
 "o:tracking": true,
 {{!-- "o:testmode": true, --}}
-"tag": {{{stringify @root.route.metaData.emailType}}},
-"id": {{{stringify @root.route.metaData.emailType}}},
-"connectionName": {{{stringify (getProperty @root.context.metaData.emailSendSettings (concat @root.route.metaData.emailType '.mailgunConnection'))}}},
+"tag": {{{stringify this}}},
+"id": {{{stringify this}}},
+"connectionName": {{{stringify (getProperty @root.context.metaData.emailSendSettings (concat this '.mailgunConnection'))}}},
 "subject":
 {{~#blockStringify this ~}}
   {{~>
-  (getProperty @root.context.metaData.emailSendSettings (concat @root.route.metaData.emailType '.subjectPartial'))
-   emailData=@root.request.body
+  (getProperty @root.context.metaData.emailSendSettings (concat this '.subjectPartial'))
+    @root.request.body emailType=this
   ~}}
 {{~/blockStringify}},
 "html":
 {{~#blockStringify this ~}}
   {{~>
-  (getProperty @root.context.metaData.emailSendSettings (concat @root.route.metaData.emailType '.bodyPartial'))
-    emailData=@root.request.body
+  (getProperty @root.context.metaData.emailSendSettings (concat this '.bodyPartial'))
+    @root.request.body emailType=this
   ~}}
 {{~/blockStringify}}
 }
+{{/eachJoin}}
 ]

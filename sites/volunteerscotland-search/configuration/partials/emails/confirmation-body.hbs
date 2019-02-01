@@ -1,0 +1,17 @@
+  <p>Hello {{first_name}},</p>
+
+  <p>Thank you for registering interest for {{opportunity_title}} with {{organisation_name}} (ref:{{opportunity_milo_ref}}) as advertised on Volunteer Scotland.
+
+    <p>You can contact {{organisation_name}} {{#if opportunity_contact_via_tsi}}via {{tsi_name}} {{/if}}using the details below:
+
+    <ul>
+    <li>Name: {{opportunity_contact_first_name}} {{opportunity_contact_last_name}}</li>
+    <li>Email: <a href="mailto:{{email-register-interest}}">{{email-register-interest}}</a></li>
+  {{#if opportunity_contact_phone}}
+    <li>Phone: {{opportunity_contact_phone}}</li>
+  {{/if}}
+  </ul>
+
+  <p>Kind Regards,</p>
+
+  <p>The Volunteer Scotland Team</p>
