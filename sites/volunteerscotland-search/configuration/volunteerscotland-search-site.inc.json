@@ -44,8 +44,8 @@
         "plural": "Activities"
       },
       "client_groups": {
-        "singular": "Client group",
-        "plural": "Client groups"
+        "singular": "Theme",
+        "plural": "Themes"
       }
     },
     "terms": "{:./terms.json}",

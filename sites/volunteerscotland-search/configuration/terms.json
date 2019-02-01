@@ -188,7 +188,7 @@
     }
   },
   "client_groups": {
-    "label": "Client Group",
+    "label": "Themes",
     "termGroups": {
       "other": {
         "label": "Other",

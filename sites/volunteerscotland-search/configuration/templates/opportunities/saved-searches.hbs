@@ -55,14 +55,14 @@
                     {{/if ~}}
 
                     {{#if work_types ~}}
-                      {{inflect (length (arrayify work_types)) "Activities" "work_types"}}:
+                      {{inflect (length (arrayify work_types)) "Activity" "Activities"}}:
                       {{#each (arrayify work_types) ~}}
                         <strong>{{{getProperty @root.data.termsMaps.work_types.slugsMap (concat this ".term")}}}{{#unless @last}}, {{/unless}}</strong>
                       {{/each ~}}
                     {{/if ~}}
 
                     {{#if volunteersearch_types ~}}
-                      {{inflect (length (arrayify client_groups)) "Types" "volunteersearch_types"}}:
+                      {{inflect (length (arrayify client_groups)) "Type" "Types"}}:
                       {{#each (arrayify volunteersearch_types) ~}}
                         <strong>{{{getProperty @root.data.termsMaps.volunteersearch_types.slugsMap (concat this ".term")}}}{{#unless @last}}, {{/unless}}</strong>
                       {{/each ~}}
@@ -70,28 +70,28 @@
 
 
                     {{#if client_groups ~}}
-                      {{inflect (length (arrayify client_groups)) "Client Groups" "client_groups"}}:
+                      {{inflect (length (arrayify client_groups)) "Theme" "Themes"}}:
                       {{#each (arrayify client_groups) ~}}
                         <strong>{{{getProperty @root.data.termsMaps.client_groups.slugsMap (concat this ".term")}}}{{#unless @last}}, {{/unless}}</strong>
                       {{/each ~}}
                     {{/if ~}}
 
                     {{#if services ~}}
-                      {{inflect (length (arrayify services)) "Services" "services"}}:
+                      {{inflect (length (arrayify services)) "Service" "Themes"}}:
                       {{#each (arrayify services)}}
                         <strong>{{{getProperty @root.data.termsMaps.services.slugsMap (concat this ".term")}}}{{#unless @last}}, {{/unless}}</strong>
                       {{/each ~}}
                     {{/if ~}}
 
                     {{#if age_groups ~}}
-                      {{inflect (length (arrayify age_groups)) "Volunteer Age Groups" "age_groups"}}:
+                      {{inflect (length (arrayify age_groups)) "Volunteer Age Group" "Volunteer Age Groups"}}:
                       {{#each (arrayify age_groups)}}
                         <strong>{{{getProperty @root.data.termsMaps.age_groups.slugsMap (concat this ".term")}}}{{#unless @last}}, {{/unless}}</strong>
                       {{/each ~}}
                     {{/if ~}}
 
                     {{#if availability ~}}
-                      {{inflect (length (arrayify availability)) "Availability" "availability"}}:
+                      {{inflect (length (arrayify availability)) "Availability" "Availability"}}:
                       {{#each (arrayify availability)}}
                         <strong>{{{getProperty @root.data.termsMaps.availability.slugsMap (concat this ".term")}}}{{#unless @last}}, {{/unless}}</strong>
                       {{/each ~}}
