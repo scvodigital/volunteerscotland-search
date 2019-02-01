@@ -693,7 +693,11 @@ footer h3,
   .mdc-list-item {
     height: auto !important;
   }
+}
+.mdc-list-group,
+.advanced-checkbox-list {
   .mdc-list-item:last-child {
+    height: auto !important;
     padding: $unit/2 0;
   }
 }
