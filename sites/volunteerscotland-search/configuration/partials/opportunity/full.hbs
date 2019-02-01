@@ -195,8 +195,8 @@
           <div class="container-content container-map">
             <div id="map-content-primary" data-map-name="opportunityMap" data-map-clustered-options='{}'>
               {{#each (arrayify geo_coords) ~}}
-              <marker style="display:none;" data-map="opportunityMap" data-lat="{{lat}}" data-lng="{{lon}}" data-title="{{../organisation.name}} - {{../title}}">
-                <h3 class="mdc-typography--headline7">{{../organisation.name}}</h3>
+              <marker style="display:none;" data-map="opportunityMap" data-lat="{{lat}}" data-lng="{{lon}}" data-title="{{../organisation_name}} - {{../title}}">
+                <h3 class="mdc-typography--headline7">{{../organisation_name}}</h3>
                 <p class="mdc-typography--body2">{{../title}}</p>
               </marker>
               {{/each ~}}
