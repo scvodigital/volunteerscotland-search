@@ -63,7 +63,7 @@ $desktop-landscape-breakpoint: 1280px;
 html {
   overflow-y: scroll;
   height: 100%;
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   line-height: 1.45;
 }
 body {
@@ -640,7 +640,7 @@ footer h3,
 
 .mdc-list-group {
   margin: $unit 0;
-  border: 1px solid #cccccc;
+  border: 1px solid $brand-primary-grey;
   border-radius: 0;
 }
 
@@ -656,14 +656,17 @@ footer h3,
 .mdc-list-group__subheader {
   padding: 0 !important;
   font-size: 1rem !important;
+  font-weight: $heading-font-weight !important;
+  color: $brand-primary-black;
+  padding-left: $unit/4 !important;
   line-height: 2rem !important;
-  border-bottom: 1px solid #cccccc;
   border-radius: 0;
   background-color: #ffffff;
 }
 
 .mdc-drawer .mdc-list-item {
   margin: 0 !important;
+  border-radius: 0;
 }
 
 .mdc-icon-toggle-xs {
@@ -696,6 +699,7 @@ footer h3,
   .mdc-list-item:last-child {
     height: auto !important;
     padding: $unit/2 0;
+    border-top: 1px solid $brand-primary-grey;
   }
 }
 
@@ -876,6 +880,7 @@ a:hover {
 }
 .mdc-chip {
   margin: 0;
+  font-size: 1rem;
   font-weight: 400;
   .mdc-chip__icon.mdc-chip__icon--leading {
     display: inline-block;
@@ -961,7 +966,7 @@ a {
     border-radius: 0 0 2px 2px;
     // box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 5px 8px 0px rgba(0, 0, 0, 0.14), 0px 1px 14px 0px rgba(0, 0, 0, 0.12);
     h3 {
-      font-size: 0.8rem;
+      font-size: 0.9rem;
       opacity: 0.6666;
       font-weight: 400;
       margin: 0 !important;
@@ -1132,7 +1137,7 @@ a {
   background-color: white;
   padding: 0;
   box-sizing: border-box;
-  border-radius: 2px;
+  border-radius: 0;
   a .mdc-list-item__graphic {
     margin-right: $unit/2;
   }
@@ -1168,7 +1173,7 @@ a {
     margin: 0;
   }
   .mdc-card__actions {
-    border-radius: 0 0 2px 2px;
+    border-radius: 0;
     min-height: auto;
     .mdc-card__action {
       font-weight: 400;
@@ -1193,7 +1198,7 @@ a {
 .mdc-card.mini,
 .mdc-card.gist,
 .mdc-card.search-result {
-  border-radius: 2px;
+  border-radius: 0;
   position: relative;
   z-index: 1;
   width: 100%;
@@ -1323,7 +1328,7 @@ a {
   padding: $unit*(2/3) $unit;
   color: white;
   font-weight: 400;
-  border-radius: 2px 2px 0 0;
+  border-radius: 0;
 }
 .mdc-card.mini {
   .panel-heading {
@@ -1342,7 +1347,7 @@ a {
   .panel-heading {
     margin: $unit/2 0 $unit;
     padding: $unit/2;
-    border-radius: 2px;
+    border-radius: 0;
   }
   .panel {
     background-color: $brand-primary-lightgrey;
@@ -1390,7 +1395,7 @@ a {
     }
   }
   #content-primary-tab-bar {
-    border-radius: 2px 2px 0 0;
+    border-radius: 0;
     .mdc-tab {
       flex: 1;
       line-height: $header-lower-height;
@@ -1404,7 +1409,7 @@ a {
     display: block;
   }
   .content-primary-info-container {
-    border-radius: 2px;
+    border-radius: 0;
     background-color: white;
   }
   .mdc-card--full-content {
@@ -1856,7 +1861,7 @@ body.shortlist {
     padding: 0 0 $unit;
     .mdc-card__media--content-secondary {
       line-height: 1;
-      border-radius: 2px;
+      border-radius: 0;
       padding: $unit/2;
     }
     .mdc-card__info--content-primary {
@@ -2130,7 +2135,6 @@ footer,
         z-index: 500;
       }
       .mdc-button--search {
-        border-radius: 2px;
         width: 100%;
         font-size: 1.2rem;
         box-shadow: none;
@@ -2473,7 +2477,7 @@ footer.mdc-layout__footer {
     padding: 0;
     margin-bottom: 0;
     p {
-      margin: 0 0 0.8rem;
+      margin: 0 0 0.9rem;
       color: white;
     }
   }
@@ -3131,7 +3135,7 @@ form.inline-form {
 .after-textfield-action {
   float: right;
   margin-top: -10px;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   text-decoration: underline;
   cursor: pointer;
 }
@@ -3258,7 +3262,7 @@ header {
         font-weight: $heading-font-weight;
         .mdc-tab__text-label {
           font-weight: $heading-light-font-weight;
-          font-size: 1.3rem;
+          font-size: 1.4rem;
         }
       }
       .mdc-tab:hover .mdc-tab__text-label,
@@ -3648,7 +3652,7 @@ a {
     }
   }
   .content-primary-info-container {
-    border-radius: 2px;
+    border-radius: 0;
     background-color: white;
   }
   .mdc-card--full-content {
