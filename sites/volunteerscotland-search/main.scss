@@ -247,6 +247,9 @@ header {
         .mdc-tab,
         .mdc-button {
           background-color: $brand-primary-black;
+          .fa-user-circle {
+            font-size: 1.8rem;
+          }
         }
         .mdc-button,
         .mdc-tab .mdc-tab__text-label {
