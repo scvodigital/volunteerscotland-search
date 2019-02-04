@@ -1,6 +1,6 @@
 {
   "name": "testpage",
-  "pattern": "/testpage",
+  "pattern": "/testpage/:list_id",
   "debug" : true,
   "acceptedVerbs": "GET",
   "defaultParams": {
@@ -13,6 +13,25 @@
     "context.metaData.commonTasks.authNotRequired",
     "context.metaData.commonTasks.getRawUserSubscriptions",
     "context.metaData.commonTasks.userNewsletterSubscriptions",
+    "context.metaData.commonTasks.getSubscriptionPostBody",
+      {
+        "name": "add-subscription",
+        "taskModule": "request",
+        "config": {
+          "output" : "data",
+          "optionsTemplate": "{ \"method\": \"POST\", \"url\": {{{stringify (concat @root.secrets.vs_campaign_monitor.baseURL 'subscribers/' @root.request.params.list_id '.json') }}}, \"body\": {{{stringify @root.data.add-subscription-body}}}, \"auth\": {{{stringify @root.secrets.vs_campaign_monitor.auth}}}, \"json\": true }"
+        },
+        "renderer": "handlebars"
+      },
+      {
+        "name": "destination",
+        "taskModule": "render",
+        "renderer": "handlebars",
+        "config": {
+          "output": "body",
+          "template": "Added Subscription"
+        }
+      },
     {
       "name": "destination",
       "taskModule": "renderLayout",
@@ -37,5 +56,6 @@
         }
       }
     }
+
   ]
 }

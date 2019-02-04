@@ -1,0 +1,6 @@
+{
+"EmailAddress": "{{@root.data.auth.email}}",
+"Name": "Subscriber",
+"Resubscribe": true,
+"ConsentToTrack":"No"
+}

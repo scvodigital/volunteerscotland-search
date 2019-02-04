@@ -156,26 +156,25 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     volunteerscotland.setCookie('gi_token', '');
     volunteerscotland.setCookie('gi_cookie', '');
-    updateNewsletterSettings();
-//    volunteerscotland.app.auth().createUserWithEmailAndPassword(email, password).then(function (user) {
-//      if (user) {
-//        console.log('Registered user:', user);
-//        user.user.getIdTokenResult().then(function (idTokenResult) {
-//          console.log('ID Token Result', idTokenResult);
-//          volunteerscotland.setCookie('gi_token', idTokenResult.token, 7);
-//          updateNewsletterSettings();
-//          window.location.href = '/';
-//        })
-//      } else {
-//        $message.text('Something went wrong, signed up but no user?').show();
-//        $loader.css('display', 'none');
-//        document.body.scrollTop = document.documentElement.scrollTop = 0;
-//      }
-//    }).catch(function (err) {
-//      $message.text(err.message).show();
-//      $loader.css('display', 'none');
-//      document.body.scrollTop = document.documentElement.scrollTop = 0;
-//    });
+    volunteerscotland.app.auth().createUserWithEmailAndPassword(email, password).then(function (user) {
+      if (user) {
+        console.log('Registered user:', user);
+        user.user.getIdTokenResult().then(function (idTokenResult) {
+          console.log('ID Token Result', idTokenResult);
+          volunteerscotland.setCookie('gi_token', idTokenResult.token, 7);
+          updateNewsletterSettings();
+          window.location.href = '/';
+        })
+      } else {
+        $message.text('Something went wrong, signed up but no user?').show();
+        $loader.css('display', 'none');
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
+      }
+    }).catch(function (err) {
+      $message.text(err.message).show();
+      $loader.css('display', 'none');
+      document.body.scrollTop = document.documentElement.scrollTop = 0;
+    });
   });
 })
 </script>
