@@ -112,8 +112,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
   var $loader = $('#sign-up-loader');
 
   function updateNewsletterSettings() {
+    try{
     var formArray = $form.serializeArray();
-
     var allNewsletters = {{{stringify @root.data.all-newsletter-info}}};
     for (var x = 0; x < allNewsletters.length; x++) {
       var newsletterIdentifier = "newsletter-" + allNewsletters[x].ListID;
@@ -125,6 +125,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
           })
         }
       }
+    }
+    } finally {
+      // Better to fail to sign up to newsletters, than to fail and block sign up.
+      return;
     }
   }
 
