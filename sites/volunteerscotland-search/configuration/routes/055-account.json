@@ -19,7 +19,9 @@
     "context.metaData.commonTasks.opportunitySupplimentary",
     "context.metaData.commonTasks.searchesData",
     "context.metaData.commonTasks.profileInfoData",
-    "context.metaData.commonTasks.newsletterDataDummy",
+    "context.metaData.commonTasks.getRawUserSubscriptions",
+    "context.metaData.commonTasks.userNewsletterSubscriptions",
+    "context.metaData.commonTasks.getSubscriptionPostBody",
     {
       "name": "email_days",
       "taskModule": "render",

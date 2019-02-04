@@ -157,16 +157,36 @@
           <h3 class="mdc-typography--headline6 v-margin-full">
             Unsubscribe
           </h3>
+
           {{#ifAny
             (compare (length (filter @root.data.searches.items.[0] "partitionActive" "===" 1)) ">" 0)
             @root.data.favourites.items.[0].[0].active
-            @root.data.newsletterDataDummy.[0].subscribed
-            @root.data.newsletterDataDummy.[1].subscribed
+            (compare (length @root.data.user-newsletter-subscriptions) ">" 0)
           }}
+
+            {{#ifAny
+              (compare (length (filter @root.data.searches.items.[0] "partitionActive" "===" 1)) ">" 0)
+              @root.data.favourites.items.[0].[0].active
+            }}
+
+          <p>
             <a href="/stop-all-emails" class="mdc-button mdc-button--raised mdc-button--fullwidth">
-              <span class="far fa-envelope mdc-list-item__graphic" aria-hidden="true"></span>
-              Stop all emails
+            <span class="far fa-envelope mdc-list-item__graphic" aria-hidden="true"></span>
+            Stop all email alerts
             </a>
+            {{/ifAny}}
+          </p>
+          <p>
+            {{#ifAny
+              (compare (length @root.data.user-newsletter-subscriptions) ">" 0)
+            }}
+            <a onclick="stopAllNewsletters(event)" class="nl-link-block mdc-button mdc-button--raised mdc-button--fullwidth">
+              <span class="far fa-envelope mdc-list-item__graphic" aria-hidden="true"></span>
+              <span>Stop all newsletters</span>
+            </a>
+            {{/ifAny}}
+          </p>
+
           {{else}}
             You currently have no subscriptions.
           {{/ifAny}}
@@ -179,13 +199,34 @@
         {{#ifAny
           (compare (length (filter @root.data.searches.items.[0] "partitionActive" "===" 1)) ">" 0)
           @root.data.favourites.items.[0].[0].active
+          (compare (length @root.data.user-newsletter-subscriptions) ">" 0)
         }}
-        <a href="/stop-all-emails" class="mdc-button mdc-button--raised mdc-button--fullwidth">
-          <span class="far fa-envelope mdc-list-item__graphic" aria-hidden="true"></span>
-          Stop all emails
-        </a>
+
+          {{#ifAny
+            (compare (length (filter @root.data.searches.items.[0] "partitionActive" "===" 1)) ">" 0)
+            @root.data.favourites.items.[0].[0].active
+          }}
+
+          <p>
+            <a href="/stop-all-emails" class="mdc-button mdc-button--raised mdc-button--fullwidth">
+              <span class="far fa-envelope mdc-list-item__graphic" aria-hidden="true"></span>
+              Stop all email alerts
+            </a>
+          {{/ifAny}}
+        </p>
+          <p>
+            {{#ifAny
+              (compare (length @root.data.user-newsletter-subscriptions) ">" 0)
+            }}
+              <a onclick="stopAllNewsletters(event)" class="mdc-button nl-link-block mdc-button--raised mdc-button--fullwidth">
+                <span class="far fa-envelope mdc-list-item__graphic" aria-hidden="true"></span>
+                <span>Stop all newsletters</span>
+              </a>
+            {{/ifAny}}
+          </p>
+
         {{else}}
-        You currently have no subscriptions.
+          You currently have no subscriptions.
         {{/ifAny}}
       </div>
     </div>
