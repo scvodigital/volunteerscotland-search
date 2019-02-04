@@ -159,17 +159,22 @@
                   {{/each ~}}
                 {{/components_anchored_menu ~}}
               {{else}}
-                {{#>components_tab_bar
-                    extraClasses="mdc-tab-bar__auto-width hide-sm hide-md"
-                    id="user-not-signed-in-tab-bar" ~}}
-                  {{#each @root.context.metaData.menus.user-not-signed-in ~}}
-                    {{>components_tab
-                        url=(stripTrailingSlash path)
-                        labelClasses="mdc-theme--on-secondary"
-                        active=(regexMatch @root.request.url.pathname route "gi")
-                        label=label}}
-                  {{/each ~}}
-                {{/components_tab_bar ~}}
+              {{#>components_anchored_menu
+                  buttonClasses="mdc-theme--on-secondary hide-sm hide-md"
+                  imageUrl=(default @root.data.auth.photoURL false)
+                  imageClasses="far fa-fw user-avatar"
+                  iconClasses=(if (if @root.data.auth.photoURL false else=true) "fas fa-fw fa-user-circle" else=false)
+                  buttonLabel="My Volunteer Account"
+                  arrowClasses="fas fa-fw fa-angle-down" ~}}
+                {{#each @root.context.metaData.menus.user-not-signed-in ~}}
+                  <a class="mdc-list-item {{#if (regexMatch @root.request.url.pathname route "gi")}} mdc-list-item--activated{{/if}}" href="{{stripTrailingSlash path}}" role="menuitem">
+                    {{#if icon ~}}
+                    <span class="far fa-{{icon}} mdc-list-item__graphic" aria-hidden="true"></span>
+                    {{/if ~}}
+                    {{{label}}}
+                  </a>
+                {{/each ~}}
+              {{/components_anchored_menu ~}}
               {{/if ~}}
             </section>
           </div>
