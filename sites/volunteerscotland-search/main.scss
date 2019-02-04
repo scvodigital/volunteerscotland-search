@@ -4,28 +4,28 @@
 $brand-secondary-green: rgb(123, 193, 67);
 $brand-primary-black: rgb(64, 64, 65);
 $brand-primary-grey: rgb(218, 211, 204);
-$brand-primary-lightgrey: #f2eeec;
+$brand-primary-lightgrey: rgb(242, 238, 236);
 
 $brand-secondary-purple: rgb(124, 65, 153);
-$brand-secondary-darkpurple: #5f3275;
+$brand-secondary-darkpurple: rgb(95, 50, 117);
 
 $brand-secondary-pink: rgb(230, 64, 151);
-$brand-secondary-darkpink: #d71c7e;
+$brand-secondary-darkpink: rgb(215, 28, 126);
 
 $brand-secondary-red: rgb(239, 62, 66);
-$brand-secondary-darkred: #e71318;
+$brand-secondary-darkred: rgb(231, 19, 24);
 
 $brand-secondary-orange: rgb(244, 120, 54);
-$brand-secondary-darkorange: #ea5a0d;
+$brand-secondary-darkorange: rgb(234, 90, 13);
 
 $brand-secondary-yellow: rgb(255, 222, 0);
-$brand-secondary-darkyellow: #ccb200;
+$brand-secondary-darkyellow: rgb(204, 178, 0);
 
 $brand-secondary-green: rgb(56, 124, 44);
-$brand-secondary-darkgreen: #27561f;
+$brand-secondary-darkgreen: rgb(39, 86, 31);
 
 $brand-secondary-turquoice: rgb(0, 160, 175);
-$brand-secondary-darkturquoice: #00717c;
+$brand-secondary-darkturquoice: rgb(0, 113, 124);
 
 $brand-secondary-blue: rgb(0, 157, 220);
 $brand-secondary-darkblue: rgb(0, 121, 193);
@@ -247,6 +247,9 @@ header {
         .mdc-tab,
         .mdc-button {
           background-color: $brand-primary-black;
+          .fa-user-circle {
+            font-size: 1.8rem;
+          }
         }
         .mdc-button,
         .mdc-tab .mdc-tab__text-label {
@@ -2087,9 +2090,9 @@ footer,
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    min-height: 15vh;
+    min-height: 12vh;
     .page-content {
-      min-height: 15vh;
+      min-height: 12vh;
       .search-form {
         width: 100%;
         padding: $unit $unit $unit/2;
@@ -2110,7 +2113,7 @@ footer,
       flex-direction: column;
       min-height: 15vh;
       background-color: transparent;
-      padding: $unit*20 0 $unit;
+      padding: $unit*15 0 $unit;
       .mdc-card__actions {
         margin: 0;
         padding: 0;

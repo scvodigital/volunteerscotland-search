@@ -99,23 +99,16 @@
         "taskModule": "request",
         "config": {
           "optionsTemplate":
-          "{ \"url\": {{{stringify @root.secrets.vs_campaign_monitor.urls.all_lists_info}}}, \"auth\": {{{stringify @root.secrets.vs_campaign_monitor.auth}}}, \"json\": true }"
+          "{ \"url\": {{{stringify (concat @root.secrets.vs_campaign_monitor.baseURL 'clients/' @root.secrets.vs_campaign_monitor.clientID '/lists.json') }}}, \"auth\": {{{stringify @root.secrets.vs_campaign_monitor.auth}}}, \"json\": true }"
         },
         "renderer": "handlebars"
-      },      "userNewsletterInfo": {
-        "name": "user-newsletter-info",
-        "taskModule": "request",
-        "config": {
-          "optionsTemplate":
-          "{ \"url\": {{{stringify (concat @root.secrets.vs_campaign_monitor.urls.user_lists_info '?email=' @root.data.auth.email) }}}, \"auth\": {{{stringify @root.secrets.vs_campaign_monitor.auth}}}, \"json\": true }"
-        },
-        "renderer": "handlebars"
-      },      "getRawUserSubscriptions": {
+      },
+      "getRawUserSubscriptions": {
         "name": "subscriptions-raw",
         "taskModule": "request",
         "config": {
           "optionsTemplate":
-          "{ \"url\": {{{stringify (concat @root.secrets.vs_campaign_monitor.urls.user_lists_info '?email=' @root.data.auth.email) }}}, \"auth\": {{{stringify @root.secrets.vs_campaign_monitor.auth}}}, \"json\": true }"
+          "{ \"url\": {{{stringify (concat @root.secrets.vs_campaign_monitor.baseURL 'clients/' @root.secrets.vs_campaign_monitor.clientID '/listsforemail.json?email=' @root.data.auth.email) }}}, \"auth\": {{{stringify @root.secrets.vs_campaign_monitor.auth}}}, \"json\": true }"
         },
         "renderer": "handlebars"
       },
@@ -130,6 +123,17 @@
         },
         "renderer": "handlebars"
       },
+      "getSubscriptionPostBody" : {
+        "name": "add-subscription-body",
+        "taskModule": "render",
+        "renderer": "handlebars",
+        "config": {
+          "output" : "data",
+          "template": ">context.metaData.handlebars.templates.newsletter_subscription-post-body",
+          "parseJson": true
+        }
+      },
+
       "termsMaps": {
         "name": "termsMaps",
         "taskModule": "render",
@@ -252,16 +256,6 @@
           }
         },
         "renderer": "handlebars"
-      },
-        "newsletterDataDummy": {
-        "name": "newsletterDataDummy",
-        "taskModule": "render",
-        "renderer": "handlebars",
-        "config": {
-        "output": "data",
-        "template": ">context.metaData.handlebars.templates.account_newsletter-data",
-          "parseJson": "true"
-        }
       },
       "notesData": {
         "name": "notes",
