@@ -1935,6 +1935,9 @@ body.shortlist {
     font-weight: 400;
   }
 }
+.mdc-typography--headline7 .mdc-typography--headline5 {
+  margin: 0;
+}
 
 // Pagination ==================================================================
 
@@ -3854,9 +3857,10 @@ footer,
   .banner-search {
     .page-content {
       .search-form {
-        background-color: $brand-secondary-yellow;
+        background-color: white;
         h2 {
-          margin-top: 0;
+          margin: 0 0 $unit;
+          color: $brand-secondary-turquoice;
         }
       }
     }
