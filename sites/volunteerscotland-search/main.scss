@@ -244,14 +244,17 @@ header {
     .mdc-top-app-bar__section--user {
       .mdc-menu-surface--anchor,
       #user-not-signed-in-tab-bar {
+        .mdc-button {
+          background-color: $brand-primary-black;
+        }
         .mdc-button,
         .mdc-tab .mdc-tab__text-label {
-          color: $brand-secondary-blue !important;
+          color: white !important;
           font-weight: $heading-font-weight;
         }
         .mdc-button:hover,
         .mdc-tab:hover .mdc-tab__text-label {
-          color: $brand-secondary-darkblue !important;
+          color: white !important;
         }
         .mdc-tab-indicator--active:hover > .mdc-tab-indicator__content--underline,
         .mdc-tab-indicator > .mdc-tab-indicator__content--underline {
@@ -262,8 +265,7 @@ header {
         }
       }
     }
-    .mdc-top-app-bar__main .mdc-tab-bar,
-    .mdc-top-app-bar__user .mdc-tab-bar {
+    .mdc-top-app-bar__main .mdc-tab-bar {
       .mdc-tab {
         color: black;
       }
@@ -272,7 +274,7 @@ header {
         // border-bottom-color: rgba(255, 255, 255, 0.75);
       }
       .mdc-tab.mdc-tab--active .mdc-tab__text-label {
-        background-color: $brand-secondary-turquoice;
+        // background-color: $brand-secondary-turquoice;
         border-bottom-color: rgba(0, 0, 0, 0);
         // border-bottom-color: rgba(255, 255, 255, 0.9);
       }
@@ -286,10 +288,9 @@ header {
           border-radius: 0;
           border-top: 2px solid transparent;
           border-bottom: 2px solid transparent;
-          // color: black !important;
           height: $header-lower-height;
           font-weight: $heading-font-weight;
-          padding: 0;
+          padding: 0 $unit/3;
           text-transform: none;
           .fa-fw {
             margin-right: $unit/2;
@@ -301,8 +302,7 @@ header {
           }
         }
         .mdc-button:hover {
-          background-color: transparent;
-          border-bottom-color: rgba(255, 255, 255, 0.6);
+          // border-bottom-color: rgba(255, 255, 255, 0.6);
         }
       }
     }
@@ -511,10 +511,6 @@ footer h3,
   .mdc-button--fullwidth {
     margin-top: $unit;
   }
-}
-.mdc-tab .mdc-tab__text-label,
-.mdc-button {
-  transition: 0.1s;
 }
 .mdc-tab__content {
   .mdc-tab__icon,
@@ -3238,7 +3234,7 @@ header {
     #upper-tab-bar {
       .mdc-tab {
         margin-right: 4px;
-        background-color: $brand-secondary-blue;
+        background-color: $brand-secondary-turquoice !important;
         .mdc-tab__icon,
         .mdc-tab__text-label {
           color: white !important;
@@ -3247,7 +3243,7 @@ header {
         }
       }
       .mdc-tab:hover {
-        background-color: $brand-secondary-darkblue;
+        background-color: $brand-secondary-darkturquoice;
       }
       // .mdc-tab:last-child {
       //   margin-right: 0;
@@ -3257,9 +3253,18 @@ header {
     .mdc-top-app-bar__user .mdc-tab-bar {
       .mdc-tab {
         font-weight: $heading-font-weight;
+        .mdc-tab__text-label {
+          font-weight: $heading-light-font-weight;
+          font-size: 1.3rem;
+        }
       }
+      .mdc-tab:hover .mdc-tab__text-label,
       .mdc-tab.mdc-tab--active .mdc-tab__text-label {
         color: white !important;
+      }
+      .mdc-tab:hover .mdc-tab__content,
+      .mdc-tab.mdc-tab--active .mdc-tab__content {
+        background-color: $brand-secondary-turquoice;
       }
       // .mdc-tab:hover .mdc-tab__text-label {
       //   border-bottom-color: $brand-primary-black;
