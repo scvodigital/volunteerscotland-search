@@ -30,10 +30,16 @@
   ],
   "user-not-signed-in": [
     {
-      "label": "My Volunteer account",
+      "label": "Sign in",
       "icon": "sign-in-alt",
       "path": "/sign-in",
       "route": "^/sign-in"
+    },
+    {
+      "label": "Sign up",
+      "icon": "user-plus",
+      "path": "/sign-up",
+      "route": "^/sign-up"
     }
   ],
   "user-signed-in": [

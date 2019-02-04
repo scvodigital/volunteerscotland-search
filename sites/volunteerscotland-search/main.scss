@@ -244,6 +244,7 @@ header {
     .mdc-top-app-bar__section--user {
       .mdc-menu-surface--anchor,
       #user-not-signed-in-tab-bar {
+        .mdc-tab,
         .mdc-button {
           background-color: $brand-primary-black;
         }
