@@ -2,7 +2,7 @@
   "name": "testpage",
   "pattern": "/testpage",
   "debug" : true,
-  "acceptedVerbs": "POST",
+  "acceptedVerbs": "GET",
   "defaultParams": {
     "context": "results"
   },
@@ -11,23 +11,30 @@
   },
   "tasks": [
     "context.metaData.commonTasks.authNotRequired",
-    {
-      "name": "send_email",
-      "taskModule": "mailgun",
-      "renderer": "handlebars",
-      "config": {
-        "output": "data",
-        "parseJson": true,
-        "template": ">context.metaData.handlebars.templates.email-out"
-      }
-    },
+    "context.metaData.commonTasks.getRawUserSubscriptions",
+    "context.metaData.commonTasks.userNewsletterSubscriptions",
     {
       "name": "destination",
-      "taskModule": "render",
+      "taskModule": "renderLayout",
       "renderer": "handlebars",
       "config": {
+        "logic": {
+          "if": [
+            "default"
+          ]
+        },
         "output": "body",
-        "template": "{{{stringify @root.data.send_emails}}}"
+        "layouts": {
+          "default": {
+            "layout": ">context.metaData.handlebars.layouts.default",
+            "parts": {
+              "head": ">context.metaData.handlebars.templates.pages_page-head-tags",
+              "body": ">context.metaData.handlebars.templates.errors_404",
+              "foot": ""
+            },
+            "contentType": "text/html"
+          }
+        }
       }
     }
   ]

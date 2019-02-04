@@ -16,7 +16,9 @@
   "tasks": [
     "context.metaData.commonTasks.authRequired",
     "context.metaData.commonTasks.searchesData",
-    "context.metaData.commonTasks.newsletterDataDummy",
+    "context.metaData.commonTasks.allNewsletterInfo",
+    "context.metaData.commonTasks.getRawUserSubscriptions",
+    "context.metaData.commonTasks.userNewsletterSubscriptions",
     {
       "name": "email_days",
       "taskModule": "render",

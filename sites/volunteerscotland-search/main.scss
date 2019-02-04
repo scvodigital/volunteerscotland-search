@@ -63,7 +63,7 @@ $desktop-landscape-breakpoint: 1280px;
 html {
   overflow-y: scroll;
   height: 100%;
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   line-height: 1.45;
 }
 body {
@@ -244,14 +244,17 @@ header {
     .mdc-top-app-bar__section--user {
       .mdc-menu-surface--anchor,
       #user-not-signed-in-tab-bar {
+        .mdc-button {
+          background-color: $brand-primary-black;
+        }
         .mdc-button,
         .mdc-tab .mdc-tab__text-label {
-          color: $brand-secondary-blue !important;
+          color: white !important;
           font-weight: $heading-font-weight;
         }
         .mdc-button:hover,
         .mdc-tab:hover .mdc-tab__text-label {
-          color: $brand-secondary-darkblue !important;
+          color: white !important;
         }
         .mdc-tab-indicator--active:hover > .mdc-tab-indicator__content--underline,
         .mdc-tab-indicator > .mdc-tab-indicator__content--underline {
@@ -262,8 +265,7 @@ header {
         }
       }
     }
-    .mdc-top-app-bar__main .mdc-tab-bar,
-    .mdc-top-app-bar__user .mdc-tab-bar {
+    .mdc-top-app-bar__main .mdc-tab-bar {
       .mdc-tab {
         color: black;
       }
@@ -272,7 +274,7 @@ header {
         // border-bottom-color: rgba(255, 255, 255, 0.75);
       }
       .mdc-tab.mdc-tab--active .mdc-tab__text-label {
-        background-color: $brand-secondary-turquoice;
+        // background-color: $brand-secondary-turquoice;
         border-bottom-color: rgba(0, 0, 0, 0);
         // border-bottom-color: rgba(255, 255, 255, 0.9);
       }
@@ -286,10 +288,9 @@ header {
           border-radius: 0;
           border-top: 2px solid transparent;
           border-bottom: 2px solid transparent;
-          // color: black !important;
           height: $header-lower-height;
           font-weight: $heading-font-weight;
-          padding: 0;
+          padding: 0 $unit/3;
           text-transform: none;
           .fa-fw {
             margin-right: $unit/2;
@@ -301,8 +302,7 @@ header {
           }
         }
         .mdc-button:hover {
-          background-color: transparent;
-          border-bottom-color: rgba(255, 255, 255, 0.6);
+          // border-bottom-color: rgba(255, 255, 255, 0.6);
         }
       }
     }
@@ -407,6 +407,7 @@ footer h3,
 .mdc-simple-menu .mdc-list-item,
 .mdc-temporary-drawer .mdc-list-item,
 .mdc-drawer--temporary .mdc-list-item,
+.mdc-drawer .mdc-list-group__subheader,
 .mdc-list {
   font-family: $base-font-family, Helvetica, Arial, sans-serif;
   font-weight: $base-font-weight;
@@ -510,10 +511,6 @@ footer h3,
   .mdc-button--fullwidth {
     margin-top: $unit;
   }
-}
-.mdc-tab .mdc-tab__text-label,
-.mdc-button {
-  transition: 0.1s;
 }
 .mdc-tab__content {
   .mdc-tab__icon,
@@ -643,7 +640,7 @@ footer h3,
 
 .mdc-list-group {
   margin: $unit 0;
-  border: 1px solid #cccccc;
+  border: 1px solid $brand-primary-grey;
   border-radius: 0;
 }
 
@@ -659,14 +656,17 @@ footer h3,
 .mdc-list-group__subheader {
   padding: 0 !important;
   font-size: 1rem !important;
+  font-weight: $heading-font-weight !important;
+  color: $brand-primary-black;
+  padding-left: $unit/4 !important;
   line-height: 2rem !important;
-  border-bottom: 1px solid #cccccc;
   border-radius: 0;
   background-color: #ffffff;
 }
 
 .mdc-drawer .mdc-list-item {
   margin: 0 !important;
+  border-radius: 0;
 }
 
 .mdc-icon-toggle-xs {
@@ -699,6 +699,7 @@ footer h3,
   .mdc-list-item:last-child {
     height: auto !important;
     padding: $unit/2 0;
+    border-top: 1px solid $brand-primary-grey;
   }
 }
 
@@ -879,6 +880,7 @@ a:hover {
 }
 .mdc-chip {
   margin: 0;
+  font-size: 1rem;
   font-weight: 400;
   .mdc-chip__icon.mdc-chip__icon--leading {
     display: inline-block;
@@ -964,7 +966,7 @@ a {
     border-radius: 0 0 2px 2px;
     // box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 5px 8px 0px rgba(0, 0, 0, 0.14), 0px 1px 14px 0px rgba(0, 0, 0, 0.12);
     h3 {
-      font-size: 0.8rem;
+      font-size: 0.9rem;
       opacity: 0.6666;
       font-weight: 400;
       margin: 0 !important;
@@ -1135,7 +1137,7 @@ a {
   background-color: white;
   padding: 0;
   box-sizing: border-box;
-  border-radius: 2px;
+  border-radius: 0;
   a .mdc-list-item__graphic {
     margin-right: $unit/2;
   }
@@ -1171,7 +1173,7 @@ a {
     margin: 0;
   }
   .mdc-card__actions {
-    border-radius: 0 0 2px 2px;
+    border-radius: 0;
     min-height: auto;
     .mdc-card__action {
       font-weight: 400;
@@ -1196,7 +1198,7 @@ a {
 .mdc-card.mini,
 .mdc-card.gist,
 .mdc-card.search-result {
-  border-radius: 2px;
+  border-radius: 0;
   position: relative;
   z-index: 1;
   width: 100%;
@@ -1326,7 +1328,7 @@ a {
   padding: $unit*(2/3) $unit;
   color: white;
   font-weight: 400;
-  border-radius: 2px 2px 0 0;
+  border-radius: 0;
 }
 .mdc-card.mini {
   .panel-heading {
@@ -1345,7 +1347,7 @@ a {
   .panel-heading {
     margin: $unit/2 0 $unit;
     padding: $unit/2;
-    border-radius: 2px;
+    border-radius: 0;
   }
   .panel {
     background-color: $brand-primary-lightgrey;
@@ -1393,7 +1395,7 @@ a {
     }
   }
   #content-primary-tab-bar {
-    border-radius: 2px 2px 0 0;
+    border-radius: 0;
     .mdc-tab {
       flex: 1;
       line-height: $header-lower-height;
@@ -1407,7 +1409,7 @@ a {
     display: block;
   }
   .content-primary-info-container {
-    border-radius: 2px;
+    border-radius: 0;
     background-color: white;
   }
   .mdc-card--full-content {
@@ -1859,7 +1861,7 @@ body.shortlist {
     padding: 0 0 $unit;
     .mdc-card__media--content-secondary {
       line-height: 1;
-      border-radius: 2px;
+      border-radius: 0;
       padding: $unit/2;
     }
     .mdc-card__info--content-primary {
@@ -1937,6 +1939,9 @@ body.shortlist {
     font-size: 0.9rem;
     font-weight: 400;
   }
+}
+.mdc-typography--headline7 .mdc-typography--headline5 {
+  margin: 0;
 }
 
 // Pagination ==================================================================
@@ -2130,7 +2135,6 @@ footer,
         z-index: 500;
       }
       .mdc-button--search {
-        border-radius: 2px;
         width: 100%;
         font-size: 1.2rem;
         box-shadow: none;
@@ -2473,7 +2477,7 @@ footer.mdc-layout__footer {
     padding: 0;
     margin-bottom: 0;
     p {
-      margin: 0 0 0.8rem;
+      margin: 0 0 0.9rem;
       color: white;
     }
   }
@@ -3131,7 +3135,7 @@ form.inline-form {
 .after-textfield-action {
   float: right;
   margin-top: -10px;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   text-decoration: underline;
   cursor: pointer;
 }
@@ -3237,7 +3241,7 @@ header {
     #upper-tab-bar {
       .mdc-tab {
         margin-right: 4px;
-        background-color: $brand-secondary-blue;
+        background-color: $brand-secondary-turquoice !important;
         .mdc-tab__icon,
         .mdc-tab__text-label {
           color: white !important;
@@ -3246,7 +3250,7 @@ header {
         }
       }
       .mdc-tab:hover {
-        background-color: $brand-secondary-darkblue;
+        background-color: $brand-secondary-darkturquoice;
       }
       // .mdc-tab:last-child {
       //   margin-right: 0;
@@ -3256,9 +3260,18 @@ header {
     .mdc-top-app-bar__user .mdc-tab-bar {
       .mdc-tab {
         font-weight: $heading-font-weight;
+        .mdc-tab__text-label {
+          font-weight: $heading-light-font-weight;
+          font-size: 1.4rem;
+        }
       }
+      .mdc-tab:hover .mdc-tab__text-label,
       .mdc-tab.mdc-tab--active .mdc-tab__text-label {
         color: white !important;
+      }
+      .mdc-tab:hover .mdc-tab__content,
+      .mdc-tab.mdc-tab--active .mdc-tab__content {
+        background-color: $brand-secondary-turquoice;
       }
       // .mdc-tab:hover .mdc-tab__text-label {
       //   border-bottom-color: $brand-primary-black;
@@ -3639,7 +3652,7 @@ a {
     }
   }
   .content-primary-info-container {
-    border-radius: 2px;
+    border-radius: 0;
     background-color: white;
   }
   .mdc-card--full-content {
@@ -3848,9 +3861,10 @@ footer,
   .banner-search {
     .page-content {
       .search-form {
-        background-color: $brand-secondary-yellow;
+        background-color: white;
         h2 {
-          margin-top: 0;
+          margin: 0 0 $unit;
+          color: $brand-secondary-turquoice;
         }
       }
     }

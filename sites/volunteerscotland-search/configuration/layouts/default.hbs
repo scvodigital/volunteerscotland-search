@@ -146,9 +146,9 @@
                     buttonClasses="mdc-theme--on-secondary hide-sm hide-md"
                     imageUrl=(default @root.data.auth.photoURL false)
                     imageClasses="far fa-fw user-avatar"
-                    iconClasses=(if (if @root.data.auth.photoURL false else=true) "far fa-fw fa-user-circle" else=false)
+                    iconClasses=(if (if @root.data.auth.photoURL false else=true) "fas fa-fw fa-user-circle" else=false)
                     buttonLabel="My Volunteer Account"
-                    arrowClasses="far fa-fw fa-angle-down" ~}}
+                    arrowClasses="fas fa-fw fa-angle-down" ~}}
                   {{#each @root.context.metaData.menus.user-signed-in ~}}
                     <a class="mdc-list-item {{#if (regexMatch @root.request.url.pathname route "gi")}} mdc-list-item--activated{{/if}}" href="{{stripTrailingSlash path}}" role="menuitem">
                       {{#if icon ~}}

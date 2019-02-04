@@ -62,9 +62,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
       <p>
         Check the boxes below to receive regular email updates in areas that interest you.
       </p>
+      {{#each @root.data.all-newsletter-info}}
       <div class="mdc-form-field">
         <div class="mdc-checkbox">
-          <input type="checkbox" class="mdc-checkbox__native-control" name="newsletter-events" id="newsletter-events" />
+          <input type="checkbox" class="mdc-checkbox__native-control" name="newsletter-{{ListID}}" id="newsletter-{{ListID}}" />
           <div class="mdc-checkbox__background">
             <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
               <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
@@ -72,24 +73,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
             <div class="mdc-checkbox__mixedmark"></div>
           </div>
         </div>
-        <label for="newsletter-events">
-          For Event Volunteers: forthcoming events and related news
+        <label for="newsletter-{{ListID}}">
+          {{Name}}
         </label>
       </div>
 
-      <div class="mdc-form-field">
-        <div class="mdc-checkbox">
-          <input type="checkbox" class="mdc-checkbox__native-control" name="newsletter-scotland" id="newsletter-scotland" />
-          <div class="mdc-checkbox__background">
-            <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-              <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
-            </svg>
-            <div class="mdc-checkbox__mixedmark"></div>
-          </div>
-        </div>
-        <label for="newsletter-scotland">For Scotland's Volunteers: latest news, views and advice</label>
-      </div>
-
+    {{/each}}
+</div>
       <div id="form-section-sign-up-buttons">
         <button class="mdc-button mdc-button--raised" type="submit" id="sign-up-submit">
           Sign up
@@ -121,19 +111,21 @@ document.addEventListener("DOMContentLoaded", function(event) {
   var $passwordConfirm = $('#sign-up-password-confirm');
   var $register = $('#sign-up-submit');
   var $loader = $('#sign-up-loader');
-  var newsletterScotland = $('#newsletter-scotland').val();
-  var newsletterEvents = $('#newsletter-events').val();
 
   function updateNewsletterSettings() {
-    if (newsletterEvents || newsletterScotland) {
-      $.ajax({
-        type: "POST",
-        url: "/update-newsletter-settings",
-        data: {
-          "newsletter-events": newsletterEvents,
-          "newsletter-scotland": newsletterScotland
+    var formArray = $form.serializeArray();
+
+    var allNewsletters = {{{stringify @root.data.all-newsletter-info}}} ;
+    for (var x = 0; x < allNewsletters.length; x++) {
+      var newsletterIdentifier = "newsletter-" + allNewsletters[x].ListID;
+      for (var y = 0; y < formArray.length; y++) {
+        if ((newsletterIdentifier === formArray[y].name) && (formArray[y].value === "on")){
+          $.ajax({
+            type: "POST",
+            url: "/add-newsletter-subscription/" + allNewsletters[x].ListID,
+          })
         }
-      })
+      }
     }
   }
 
@@ -164,25 +156,26 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     volunteerscotland.setCookie('gi_token', '');
     volunteerscotland.setCookie('gi_cookie', '');
-    volunteerscotland.app.auth().createUserWithEmailAndPassword(email, password).then(function (user) {
-      if (user) {
-        console.log('Registered user:', user);
-        user.user.getIdTokenResult().then(function (idTokenResult) {
-          console.log('ID Token Result', idTokenResult);
-          volunteerscotland.setCookie('gi_token', idTokenResult.token, 7);
-          updateNewsletterSettings();
-          window.location.href = '/';
-        })
-      } else {
-        $message.text('Something went wrong, signed up but no user?').show();
-        $loader.css('display', 'none');
-        document.body.scrollTop = document.documentElement.scrollTop = 0;
-      }
-    }).catch(function (err) {
-      $message.text(err.message).show();
-      $loader.css('display', 'none');
-      document.body.scrollTop = document.documentElement.scrollTop = 0;
-    });
+    updateNewsletterSettings();
+//    volunteerscotland.app.auth().createUserWithEmailAndPassword(email, password).then(function (user) {
+//      if (user) {
+//        console.log('Registered user:', user);
+//        user.user.getIdTokenResult().then(function (idTokenResult) {
+//          console.log('ID Token Result', idTokenResult);
+//          volunteerscotland.setCookie('gi_token', idTokenResult.token, 7);
+//          updateNewsletterSettings();
+//          window.location.href = '/';
+//        })
+//      } else {
+//        $message.text('Something went wrong, signed up but no user?').show();
+//        $loader.css('display', 'none');
+//        document.body.scrollTop = document.documentElement.scrollTop = 0;
+//      }
+//    }).catch(function (err) {
+//      $message.text(err.message).show();
+//      $loader.css('display', 'none');
+//      document.body.scrollTop = document.documentElement.scrollTop = 0;
+//    });
   });
 })
 </script>
