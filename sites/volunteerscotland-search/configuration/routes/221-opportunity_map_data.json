@@ -2,11 +2,7 @@
   "name": "opportunity_map_data",
   "pattern": "/map_data",
   "metaData": {
-    "sidebarButton": {
-      "icon": "search",
-      "tooltip": "Search",
-      "classes": "hide-md hide-lg"
-    }
+    "hideSearch": true
   },
   "defaultParams": {
     "context": "results"

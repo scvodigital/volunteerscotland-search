@@ -2,6 +2,7 @@
   "name": "_default",
   "pattern": "/*path",
   "metaData": {
+    "hideSearch": true,
     "title": "Volunteer Scotland Search"
   },
   "tasks": [

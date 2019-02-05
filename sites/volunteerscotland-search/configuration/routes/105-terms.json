@@ -2,6 +2,7 @@
   "name": "terms",
   "pattern": "/terms",
   "metaData": {
+    "hideSearch": true,
     "title": "Terms and conditions – Volunteer Scotland"
   },
   "tasks": [
