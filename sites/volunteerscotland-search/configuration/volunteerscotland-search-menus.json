@@ -49,13 +49,13 @@
       "route": "^/$"
     },
     {
-      "label": "Favourites",
+      "label": "My favourites",
       "icon": "star",
       "path": "/favourites",
       "route": "^/favourites"
     },
     {
-      "label": "Notes",
+      "label": "My notes",
       "icon": "edit",
       "path": "/notes",
       "route": "^/notes"
@@ -67,13 +67,13 @@
       "route": "^/registered-interest"
     },
     {
-      "label": "Email alerts",
+      "label": "My saved searches",
       "icon": "search-plus",
       "path": "/searches",
       "route": "^/searches"
     },
     {
-      "label": "Account",
+      "label": "My account",
       "icon": "cog",
       "path": "/account",
       "route": "^/account"
