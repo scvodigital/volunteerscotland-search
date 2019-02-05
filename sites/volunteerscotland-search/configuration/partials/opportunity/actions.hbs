@@ -9,9 +9,11 @@
   </div>
   <div class="mdc-card__action-icons pull-right">
     <div id="action-chips" class="mdc-chip-set mdc-chip-set--filter">
+      {{#compare @root.route.name "!==" "home" ~}}
       {{#if opportunity_contact_email ~}}
-        {{> register_interest_faux_chip id=Id}}
+      {{> register_interest_faux_chip id=Id}}
       {{/if ~}}
+      {{/compare ~}}
       {{> favourite_chip id=Id}}
     </div>
   </div>

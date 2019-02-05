@@ -8,10 +8,6 @@
       <div class="mdc-card__info--content-primary-secondary mdc-typography--body1">
         <a href="/organisation/{{organisation_slug}}{{@root.request.url.search}}">{{organisation_name}}</a>
       </div>
-      <div class="mdc-card__info--content-primary-details mdc-typography--caption">
-        <span class="far fa-calendar-alt fa-fw" title="Closing date"></span>
-        {{{momentFormat (moment closing_date "x") "Do MMMM YYYY"}}}
-      </div>
     </div>
   </div>
   {{> opportunity_actions slug=slug Id=Id}}
