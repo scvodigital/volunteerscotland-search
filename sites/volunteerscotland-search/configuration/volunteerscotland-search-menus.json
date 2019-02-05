@@ -69,8 +69,8 @@
     {
       "label": "My saved searches",
       "icon": "search-plus",
-      "path": "/searches",
-      "route": "^/searches"
+      "path": "/searches-subscriptions",
+      "route": "^/searches-subscriptions"
     },
     {
       "label": "My account",
