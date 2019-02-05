@@ -91,7 +91,7 @@ body {
 .mdc-top-app-bar {
   background-color: white;
   z-index: 5;
-  position: relative;
+  position: static;
   display: block;
 }
 h1,
@@ -886,7 +886,7 @@ a:hover {
 }
 .mdc-chip {
   margin: 0;
-  font-size: 1rem;
+  font-size: .9rem;
   font-weight: 400;
   .mdc-chip__icon.mdc-chip__icon--leading {
     display: inline-block;
@@ -1216,14 +1216,15 @@ a {
   width: 100%;
   background-color: $brand-primary-lightgrey;
   margin-bottom: $unit*1.5;
-  // box-shadow: none;
   .mdc-card__info--content-primary-row {
     padding: $unit/2;
   }
-  .search-result-article__snippet,
-  .search-result-article__notes,
   .mdc-card__info--content-primary-row {
-    flex: 1 0 auto;
+    flex: 0 0 auto;
+  }
+  .search-result-article__snippet,
+  .search-result-article__notes {
+    flex: 1 1  auto;
   }
   .mdc-card__info--content-secondary-title {
     padding: $unit/2;
