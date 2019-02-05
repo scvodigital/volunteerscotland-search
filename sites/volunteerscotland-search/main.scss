@@ -2890,7 +2890,7 @@ footer.mdc-layout__footer {
   }
   .container-content {
     margin: 0;
-    padding: 0 !important;
+    padding: 0;
     box-sizing: border-box;
     .settings,
     .content-shortlist .pull-right {
@@ -2898,10 +2898,10 @@ footer.mdc-layout__footer {
     }
   }
   .mdc-card.full .mdc-card--full-content .key-info-extra {
-    padding: $unit/2 $unit/2 0;
+    padding: $unit/2 $unit/2 0 !important;
   }
   .mdc-card.full .mdc-card--full-content .detailed-info {
-    padding: $unit/2;
+    padding: $unit/2 !important;
   }
   .home-browse {
     .mdc-layout-grid__inner {
