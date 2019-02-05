@@ -47,13 +47,6 @@
                       Keywords: <strong>{{{keywords}}}</strong>
                     {{/if ~}}
 
-                    {{#if regions ~}}
-                      {{inflect (length (arrayify regions)) "Region" "Regions"}}:
-                      {{#each (arrayify regions) ~}}
-                        <strong>{{{getProperty @root.data.termsMaps.regions.slugsMap (concat this ".term")}}}{{#unless @last}}, {{/unless}}</strong>
-                      {{/each ~}}
-                    {{/if ~}}
-
                     {{#if work_types ~}}
                       {{inflect (length (arrayify work_types)) "Activity" "Activities"}}:
                       {{#each (arrayify work_types) ~}}
@@ -62,7 +55,7 @@
                     {{/if ~}}
 
                     {{#if volunteersearch_types ~}}
-                      {{inflect (length (arrayify client_groups)) "Type" "Types"}}:
+                      {{inflect (length (arrayify client_groups)) "Specialist role" "Specialist roles"}}:
                       {{#each (arrayify volunteersearch_types) ~}}
                         <strong>{{{getProperty @root.data.termsMaps.volunteersearch_types.slugsMap (concat this ".term")}}}{{#unless @last}}, {{/unless}}</strong>
                       {{/each ~}}
@@ -76,14 +69,14 @@
                     {{/if ~}}
 
                     {{#if services ~}}
-                      {{inflect (length (arrayify services)) "Service" "Themes"}}:
+                      {{inflect (length (arrayify services)) "Service" "Services"}}:
                       {{#each (arrayify services)}}
                         <strong>{{{getProperty @root.data.termsMaps.services.slugsMap (concat this ".term")}}}{{#unless @last}}, {{/unless}}</strong>
                       {{/each ~}}
                     {{/if ~}}
 
                     {{#if age_groups ~}}
-                      {{inflect (length (arrayify age_groups)) "Volunteer Age Group" "Volunteer Age Groups"}}:
+                      {{inflect (length (arrayify age_groups)) "Volunteer age group" "Volunteer age groups"}}:
                       {{#each (arrayify age_groups)}}
                         <strong>{{{getProperty @root.data.termsMaps.age_groups.slugsMap (concat this ".term")}}}{{#unless @last}}, {{/unless}}</strong>
                       {{/each ~}}
@@ -102,7 +95,7 @@
                       {{else}}
                         within
                       {{/ifAny ~}}
-                      <strong>{{round (multiply distance 0.62137)}}</strong>
+                      <strong>{{round distance}}</strong>
                       miles of
                       <strong>{{{location}}}</strong>
                     {{/ifAll ~}}
