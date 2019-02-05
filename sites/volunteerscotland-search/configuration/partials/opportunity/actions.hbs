@@ -16,5 +16,8 @@
       {{/compare ~}}
       {{> favourite_chip id=Id}}
     </div>
+    {{#compare action "===" "remove" ~}}
+    <a href="{{{@root.request.fullUrl}}}" onclick="sqlRemoveInterest('{{Id}}')" class="mdc-icon-button mdc-card__action mdc-card__action--icon" title="Remove from this list"><span class="far fa-ban"></span></a>
+    {{/compare ~}}
   </div>
 </div>

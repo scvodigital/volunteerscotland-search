@@ -112,7 +112,7 @@
   {{#if (contains (map @root.data.registeredInterest.items.[0] (getProp "value")) Id) ~}}
   {{#ifAny opportunity_contact_first_name opportunity_contact_last_name organisation_website ~}}
   <div class="mdc-card__info--content-primary">
-    <h4 class="mdc-typography--headline6">Contact</h4>
+    <h4 class="mdc-typography--headline6 t-margin-full">Contact</h4>
     {{#ifAny opportunity_contact_first_name opportunity_contact_last_name ~}}
     <div class="mdc-typography--body1">
       <strong>Name: </strong> {{{opportunity_contact_first_name}}} {{{opportunity_contact_last_name}}}
