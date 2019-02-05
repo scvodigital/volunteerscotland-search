@@ -1,6 +1,5 @@
 {
   "name": "opportunity",
-  "debug" : true,
   "pattern": "/opportunity/:slug",
   "metaData": {
     "title": "Volunteer Scotland Search",
@@ -17,7 +16,7 @@
     "context.metaData.commonTasks.authNotRequired",
     "context.metaData.commonTasks.registeredInterestData",
     "context.metaData.commonTasks.favouritesData",
-    "context.metaData.commonTasks.notesData",
+    "context.metaData.commonTasks.profileInfoData",
     {
       "name": "primaryResponse",
       "taskModule": "elasticsearch",

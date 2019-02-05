@@ -1,7 +1,6 @@
 {
   "name": "notes",
   "pattern": "/notes",
-  "debug" : true,
   "metaData": {
     "title": "Notes - Volunteer Scotland Search",
     "sidebarButton": {
@@ -15,7 +14,7 @@
   },
   "tasks": [
     "context.metaData.commonTasks.authRequired",
-    "context.metaData.commonTasks.notesData",
+    "context.metaData.commonTasks.profileInfoData",
     "context.metaData.commonTasks.favouritesData",
 
     {
@@ -37,7 +36,6 @@
       },
       "renderer": "handlebars"
     },
-    "context.metaData.commonTasks.opportunitySupplimentary",
     {
       "name": "destination",
       "taskModule": "renderLayout",
@@ -55,7 +53,7 @@
             "parts": {
               "head": ">context.metaData.handlebars.templates.pages_page-head-tags",
               "body": ">context.metaData.handlebars.templates.opportunities_notes",
-              "sidebar": ">context.metaData.handlebars.templates.opportunities_search-form"
+              "sidebar": ">context.metaData.handlebars.templates.account_sidebar"
 
             },
             "contentType": "text/html"

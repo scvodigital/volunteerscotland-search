@@ -1,14 +1,14 @@
 <div id="detailed-results-container" class="container-content content-saved-searches">
   {{#unless @root.request.params.query.newuser}}
   {{#compare (length @root.data.searches.items.[0]) ">" 0 ~}}
-  {{/compare}}
-    <div class="settings mdc-typography--body1">
-      <span class="settings-heading">Search email frequency</span>
-      {{> email_frequency}}
-    </div>
-    <h1 class="mdc-typography--headline3 v-margin-full">
-      Saved searches &amp; email
-    </h1>
+  <div class="settings mdc-typography--body1">
+    <span class="settings-heading">Search email frequency</span>
+    {{> email_frequency}}
+  </div>
+  {{/compare ~}}
+  <h1 class="mdc-typography--headline4 v-margin-full">
+    My saved searches
+  </h1>
   {{#compare (length @root.data.searches.items.[0]) ">" 0 ~}}
   <ul class="mdc-list mdc-list--two-line mdc-list--avatar-list mdc-elevation--z3">
     <li class="mdc-list-item mdc-list-item--header">
@@ -47,13 +47,6 @@
                       Keywords: <strong>{{{keywords}}}</strong>
                     {{/if ~}}
 
-                    {{#if regions ~}}
-                      {{inflect (length (arrayify regions)) "Region" "Regions"}}:
-                      {{#each (arrayify regions) ~}}
-                        <strong>{{{getProperty @root.data.termsMaps.regions.slugsMap (concat this ".term")}}}{{#unless @last}}, {{/unless}}</strong>
-                      {{/each ~}}
-                    {{/if ~}}
-
                     {{#if work_types ~}}
                       {{inflect (length (arrayify work_types)) "Activity" "Activities"}}:
                       {{#each (arrayify work_types) ~}}
@@ -62,12 +55,11 @@
                     {{/if ~}}
 
                     {{#if volunteersearch_types ~}}
-                      {{inflect (length (arrayify client_groups)) "Type" "Types"}}:
+                      {{inflect (length (arrayify client_groups)) "Specialist role" "Specialist roles"}}:
                       {{#each (arrayify volunteersearch_types) ~}}
                         <strong>{{{getProperty @root.data.termsMaps.volunteersearch_types.slugsMap (concat this ".term")}}}{{#unless @last}}, {{/unless}}</strong>
                       {{/each ~}}
                     {{/if ~}}
-
 
                     {{#if client_groups ~}}
                       {{inflect (length (arrayify client_groups)) "Theme" "Themes"}}:
@@ -77,14 +69,14 @@
                     {{/if ~}}
 
                     {{#if services ~}}
-                      {{inflect (length (arrayify services)) "Service" "Themes"}}:
+                      {{inflect (length (arrayify services)) "Service" "Services"}}:
                       {{#each (arrayify services)}}
                         <strong>{{{getProperty @root.data.termsMaps.services.slugsMap (concat this ".term")}}}{{#unless @last}}, {{/unless}}</strong>
                       {{/each ~}}
                     {{/if ~}}
 
                     {{#if age_groups ~}}
-                      {{inflect (length (arrayify age_groups)) "Volunteer Age Group" "Volunteer Age Groups"}}:
+                      {{inflect (length (arrayify age_groups)) "Volunteer age group" "Volunteer age groups"}}:
                       {{#each (arrayify age_groups)}}
                         <strong>{{{getProperty @root.data.termsMaps.age_groups.slugsMap (concat this ".term")}}}{{#unless @last}}, {{/unless}}</strong>
                       {{/each ~}}
@@ -103,7 +95,7 @@
                       {{else}}
                         within
                       {{/ifAny ~}}
-                      <strong>{{round (multiply distance 0.62137)}}</strong>
+                      <strong>{{round distance}}</strong>
                       miles of
                       <strong>{{{location}}}</strong>
                     {{/ifAll ~}}
@@ -153,67 +145,4 @@
   {{else}}
     <h2 class="mdc-typography--headline5 v-margin-full">Click the buttons below to receive regular email updates in areas that interest you.</h2>
   {{/unless}}
-  <div class="settings mdc-typography--body1">
-    <span class="settings-heading">Newsletters are sent out on a weekly basis</span>
-  </div>
-  <h1 class="mdc-typography--headline3 v-margin-full">
-    Newsletters
-  </h1>
-    <ul class="mdc-list mdc-list--two-line mdc-list--avatar-list mdc-elevation--z3">
-      <li class="mdc-list-item mdc-list-item--header">
-        <span class="mdc-list-item__graphic far" aria-hidden="true"></span>
-        <div class="mdc-layout-grid">
-          <div class="mdc-layout-grid__inner">
-            <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone saved-search">
-            <span class="mdc-list-item__text">
-              <strong>Newsletter</strong>
-            </span>
-            </div>
-            <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-2-desktop mdc-layout-grid__cell--span-2-tablet mdc-layout-grid__cell--span-2-phone align-centre">
-            <span class="mdc-list-item__text">
-              <strong>Email</strong>
-            </span>
-            </div>
-            <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-2-desktop mdc-layout-grid__cell--span-2-tablet mdc-layout-grid__cell--span-2-phone align-centre">
-            </div>
-          </div>
-        </div>
-      </li>
-
-      {{#each @root.data.all-newsletter-info}}
-        <li class="mdc-list-item mdc-ripple-upgraded">
-          <span class="mdc-list-item__graphic far fa-newspaper fa-2x" aria-hidden="true"></span>
-          <div class="mdc-layout-grid">
-            <div class="mdc-layout-grid__inner">
-              <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone saved-search">
-              <span class="mdc-list-item__text">
-                <p>{{{Name}}}</p>
-              </span>
-              </div>
-              <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-2-desktop mdc-layout-grid__cell--span-2-tablet mdc-layout-grid__cell--span-2-phone align-centre">
-                <div class="mdc-chip-set mdc-chip-set--filter">
-                  {{#> ajax_chip
-                    onUrl=(concat "/add-newsletter-subscription/" ListID)
-                    offUrl=(concat "/remove-newsletter-subscription/" ListID)
-                    onText="Email"
-                    offText="Email"
-                    onMethod="POST"
-                    offMethod="POST"
-                    iconClasses="far fa-envelope"
-                    on=(contains @root.data.user-newsletter-subscriptions ListID)
-                  }}
-                    {}
-                  {{/ajax_chip}}
-                </div>
-              </div>
-              <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-2-desktop mdc-layout-grid__cell--span-2-tablet mdc-layout-grid__cell--span-2-phone">
-              </div>
-            </div>
-          </div>
-        </li>
-        {{#unless @last}}
-          <li class="mdc-list-divider" role="separator"></li>
-        {{/unless ~}}
-      {{/each ~}}
-    </ul>
 </div>

@@ -28,10 +28,10 @@
                 <!-- <div class="after-textfield-action geo-lookup">Find me</div> -->
               </div>
               <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-3-tablet mdc-layout-grid__cell--span-4-phone">
-                <div class="mdc-layout-grid" style="position:relative;top:33%;">
+                <div class="mdc-layout-grid" style="position:relative;top:.25rem;">
                   <div class="mdc-layout-grid__inner">
                     <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-9-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
-                      <div class="mdc-floating-label" style="left:0;top:7px;">
+                      <div class="mdc-floating-label" style="left:.5rem;top:1.1rem;color:rgba(0, 0, 0, 0.6);">
                         Within
                       </div>
                     </div>
@@ -55,7 +55,9 @@
                       </div>
                     </div>
                     <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone">
-                      <span id="slider-distance-display">{{default @root.request.params.query.distance 10}}</span> miles
+                      <div style="line-height: 48px;">
+                        <span id="slider-distance-display">{{default @root.request.params.query.distance 10}}</span> miles
+                      </div>
                     </div>
                     <input type="hidden" name="distance" id="slider-distance-value" value="{{default @root.request.params.query.distance 10}}">
                   </div>
@@ -144,7 +146,7 @@
         </span>
       </span>
       <span class="mdc-typography--body2">
-        By client group or activity
+        By theme or activity
       </span>
     </h3>
     <div id="home-browse-collapse" style="display: none;">
@@ -156,7 +158,7 @@
     <div class="mdc-layout-grid home-heading">
       <div class="mdc-layout-grid__inner">
         <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
-          <h2 class="mdc-typography--headline5">
+          <h2 class="mdc-typography--headline7">
             Your favourites
           </h2>
         </div>
@@ -186,14 +188,14 @@
       <div class="mdc-layout-grid__inner">
         <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
           {{#compare @root.data.opportunitySupplimentary.home_latest_personalised.hits.total ">" 0}}
-            <h2 class="mdc-typography--headline5">
+            <h2 class="mdc-typography--headline7">
               Your latest opportunities&ensp;
               <span class="mdc-typography--body1">
                 <a href="/searches">Your searches</a>
               </span>
             </h2>
           {{else}}
-            <div class="mdc-typography--headline5">
+            <div class="mdc-typography--headline7">
               Latest opportunities &ensp;
               <span class="mdc-typography--body1">
                 <a href="/search?sort=newest&page=2">Find more</a>
@@ -234,7 +236,7 @@
       <div class="mdc-layout-grid home-heading">
         <div class="mdc-layout-grid__inner">
           <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
-            <div class="mdc-typography--headline5">
+            <div class="mdc-typography--headline7">
               Recently viewed&ensp;
               <span class="mdc-typography--body1">
                 <a href="/search?sort=newest&page=1">Find more</a>

@@ -3,7 +3,7 @@
   "_source": [
     "Id",
     "slug",
-    "milo_ref",
+    "description",
     "available_from",
     "client_group",
     "client_group_slugs",

@@ -1,7 +1,7 @@
 {
   "name": "add-to-registered-interest",
+  "debug": true,
   "pattern": "/add-to-registered-interest",
-  "debug" : true,
   "acceptedVerbs": "POST",
   "metaData" : {
     "emailTypes" : ["register-interest","user-confirmation"]
@@ -49,7 +49,7 @@
           null
         ]}
     },
-    "context.metaData.commonTasks.storeProfileInfo",
+    "context.metaData.commonTasks.storeProfile",
     {
       "name": "reroute-all-save",
       "taskModule": "reroute",

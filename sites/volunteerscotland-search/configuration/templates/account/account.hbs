@@ -20,8 +20,8 @@
 {{/inline}}
 
 <div id="detailed-results-container" class="container-content settings">
-  <h1 class="mdc-typography--headline3 v-margin-full">
-    Account
+  <h1 class="mdc-typography--headline4 v-margin-full">
+    My account
   </h1>
 
   <section class="settings-section content-settings-email">
@@ -40,7 +40,7 @@
             <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
               <input id="first_name" name="first_name"
               {{>form_validation_attributes @root.context.metaData.accountInfoValidation.first_name}}class="mdc-text-field__input mdc-text-field--fullwidth"
-              value="{{@root.data.profileInfo.first_name}}">
+              value="{{@root.data.profileInfo.profile.first_name}}">
               <label class="mdc-floating-label" for="first_name">
                 First name
               </label>
@@ -50,7 +50,7 @@
             <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
               <input id="last_name" name="last_name"
               {{>form_validation_attributes @root.context.metaData.accountInfoValidation.last_name}} class="mdc-text-field__input mdc-text-field--fullwidth"
-              value="{{@root.data.profileInfo.last_name}}">
+              value="{{@root.data.profileInfo.profile.last_name}}">
               <label class="mdc-floating-label" for="last_name">
                 Last name
               </label>
@@ -62,7 +62,7 @@
             <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
               <input id="date_of_birth" name="date_of_birth"
               {{>form_validation_attributes @root.context.metaData.accountInfoValidation.date_of_birth}} class="mdc-text-field__input mdc-text-field--fullwidth"
-              value="{{@root.data.profileInfo.date_of_birth}}">
+              value="{{@root.data.profileInfo.profile.date_of_birth}}">
               <label class="mdc-floating-label" for="date_of_birth">
                 Date of birth
               </label>
@@ -72,7 +72,7 @@
             <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
               <input id="location_address" name="location_address"
               {{>form_validation_attributes @root.context.metaData.accountInfoValidation.location_address}} class="mdc-text-field__input mdc-text-field--fullwidth"
-              value="{{@root.data.profileInfo.location_address}}">
+              value="{{@root.data.profileInfo.profile.location_address}}">
               <label class="mdc-floating-label" for="location_address">
                 Address
               </label>
@@ -85,7 +85,7 @@
               <input id="phone" name="phone"
               {{>form_validation_attributes @root.context.metaData.accountInfoValidation.phone}}
               class="mdc-text-field__input mdc-text-field--fullwidth"
-              value="{{@root.data.profileInfo.phone}}">
+              value="{{@root.data.profileInfo.profile.phone}}">
               <label class="mdc-floating-label" for="phone">
                 Phone number
               </label>
@@ -95,7 +95,7 @@
             <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
               <input id="location_city" name="location_city"
               {{>form_validation_attributes @root.context.metaData.accountInfoValidation.location_city}} class="mdc-text-field__input mdc-text-field--fullwidth"
-              value="{{@root.data.profileInfo.location_city}}">
+              value="{{@root.data.profileInfo.profile.location_city}}">
               <label class="mdc-floating-label" for="location_city">
                 Town/city
               </label>
@@ -107,7 +107,7 @@
             <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
               <input id="email" name="email" class="mdc-text-field__input mdc-text-field--fullwidth"
               {{>form_validation_attributes @root.context.metaData.accountInfoValidation.email}}
-              value="{{@root.data.profileInfo.email}}">
+              value="{{@root.data.profileInfo.profile.email}}">
               <label class="mdc-floating-label" for="email">
                 Email address
               </label>
@@ -117,7 +117,7 @@
             <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
               <input id="location_postcode" name="location_postcode"
               {{>form_validation_attributes @root.context.metaData.accountInfoValidation.location_postcode}} class="mdc-text-field__input mdc-text-field--fullwidth"
-              value="{{@root.data.profileInfo.location_postcode}}">
+              value="{{@root.data.profileInfo.profile.location_postcode}}">
               <label class="mdc-floating-label" for="location_postcode">
                 Postcode
               </label>
@@ -157,16 +157,36 @@
           <h3 class="mdc-typography--headline6 v-margin-full">
             Unsubscribe
           </h3>
+
           {{#ifAny
             (compare (length (filter @root.data.searches.items.[0] "partitionActive" "===" 1)) ">" 0)
             @root.data.favourites.items.[0].[0].active
-            @root.data.newsletterDataDummy.[0].subscribed
-            @root.data.newsletterDataDummy.[1].subscribed
+            (compare (length @root.data.user-newsletter-subscriptions) ">" 0)
           }}
+
+            {{#ifAny
+              (compare (length (filter @root.data.searches.items.[0] "partitionActive" "===" 1)) ">" 0)
+              @root.data.favourites.items.[0].[0].active
+            }}
+
+          <p>
             <a href="/stop-all-emails" class="mdc-button mdc-button--raised mdc-button--fullwidth">
-              <span class="far fa-envelope mdc-list-item__graphic" aria-hidden="true"></span>
-              Stop all emails
+            <span class="far fa-envelope mdc-list-item__graphic" aria-hidden="true"></span>
+            Stop all email alerts
             </a>
+            {{/ifAny}}
+          </p>
+          <p>
+            {{#ifAny
+              (compare (length @root.data.user-newsletter-subscriptions) ">" 0)
+            }}
+            <a onclick="stopAllNewsletters(event)" class="nl-link-block mdc-button mdc-button--raised mdc-button--fullwidth">
+              <span class="far fa-envelope mdc-list-item__graphic" aria-hidden="true"></span>
+              <span>Stop all newsletters</span>
+            </a>
+            {{/ifAny}}
+          </p>
+
           {{else}}
             You currently have no subscriptions.
           {{/ifAny}}
@@ -179,13 +199,34 @@
         {{#ifAny
           (compare (length (filter @root.data.searches.items.[0] "partitionActive" "===" 1)) ">" 0)
           @root.data.favourites.items.[0].[0].active
+          (compare (length @root.data.user-newsletter-subscriptions) ">" 0)
         }}
-        <a href="/stop-all-emails" class="mdc-button mdc-button--raised mdc-button--fullwidth">
-          <span class="far fa-envelope mdc-list-item__graphic" aria-hidden="true"></span>
-          Stop all emails
-        </a>
+
+          {{#ifAny
+            (compare (length (filter @root.data.searches.items.[0] "partitionActive" "===" 1)) ">" 0)
+            @root.data.favourites.items.[0].[0].active
+          }}
+
+          <p>
+            <a href="/stop-all-emails" class="mdc-button mdc-button--raised mdc-button--fullwidth">
+              <span class="far fa-envelope mdc-list-item__graphic" aria-hidden="true"></span>
+              Stop all email alerts
+            </a>
+          {{/ifAny}}
+        </p>
+          <p>
+            {{#ifAny
+              (compare (length @root.data.user-newsletter-subscriptions) ">" 0)
+            }}
+              <a onclick="stopAllNewsletters(event)" class="mdc-button nl-link-block mdc-button--raised mdc-button--fullwidth">
+                <span class="far fa-envelope mdc-list-item__graphic" aria-hidden="true"></span>
+                <span>Stop all newsletters</span>
+              </a>
+            {{/ifAny}}
+          </p>
+
         {{else}}
-        You currently have no subscriptions.
+          You currently have no subscriptions.
         {{/ifAny}}
       </div>
     </div>
@@ -195,7 +236,7 @@
 
   <section class="settings-section content-settings-account">
     <h2 class="mdc-typography--headline5">
-      Settings
+      Account settings
     </h2>
 
     <div class="mdc-layout-grid">
@@ -297,7 +338,7 @@ data-mdc-auto-init="MDCDialog">
       <li>Fully remove your My Volunteer account from Volunteer Scotland Search</li>
     </ul>
     <p>
-      If you only want to stop your email alerts, please see the options on <a href="/searches">searches &amp; email</a>.
+      If you only want to stop your email alerts, please see the options on <a href="/searches-subscriptions">searches &amp; email</a>.
     </p>
   </section>
   <footer class="mdc-dialog__footer">

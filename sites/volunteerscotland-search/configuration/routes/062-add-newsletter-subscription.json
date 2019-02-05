@@ -1,7 +1,6 @@
 {
   "name": "add-newsletter-subscription",
   "pattern": "/add-newsletter-subscription/:list_id",
-  "debug" : true,
   "acceptedVerbs": "POST",
   "defaultParams": {
     "context": "results"

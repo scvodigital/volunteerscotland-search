@@ -2,11 +2,27 @@
 <script>
 
 
+  function stopAllNewsletters(event) {
+    var redirectDone = false;
+    event.preventDefault();
+    // {{@root.data.user-newsletter-subscriptions}}
+    var newsletters = {{{stringify @root.data.user-newsletter-subscriptions}}};
+    for (var x = 0; x < newsletters.length; x++) {
+      $.ajax({
+        type: "POST",
+        url: "/remove-newsletter-subscription/" + newsletters[x],
+      })
+    }
+    $( ".nl-link-block" ).text("Unsubscribed");
+  }
+
   function exportUserData() {
     var dataUrl = 'data:application/json;base64,{{{btoa @root.data.export_user_data}}}';
     download(dataUrl, 'user-export.json', 'application/json');
   };
   $(document).ready(function() {
+
+
     var $changePassword = $('#change-password');
     var $password1 = $('#change-password-password');
     var $password2 = $('#change-password-confirm');

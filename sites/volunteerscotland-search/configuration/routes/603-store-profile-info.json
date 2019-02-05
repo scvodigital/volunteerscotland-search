@@ -8,7 +8,7 @@
   },
   "tasks": [
     "context.metaData.commonTasks.authRequired",
-    "context.metaData.commonTasks.storeProfileInfo",
+    "context.metaData.commonTasks.storeProfile",
     {
       "name": "destination",
       "taskModule": "render",

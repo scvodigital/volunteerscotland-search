@@ -161,7 +161,7 @@
           </script>
           {{#if (itemAt @root.data.searches.items.[0] (indexOf (map @root.data.searches.items.[0] (getProp 'querystring')) this)) ~}}
             {{#with (itemAt @root.data.searches.items.[0] (indexOf (map @root.data.searches.items.[0] (getProp 'querystring')) this))}}
-              <h3 class="mdc-typography--headline6">
+              <h3 class="">
                 Your search&ensp;
                 <span class="mdc-typography--body1">
                   <a name="#" data-dialog-target="#edit-search-dialog" style="cursor:pointer;">{{{partition}}}</a>
