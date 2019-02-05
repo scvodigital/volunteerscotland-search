@@ -1,40 +1,32 @@
 <div class="table-responsive">
   <table class="table table-condensed">
     <thead>
-    <tr>
-      <th></th>
-      <th style="text-align:center;font-weight:bold;">AM</th>
-      <th style="text-align:center;font-weight:bold;">PM</th>
-      <th style="text-align:center;font-weight:bold;">Eve</th>
-    </tr>
+      <tr>
+        <th></th>
+        <th style="text-align:center;font-weight:normal;">AM</th>
+        <th style="text-align:center;font-weight:normal;">PM</th>
+        <th style="text-align:center;font-weight:normal;">Eve</th>
+      </tr>
     </thead>
     <tbody>
-
-    {{#each (split "monday,tuesday,wednesday,thursday,friday,saturday,sunday" ",")}}
+      {{#each (split "monday,tuesday,wednesday,thursday,friday,saturday,sunday" ",")}}
       <tr>
-        <th><p>{{capitalize this}}</p></th>
-
+        <th style="text-align:left;font-weight:normal;"><p>{{capitalize this}}</p></th>
         {{#each (split "morning,afternoon,evening" ",")}}
-          <td>
-            <div class="mdc-checkbox">
-              <input type="checkbox" name="availability[]"
-                     class="mdc-checkbox__native-control" value="{{concat ../this "-" this}}"
-                     {{#if (contains @root.request.params.query.availability (concat ../this "-" this))}}checked{{/if}}>
-              <div class="mdc-checkbox__background">
-                <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-                  <path class="mdc-checkbox__checkmark__path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
-                </svg>
-                <div class="mdc-checkbox__mixedmark"></div>
-              </div>
+        <td>
+          <div class="mdc-checkbox">
+            <input type="checkbox" name="availability[]" class="mdc-checkbox__native-control" value="{{concat ../this "-" this}}"{{#if (contains @root.request.params.query.availability (concat ../this "-" this))}} checked{{/if}}>
+            <div class="mdc-checkbox__background">
+              <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                <path class="mdc-checkbox__checkmark__path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
+              </svg>
+              <div class="mdc-checkbox__mixedmark"></div>
             </div>
-          </td>
+          </div>
+        </td>
         {{/each}}
       </tr>
-    {{/each}}
-
+      {{/each}}
     </tbody>
   </table>
 </div>
-
-
-
