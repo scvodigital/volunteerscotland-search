@@ -3,8 +3,7 @@
 
 $brand-primary-black: rgb(64, 64, 65);
 $brand-primary-grey: rgb(218, 211, 204);
-$brand-primary-lightgrey: rgb(242, 238, 236);
-$brand-background: #f5f5f5;
+$brand-primary-lightgrey: #f5f5f5;
 
 $brand-secondary-purple: rgb(124, 65, 153);
 $brand-secondary-darkpurple: rgb(95, 50, 117);
@@ -24,13 +23,13 @@ $brand-secondary-darkyellow: rgb(204, 178, 0);
 $brand-secondary-green: rgb(56, 124, 44);
 $brand-secondary-darkgreen: rgb(39, 86, 31);
 
-$brand-secondary-turquoice: rgb(0, 160, 175);
-$brand-secondary-darkturquoice: rgb(0, 113, 124);
+$brand-secondary-turquoise: rgb(0, 160, 175);
+$brand-secondary-darkturquoise: rgb(0, 113, 124);
 
 $brand-secondary-blue: rgb(0, 157, 220);
 $brand-secondary-darkblue: rgb(0, 121, 193);
 
-$mdc-theme-primary: $brand-secondary-turquoice;
+$mdc-theme-primary: $brand-secondary-turquoise;
 $mdc-theme-secondary: $brand-secondary-green;
 
 $unit: 1rem;
@@ -278,7 +277,7 @@ header {
         // border-bottom-color: rgba(255, 255, 255, 0.75);
       }
       .mdc-tab.mdc-tab--active .mdc-tab__text-label {
-        // background-color: $brand-secondary-turquoice;
+        // background-color: $brand-secondary-turquoise;
         border-bottom-color: rgba(0, 0, 0, 0);
         // border-bottom-color: rgba(255, 255, 255, 0.9);
       }
@@ -830,6 +829,11 @@ footer h3,
 .saved-search-remove:hover::before {
   opacity: 0;
 }
+.mdc-list .mdc-list-item:active,
+.mdc-list .mdc-list-item:focus,
+.mdc-list .mdc-list-item:hover {
+  color: inherit;
+}
 
 .icon-toggle-off {
   color: #999999;
@@ -1359,6 +1363,7 @@ a {
     padding: $unit/2;
     border-radius: 0;
   }
+  .mdc-card__actions,
   .panel {
     background-color: $brand-primary-lightgrey;
   }
@@ -3137,12 +3142,12 @@ form.inline-form {
     content: "";
     position: absolute;
     top: 100%;
-    background: linear-gradient(rgba(242, 238, 236, 0), rgba(242, 238, 236, 1));
+    background: linear-gradient(rgba(245, 245, 245, 0), rgba(245, 245, 245, 1));
   }
 }
 .search-result-article__notes .faded-overflow {
   &:before {
-    background: linear-gradient(rgba(242, 238, 236, 0), rgba(242, 238, 236, 1));
+    background: linear-gradient(rgba(245, 245, 245, 0), rgba(245, 245, 245, 1));
   }
 }
 
@@ -3223,7 +3228,7 @@ form.inline-form {
 }
 
 body {
-  background-color: $brand-background;
+  background-color: $brand-primary-lightgrey;
 }
 ::-moz-selection {
   color: white;
@@ -3238,7 +3243,7 @@ body {
 // }
 .mdc-top-app-bar {
   background-color: white;
-  border-bottom: $unit/2 solid $brand-secondary-turquoice;
+  border-bottom: $unit/2 solid $brand-secondary-turquoise;
   // padding-bottom: .5rem;
 }
 
@@ -3255,7 +3260,7 @@ header {
     #upper-tab-bar {
       .mdc-tab {
         margin-right: 4px;
-        background-color: $brand-secondary-turquoice !important;
+        background-color: $brand-secondary-turquoise !important;
         .mdc-tab__icon,
         .mdc-tab__text-label {
           color: white !important;
@@ -3264,7 +3269,7 @@ header {
         }
       }
       .mdc-tab:hover {
-        background-color: $brand-secondary-darkturquoice;
+        background-color: $brand-secondary-darkturquoise;
       }
       // .mdc-tab:last-child {
       //   margin-right: 0;
@@ -3285,7 +3290,7 @@ header {
       }
       .mdc-tab:hover .mdc-tab__content,
       .mdc-tab.mdc-tab--active .mdc-tab__content {
-        background-color: $brand-secondary-turquoice;
+        background-color: $brand-secondary-turquoise;
       }
       // .mdc-tab:hover .mdc-tab__text-label {
       //   border-bottom-color: $brand-primary-black;
@@ -3453,12 +3458,16 @@ header {
   }
 }
 
+.mdc-card .report,§
 .report {
   opacity: 0.85;
   font-size: 85%;
   margin-top: $unit/2;
   .fa-fw,
-  a {
+  a,
+  a:active,
+  a:focus,
+  a:hover {
     color: $brand-secondary-red;
   }
 }
@@ -3506,12 +3515,12 @@ header {
 }
 
 a {
-  color: $brand-secondary-green;
+  color: $brand-secondary-turquoise;
 }
 a:focus,
 a:active,
 a:hover {
-  color: $brand-secondary-darkgreen;
+  color: $brand-secondary-darkturquoise;
 }
 
 .mdc-chip {
@@ -3593,33 +3602,20 @@ a:hover {
 .mdc-card {
   box-shadow: none;
   a {
-    color: $brand-secondary-turquoice;
+    color: $brand-secondary-turquoise;
   }
   a:hover {
-    color: $brand-secondary-darkturquoice;
+    color: $brand-secondary-darkturquoise;
   }
   .mdc-card__actions {
-    // background-color: $brand-secondary-turquoice;
-    a {
-      color: $brand-secondary-turquoice;
-    }
+    // background-color: $brand-secondary-turquoise;
+    a,
     .mdc-card__action {
-      color: $brand-secondary-turquoice;
+      color: $brand-secondary-turquoise;
     }
-  }
-}
-
-.mdc-card.list,
-.mdc-card.mini,
-.mdc-card.gist,
-.mdc-card.search-result {
-  .search-result-article__notes {
-    // background-color: $brand-secondary-turquoice;
-  }
-  .mdc-card__actions {
-    // background-color: $brand-secondary-turquoice;
-    .mdc-card__action {
-      color: $brand-secondary-green;
+    a:hover,
+    .mdc-card__action:hover {
+      color: $brand-secondary-darkturquoise;
     }
   }
 }
@@ -3627,28 +3623,6 @@ a:hover {
 .content-primary.mdc-card.mini,
 .content-primary.mdc-card.gist {
   background-color: $brand-primary-lightgrey;
-}
-
-.content-primary.mdc-card.list,
-.content-primary.mdc-card.mini,
-.content-primary.mdc-card.gist,
-.content-primary.mdc-card.search-result {
-  // border-top: $unit/3 solid $brand-secondary-turquoice;
-}
-.content-primary.mdc-card.list.top-content,
-.content-primary.mdc-card.mini.top-content,
-.content-primary.mdc-card.gist.top-content,
-.content-primary.mdc-card.search-result.top-content {
-  // border-top-color: $brand-secondary-green;
-  .mdc-card__actions {
-    background-color: $brand-secondary-green;
-    .mdc-card__action {
-      color: white;
-    }
-    .mdc-chip.mdc-chip--selected {
-      background-color: $brand-secondary-darkgreen;
-    }
-  }
 }
 
 .panel-heading {
@@ -3666,7 +3640,7 @@ a:hover {
     }
   }
   #content-primary-tab-bar {
-    background-color: $brand-secondary-turquoice;
+    background-color: $brand-secondary-turquoise;
     .mdc-tab__icon,
     .mdc-tab__text-label {
       color: $brand-secondary-darkgreen;
@@ -3683,14 +3657,11 @@ a:hover {
     .key-info-extra {
       .mdc-chip {
         color: $brand-secondary-red;
-        background-color: $brand-secondary-turquoice;
+        background-color: $brand-secondary-turquoise;
       }
       .mdc-chip:hover {
         color: $brand-secondary-yellow;
         background-color: $brand-secondary-darkgreen;
-      }
-      a {
-        color: $brand-secondary-darkgreen;
       }
     }
     .save-button-block {
@@ -3752,7 +3723,7 @@ a.mdc-drawer__content-heading {
     border-top: none;
     .tt-suggestion:hover,
     .tt-cursor {
-      background-color: $brand-secondary-turquoice;
+      background-color: $brand-secondary-turquoise;
     }
   }
 }
@@ -3767,15 +3738,12 @@ a.mdc-drawer__content-heading {
   }
 }
 
-.container-content,
-#search-tab-bar,
-#home-tab-bar {
-  .mdc-tab__icon,
-  .mdc-tab__text-label {
-    color: $brand-secondary-turquoice;
+.container-content {
+  .mdc-tab--active .mdc-tab__text-label {
+    color: $brand-secondary-darkturquoise !important;
   }
   .mdc-tab-indicator__content {
-    background-color: $brand-secondary-turquoice;
+    background-color: $brand-secondary-turquoise;
   }
 }
 
@@ -3802,11 +3770,6 @@ a.mdc-drawer__content-heading {
     .mdc-card__media--content-secondary {
       background-color: white;
     }
-    .fa-li {
-      .fa-fw {
-        color: $brand-secondary-turquoice;
-      }
-    }
   }
   .mdc-card__info--content-secondary-row {
     background-color: white;
@@ -3816,10 +3779,10 @@ a.mdc-drawer__content-heading {
 .search-form {
   background: white;
   .mdc-button {
-    background-color: $brand-secondary-turquoice;
+    background-color: $brand-secondary-turquoise;
   }
   .mdc-button:hover {
-    background-color: $brand-secondary-darkturquoice;
+    background-color: $brand-secondary-darkturquoise;
     box-shadow: none;
   }
   .geo-lookup,
@@ -3840,7 +3803,7 @@ a.mdc-drawer__content-heading {
 .pagination {
   li {
     a {
-      color: $brand-secondary-turquoice;
+      color: $brand-secondary-turquoise;
     }
     a.pagination-arrow {
       color: $brand-primary-black;
@@ -3850,14 +3813,14 @@ a.mdc-drawer__content-heading {
     color: $brand-primary-grey;
   }
   li.current-page {
-    background-color: $brand-secondary-turquoice;
+    background-color: $brand-secondary-turquoise;
     a {
       color: white;
     }
   }
   li:hover,
   li.current-page:hover {
-    background-color: $brand-secondary-darkturquoice;
+    background-color: $brand-secondary-darkturquoise;
     a {
       color: white;
     }
@@ -3893,7 +3856,7 @@ footer,
         background-color: white;
         h2 {
           margin: 0 0 $unit;
-          color: $brand-secondary-turquoice;
+          color: $brand-secondary-turquoise;
         }
       }
     }
@@ -3939,13 +3902,13 @@ footer,
 
 .scroll-button {
   .scroll-icon {
-    background-color: $brand-secondary-turquoice;
+    background-color: $brand-secondary-turquoise;
     color: white;
   }
 }
 .scroll-button:hover {
   .scroll-icon {
-    background-color: $brand-secondary-darkturquoice;
+    background-color: $brand-secondary-darkturquoise;
   }
 }
 .scroll-button.scroll-left {
@@ -3965,7 +3928,7 @@ footer,
 
 footer.mdc-layout__footer {
   border-top: none;
-  background-color: $brand-background;
+  background-color: $brand-primary-lightgrey;
   box-shadow: none;
   h3 {
     color: $brand-secondary-green;
@@ -3976,7 +3939,7 @@ footer.mdc-layout__footer {
   }
   .about a,
   .about a:hover {
-    color: $brand-secondary-darkturquoice;
+    color: $brand-secondary-darkturquoise;
   }
   .footer-copyright a,
   .footer-copyright a:hover {

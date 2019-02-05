@@ -3,13 +3,13 @@
     <thead>
     <tr>
       <th></th>
-      <th style="text-align:center;font-weight:bold;">Mon</th>
-      <th style="text-align:center;font-weight:bold;">Tue</th>
-      <th style="text-align:center;font-weight:bold;">Wed</th>
-      <th style="text-align:center;font-weight:bold;">Thu</th>
-      <th style="text-align:center;font-weight:bold;">Fri</th>
-      <th style="text-align:center;font-weight:bold;">Sat</th>
-      <th style="text-align:center;font-weight:bold;">Sun</th>
+      <th style="text-align:center;font-weight:normal;">Mon</th>
+      <th style="text-align:center;font-weight:normal;">Tue</th>
+      <th style="text-align:center;font-weight:normal;">Wed</th>
+      <th style="text-align:center;font-weight:normal;">Thu</th>
+      <th style="text-align:center;font-weight:normal;">Fri</th>
+      <th style="text-align:center;font-weight:normal;">Sat</th>
+      <th style="text-align:center;font-weight:normal;">Sun</th>
     </tr>
     </thead>
     <tbody>
@@ -18,7 +18,7 @@
         <tr>
           <th>{{capitalize this}}</th>
           {{#each (split "monday,tuesday,wednesday,thursday,friday,saturday,sunday" ",")}}
-            <td style="text-align:center;font-weight:bold;">
+            <td style="text-align:center;font-weight:normal;">
               <div class="mdc-checkbox">
                 <input type="checkbox" name="availability[]"
                        class="mdc-checkbox__native-control" disabled value="{{concat this "-" ../this}}"
