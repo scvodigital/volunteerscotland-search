@@ -661,6 +661,7 @@ footer h3,
   font-size: 1rem !important;
   font-weight: $heading-font-weight !important;
   color: $brand-primary-black;
+  font-family: $base-font-family, Helvetica, Arial, sans-serif !important;
   padding-left: $unit/4 !important;
   line-height: 2rem !important;
   border-radius: 0;
@@ -765,9 +766,6 @@ footer h3,
 }
 
 .content-settings-account {
-  .mdc-button {
-    width: 100%;
-  }
   .mdc-button.mdc-button--delete {
     background-color: #dd4b39 !important;
   }
@@ -1490,7 +1488,7 @@ a {
     }
   }
 }
-.mdc-button--raised:hover, 
+.mdc-button--raised:hover,
 .mdc-button--raised:focus,
 .content-event .mdc-card.full,
 .content-secondary .mdc-card.full,
