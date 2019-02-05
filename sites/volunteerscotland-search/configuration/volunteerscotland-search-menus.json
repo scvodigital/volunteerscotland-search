@@ -73,6 +73,12 @@
       "route": "^/searches"
     },
     {
+      "label": "My newsletters",
+      "icon": "newspaper",
+      "path": "/newsletters",
+      "route": "^/newsletters"
+    },
+    {
       "label": "My account",
       "icon": "cog",
       "path": "/account",

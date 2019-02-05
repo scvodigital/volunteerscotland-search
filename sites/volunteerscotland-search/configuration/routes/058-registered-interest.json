@@ -37,7 +37,6 @@
       },
       "renderer": "handlebars"
     },
-    "context.metaData.commonTasks.opportunitySupplimentary",
     {
       "name": "destination",
       "taskModule": "renderLayout",
@@ -55,7 +54,7 @@
             "parts": {
               "head": ">context.metaData.handlebars.templates.pages_page-head-tags",
               "body": ">context.metaData.handlebars.templates.opportunities_registered-interest",
-              "sidebar": ">context.metaData.handlebars.templates.opportunities_search-form"
+              "sidebar": ">context.metaData.handlebars.templates.account_sidebar"
 
             },
             "contentType": "text/html"
