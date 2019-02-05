@@ -3303,11 +3303,11 @@ body {
 }
 ::-moz-selection {
   color: white;
-  background: $brand-secondary-darkgreen;
+  background: $brand-secondary-darkpurple;
 }
 ::selection {
   color: white;
-  background: $brand-secondary-darkgreen;
+  background: $brand-secondary-darkpurple;
 }
 // .mdc-theme--background {
 //   background-color: $brand-secondary-yellow !important;
@@ -3463,7 +3463,7 @@ header {
     background-color: white;
   }
   .card-loader-inner {
-    color: $brand-secondary-darkgreen;
+    color: $brand-secondary-pink;
   }
 }
 
