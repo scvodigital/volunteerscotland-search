@@ -49,6 +49,12 @@
       "route": "^/$"
     },
     {
+      "label": "My saved searches",
+      "icon": "search-plus",
+      "path": "/searches",
+      "route": "^/searches"
+    },
+    {
       "label": "My favourites",
       "icon": "star",
       "path": "/favourites",
@@ -67,10 +73,10 @@
       "route": "^/registered-interest"
     },
     {
-      "label": "My saved searches",
-      "icon": "search-plus",
-      "path": "/searches-subscriptions",
-      "route": "^/searches-subscriptions"
+      "label": "Newsletters",
+      "icon": "newspaper",
+      "path": "/newsletters",
+      "route": "^/newsletters"
     },
     {
       "label": "My account",

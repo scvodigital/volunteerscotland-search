@@ -1,8 +1,8 @@
 {
-  "name": "searches-subscriptions",
-  "pattern": "/searches-subscriptions",
+  "name": "searches",
+  "pattern": "/searches",
   "metaData": {
-    "title": "Searches and Subscriptions - Volunteer Scotland Search",
+    "title": "Searches - Volunteer Scotland Search",
     "sidebarButton": {
       "icon": "search",
       "tooltip": "Search",
@@ -15,9 +15,6 @@
   "tasks": [
     "context.metaData.commonTasks.authRequired",
     "context.metaData.commonTasks.searchesData",
-    "context.metaData.commonTasks.allNewsletterInfo",
-    "context.metaData.commonTasks.getRawUserSubscriptions",
-    "context.metaData.commonTasks.userNewsletterSubscriptions",
     {
       "name": "email_days",
       "taskModule": "render",
@@ -27,8 +24,6 @@
         "template": ">context.metaData.handlebars.partials.email_days"
       }
     },
-    "context.metaData.commonTasks.opportunitySupplimentary",
-    "context.metaData.commonTasks.termsMaps",
     {
       "name": "destination",
       "taskModule": "renderLayout",
@@ -46,7 +41,7 @@
             "parts": {
               "head": ">context.metaData.handlebars.templates.pages_page-head-tags",
               "body": ">context.metaData.handlebars.templates.opportunities_saved-searches",
-              "sidebar": ">context.metaData.handlebars.templates.opportunities_search-form"
+              "sidebar": ">context.metaData.handlebars.templates.account_sidebar"
 
             },
             "contentType": "text/html"

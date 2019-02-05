@@ -15,7 +15,6 @@
   "tasks": [
     "context.metaData.commonTasks.authRequired",
     "context.metaData.commonTasks.favouritesData",
-    "context.metaData.commonTasks.opportunitySupplimentary",
     "context.metaData.commonTasks.searchesData",
     "context.metaData.commonTasks.profileInfoData",
     "context.metaData.commonTasks.getRawUserSubscriptions",
@@ -73,7 +72,7 @@
               "head": ">context.metaData.handlebars.templates.pages_page-head-tags",
               "body": ">context.metaData.handlebars.templates.account_account",
               "foot": ">context.metaData.handlebars.templates.account_account-foot",
-              "sidebar": ">context.metaData.handlebars.templates.opportunities_search-form"
+              "sidebar": ">context.metaData.handlebars.templates.account_sidebar"
 
             },
             "contentType": "text/html"
