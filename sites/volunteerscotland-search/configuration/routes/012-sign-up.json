@@ -2,6 +2,7 @@
   "name": "sign_up",
   "pattern": "/sign-up",
   "metaData": {
+    "hideSearch": true,
     "title": "Sign up - Volunteer Scotland Search"
   },
   "tasks": [

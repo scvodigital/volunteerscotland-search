@@ -2,6 +2,7 @@
   "name": "accessibility",
   "pattern": "/accessibility",
   "metaData": {
+    "hideSearch": true,
     "title": "Accessibility – Volunteer Scotland"
   },
   "tasks": [

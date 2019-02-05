@@ -2,6 +2,7 @@
   "name": "about",
   "pattern": "/about",
   "metaData": {
+    "hideSearch": true,
     "title": "About - Volunteer Scotland Search"
   },
   "tasks": [

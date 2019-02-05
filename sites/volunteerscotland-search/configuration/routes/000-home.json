@@ -2,6 +2,7 @@
   "name": "home",
   "pattern": "/",
   "metaData": {
+    "hideSearch": true,
     "title": "Volunteer Scotland Search | Help Make a Difference through Volunteering"
   },
   "tasks": [

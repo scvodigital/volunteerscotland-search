@@ -2,6 +2,7 @@
   "name": "sign_out",
   "pattern": "/sign-out",
   "metaData": {
+    "hideSearch": true,
     "title": "Sign out - Volunteer Scotland Search"
   },
   "tasks": [

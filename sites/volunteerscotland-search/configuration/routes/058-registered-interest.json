@@ -2,12 +2,8 @@
   "name": "registered-interest",
   "pattern": "/registered-interest",
   "metaData": {
-    "title": "Registered interest - Volunteer Scotland Search",
-    "sidebarButton": {
-      "icon": "search",
-      "tooltip": "Search",
-      "classes": "hide-md hide-lg"
-    }
+    "hideSearch": true,
+    "title": "Registered interest - Volunteer Scotland Search"
   },
   "defaultParams": {
     "context": "results"

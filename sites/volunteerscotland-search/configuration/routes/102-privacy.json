@@ -2,6 +2,7 @@
   "name": "privacy",
   "pattern": "/privacy",
   "metaData": {
+    "hideSearch": true,
     "title": "Privacy policy – Volunteer Scotland"
   },
   "tasks": [
