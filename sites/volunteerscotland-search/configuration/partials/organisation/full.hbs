@@ -49,7 +49,7 @@
           {{#compare twitter "!==" "http://" ~}}
           <li class="mdc-card__info--content-secondary-twitter mdc-typography--body1">
             <span class="fa-li"><span class="fab fa-twitter fa-fw" title="Twitter"></span></span>
-            <a href="{{fixUrl twitter "http"}}">{{twitter}}</a>
+            <a href="{{#unless (contains twitter "twitter.com")}}http://twitter.com/{{/unless}}{{twitter}}">{{twitter}}</a>
           </li>
           {{/compare ~}}
           {{/compare ~}}

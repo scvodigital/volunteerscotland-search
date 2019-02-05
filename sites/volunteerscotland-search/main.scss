@@ -1574,6 +1574,7 @@ a.mdc-drawer__content-heading:hover {
 }
 
 .post-image {
+  margin-bottom: $unit/2;
   img {
     max-width: 100%;
     max-height: 280px;
@@ -1867,7 +1868,7 @@ body.shortlist {
   }
   .mdc-card {
     .mdc-card__media--content-secondary {
-      margin-top: -($unit/2);
+      margin-top: 0;
     }
   }
 }
@@ -1878,7 +1879,7 @@ body.shortlist {
     .mdc-card__media--content-secondary {
       line-height: 1;
       border-radius: 0;
-      padding: $unit/2;
+      padding: 0 $unit/2 $unit/2;
     }
     .mdc-card__info--content-primary {
       padding: 0;
@@ -3727,7 +3728,9 @@ a:hover {
 }
 
 hr {
-  background-color: $brand-secondary-green;
+  background-color: transparent;
+  height: 0;
+  border: none;
 }
 
 a.mdc-drawer__content-heading {
