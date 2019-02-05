@@ -1,7 +1,7 @@
 {
   "name": "newsletters",
   "pattern": "/newsletters",
-  "debug" : "true",
+  "debug" : true,
   "metaData": {
     "title": "Newsletters - Volunteer Scotland Search",
     "sidebarButton": {

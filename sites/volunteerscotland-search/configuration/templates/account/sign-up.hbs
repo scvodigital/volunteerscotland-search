@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
       <p>
         Check the boxes below to receive regular email updates in areas that interest you.
       </p>
-      {{#each @root.data.all-newsletter-info}}
+      {{#each @root.data.all-newsletter-info.result}}
       <div class="mdc-form-field">
         <div class="mdc-checkbox">
           <input type="checkbox" class="mdc-checkbox__native-control" name="newsletter-{{ListID}}" id="newsletter-{{ListID}}" />
@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   function updateNewsletterSettings() {
     try{
     var formArray = $form.serializeArray();
-    var allNewsletters = {{{default '[]' (stringify @root.data.all-newsletter-info)}}};
+    var allNewsletters = {{{default (stringify @root.data.all-newsletter-info.result) '[]' }}};
     for (var x = 0; x < allNewsletters.length; x++) {
       var newsletterIdentifier = "newsletter-" + allNewsletters[x].ListID;
       for (var y = 0; y < formArray.length; y++) {

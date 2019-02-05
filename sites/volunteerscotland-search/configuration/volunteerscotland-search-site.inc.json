@@ -98,8 +98,10 @@
         "name": "all-newsletter-info",
         "taskModule": "request",
         "config": {
-          "optionsTemplate":
-          "{ \"url\": {{{stringify (concat @root.secrets.vs_campaign_monitor.baseURL 'clients/' @root.secrets.vs_campaign_monitor.clientID '/lists.json') }}}, \"auth\": {{{stringify @root.secrets.vs_campaign_monitor.auth}}}, \"json\": true }"
+            "optionsTemplates":{
+              "result" : "{ \"url\": {{{stringify (concat @root.secrets.vs_campaign_monitor.baseURL 'clients/' @root.secrets.vs_campaign_monitor.clientID '/lists.json') }}}, \"auth\": {{{stringify @root.secrets.vs_campaign_monitor.auth}}}, \"json\": true }"
+            }
+
         },
         "renderer": "handlebars"
       },
@@ -107,8 +109,9 @@
         "name": "subscriptions-raw",
         "taskModule": "request",
         "config": {
-          "optionsTemplate":
-          "{ \"url\": {{{stringify (concat @root.secrets.vs_campaign_monitor.baseURL 'clients/' @root.secrets.vs_campaign_monitor.clientID '/listsforemail.json?email=' @root.data.auth.email) }}}, \"auth\": {{{stringify @root.secrets.vs_campaign_monitor.auth}}}, \"json\": true }"
+          "optionsTemplates":{
+          "result" : "{ \"url\": {{{stringify (concat @root.secrets.vs_campaign_monitor.baseURL 'clients/' @root.secrets.vs_campaign_monitor.clientID '/listsforemail.json?email=' @root.data.auth.email) }}}, \"auth\": {{{stringify @root.secrets.vs_campaign_monitor.auth}}}, \"json\": true }"
+          }
         },
         "renderer": "handlebars"
       },
@@ -117,7 +120,7 @@
         "taskModule": "render",
         "renderer" : "handlebars",
         "config": {
-          "template" : "[{{#eachJoin @root.data.subscriptions-raw ','}}{{#compare SubscriberState '===' 'Active'}}\"{{{ListID}}}\"{{/compare}}{{/eachJoin}}]",
+          "template" : "[{{#eachJoin (default @root.data.subscriptions-raw.result '[]' ) ','}}{{#compare SubscriberState '===' 'Active'}}\"{{{ListID}}}\"{{/compare}}{{/eachJoin}}]",
           "output": "data",
           "parseJson": true
         },
