@@ -2885,6 +2885,9 @@ footer.mdc-layout__footer {
   }
 }
 @media screen and (max-width: $mobile-landscape-breakpoint) {
+  main {
+    padding: 0 $unit/2;
+  }
   .container-content {
     margin: 0;
     padding: 0 !important;
