@@ -4,6 +4,7 @@
 $brand-primary-black: rgb(64, 64, 65);
 $brand-primary-grey: rgb(218, 211, 204);
 $brand-primary-lightgrey: rgb(242, 238, 236);
+$brand-background: #f5f5f5;
 
 $brand-secondary-purple: rgb(124, 65, 153);
 $brand-secondary-darkpurple: rgb(95, 50, 117);
@@ -3222,7 +3223,7 @@ form.inline-form {
 }
 
 body {
-  background-color: $brand-primary-grey;
+  background-color: $brand-background;
 }
 ::-moz-selection {
   color: white;
@@ -3964,7 +3965,7 @@ footer,
 
 footer.mdc-layout__footer {
   border-top: none;
-  background-color: #f5f5f5;
+  background-color: $brand-background;
   box-shadow: none;
   h3 {
     color: $brand-secondary-green;
