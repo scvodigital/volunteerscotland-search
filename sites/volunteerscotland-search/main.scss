@@ -3632,8 +3632,13 @@ a:hover {
 
 .leaflet-container {
   a {
-    color: $brand-secondary-green;
+    color: $brand-secondary-turquoise;
     -webkit-tap-highlight-color: transparent;
+  }
+  a:hover,
+  a:focus,
+  a:active {
+    color: $brand-secondary-darkturquoise;
   }
   .leaflet-control.leaflet-bar a {
     color: black;
