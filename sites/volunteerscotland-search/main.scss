@@ -3514,7 +3514,7 @@ header {
   }
 }
 
-.mdc-card .report,§
+.mdc-card .report,
 .report {
   opacity: 0.85;
   font-size: 85%;
@@ -3673,6 +3673,10 @@ a:hover {
     .mdc-card__action:hover {
       color: $brand-secondary-darkturquoise;
     }
+    .mdc-card__action--icon,
+    .mdc-card__action--icon:hover {
+      color: $brand-secondary-red;
+    }
   }
 }
 
@@ -3739,6 +3743,9 @@ a.mdc-drawer__content-heading {
 }
 
 .mdc-icon-button {
+  line-height: 1;
+}
+.mdc-icon-button:not(.mdc-card__action--icon) {
   .far:hover {
     color: $brand-secondary-darkgreen;
   }
