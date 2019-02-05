@@ -1,7 +1,6 @@
 @import url('//cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css');
 @import url('https://fonts.googleapis.com/css?family=Rambla');
 
-$brand-secondary-green: rgb(123, 193, 67);
 $brand-primary-black: rgb(64, 64, 65);
 $brand-primary-grey: rgb(218, 211, 204);
 $brand-primary-lightgrey: rgb(242, 238, 236);
@@ -931,6 +930,9 @@ a:hover {
   background-color: #2C5797 !important;
 }
 
+.mdc-list-group > div {
+  outline: none;
+}
 .noselect {
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
@@ -939,13 +941,16 @@ a:hover {
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none; /* Non-prefixed version, currently
   supported by Chrome and Opera */
+  outline: none;
 }
 .mdc-text-field__icon.noselect {
   cursor: default;
+  outline: none;
 }
 .mdc-text-field.noselect,
 .mdc-text-field__input.noselect,
 .mdc-text-field__icon.noselect {
+  outline: none;
   pointer-events: none;
 }
 
@@ -2218,12 +2223,14 @@ main .home-banner {
 .browse main {
   .browse-title {
     margin: $unit/2 0 $unit/2;
+    color: $brand-primary-black;
   }
   .mdc-list-item {
     height: auto !important;
   }
 }
 .home-browse {
+  background-color: $brand-primary-lightgrey;
   .mdc-layout-grid__inner {
     grid-gap: $unit*4;
   }
@@ -2247,8 +2254,10 @@ main .home-banner {
 
 .home-heading {
   padding: 0 $unit*1.5;
-  .mdc-typography--headline5 {
+  .mdc-typography--headline7 {
     margin: $unit 0 $unit/2;
+    // color: $brand-primary-black;
+    color: #818084;
   }
 }
 .home-content-primary {
@@ -2422,7 +2431,7 @@ footer.mdc-layout__footer {
   p, li, div {
     font-family: $footer-font-family;
     font-weight: $footer-font-weight;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
   }
   h3, a, strong {
     font-family: $footer-font-family;
@@ -2437,7 +2446,7 @@ footer.mdc-layout__footer {
   }
   h3 {
     color: white;
-    font-size: 1.2rem;
+    font-size: 0.9rem;
     margin: $unit 0;
     padding: $unit/2 0 $unit/2;
   }
@@ -2454,7 +2463,7 @@ footer.mdc-layout__footer {
       padding: 0;
       a {
         font-weight: 400;
-        font-size: 0.9rem;
+        font-size: 0.85rem;
       }
       a:hover {
         text-decoration: underline !important;
@@ -3498,6 +3507,11 @@ header {
 a {
   color: $brand-secondary-green;
 }
+a:focus,
+a:active,
+a:hover {
+  color: $brand-secondary-darkgreen;
+}
 
 .mdc-chip {
   background-color: $brand-secondary-blue;
@@ -3512,15 +3526,14 @@ a {
 .mdc-chip:hover {
   background-color: $brand-secondary-darkblue;
 }
-.mdc-theme--on-primary a,
 .mdc-card .mdc-chip.mdc-chip--selected,
 .mdc-chip.mdc-chip--selected {
-  background-color: $brand-secondary-green;
+  background-color: $brand-secondary-darkblue;
   color: white;
 }
 .mdc-card .mdc-chip.mdc-chip--selected:hover,
 .mdc-chip.mdc-chip--selected:hover {
-  background-color: $brand-secondary-darkgreen;
+  background-color: $brand-secondary-darkblue;
   color: white;
 }
 
@@ -3578,13 +3591,19 @@ a {
 
 .mdc-card {
   box-shadow: none;
+  a {
+    color: $brand-secondary-turquoice;
+  }
+  a:hover {
+    color: $brand-secondary-darkturquoice;
+  }
   .mdc-card__actions {
     // background-color: $brand-secondary-turquoice;
     a {
-      color: $brand-secondary-green;
+      color: $brand-secondary-turquoice;
     }
     .mdc-card__action {
-      color: $brand-secondary-green;
+      color: $brand-secondary-turquoice;
     }
   }
 }
@@ -3858,6 +3877,11 @@ footer,
         color: $brand-secondary-green;
       }
     }
+    .mdc-list-item:hover {
+      .mdc-list-item__text {
+        color: $brand-secondary-darkgreen;
+      }
+    }
   }
 }
 
@@ -3940,37 +3964,34 @@ footer,
 
 footer.mdc-layout__footer {
   border-top: none;
-  background-color: $brand-primary-grey;
+  background-color: #f5f5f5;
   box-shadow: none;
   h3 {
-    color: #555;
-    border-bottom: $unit/5 solid $brand-primary-grey;
+    color: $brand-secondary-green;
   }
   a,
   a:hover {
-    color: #555;
+    color: #555555;
   }
-  .footer-copyright a,
-  .footer-copyright a:hover,
   .about a,
   .about a:hover {
-    color: $brand-secondary-darkgreen;
-    font-weight: $heading-font-weight;
+    color: $brand-secondary-darkturquoice;
+  }
+  .footer-copyright a,
+  .footer-copyright a:hover {
+    color: #818084;
   }
   .mdc-layout-grid {
     p {
-      color: #555;
+      color: #555555;
     }
   }
   .fa-ul {
     .fa-li {
       .fas, .fal, .far, .fab {
-        color: #555;
+        color: #555555;
       }
     }
-  }
-  .footer-copyright {
-    background-color: $brand-primary-grey;
   }
 }
 

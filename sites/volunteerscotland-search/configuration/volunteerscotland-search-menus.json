@@ -12,7 +12,6 @@
       "path": "/organisations/search",
       "route": "^/organisation"
     }
-
   ],
   "upper": [
     {
@@ -88,12 +87,17 @@
   ],
   "footer-cookies-terms": [
     {
-      "label": "Privacy notices",
+      "label": "Volunteer Scotland Charter",
+      "path": "https://www.volunteerscotland.net/terms-conditions/charter/",
+      "route": "^https://www.volunteerscotland.net/terms-conditions/charter/"
+    },
+    {
+      "label": "Privacy notice",
       "path": "/privacy",
       "route": "/privacy"
     },
     {
-      "label": "Cookies",
+      "label": "Cookies policy",
       "path": "/cookies",
       "route": "^/cookies"
     },
@@ -101,8 +105,12 @@
       "label": "Terms &amp; conditions",
       "path": "https://www.volunteerscotland.net/terms-conditions/",
       "route": "^https://www.volunteerscotland.net/terms-conditions/"
+    },
+    {
+      "label": "Charter text",
+      "path": "https://www.volunteerscotland.net/terms-conditions/charter-text/",
+      "route": "https://www.volunteerscotland.net/terms-conditions/charter-text/"
     }
-
   ],
   "footer-contact" : [
     {
@@ -117,14 +125,8 @@
       "path": "https://www.volunteerscotland.net/about-us/contact-us/tick-to-hear-from-us",
       "route": "^https://www.volunteerscotland.net/about-us/contact-us/tick-to-hear-from-us"
     }
-
   ],
   "footer-info": [
-    {
-      "label": "Volunteer Scotland Charter",
-      "path": "https://www.volunteerscotland.net/terms-conditions/charter/",
-      "route": "^https://www.volunteerscotland.net/terms-conditions/charter/"
-    },
     {
       "label": "Accessibility",
       "path": "/accessibility",
@@ -139,12 +141,6 @@
       "label": "Brand guidelines",
       "path": "https://www.volunteerscotland.net/accessibility/brand-guidelines/",
       "route": "^https://www.volunteerscotland.net/accessibility/brand-guidelines/"
-    },
-    {
-      "label": "Charter text",
-      "path": "https://www.volunteerscotland.net/terms-conditions/charter-text/",
-      "route": "https://www.volunteerscotland.net/terms-conditions/charter-text/"
     }
   ]
-
 }
