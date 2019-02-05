@@ -1,5 +1,6 @@
 {
   "name": "testpage",
+  "debug": true,
   "pattern": "/testpage/:list_id",
   "acceptedVerbs": "GET",
   "defaultParams": {
@@ -10,27 +11,10 @@
   },
   "tasks": [
     "context.metaData.commonTasks.authNotRequired",
+    "context.metaData.commonTasks.allNewsletterInfo",
     "context.metaData.commonTasks.getRawUserSubscriptions",
     "context.metaData.commonTasks.userNewsletterSubscriptions",
     "context.metaData.commonTasks.getSubscriptionPostBody",
-      {
-        "name": "add-subscription",
-        "taskModule": "request",
-        "config": {
-          "output" : "data",
-          "optionsTemplate": ">context.metaData.handlebars.templates.pages_page-head-tags"
-        },
-        "renderer": "handlebars"
-      },
-      {
-        "name": "destination",
-        "taskModule": "render",
-        "renderer": "handlebars",
-        "config": {
-          "output": "body",
-          "template": "Added Subscription"
-        }
-      },
     {
       "name": "destination",
       "taskModule": "renderLayout",
@@ -47,7 +31,7 @@
             "layout": ">context.metaData.handlebars.layouts.default",
             "parts": {
               "head": ">context.metaData.handlebars.templates.pages_page-head-tags",
-              "body": ">context.metaData.handlebars.templates.errors_404",
+              "body": "",
               "foot": ""
             },
             "contentType": "text/html"

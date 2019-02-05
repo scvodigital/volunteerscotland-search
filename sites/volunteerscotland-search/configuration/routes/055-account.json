@@ -1,6 +1,7 @@
 {
   "name": "account",
   "pattern": "/account",
+  "debug" : true,
   "metaData": {
     "title": "Account - Volunteer Scotland Search",
     "sidebarButton": {

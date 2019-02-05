@@ -12,7 +12,9 @@
       "name": "remove-subscription",
       "taskModule": "request",
       "config": {
-        "optionsTemplate": "{ \"method\": \"POST\", \"url\": {{{stringify (concat @root.secrets.vs_campaign_monitor.baseURL 'subscribers/' @root.request.params.list_id '/unsubscribe.json') }}}, \"body\": {{{stringify @root.data.add-subscription-body}}}, \"auth\": {{{stringify @root.secrets.vs_campaign_monitor.auth}}}, \"json\": true }"
+        "optionsTemplates": {
+          "only": "{ \"method\": \"POST\", \"url\": {{{stringify (concat @root.secrets.vs_campaign_monitor.baseURL 'subscribers/' @root.request.params.list_id '/unsubscribe.json') }}}, \"body\": {{{stringify @root.data.add-subscription-body}}}, \"auth\": {{{stringify @root.secrets.vs_campaign_monitor.auth}}}, \"json\": true }"
+        }
       },
       "renderer": "handlebars"
     },
