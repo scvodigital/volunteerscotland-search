@@ -328,6 +328,7 @@ header {
         left: auto !important;
         right: $unit*(3/4) !important;
         border-radius: 0 0 2px 2px;
+        z-index: 10;
       }
       .mdc-top-app-bar__action-item::before,
       .mdc-top-app-bar__action-item::after,
