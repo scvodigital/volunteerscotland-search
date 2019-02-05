@@ -3,12 +3,12 @@
     Registered interest
   </h1>
   {{#if @root.request.params.query.id}}
-    <p class="">Your interest in this opportunity has been registered.
+    <p class="mdc-typography--body1">Your interest in this opportunity has been registered.
       The organisation has been contacted, and will respond to you at the email provided</p>
   {{/if}}
   {{#compare @root.data.registered_interest_opportunities.current.hits.total "===" 0}}
     <p class="mdc-typography--body1">
-      You haven't yet registered interest in any current opportunities. To register interest, click the &ensp;<strong><span class="far fa-star mdc-chip__icon mdc-chip__icon--leading" aria-hidden="true"></span>Register Interest</strong>&ensp;button.
+      You haven't yet registered interest in any current opportunities. To register interest, click the &ensp;<strong><span class="far fa-hand-paper mdc-chip__icon mdc-chip__icon--leading" aria-hidden="true"></span>&ensp;I want to volunteer</strong>&ensp;button.
     </p>
   {{/compare}}
 

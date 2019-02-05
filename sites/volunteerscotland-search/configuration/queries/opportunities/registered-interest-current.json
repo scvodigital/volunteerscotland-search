@@ -4,6 +4,7 @@
     "Id",
     "slug",
     "title",
+    "milo_ref",
     "geo_coords",
     "opportunity_contact_first_name",
     "opportunity_contact_last_name",
