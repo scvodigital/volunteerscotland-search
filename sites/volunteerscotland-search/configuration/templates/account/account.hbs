@@ -126,7 +126,10 @@
         </div>
       </div>
 
-      <button type="submit" class="mdc-button mdc-button--raised mdc-button--import v-margin">Save profile information</button>
+      <button type="submit" class="mdc-button mdc-button--raised mdc-button--import v-margin">
+        <span class="far fa-save mdc-list-item__graphic" aria-hidden="true"></span>
+        <span>Save profile information</span>
+      </button>
     </form>
   </section>
 
@@ -134,93 +137,39 @@
 
   <section class="settings-section content-settings-email">
     <h2 class="mdc-typography--headline5">
-      Email alerts
+      Opportunities alerts
     </h2>
-    <div class="mdc-layout-grid">
-      <div class="mdc-layout-grid__inner">
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-12-phone">
-          <h3 class="mdc-typography--headline6 v-margin-full">
-            Email frequency for new opportunity alerts
-          </h3>
-          {{> email_frequency}}
-        </div>
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-12-phone">
-          <h3 class="mdc-typography--headline6 v-margin-full">
-            Unsubscribe
-          </h3>
-
-          {{#ifAny
-            (compare (length (filter @root.data.searches.items.[0] "partitionActive" "===" 1)) ">" 0)
-            @root.data.favourites.items.[0].[0].active
-            (compare (length @root.data.user-newsletter-subscriptions) ">" 0)
-          }}
-
-            {{#ifAny
-              (compare (length (filter @root.data.searches.items.[0] "partitionActive" "===" 1)) ">" 0)
-              @root.data.favourites.items.[0].[0].active
-            }}
-
-          <p>
-            <a href="/stop-all-emails" class="mdc-button mdc-button--raised">
-            <span class="far fa-envelope mdc-list-item__graphic" aria-hidden="true"></span>
-            Stop all email alerts
-            </a>
-            {{/ifAny}}
-          </p>
-          <p>
-            {{#ifAny
-              (compare (length @root.data.user-newsletter-subscriptions) ">" 0)
-            }}
-            <a onclick="stopAllNewsletters(event)" class="nl-link-block mdc-button mdc-button--raised">
-              <span class="far fa-envelope mdc-list-item__graphic" aria-hidden="true"></span>
-              <span>Stop all newsletters</span>
-            </a>
-            {{/ifAny}}
-          </p>
-
-          {{else}}
-            You currently have no subscriptions.
-          {{/ifAny}}
-        </div>
-        <!-- <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-6-tablet mdc-layout-grid__cell--span-12-phone">
-        <h3 class="mdc-typography--headline6 v-margin-full">
-        Unsubscribe
-      </h3>
-      {{#ifAny
+    <h3 class="mdc-typography--headline6 v-margin-full">
+      New opportunity emails
+    </h3>
+    {{> email_frequency}}
+    {{#ifAny
       (compare (length (filter @root.data.searches.items.[0] "partitionActive" "===" 1)) ">" 0)
       @root.data.favourites.items.[0].[0].active
       (compare (length @root.data.user-newsletter-subscriptions) ">" 0)
     }}
-
-    {{#ifAny
-    (compare (length (filter @root.data.searches.items.[0] "partitionActive" "===" 1)) ">" 0)
-    @root.data.favourites.items.[0].[0].active
-  }}
-
-  <p>
-  <a href="/stop-all-emails" class="mdc-button mdc-button--raised mdc-button--fullwidth">
-  <span class="far fa-envelope mdc-list-item__graphic" aria-hidden="true"></span>
-  Stop all email alerts
-</a>
-{{/ifAny}}
-</p>
-<p>
-{{#ifAny
-(compare (length @root.data.user-newsletter-subscriptions) ">" 0)
-}}
-<a onclick="stopAllNewsletters(event)" class="mdc-button nl-link-block mdc-button--raised mdc-button--fullwidth">
-<span class="far fa-envelope mdc-list-item__graphic" aria-hidden="true"></span>
-<span>Stop all newsletters</span>
-</a>
-{{/ifAny}}
-</p>
-
-{{else}}
-You currently have no subscriptions.
-{{/ifAny}}
-</div> -->
-      </div>
-    </div>
+      {{#ifAny
+        (compare (length (filter @root.data.searches.items.[0] "partitionActive" "===" 1)) ">" 0)
+        @root.data.favourites.items.[0].[0].active
+      }}
+    <p>
+      <a href="/stop-all-emails" class="mdc-button mdc-button--raised">
+      <span class="far fa-envelope mdc-list-item__graphic" aria-hidden="true"></span>
+      Stop all email alerts
+      </a>
+      {{/ifAny}}
+    </p>
+    <p>
+      {{#ifAny
+        (compare (length @root.data.user-newsletter-subscriptions) ">" 0)
+      }}
+      <a onclick="stopAllNewsletters(event)" class="nl-link-block mdc-button mdc-button--raised">
+        <span class="far fa-envelope mdc-list-item__graphic" aria-hidden="true"></span>
+        <span>Stop all newsletters</span>
+      </a>
+      {{/ifAny}}
+    </p>
+    {{/ifAny}}
   </section>
 
   <hr />
@@ -232,7 +181,7 @@ You currently have no subscriptions.
 
     <div class="mdc-layout-grid">
       <div class="mdc-layout-grid__inner">
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-6-tablet mdc-layout-grid__cell--span-12-phone">
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-12-phone">
           {{#if (contains (map @root.data.auth.providerData (getProp "providerId")) "password") ~}}
           <h3 class="mdc-typography--headline6">
             Change password
@@ -259,7 +208,7 @@ You currently have no subscriptions.
             </label>
             <div class="mdc-line-ripple"></div>
           </div>
-          <button class="mdc-button mdc-button--raised mdc-button--change_password mdc-button--fullwidth" id="change-password">
+          <button class="mdc-button mdc-button--raised mdc-button--change_password" id="change-password">
             <span class="far fa-lock mdc-list-item__graphic" aria-hidden="true"></span>
             {{#if (contains (map @root.data.auth.providerData (getProp "providerId")) "password") ~}}
             Change password
@@ -268,7 +217,7 @@ You currently have no subscriptions.
             {{/if ~}}
           </button>
         </div>
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-6-tablet mdc-layout-grid__cell--span-12-phone">
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-12-phone">
           <h3 class="mdc-typography--headline6">
             Linked accounts
           </h3>
@@ -283,24 +232,25 @@ You currently have no subscriptions.
             {{/each ~}}
           </div>
         </div>
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-6-tablet mdc-layout-grid__cell--span-12-phone">
-          <h3 class="mdc-typography--headline6">
-            Account data
-          </h3>
-          <button type="button" class="mdc-button mdc-button--raised mdc-button--export mdc-button--fullwidth v-margin" onclick="exportUserData();">
-            <span class="far fa-upload mdc-list-item__graphic" aria-hidden="true"></span>
-            Export account settings
-          </button>
-          <button class="mdc-button mdc-button--raised mdc-button--import mdc-button--fullwidth v-margin" data-dialog-target="#import-user-dialog">
-            <span class="far fa-download mdc-list-item__graphic" aria-hidden="true"></span>
-            Import account settings
-          </button>
-          <button class="mdc-button mdc-button--raised mdc-button--delete mdc-button--fullwidth v-margin" data-dialog-target="#delete-user-dialog">
-            <span class="far fa-trash mdc-list-item__graphic" aria-hidden="true"></span>
-            Delete account
-          </button>
-        </div>
       </div>
+    </div>
+
+    <h2 class="mdc-typography--headline5">
+      Account data
+    </h2>
+    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-6-tablet mdc-layout-grid__cell--span-12-phone">
+      <button type="button" class="mdc-button mdc-button--raised mdc-button--export v-margin" onclick="exportUserData();">
+        <span class="far fa-upload mdc-list-item__graphic" aria-hidden="true"></span>
+        Export account settings
+      </button><br />
+      <button class="mdc-button mdc-button--raised mdc-button--import v-margin" data-dialog-target="#import-user-dialog">
+        <span class="far fa-download mdc-list-item__graphic" aria-hidden="true"></span>
+        Import account settings
+      </button><br />
+      <button class="mdc-button mdc-button--raised mdc-button--delete v-margin" data-dialog-target="#delete-user-dialog">
+        <span class="far fa-trash mdc-list-item__graphic" aria-hidden="true"></span>
+        Delete account
+      </button>
     </div>
   </section>
 </div>

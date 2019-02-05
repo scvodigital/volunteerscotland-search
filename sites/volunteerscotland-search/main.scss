@@ -765,9 +765,6 @@ footer h3,
 }
 
 .content-settings-account {
-  .mdc-button {
-    width: 100%;
-  }
   .mdc-button.mdc-button--delete {
     background-color: #dd4b39 !important;
   }
@@ -1490,7 +1487,7 @@ a {
     }
   }
 }
-.mdc-button--raised:hover, 
+.mdc-button--raised:hover,
 .mdc-button--raised:focus,
 .content-event .mdc-card.full,
 .content-secondary .mdc-card.full,
