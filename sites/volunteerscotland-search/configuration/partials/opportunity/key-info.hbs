@@ -84,23 +84,25 @@
     </ul>
     <ul class="fa-ul last">
       {{#compare work_location "===" "At Home" ~}}
+        {{#unless (contains volunteersearch_type "Home-based volunteering") ~}}
         <li class="mdc-card__info--content-primary-location mdc-typography--body1">
           <span class="fa-li"><span class="far fa-map-marker-alt fa-fw" title="Location"></span></span>
           Work from home
         </li>
+        {{/unless ~}}
       {{else}}
         {{#compare (length geo) ">" 1 ~}}
           <li class="mdc-card__info--content-primary-location mdc-typography--body1">
             <span class="fa-li"><span class="far fa-map-marker-alt fa-fw" title="Location"></span></span>
             {{#each geo ~}}
-              {{{this.msoa}}}{{#unless @last}}, {{/unless}}
+              {{{this.admin_ward}}}{{#unless @last}}, {{/unless}}
             {{/each ~}}
           </li>
         {{else}}
           {{#if geo ~}}
             <li class="mdc-card__info--content-primary-location mdc-typography--body1">
               <span class="fa-li"><span class="far fa-map-marker-alt fa-fw" title="Location"></span></span>
-              {{{geo.msoa}}}
+              {{{geo.admin_ward}}}
             </li>
           {{/if ~}}
         {{/compare ~}}
