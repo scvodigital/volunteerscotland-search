@@ -28,8 +28,8 @@
         {{>queries_opportunity_common_filters @root.request.params.query}}
       ],
       "must": [
-        {{#if data.notes}}
-          {{>queries_terms field="Id" terms=(getKeys data.notes)}}
+        {{#if data.profileInfo.notes}}
+          {{>queries_terms field="Id" terms=(getKeys data.profileInfo.notes)}}
         {{else}}{
           "terms": {
             "Id": ["find_nothing"]

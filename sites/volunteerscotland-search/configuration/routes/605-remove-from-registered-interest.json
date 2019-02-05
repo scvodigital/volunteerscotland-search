@@ -1,6 +1,5 @@
 {
   "name": "remove-from-registered-interest",
-  "debug" : true,
   "pattern": "/remove-from-registered-interest",
   "acceptedVerbs": "GET",
   "tasks": [

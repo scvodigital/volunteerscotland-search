@@ -1,7 +1,6 @@
 {
   "name": "testpage",
   "pattern": "/testpage/:list_id",
-  "debug" : true,
   "acceptedVerbs": "GET",
   "defaultParams": {
     "context": "results"

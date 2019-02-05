@@ -10,7 +10,7 @@
       "renderer": "handlebars",
       "config": {
         "appName": "volunteerscotland-search",
-        "pathTemplate": "/notes/{{data.auth.uid}}/{{request.body.id}}",
+        "pathTemplate": "/profile-info/{{data.auth.uid}}/{{request.body.id}}",
         "setOrUpdate": "set",
         "dataTemplate": "null"
       }

@@ -1,7 +1,6 @@
 {
   "name": "registered-interest",
   "pattern": "/registered-interest",
-  "debug" : true,
   "metaData": {
     "title": "Registered interest - Volunteer Scotland Search",
     "sidebarButton": {
@@ -15,7 +14,6 @@
   },
   "tasks": [
     "context.metaData.commonTasks.authRequired",
-    "context.metaData.commonTasks.notesData",
     "context.metaData.commonTasks.favouritesData",
     "context.metaData.commonTasks.registeredInterestData",
     {

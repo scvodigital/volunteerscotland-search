@@ -1,7 +1,6 @@
 {
   "name": "searches",
   "pattern": "/searches",
-  "debug" : "true",
   "metaData": {
     "title": "Email alerts - Volunteer Scotland Search",
     "sidebarButton": {

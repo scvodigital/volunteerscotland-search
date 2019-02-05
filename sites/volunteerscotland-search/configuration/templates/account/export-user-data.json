@@ -21,7 +21,7 @@
       "description": "A list of opportunity Ids with any notes you may have stored against them. See the `opportunityLookup` field for information about each opportunity's ID",
       "location": "Within Google's Firebase Database system. For more information visit https://firebase.google.com"
     },
-    "items": {{{stringify @root.data.notes}}}
+    "items": {{{stringify @root.data.profileInfo.notes}}}
   },
   "favourites": {
     "dataComment": {

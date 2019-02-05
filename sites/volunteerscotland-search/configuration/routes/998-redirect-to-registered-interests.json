@@ -1,7 +1,6 @@
 {
   "name": "redirect-to-registered-interest",
   "pattern": "/redirect-to-registered-interest",
-  "debug" : true,
   "tasks": [
     {
       "name": "generate_url",
