@@ -8,7 +8,7 @@
     "context.metaData.commonTasks.authRequired",
     "context.metaData.commonTasks.searchesData",
     "context.metaData.commonTasks.favouritesData",
-    "context.metaData.commonTasks.notesData",
+    "context.metaData.commonTasks.profileInfoData",
     {
       "name": "opportunity_lookup",
       "taskModule": "elasticsearch",

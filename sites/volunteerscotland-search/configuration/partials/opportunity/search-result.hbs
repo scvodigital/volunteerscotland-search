@@ -1,7 +1,7 @@
 <div class="mdc-card content-primary search-result" data-opportunity-id="{{Id}}">
   {{> opportunity_key_info}}
   <hr class="mdc-list-divider" />
-  {{#compare (trim (getProperty @root.data.notes Id)) "!==" "" ~}}
+  {{#compare (trim (getProperty @root.data.profileInfo.notes Id)) "!==" "" ~}}
     {{> opportunity_description limit="3rem" description=description}}
     {{> opportunity_notes limit="3rem"}}
   {{else}}

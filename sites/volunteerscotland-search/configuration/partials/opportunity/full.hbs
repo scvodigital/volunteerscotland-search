@@ -232,7 +232,7 @@
               <textarea class="mdc-text-field__input" data-simple-mde='{
                 "forceSync": true,
                 "toolbar": ["heading-1", "heading-2", "bold", "italic", "|", "unordered-list", "ordered-list", "link"]
-              }' name="notes" id="notes-{{Id}}" data-id="{{Id}}">{{getProperty @root.data.notes Id}}</textarea>
+              }' name="notes" id="notes-{{Id}}" data-id="{{Id}}">{{getProperty @root.data.profileInfo.notes Id}}</textarea>
               <input type="hidden" name="id" value="{{Id}}">
             </div>
             <div class="save-button-block">
@@ -248,7 +248,7 @@
                 "failureMessage": "Failed to delete notes",
                 "successCallback": "clearNotes",
                 "postBody": { "id": "{{Id}}" }
-              }' {{#unless (getProperty @root.data.notes Id)}}disabled{{/unless}}>
+              }' {{#unless (getProperty @root.data.profileInfo.notes Id)}}disabled{{/unless}}>
                 <span class="far fa-remove mdc-list-item__graphic" aria-hidden="true"></span>
                 Delete notes
               </button>

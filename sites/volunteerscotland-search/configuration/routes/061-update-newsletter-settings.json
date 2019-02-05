@@ -1,7 +1,6 @@
 {
   "name": "update-newsletter-settings",
   "pattern": "/update-newsletter-settings",
-  "debug" : true,
   "acceptedVerbs": "POST",
   "defaultParams": {
     "context": "results"

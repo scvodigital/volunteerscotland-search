@@ -11,7 +11,7 @@
 
   {{#compare @root.data.notes_opportunities.open.hits.total ">" 0}}
     {{#each @root.data.notes_opportunities.open.hits.hits ~}}
-      {{#compare (trim (getProperty @root.data.notes _source.Id)) "!==" "" ~}}
+      {{#compare (trim (getProperty @root.data.profileInfo.notes _source.Id)) "!==" "" ~}}
         {{> opportunity_search_result _source}}
       {{/compare ~}}
     {{/each ~}}
@@ -25,7 +25,7 @@
       Closed opportunities
     </h2>
     {{#each @root.data.notes_opportunities.closed.hits.hits ~}}
-      {{#compare (trim (getProperty @root.data.notes _source.Id)) "!==" "" ~}}
+      {{#compare (trim (getProperty @root.data.profileInfo.notes _source.Id)) "!==" "" ~}}
         {{> opportunity_search_result _source}}
       {{/compare ~}}
     {{/each ~}}

@@ -1,6 +1,5 @@
 {
   "name": "account",
-  "debug" : true,
   "pattern": "/account",
   "metaData": {
     "title": "Account - Volunteer Scotland Search",

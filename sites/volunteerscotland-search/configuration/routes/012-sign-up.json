@@ -1,7 +1,6 @@
 {
   "name": "sign_up",
   "pattern": "/sign-up",
-  "debug": true,
   "metaData": {
     "title": "Sign up - Volunteer Scotland Search"
   },

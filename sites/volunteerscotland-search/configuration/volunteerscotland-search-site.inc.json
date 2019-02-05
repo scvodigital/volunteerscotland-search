@@ -144,15 +144,15 @@
           "parseJson": true
         }
       },
-      "storeProfileInfo": {
-        "name": "store-profile-info",
+      "storeProfile": {
+        "name": "store-profile",
         "taskModule": "firebaseRtbSet",
         "renderer": "handlebars",
         "config": {
           "appName": "volunteerscotland-search",
-          "pathTemplate": "/profile-info/{{data.auth.uid}}",
+          "pathTemplate": "/profile-info/{{data.auth.uid}}/profile",
           "setOrUpdate": "set",
-          "dataTemplate": ">context.metaData.handlebars.queries.profile_info"
+          "dataTemplate": ">context.metaData.handlebars.queries.profile"
         }
       },
       "opportunitySupplimentary": {
@@ -256,16 +256,6 @@
           }
         },
         "renderer": "handlebars"
-      },
-      "notesData": {
-        "name": "notes",
-        "taskModule": "firebaseRtbGet",
-        "renderer": "handlebars",
-        "config": {
-          "appName": "volunteerscotland-search",
-          "pathTemplate": "/notes/{{data.auth.uid}}",
-          "defaultData": " "
-        }
       },
       "profileInfoData": {
         "name": "profileInfo",

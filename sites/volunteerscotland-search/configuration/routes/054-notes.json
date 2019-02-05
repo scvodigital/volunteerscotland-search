@@ -1,7 +1,6 @@
 {
   "name": "notes",
   "pattern": "/notes",
-  "debug" : true,
   "metaData": {
     "title": "Notes - Volunteer Scotland Search",
     "sidebarButton": {
@@ -15,7 +14,7 @@
   },
   "tasks": [
     "context.metaData.commonTasks.authRequired",
-    "context.metaData.commonTasks.notesData",
+    "context.metaData.commonTasks.profileInfoData",
     "context.metaData.commonTasks.favouritesData",
 
     {
