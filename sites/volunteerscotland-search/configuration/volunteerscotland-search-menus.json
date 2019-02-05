@@ -50,7 +50,7 @@
     },
     {
       "label": "My favourites",
-      "icon": "star",
+      "icon": "heart",
       "path": "/favourites",
       "route": "^/favourites"
     },

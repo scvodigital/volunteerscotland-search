@@ -521,6 +521,9 @@ footer h3,
   .mdc-tab__text-label {
     opacity: 1;
   }
+  .mdc-tab__text-label {
+    font-weight: $heading-font-weight;
+  }
 }
 .mdc-button {
   height: auto;
@@ -808,6 +811,14 @@ footer h3,
     }
     .mdc-layout-grid {
       width: 100%;
+    }
+  }
+}
+.mdc-list--avatar-list {
+  .mdc-layout-grid {
+    width: 100%;
+    .saved-search {
+      overflow: hidden;
     }
   }
 }
@@ -1482,9 +1493,10 @@ a {
       }
     }
     .save-button-block {
-      margin: $unit;
+      margin: $unit $unit 0;
       .mdc-typography--caption {
         color: #2c3e50;
+        font-size: 0.9rem;
         margin-top: $unit/2;
       }
     }
@@ -1531,6 +1543,9 @@ hr {
   width: 320px;
   max-width: 320px;
   border: none;
+  .mdc-list-item--activated {
+    color: rgba(0, 0, 0, 0.87);
+  }
 }
 .mdc-drawer__content {
   padding: 0 $unit/2 $unit;
