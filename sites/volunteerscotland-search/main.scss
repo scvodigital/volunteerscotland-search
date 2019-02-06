@@ -3183,14 +3183,17 @@ form.inline-form {
 .mdc-button--warning {
   background-color: transparent !important;
 }
-
 .mdc-button--raised.mdc-button--warning {
   color: white !important;
 }
-
 .mdc-button--warning:disabled {
   opacity: 0.5;
   filter: grayscale(100%);
+}
+
+#sidebar-button {
+  color: $brand-secondary-green;
+  margin-right: $unit/4;
 }
 
 table th {
@@ -3212,7 +3215,7 @@ table th {
     display: none;
   }
 
-  table.table-condensed {
+  .mdc-card--full-content table.table-condensed {
     margin-bottom: 0;
     border-top: 0;
     width: 100%;
