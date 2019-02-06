@@ -2722,7 +2722,7 @@ footer.mdc-layout__footer {
 @media screen and (max-width: 479px) {
   .content-primary-search .head {
     .mdc-layout-grid__cell.action {
-      grid-column-end: span 2;
+      grid-column-end: span 3;
     }
   }
 }
@@ -3017,7 +3017,7 @@ footer.mdc-layout__footer {
 @media screen and (max-width: 360px) {
   body:not(.home) header .container-fluid .mdc-top-app-bar__title .header-text {
     margin-top: $unit/2;
-    margin-left: $unit/4;
+    margin-left: $unit/2;
     .header-text-banner {
       font-size: 2.3rem;
       letter-spacing: -0.15rem;
