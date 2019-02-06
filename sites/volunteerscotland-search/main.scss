@@ -1055,9 +1055,6 @@ a {
   right: $unit*(2/3);
 }
 
-.mdc-button--raised {
-  transition: all 1s cubic-bezier(0, 1, 0.3, 1);
-}
 .mdc-button--raised:hover {
   transition: all .3s ease-out;
 }
@@ -3155,6 +3152,7 @@ form.inline-form {
 .faded-overflow {
   overflow: hidden;
   position: relative;
+  min-height: 2rem;
   &:before {
     display: block;
     margin-top: -$unit*1.5;
