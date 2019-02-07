@@ -6,7 +6,7 @@
     var redirectDone = false;
     event.preventDefault();
     // {{@root.data.user-newsletter-subscriptions}}
-    var newsletters = {{{stringify @root.data.user-newsletter-subscriptions}}};
+    var newsletters = {{{default [] (stringify @root.data.user-newsletter-subscriptions)}}};
     for (var x = 0; x < newsletters.length; x++) {
       $.ajax({
         type: "POST",

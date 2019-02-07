@@ -121,7 +121,7 @@
       {{/each ~}}
 
       <div class="mdc-list-group">
-        <div data-collapse-target="#{{instance_id}}-availability-collapse" role="button" aria-pressed="false" aria-label="Show {{getProperty @root.context.metaData.termTypeLabels (concat type ".plural")}}" tabindex="0">
+        <div data-collapse-target="#{{instance_id}}-availability-collapse" data-collapse-icon="#{{instance_id}}-availability-draw-icon" role="button" aria-pressed="false" aria-label="Show {{getProperty @root.context.metaData.termTypeLabels (concat type ".plural")}}" tabindex="0">
           <h3 class="mdc-list-group__subheader cursor-pointer noselect">
             Availability
           </h3>
@@ -129,8 +129,8 @@
         <div class="mdc-drawer--occasional-ie11" id="{{instance_id}}-availability-collapse" style="{{#unless @root.request.params.query.availability}}display:none{{/unless}}">
           {{>opportunity_availability_selector type="availability"}}
         </div>
-        <li class="mdc-list-item cursor-pointer noselect" data-collapse-target="#{{instance_id}}-availability-collapse">
-          <span class="fas {{#unless @root.request.params.query.availability}}fa-chevron-down{{else}}fa-chevron-up{{/unless}} pull-centre" ></span>
+        <li class="mdc-list-item cursor-pointer noselect" data-collapse-icon="#{{instance_id}}-availability-draw-icon" data-collapse-target="#{{instance_id}}-availability-collapse">
+          <span id="{{instance_id}}-availability-draw-icon" class="fas {{#unless @root.request.params.query.availability}}fa-chevron-down{{else}}fa-chevron-up{{/unless}} pull-centre" ></span>
         </li>
       </div>
 
