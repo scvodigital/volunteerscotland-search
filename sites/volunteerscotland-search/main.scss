@@ -1,5 +1,5 @@
 @import url('//cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css');
-@import url('https://fonts.googleapis.com/css?family=Rambla');
+@import url('https://fonts.googleapis.com/css?family=Rambla:400,700');
 
 $brand-primary-black: rgb(64, 64, 65);
 $brand-primary-grey: rgb(218, 211, 204);
@@ -522,7 +522,7 @@ footer h3,
     opacity: 1;
   }
   .mdc-tab__text-label {
-    font-weight: $heading-font-weight;
+    font-weight: $heading-medium-font-weight;
   }
 }
 .mdc-button {
@@ -2891,7 +2891,9 @@ footer.mdc-layout__footer {
       .mdc-card__info--search-distance {
         display: block;
         float: none;
-        margin-bottom: $unit !important;
+        .fa-ul {
+          margin-bottom: $unit !important;
+        }
       }
       .fa-ul {
         float: none;
