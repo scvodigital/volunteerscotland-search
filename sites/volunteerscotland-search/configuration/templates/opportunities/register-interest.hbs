@@ -89,8 +89,9 @@
             <div class="mdc-layout-grid__inner">
               <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
                 <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
-                  <input id="email" name="email-user-confirmation" class="mdc-text-field__input mdc-text-field--fullwidth"
+                  <input id="email" name="email-user-confirmation"
                     {{>form_validation_attributes @root.context.metaData.accountInfoValidation.email}}
+                         class="mdc-text-field__input mdc-text-field--fullwidth"
                          value="{{@root.data.profileInfo.profile.email}}">
                   <label class="mdc-floating-label" for="email[user-confirmation]">
                     Email address
@@ -100,7 +101,8 @@
               <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
                 <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
                   <input id="location_postcode" name="location_postcode"
-                    {{>form_validation_attributes @root.context.metaData.accountInfoValidation.location_postcode}} class="mdc-text-field__input mdc-text-field--fullwidth"
+                    {{>form_validation_attributes @root.context.metaData.accountInfoValidation.location_postcode}}
+                         class="mdc-text-field__input mdc-text-field--fullwidth"
                          value="{{@root.data.profileInfo.profile.location_postcode}}">
                   <label class="mdc-floating-label" for="location_postcode">
                     Postcode
@@ -129,23 +131,25 @@
           <input type="hidden" name="opportunity_maximum_age" value="{{maximum_age}}">
 
           {{#if @root.data.auth ~}}
-            <div class="mdc-form-field">
-              <div class="mdc-checkbox">
-                <input type="checkbox" class="mdc-checkbox__native-control" name="store_profile_info" id="store-details"/>
-                <div class="mdc-checkbox__background">
-                  <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-                    <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
-                  </svg>
-                  <div class="mdc-checkbox__mixedmark"></div>
-                </div>
+          {{#unless @root.data.profileInfo.profile ~}}
+          <div class="mdc-form-field">
+            <div class="mdc-checkbox">
+              <input type="checkbox" class="mdc-checkbox__native-control" name="store_profile_info" id="store-details"/>
+              <div class="mdc-checkbox__background">
+                <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                  <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                </svg>
+                <div class="mdc-checkbox__mixedmark"></div>
               </div>
-              <label for="store-details">
-                Remember details for future applications?
-                <div class="mdc-typography--caption">
-                  We will not use these details for anything but volunteering applications, and you will be asked (via this form) before submitting each time.
-                </div>
-              </label>
             </div>
+            <label for="store-details">
+              Remember details for future applications?
+              <div class="mdc-typography--caption">
+                We will not use these details for anything but volunteering applications. Read our <a href="/privacy" target="_blank">privacy notice</a>.
+              </div>
+            </label>
+          </div>
+          {{/unless ~}}
           {{/if ~}}
           <button type="submit" class="mdc-button mdc-button--raised b-margin-full" id="register-interest-submit">
             <span class="far fa-hand-paper mdc-list-item__graphic" aria-hidden="true"></span>
