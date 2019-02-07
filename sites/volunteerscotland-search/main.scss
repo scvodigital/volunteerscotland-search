@@ -2612,13 +2612,19 @@ footer.mdc-layout__footer {
     }
   }
   .drawer-container-permanent {
-    padding: 0 $unit/2;
+    padding: 0 $unit/2 $unit;
   }
   .mdc-drawer__content {
     padding: 0;
     .search-form {
       padding: 0;
     }
+  }
+  .content-primary-search .head {
+    margin-top: $unit/2;
+  }
+  .mdc-card.full {
+    margin-top: $unit/2;
   }
   .mdc-card.full,
   .mdc-card.search-result {
@@ -2674,7 +2680,7 @@ footer.mdc-layout__footer {
     }
   }
   .mdc-card.full .mdc-card__info--content-secondary-row {
-    padding: $unit/2;
+    padding: 0;
     .mdc-card__media--content-secondary {
       margin-top: 0;
       margin-right: 0;
@@ -2882,6 +2888,11 @@ footer.mdc-layout__footer {
   .mdc-card.full,
   .mdc-card.search-result {
     .mdc-card__info--content-primary {
+      .mdc-card__info--search-distance {
+        display: block;
+        float: none;
+        margin-bottom: $unit !important;
+      }
       .fa-ul {
         float: none;
       }
@@ -3270,10 +3281,13 @@ table th {
         width: 100%;
         margin-top: 7px;
         th {
-          font-size: 0.97rem;
+          font-size: 1rem;
           text-align: left;
-          border-width: 1px;
-          height: 42px;
+          border-width: 0;
+          height: 40px;
+          p {
+            padding: $unit/10 0;
+          }
         }
         th:last-child {
           border-bottom: none;
