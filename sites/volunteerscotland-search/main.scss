@@ -402,7 +402,7 @@ footer h3,
 .mdc-typography--headline6,
 .mdc-typography--headline7,
 .mdc-card__supporting-text,
-.mdc-dialog__header__title,
+.mdc-dialog__title,
 .mdc-drawer .mdc-list-item,
 .mdc-select__native-control,
 .mdc-typography--subheading2,
@@ -1331,10 +1331,10 @@ a {
     }
     .fa-ul.first {
       clear: left;
-      width: 18vw;
+      width: auto;
     }
     .fa-ul.last {
-      width: 16vw;
+      width: auto;
       margin-left: 2.5rem !important;
     }
   }
