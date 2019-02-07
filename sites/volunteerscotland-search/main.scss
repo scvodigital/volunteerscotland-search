@@ -402,7 +402,7 @@ footer h3,
 .mdc-typography--headline6,
 .mdc-typography--headline7,
 .mdc-card__supporting-text,
-.mdc-dialog__header__title,
+.mdc-dialog__title,
 .mdc-drawer .mdc-list-item,
 .mdc-select__native-control,
 .mdc-typography--subheading2,
@@ -675,6 +675,7 @@ footer h3,
 .mdc-drawer .mdc-list-item {
   margin: 0 !important;
   border-radius: 0;
+  font-size: 1rem;
 }
 
 .mdc-icon-toggle-xs {
@@ -760,7 +761,7 @@ footer h3,
   }
 }
 
-.content-shortlist,
+.content-favourite,
 .content-notes {
   .mdc-layout-grid {
     .mdc-select {
@@ -833,11 +834,11 @@ footer h3,
   bottom: 0 !important;
   right: 0 !important;
 }
-.mdc-list .mdc-list-item:hover::before,
-.mdc-list .mdc-list-item:hover::after,
+#detailed-results-container .mdc-list .mdc-list-item:hover::before,
+#detailed-results-container .mdc-list .mdc-list-item:hover::after,
 .saved-search-remove:focus::before,
 .saved-search-remove:hover::before {
-  opacity: 0;
+  opacity: 0 !important;
 }
 .mdc-list .mdc-list-item:active,
 .mdc-list .mdc-list-item:focus,
@@ -1122,7 +1123,7 @@ a {
     justify-content: center;
     align-items: center;
   }
-  .map-marker-overlay.shortlisted {
+  .map-marker-overlay.favourited {
     color: white;
     border: 2px solid white;
     top: 2px;
@@ -1331,10 +1332,10 @@ a {
     }
     .fa-ul.first {
       clear: left;
-      width: 18vw;
+      width: auto;
     }
     .fa-ul.last {
-      width: 16vw;
+      width: auto;
       margin-left: 2.5rem !important;
     }
   }
@@ -1615,7 +1616,7 @@ a.mdc-drawer__content-heading:hover {
 
 .mdc-card {
   .mdc-card__actions {
-    .mdc-card__action--shortlist {
+    .mdc-card__action--favourite {
       background-color: transparent;
       border: none;
       padding: 0;
@@ -1638,24 +1639,24 @@ a.mdc-drawer__content-heading:hover {
     }
   }
 }
-.mdc-card.content-primary-shortlisted {
+.mdc-card.content-primary-favourites {
   .mdc-card__actions {
-    .mdc-card__action--shortlist .fa-heart {
+    .mdc-card__action--favourite .fa-heart {
       font-weight: 900;
     }
-    .mdc-card__action--shortlist:hover .fa-heart {
+    .mdc-card__action--favourite:hover .fa-heart {
       font-weight: 400;
     }
   }
 }
-.home-shortlist,
-body.shortlist {
-  .removed-from-shortlist {
+.home-favouritees,
+body.favouritees {
+  .removed-from-favouritees {
     opacity: 0.6;
     transition: opacity .3s ease-in-out;
   }
-  .removed-from-shortlist::after,
-  .removed-from-shortlist:hover::after {
+  .removed-from-favouritees::after,
+  .removed-from-favouritees:hover::after {
     opacity: 0.25 !important;
   }
 }
@@ -2876,7 +2877,7 @@ footer.mdc-layout__footer {
   .scrolling-grid {
     margin: $unit/3 0 $unit/2;
     padding: $unit/2 0 $unit*(2/3);
-    .mdc-layout-grid__cell.shortlist-content-primary,
+    .mdc-layout-grid__cell.favourite-content-primary,
     .mdc-layout-grid__cell.latest-content-primary,
     .mdc-layout-grid__cell.top-content-primary {
       margin: 0 $unit 0 $unit/5;
@@ -2960,7 +2961,7 @@ footer.mdc-layout__footer {
     padding: 0;
     box-sizing: border-box;
     .settings,
-    .content-shortlist .pull-right {
+    .content-favourite .pull-right {
       float: none;
     }
   }
@@ -3520,6 +3521,7 @@ header {
 }
 
 .content-primary-search {
+  padding-bottom: $unit;
   .head {
     max-width: 1100px;
     margin-left: 0;
@@ -3621,9 +3623,14 @@ header {
     background-color: white;
   }
 }
+.saved-search-remove,
+.saved-search-remove .far {
+  color: $brand-secondary-red !important;
+}
 .saved-search-remove .far:hover,
+.saved-search-remove:hover,
 .saved-search-remove:hover .far {
-  color: $brand-secondary-darkgreen !important;
+  color: $brand-secondary-darkred !important;
 }
 
 .icon-toggle-off {
@@ -3705,10 +3712,10 @@ a:hover {
     color: $brand-secondary-green;
     background: white;
   }
-  .marker-icon.shortlisted {
+  .marker-icon.favourited {
     color: $brand-secondary-darkgreen;
   }
-  .map-marker-overlay.shortlisted {
+  .map-marker-overlay.favourited {
     color: white;
     background: $brand-secondary-darkgreen;
     border: 2px solid white;
@@ -3832,7 +3839,7 @@ a.mdc-drawer__content-heading {
 
 .mdc-card {
   .mdc-card__actions {
-    .mdc-card__action--shortlist {
+    .mdc-card__action--favourite {
       .fa-stack {
         .fa-circle {
           color: white;
@@ -3841,13 +3848,6 @@ a.mdc-drawer__content-heading {
     }
     .mdc-chip .mdc-chip__checkmark-path {
       stroke: white;
-    }
-  }
-}
-.mdc-card.content-primary-shortlisted {
-  .mdc-card__actions {
-    .mdc-card__action--shortlist:hover .fa-heart {
-      color: $brand-secondary-darkgreen;
     }
   }
 }
