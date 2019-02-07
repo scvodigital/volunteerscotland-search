@@ -614,6 +614,9 @@ footer h3,
   #sign-up-message,
   #reset-password-message {
     display: none;
+    a {
+      font-weight: $heading-font-weight;
+    }
   }
 }
 #sign-out-loader {
@@ -920,10 +923,13 @@ a:hover {
     color: white;
   }
 }
-.mdc-theme--on-primary a,
 .mdc-card .mdc-chip.mdc-chip--selected,
 .mdc-chip.mdc-chip--selected {
   color: white;
+}
+.mdc-theme--on-primary a,
+.mdc-theme--on-secondary a {
+  color: white !important;
 }
 .mdc-card .mdc-chip.mdc-chip--selected:hover,
 .mdc-chip.mdc-chip--selected:hover {
