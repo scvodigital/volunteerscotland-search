@@ -20,6 +20,8 @@
         "template": ">context.metaData.handlebars.partials.email_days"
       }
     },
+    "context.metaData.commonTasks.opportunitySupplimentary",
+    "context.metaData.commonTasks.termsMaps",
     {
       "name": "destination",
       "taskModule": "renderLayout",
