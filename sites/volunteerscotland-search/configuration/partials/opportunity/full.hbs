@@ -162,18 +162,16 @@
           </div>
           {{/if ~}}
 
-
           {{#if support_options ~}}
           <div class="mdc-typography--body1">
-            <strong>Support Options: </strong>
-            <ul>
-              {{#each support_options ~}}
-              <li>{{{this}}}</li>
-              {{/each ~}}
-              {{#compare (getType support_options) "===" "string" ~}}
-              <li>{{{support_options}}}</li>
-              {{/compare ~}}
-            </ul>
+            <strong>Support: </strong>
+            {{#compare (getType support_options) "===" "string" ~}}
+            {{{support_options}}}
+            {{else}}
+            {{#each support_options ~}}
+            {{{this}}}{{#unless @last}}, {{/unless}}
+            {{/each ~}}
+            {{/compare ~}}
           </div>
           {{/if ~}}
 

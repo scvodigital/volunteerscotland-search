@@ -1,6 +1,6 @@
 {{#if paging.totalResults ~}}
 <div class="search-info">
-  Your {{if @root.request.params.query.only_la "filtered"}} search returned <strong>{{addCommas paging.totalResults}} {{inflect paging.totalResults "result" "results"}}</strong>
+  <span class="hide-sm">Your {{if @root.request.params.query.only_la "filtered"}} search returned </span><strong>{{addCommas paging.totalResults}} {{inflect paging.totalResults "result" "results"}}</strong>
   {{#compare @root.route.name "!==" "opportunity_map" ~}}
   {{#compare paging.totalResults ">" 10 ~}} -
   page {{addCommas paging.currentPage}} of {{addCommas paging.totalPages}}
