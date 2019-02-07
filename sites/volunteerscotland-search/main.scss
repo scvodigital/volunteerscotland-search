@@ -834,8 +834,8 @@ footer h3,
   bottom: 0 !important;
   right: 0 !important;
 }
-.mdc-list .mdc-list-item:hover::before,
-.mdc-list .mdc-list-item:hover::after,
+#detailed-results-container .mdc-list .mdc-list-item:hover::before,
+#detailed-results-container .mdc-list .mdc-list-item:hover::after,
 .saved-search-remove:focus::before,
 .saved-search-remove:hover::before {
   opacity: 0 !important;
