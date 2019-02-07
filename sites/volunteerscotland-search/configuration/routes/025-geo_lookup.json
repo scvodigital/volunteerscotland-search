@@ -12,7 +12,7 @@
         },
         "queryTemplates": {
           "index": "geo_lookup",
-          "type": "place,postcode",
+          "type": "os_place,postcode",
           "template": ">context.metaData.handlebars.queries.geo-lookup"
         }
       },
