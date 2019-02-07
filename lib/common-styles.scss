@@ -264,7 +264,7 @@ header {
       right: 0;
       width: 20%;
       height: 100%;
-      background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, #ffffff 80%, #ffffff 100%);
+      background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 80%, #ffffff 100%);
       pointer-events: none;
     }
   }
@@ -325,6 +325,7 @@ footer h3,
 .mdc-typography--headline6,
 .mdc-typography--headline7,
 .mdc-card__supporting-text,
+.mdc-select__selected-text,
 .mdc-dialog__header__title,
 .mdc-drawer .mdc-list-item,
 .mdc-select__native-control,
@@ -668,7 +669,7 @@ footer h3,
 .mdc-list .mdc-list-item:hover::after,
 .saved-search-remove:focus::before,
 .saved-search-remove:hover::before {
-  opacity: 0;
+  opacity: 0 !important;
 }
 
 .icon-toggle-off {
@@ -1008,6 +1009,10 @@ a {
     .mdc-card__action:last-child {
       margin-right: 0;
     }
+    .mdc-card__action--icon {
+      line-height: 1;
+      margin-right: 0 !important;
+    }
   }
 }
 .mdc-card .mdc-card__actions {
@@ -1030,7 +1035,9 @@ a {
   .mdc-card__info--content-primary-row {
     padding: $unit/2;
   }
-  .search-result-article__snippet,
+  .search-result-article__snippet {
+    flex: 1 1 auto;
+  }
   .search-result-article__notes,
   .mdc-card__info--content-primary-row {
     flex: 1 0 auto;
@@ -1197,6 +1204,43 @@ a {
 .mdc-card.search-result:hover::after {
   opacity: 1;
 }
+.mdc-card.list {
+  .mdc-card__info--content-primary-row {
+    flex: 0 0 auto;
+  }
+}
+
+.panel {
+  display: none;
+}
+.panel--active {
+  display: block;
+}
+
+.mdc-list-group {
+  margin: 0;
+}
+.mdc-drawer {
+  .mdc-list-group {
+    margin: $unit 0;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+  }
+}
+.checkbox-list-indicator {
+  font-weight: 400 !important;
+  font-style: normal;
+}
+.mdc-list-group__subheader {
+  padding: $unit/3 0 $unit/2 !important;
+  font-size: 1.2rem !important;
+  border-radius: 4px 4px 0 0;
+  background-color: #ffffff;
+}
+.mdc-drawer .mdc-list-item {
+  margin: 0 !important;
+}
+
 .panel-heading {
   margin: -$unit/3 0 0;
   padding: $unit*(2/3) $unit;
@@ -1659,12 +1703,6 @@ body.shortlist {
         margin-bottom: $unit/2;
       }
     }
-    .mdc-card__info--content-primary-title a:hover {
-      text-decoration: none;
-      .hover-underline {
-        text-decoration: underline;
-      }
-    }
     .mdc-layout-grid {
       padding: 0;
       width: 100%;
@@ -1696,6 +1734,12 @@ body.shortlist {
       max-height: $unit*8;
       object-fit: contain;
     }
+  }
+}
+.mdc-card__info--content-primary-title a:hover {
+  text-decoration: none;
+  .hover-underline {
+    text-decoration: underline;
   }
 }
 .mdc-card__info--content-secondary-row {
@@ -1793,9 +1837,9 @@ body.shortlist {
   .mdc-text-field--box::after {
     width: 100%;
   }
-  .mdc-floating-label {
-    transform: translateY(-50%) scale(0.75);
-  }
+  // .mdc-floating-label {
+  //   transform: translateY(-50%) scale(0.75);
+  // }
   .geo-lookup:hover {
     font-weight: 600;
     cursor: pointer;
@@ -1841,7 +1885,7 @@ body.shortlist {
   li.disabled a.pagination-arrow {
     cursor: default;
     pointer-events: none;
-    opacity: 0.5;
+    opacity: 0.3;
   }
   li:first-child a {
     padding-left: 0;
@@ -2077,9 +2121,6 @@ footer,
   }
   .mdc-list-item {
     height: auto !important;
-  }
-  .browse-title-regions {
-    margin-top: 24px;
   }
 }
 .home-browse {
@@ -2966,6 +3007,7 @@ form.inline-form {
 .faded-overflow {
   overflow: hidden;
   position: relative;
+  min-height: 2rem;
   &:before {
     display: block;
     margin-top: -$unit*1.5;
@@ -2994,11 +3036,9 @@ form.inline-form {
 .mdc-button--warning {
   background-color: transparent !important;
 }
-
 .mdc-button--raised.mdc-button--warning {
   color: #fff !important;
 }
-
 .mdc-button--warning:disabled {
   opacity: 0.5;
   filter: grayscale(100%);
@@ -3008,17 +3048,22 @@ form.inline-form {
   .checkbox-list-parent {
     font-weight: bold !important;
   }
-
   .checkbox-list-parent-hidden {
     display: none;
   }
-
   .checkbox-list-child {
     padding-left: $unit*1.5 !important;
   }
-
   .checkbox-list-child-no-indent {
     padding-left: $unit/2 !important;
+  }
+  .mdc-list-item {
+    height: auto !important;
+  }
+  .mdc-list-item:last-child {
+    border-top: 1px solid #cccccc;
+    border-radius: 0 0 4px 4px;
+    padding: $unit/2 0;
   }
 }
 
