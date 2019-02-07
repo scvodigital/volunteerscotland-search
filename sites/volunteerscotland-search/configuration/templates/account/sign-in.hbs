@@ -24,8 +24,10 @@
         </div>
       {{/if}}
     </div>
-    <div class="mdc-card__info x-padding-full mdc-theme--primary-bg mdc-theme--on-primary" id="sign-in-message">
-      <span id="form-message"></span>
+    <div class="l-margin-full r-margin-full">
+      <div class="mdc-card__info x-padding-full mdc-theme--secondary-bg mdc-theme--on-secondary" id="sign-in-message">
+        <span id="form-message"></span>
+      </div>
     </div>
     <div class="mdc-card__info x-padding-full">
       <div class="mdc-typography--body1" id="form-section-email">
@@ -130,7 +132,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         checkForLegacyUser(function(isLegacyUser){
           if (isLegacyUser){
             $message.html('We have made upgrades to our website. As a result, you will need to '
-              + '<a href="/reset-password">Reset your password</a> ' + ' in order to sign in. ' +
+              + '<a href="/reset-password">reset your password</a> ' + ' in order to sign in. ' +
             'You can also log in using the social links shown below.').show();
           } else {
             $message.html(err.message+' <a href="/reset-password">Reset password</a>').show();
