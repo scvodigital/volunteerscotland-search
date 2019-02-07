@@ -3,6 +3,7 @@
   "pattern": "/404",
   "defaultStatusCode": 404,
   "metaData": {
+    "hideSearch": true,
     "title": "404: Not Found - Volunteer Scotland Search"
   },
   "tasks": [

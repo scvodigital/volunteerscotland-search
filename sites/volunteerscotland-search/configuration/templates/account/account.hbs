@@ -30,292 +30,281 @@
       Profile information for volunteering applications
     </h2>
     <form action="/store-profile-info" id="profile-info-form" method="POST" data-ajax-form='{
-        "successMessage": "Profile information updated",
-        "failureMessage": "Failed to update profile"
-      }'>
-
-      <div class="mdc-layout-grid">
-        <div class="mdc-layout-grid__inner">
-          <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
-            <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
-              <input id="first_name" name="first_name"
-              {{>form_validation_attributes @root.context.metaData.accountInfoValidation.first_name}}class="mdc-text-field__input mdc-text-field--fullwidth"
-              value="{{@root.data.profileInfo.profile.first_name}}">
-              <label class="mdc-floating-label" for="first_name">
-                First name
-              </label>
-            </div>
-          </div>
-          <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
-            <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
-              <input id="last_name" name="last_name"
-              {{>form_validation_attributes @root.context.metaData.accountInfoValidation.last_name}} class="mdc-text-field__input mdc-text-field--fullwidth"
-              value="{{@root.data.profileInfo.profile.last_name}}">
-              <label class="mdc-floating-label" for="last_name">
-                Last name
-              </label>
-            </div>
-          </div>
-        </div>
-        <div class="mdc-layout-grid__inner">
-          <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
-            <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
-              <input id="date_of_birth" name="date_of_birth"
-              {{>form_validation_attributes @root.context.metaData.accountInfoValidation.date_of_birth}} class="mdc-text-field__input mdc-text-field--fullwidth"
-              value="{{@root.data.profileInfo.profile.date_of_birth}}">
-              <label class="mdc-floating-label" for="date_of_birth">
-                Date of birth
-              </label>
-            </div>
-          </div>
-          <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
-            <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
-              <input id="location_address" name="location_address"
-              {{>form_validation_attributes @root.context.metaData.accountInfoValidation.location_address}} class="mdc-text-field__input mdc-text-field--fullwidth"
-              value="{{@root.data.profileInfo.profile.location_address}}">
-              <label class="mdc-floating-label" for="location_address">
-                Address
-              </label>
-            </div>
-          </div>
-        </div>
-        <div class="mdc-layout-grid__inner">
-          <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
-            <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
-              <input id="phone" name="phone"
-              {{>form_validation_attributes @root.context.metaData.accountInfoValidation.phone}}
-              class="mdc-text-field__input mdc-text-field--fullwidth"
-              value="{{@root.data.profileInfo.profile.phone}}">
-              <label class="mdc-floating-label" for="phone">
-                Phone number
-              </label>
-            </div>
-          </div>
-          <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
-            <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
-              <input id="location_city" name="location_city"
-              {{>form_validation_attributes @root.context.metaData.accountInfoValidation.location_city}} class="mdc-text-field__input mdc-text-field--fullwidth"
-              value="{{@root.data.profileInfo.profile.location_city}}">
-              <label class="mdc-floating-label" for="location_city">
-                Town/city
-              </label>
-            </div>
-          </div>
-        </div>
-        <div class="mdc-layout-grid__inner">
-          <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
-            <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
-              <input id="email" name="email" class="mdc-text-field__input mdc-text-field--fullwidth"
-              {{>form_validation_attributes @root.context.metaData.accountInfoValidation.email}}
-              value="{{@root.data.profileInfo.profile.email}}">
-              <label class="mdc-floating-label" for="email">
-                Email address
-              </label>
-            </div>
-          </div>
-          <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
-            <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
-              <input id="location_postcode" name="location_postcode"
-              {{>form_validation_attributes @root.context.metaData.accountInfoValidation.location_postcode}} class="mdc-text-field__input mdc-text-field--fullwidth"
-              value="{{@root.data.profileInfo.profile.location_postcode}}">
-              <label class="mdc-floating-label" for="location_postcode">
-                Postcode
-              </label>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <button type="submit" class="mdc-button mdc-button--raised mdc-button--import v-margin">
-        <span class="far fa-save mdc-list-item__graphic" aria-hidden="true"></span>
-        <span>Save profile information</span>
-      </button>
-    </form>
-  </section>
-
-  <hr />
-
-  <section class="settings-section content-settings-email">
-    <h2 class="mdc-typography--headline5">
-      Opportunities alerts
-    </h2>
-    <h3 class="mdc-typography--headline6 v-margin-full">
-      New opportunity emails
-    </h3>
-    {{> email_frequency}}
-    {{#ifAny
-      (compare (length (filter @root.data.searches.items.[0] "partitionActive" "===" 1)) ">" 0)
-      @root.data.favourites.items.[0].[0].active
-      (compare (length @root.data.user-newsletter-subscriptions) ">" 0)
-    }}
-      {{#ifAny
-        (compare (length (filter @root.data.searches.items.[0] "partitionActive" "===" 1)) ">" 0)
-        @root.data.favourites.items.[0].[0].active
-      }}
-    <p>
-      <a href="/stop-all-emails" class="mdc-button mdc-button--raised">
-      <span class="far fa-envelope mdc-list-item__graphic" aria-hidden="true"></span>
-      Stop all email alerts
-      </a>
-      {{/ifAny}}
-    </p>
-    <p>
-      {{#ifAny
-        (compare (length @root.data.user-newsletter-subscriptions) ">" 0)
-      }}
-      <a onclick="stopAllNewsletters(event)" class="nl-link-block mdc-button mdc-button--raised">
-        <span class="far fa-envelope mdc-list-item__graphic" aria-hidden="true"></span>
-        <span>Stop all newsletters</span>
-      </a>
-      {{/ifAny}}
-    </p>
-    {{/ifAny}}
-  </section>
-
-  <hr />
-
-  <section class="settings-section content-settings-account">
-    <h2 class="mdc-typography--headline5">
-      Account settings
-    </h2>
+      "successMessage": "Profile information updated",
+      "failureMessage": "Failed to update profile"
+    }'>
 
     <div class="mdc-layout-grid">
       <div class="mdc-layout-grid__inner">
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-12-phone">
-          {{#if (contains (map @root.data.auth.providerData (getProp "providerId")) "password") ~}}
-          <h3 class="mdc-typography--headline6">
-            Change password
-          </h3>
-          {{else}}
-          <h3 class="mdc-typography--headline6">
-            Set password
-          </h3>
-          <span class="mdc-typography--body1">You are currently using a social media account to sign in. If you set a password you will also be able to sign in with your email address.</span>
-          {{/if ~}}
-          <div class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon" data-mdc-auto-init="MDCTextField">
-            <span class="far fa-key mdc-text-field__icon" tabindex="-1"></span>
-            <input type="password" id="change-password-password" class="mdc-text-field__input" data-lpignore="true" autocomplete="off" />
-            <label class="mdc-floating-label mdc-floating-label--float-above" for="change-password">
-              Password
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
+          <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
+            <input id="first_name" name="first_name"
+            {{>form_validation_attributes @root.context.metaData.accountInfoValidation.first_name}}class="mdc-text-field__input mdc-text-field--fullwidth"
+            value="{{@root.data.profileInfo.profile.first_name}}">
+            <label class="mdc-floating-label" for="first_name">
+              First name
             </label>
-            <div class="mdc-line-ripple"></div>
           </div>
-          <div class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon" data-mdc-auto-init="MDCTextField">
-            <span class="far fa-key mdc-text-field__icon" tabindex="-1"></span>
-            <input type="password" id="change-password-confirm" class="mdc-text-field__input" data-lpignore="true" autocomplete="off" />
-            <label class="mdc-floating-label mdc-floating-label--float-above" for="change-password-confirm">
-              Confirm password
-            </label>
-            <div class="mdc-line-ripple"></div>
-          </div>
-          <button class="mdc-button mdc-button--raised mdc-button--change_password" id="change-password">
-            <span class="far fa-lock mdc-list-item__graphic" aria-hidden="true"></span>
-            {{#if (contains (map @root.data.auth.providerData (getProp "providerId")) "password") ~}}
-            Change password
-            {{else}}
-            Set password
-            {{/if ~}}
-          </button>
         </div>
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-12-phone">
-          <h3 class="mdc-typography--headline6">
-            Linked accounts
-          </h3>
-          <div class="mdc-chip-set mdc-chip-set--filter">
-            {{#each (split "google,facebook,twitter" ",") ~}}
-            <div class="v-margin">
-              {{> linkChip
-                provider=this
-                linked=(contains (map @root.data.auth.providerData (getProp "providerId")) (concat this ".com"))
-              }}
-            </div>
-            {{/each ~}}
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
+          <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
+            <input id="last_name" name="last_name"
+            {{>form_validation_attributes @root.context.metaData.accountInfoValidation.last_name}} class="mdc-text-field__input mdc-text-field--fullwidth"
+            value="{{@root.data.profileInfo.profile.last_name}}">
+            <label class="mdc-floating-label" for="last_name">
+              Last name
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="mdc-layout-grid__inner">
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
+          <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
+            <input id="date_of_birth" name="date_of_birth"
+            {{>form_validation_attributes @root.context.metaData.accountInfoValidation.date_of_birth}} class="mdc-text-field__input mdc-text-field--fullwidth"
+            value="{{@root.data.profileInfo.profile.date_of_birth}}">
+            <label class="mdc-floating-label" for="date_of_birth">
+              Date of birth
+            </label>
+          </div>
+        </div>
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
+          <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
+            <input id="location_address" name="location_address"
+            {{>form_validation_attributes @root.context.metaData.accountInfoValidation.location_address}} class="mdc-text-field__input mdc-text-field--fullwidth"
+            value="{{@root.data.profileInfo.profile.location_address}}">
+            <label class="mdc-floating-label" for="location_address">
+              Address
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="mdc-layout-grid__inner">
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
+          <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
+            <input id="phone" name="phone"
+            {{>form_validation_attributes @root.context.metaData.accountInfoValidation.phone}}
+            class="mdc-text-field__input mdc-text-field--fullwidth"
+            value="{{@root.data.profileInfo.profile.phone}}">
+            <label class="mdc-floating-label" for="phone">
+              Phone number
+            </label>
+          </div>
+        </div>
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
+          <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
+            <input id="location_city" name="location_city"
+            {{>form_validation_attributes @root.context.metaData.accountInfoValidation.location_city}} class="mdc-text-field__input mdc-text-field--fullwidth"
+            value="{{@root.data.profileInfo.profile.location_city}}">
+            <label class="mdc-floating-label" for="location_city">
+              Town/city
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="mdc-layout-grid__inner">
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
+          <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
+            <input id="email" name="email" class="mdc-text-field__input mdc-text-field--fullwidth"
+            {{>form_validation_attributes @root.context.metaData.accountInfoValidation.email}}
+            value="{{@root.data.profileInfo.profile.email}}">
+            <label class="mdc-floating-label" for="email">
+              Email address
+            </label>
+          </div>
+        </div>
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
+          <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
+            <input id="location_postcode" name="location_postcode"
+            {{>form_validation_attributes @root.context.metaData.accountInfoValidation.location_postcode}} class="mdc-text-field__input mdc-text-field--fullwidth"
+            value="{{@root.data.profileInfo.profile.location_postcode}}">
+            <label class="mdc-floating-label" for="location_postcode">
+              Postcode
+            </label>
           </div>
         </div>
       </div>
     </div>
 
-    <h2 class="mdc-typography--headline5">
-      Account data
-    </h2>
-    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-6-tablet mdc-layout-grid__cell--span-12-phone">
-      <button type="button" class="mdc-button mdc-button--raised mdc-button--export v-margin" onclick="exportUserData();">
-        <span class="far fa-upload mdc-list-item__graphic" aria-hidden="true"></span>
-        Export account settings
-      </button><br />
-      <button class="mdc-button mdc-button--raised mdc-button--import v-margin" data-dialog-target="#import-user-dialog">
-        <span class="far fa-download mdc-list-item__graphic" aria-hidden="true"></span>
-        Import account settings
-      </button><br />
-      <button class="mdc-button mdc-button--raised mdc-button--delete v-margin" data-dialog-target="#delete-user-dialog">
-        <span class="far fa-trash mdc-list-item__graphic" aria-hidden="true"></span>
-        Delete account
-      </button>
-    </div>
-  </section>
-</div>
+    <button type="submit" class="mdc-button mdc-button--raised mdc-button--import v-margin">
+      <span class="far fa-save mdc-list-item__graphic" aria-hidden="true"></span>
+      <span>Save profile information</span>
+    </button>
+  </form>
+</section>
 
-<aside id="delete-user-dialog"
-class="mdc-dialog"
-role="alertdialog"
-aria-labelledby="delete-user-dialog-label"
-aria-describedby="delete-user-dialog-description"
-data-mdc-auto-init="MDCDialog">
-<div action="/delete-user" method="GET" class="mdc-dialog__surface">
-  <header class="mdc-dialog__header">
-    <h2 id="delete-user-dialog-label" class="mdc-dialog__header__title">
-      Are you sure you want to delete your account?
-    </h2>
-  </header>
-  <section id="delete-user-dialog-description" class="mdc-dialog__body">
-    <p>
-      Deleting your account will:
-    </p>
-    <ul>
-      <li>Stop all email alerts</li>
-      <li>Delete your saved searches</li>
-      <li>Delete your favourites</li>
-      <li>Delete your notes on opportunities</li>
-      <li>Fully remove your My Volunteer account from Volunteer Scotland Search</li>
-    </ul>
-    <p>
-      If you only want to stop your email alerts, please see the options on <a href="/searches-subscriptions">searches &amp; email</a>.
-    </p>
-  </section>
-  <footer class="mdc-dialog__footer">
-    <button type="button" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--cancel">Cancel</button>
-    <a href="/delete-user" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept">Delete account</a>
-  </footer>
-</div>
-<div class="mdc-dialog__backdrop"></div>
-</aside>
+<hr />
 
-<aside id="import-user-dialog"
-class="mdc-dialog"
-role="alertdialog"
-aria-labelledby="import-user-dialog-label"
-aria-describedby="import-user-dialog-description"
-data-mdc-auto-init="MDCDialog">
-<form action="/import-user-data" method="POST" class="mdc-dialog__surface" data-ajax-form='{
-  "successMessage": "Data imported successfully",
-  "failureMessage": "Failed to import data"
-}'>
-<header class="mdc-dialog__header">
-  <h2 id="import-user-dialog-label" class="mdc-dialog__header__title">
-    Import user data
+<section class="settings-section content-settings-email">
+  <h2 class="mdc-typography--headline5">
+    Opportunities alerts
   </h2>
-</header>
-<section id="import-user-dialog-description" class="mdc-dialog__body">
-  <div class="mdc-text-field mdc-text-field--textarea mdc-text-field--fullwidth" data-mdc-auto-init="MDCTextField">
-    <textarea id="import-user-json" name="json" class="mdc-text-field__input" rows="10"></textarea>
-    <label for="import-user-json" class="mdc-floating-label">Paste exported data here</label>
+  <h3 class="mdc-typography--headline6 v-margin-full">
+    New opportunity emails
+  </h3>
+  {{> email_frequency}}
+  {{#ifAny
+    (compare (length (filter @root.data.searches.items.[0] "partitionActive" "===" 1)) ">" 0)
+    @root.data.favourites.items.[0].[0].active
+    (compare (length @root.data.user-newsletter-subscriptions) ">" 0)
+  }}
+  {{#ifAny
+    (compare (length (filter @root.data.searches.items.[0] "partitionActive" "===" 1)) ">" 0)
+    @root.data.favourites.items.[0].[0].active
+  }}
+  <p>
+    <a href="/stop-all-emails" class="mdc-button mdc-button--raised">
+      <span class="far fa-envelope mdc-list-item__graphic" aria-hidden="true"></span>
+      Stop all email alerts
+    </a>
+    {{/ifAny}}
+  </p>
+  <p>
+    {{#ifAny
+      (compare (length @root.data.user-newsletter-subscriptions) ">" 0)
+    }}
+    <a onclick="stopAllNewsletters(event)" class="nl-link-block mdc-button mdc-button--raised">
+      <span class="far fa-envelope mdc-list-item__graphic" aria-hidden="true"></span>
+      <span>Stop all newsletters</span>
+    </a>
+    {{/ifAny}}
+  </p>
+  {{/ifAny}}
+</section>
+
+<hr />
+
+<section class="settings-section content-settings-account">
+  <h2 class="mdc-typography--headline5">
+    Account settings
+  </h2>
+
+  <div class="mdc-layout-grid">
+    <div class="mdc-layout-grid__inner">
+      <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-12-phone">
+        {{#if (contains (map @root.data.auth.providerData (getProp "providerId")) "password") ~}}
+        <h3 class="mdc-typography--headline6">
+          Change password
+        </h3>
+        {{else}}
+        <h3 class="mdc-typography--headline6">
+          Set password
+        </h3>
+        <span class="mdc-typography--body1">You are currently using a social media account to sign in. If you set a password you will also be able to sign in with your email address.</span>
+        {{/if ~}}
+        <div class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon" data-mdc-auto-init="MDCTextField">
+          <span class="far fa-key mdc-text-field__icon" tabindex="-1"></span>
+          <input type="password" id="change-password-password" class="mdc-text-field__input" data-lpignore="true" autocomplete="off" />
+          <label class="mdc-floating-label mdc-floating-label--float-above" for="change-password">
+            Password
+          </label>
+          <div class="mdc-line-ripple"></div>
+        </div>
+        <div class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon" data-mdc-auto-init="MDCTextField">
+          <span class="far fa-key mdc-text-field__icon" tabindex="-1"></span>
+          <input type="password" id="change-password-confirm" class="mdc-text-field__input" data-lpignore="true" autocomplete="off" />
+          <label class="mdc-floating-label mdc-floating-label--float-above" for="change-password-confirm">
+            Confirm password
+          </label>
+          <div class="mdc-line-ripple"></div>
+        </div>
+        <button class="mdc-button mdc-button--raised mdc-button--change_password" id="change-password">
+          <span class="far fa-lock mdc-list-item__graphic" aria-hidden="true"></span>
+          {{#if (contains (map @root.data.auth.providerData (getProp "providerId")) "password") ~}}
+          Change password
+          {{else}}
+          Set password
+          {{/if ~}}
+        </button>
+      </div>
+      <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-12-phone">
+        <h3 class="mdc-typography--headline6">
+          Linked accounts
+        </h3>
+        <div class="mdc-chip-set mdc-chip-set--filter">
+          {{#each (split "google,facebook,twitter" ",") ~}}
+          <div class="v-margin">
+            {{> linkChip
+              provider=this
+              linked=(contains (map @root.data.auth.providerData (getProp "providerId")) (concat this ".com"))
+            }}
+          </div>
+          {{/each ~}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="mdc-typography--headline5">
+    Account data
+  </h2>
+  <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-6-tablet mdc-layout-grid__cell--span-12-phone">
+    <button type="button" class="mdc-button mdc-button--raised mdc-button--export v-margin" onclick="exportUserData();">
+      <span class="far fa-upload mdc-list-item__graphic" aria-hidden="true"></span>
+      Export account settings
+    </button><br />
+    <button class="mdc-button mdc-button--raised mdc-button--import v-margin" data-dialog-target="#import-user-dialog">
+      <span class="far fa-download mdc-list-item__graphic" aria-hidden="true"></span>
+      Import account settings
+    </button><br />
+    <button class="mdc-button mdc-button--raised mdc-button--delete v-margin" data-dialog-target="#delete-user-dialog">
+      <span class="far fa-trash mdc-list-item__graphic" aria-hidden="true"></span>
+      Delete account
+    </button>
   </div>
 </section>
-<footer class="mdc-dialog__footer">
-  <button type="button" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--cancel">Cancel</button>
-  <button type="submit" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept">Import User</button>
-</footer>
-</form>
-<div class="mdc-dialog__backdrop"></div>
+</div>
+
+<aside id="delete-user-dialog" class="mdc-dialog" role="alertdialog" aria-labelledby="delete-user-dialog-label" aria-describedby="delete-user-dialog-description" data-mdc-auto-init="MDCDialog">
+  <div class="mdc-dialog__container">
+    <div action="/delete-user" method="GET" class="mdc-dialog__surface">
+      <header class="mdc-dialog__header">
+        <h2 id="delete-user-dialog-label" class="mdc-dialog__title">Are you sure you want to delete your account?</h2>
+      </header>
+      <section id="delete-user-dialog-description" class="mdc-dialog__content">
+        <p>
+          Deleting your My Volunteer account will:
+        </p>
+        <ul>
+          <li>Stop all email alerts</li>
+          <li>Delete your saved searches</li>
+          <li>Delete your favourites</li>
+          <li>Delete your notes on opportunities</li>
+          <li>Fully remove your My Volunteer account from Volunteer Scotland Search</li>
+        </ul>
+        <p>
+          If you only want to stop your email alerts, please see the options on <a href="/searches">My saved searches</a>.
+        </p>
+      </section>
+      <footer class="mdc-dialog__actions">
+        <button type="button" class="mdc-button mdc-dialog__button mdc-ripple-upgraded" data-mdc-dialog-action="close">Cancel</button>
+        <a href="/delete-user" class="mdc-button mdc-dialog__button mdc-ripple-upgraded" data-mdc-dialog-action="accept">Delete account</a>
+      </footer>
+    </div>
+  </div>
+  <div class="mdc-dialog__scrim"></div>
 </aside>
 
+<aside id="import-user-dialog" class="mdc-dialog" role="alertdialog" aria-labelledby="import-user-dialog-label" aria-describedby="import-user-dialog-description" data-mdc-auto-init="MDCDialog">
+  <div class="mdc-dialog__container">
+    <form action="/import-user-data" method="POST" class="mdc-dialog__surface" data-ajax-form='{
+        "successMessage": "Data imported successfully",
+        "failureMessage": "Failed to import data"
+      }'>
+      <header class="mdc-dialog__header">
+        <h2 id="import-user-dialog-label" class="mdc-dialog__title">Import user data</h2>
+      </header>
+      <section id="import-user-dialog-description" class="mdc-dialog__content">
+        <div class="mdc-text-field mdc-text-field--textarea mdc-text-field--fullwidth" data-mdc-auto-init="MDCTextField">
+          <textarea id="import-user-json" name="json" class="mdc-text-field__input" rows="10"></textarea>
+          <label for="import-user-json" class="mdc-floating-label">Paste exported data here</label>
+        </div>
+      </section>
+      <footer class="mdc-dialog__actions">
+        <button type="button" class="mdc-button mdc-dialog__button mdc-ripple-upgraded" data-mdc-dialog-action="close">Cancel</button>
+        <button type="submit" class="mdc-button mdc-dialog__button mdc-ripple-upgraded" data-mdc-dialog-action="accept">Import User</button>
+      </footer>
+    </form>
+  </div>
+  <div class="mdc-dialog__scrim"></div>
+</aside>

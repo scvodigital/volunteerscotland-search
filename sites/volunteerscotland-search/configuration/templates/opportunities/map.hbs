@@ -2,9 +2,10 @@
   <div class="mdc-layout-grid head">
     <div class="mdc-layout-grid__inner">
       <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone action">
-        {{#>components_tab_bar}}
-          {{>components_tab url=(concat "/search" (replace (replace @root.request.url.search "&page=" "&p=") "&only_la=true" "")) iconClasses="far fa-list fa-fw" label="List" active=(compare @root.request.url.pathname "===" "/search")}}
-          {{>components_tab url=(concat "/map" (replace @root.request.url.search "&only_la=true" "")) iconClasses="far fa-map-marker-alt fa-fw" label="Map" active=(compare @root.request.url.pathname "===" "/map")}}
+        {{#> components_tab_bar}}
+         {{> search_button}}
+          {{> components_tab url=(concat "/search" (replace (replace @root.request.url.search "&page=" "&p=") "&only_la=true" "")) iconClasses="far fa-list fa-fw" label="List" active=(compare @root.request.url.pathname "===" "/search")}}
+          {{> components_tab url=(concat "/map" (replace @root.request.url.search "&only_la=true" "")) iconClasses="far fa-map-marker-alt fa-fw" label="Map" active=(compare @root.request.url.pathname "===" "/map")}}
         {{/components_tab_bar}}
       </div>
       {{#compare (subtract @root.data.search_data.map_results.hits.total @root.data.search_data.map_results.aggregations.geo_search.buckets.[0].doc_count) ">" 0 ~}}
@@ -19,7 +20,7 @@
   {{#if @root.data.search_data.map_results.pagination.totalResults ~}}
     <div class="card-loader" id="opportunity-map-loader" style="display: flex">
       <div class="card-loader-inner">
-        <span class="far fa-2x fa-circle-notch fa-spin"></span>
+        <span class="far fa-2x fa-spinner-third fa-spin"></span>
       </div>
     </div>
     <div id="map-full" data-map-name="fullMap" class="grid-content" data-map-clustered-options='{
@@ -44,7 +45,6 @@
               {{/compare ~}}
             {{else}}
               <marker style="display:none;" data-map="fullMap" data-lat="{{lat}}" data-lng="{{lon}}" data-shortlisted="{{#each @root.data.favourites.items}}{{#compare id "===" ../../_source.Id}}true{{/compare}}{{/each}}" data-title="{{../_source.title}}">
-                Distance: {{itemAt ../fields.distance @index}}
                 {{>opportunity_map ../_source}}
               </marker>
             {{/if ~}}

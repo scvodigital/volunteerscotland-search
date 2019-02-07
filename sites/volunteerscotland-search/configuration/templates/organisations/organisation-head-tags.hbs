@@ -1,7 +1,7 @@
 {{#if data.primaryResponse.hits.hits.[0] ~}}
 {{#with data.primaryResponse.hits.hits.[0]._source ~}}
-<title>{{title}} – Volunteer Scotland</title>
-<meta property="og:title" content="{{title}} – Volunteer Scotland" data-dynamic="true">
+<title>{{title}} – Volunteer Scotland Search</title>
+<meta property="og:title" content="{{title}} – Volunteer Scotland Search" data-dynamic="true">
 {{#ifAny logo_url og_image ../og_image ~}}
 <meta property="og:image" content="{{default logo_url og_image ../og_image}}" data-dynamic="true">
 {{/ifAny ~}}
@@ -16,6 +16,6 @@
 {{/if ~}}
 {{/with ~}}
 {{else}}
-<title>Volunteer Scotland</title>
-<meta property="og:title" content="Volunteer Scotland" data-dynamic="true">
+<title>Volunteer Scotland Search</title>
+<meta property="og:title" content="Volunteer Scotland Search" data-dynamic="true">
 {{/if ~}}

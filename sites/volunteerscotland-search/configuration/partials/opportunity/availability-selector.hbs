@@ -3,15 +3,15 @@
     <thead>
       <tr>
         <th></th>
-        <th style="text-align:center;font-weight:normal;">AM</th>
-        <th style="text-align:center;font-weight:normal;">PM</th>
-        <th style="text-align:center;font-weight:normal;">Eve</th>
+        <th><p>AM</p></th>
+        <th><p>PM</p></th>
+        <th><p>Eve</p></th>
       </tr>
     </thead>
     <tbody>
       {{#each (split "monday,tuesday,wednesday,thursday,friday,saturday,sunday" ",")}}
       <tr>
-        <th style="text-align:left;font-weight:normal;"><p>{{capitalize this}}</p></th>
+        <th><p>{{capitalize this}}</p></th>
         {{#each (split "morning,afternoon,evening" ",")}}
         <td>
           <div class="mdc-checkbox">

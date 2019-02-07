@@ -2,6 +2,7 @@
   "name": "contact",
   "pattern": "/contact",
   "metaData": {
+    "hideSearch": true,
     "title": "Contact - Volunteer Scotland"
   },
   "tasks": [

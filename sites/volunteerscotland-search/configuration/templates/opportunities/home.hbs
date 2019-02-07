@@ -11,9 +11,9 @@
           </h2>
           <div class="mdc-layout-grid b-padding">
             <div class="mdc-layout-grid__inner">
-              <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-5-tablet mdc-layout-grid__cell--span-4-phone">
+              <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
                 <div class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon" data-mdc-auto-init="MDCTextField">
-                  <span class="fas fa-map-marker-alt mdc-text-field__icon geo-lookup" tabindex="0" title="Find my location"></span>
+                  <span class="far fa-map-marker-alt mdc-text-field__icon geo-lookup" tabindex="0" title="Find my location"></span>
                   <input type="text" id="where-opportunities" name="location" class="mdc-text-field__input" value="{{@root.request.params.query.location}}" placeholder="" data-lpignore="true" data-location-search='{
                     "latSelector": "[name=\"lat\"]",
                     "lngSelector": "[name=\"lng\"]",
@@ -27,15 +27,15 @@
                 </div>
                 <!-- <div class="after-textfield-action geo-lookup">Find me</div> -->
               </div>
-              <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-3-tablet mdc-layout-grid__cell--span-4-phone">
-                <div class="mdc-layout-grid" style="position:relative;top:.25rem;">
+              <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone filter-distance">
+                <div class="mdc-layout-grid">
                   <div class="mdc-layout-grid__inner">
                     <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-9-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
-                      <div class="mdc-floating-label" style="left:.5rem;top:1.1rem;color:rgba(0, 0, 0, 0.6);">
+                      <div class="mdc-floating-label">
                         Within
                       </div>
                     </div>
-                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop mdc-layout-grid__cell--span-6-tablet mdc-layout-grid__cell--span-4-phone">
                       <div class="h-padding">
                         <div data-slider data-slider-value-target="#slider-distance-value" data-slider-display-target="#slider-distance-display" class="mdc-slider mdc-slider--discrete" tabindex="0" role="slider" aria-valuemin="5" aria-valuemax="50" data-step="5" name="distance" aria-valuenow="{{default @root.request.params.query.distance 10}}" aria-label="Select distance">
                           <div class="mdc-slider__track-container">
@@ -54,8 +54,8 @@
                         <div class="mdc-line-ripple"></div>
                       </div>
                     </div>
-                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone">
-                      <div style="line-height: 48px;">
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-2-tablet mdc-layout-grid__cell--span-4-phone">
+                      <div class="filter-distance-value">
                         <span id="slider-distance-display">{{default @root.request.params.query.distance 10}}</span> miles
                       </div>
                     </div>

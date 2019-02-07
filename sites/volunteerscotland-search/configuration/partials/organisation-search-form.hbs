@@ -6,8 +6,8 @@
       {{getProperty @root.context.metaData.termTypeLabels (concat type ".plural")}}
     {{/compare ~}}
     <span class="mdc-icon-toggle pull-right">
-    <i class="far fa-chevron-down" aria-hidden="true"></i>
-  </span>
+      <span class="far fa-chevron-down" aria-hidden="true"></span>
+    </span>
   </h3>
   <div class="mdc-drawer--occasional-ie11 checkbox-toggle-display-checked" id="{{../instance_id}}-{{type}}-collapse" >
     {{#compare type "===" "regions" ~}}
@@ -149,7 +149,7 @@
     <div class="h-margin mdc-drawer--occasional-ie11">
       <button class="mdc-button mdc-button--raised mdc-button--large mdc-button--fullwidth mdc-ripple-surface mdc-ripple-surface--primary" type="submit" id="{{instance_id}}-search-submit" data-mdc-auto-init="MDCRipple">
         Search
-        <span class="fas fa-search fa-fw" aria-hidden="true"></span>
+        <span class="far fa-search fa-fw" aria-hidden="true"></span>
       </button>
     </div>
   </form>

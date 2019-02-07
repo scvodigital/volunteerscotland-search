@@ -14,12 +14,9 @@
 
   {{#compare @root.data.registered_interest_opportunities.current.hits.total ">" 0}}
     {{#each @root.data.registered_interest_opportunities.current.hits.hits ~}}
-      <div class="{{#compare _source.Id "===" @root.request.params.query.id}}fade-in{{/compare}}">
-      {{> opportunity_search_result _source}}
-        <div class ="pull-right">
-          <a href="{{{@root.request.fullUrl}}}" onclick="sqlRemoveInterest('{{_source.Id}}')">Remove from this list</a>
-        </div>
-      </div>
+    <div class="{{#compare _source.Id "===" @root.request.params.query.id}}fade-in{{/compare}}">
+      {{> opportunity_search_result _source action="remove"}}
+    </div>
     {{/each ~}}
     <div class="foot">
       {{> pagination paging=@root.data.registered_interest_opportunities.current.pagination}}

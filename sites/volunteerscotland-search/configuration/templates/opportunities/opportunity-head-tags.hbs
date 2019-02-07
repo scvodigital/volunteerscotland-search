@@ -1,10 +1,10 @@
 {{#if data.primaryResponse.hits.hits.[0] ~}}
 {{#with data.primaryResponse.hits.hits.[0]._source ~}}
 
-<title>{{title}} with {{organisation_name}} – Volunteer Scotland</title>
-<meta property="og:title" content="{{title}} with {{organisation_name}} – Volunteer Scotland" data-dynamic="true">
-<meta itemprop="name" content="{{title}} with {{organisation_name}} – Volunteer Scotland" data-dynamic="true">
-<meta name="twitter:title" content="{{title}} with {{organisation_name}} – Volunteer Scotland" data-dynamic="true">
+<title>{{title}} with {{organisation_name}} – Volunteer Scotland Search</title>
+<meta property="og:title" content="{{title}} with {{organisation_name}} – Volunteer Scotland Search" data-dynamic="true">
+<meta itemprop="name" content="{{title}} with {{organisation_name}} – Volunteer Scotland Search" data-dynamic="true">
+<meta name="twitter:title" content="{{title}} with {{organisation_name}} – Volunteer Scotland Search" data-dynamic="true">
 
 {{#ifAny organisation.logo_url og_image ../og_image ~}}
 <meta property="og:image" content="{{default organisation.logo_url og_image ../og_image}}" data-dynamic="true">
@@ -42,7 +42,7 @@
 
 {{/with ~}}
 {{else}}
-<title>Opportunity – Volunteer Scotland</title>
-<meta property="og:title" content="Opportunity – Volunteer Scotland" data-dynamic="true">
+<title>Opportunity – Volunteer Scotland Search</title>
+<meta property="og:title" content="Opportunity – Volunteer Scotland Search" data-dynamic="true">
 {{/if ~}}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">

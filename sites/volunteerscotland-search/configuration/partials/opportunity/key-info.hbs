@@ -1,6 +1,6 @@
 <div class="mdc-card__info--content-primary-row">
   <div class="mdc-card__info--content-primary">
-    <div class="v-margin pull-right">
+    <div class="v-margin pull-right mdc-card__info--search-distance">
       {{#compare @root.route.name "===" "opportunity_search" ~}}
       {{#ifAll @root.request.params.query.location @root.request.params.query.lat @root.request.params.query.lng ~}}
       {{#if home_based ~}}{{else}}
@@ -8,7 +8,7 @@
       {{#compare distance "!==" "Infinity" ~}}
       {{#compare distance "<=" @root.request.params.query.distance ~}}
       <ul class="fa-ul">
-        <li class="mdc-card__info--search-distance mdc-typography--body2">
+        <li class="mdc-typography--body2">
           <span class="fa-li"><span class="fas fa-location-arrow fa-fw" title="Distance"></span></span>
           {{#compare distance "<" 4 ~}}
             Less than {{inflect (round distance "up") "mile" "miles" true}} away
@@ -23,7 +23,7 @@
       </ul>
       {{else}}
       <ul class="fa-ul">
-        <li class="mdc-card__info--search-distance mdc-typography--body2">
+        <li class="mdc-typography--body2">
           <span class="fa-li"><span class="far fa-location-arrow fa-fw" title="Location"></span></span>
           {{@root.request.params.query.la}}
         </li>
@@ -31,7 +31,7 @@
       {{/compare ~}}
       {{else}}
       <ul class="fa-ul">
-        <li class="mdc-card__info--search-distance mdc-typography--body2">
+        <li class="mdc-typography--body2">
           <span class="fa-li"><span class="far fa-location-arrow fa-fw" title="Location"></span></span>
           {{@root.request.params.query.la}}
         </li>
@@ -53,28 +53,30 @@
     {{#if @root.request.url.search ~}}
     {{/if ~}}
     {{/compare ~}}
-    <h2 class="mdc-card__info--content-primary-title mdc-typography--headline5">
+    <h2 class="mdc-card__info--content-primary-title mdc-typography--headline6">
       <a href="/opportunity/{{slug}}{{@root.request.url.search}}">
         <span class="hover-underline">{{title}}</span>
       </a>
     </h2>
+    {{#ifAll organisation_slug organisation_name ~}}
     <ul class="fa-ul organisation">
       <li class="mdc-card__info--content-primary-organisation mdc-typography--body1">
-        <span class="fa-li"><span class="far fa-building fa-fw" title="Organisation"></span></span>
+        <span class="fa-li"><span class="far fa-home-heart" title="Organisation"></span></span>
         <a href="/organisation/{{organisation_slug}}{{@root.request.url.search}}">{{organisation_name}}</a>
       </li>
     </ul>
+    {{/ifAll ~}}
     <ul class="fa-ul first">
       {{#if milo_ref ~}}
         <li class="mdc-card__info--content-primary-reference mdc-typography--body1">
-          <span class="fa-li"><span class="far fa-hashtag fa-fw" title="Reference"></span></span>
+          <span class="fa-li"><span class="far fa-hashtag" title="Reference"></span></span>
           {{milo_ref}}
         </li>
       {{/if ~}}
       {{#if volunteersearch_type ~}}
       {{#compare volunteersearch_type.length ">" 0 ~}}
         <li class="mdc-card__info--content-primary-reference mdc-typography--body1">
-          <span class="fa-li"><span class="far fa-info-circle fa-fw" title="Type"></span></span>
+          <span class="fa-li"><span class="far fa-info-circle" title="Type"></span></span>
           {{#each volunteersearch_type ~}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}
         </li>
       {{/compare ~}}
@@ -82,23 +84,25 @@
     </ul>
     <ul class="fa-ul last">
       {{#compare work_location "===" "At Home" ~}}
+        {{#unless (contains volunteersearch_type "Home-based volunteering") ~}}
         <li class="mdc-card__info--content-primary-location mdc-typography--body1">
           <span class="fa-li"><span class="far fa-map-marker-alt fa-fw" title="Location"></span></span>
           Work from home
         </li>
+        {{/unless ~}}
       {{else}}
         {{#compare (length geo) ">" 1 ~}}
           <li class="mdc-card__info--content-primary-location mdc-typography--body1">
             <span class="fa-li"><span class="far fa-map-marker-alt fa-fw" title="Location"></span></span>
             {{#each geo ~}}
-              {{{this.msoa}}}{{#unless @last}}, {{/unless}}
+              {{{this.admin_ward}}}{{#unless @last}}, {{/unless}}
             {{/each ~}}
           </li>
         {{else}}
           {{#if geo ~}}
             <li class="mdc-card__info--content-primary-location mdc-typography--body1">
               <span class="fa-li"><span class="far fa-map-marker-alt fa-fw" title="Location"></span></span>
-              {{{geo.msoa}}}
+              {{{geo.admin_ward}}}
             </li>
           {{/if ~}}
         {{/compare ~}}
@@ -108,7 +112,7 @@
   {{#if (contains (map @root.data.registeredInterest.items.[0] (getProp "value")) Id) ~}}
   {{#ifAny opportunity_contact_first_name opportunity_contact_last_name organisation_website ~}}
   <div class="mdc-card__info--content-primary">
-    <h4 class="mdc-typography--headline6">Contact</h4>
+    <h4 class="mdc-typography--headline6 t-margin-full">Contact</h4>
     {{#ifAny opportunity_contact_first_name opportunity_contact_last_name ~}}
     <div class="mdc-typography--body1">
       <strong>Name: </strong> {{{opportunity_contact_first_name}}} {{{opportunity_contact_last_name}}}
