@@ -128,7 +128,6 @@
           <input type="hidden" name="opportunity_minimum_age" value="{{minimum_age}}">
           <input type="hidden" name="opportunity_maximum_age" value="{{maximum_age}}">
 
-
           {{#if @root.data.auth ~}}
             <div class="mdc-form-field">
               <div class="mdc-checkbox">
@@ -140,11 +139,17 @@
                   <div class="mdc-checkbox__mixedmark"></div>
                 </div>
               </div>
-              <label for="store-details">Remember details for future applications? We will not use these details for anything but volunteering applications, and you will be asked (via this form) before submitting each time.</label>
+              <label for="store-details">
+                Remember details for future applications?
+                <div class="mdc-typography--caption">
+                  We will not use these details for anything but volunteering applications, and you will be asked (via this form) before submitting each time.
+                </div>
+              </label>
             </div>
           {{/if ~}}
-          <button type="submit" class="mdc-button mdc-button--raised" id="register-interest-submit">
-            Register Interest
+          <button type="submit" class="mdc-button mdc-button--raised b-margin-full" id="register-interest-submit">
+            <span class="far fa-hand-paper mdc-list-item__graphic" aria-hidden="true"></span>
+            Register interest
           </button>
         {{/if ~}}
       {{/unless ~}}
