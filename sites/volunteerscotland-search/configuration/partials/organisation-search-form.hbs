@@ -6,8 +6,8 @@
       {{getProperty @root.context.metaData.termTypeLabels (concat type ".plural")}}
     {{/compare ~}}
     <span class="mdc-icon-toggle pull-right">
-    <i class="far fa-chevron-down" aria-hidden="true"></i>
-  </span>
+      <span class="far fa-chevron-down" aria-hidden="true"></span>
+    </span>
   </h3>
   <div class="mdc-drawer--occasional-ie11 checkbox-toggle-display-checked" id="{{../instance_id}}-{{type}}-collapse" >
     {{#compare type "===" "regions" ~}}

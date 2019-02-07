@@ -2611,6 +2611,9 @@ footer.mdc-layout__footer {
       }
     }
   }
+  .drawer-container-permanent {
+    padding: 0 $unit/2;
+  }
   .mdc-drawer__content {
     padding: 0;
     .search-form {
@@ -2651,6 +2654,9 @@ footer.mdc-layout__footer {
         margin: 0;
       }
     }
+  }
+  .mdc-list-group {
+    margin: $unit/2 0;
   }
   .mdc-card .mdc-card__info--content-secondary, .mdc-card .mdc-card__info--content-primary {
     padding: 0;
@@ -3082,6 +3088,13 @@ footer.mdc-layout__footer {
   content: "";
   clear: both;
   display: table;
+}
+
+table td,
+table th {
+  p {
+    margin: 0;
+  }
 }
 
 .align-centre {
