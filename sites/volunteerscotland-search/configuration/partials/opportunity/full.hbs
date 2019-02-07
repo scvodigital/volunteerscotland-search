@@ -48,137 +48,85 @@
         <div class="detailed-info">
           {{#if description ~}}
           <h4 class="mdc-typography--headline6">Description</h4>
-          <div class="mdc-typography--body1">
+          <p class="mdc-typography--body1">
             {{#if description_html}}{{{description_html}}}{{else}}{{description}}{{/if}}
-          </div>
+          </p>
           {{/if ~}}
-
-          {{#if url ~}}
-          <div class="mdc-typography--body1">
-            <a href="{{fixUrl url "http"}}"{{#if url_tooltip}} title="{{url_tooltip}}"{{/if}}>{{#if url_title}}{{url_title}}{{else}}{{url}}{{/if}}</a>
-          </div>
+          {{#if weblink ~}}
+          <p class="mdc-typography--body1">
+            <a href="{{fixUrl weblink "http"}}"{{#if weblink_tooltip}} title="{{weblink_tooltip}}"{{/if}}>{{#if weblink_title}}{{weblink_title}}{{else}}{{weblink}}{{/if}}</a>
+          </p>
           {{/if ~}}
-
           {{#if organisation_aims_and_objectives ~}}
           <h4 class="mdc-typography--headline6">Organisation aims and objectives</h4>
-          <div class="mdc-typography--body1">
+          <p class="mdc-typography--body1">
             {{{organisation_aims_and_objectives}}}
-          </div>
+          </p>
           {{/if ~}}
-
-        {{!-- #if (contains (map @root.data.registeredInterest.items.[0] (getProp "value")) Id)}}
-          {{#ifAny organisation_contact_last_name organisation_contact_email organisation_website ~}}
-          <h4 class="mdc-typography--headline6">Contact</h4>
-          {{#ifAny opportunity_contact_first_name opportunity_contact_last_name ~}}
-          <div class="mdc-typography--body1">
-            <strong>Name: </strong> {{{opportunity_contact_first_name}}} {{{opportunity_contact_last_name}}}
-          </div>
-          {{/ifAny ~}}
-
-          {{#if organisation_contact_email ~}}
-          <div class="mdc-typography--body1">
-            <strong>Email: </strong> <a href="mailto:{{{organisation_contact_email}}}">{{{organisation_contact_email}}}</a>
-          </div>
-          {{/if ~}}
-
-          {{#if organisation_website ~}}
-          <div class="mdc-typography--body1">
-            <strong>Website: </strong> <a href="{{fixUrl organisation_website 'http'}}">{{{organisation_website}}}</a>
-          </div>
-          {{/if ~}}
-
-          {{/ifAny}}
-        {{/if ~ --}}
-
           {{#if availability_slugs.length ~}}
           <h4 class="mdc-typography--headline6">Availability</h4>
-          <div class="mdc-typography--body1">
+          <p class="mdc-typography--body1">
             {{>opportunity_timings_display availability_slugs}}
-          </div>
+          </p>
           {{/if ~}}
-
           {{#if frequency_commitment_details ~}}
           <h4 class="mdc-typography--headline6">Frequency and commitment details</h4>
-          <div class="mdc-typography--body1">
+          <p class="mdc-typography--body1">
             {{{frequency_commitment_details}}}
-          </div>
+          </p>
           {{/if ~}}
-
           {{#ifAny restriction_details experience_required travel_details minimum_age maximum_age ~}}
           <h4 class="mdc-typography--headline6">Restrictions</h4>
-          {{#if restriction_details ~}}
-          {{#compare restriction_details "!==" "n/a" ~}}
-          <div class="mdc-typography--body1">
-            {{{restriction_details}}}
-          </div>
-          {{/compare ~}}
-          {{/if ~}}
-
-          {{#if experience_required ~}}
-          <div class="mdc-typography--body1">
-            <strong>Experience Required: </strong> {{{experience_required}}}
-          </div>
-          {{/if ~}}
-
-          {{#if travel_details ~}}
-          <div class="mdc-typography--body1">
-            <strong>Travel Details: </strong> {{{travel_details}}}
-          </div>
-          {{/if ~}}
-
-          {{#if minimum_age ~}}
-          <div class="mdc-typography--body1">
-            <strong>Minimum Age: </strong> {{{minimum_age}}}
-          </div>
-          {{/if ~}}
-
-          {{#if maximum_age ~}}
-          {{#compare maximum_age "<=" 26}}
-          <div class="mdc-typography--body1">
-            <strong>Maximum Age: </strong> {{{maximum_age}}}
-          </div>
-          {{/compare}}
-          {{/if ~}}
-
+          <p class="mdc-typography--body1">
+            {{#if restriction_details ~}}
+            {{#compare restriction_details "!==" "n/a" ~}}
+            {{{restriction_details}}}<br />
+            {{/compare ~}}
+            {{/if ~}}
+            {{#if experience_required ~}}
+            <strong>Experience required: </strong> {{{experience_required}}}<br />
+            {{/if ~}}
+            {{#if travel_details ~}}
+            <strong>Travel details: </strong> {{{travel_details}}}<br />
+            {{/if ~}}
+            {{#if minimum_age ~}}
+            <strong>Minimum age: </strong> {{{minimum_age}}}<br />
+            {{/if ~}}
+            {{#if maximum_age ~}}
+            {{#compare maximum_age "<=" 26}}
+            <strong>Maximum age: </strong> {{{maximum_age}}}<br />
+            {{/compare}}
+            {{/if ~}}
+          </p>
           {{/ifAny ~}}
 
           {{#ifAny travel_expenses expenses_paid taster_available taster_details support_options ~}}
           <h4 class="mdc-typography--headline6">Support</h4>
-          {{#if travel_expenses ~}}
-          <div class="mdc-typography--body1">
-            <strong>Travel Expenses: </strong> {{{travel_expenses}}}
-          </div>
-          {{/if ~}}
-
-          {{#if expenses_paid ~}}
-          <div class="mdc-typography--body1">
-            <strong>Expenses Paid: </strong> {{#compare expenses_paid "===" true}}Yes{{else}}No{{/compare}}
-          </div>
-          {{/if ~}}
-
-          {{#if taster_available ~}}
-          <div class="mdc-typography--body1">
-            <strong>Taster Available: </strong> {{#compare taster_available "===" true}}Yes{{else}}No{{/compare}}
-          </div>
-          {{/if ~}}
-
-          {{#if support_options ~}}
-          <div class="mdc-typography--body1">
+          <p class="mdc-typography--body1">
+            {{#if travel_expenses ~}}
+            <strong>Travel expenses: </strong> {{{travel_expenses}}}<br />
+            {{/if ~}}
+            {{#if expenses_paid ~}}
+            <strong>Expenses paid: </strong> {{#compare expenses_paid "===" true}}Yes{{else}}No{{/compare}}<br />
+            {{/if ~}}
+            {{#if taster_available ~}}
+            <strong>Taster available: </strong> {{#compare taster_available "===" true}}Yes{{else}}No{{/compare}}<br />
+            {{/if ~}}
+            {{#if support_options ~}}
             <strong>Support: </strong>
             {{#compare (getType support_options) "===" "string" ~}}
-            {{{support_options}}}
+            {{{support_options}}}<br />
             {{else}}
             {{#each support_options ~}}
-            {{{this}}}{{#unless @last}}, {{/unless}}
+            {{{this}}}{{#unless @last}}, {{/unless}}<br />
             {{/each ~}}
             {{/compare ~}}
-          </div>
-          {{/if ~}}
-
+            {{/if ~}}
+          </p>
           {{/ifAny ~}}
 
           {{#unless opportunity_contact_email}}
-          <p>You can't volunteer for this opportunity using this site. {{#if organisation_website}}Please contact the organisation directly using <a href="{{fixUrl organisation_website 'http'}}">{{{organisation_website}}}</a> for more information.{{/if}}</p>
+          <p class="mdc-typography--body1">You can't volunteer for this opportunity using this site. {{#if organisation_website}}Please contact the organisation directly using <a href="{{fixUrl organisation_website 'http'}}">{{{organisation_website}}}</a> for more information.{{/if}}</p>
           {{/unless}}
 
           <div class="mdc-typography--body1 report">
