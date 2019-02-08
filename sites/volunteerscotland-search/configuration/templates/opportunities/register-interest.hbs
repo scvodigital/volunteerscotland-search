@@ -89,11 +89,11 @@
             <div class="mdc-layout-grid__inner">
               <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
                 <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
-                  <input id="email" name="email-user-confirmation"
+                  <input id="email" name="email"
                     {{>form_validation_attributes @root.context.metaData.accountInfoValidation.email}}
                          class="mdc-text-field__input mdc-text-field--fullwidth"
                          value="{{@root.data.profileInfo.profile.email}}">
-                  <label class="mdc-floating-label" for="email[user-confirmation]">
+                  <label class="mdc-floating-label" for="email">
                     Email address
                   </label>
                 </div>
