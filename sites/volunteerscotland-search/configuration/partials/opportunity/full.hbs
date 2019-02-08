@@ -152,10 +152,14 @@
           <div class="container-content detailed-info">
             <p class="mdc-typography--body1">
               {{#compare advertised_areas.length ">" 0 ~}}
-                This opportunity is not listed at a specific location but is listed in
+                This opportunity is not listed at a specific location but is advertised across
+                {{#compare (getType advertised_areas) "string" ~}}
+                {{{advertised_areas}}}.
+                {{else}}
                 {{#each advertised_areas ~}}
-                  {{this}}{{#unless @last}}, {{else}}.{{/unless}}
+                  {{{this}}}{{#unless @last}}, {{else}}.{{/unless}}
                 {{/each ~}}
+                {{/compare ~}}
               {{else}}
                 This opportunity is not listed at a specific location.
               {{/compare ~}}
