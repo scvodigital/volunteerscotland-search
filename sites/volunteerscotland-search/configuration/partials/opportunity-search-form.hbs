@@ -1,6 +1,7 @@
 <div class="mdc-drawer__content">
   {{#if (regexMatch @root.request.url.pathname "^/opportunities-in" "gi")}}
     <form action="/opportunities-in/area" method="GET" class="search-form" novalidate>
+      <input type="hidden" name="search_la" value="{{@root.request.params.local_authority}}" />
   {{else}}
     <form id="opportunity-search-form" action="/{{#compare @root.request.url.pathname "/map"}}map{{else}}search{{/compare}}" method="GET" class="search-form" novalidate>
   {{/if}}

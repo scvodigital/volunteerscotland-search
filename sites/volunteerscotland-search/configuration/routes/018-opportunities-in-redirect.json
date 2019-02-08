@@ -8,7 +8,7 @@
       "renderer": "handlebars",
       "config": {
         "output": "data",
-        "template": "/opportunities-in/{{{request.params.query.la}}}{{{request.params.uri.search}}}"
+        "template": "/opportunities-in/{{#if request.params.query.la}}{{{request.params.query.la}}}{{else}}{{request.params.query.search_la}}{{/if}}{{{request.params.uri.search}}}"
       }
     },
     {
