@@ -10,10 +10,10 @@
     "population": {{{default stringify _source.population 0}}},
     {{/if}}
     {{#if _source.county}}
-    "county": {{{stringify _source.county}}},
+    "county": {{{stringify (slugify _source.county)}}},
     {{else}}
     {{#if _source.district}}
-    "county": {{{stringify _source.district}}},
+    "county": {{{stringify (slugify _source.district)}}},
     {{/if}}
     {{/if}}
     {{#if _source.ward}}

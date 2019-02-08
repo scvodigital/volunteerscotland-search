@@ -1,0 +1,25 @@
+{
+  "name": "get-user",
+  "pattern": "/get-user",
+  "debug": true,
+  "tasks": [
+    {
+      "name": "getUser",
+      "taskModule": "firebaseGetUser",
+      "config": {
+        "appName": "volunteerscotland-search",
+        "userIdentifier": "tonicblue@gmail.com"
+      }
+    },
+    {
+      "name": "destination",
+      "taskModule": "render",
+      "renderer": "handlebars",
+      "config": {
+        "template": "{{{stringify @root.data.getUser}}}",
+        "output": "body",
+        "parseJson": true
+      }
+    }
+  ]
+}
