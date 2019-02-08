@@ -11,9 +11,10 @@
     {{/if}}
     {{#if _source.county}}
     "county": {{{stringify _source.county}}},
-    {{/if}}
+    {{else}}
     {{#if _source.district}}
-    "district": {{{stringify _source.district}}},
+    "county": {{{stringify _source.district}}},
+    {{/if}}
     {{/if}}
     {{#if _source.ward}}
     "ward": {{{stringify _source.ward}}},
