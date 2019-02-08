@@ -4,7 +4,7 @@
     "Id",
     "title",
     "organisation_name",
-    "closing_date",
+    "description",
     "geo_coords",
     "slug"
   ],
