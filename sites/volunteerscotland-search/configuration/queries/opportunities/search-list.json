@@ -89,14 +89,12 @@
     {{#compare @root.request.params.query.sort "===" "newest" ~}}
     {
       "start_date": "desc"
-    },
-    "_score"
+    }
     {{else}}
     {{#compare @root.request.params.query.sort "===" "oldest" ~}}
     {
       "start_date": "asc"
-    },
-    "_score"
+    }
     {{else}}
     "_score"
     {{/compare ~}}

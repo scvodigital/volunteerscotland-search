@@ -1,7 +1,7 @@
 <div class="mdc-card__info--content-primary-row">
   <div class="mdc-card__info--content-primary">
     <div class="v-margin pull-right mdc-card__info--search-distance">
-      {{#compare @root.route.name "===" "opportunity_search" ~}}
+      {{#ifAny (compare @root.route.name "===" "opportunity_search") (compare @root.route.name "===" "opportunities_in") ~}}
       {{#ifAll @root.request.params.query.location @root.request.params.query.lat @root.request.params.query.lng ~}}
       {{#if home_based ~}}{{else}}
       {{#if distance ~}}
@@ -25,7 +25,7 @@
       <ul class="fa-ul">
         <li class="mdc-typography--body2">
           <span class="fa-li"><span class="far fa-location-arrow fa-fw" title="Location"></span></span>
-          {{@root.request.params.query.la}}
+          {{{getProperty @root.data.termsMaps.local_authorities.slugsMap (concat @root.request.params.query.la ".term")}}}
         </li>
       </ul>
       {{/compare ~}}
@@ -33,14 +33,14 @@
       <ul class="fa-ul">
         <li class="mdc-typography--body2">
           <span class="fa-li"><span class="far fa-location-arrow fa-fw" title="Location"></span></span>
-          {{@root.request.params.query.la}}
+          {{{getProperty @root.data.termsMaps.local_authorities.slugsMap (concat @root.request.params.query.la ".term")}}}
         </li>
       </ul>
       {{/compare ~}}
       {{/if ~}}
       {{/if ~}}
       {{/ifAll ~}}
-      {{/compare ~}}
+      {{/ifAny ~}}
     </div>
     {{#compare @root.route.name "===" "opportunity" ~}}
     {{#if goodhq_organisation.image_url ~}}

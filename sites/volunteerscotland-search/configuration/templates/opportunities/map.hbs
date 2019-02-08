@@ -11,7 +11,10 @@
       {{#compare (subtract @root.data.search_data.map_results.hits.total @root.data.search_data.map_results.aggregations.geo_search.buckets.[0].doc_count) ">" 0 ~}}
       <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone pagination-desktop">
         <div class="mdc-typography--body2 pull-right">
-          <a href="/search{{@root.request.url.search}}&only_la=true">List {{subtract @root.data.search_data.map_results.hits.total @root.data.search_data.map_results.aggregations.geo_search.buckets.[0].doc_count}} available across {{@root.request.params.query.la}}</a>
+          <a href="/search{{@root.request.url.search}}&only_la=true">List
+            {{subtract @root.data.search_data.map_results.hits.total @root.data.search_data.map_results.aggregations.geo_search.buckets.[0].doc_count}}
+            available across
+            {{{getProperty @root.data.termsMaps.local_authorities.slugsMap (concat @root.request.params.query.la ".term")}}}</a>
         </div>
       </div>
       {{/compare ~}}
@@ -40,17 +43,17 @@
             {{#if @root.request.params.query.distance ~}}
               {{#compare (itemAt ../fields.distance @index) "<" @root.request.params.query.distance ~}}
                 <marker style="display:none;" data-map="fullMap" data-lat="{{lat}}" data-lng="{{lon}}" data-shortlisted="{{#each @root.data.favourites.items}}{{#compare id "===" ../../_source.Id}}true{{/compare}}{{/each}}" data-title="{{../_source.title}}">
-                  {{>opportunity_map ../_source}}
+                  {{> opportunity_map ../_source}}
                 </marker>
               {{/compare ~}}
             {{else}}
               <marker style="display:none;" data-map="fullMap" data-lat="{{lat}}" data-lng="{{lon}}" data-shortlisted="{{#each @root.data.favourites.items}}{{#compare id "===" ../../_source.Id}}true{{/compare}}{{/each}}" data-title="{{../_source.title}}">
-                {{>opportunity_map ../_source}}
+                {{> opportunity_map ../_source}}
               </marker>
             {{/if ~}}
-          {{/each}}
-        {{/if}}
-      {{/each}}
+          {{/each ~}}
+        {{/if ~}}
+      {{/each ~}}
     </div>
   {{else}}
     {{> search_info paging=@root.data.search_data.detailed_results.pagination}}

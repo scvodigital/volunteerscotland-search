@@ -1,8 +1,8 @@
 {
-  "name": "opportunity_map",
-  "pattern": "/map",
+  "name": "opportunities_in",
+  "pattern": "/opportunities-in/:local_authority",
+  "debug": true,
   "metaData": {
-    "title": "Volunteer Scotland Search",
     "sidebarButton": {
       "icon": "search",
       "tooltip": "Search",
@@ -14,6 +14,10 @@
   },
   "tasks": [
     "context.metaData.commonTasks.authNotRequired",
+    "context.metaData.commonTasks.profileInfoData",
+    "context.metaData.commonTasks.searchesData",
+    "context.metaData.commonTasks.favouritesData",
+    "context.metaData.commonTasks.registeredInterestData",
     {
       "name": "search_data",
       "taskModule": "elasticsearch",
@@ -24,10 +28,10 @@
         },
         "queryTemplates": [
           {
-            "name": "map_results",
+            "name": "detailed_results",
             "index": "web-content-production",
             "type": "milo-volunteering-opportunity",
-            "template": ">context.metaData.handlebars.queries.opportunities_search-map"
+            "template": ">context.metaData.handlebars.queries.opportunities_opportunities-in-list"
           }
         ]
       },
@@ -44,7 +48,7 @@
           "if": [
             {
               "in": [
-                "view=rss",
+                "rss",
                 {
                   "var": "request.fullUrl"
                 }
@@ -77,8 +81,8 @@
             "layout": ">context.metaData.handlebars.layouts.default",
             "parts": {
               "head": ">context.metaData.handlebars.templates.opportunities_search-head-tags",
-              "body": ">context.metaData.handlebars.templates.opportunities_map",
-              "foot": ">context.metaData.handlebars.templates.opportunities_map-foot",
+              "body": ">context.metaData.handlebars.templates.opportunities_opportunities-in",
+              "foot": ">context.metaData.handlebars.templates.opportunities_search-foot",
               "sidebar": ">context.metaData.handlebars.templates.opportunities_search-form"
             },
             "contentType": "text/html"

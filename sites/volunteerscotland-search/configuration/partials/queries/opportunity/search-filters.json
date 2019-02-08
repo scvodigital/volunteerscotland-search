@@ -14,11 +14,11 @@
       },
       {{/ifAll ~}}
       {{#if la ~}}
-      {{>queries_term field="advertised_areas" term=la}},
+      {{>queries_term field="advertised_areas_slugs" term=la}},
       {{/if ~}}
       {{>queries_do_nothing}}
     ],
-    "minimum_should_match": {{#if distance}}2{{else}}{{#if advertised_areas}}2{{else}}1{{/if}}{{/if}}
+    "minimum_should_match": {{#if distance}}2{{else}}{{#if la}}2{{else}}1{{/if}}{{/if}}
   }
 },
 {{/ifAny ~}}

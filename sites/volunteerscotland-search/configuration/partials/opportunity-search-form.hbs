@@ -1,5 +1,13 @@
 <div class="mdc-drawer__content">
-  <form id="opportunity-search-form" action="/{{#compare @root.request.url.pathname "/map"}}map{{else}}search{{/compare}}" method="GET" class="search-form" novalidate>
+  {{#if (regexMatch @root.request.url.pathname "^/opportunities-in" "gi")}}
+    {{#ifAll @root.request.params.query.location @root.request.params.query.la ~}}
+      <form action="/opportunities-in/area" method="GET" class="search-form" novalidate>
+    {{else}}
+      <form action="{{@root.request.url.pathname}}" method="GET" class="search-form" novalidate>
+    {{/ifAll ~}}
+  {{else}}
+    <form id="opportunity-search-form" action="/{{#compare @root.request.url.pathname "/map"}}map{{else}}search{{/compare}}" method="GET" class="search-form" novalidate>
+  {{/if}}
     <input type="hidden" name="sort" value="{{@root.request.params.query.sort}}" id="{{instance_id}}-sort">
     <div class="h-padding">
       <div class="mdc-layout-grid">
