@@ -143,6 +143,15 @@
         },
         "size": 10000
       }
+    },
+    "advertised_areas_slugs": {
+      "terms": {
+        "field": "advertised_areas_slugs",
+        "order": {
+          "_term": "asc"
+        },
+        "size": 10000
+      }
     }
   }
 }

@@ -2097,6 +2097,16 @@ footer,
       margin-right: $unit;
     }
   }
+  .mdc-list.areas {
+    .mdc-list-item__text {
+      margin-right: auto;
+      width: 100%;
+    }
+    .mdc-list-item .mdc-list-item__meta {
+      width: 3.5rem;
+      text-align: right;
+    }
+  }
 }
 .browse-areas {
   .mdc-layout-grid__inner {
