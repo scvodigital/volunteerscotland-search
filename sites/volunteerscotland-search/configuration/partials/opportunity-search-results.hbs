@@ -214,19 +214,7 @@
             {{/if ~}}
           {{/each ~}}
           <input type="hidden" name="distance" value="{{#if @root.request.params.query.distance}}{{@root.request.params.query.distance}}{{else}}10{{/if}}" />
-          <div class="mdc-select pull-right" data-mdc-auto-init="MDCSelect">
-            <span class="mdc-select__dropdown-icon"></span>
-            <select class="mdc-select__native-control" id="sort" name="sort" onchange="this.form.submit();">
-              <option value="relevance"{{#compare @root.request.params.query.sort "===" "relevance"}} selected{{/compare}}>Relevance</option>
-              {{#if @root.request.params.query.location}}<option value="distance"{{#compare @root.request.params.query.sort "===" "distance"}} selected{{/compare}}{{#compare @root.request.params.query.location "===" ""}}{{/compare}}>Distance</option>{{/if}}
-              <option value="newest"{{#compare @root.request.params.query.sort "===" "newest"}} selected{{/compare}}>Newest</option>
-              <option value="oldest"{{#compare @root.request.params.query.sort "===" "oldest"}} selected{{/compare}}>Oldest</option>
-            </select>
-            <label class="mdc-floating-label mdc-select__label--float-above" for="sort">
-              Sort by
-            </label>
-            <div class="mdc-line-ripple"></div>
-          </div>
+          {{> opportunity_search_sort}}
         </form>
       {{/compare ~}}
     </div>
