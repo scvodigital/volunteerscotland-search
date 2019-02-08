@@ -1,6 +1,6 @@
 {
   "size": 6,
-  "_source": ["place", "display", "point", "district"],
+  "_source": ["place", "display", "point", "county", "district"],
   "query": {
     "bool": {
       "must": [
