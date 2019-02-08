@@ -51,7 +51,7 @@
           {{#if @root.request.params.query.location ~}}
           near
           {{replace (replace @root.request.params.query.location (getProperty @root.data.termsMaps.local_authorities.slugsMap (concat @root.request.params.local_authority ".term")) "") ", " ""}}
-          and
+          or
           {{/if ~}}
           across
           {{getProperty @root.data.termsMaps.local_authorities.slugsMap (concat @root.request.params.local_authority ".term")}}:
