@@ -118,12 +118,14 @@ function getConfig(site, library) {
           loader: 'babel-loader',
           query: {
             presets: ['es2015'],
-            compact: false
+            compact: false,
+
           }
         }
       ]
     },
-    plugins: plugins
+    plugins: plugins,
+    devtool: "source-map"
   };
 
   return config;
