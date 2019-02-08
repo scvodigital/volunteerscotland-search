@@ -9,9 +9,10 @@
     volunteering opportunities
   </h1>
 
+  {{#if @root.data.search_data.detailed_results.pagination.totalResults ~}}
   <div class="container-content container-map">
     <div id="map-content-primary" data-map-name="fullMap" class="grid-content" data-map-clustered-options='{
-   {{#ifAll @root.request.params.query.distance @root.request.params.query.lat @root.request.params.query.lng ~}}
+   {{#ifAll @root.request.params.query.distance @root.request.params.query.distance @root.request.params.query.lat @root.request.params.query.lng ~}}
     "circle": {
       "lat": {{@root.request.params.query.lat}},
       "lng": {{@root.request.params.query.lng}},
@@ -83,4 +84,8 @@
   {{#each @root.data.search_data.detailed_results.hits.hits ~}}
   {{> opportunity_search_result _source sort=sort distance=fields.distance.[0]}}
   {{/each ~}}
+
+  {{else}}
+    {{> search_info paging=@root.data.search_data.detailed_results.pagination}}
+  {{/if ~}}
 </div>
