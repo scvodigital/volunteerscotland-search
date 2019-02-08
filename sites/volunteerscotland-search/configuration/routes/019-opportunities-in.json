@@ -1,6 +1,7 @@
 {
   "name": "opportunities_in",
   "pattern": "/opportunities-in/:local_authority",
+  "debug": true,
   "metaData": {
     "sidebarButton": {
       "icon": "search",

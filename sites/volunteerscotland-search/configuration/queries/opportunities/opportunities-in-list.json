@@ -21,7 +21,7 @@
     "title",
     "work_type",
     "work_type_slugs",
-    "contact_email"
+    "opportunity_contact_email"
   ],
   "query": {
     "bool": {

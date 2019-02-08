@@ -1,3 +1,4 @@
+{{#unless @root.request.params.local_authority ~}}
 {{#ifAny location la ~}}
 {
   "bool": {
@@ -22,6 +23,7 @@
   }
 },
 {{/ifAny ~}}
+{{/unless ~}}
 {{#if volunteersearch_types ~}}
 {{>queries_terms field="volunteersearch_type_slugs" terms=volunteersearch_types}},
 {{/if ~}}
