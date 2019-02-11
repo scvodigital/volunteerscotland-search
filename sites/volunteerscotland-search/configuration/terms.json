@@ -1,4 +1,30 @@
 {
+  "age_groups": {
+    "label": "Volunteer age groups",
+    "termGroups": {
+      "other": {
+        "label": "Other",
+        "terms": {
+          "12-to-15": {
+            "label": "12 to 15",
+            "textBag": "12 13 14 15 year old"
+          },
+          "16-to-17": {
+            "label": "16 to 17",
+            "textBag": "16 17 year old"
+          },
+          "over-18": {
+            "label": "Over 18",
+            "textBag": "Over 18 19 20 21 22 23 24 25 year old"
+          },
+          "under-12": {
+            "label": "Under 12",
+            "textBag": "8 9 10 11 12 under year old"
+          }
+        }
+      }
+    }
+  },
   "client_groups": {
     "label": "Themes",
     "termGroups": {
@@ -87,8 +113,8 @@
             "textBag": "Crime / Safety"
           },
           "offenders-and-ex-offenders": {
-            "label": "Offenders and Ex-Offenders",
-            "textBag": "Offenders and Ex-Offenders prison"
+            "label": "Offenders & Ex-Offenders",
+            "textBag": "Offenders Ex-Offenders prison"
           },
           "victims-of-crime": {
             "label": "Victims of Crime",
@@ -268,220 +294,6 @@
       }
     }
   },
-  "work_types": {
-    "label": "Activities",
-    "termGroups": {
-      "other": {
-        "label": "Other",
-        "terms": {
-          "administrative-office-work": {
-            "label": "Administrative / Office Work",
-            "textBag": "Administrative / Office Work"
-          },
-          "advice-information-giving": {
-            "label": "Advice / Information Giving",
-            "textBag": "Advice / Information Giving"
-          },
-          "advocacy-human-rights": {
-            "label": "Advocacy / Human Rights",
-            "textBag": "Advocacy / Human Rights"
-          },
-          "arts-music-drama-crafts": {
-            "label": "Arts (Music / Drama / Crafts)",
-            "textBag": "Arts (Music / Drama / Crafts)"
-          },
-          "befriending-mentoring": {
-            "label": "Befriending / Mentoring",
-            "textBag": "Befriending / Mentoring"
-          },
-          "campaigning-lobbying": {
-            "label": "Campaigning / Lobbying",
-            "textBag": "Campaigning / Lobbying"
-          },
-          "care-support-worker": {
-            "label": "Care / Support Worker",
-            "textBag": "Care / Support Worker"
-          },
-          "catering": {
-            "label": "Catering",
-            "textBag": "Catering"
-          },
-          "charity-shops-retail": {
-            "label": "Charity Shops / Retail",
-            "textBag": "Charity Shops / Retail"
-          },
-          "committee-work": {
-            "label": "Committee Work",
-            "textBag": "Committee Work"
-          },
-          "community-economic-development": {
-            "label": "Community / Economic Development",
-            "textBag": "Community / Economic Development"
-          },
-          "computing": {
-            "label": "Computing",
-            "textBag": "Computing"
-          },
-          "conservation-gardening": {
-            "label": "Conservation / Gardening",
-            "textBag": "Conservation / Gardening"
-          },
-          "counselling": {
-            "label": "Counselling",
-            "textBag": "Counselling"
-          },
-          "disaster-emergency-relief": {
-            "label": "Disaster / Emergency Relief",
-            "textBag": "Disaster / Emergency Relief"
-          },
-          "driving-escorting": {
-            "label": "Driving / Escorting",
-            "textBag": "Driving / Escorting"
-          },
-          "equal-opportunities-race-relations": {
-            "label": "Equal Opportunities / Race Relations",
-            "textBag": "Equal Opportunities / Race Relations"
-          },
-          "events": {
-            "label": "Events",
-            "textBag": "Events"
-          },
-          "finance-accountancy": {
-            "label": "Finance / Accountancy",
-            "textBag": "Finance / Accountancy"
-          },
-          "fundraising": {
-            "label": "Fundraising",
-            "textBag": "Fundraising"
-          },
-          "homebased-volunteering": {
-            "label": "Homebased Volunteering",
-            "textBag": "Homebased Volunteering"
-          },
-          "justice-legal-assistance": {
-            "label": "Justice / Legal Assistance",
-            "textBag": "Justice / Legal Assistance"
-          },
-          "languages-translating": {
-            "label": "Languages / Translating",
-            "textBag": "Languages / Translating"
-          },
-          "library-information-management": {
-            "label": "Library / Information Management",
-            "textBag": "Library / Information Management"
-          },
-          "management-business-skills": {
-            "label": "Management / Business Skills",
-            "textBag": "Management / Business Skills"
-          },
-          "marketing-pr-media": {
-            "label": "Marketing / PR / Media",
-            "textBag": "Marketing / PR / Media"
-          },
-          "miscellaneous": {
-            "label": "Miscellaneous",
-            "textBag": "Miscellaneous"
-          },
-          "online-volunteering": {
-            "label": "Online Volunteering",
-            "textBag": "Online Volunteering"
-          },
-          "playschemes-childrens-clubs": {
-            "label": "Playschemes / Childrens Clubs",
-            "textBag": "Playschemes / Childrens Clubs"
-          },
-          "practical-diy": {
-            "label": "Practical / DIY",
-            "textBag": "Practical / DIY"
-          },
-          "research-policy-work": {
-            "label": "Research / Policy Work",
-            "textBag": "Research / Policy Work"
-          },
-          "residential-volunteering": {
-            "label": "Residential Volunteering",
-            "textBag": "Residential Volunteering"
-          },
-          "short-term-seasonal-working": {
-            "label": "Short-Term / Seasonal Working",
-            "textBag": "Short-Term / Seasonal Working"
-          },
-          "specialist-technical": {
-            "label": "Specialist / Technical",
-            "textBag": "Specialist / Technical"
-          },
-          "sports-outdoor-activities": {
-            "label": "Sports / Outdoor Activities",
-            "textBag": "Sports / Outdoor Activities"
-          },
-          "tutoring-supporting-learners": {
-            "label": "Tutoring / Supporting Learners",
-            "textBag": "Tutoring / Supporting Learners"
-          },
-          "volunteering-for-under-16s": {
-            "label": "Volunteering for under 16s",
-            "textBag": "Volunteering for under 16s"
-          },
-          "youth-work": {
-            "label": "Youth Work",
-            "textBag": "Youth Work"
-          }
-        }
-      }
-    }
-  },
-  "volunteersearch_types": {
-    "label": "Specialist roles",
-    "termGroups": {
-      "other": {
-        "label": "Other",
-        "terms": {
-          "home-based-volunteering": {
-            "label": "Home-based volunteering",
-            "textBag": "Home-based volunteering"
-          },
-          "suitable-for-groups": {
-            "label": "Suitable for groups",
-            "textBag": "Suitable for groups"
-          },
-          "one-off-volunteering": {
-            "label": "One-off volunteering",
-            "textBag": "One-off volunteering"
-          },
-          "board-trustee-role": {
-            "label": "Board/trustee role",
-            "textBag": "Board/trustee role"
-          }
-        }
-      }
-    }
-  },
-  "age_groups": {
-    "label": "Volunteer age groups",
-    "termGroups": {
-      "other": {
-        "label": "Other",
-        "terms": {
-          "under-12": {
-            "label": "Under 12",
-            "textBag": "8 9 10 11 12 under year old"
-          },
-          "12-to-15": {
-            "label": "12 to 15",
-            "textBag": "12 13 14 15 year old"
-          },
-          "16-to-17": {
-            "label": "16 to 17",
-            "textBag": "16 17 year old"
-          },
-          "over-18": {
-            "label": "Over 18",
-            "textBag": "Over 18 19 20 21 22 23 24 25 year old"
-          }
-        }
-      }
-    }
-  },
   "services": {
     "label": "Services",
     "termGroups": {
@@ -507,6 +319,229 @@
           "wheelchair-access-disabled-access-toilet": {
             "label": "Wheelchair Access/Disabled Access Toilet",
             "textBag": "Wheelchair Access/Disabled Access Toilet"
+          }
+        }
+      }
+    }
+  },
+  "volunteersearch_types": {
+    "label": "Specialist roles",
+    "termGroups": {
+      "other": {
+        "label": "Other",
+        "terms": {
+          "board-trustee-role": {
+            "label": "Board/trustee role",
+            "textBag": "Board/trustee role"
+          },
+          "home-based-volunteering": {
+            "label": "Home-based volunteering",
+            "textBag": "Home-based volunteering"
+          },
+          "one-off-volunteering": {
+            "label": "One-off volunteering",
+            "textBag": "One-off volunteering"
+          },
+          "suitable-for-groups": {
+            "label": "Suitable for groups",
+            "textBag": "Suitable for groups"
+          }
+        }
+      }
+    }
+  },
+  "work_types": {
+    "label": "Activities",
+    "termGroups": {
+      "administrative-managerial": {
+        "label": "Administrative & managerial",
+        "terms": {
+          "administrative-office-work": {
+            "label": "Administrative / Office Work",
+            "textBag": "Administrative Office Work admin assistant administration office receptionist"
+          },
+          "committee-work": {
+            "label": "Committee Work",
+            "textBag": "Committee Work board member treasurer trustee"
+          },
+          "computing": {
+            "label": "Computing",
+            "textBag": "Computing computer computing it web website"
+          },
+          "finance-accountancy": {
+            "label": "Finance / Accountancy",
+            "textBag": "Finance Accountancy finance accounts"
+          },
+          "library-information-management": {
+            "label": "Library / Information Management",
+            "textBag": "Library Information Management"
+          },
+          "management-business-skills": {
+            "label": "Management / Business Skills",
+            "textBag": "Management Business Skills"
+          },
+          "marketing-pr-media": {
+            "label": "Marketing / PR / Media",
+            "textBag": "Marketing PR Media marketing social media radio photographer photography writing"
+          },
+          "research-policy-work": {
+            "label": "Research / Policy Work",
+            "textBag": "Research Policy Work"
+          }
+        }
+      },
+      "advice-advocacy": {
+        "label": "Advice & advocacy",
+        "terms": {
+          "advice-information-giving": {
+            "label": "Advice / Information Giving",
+            "textBag": "Advice Information Giving"
+          },
+          "advocacy-human-rights": {
+            "label": "Advocacy / Human Rights",
+            "textBag": "Advocacy Human Rights"
+          },
+          "campaigning-lobbying": {
+            "label": "Campaigning / Lobbying",
+            "textBag": "Campaigning Lobbying"
+          },
+          "equal-opportunities-race-relations": {
+            "label": "Equal Opportunities / Race Relations",
+            "textBag": "Equal Opportunities Race Relations"
+          },
+          "justice-legal-assistance": {
+            "label": "Justice / Legal Assistance",
+            "textBag": "Justice Legal Assistance"
+          }
+        }
+      },
+      "care-counselling": {
+        "label": "Care & counselling",
+        "terms": {
+          "befriending-mentoring": {
+            "label": "Befriending / Mentoring",
+            "textBag": "Befriending Mentoring befriender mentor"
+          },
+          "care-support-worker": {
+            "label": "Care / Support Worker",
+            "textBag": "Care Support Worker"
+          },
+          "counselling": {
+            "label": "Counselling",
+            "textBag": "Counselling counsellor"
+          }
+        }
+      },
+      "development-emergency-relief": {
+        "label": "Development & emergency relief",
+        "terms": {
+          "community-economic-development": {
+            "label": "Community / Economic Development",
+            "textBag": "Community Economic Development"
+          },
+          "disaster-emergency-relief": {
+            "label": "Disaster / Emergency Relief",
+            "textBag": "Disaster Emergency Relief"
+          }
+        }
+      },
+      "education-languages": {
+        "label": "Education & languages",
+        "terms": {
+          "languages-translating": {
+            "label": "Languages / Translating",
+            "textBag": "Languages Translating spanish german french"
+          },
+          "tutoring-supporting-learners": {
+            "label": "Tutoring / Supporting Learners",
+            "textBag": "Tutoring Supporting Learners tutor training"
+          }
+        }
+      },
+      "specialist-practical": {
+        "label": "Specialist & practical",
+        "terms": {
+          "catering": {
+            "label": "Catering",
+            "textBag": "Catering"
+          },
+          "charity-shops-retail": {
+            "label": "Charity Shops / Retail",
+            "textBag": "Charity Shops Retail"
+          },
+          "conservation-gardening": {
+            "label": "Conservation / Gardening",
+            "textBag": "Conservation Gardening allotment garden"
+          },
+          "driving-escorting": {
+            "label": "Driving / Escorting",
+            "textBag": "Driving Escorting driver"
+          },
+          "fundraising": {
+            "label": "Fundraising",
+            "textBag": "Fundraising funding"
+          },
+          "practical-diy": {
+            "label": "Practical / DIY",
+            "textBag": "Practical DIY"
+          },
+          "specialist-technical": {
+            "label": "Specialist / Technical",
+            "textBag": "Specialist Technical physiotherapy complementary therapist massage therapist"
+          }
+        }
+      },
+      "youth-children": {
+        "label": "Youth & children",
+        "terms": {
+          "playschemes-childrens-clubs": {
+            "label": "Playschemes / Childrens Clubs",
+            "textBag": "Playschemes / Childrens Clubs"
+          },
+          "volunteering-for-under-16s": {
+            "label": "Volunteering for under 16s",
+            "textBag": "Volunteering for under 16 15 14 13 12 11 year old"
+          },
+          "youth-work": {
+            "label": "Youth Work",
+            "textBag": "Youth Work"
+          }
+        }
+      },
+      "other": {
+        "label": "Other",
+        "terms": {
+          "arts-music-drama-crafts": {
+            "label": "Arts (Music / Drama / Crafts)",
+            "textBag": "Arts (Music / Drama / Crafts)"
+          },
+          "events": {
+            "label": "Events",
+            "textBag": "Events"
+          },
+          "homebased-volunteering": {
+            "label": "Homebased Volunteering",
+            "textBag": "Homebased Volunteering"
+          },
+          "miscellaneous": {
+            "label": "Miscellaneous",
+            "textBag": "Miscellaneous"
+          },
+          "online-volunteering": {
+            "label": "Online Volunteering",
+            "textBag": "Online Volunteering"
+          },
+          "residential-volunteering": {
+            "label": "Residential Volunteering",
+            "textBag": "Residential Volunteering"
+          },
+          "short-term-seasonal-working": {
+            "label": "Short-Term / Seasonal Working",
+            "textBag": "Short-Term / Seasonal Working"
+          },
+          "sports-outdoor-activities": {
+            "label": "Sports / Outdoor Activities",
+            "textBag": "Sports / Outdoor Activities"
           }
         }
       }
