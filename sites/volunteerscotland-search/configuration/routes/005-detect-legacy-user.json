@@ -8,7 +8,7 @@
       "taskModule": "firebaseGetUser",
       "config": {
         "appName": "volunteerscotland-search",
-        "userIdentifier": ">request.params.query.useremail"
+        "userIdentifier": ">request.params.query.email"
       }
     },
     {
