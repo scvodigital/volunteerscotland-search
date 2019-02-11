@@ -126,19 +126,27 @@
         "size": 10000
       }
     },
-
-    "regions": {
+    "local_authorities": {
       "terms": {
-        "field": "region_group",
+        "field": "local_authority",
         "order": {
           "_term": "asc"
         },
         "size": 10000
       }
     },
-    "regions_slugs": {
+    "local_authorities_slugs": {
       "terms": {
-        "field": "region_group_slug",
+        "field": "local_authority_slug",
+        "order": {
+          "_term": "asc"
+        },
+        "size": 10000
+      }
+    },
+    "advertised_areas_slugs": {
+      "terms": {
+        "field": "advertised_areas_slugs",
         "order": {
           "_term": "asc"
         },

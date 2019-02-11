@@ -1,6 +1,7 @@
 {
   "name": "opportunity_search",
   "pattern": "/search",
+  "debug": true,
   "metaData": {
     "title": "Volunteer Scotland Search",
     "sidebarButton": {
@@ -14,6 +15,7 @@
   },
   "tasks": [
     "context.metaData.commonTasks.authNotRequired",
+    "context.metaData.commonTasks.profileInfoData",
     "context.metaData.commonTasks.searchesData",
     "context.metaData.commonTasks.favouritesData",
     "context.metaData.commonTasks.registeredInterestData",

@@ -1,7 +1,7 @@
 {
   "name": "home",
   "pattern": "/",
-  "debug" : true,
+  "debug": true,
   "metaData": {
     "hideSearch": true,
     "title": "Volunteer Scotland Search | Help Make a Difference through Volunteering"

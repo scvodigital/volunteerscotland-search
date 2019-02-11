@@ -2097,6 +2097,16 @@ footer,
       margin-right: $unit;
     }
   }
+  .mdc-list.areas {
+    .mdc-list-item__text {
+      margin-right: auto;
+      width: 100%;
+    }
+    .mdc-list-item .mdc-list-item__meta {
+      width: 3.5rem;
+      text-align: right;
+    }
+  }
 }
 .browse-areas {
   .mdc-layout-grid__inner {
@@ -3226,6 +3236,11 @@ form.inline-form {
     position: absolute;
     top: 100%;
     background: linear-gradient(rgba(245, 245, 245, 0), rgba(245, 245, 245, 1));
+  }
+}
+.map-content .faded-overflow {
+  &:before {
+    background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
   }
 }
 .search-result-article__notes .faded-overflow {

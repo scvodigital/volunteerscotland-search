@@ -4,7 +4,7 @@
       "label": "Find opportunities",
       "icon": "search",
       "path": "/search",
-      "route": "^/(?!searches)(search)|^/map|^/opportunity"
+      "route": "^/(?!searches)(search)|^/map|^/opportunity|^/opportunities-in"
     },
     {
       "label": "Find organisations",

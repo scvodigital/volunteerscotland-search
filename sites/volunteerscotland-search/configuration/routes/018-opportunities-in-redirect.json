@@ -1,0 +1,24 @@
+{
+  "name": "opportunities_in_redirect",
+  "pattern": "/opportunities-in/area",
+  "tasks": [
+    {
+      "name": "detect_area",
+      "taskModule": "render",
+      "renderer": "handlebars",
+      "config": {
+        "output": "data",
+        "template": "/opportunities-in/{{#if request.params.query.la}}{{{request.params.query.la}}}{{else}}{{request.params.query.search_la}}{{/if}}{{{request.params.uri.search}}}"
+      }
+    },
+    {
+      "name": "destination",
+      "taskModule": "redirect",
+      "config": {
+        "location": ">data.detect_area",
+        "statusCode": 302
+      }
+    }
+  ]
+}
+
