@@ -1,9 +1,8 @@
 {
-  "name": "get-user",
-  "pattern": "/get-user",
+  "name": "detect-legacy-user",
+  "pattern": "/detect-legacy-user",
   "debug": true,
   "tasks": [
-
     {
       "name": "getUser",
       "taskModule": "firebaseGetUser",
