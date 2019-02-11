@@ -104,11 +104,18 @@ document.addEventListener("DOMContentLoaded", function(event) {
       doSignin();
     }
 
-    function checkForLegacyUser(callback){
+    function checkForLegacyUser(email, callback) {
       // Asynchronous ajax call here;
-      setTimeout(function(){
-        callback(true);
-      }, 1)
+      $.ajax({
+        url: "/detect-legacy-user?email=" + email,
+        success: function (result) {
+          callback(result.legacy_user);
+        },
+        error: function () {
+          console.error('Could not retrieve legacy user confirmation, proceeding as if incorrect password provided');
+          callback(false);
+        }
+      })
     }
 
     function doSignin() {
@@ -129,7 +136,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
           $loader.css('display', 'none');
         }
       }).catch(function(err) {
-        checkForLegacyUser(function(isLegacyUser){
+        checkForLegacyUser(email, function(isLegacyUser){
           if (isLegacyUser){
             $message.html('We have made upgrades to our website. As a result, you will need to '
               + '<a href="/reset-password">reset your password</a> ' + ' in order to sign in. ' +
