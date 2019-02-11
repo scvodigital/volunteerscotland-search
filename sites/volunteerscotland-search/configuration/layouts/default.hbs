@@ -3,6 +3,13 @@
 <head prefix="og: http://ogp.me/ns#">
   <meta charset="utf-8">
   <base href="/">
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-54T7D3G');</script>
+  <!-- End Google Tag Manager -->
   {{{layoutParts.head}}}
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -40,29 +47,7 @@
 
   <link rel="canonical" href="https://search.volunteerscotland.net{{request.params.uri.pathname}}" />
 
-  <!-- Google Tag Manager - ->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-54T7D3G');</script>
-  <!- - End Google Tag Manager -->
-
-  <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-54T7D3G"></script>
   <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'GTM-54T7D3G', {
-    'send_page_view': true,
-    'anonymize_ip': true,
-    'cookieDomain': 'none',
-    'custom_map': {
-      'dimension1': 'hit_type',
-      'dimension2': 'parent_document'
-    }
-  });
-
   {{#ifAny request.params.query.debug (compare request.url.hostname "volunteerscotland-search.local") ~}}
   console.log('#### DEBUG MODE ON ####');
   console.log('Request:', {{{regexReplace (regexReplace (stringify request) "(<\/script)" "gi" '</scr\" + \"ipt') "(\r|\n)" "gi" ""}}});
