@@ -2,53 +2,189 @@
   "client_groups": {
     "label": "Themes",
     "termGroups": {
-      "other": {
-        "label": "Other",
+      "advice-advocacy": {
+        "label": "Advice & advocacy",
+        "terms": {
+          "human-civil-rights-justice": {
+            "label": "Human / Civil Rights / Justice",
+            "textBag": "human civil rights justice law"
+          },
+          "justice-legal-assistance": {
+            "label": "Justice / Legal Assistance",
+            "textbag": "Justice Legal Assistance"
+          }
+        }
+      },
+      "anti-poverty": {
+        "label": "Anti-Poverty",
+        "terms": {
+          "anti-poverty": {
+            "label": "Anti-Poverty",
+            "textBag": "Anti Poverty"
+          },
+          "homeless-housing": {
+            "label": "Homeless / Housing",
+            "textBag": "Homeless Housing homelessness"
+          },
+          "low-income-households": {
+            "label": "Low Income Households",
+            "textBag": "Low Income Households"
+          }
+        }
+      },
+      "arts-culture": {
+        "label": "Arts & culture",
+        "terms": {
+          "arts-music-drama-crafts": {
+            "label": "Arts (Music / Drama / Crafts)",
+            "textBag": "Arts Music Drama Crafts"
+          },
+          "museums-galleries-heritage": {
+            "label": "Museums / Galleries / Heritage",
+            "textBag": "Museums Galleries Heritage museum history"
+          }
+        }
+      },
+      "care-counselling": {
+        "label": "Care & counselling",
+        "terms": {
+          "carers": {
+            "label": "Carers",
+            "textBag": "Carers"
+          },
+          "drugs-alcohol-issues": {
+            "label": "Drugs / Alcohol Issues",
+            "textBag": "Drugs Alcohol Issues"
+          },
+          "leaving-in-care": {
+            "label": "Leaving / In Care",
+            "textBag": "Leaving In Care"
+          }
+        }
+      },
+      "community": {
+        "label": "Community",
+        "terms": {
+          "local-authority": {
+            "label": "Local Authority",
+            "textBag": "Local Authority"
+          },
+          "local-community": {
+            "label": "Local Community",
+            "textBag": "Local Community"
+          },
+          "residents-of-disadvantaged-neighbourhoods": {
+            "label": "Residents of Disadvantaged Neighbourhoods",
+            "textBag": "Residents of Disadvantaged Neighbourhoods"
+          }
+        }
+      },
+      "crime-ex-offenders": {
+        "label": "Crime & ex-offenders",
+        "terms": {
+          "crime-safety": {
+            "label": "Crime / Safety",
+            "textBag": "Crime / Safety"
+          },
+          "offenders-and-ex-offenders": {
+            "label": "Offenders and Ex-Offenders",
+            "textBag": "Offenders and Ex-Offenders prison"
+          },
+          "victims-of-crime": {
+            "label": "Victims of Crime",
+            "textBag": "Victims of Crime victim support"
+          }
+        }
+      },
+      "development-emergency-relief": {
+        "label": "Development & emergency relief",
+        "terms": {
+          "disaster-emergencies": {
+            "label": "Disaster / Emergencies",
+            "textBag": "Disaster / Emergencies"
+          },
+          "overseas-aid-developing-world": {
+            "label": "Overseas Aid / Developing World",
+            "textBag": "Overseas Aid Developing World international"
+          }
+        }
+      },
+      "disability": {
+        "label": "Disability",
+        "terms": {
+          "learning-disabilities": {
+            "label": "Learning Disabilities",
+            "textBag": "Learning Disabilities Autism"
+          },
+          "physical-disability": {
+            "label": "Physical Disability",
+            "textBag": "Physical Disability"
+          },
+          "sensory-impairment": {
+            "label": "Sensory Impairment",
+            "textBag": "Sensory Impairment"
+          }
+        }
+      },
+      "education-languages": {
+        "label": "Education & languages",
+        "terms": {
+          "education-literacy": {
+            "label": "Education / Literacy",
+            "textBag": "Education / Literacy"
+          },
+          "literacy-needs": {
+            "label": "Literacy Needs",
+            "textBag": "Literacy Needs"
+          }
+        }
+      },
+      "elderly": {
+        "label": "Elderly",
+        "terms": {
+          "elderly": {
+            "label": "Elderly",
+            "textBag": "Elderly"
+          },
+          "older-people": {
+            "label": "Older People",
+            "textBag": "Older People"
+          }
+        }
+      },
+      "environment-animals": {
+        "label": "Environment & animals",
         "terms": {
           "animals": {
             "label": "Animals",
             "textBag": "Animals"
           },
-          "anti-poverty": {
-            "label": "Anti-Poverty",
-            "textBag": "Anti-Poverty"
-          },
-          "arts-music-drama-crafts": {
-            "label": "Arts (Music / Drama / Crafts)",
-            "textBag": "Arts (Music / Drama / Crafts)"
-          },
-          "carers": {
-            "label": "Carers",
-            "textBag": "Carers"
-          },
-          "children": {
-            "label": "Children",
-            "textBag": "Children"
-          },
-          "crime-safety": {
-            "label": "Crime / Safety",
-            "textBag": "Crime / Safety"
-          },
-          "disaster-emergencies": {
-            "label": "Disaster / Emergencies",
-            "textBag": "Disaster / Emergencies"
-          },
-          "drugs-alcohol-issues": {
-            "label": "Drugs / Alcohol Issues",
-            "textBag": "Drugs / Alcohol Issues"
-          },
-          "education-literacy": {
-            "label": "Education / Literacy",
-            "textBag": "Education / Literacy"
-          },
-          "elderly": {
-            "label": "Elderly",
-            "textBag": "Elderly"
-          },
           "environment": {
             "label": "Environment",
             "textBag": "Environment"
+          }
+        }
+      },
+      "health": {
+        "label": "Health",
+        "terms": {
+          "health-hospitals-hospices": {
+            "label": "Health / Hospitals / Hospices",
+            "textBag": "Health Hospitals Hospices"
           },
+          "mental-health": {
+            "label": "Mental Health",
+            "textBag": "Mental Health"
+          },
+          "people-with-ill-health": {
+            "label": "People with Ill Health",
+            "textBag": "People with Ill Health"
+          }
+        }
+      },
+      "represented-groups": {
+        "label": "Represented groups",
+        "terms": {
           "ethnic-minorities": {
             "label": "Ethnic Minorities",
             "textBag": "Ethnic Minorities"
@@ -59,120 +195,41 @@
           },
           "gender-sexuality": {
             "label": "Gender / Sexuality",
-            "textBag": "Gender / Sexuality"
+            "textBag": "Gender Sexuality"
           },
           "general-public": {
             "label": "General Public",
             "textBag": "General Public"
           },
-          "health-hospitals-hospices": {
-            "label": "Health / Hospitals / Hospices",
-            "textBag": "Health / Hospitals / Hospices"
-          },
-          "homeless-housing": {
-            "label": "Homeless / Housing",
-            "textBag": "Homeless / Housing"
-          },
-          "human-civil-rights-justice": {
-            "label": "Human / Civil Rights / Justice",
-            "textBag": "Human / Civil Rights / Justice"
-          },
           "lgbt": {
             "label": "LGBT",
-            "textBag": "LGBT"
-          },
-          "learning-disabilities": {
-            "label": "Learning Disabilities",
-            "textBag": "Learning Disabilities"
-          },
-          "leaving-in-care": {
-            "label": "Leaving / In Care",
-            "textBag": "Leaving / In Care"
-          },
-          "literacy-needs": {
-            "label": "Literacy Needs",
-            "textBag": "Literacy Needs"
-          },
-          "local-authority": {
-            "label": "Local Authority",
-            "textBag": "Local Authority"
-          },
-          "local-community": {
-            "label": "Local Community",
-            "textBag": "Local Community"
+            "textBag": "LGBT LGBTQI"
           },
           "lone-parents": {
             "label": "Lone Parents",
             "textBag": "Lone Parents"
           },
-          "low-income-households": {
-            "label": "Low Income Households",
-            "textBag": "Low Income Households"
-          },
           "mens-groups": {
             "label": "Mens Groups",
             "textBag": "Mens Groups"
-          },
-          "mental-health": {
-            "label": "Mental Health",
-            "textBag": "Mental Health"
-          },
-          "miscellaneous": {
-            "label": "Miscellaneous",
-            "textBag": "Miscellaneous"
-          },
-          "museums-galleries-heritage": {
-            "label": "Museums / Galleries / Heritage",
-            "textBag": "Museums / Galleries / Heritage"
-          },
-          "new-beneficiary-client-group": {
-            "label": "New Beneficiary / Client Group",
-            "textBag": "New Beneficiary / Client Group"
-          },
-          "offenders-and-ex-offenders": {
-            "label": "Offenders and Ex-Offenders",
-            "textBag": "Offenders and Ex-Offenders"
-          },
-          "older-people": {
-            "label": "Older People",
-            "textBag": "Older People"
-          },
-          "overseas-aid-developing-world": {
-            "label": "Overseas Aid / Developing World",
-            "textBag": "Overseas Aid / Developing World"
           },
           "parents": {
             "label": "Parents",
             "textBag": "Parents"
           },
-          "people-with-ill-health": {
-            "label": "People with Ill Health",
-            "textBag": "People with Ill Health"
-          },
-          "physical-disability": {
-            "label": "Physical Disability",
-            "textBag": "Physical Disability"
-          },
           "refugees-asylum-seekers": {
             "label": "Refugees / Asylum Seekers",
-            "textBag": "Refugees / Asylum Seekers"
+            "textBag": "Refugees Asylum Seekers"
           },
-          "religion-faith": {
-            "label": "Religion / Faith",
-            "textBag": "Religion / Faith"
-          },
-          "residents-of-disadvantaged-neighbourhoods": {
-            "label": "Residents of Disadvantaged Neighbourhoods",
-            "textBag": "Residents of Disadvantaged Neighbourhoods"
-          },
-          "sensory-impairment": {
-            "label": "Sensory Impairment",
-            "textBag": "Sensory Impairment"
-          },
-          "sport-outdoor-activities": {
-            "label": "Sport / Outdoor Activities",
-            "textBag": "Sport / Outdoor Activities"
-          },
+          "womens-groups": {
+            "label": "Womens Groups",
+            "textBag": "Womens Groups"
+          }
+        }
+      },
+      "unemployment": {
+        "label": "Unemployment",
+        "terms": {
           "tackling-unemployment": {
             "label": "Tackling Unemployment",
             "textBag": "Tackling Unemployment"
@@ -180,22 +237,32 @@
           "unemployed": {
             "label": "Unemployed",
             "textBag": "Unemployed"
-          },
-          "victims-of-crime": {
-            "label": "Victims of Crime",
-            "textBag": "Victims of Crime"
-          },
-          "volunteers": {
-            "label": "Volunteers",
-            "textBag": "Volunteers"
-          },
-          "womens-groups": {
-            "label": "Womens Groups",
-            "textBag": "Womens Groups"
+          }
+        }
+      },
+      "youth-children": {
+        "label": "Youth & children",
+        "terms": {
+          "children": {
+            "label": "Children",
+            "textBag": "Children"
           },
           "young-people": {
             "label": "Young People",
             "textBag": "Young People"
+          }
+        }
+      },
+      "other": {
+        "label": "Other",
+        "terms": {
+          "religion-faith": {
+            "label": "Religion / Faith",
+            "textBag": "Religion Faith"
+          },
+          "sport-outdoor-activities": {
+            "label": "Sport / Outdoor Activities",
+            "textBag": "Sport Outdoor Activities"
           }
         }
       }
