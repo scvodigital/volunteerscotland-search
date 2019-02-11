@@ -16,7 +16,7 @@
       "taskModule": "render",
       "renderer": "handlebars",
       "config": {
-        "template": "{{{stringify @root.data.getUser}}}",
+        "template": "{ \"legacy_user\" : {{#unless @root.data.getUser}}false{{else}}{{{stringify (compare @root.data.getUser.metadata.lastSignInTime '===' null)}}}{{/unless}} }",
         "output": "body",
         "parseJson": true
       }
