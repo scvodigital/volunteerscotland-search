@@ -656,7 +656,9 @@ footer h3,
 
 .checkbox-list-indicator {
   font-weight: 400 !important;
-  font-style: italic;
+  font-style: normal;
+  font-size: 0.9rem;
+  display: block;
 }
 
 // .mdc-list-item {
@@ -692,12 +694,13 @@ footer h3,
 .advanced-checkbox-list {
   .checkbox-list-parent {
     font-weight: bold !important;
+    padding-left: $unit/2 !important;
   }
   .checkbox-list-parent-hidden {
     display: none;
   }
   .checkbox-list-child {
-    padding-left: $unit*1.5 !important;
+    padding-left: $unit !important;
   }
   .checkbox-list-child-no-indent {
     padding-left: $unit/2 !important;
