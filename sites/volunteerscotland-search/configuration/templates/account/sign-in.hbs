@@ -111,6 +111,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
         success: function (result) {
           callback(result.legacy_user);
         },
+        error: function () {
+          console.error('Could not retrieve legacy user confirmation, proceeding as if incorrect password provided');
+          callback(false);
+        }
       })
     }
 
