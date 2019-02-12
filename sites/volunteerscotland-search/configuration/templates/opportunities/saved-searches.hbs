@@ -11,7 +11,7 @@
   {{#compare (length @root.data.searches.items.[0]) ">" 0 ~}}
   <ul class="mdc-list mdc-list--two-line mdc-list--avatar-list mdc-elevation--z0">
     <li class="mdc-list-item mdc-list-item--header">
-      <span class="mdc-list-item__graphic far" aria-hidden="true"></span>
+      <span class="mdc-list-item__graphic far hide-sm" aria-hidden="true"></span>
       <div class="mdc-layout-grid">
         <div class="mdc-layout-grid__inner">
           <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone saved-search">
@@ -34,7 +34,7 @@
     </li>
     {{#each @root.data.searches.items.[0] ~}}
       <li class="mdc-list-item mdc-ripple-upgraded">
-        <span class="mdc-list-item__graphic far fa-search fa-2x" aria-hidden="true"></span>
+        <span class="mdc-list-item__graphic far fa-search fa-2x hide-sm" aria-hidden="true"></span>
         <div class="mdc-layout-grid">
           <div class="mdc-layout-grid__inner">
             <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone saved-search">
@@ -46,24 +46,24 @@
                       Keywords: <strong>{{{keywords}}}</strong>
                     {{/if ~}}
 
-                    {{#if work_types ~}}
-                      {{inflect (length (arrayify work_types)) "Activity" "Activities"}}:
-                      {{#each (arrayify work_types) ~}}
-                        <strong>{{{getProperty @root.data.termsMaps.work_types.slugsMap (concat this ".term")}}}{{#unless @last}}, {{/unless}}</strong>
+                    {{#if activities ~}}
+                      {{inflect (length (arrayify activities)) "Activity" "Activities"}}:
+                      {{#each (arrayify activities) ~}}
+                        <strong>{{{getProperty @root.data.termsMaps.activities.slugsMap (concat this ".term")}}}{{#unless @last}}, {{/unless}}</strong>
                       {{/each ~}}
                     {{/if ~}}
 
                     {{#if volunteersearch_types ~}}
-                      {{inflect (length (arrayify client_groups)) "Specialist role" "Specialist roles"}}:
+                      {{inflect (length (arrayify themes)) "Specialist role" "Specialist roles"}}:
                       {{#each (arrayify volunteersearch_types) ~}}
                         <strong>{{{getProperty @root.data.termsMaps.volunteersearch_types.slugsMap (concat this ".term")}}}{{#unless @last}}, {{/unless}}</strong>
                       {{/each ~}}
                     {{/if ~}}
 
-                    {{#if client_groups ~}}
-                      {{inflect (length (arrayify client_groups)) "Theme" "Themes"}}:
-                      {{#each (arrayify client_groups) ~}}
-                        <strong>{{{getProperty @root.data.termsMaps.client_groups.slugsMap (concat this ".term")}}}{{#unless @last}}, {{/unless}}</strong>
+                    {{#if themes ~}}
+                      {{inflect (length (arrayify themes)) "Theme" "Themes"}}:
+                      {{#each (arrayify themes) ~}}
+                        <strong>{{{getProperty @root.data.termsMaps.themes.slugsMap (concat this ".term")}}}{{#unless @last}}, {{/unless}}</strong>
                       {{/each ~}}
                     {{/if ~}}
 
@@ -89,7 +89,7 @@
                     {{/if ~}}
 
                     {{#ifAll location distance ~}}
-                      {{#ifAny work_types client_groups services age_groups availability ~}}
+                      {{#ifAny activities themes services age_groups availability ~}}
                         Within
                       {{else}}
                         within

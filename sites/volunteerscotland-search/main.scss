@@ -449,6 +449,7 @@ footer h3,
     font-weight: $heading-medium-font-weight;
   }
 }
+.detailed-info p,
 .mdc-typography--body1 {
   font-size: 1.05rem;
 }
@@ -820,6 +821,9 @@ footer h3,
       width: 100%;
     }
   }
+}
+.mdc-list--two-line .mdc-list-item {
+  height: auto;
 }
 .mdc-list--avatar-list {
   .mdc-layout-grid {
@@ -2708,7 +2712,8 @@ footer.mdc-layout__footer {
   }
   .mdc-card .mdc-card__actions .mdc-card__action-buttons,
   .panel-heading,
-  .mdc-typography--body1 {
+  .mdc-typography--body1,
+  .detailed-info p {
     font-size: 0.9rem;
   }
   .mdc-typography--headline3 {

@@ -35,7 +35,7 @@
         "singular": "Type",
         "plural": "Types"
       },
-      "work_types": {
+      "activities": {
         "singular": "Activity",
         "plural": "Activities"
       },
@@ -43,7 +43,7 @@
         "singular": "Activity",
         "plural": "Activities"
       },
-      "client_groups": {
+      "themes": {
         "singular": "Theme",
         "plural": "Themes"
       }

@@ -10,11 +10,11 @@
         {{{title}}}
       </div>
       <div class="detailed-info">
-        {{#if description ~}}
+        {{#ifAny description description_html ~}}
         <div class="mdc-typography--body1 v-margin">
-          {{{description}}}
+          {{#if description_html}}{{{description_html}}}{{else}}{{description}}{{/if}}
         </div>
-        {{/if ~}}
+        {{/ifAny ~}}
       </div>
       <div class="key-info-extra">
         <ul class="fa-ul">

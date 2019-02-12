@@ -89,12 +89,13 @@
                       {
                         "type": "prop",
                         "options": {
-                          "selectorTemplate": "[name=\"\{{value}}\"]"
+                          "selectorTemplate": "#what-opportunities",
+                          "valueTemplate": ""
                         }
                       }
                     ],
                     "datasets": [
-                    {{#each (split "work_types,client_groups,services,age_groups" ",") ~}}
+                    {{#each (split "activities,themes,services,age_groups" ",") ~}}
                       {
                         "name": "{{this}}",
                         "templates": {
