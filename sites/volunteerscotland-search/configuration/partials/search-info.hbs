@@ -1,8 +1,17 @@
 {{#if paging.totalResults ~}}
 <div class="search-info">
-  <span class="hide-sm">Your {{if @root.request.params.query.only_la "filtered"}} search returned </span><strong>{{addCommas paging.totalResults}} {{inflect paging.totalResults "result" "results"}}</strong>
+  <strong>
+    {{addCommas paging.totalResults}}
+  </strong>
+  {{#compare @root.route.name "===" "organisation_search" ~}}
+  {{inflect paging.totalResults "organisation" "organisations"}} with current volunteering opportunities
+  {{else}}
+  volunteering {{inflect paging.totalResults "opportunity" "opportunities"}}
+  {{/compare ~}}
+  {{if @root.request.params.query.only_la "(filtered)"}}
   {{#compare @root.route.name "!==" "opportunity_map" ~}}
   {{#compare paging.totalResults ">" 10 ~}} -
+  <span class="hide-sm">showing</span>
   page {{addCommas paging.currentPage}} of {{addCommas paging.totalPages}}
   {{/compare ~}}
   {{/compare ~}}
