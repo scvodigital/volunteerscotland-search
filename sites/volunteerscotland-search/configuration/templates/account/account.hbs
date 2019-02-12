@@ -163,7 +163,9 @@
     {{#ifAny
       (compare (length @root.data.user-newsletter-subscriptions) ">" 0)
     }}
-    <a onclick="stopAllNewsletters(event)" class="nl-link-block mdc-button mdc-button--raised">
+    {{!-- Note, this needs to be onclick, as otherwise it'll reset the page and show newsletters still present.
+    They take a while for CM to turn them off --}}
+      <a onclick="stopAllNewsletters(event)" class="nl-link-block mdc-button mdc-button--raised">
       <span class="far fa-envelope mdc-list-item__graphic" aria-hidden="true"></span>
       <span>Stop all newsletters</span>
     </a>
