@@ -11,7 +11,7 @@
               {{~#if (regexMatch @root.request.params.query.q "^([A-Z]{1,2})(([0-9][A-Z])|([0-9]{1,2}))" "ig")~}}
                 {{{stringify (replace @root.request.params.query.q " " "")}}}
               {{else}}
-                {{{stringify @root.request.params.query.q}}}
+                {{{stringify (lowercase @root.request.params.query.q)}}}
               {{~/if~}}
           }
         },
