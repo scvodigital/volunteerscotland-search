@@ -5,8 +5,8 @@
     "Id",
     "slug",
     "available_from",
-    "client_group",
-    "client_group_slugs",
+    "themes",
+    "themes_slugs",
     "date_last_modified",
     "description",
     "goodhq_organisation.image_url",
@@ -20,8 +20,8 @@
     "organisation_aims_and_objectives",
     "local_authority",
     "title",
-    "work_type",
-    "work_type_slugs",
+    "activities",
+    "activities_slugs",
     "opportunity_contact_email"
   ],
   "query": {

@@ -5,8 +5,8 @@
     "slug",
     "milo_ref",
     "available_from",
-    "client_group",
-    "client_group_slugs",
+    "themes",
+    "themes_slugs",
     "description",
     "end_date",
     "geo_coords",
@@ -16,8 +16,8 @@
     "title",
     "travel_expenses",
     "work_location",
-    "work_type",
-    "work_type_slugs",
+    "activities",
+    "activities_slugs",
     "opportunity_contact_email"
   ],
   "query": {

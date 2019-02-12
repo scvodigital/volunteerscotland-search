@@ -25,7 +25,7 @@
       }
     }
   },
-  "client_groups": {
+  "themes": {
     "label": "Themes",
     "termGroups": {
       "advice-advocacy": {
@@ -350,7 +350,7 @@
       }
     }
   },
-  "work_types": {
+  "activities": {
     "label": "Activities",
     "termGroups": {
       "administrative-managerial": {

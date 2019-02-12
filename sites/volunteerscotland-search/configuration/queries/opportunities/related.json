@@ -4,8 +4,8 @@
     "Id",
     "slug",
     "available_from",
-    "client_group",
-    "client_group_slugs",
+    "themes",
+    "themes_slugs",
     "description",
     "end_date",
     "geo_coords",
@@ -17,8 +17,8 @@
     "title",
     "travel_expenses",
     "work_location",
-    "work_type",
-    "work_type_slugs",
+    "activities",
+    "activities_slugs",
     "opportunity_contact_email"
   ],
   "query": {
@@ -50,12 +50,12 @@
             },
             {
               "terms": {
-                "client_group_slugs": {{{stringify (arrayify @root.data.primaryResponse.hits.hits.[0]._source.client_group_slugs)}}}
+                "themes_slugs": {{{stringify (arrayify @root.data.primaryResponse.hits.hits.[0]._source.themes_slugs)}}}
               }
             },
             {
               "terms": {
-                "work_type_slugs": {{{stringify (arrayify @root.data.primaryResponse.hits.hits.[0]._source.work_type_slugs)}}}
+                "activities_slugs": {{{stringify (arrayify @root.data.primaryResponse.hits.hits.[0]._source.activities_slugs)}}}
               }
             }
           ],

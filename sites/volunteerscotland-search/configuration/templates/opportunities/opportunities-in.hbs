@@ -61,7 +61,7 @@
       <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone action">
         {{#compare @root.data.search_data.detailed_results.hits.total ">" 0 ~}}
           <form action="{{{@root.request.url.path}}}" method="GET">
-            {{#each (split "volunteersearch_types,work_types,client_groups,services,age_groups" ",")}}
+            {{#each (split "volunteersearch_types,activities,themes,services,age_groups" ",")}}
               {{#if (getProperty @root.request.params.query this) ~}}
                 {{#each (arrayify (getProperty @root.request.params.query this)) ~}}
                   <input type="hidden" name="{{../this}}[]" value="{{this}}" />
