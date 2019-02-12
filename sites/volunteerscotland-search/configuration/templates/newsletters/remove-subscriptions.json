@@ -1,13 +1,15 @@
 {
-{{#eachJoin (split @root.request.query.params.listIds ',') ','}}
+{{#eachJoin (split @root.request.params.list_ids ',') ','}}
+
+"list{{this}}":
 {
-"list{{this}}": {
    "method": "POST",
-   "url": {{{stringify (concat @root.secrets.vs_campaign_monitor.baseURL 'subscribers/' this '/unsubscribe.json') }}},
-   "body": {{{> newsletter_post_body}}},
-   "auth": {{{stringify @root.secrets.vs_campaign_monitor.auth}}},
-   "json": true }
+   "url": "\{{@root.secrets.vs_campaign_monitor.baseURL}}/subscribers/{{this}}/unsubscribe.json",
+   "body": {{> newsletter_post_body}},
+   "auth": {"user" : "\{{@root.secrets.vs_campaign_monitor.auth.user}}"},
+   "json": true
 }
+
 {{/eachJoin}}
 }
 

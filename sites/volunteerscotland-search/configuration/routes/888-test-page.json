@@ -1,7 +1,7 @@
 {
   "name": "testpage",
   "debug": true,
-  "pattern": "/testpage/:list_id",
+  "pattern": "/testpage/:list_ids",
   "acceptedVerbs": "GET",
   "defaultParams": {
     "context": "results"
@@ -12,17 +12,16 @@
   "tasks": [
     "context.metaData.commonTasks.authNotRequired",
     "context.metaData.commonTasks.allNewsletterInfo",
-    "context.metaData.commonTasks.getRawUserSubscriptions",
-    "context.metaData.commonTasks.userNewsletterSubscriptions",
-    "context.metaData.commonTasks.getSubscriptionPostBody",
     {
       "name": "remove-subscription",
       "taskModule": "render",
       "config": {
-        "optionsTemplates": ">context.metaData.handlebars.newsletters.remove-subscriptions"
+        "template": ">context.metaData.handlebars.templates.newsletters_remove-subscriptions",
+        "parseJson": true,
+        "output" : "body"
+
       },
-      "renderer": "handlebars",
-      "output" : "body"
+      "renderer": "handlebars"
     }
   ]
 }
