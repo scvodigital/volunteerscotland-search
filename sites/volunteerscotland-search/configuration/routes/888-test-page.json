@@ -16,29 +16,13 @@
     "context.metaData.commonTasks.userNewsletterSubscriptions",
     "context.metaData.commonTasks.getSubscriptionPostBody",
     {
-      "name": "destination",
-      "taskModule": "renderLayout",
-      "renderer": "handlebars",
+      "name": "remove-subscription",
+      "taskModule": "render",
       "config": {
-        "logic": {
-          "if": [
-            "default"
-          ]
-        },
-        "output": "body",
-        "layouts": {
-          "default": {
-            "layout": ">context.metaData.handlebars.layouts.default",
-            "parts": {
-              "head": ">context.metaData.handlebars.templates.pages_page-head-tags",
-              "body": "",
-              "foot": ""
-            },
-            "contentType": "text/html"
-          }
-        }
-      }
+        "optionsTemplates": ">context.metaData.handlebars.newsletters.remove-subscriptions"
+      },
+      "renderer": "handlebars",
+      "output" : "body"
     }
-
   ]
 }

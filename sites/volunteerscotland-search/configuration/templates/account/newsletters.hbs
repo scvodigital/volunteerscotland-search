@@ -12,7 +12,7 @@
   {{/if ~}}
   <ul class="mdc-list mdc-list--two-line mdc-list--avatar-list mdc-elevation--z0">
     <li class="mdc-list-item mdc-list-item--header hide-sm">
-      <span class="mdc-list-item__graphic far" aria-hidden="true"></span>
+      <span class="mdc-list-item__graphic far hide-sm" aria-hidden="true"></span>
       <div class="mdc-layout-grid">
         <div class="mdc-layout-grid__inner">
           <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-10-desktop mdc-layout-grid__cell--span-6-tablet mdc-layout-grid__cell--span-4-phone saved-search">
@@ -31,7 +31,7 @@
 
     {{#each @root.data.all-newsletter-info.result}}
       <li class="mdc-list-item mdc-ripple-upgraded">
-        <span class="mdc-list-item__graphic far fa-newspaper fa-2x" aria-hidden="true"></span>
+        <span class="mdc-list-item__graphic far fa-newspaper fa-2x hide-sm" aria-hidden="true"></span>
         <div class="mdc-layout-grid">
           <div class="mdc-layout-grid__inner">
             <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-10-desktop mdc-layout-grid__cell--span-6-tablet mdc-layout-grid__cell--span-4-phone saved-search">
@@ -59,7 +59,7 @@
         </div>
       </li>
       {{#unless @last}}
-        <li class="mdc-list-divider" role="separator"></li>
+        <li class="mdc-list-divider hide-sm" role="separator"></li>
       {{/unless ~}}
     {{/each ~}}
   </ul>
