@@ -85,6 +85,10 @@
   {{> opportunity_search_result _source sort=sort distance=fields.distance.[0]}}
   {{/each ~}}
 
+  <div class="foot">
+    {{> pagination firstLastNavigation=true paging=@root.data.search_data.detailed_results.pagination}}
+  </div>
+
   {{else}}
     {{> search_info paging=@root.data.search_data.detailed_results.pagination}}
   {{/if ~}}
