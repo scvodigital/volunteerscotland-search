@@ -7,8 +7,8 @@ CALL _addSubscriptionParameters(
       keywords=@root.request.params.query.keywords
       regions=(sort @root.request.params.query.regions)
       volunteersearch_types= (sort @root.request.params.query.volunteersearch_types)
-      work_types=(sort @root.request.params.query.work_types)
-      client_groups=(sort @root.request.params.query.client_groups)
+      activities=(sort @root.request.params.query.activities)
+      themes=(sort @root.request.params.query.themes)
       services=(sort @root.request.params.query.services)
       age_groups=(sort @root.request.params.query.age_groups)
       availability=@root.request.params.query.availability

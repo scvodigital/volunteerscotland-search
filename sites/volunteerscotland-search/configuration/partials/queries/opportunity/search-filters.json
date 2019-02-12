@@ -14,9 +14,9 @@
         }
       },
       {{/ifAll ~}}
-      {{#if la ~}}
+      {{#ifAll location la ~}}
       {{>queries_term field="advertised_areas_slugs" term=la}},
-      {{/if ~}}
+      {{/ifAll ~}}
       {{>queries_do_nothing}}
     ],
     "minimum_should_match": {{#if distance}}2{{else}}{{#if la}}2{{else}}1{{/if}}{{/if}}
@@ -27,11 +27,11 @@
 {{#if volunteersearch_types ~}}
 {{>queries_terms field="volunteersearch_type_slugs" terms=volunteersearch_types}},
 {{/if ~}}
-{{#if work_types ~}}
-{{>queries_terms field="work_type_slugs" terms=work_types}},
+{{#if activities ~}}
+{{>queries_terms field="activities_slugs" terms=activities}},
 {{/if ~}}
-{{#if client_groups ~}}
-{{>queries_terms field="client_group_slugs" terms=client_groups}},
+{{#if themes ~}}
+{{>queries_terms field="themes_slugs" terms=themes}},
 {{/if ~}}
 {{#if services ~}}
 {{>queries_terms field="volunteersearch_support_option_slugs" terms=services}},

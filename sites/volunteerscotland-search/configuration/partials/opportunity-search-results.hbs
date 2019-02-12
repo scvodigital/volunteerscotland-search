@@ -8,18 +8,18 @@
 {{~#with @root.request.params.query~}}
             {{~#if keywords~}}
               {{~keywords~}}
-              {{~#ifAny work_types client_groups services age_groups availability}}, {{/ifAny~}}
+              {{~#ifAny activities themes services age_groups availability}}, {{/ifAny~}}
             {{~/if~}}
-            {{~#if work_types~}}
-              {{~#each (arrayify work_types)~}}
-                {{~getProperty (getProperty @root.data.termsMaps.work_types.slugsMap this) "term"~}}
+            {{~#if activities~}}
+              {{~#each (arrayify activities)~}}
+                {{~getProperty (getProperty @root.data.termsMaps.activities.slugsMap this) "term"~}}
                 {{~#unless @last}}, {{/unless~}}
               {{~/each~}}
-              {{~#ifAny client_groups services age_groups availability}}, {{/ifAny~}}
+              {{~#ifAny themes services age_groups availability}}, {{/ifAny~}}
             {{~/if~}}
-            {{~#if client_groups~}}
-              {{~#each (arrayify client_groups)~}}
-                {{~getProperty (getProperty @root.data.termsMaps.client_groups.slugsMap this) "term"~}}
+            {{~#if themes~}}
+              {{~#each (arrayify themes)~}}
+                {{~getProperty (getProperty @root.data.termsMaps.themes.slugsMap this) "term"~}}
                 {{~#unless @last}}, {{/unless~}}
               {{~/each~}}
               {{~#ifAny services age_groups availability}}, {{/ifAny~}}
@@ -79,8 +79,8 @@
                   querystringify (obj)
                   keywords=@root.request.params.query.keywords
                   volunteersearch_types=@root.request.params.query.volunteersearch_types
-                  work_types=(sort @root.request.params.query.work_types)
-                  client_groups=(sort @root.request.params.query.client_groups)
+                  activities=(sort @root.request.params.query.activities)
+                  themes=(sort @root.request.params.query.themes)
                   services=(sort @root.request.params.query.services)
                   age_groups=@root.request.params.query.age_groups
                   availability=@root.request.params.query.availability
@@ -91,7 +91,7 @@
                 ) ~}}
           {{#if (itemAt @root.data.searches.items.[0] (indexOf (map @root.data.searches.items.[0] (getProp 'querystring')) this)) ~}}
             {{#with (itemAt @root.data.searches.items.[0] (indexOf (map @root.data.searches.items.[0] (getProp 'querystring')) this)) ~}}
-            <h2 id="edit-search-dialog-label" class="mdc-dialog__title">Your search&ensp;<span class="mdc-typography--body1"><strong>{{{partition}}}</strong></span></h2>
+            <h2 id="edit-search-dialog-label" class="mdc-dialog__title">Saved search&ensp;<span class="mdc-typography--body1">{{{partition}}}</span></h2>
             <section id="edit-search-dialog-description" class="mdc-dialog__content">
               <div class="mdc-chip-set mdc-chip-set--filter">
                   {{#> ajax_chip
@@ -144,8 +144,8 @@
           querystringify (obj)
           keywords=@root.request.params.query.keywords
           volunteersearch_types=@root.request.params.query.volunteersearch_types
-          work_types=@root.request.params.query.work_types
-          client_groups=@root.request.params.query.client_groups
+          activities=@root.request.params.query.activities
+          themes=@root.request.params.query.themes
           services=@root.request.params.query.services
           age_groups=@root.request.params.query.age_groups
           availability=@root.request.params.query.availability
@@ -162,12 +162,12 @@
           </script>
           {{#if (itemAt @root.data.searches.items.[0] (indexOf (map @root.data.searches.items.[0] (getProp 'querystring')) this)) ~}}
             {{#with (itemAt @root.data.searches.items.[0] (indexOf (map @root.data.searches.items.[0] (getProp 'querystring')) this))}}
-              <h3 class="">
-                Your search&ensp;
+              <div class="pull-right">
+                Saved search&ensp;
                 <span class="mdc-typography--body1">
                   <a name="#" data-dialog-target="#edit-search-dialog" style="cursor:pointer;">{{{partition}}}</a>
                 </span>
-              </h3>
+              </div>
             {{/with ~}}
           {{else}}
             <button class="mdc-button mdc-button--raised save-search hide-sm hide-md" id="save-search-button" data-dialog-target="#save-search-dialog">
@@ -201,7 +201,7 @@
     <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone action">
       {{#compare @root.data.search_data.detailed_results.hits.total ">" 0 ~}}
         <form action="{{{@root.request.url.path}}}" method="GET">
-          {{#each (split "volunteersearch_types,work_types,client_groups,services,age_groups" ",")}}
+          {{#each (split "volunteersearch_types,activities,themes,services,age_groups" ",")}}
             {{#if (getProperty @root.request.params.query this) ~}}
               {{#each (arrayify (getProperty @root.request.params.query this)) ~}}
                 <input type="hidden" name="{{../this}}[]" value="{{this}}" />

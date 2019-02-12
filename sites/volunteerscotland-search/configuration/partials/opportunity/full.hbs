@@ -20,19 +20,19 @@
       <div class="panel panel--active mdc-card--full-content" role="tabpanel" aria-hidden="false" data-tab-name="panel-1">
         <div class="key-info-extra">
           <ul class="fa-ul">
-            {{#compare (length work_type) ">" 0 ~}}
+            {{#compare (length activities) ">" 0 ~}}
             <li class="mdc-card__info--content-primary-work-type reference mdc-typography--body1">
               <span class="fa-li"><span class="far fa-briefcase fa-fw" title="Activites"></span></span>
-              {{#each work_type}}
-              <a href="/search?work_types={{urlencode (slugify (replace this "/" "-"))}}">{{{this}}}</a>{{#unless @last}}, {{/unless}}
+              {{#each activities}}
+              <a href="/search?activities={{urlencode (slugify (replace this "/" "-"))}}">{{{this}}}</a>{{#unless @last}}, {{/unless}}
               {{/each}}
             </li>
             {{/compare ~}}
-            {{#compare (length client_group) ">" 0 ~}}
+            {{#compare (length themes) ">" 0 ~}}
             <li class="mdc-card__info--content-primary-client-group mdc-typography--body1">
               <span class="fa-li"><span class="far fa-users fa-fw" title="Client groups"></span></span>
-              {{#each client_group}}
-              <a href="/search?client_groups={{urlencode (slugify (replace this "/" "-"))}}">{{{this}}}</a>{{#unless @last}}, {{/unless}}
+              {{#each themes}}
+              <a href="/search?themes={{urlencode (slugify (replace this "/" "-"))}}">{{{this}}}</a>{{#unless @last}}, {{/unless}}
               {{/each}}
             </li>
             {{/compare ~}}
@@ -46,12 +46,12 @@
         </div>
 
         <div class="detailed-info">
-          {{#if description ~}}
+          {{#ifAny description description_html ~}}
           <h4 class="mdc-typography--headline6">Description</h4>
           <p class="mdc-typography--body1">
             {{#if description_html}}{{{description_html}}}{{else}}{{description}}{{/if}}
           </p>
-          {{/if ~}}
+          {{/ifAny ~}}
           {{#if weblink ~}}
           <p class="mdc-typography--body1">
             <a href="{{fixUrl weblink "http"}}"{{#if weblink_tooltip}} title="{{weblink_tooltip}}"{{/if}}>{{#if weblink_title}}{{weblink_title}}{{else}}{{weblink}}{{/if}}</a>

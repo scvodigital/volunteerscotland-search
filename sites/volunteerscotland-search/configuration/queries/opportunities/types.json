@@ -27,36 +27,36 @@
         "size": 10000
       }
     },
-    "client_groups": {
+    "themes": {
       "terms": {
-        "field": "client_group",
+        "field": "themes",
         "order": {
           "_term": "asc"
         },
         "size": 10000
       }
     },
-    "client_groups_slugs": {
+    "themes_slugs": {
       "terms": {
-        "field": "client_group_slugs",
+        "field": "themes_slugs",
         "order": {
           "_term": "asc"
         },
         "size": 10000
       }
     },
-    "work_types": {
+    "activities": {
       "terms": {
-        "field": "work_type",
+        "field": "activities",
         "order": {
           "_term": "asc"
         },
         "size": 10000
       }
     },
-    "work_types_slugs": {
+    "activities_slugs": {
       "terms": {
-        "field": "work_type_slugs",
+        "field": "activities_slugs",
         "order": {
           "_term": "asc"
         },

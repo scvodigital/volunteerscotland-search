@@ -1,8 +1,17 @@
 {{#if paging.totalResults ~}}
 <div class="search-info">
-  <span class="hide-sm">Your {{if @root.request.params.query.only_la "filtered"}} search returned </span><strong>{{addCommas paging.totalResults}} {{inflect paging.totalResults "result" "results"}}</strong>
+  <strong>
+    {{addCommas paging.totalResults}}
+  </strong>
+  {{#compare @root.route.name "===" "organisation_search" ~}}
+  {{inflect paging.totalResults "organisation" "organisations"}} with current volunteering opportunities
+  {{else}}
+  volunteering {{inflect paging.totalResults "opportunity" "opportunities"}}
+  {{/compare ~}}
+  {{if @root.request.params.query.only_la "(filtered)"}}
   {{#compare @root.route.name "!==" "opportunity_map" ~}}
   {{#compare paging.totalResults ">" 10 ~}} -
+  <span class="hide-sm">showing</span>
   page {{addCommas paging.currentPage}} of {{addCommas paging.totalPages}}
   {{/compare ~}}
   {{/compare ~}}
@@ -11,7 +20,7 @@
   {{/if ~}}
 </div>
 {{else}}
-{{#ifAny @root.request.params.query.keywords @root.request.params.query.location @root.request.params.query.work_types @root.request.params.query.client_groups @root.request.params.query.organisation_activities @root.request.params.query.has_opportunities @root.request.params.query.volunteersearch_types @root.request.params.query.age_groups @root.request.params.query.services ~}}
+{{#ifAny @root.request.params.query.keywords @root.request.params.query.location @root.request.params.query.activities @root.request.params.query.themes @root.request.params.query.organisation_activities @root.request.params.query.has_opportunities @root.request.params.query.volunteersearch_types @root.request.params.query.age_groups @root.request.params.query.services ~}}
 <div class="search-info">
   No results could be found, please try a different search query
   {{#compare @root.route.name "===" "opportunities_in" ~}}
