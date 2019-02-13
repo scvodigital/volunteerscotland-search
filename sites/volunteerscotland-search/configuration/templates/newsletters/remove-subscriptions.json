@@ -1,7 +1,7 @@
 {
 {{#eachJoin (split @root.request.params.list_ids ',') ','}}
-
-"list{{this}}":
+"list-{{this}}":
+{{#blockStringify this}}
 {
    "method": "POST",
    "url": "\{{@root.secrets.vs_campaign_monitor.baseURL}}/subscribers/{{this}}/unsubscribe.json",
@@ -9,7 +9,6 @@
    "auth": {"user" : "\{{@root.secrets.vs_campaign_monitor.auth.user}}"},
    "json": true
 }
-
+{{/blockStringify}}
 {{/eachJoin}}
 }
-

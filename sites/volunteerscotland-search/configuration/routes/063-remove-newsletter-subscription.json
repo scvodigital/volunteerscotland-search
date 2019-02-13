@@ -19,21 +19,10 @@
       }
     },
     {
-      "name": "templateOptsStringified",
-      "taskModule": "render",
-      "renderer": "handlebars",
-      "config": {
-        "template": ">context.metaData.handlebars.templates.newsletters_options-templates-hack",
-        "output" : "data",
-        "parseJson" : true
-      }
-    },
-
-    {
       "name": "remove-subscription",
       "taskModule": "request",
       "config": {
-        "optionsTemplates": ">data.templateOptsStringified"
+        "optionsTemplates": ">data.templateOpts"
       },
       "renderer": "handlebars"
     },
