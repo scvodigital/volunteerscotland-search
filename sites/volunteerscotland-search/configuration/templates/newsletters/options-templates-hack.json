@@ -1,0 +1,7 @@
+{
+{{#eachJoin (getKeys @root.data.templateOpts)  ','}}
+"{{this}}": {{{stringify (stringify (getProperty @root.data.templateOpts this))}}}
+{{/eachJoin}}
+}
+
+
