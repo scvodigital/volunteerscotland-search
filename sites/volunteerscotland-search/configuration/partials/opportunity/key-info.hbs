@@ -76,7 +76,7 @@
       {{#if volunteersearch_type ~}}
       {{#compare volunteersearch_type.length ">" 0 ~}}
         <li class="mdc-card__info--content-primary-reference mdc-typography--body1">
-          <span class="fa-li"><span class="far fa-info-circle" title="Type"></span></span>
+          <span class="fa-li"><span class="far fa-info-circle" title="Specialist role"></span></span>
           {{#each volunteersearch_type ~}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}
         </li>
       {{/compare ~}}

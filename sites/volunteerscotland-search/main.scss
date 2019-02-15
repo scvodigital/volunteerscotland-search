@@ -349,6 +349,33 @@ header {
     }
   }
 }
+#mobile-menu {
+  .mdc-list-item__user {
+    pointer-events: none;
+    .mdc-list-item__graphic img {
+      width: 100%;
+      height: auto;
+      border-radius: 50%;
+    }
+    .mdc-list-item__text {
+      color: #555;
+      position: relative;
+      white-space: nowrap;
+      text-overflow: clip;
+    }
+    .mdc-list-item__text::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 10%;
+      height: 100%;
+      background-image: linear-gradient(to right, rgba(255, 255, 255, 0) 80%, #ffffff 100%);
+      pointer-events: none;
+    }
+  }
+}
+
 .mdc-tab-bar {
   height: $header-lower-height;
   .mdc-tab {
@@ -2778,14 +2805,14 @@ footer.mdc-layout__footer {
   }
   .content-primary-search .head {
     .mdc-layout-grid__cell.action {
-      grid-column-end: span 4;
+      grid-column-end: span 5;
     }
   }
 }
 @media screen and (max-width: 479px) {
   .content-primary-search .head {
     .mdc-layout-grid__cell.action {
-      grid-column-end: span 3;
+      grid-column-end: span 5;
     }
   }
   .home-banner .banner-search .page-content .search-form .filter-distance .filter-distance-value {
@@ -3279,6 +3306,7 @@ form.inline-form {
 #sidebar-button {
   color: $brand-secondary-green;
   margin-right: $unit/4;
+  width: auto;
 }
 
 table th {

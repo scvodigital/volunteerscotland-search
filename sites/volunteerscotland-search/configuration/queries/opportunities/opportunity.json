@@ -40,6 +40,7 @@
     "goodhq_organisation.image_url",
     "title",
     "travel_expenses",
+    "travel_details",
     "work_location",
     "activities",
     "activities_slugs",

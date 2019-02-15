@@ -6,18 +6,18 @@
       <div class="mdc-layout-grid__inner">
         <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone action">
           {{#>components_tab_bar id="opportunity-tab-bar" defaultTabIdentifier="hash"}}
-          {{>components_tab iconClasses="far fa-list-ul fa-fw" label="Information" active=true tabName="panel-1"}}
-          {{>components_tab iconClasses="far fa-edit fa-fw" label="Notes" active=false tabName="notes"}}
+          {{>components_tab iconClasses="far fa-list-ul fa-fw" label="Information" active=true tabName="information"}}
           {{#if geo_coords}}
-          {{>components_tab iconClasses="far fa-map-marker-alt fa-fw" label="Location" active=false tabName="panel-2"}}
+          {{>components_tab iconClasses="far fa-map-marker-alt fa-fw" label="Location" active=false tabName="location"}}
           {{/if}}
+          {{>components_tab iconClasses="far fa-edit fa-fw" label="Notes" active=false tabName="notes"}}
           {{/components_tab_bar}}
         </div>
       </div>
     </div>
     <hr class="mdc-list-divider" />
     <div class="panels" for="opportunity-tab-bar">
-      <div class="panel panel--active mdc-card--full-content" role="tabpanel" aria-hidden="false" data-tab-name="panel-1">
+      <div class="panel panel--active mdc-card--full-content" role="tabpanel" aria-hidden="false" data-tab-name="information">
         <div class="key-info-extra">
           <ul class="fa-ul">
             {{#compare (length activities) ">" 0 ~}}
@@ -30,7 +30,7 @@
             {{/compare ~}}
             {{#compare (length themes) ">" 0 ~}}
             <li class="mdc-card__info--content-primary-client-group mdc-typography--body1">
-              <span class="fa-li"><span class="far fa-users fa-fw" title="Client groups"></span></span>
+              <span class="fa-li"><span class="far fa-users fa-fw" title="Themes"></span></span>
               {{#each themes}}
               <a href="/search?themes={{urlencode (slugify (replace this "/" "-"))}}">{{{this}}}</a>{{#unless @last}}, {{/unless}}
               {{/each}}
@@ -103,16 +103,18 @@
           {{#ifAny travel_expenses expenses_paid taster_available taster_details support_options ~}}
           <h4 class="mdc-typography--headline6">Support</h4>
           <p class="mdc-typography--body1">
-            {{#if travel_expenses ~}}
-            <strong>Travel expenses: </strong> {{{travel_expenses}}}<br />
-            {{/if ~}}
             {{#if expenses_paid ~}}
             <strong>Expenses paid: </strong> {{#compare expenses_paid "===" true}}Yes{{else}}No{{/compare}}<br />
+            {{/if ~}}
+            {{#if travel_expenses ~}}
+              <strong>Expenses details: </strong> {{{travel_expenses}}}<br />
             {{/if ~}}
             {{#if taster_available ~}}
             <strong>Taster available: </strong> {{#compare taster_available "===" true}}Yes{{else}}No{{/compare}}<br />
             {{/if ~}}
-            {{#if support_options ~}}
+            {{#if taster_details ~}}
+              <strong>Taster details: </strong> {{{taster_details}}}<br />
+            {{/if ~}}            {{#if support_options ~}}
             <strong>Support: </strong>
             {{#compare (getType support_options) "===" "string" ~}}
             {{{support_options}}}<br />
@@ -131,41 +133,8 @@
 
           <div class="mdc-typography--body1 report">
             <span class="fas fa-flag fa-fw" title="Report this opportunity"></span>
-            <a href="mailto:milosupport@scvo.org.uk?subject=Report on opportunity: {{title}}, via Volunteer Scotland Search&body=I would like to report this opportunity for the following reasons: ">Report this opportunity</a>
+            <a href="mailto:milosupport@scvo.org.uk?subject=Report%20opportunity:%20{{urlencode title}}%20({{urlencode milo_ref}})%20via%20Volunteer%20Scotland%20Search&body=I%20would%20like%20to%20report%20this%20opportunity%20for%20the%20following%20reasons:">Report this opportunity</a>
           </div>
-        </div>
-      </div>
-      <div class="panel mdc-card--full-content" role="tabpanel" aria-hidden="true" data-tab-name="panel-2">
-        <div class="location-info">
-          {{#compare (length (arrayify geo_coords)) ">" 0 ~}}
-          <div class="container-content container-map">
-            <div id="map-content-primary" data-map-name="opportunityMap" data-map-clustered-options='{}'>
-              {{#each (arrayify geo_coords) ~}}
-              <marker style="display:none;" data-map="opportunityMap" data-lat="{{lat}}" data-lng="{{lon}}" data-title="{{../organisation_name}} - {{../title}}">
-                <h3 class="mdc-typography--headline7">{{../organisation_name}}</h3>
-                <p class="mdc-typography--body2">{{../title}}</p>
-              </marker>
-              {{/each ~}}
-            </div>
-          </div>
-          {{else}}
-          <div class="container-content detailed-info">
-            <p class="mdc-typography--body1">
-              {{#compare advertised_areas.length ">" 0 ~}}
-                This opportunity is not listed at a specific location but is advertised across
-                {{#compare (getType advertised_areas) "string" ~}}
-                {{{advertised_areas}}}.
-                {{else}}
-                {{#each advertised_areas ~}}
-                  {{{this}}}{{#unless @last}}, {{else}}.{{/unless}}
-                {{/each ~}}
-                {{/compare ~}}
-              {{else}}
-                This opportunity is not listed at a specific location.
-              {{/compare ~}}
-            </p>
-          </div>
-          {{/compare ~}}
         </div>
       </div>
 
@@ -215,6 +184,54 @@
             </p>
           </div>
           {{/if ~}}
+        </div>
+      </div>
+
+      <div class="panel mdc-card--full-content" role="tabpanel" aria-hidden="true" data-tab-name="location">
+        <div class="location-info">
+          {{#compare (length (arrayify geo_coords)) ">" 0 ~}}
+          <div class="container-content container-map">
+            <div id="map-content-primary" data-map-name="opportunityMap" data-map-clustered-options='{}'>
+              {{#each (arrayify geo_coords) ~}}
+              <marker style="display:none;" data-map="opportunityMap" data-lat="{{lat}}" data-lng="{{lon}}" data-title="{{../organisation_name}} - {{../title}}">
+                <h3 class="mdc-typography--headline7">{{../organisation_name}}</h3>
+                <p class="mdc-typography--body2">{{../title}}</p>
+              </marker>
+              {{/each ~}}
+            </div>
+          </div>
+          <div class="detailed-info">
+            <p class="mdc-typography--body1">
+              {{#compare advertised_areas.length ">" 0 ~}}
+                This opportunity is also advertised across
+                {{#compare (getType advertised_areas) "string" ~}}
+                {{{advertised_areas}}}.
+                {{else}}
+                {{#each advertised_areas ~}}
+                  {{{this}}}{{#unless @last}}, {{else}}.{{/unless}}
+                {{/each ~}}
+                {{/compare ~}}
+              {{/compare ~}}
+            </p>
+          </div>
+          {{else}}
+          <div class="container-content detailed-info">
+            <p class="mdc-typography--body1">
+              {{#compare advertised_areas.length ">" 0 ~}}
+                This opportunity is not listed at a specific location but is advertised across
+                {{#compare (getType advertised_areas) "string" ~}}
+                {{{advertised_areas}}}.
+                {{else}}
+                {{#each advertised_areas ~}}
+                  {{{this}}}{{#unless @last}}, {{else}}.{{/unless}}
+                {{/each ~}}
+                {{/compare ~}}
+              {{else}}
+                This opportunity is not listed at a specific location.
+              {{/compare ~}}
+            </p>
+          </div>
+          {{/compare ~}}
         </div>
       </div>
     </div>

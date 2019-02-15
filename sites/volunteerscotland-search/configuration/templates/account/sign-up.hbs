@@ -113,24 +113,17 @@ document.addEventListener("DOMContentLoaded", function(event) {
   var $register = $('#sign-up-submit');
   var $loader = $('#sign-up-loader');
 
-  function updateNewsletterSettings() {
+  function getSubscriptions() {
+    var subscribed = [];
     try{
     var formArray = $form.serializeArray();
-    var allNewsletters = {{{default (stringify @root.data.all-newsletter-info.result) '[]' }}};
-    for (var x = 0; x < allNewsletters.length; x++) {
-      var newsletterIdentifier = "newsletter-" + allNewsletters[x].ListID;
-      for (var y = 0; y < formArray.length; y++) {
-        if ((newsletterIdentifier === formArray[y].name) && (formArray[y].value === "on")){
-          $.ajax({
-            type: "POST",
-            url: "/add-newsletter-subscription/" + allNewsletters[x].ListID,
-          })
-        }
-      }
-    }
+    var identifier = "newsletter-";
+    formArray.forEach((function (item){
+      if (item.name.indexOf(identifier) === 0 && item.value === "on") subscribed.push(item.name.substr(identifier.length));
+    }))
     } finally {
       // Better to fail to sign up to newsletters, than to fail and block sign up.
-      return;
+      return subscribed;
     }
   }
 
@@ -156,7 +149,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
       document.body.scrollTop = document.documentElement.scrollTop = 0;
       return;
     }
-
     volunteerscotland.setCookie('gi_token', '');
     volunteerscotland.setCookie('gi_cookie', '');
     volunteerscotland.app.auth().createUserWithEmailAndPassword(email, password).then(function (user) {
@@ -165,8 +157,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
         user.user.getIdTokenResult().then(function (idTokenResult) {
           console.log('ID Token Result', idTokenResult);
           volunteerscotland.setCookie('gi_token', idTokenResult.token, 7);
-          updateNewsletterSettings();
+          var subscriptions = getSubscriptions();
+          if (subscriptions.length){
+            window.location.href = '/add-newsletter-subscription/' + subscriptions.join() + "?redirect=home";
+          } else {
           window.location.href = '/';
+          }
         })
       } else {
         $message.text('Something went wrong, signed up but no user?').show();

@@ -5,9 +5,10 @@
   function stopAllNewsletters(event) {
     var redirectDone = false;
     event.preventDefault();
+    var subs = {{{default (stringify @root.data.user-newsletter-subscriptions) []}}};
     $.ajax({
         type: "GET",
-        url: "/stop-newsletter-subscriptions/",
+        url: "/remove-newsletter-subscription/" + subs.join(),
       })
     $( ".nl-link-block" ).text("Unsubscribed");
   }

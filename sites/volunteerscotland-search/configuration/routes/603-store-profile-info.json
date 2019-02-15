@@ -1,7 +1,6 @@
 {
   "name": "store-profile-info",
   "pattern": "/store-profile-info",
-  "debug" : true,
   "acceptedVerbs": "POST",
   "defaultParams": {
     "context": "results"

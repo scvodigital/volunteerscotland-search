@@ -3,6 +3,8 @@
   "_source": [
     "Id",
     "title",
+    "description",
+    "postcode",
     "geo_coords",
     "slug"
   ],

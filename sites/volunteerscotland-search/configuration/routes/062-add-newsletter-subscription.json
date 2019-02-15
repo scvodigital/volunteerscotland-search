@@ -1,23 +1,40 @@
 {
   "name": "add-newsletter-subscription",
-  "pattern": "/add-newsletter-subscription/:list_id",
-  "debug" : true,
-  "acceptedVerbs": "POST",
+  "pattern": "/add-newsletter-subscription/:list_ids",
+  "debug":true,
+  "acceptedVerbs": "GET",
   "defaultParams": {
     "context": "results"
   },
   "tasks": [
-    "context.metaData.commonTasks.authRequired",
-    "context.metaData.commonTasks.getSubscriptionPostBody",
+    "context.metaData.commonTasks.authNotRequired",
     {
-      "name": "add-subscription",
+      "name": "templateOpts",
+      "taskModule": "render",
+      "renderer": "handlebars",
+      "config": {
+        "template": ">context.metaData.handlebars.templates.newsletters_add-subscriptions",
+        "output" : "data",
+        "parseJson" : true
+      }
+    },
+    {
+      "name": "add-subscriptions",
       "taskModule": "request",
       "config": {
-        "optionsTemplates": {
-          "only" : "{ \"method\": \"POST\", \"url\": {{{stringify (concat @root.secrets.vs_campaign_monitor.baseURL 'subscribers/' @root.request.params.list_id '.json') }}}, \"body\": {{{stringify @root.data.add-subscription-body}}}, \"auth\": {{{stringify @root.secrets.vs_campaign_monitor.auth}}}, \"json\": true }"
-        }
+        "optionsTemplates": ">data.templateOpts"
       },
       "renderer": "handlebars"
+    },
+    {
+      "name": "reroute-redirect",
+      "taskModule": "reroute",
+      "config":
+      {
+        "if":[{"==":[{"var": "request.params.query.redirect"}, "home"]},
+          "redirect-home",
+          null
+        ]}
     },
     {
       "name": "destination",
