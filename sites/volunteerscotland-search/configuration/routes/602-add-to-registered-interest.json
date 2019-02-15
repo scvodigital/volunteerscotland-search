@@ -10,7 +10,7 @@
     ]
   },
   "tasks": [
-    "context.metaData.commonTasks.authNotRequired",
+    "context.metaData.commonTasks.authRequired",
     {
       "name": "send_email",
       "taskModule": "mailgun",
