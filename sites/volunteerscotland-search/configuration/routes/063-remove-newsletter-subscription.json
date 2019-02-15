@@ -7,7 +7,7 @@
     "context": "results"
   },
   "tasks": [
-    "context.metaData.commonTasks.authRequired",
+    "context.metaData.commonTasks.authNotRequired",
     {
       "name": "templateOpts",
       "taskModule": "render",

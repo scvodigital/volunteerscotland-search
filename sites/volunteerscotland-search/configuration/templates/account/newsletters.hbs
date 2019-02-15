@@ -46,8 +46,8 @@
                   offUrl=(concat "/remove-newsletter-subscription/" ListID)
                   onText="Email"
                   offText="Email"
-                  onMethod="POST"
-                  offMethod="POST"
+                  onMethod="GET"
+                  offMethod="GET"
                   iconClasses="far fa-envelope"
                   on=(contains @root.data.user-newsletter-subscriptions ListID)
                 }}

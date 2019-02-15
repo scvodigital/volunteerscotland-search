@@ -46,12 +46,13 @@
 
     function getRedirect(newUser){
         // Redirect them to newsletter settings if they're new and not in the middle of something.
-      if (!newUser) return '{{{@root.request.headers.referer}}}';
-      var host = '{{{@root.request.headers.host}}}'.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-      if ('{{{@root.request.headers.referer}}}'.match(host + "/$") || '{{{@root.request.headers.referer}}}'.match(host + "/sign-in/?$") || '{{{@root.request.headers.referer}}}'.match(host + "/sign-up/$") ) {
+      var referer = '{{{@root.request.headers.referer}}}'
+      if (!newUser) return referer;
+      var host = referer.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      if (referer.match(host + "/$") || referer.match(host + "/sign-in/?$") || referer.match(host + "/sign-up/$") ) {
         return "/newsletters?newuser=true";
       } else {
-          return '{{{@root.request.headers.referer}}}';
+          return referer;
       }
     }
 
