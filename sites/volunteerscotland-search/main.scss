@@ -2778,14 +2778,14 @@ footer.mdc-layout__footer {
   }
   .content-primary-search .head {
     .mdc-layout-grid__cell.action {
-      grid-column-end: span 4;
+      grid-column-end: span 5;
     }
   }
 }
 @media screen and (max-width: 479px) {
   .content-primary-search .head {
     .mdc-layout-grid__cell.action {
-      grid-column-end: span 3;
+      grid-column-end: span 5;
     }
   }
   .home-banner .banner-search .page-content .search-form .filter-distance .filter-distance-value {
@@ -3279,6 +3279,7 @@ form.inline-form {
 #sidebar-button {
   color: $brand-secondary-green;
   margin-right: $unit/4;
+  width: auto;
 }
 
 table th {
