@@ -6,7 +6,7 @@
       </div>
       <ul class="mdc-list themes">
         {{#each @root.context.metaData.terms.themes.termGroups ~}}
-        <a class="mdc-list-item" href="/search?{{#each terms}}themes={{urlencode (slugify (replace @key "/" "-"))}}&{{/each}}group=true" role="menuitem" onclick="gtag('event', 'navigation', { event_category: '{{default ../eventContext "category-browser"}}', event_label: 'Client group: {{slugify (replace @key "/" "-")}}' })">
+        <a class="mdc-list-item" href="/search?{{#each terms}}themes={{urlencode (slugify (replace @key "/" "-"))}}&{{/each}}group=true" role="menuitem" onclick="gtag('event', 'navigation', { event_category: '{{default ../eventContext "category-browser"}}', event_label: 'Theme: {{slugify (replace @key "/" "-")}}' })">
           <span class="mdc-list-item__text">
             {{{label}}}
           </span>
@@ -17,7 +17,7 @@
         {{/each ~}}
         {{!-- #each @root.data.opportunitySupplimentary.types.aggregations.themes.buckets ~}}
           {{#if key ~}}
-            <a class="mdc-list-item" href="/search?themes%5B%5D={{urlencode (slugify (replace key "/" "-"))}}" role="menuitem" onclick="gtag('event', 'navigation', { event_category: '{{default ../eventContext "category-browser"}}', event_label: 'Client group: {{slugify (replace key "/" "-")}}' })">
+            <a class="mdc-list-item" href="/search?themes%5B%5D={{urlencode (slugify (replace key "/" "-"))}}" role="menuitem" onclick="gtag('event', 'navigation', { event_category: '{{default ../eventContext "category-browser"}}', event_label: 'Theme: {{slugify (replace key "/" "-")}}' })">
               <span class="mdc-list-item__text">
                 {{{key}}}
               </span>
@@ -35,7 +35,7 @@
       </div>
       <ul class="mdc-list activities">
         {{#each @root.context.metaData.terms.activities.termGroups ~}}
-        <a class="mdc-list-item" href="/search?{{#each terms}}activities={{urlencode (slugify (replace @key "/" "-"))}}&{{/each}}group=true" role="menuitem" onclick="gtag('event', 'navigation', { event_category: '{{default ../eventContext "category-browser"}}', event_label: 'Client group: {{slugify (replace @key "/" "-")}}' })">
+        <a class="mdc-list-item" href="/search?{{#each terms}}activities={{urlencode (slugify (replace @key "/" "-"))}}&{{/each}}group=true" role="menuitem" onclick="gtag('event', 'navigation', { event_category: '{{default ../eventContext "category-browser"}}', event_label: 'Theme: {{slugify (replace @key "/" "-")}}' })">
           <span class="mdc-list-item__text">
             {{{label}}}
           </span>
@@ -46,7 +46,7 @@
         {{/each ~}}
         {{!-- #each @root.data.opportunitySupplimentary.types.aggregations.activities.buckets ~}}
           {{#if key ~}}
-            <a class="mdc-list-item" href="/search?activities%5B%5D={{urlencode (slugify (replace key "/" "-"))}}" role="menuitem" onclick="gtag('event', 'navigation', { event_category: '{{default ../eventContext "category-browser"}}', event_label: 'Work type: {{slugify (replace key "/" "-")}}' })">
+            <a class="mdc-list-item" href="/search?activities%5B%5D={{urlencode (slugify (replace key "/" "-"))}}" role="menuitem" onclick="gtag('event', 'navigation', { event_category: '{{default ../eventContext "category-browser"}}', event_label: 'Activity: {{slugify (replace key "/" "-")}}' })">
               <span class="mdc-list-item__text">
                 {{{key}}}
               </span>
