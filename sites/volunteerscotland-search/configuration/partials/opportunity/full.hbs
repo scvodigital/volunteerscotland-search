@@ -103,11 +103,11 @@
           {{#ifAny travel_expenses expenses_paid taster_available taster_details support_options ~}}
           <h4 class="mdc-typography--headline6">Support</h4>
           <p class="mdc-typography--body1">
-            {{#if travel_expenses ~}}
-            <strong>Travel expenses: </strong> {{{travel_expenses}}}<br />
-            {{/if ~}}
             {{#if expenses_paid ~}}
             <strong>Expenses paid: </strong> {{#compare expenses_paid "===" true}}Yes{{else}}No{{/compare}}<br />
+            {{/if ~}}
+            {{#if travel_expenses ~}}
+              <strong>Expenses details: </strong> {{{travel_expenses}}}<br />
             {{/if ~}}
             {{#if taster_available ~}}
             <strong>Taster available: </strong> {{#compare taster_available "===" true}}Yes{{else}}No{{/compare}}<br />
