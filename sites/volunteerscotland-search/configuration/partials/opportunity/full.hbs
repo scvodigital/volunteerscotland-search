@@ -200,6 +200,20 @@
               {{/each ~}}
             </div>
           </div>
+          <div class="detailed-info">
+            <p class="mdc-typography--body1">
+              {{#compare advertised_areas.length ">" 0 ~}}
+                This opportunity is also advertised across
+                {{#compare (getType advertised_areas) "string" ~}}
+                {{{advertised_areas}}}.
+                {{else}}
+                {{#each advertised_areas ~}}
+                  {{{this}}}{{#unless @last}}, {{else}}.{{/unless}}
+                {{/each ~}}
+                {{/compare ~}}
+              {{/compare ~}}
+            </p>
+          </div>
           {{else}}
           <div class="container-content detailed-info">
             <p class="mdc-typography--body1">
