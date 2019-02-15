@@ -7,6 +7,11 @@
     {{organisation_name}}
   </div>
   {{/if ~}}
+  {{#if postcode ~}}
+  <div class="mdc-typography--body1 v-margin">
+    Postcode: {{postcode}}
+  </div>
+  {{/if ~}}
   <div class="mdc-typography--body2 post-info">
     {{#if description ~}}
     <div style="max-height: 2.8rem;"  class="post-info-item post-info-description faded-overflow">
