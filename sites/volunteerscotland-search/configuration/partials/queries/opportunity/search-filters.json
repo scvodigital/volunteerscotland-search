@@ -13,13 +13,14 @@
           }
         }
       },
+      {{>queries_term field="volunteersearch_type_slugs" term="home-based-volunteering"}},
       {{/ifAll ~}}
       {{#ifAll location la ~}}
       {{>queries_term field="advertised_areas_slugs" term=la}},
       {{/ifAll ~}}
       {{>queries_do_nothing}}
     ],
-    "minimum_should_match": {{#if distance}}2{{else}}{{#if la}}2{{else}}1{{/if}}{{/if}}
+    "minimum_should_match": {{#if distance}}3{{else}}{{#if la}}2{{else}}1{{/if}}{{/if}}
   }
 },
 {{/ifAny ~}}
