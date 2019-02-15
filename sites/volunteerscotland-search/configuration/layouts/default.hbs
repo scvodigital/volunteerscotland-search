@@ -185,14 +185,12 @@
       <aside class="mdc-drawer mdc-drawer--modal" id="mobile-menu" data-mdc-auto-init="MDCDrawer">
         <div class="mdc-drawer__content">
           <nav class="mdc-list">
-            <a class="mdc-list-item {{#compare @root.request.url.pathname "/"}} mdc-list-item--activated{{/compare}}"
-               href="/" {{#compare @root.request.url.pathname "/"}}aria-selected="true"{{else}}aria-hidden="true"{{/compare}}>
+            <a class="mdc-list-item {{#compare @root.request.url.pathname "/"}} mdc-list-item--activated{{/compare}}" href="/" {{#compare @root.request.url.pathname "/"}}aria-selected="true"{{else}}aria-hidden="true"{{/compare}}>
               <span class="far fa-home mdc-list-item__graphic" aria-hidden="true"></span>
               Home
             </a>
             {{#each @root.context.metaData.menus.main ~}}
-            <a class="mdc-list-item {{#if (regexMatch @root.request.url.pathname route "gi")}} mdc-list-item--activated{{/if}}"
-               href="{{stripTrailingSlash path}}" {{#if (regexMatch @root.request.url.pathname route "gi")}}aria-selected="true"{{else}}aria-hidden="true"{{/if}}>
+            <a class="mdc-list-item {{#if (regexMatch @root.request.url.pathname route "gi")}} mdc-list-item--activated{{/if}}" href="{{stripTrailingSlash path}}" {{#if (regexMatch @root.request.url.pathname route "gi")}}aria-selected="true"{{else}}aria-hidden="true"{{/if}}>
               {{#if icon ~}}
               <span class="far fa-{{icon}} mdc-list-item__graphic" aria-hidden="true"></span>
               {{/if ~}}
@@ -200,8 +198,7 @@
             </a>
             {{/each ~}}
             {{#each @root.context.metaData.menus.main-extra ~}}
-            <a class="mdc-list-item {{#if (regexMatch @root.request.url.pathname route "gi")}} mdc-list-item--activated{{/if}}"
-               href="{{stripTrailingSlash path}}" {{#if (regexMatch @root.request.url.pathname route "gi")}}aria-selected="true"{{else}}aria-hidden="true"{{/if}}>
+            <a class="mdc-list-item {{#if (regexMatch @root.request.url.pathname route "gi")}} mdc-list-item--activated{{/if}}" href="{{stripTrailingSlash path}}" {{#if (regexMatch @root.request.url.pathname route "gi")}}aria-selected="true"{{else}}aria-hidden="true"{{/if}}>
               {{#if icon ~}}
               <span class="far fa-{{icon}} mdc-list-item__graphic" aria-hidden="true"></span>
               {{/if ~}}
@@ -236,8 +233,7 @@
               <span class="mdc-list-item__text">My Volunteer Account</span>
             </a>
             {{#each @root.context.metaData.menus.user-not-signed-in ~}}
-            <a class="mdc-list-item {{#if (regexMatch @root.request.url.pathname route "gi")}} mdc-list-item--activated{{/if}}"
-               href="{{stripTrailingSlash path}}" {{#if (regexMatch @root.request.url.pathname route "gi")}}aria-selected="true"{{else}}aria-hidden="true"{{/if}}>
+            <a class="mdc-list-item {{#if (regexMatch @root.request.url.pathname route "gi")}} mdc-list-item--activated{{/if}}" href="{{stripTrailingSlash path}}" {{#if (regexMatch @root.request.url.pathname route "gi")}}aria-selected="true"{{else}}aria-hidden="true"{{/if}}>
               {{#if icon ~}}
               <span class="far fa-{{icon}} mdc-list-item__graphic" aria-hidden="true"></span>
               {{/if ~}}
@@ -335,11 +331,7 @@
         </div>
       </footer>
     </div>
-    <div class="mdc-snackbar mdc-elevation--z10"
-         aria-live="assertive"
-         aria-atomic="true"
-         aria-hidden="true"
-         id="app-snackbar">
+    <div class="mdc-snackbar mdc-elevation--z10" aria-live="assertive" aria-atomic="true" aria-hidden="true" id="app-snackbar">
       <div class="mdc-snackbar__text"></div>
       <div class="mdc-snackbar__action-wrapper">
         <button type="button" class="mdc-snackbar__action-button"></button>
