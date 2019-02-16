@@ -1,5 +1,5 @@
 {{#unless @root.request.params.local_authority ~}}
-{{#ifAny location la ~}}
+{{#if location ~}}
 {
   "bool": {
     "should": [
@@ -13,17 +13,28 @@
           }
         }
       },
+      {
+        "geo_shape": {
+          "shape_advertised_areas": {
+            "shape": {
+              "type": "circle",
+              "coordinates": [
+                {{lng}},
+                {{lat}}
+              ],
+              "radius": "{{default distance "10"}}mi"
+            }
+          }
+        }
+      },
+      {{/ifAll ~}}
       {{>queries_term field="volunteersearch_type_slugs" term="home-based-volunteering"}},
-      {{/ifAll ~}}
-      {{#ifAll location la ~}}
-      {{>queries_term field="advertised_areas_slugs" term=la}},
-      {{/ifAll ~}}
       {{>queries_do_nothing}}
     ],
-    "minimum_should_match": {{#if distance}}3{{else}}{{#if la}}2{{else}}1{{/if}}{{/if}}
+    "minimum_should_match": {{#if distance}}2{{else}}1{{/if}}
   }
 },
-{{/ifAny ~}}
+{{/if ~}}
 {{/unless ~}}
 {{#if volunteersearch_types ~}}
 {{>queries_terms field="volunteersearch_type_slugs" terms=volunteersearch_types}},

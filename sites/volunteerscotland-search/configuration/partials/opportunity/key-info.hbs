@@ -25,7 +25,13 @@
       <ul class="fa-ul">
         <li class="mdc-typography--body2">
           <span class="fa-li"><span class="far fa-location-arrow fa-fw" title="Location"></span></span>
-          {{{getProperty @root.data.termsMaps.local_authorities.slugsMap (concat @root.request.params.query.la ".term")}}}
+          {{#compare (getType advertised_areas) "string" ~}}
+          {{{advertised_areas}}}
+          {{else}}
+          {{#each advertised_areas ~}}
+          {{{this}}}{{#unless @isLast}}, {{/unless}}
+          {{/each ~}}
+          {{/compare ~}}
         </li>
       </ul>
       {{/compare ~}}
@@ -33,7 +39,13 @@
       <ul class="fa-ul">
         <li class="mdc-typography--body2">
           <span class="fa-li"><span class="far fa-location-arrow fa-fw" title="Location"></span></span>
-          {{{getProperty @root.data.termsMaps.local_authorities.slugsMap (concat @root.request.params.query.la ".term")}}}
+          {{#compare (getType advertised_areas) "string" ~}}
+          {{{advertised_areas}}}
+          {{else}}
+          {{#each advertised_areas ~}}
+          {{{this}}}{{#unless @isLast}}, {{/unless}}
+          {{/each ~}}
+          {{/compare ~}}
         </li>
       </ul>
       {{/compare ~}}
