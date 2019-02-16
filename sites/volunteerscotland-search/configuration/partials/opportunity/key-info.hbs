@@ -29,7 +29,7 @@
           {{{advertised_areas}}}
           {{else}}
           {{#each advertised_areas ~}}
-          {{{this}}}{{#unless @isLast}}, {{/unless}}
+          {{{this}}}{{#unless @last}}, {{/unless}}
           {{/each ~}}
           {{/compare ~}}
         </li>
@@ -43,7 +43,7 @@
           {{{advertised_areas}}}
           {{else}}
           {{#each advertised_areas ~}}
-          {{{this}}}{{#unless @isLast}}, {{/unless}}
+          {{{this}}}{{#unless @last}}, {{/unless}}
           {{/each ~}}
           {{/compare ~}}
         </li>

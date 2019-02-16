@@ -33,6 +33,25 @@
       },
       "renderer": "handlebars"
     },
+    {
+      "name": "search_data_areas",
+      "taskModule": "elasticsearch",
+      "config": {
+        "connectionStringTemplate": "{$../../elasticsearch-url.txt}",
+        "elasticsearchConfig": {
+          "apiVersion": "5.6"
+        },
+        "queryTemplates": [
+          {
+            "name": "map_results",
+            "index": "web-content-production",
+            "type": "milo-volunteering-opportunity",
+            "template": ">context.metaData.handlebars.queries.opportunities_search-map-areas"
+          }
+        ]
+      },
+      "renderer": "handlebars"
+    },
     "context.metaData.commonTasks.opportunitySupplimentary",
     "context.metaData.commonTasks.termsMaps",
     {
