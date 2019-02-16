@@ -14,10 +14,10 @@
           <a href="/search{{@root.request.url.search}}&only_la=true">
             List
             {{subtract @root.data.search_data.map_results.hits.total @root.data.search_data.map_results.aggregations.geo_search.buckets.[0].doc_count}}
-            available across
+            volunteering opportunities available across
             {{#with @root.data.search_data_areas.map_results.aggregations.all_advertised_areas ~}}
             {{#each buckets ~}}
-            {{{key}}}{{#if @last}} and from home.{{else}}, {{/if}}
+            {{{key}}}{{#if @last}}{{#compare ../buckets.length ">" 1}},{{/compare}} and from home.{{else}}, {{/if}}
             {{/each ~}}
             {{/with ~}}
           </a>

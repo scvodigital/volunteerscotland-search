@@ -1,6 +1,7 @@
 {
   "name": "opportunity_map",
   "pattern": "/map",
+  "debug": true,
   "metaData": {
     "title": "Volunteer Scotland Search",
     "sidebarButton": {
@@ -44,8 +45,8 @@
         "queryTemplates": [
           {
             "name": "map_results",
-            "index": "web-content-production",
-            "type": "milo-volunteering-opportunity",
+            "index": "geo_data",
+            "type": "district",
             "template": ">context.metaData.handlebars.queries.opportunities_search-map-areas"
           }
         ]
