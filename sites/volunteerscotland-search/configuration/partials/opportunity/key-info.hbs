@@ -37,12 +37,14 @@
       {{else}}
       {{#if volunteersearch_type ~}}
       {{#compare volunteersearch_type.length ">" 0 ~}}
+      {{#if (contains volunteersearch_type "Home-based volunteering") ~}}
       <ul class="fa-ul">
         <li class="mdc-typography--body2">
           <span class="fa-li"><span class="far fa-location-arrow fa-fw" title="Location"></span></span>
-          {{#each volunteersearch_type ~}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}
+          Home-based
         </li>
       </ul>
+      {{/if ~}}
       {{/compare ~}}
       {{/if ~}}
       {{/ifAny ~}}
