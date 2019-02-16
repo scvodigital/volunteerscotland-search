@@ -5,8 +5,7 @@
       {{#ifAll @root.request.params.query.location @root.request.params.query.lat @root.request.params.query.lng ~}}
       {{#if home_based ~}}{{else}}
       {{#if distance ~}}
-      {{#compare distance "!==" "Infinity" ~}}
-      {{#compare distance "<=" @root.request.params.query.distance ~}}
+      {{#ifAll (compare distance "!==" "Infinity") (compare distance "<=" @root.request.params.query.distance) ~}}
       <ul class="fa-ul">
         <li class="mdc-typography--body2">
           <span class="fa-li"><span class="fas fa-location-arrow fa-fw" title="Distance"></span></span>
@@ -22,6 +21,7 @@
         </li>
       </ul>
       {{else}}
+      {{#ifAny (compare (getType advertised_areas) "string") (compare advertised_areas.length ">" 0) ~}}
       <ul class="fa-ul">
         <li class="mdc-typography--body2">
           <span class="fa-li"><span class="far fa-location-arrow fa-fw" title="Location"></span></span>
@@ -34,21 +34,19 @@
           {{/compare ~}}
         </li>
       </ul>
-      {{/compare ~}}
       {{else}}
+      {{#if volunteersearch_type ~}}
+      {{#compare volunteersearch_type.length ">" 0 ~}}
       <ul class="fa-ul">
         <li class="mdc-typography--body2">
           <span class="fa-li"><span class="far fa-location-arrow fa-fw" title="Location"></span></span>
-          {{#compare (getType advertised_areas) "string" ~}}
-          {{{advertised_areas}}}
-          {{else}}
-          {{#each advertised_areas ~}}
-          {{{this}}}{{#unless @last}}, {{/unless}}
-          {{/each ~}}
-          {{/compare ~}}
+          {{#each volunteersearch_type ~}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}
         </li>
       </ul>
       {{/compare ~}}
+      {{/if ~}}
+      {{/ifAny ~}}
+      {{/ifAll ~}}
       {{/if ~}}
       {{/if ~}}
       {{/ifAll ~}}
