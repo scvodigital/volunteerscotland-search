@@ -11,10 +11,16 @@
       {{#compare (subtract @root.data.search_data.map_results.hits.total @root.data.search_data.map_results.aggregations.geo_search.buckets.[0].doc_count) ">" 0 ~}}
       <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone pagination-desktop">
         <div class="mdc-typography--body2 pull-right">
-          <a href="/search{{@root.request.url.search}}&only_la=true">List
+          <a href="/search{{@root.request.url.search}}&only_la=true">
+            List
             {{subtract @root.data.search_data.map_results.hits.total @root.data.search_data.map_results.aggregations.geo_search.buckets.[0].doc_count}}
-            available across
-            {{{getProperty @root.data.termsMaps.local_authorities.slugsMap (concat @root.request.params.query.la ".term")}}}</a>
+            volunteering opportunities available across
+            {{#with @root.data.search_data_areas.map_results.aggregations.all_advertised_areas ~}}
+            {{#each buckets ~}}
+            {{{key}}}{{#if @last}}{{#compare ../buckets.length ">" 1}},{{/compare}} and from home.{{else}}, {{/if}}
+            {{/each ~}}
+            {{/with ~}}
+          </a>
         </div>
       </div>
       {{/compare ~}}

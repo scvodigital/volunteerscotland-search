@@ -11,6 +11,7 @@
     "description",
     "goodhq_organisation.image_url",
     "geo_coords",
+    "advertised_areas",
     "geo",
     "postcode",
     "volunteersearch_type",

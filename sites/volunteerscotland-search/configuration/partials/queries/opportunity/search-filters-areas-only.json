@@ -5,15 +5,6 @@
     "should": [
       {{#ifAll location lat lng distance ~}}
       {
-        "geo_distance": {
-          "distance": "{{default distance "10"}}mi",
-          "geo_coords": {
-            "lat": {{lat}},
-            "lon": {{lng}}
-          }
-        }
-      },
-      {
         "geo_shape": {
           "shape_advertised_areas": {
             "shape": {
@@ -28,7 +19,6 @@
         }
       },
       {{/ifAll ~}}
-      {{>queries_term field="volunteersearch_type_slugs" term="home-based-volunteering"}},
       {{>queries_do_nothing}}
     ],
     "minimum_should_match": {{#if distance}}2{{else}}1{{/if}}
