@@ -28,9 +28,13 @@
           {{#compare (getType advertised_areas) "string" ~}}
           {{{advertised_areas}}}
           {{else}}
+          {{#compare advertised_areas.length ">" 3 ~}}
+          {{advertised_areas.length}} areas
+          {{else}}
           {{#each advertised_areas ~}}
           {{{this}}}{{#unless @last}}, {{/unless}}
           {{/each ~}}
+          {{/compare ~}}
           {{/compare ~}}
         </li>
       </ul>

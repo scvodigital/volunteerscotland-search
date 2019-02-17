@@ -14,10 +14,12 @@
           <a href="/search{{@root.request.url.search}}&only_la=true">
             List
             {{subtract @root.data.search_data.map_results.hits.total @root.data.search_data.map_results.aggregations.geo_search.buckets.[0].doc_count}}
-            volunteering opportunities available across
+            other volunteering opportunities available across
             {{#with @root.data.search_data_areas.map_results.aggregations.all_advertised_areas ~}}
             {{#each buckets ~}}
+            {{#if (contains (map @root.data.search_data.map_results.aggregations.all_advertised_areas.buckets (getProp "key")) key) ~}}
             {{{key}}}{{#if @last}}{{#compare ../buckets.length ">" 1}},{{/compare}} and from home.{{else}}, {{/if}}
+            {{/if ~}}
             {{/each ~}}
             {{/with ~}}
           </a>
