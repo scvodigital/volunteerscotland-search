@@ -36,6 +36,12 @@
           }
         ]
       }
+    },
+    "all_advertised_areas": {
+      "terms": {
+        "field": "advertised_areas",
+        "size" : 10000
+      }
     }
   },
   "script_fields": {
