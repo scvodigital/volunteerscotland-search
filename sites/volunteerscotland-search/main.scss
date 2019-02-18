@@ -3991,6 +3991,10 @@ a.mdc-drawer__content-heading {
   .search-distance {
     color: rgba(0, 0, 0, 0.7);
   }
+  .distance-within {
+    margin-bottom: -$unit;
+    margin-top: $unit/4;
+  }
 }
 
 // Pagination ==================================================================
