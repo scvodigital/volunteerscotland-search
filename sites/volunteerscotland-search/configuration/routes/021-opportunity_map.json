@@ -25,16 +25,16 @@
         },
         "queryTemplates": [
           {
-            "name": "home_results",
-            "index": "web-content-production",
-            "type": "milo-volunteering-opportunity",
-            "template": ">context.metaData.handlebars.queries.opportunities_search-map-home"
-          },
-          {
             "name": "locations_results",
             "index": "web-content-production",
             "type": "milo-volunteering-opportunity",
             "template": ">context.metaData.handlebars.queries.opportunities_search-map-locations"
+          },
+          {
+            "name": "home_results",
+            "index": "web-content-production",
+            "type": "milo-volunteering-opportunity",
+            "template": ">context.metaData.handlebars.queries.opportunities_search-map-home"
           },
           {
             "name": "la_results",
@@ -62,7 +62,7 @@
             "template": ">context.metaData.handlebars.queries.opportunities_search-map"
           },
           {
-            "name": "map_areas",
+            "name": "areas_results",
             "index": "web-content-production",
             "type": "milo-volunteering-opportunity",
             "template": ">context.metaData.handlebars.queries.opportunities_search-map-areas"

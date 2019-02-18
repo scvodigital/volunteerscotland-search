@@ -1,5 +1,3 @@
-{{#ifAll location lat lng distance ~}}
 {{#each @root.data.location_data.la_results.aggregations.local_authority_areas.buckets ~}}
 {{>queries_term field="advertised_areas" term=(replace (replace (replace key " and " " & ") "City of " "") " City" "")}}{{#unless @last}},{{/unless}}
 {{/each}}
-{{/ifAll ~}}

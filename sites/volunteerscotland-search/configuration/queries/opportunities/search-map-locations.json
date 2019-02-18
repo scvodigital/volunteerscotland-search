@@ -13,6 +13,14 @@
         {{>queries_opportunity_search_must @root.request.params.query}}
       ]
     }
+  },
+  "aggs": {
+    "all_advertised_areas": {
+      "terms": {
+        "field": "advertised_areas",
+        "size" : 10000
+      }
+    }
   }
   {{else}}
   "query": {
