@@ -33,6 +33,12 @@
             "index": "web-content-production",
             "type": "milo-volunteering-opportunity",
             "template": ">context.metaData.handlebars.queries.opportunities_search-list"
+          },
+          {
+            "name": "la_results",
+            "index": "geo_data",
+            "type": "district",
+            "template": ">context.metaData.handlebars.queries.opportunities_local-authority-areas"
           }
         ]
       },
