@@ -86,7 +86,9 @@
       }
     }
     {{else}}
-    "_score"
+    {
+      "date_last_modified": "desc"
+    }
     {{/ifAll ~}}
     {{else}}
     {{#compare @root.request.params.query.sort "===" "newest" ~}}
@@ -99,12 +101,16 @@
       "start_date": "asc"
     }
     {{else}}
-    "_score"
+    {
+      "date_last_modified": "desc"
+    }
     {{/compare ~}}
     {{/compare ~}}
     {{/compare ~}}
     {{else}}
-    "_score"
+    {
+      "date_last_modified": "desc"
+    }
     {{/if ~}}
     {{#ifAll @root.request.params.query.location @root.request.params.query.lat @root.request.params.query.lng ~}},
     {
