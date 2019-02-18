@@ -16,7 +16,7 @@
   "tasks": [
     "context.metaData.commonTasks.authNotRequired",
     {
-      "name": "search_data_areas",
+      "name": "location_data",
       "taskModule": "elasticsearch",
       "config": {
         "connectionStringTemplate": "{$../../elasticsearch-url.txt}",
@@ -29,6 +29,12 @@
             "index": "web-content-production",
             "type": "milo-volunteering-opportunity",
             "template": ">context.metaData.handlebars.queries.opportunities_search-map-home"
+          },
+          {
+            "name": "locations_results",
+            "index": "web-content-production",
+            "type": "milo-volunteering-opportunity",
+            "template": ">context.metaData.handlebars.queries.opportunities_search-map-locations"
           },
           {
             "name": "la_results",

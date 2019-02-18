@@ -7,7 +7,7 @@
       "filter": [
         {{>queries_opportunity_common_filters @root.request.params.query}},
         {{>queries_opportunity_search_filters @root.request.params.query}},
-        {{>queries_term field="volunteersearch_type_slugs" term="home-based-volunteering"}}
+        {{>queries_opportunity_search_filters_home @root.request.params.query}}
       ],
       "must": [
         {{>queries_opportunity_search_must @root.request.params.query}}
