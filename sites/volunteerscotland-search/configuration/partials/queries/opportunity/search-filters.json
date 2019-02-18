@@ -12,20 +12,9 @@
           }
         }
       },
-      {
-        "geo_shape": {
-          "shape_advertised_areas": {
-            "shape": {
-              "type": "circle",
-              "coordinates": [
-                {{lng}},
-                {{lat}}
-              ],
-              "radius": "{{default distance "10"}}mi"
-            }
-          }
-        }
-      },
+      {{#each @root.data.search_data_areas.la_results.aggregations.local_authority_areas.buckets ~}}
+      {{>queries_term field="advertised_areas" term=(replace (replace (replace key " and " " & ") "City of " "") " City" "")}},
+      {{/each}}
       {{/ifAll ~}}
       {{>queries_term field="volunteersearch_type_slugs" term="home-based-volunteering"}},
       {{>queries_do_nothing}}

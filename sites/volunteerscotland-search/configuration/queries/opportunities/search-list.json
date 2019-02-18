@@ -38,7 +38,8 @@
           "should": [
             {{>queries_opportunity_search_should @root.request.params.query}}
           ]
-          {{#if @root.request.params.query.only_la ~}},
+          {{#if @root.request.params.query.exclude ~}}
+          {{#compare @root.request.params.query.exclude "!==" "" ~}},
           "must_not": [
             {
               "geo_distance": {
@@ -50,6 +51,7 @@
               }
             }
           ]
+          {{/compare ~}}
           {{/if ~}}
         }
       },

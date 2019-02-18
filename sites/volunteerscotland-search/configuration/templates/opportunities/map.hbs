@@ -4,25 +4,22 @@
       <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone action">
         {{#> components_tab_bar}}
          {{> search_button}}
-          {{> components_tab url=(concat "/search" (replace (replace @root.request.url.search "&page=" "&p=") "&only_la=true" "")) iconClasses="far fa-list fa-fw" label="List" active=(compare @root.request.url.pathname "===" "/search")}}
-          {{> components_tab url=(concat "/map" (replace @root.request.url.search "&only_la=true" "")) iconClasses="far fa-map-marker-alt fa-fw" label="Map" active=(compare @root.request.url.pathname "===" "/map")}}
+          {{> components_tab url=(concat "/search" (replace (replace @root.request.url.search "&page=" "&p=") "&exclude=locations" "")) iconClasses="far fa-list fa-fw" label="List" active=(compare @root.request.url.pathname "===" "/search")}}
+          {{> components_tab url=(concat "/map" (replace @root.request.url.search "&exclude=locations" "")) iconClasses="far fa-map-marker-alt fa-fw" label="Map" active=(compare @root.request.url.pathname "===" "/map")}}
         {{/components_tab_bar}}
       </div>
       {{#compare (subtract @root.data.search_data.map_results.hits.total @root.data.search_data.map_results.aggregations.geo_search.buckets.[0].doc_count) ">" 0 ~}}
       <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone pagination-desktop">
         <div class="mdc-typography--body2 pull-right">
-          <a href="/search{{@root.request.url.search}}&only_la=true">
-            List
-            {{subtract @root.data.search_data.map_results.hits.total @root.data.search_data.map_results.aggregations.geo_search.buckets.[0].doc_count}}
-            other volunteering opportunities available across
-            {{#with @root.data.search_data_areas.la_results.aggregations.all_areas ~}}
-            {{#each buckets ~}}
-            {{#if (contains (map @root.data.search_data_areas.map_results.aggregations.all_advertised_areas.buckets (getProp "key")) (replace (replace (replace key " and " " & ") " City" "") "City of " "")) ~}}
-            {{{replace (replace (replace key " and " " & ") " City" "") "City of " ""}}}{{#if @last}}{{#compare ../buckets.length ">" 1}},{{/compare}}{{#compare @root.data.search_data_areas.home_results.hits.total ">" 0}} and from home{{/compare}}.{{else}}, {{/if}}
-            {{/if ~}}
-            {{/each ~}}
-            {{/with ~}}
-          </a>
+          <a href="/search{{@root.request.url.search}}&exclude=locations">List {{subtract @root.data.search_data.map_results.hits.total @root.data.search_data.map_results.aggregations.geo_search.buckets.[0].doc_count}} other volunteering opportunities</a>
+          available across
+          {{#with @root.data.search_data_areas.la_results.aggregations.local_authority_areas ~}}
+          {{#each buckets ~}}
+          {{#if (contains (map @root.data.search_data.map_areas.aggregations.all_advertised_areas.buckets (getProp "key")) (replace (replace (replace key " and " " & ") " City" "") "City of " "")) ~}}
+          {{{replace (replace (replace key " and " " & ") " City" "") "City of " ""}}}{{#if @last}}{{#compare ../buckets.length ">" 1}},{{/compare}}{{#compare @root.data.search_data_areas.home_results.hits.total ">" 0}} and from home{{/compare}}.{{else}}, {{/if}}
+          {{/if ~}}
+          {{/each ~}}
+          {{/with ~}}
         </div>
       </div>
       {{/compare ~}}
