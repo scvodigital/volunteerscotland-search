@@ -5,7 +5,8 @@
   {{else}}
     <form id="opportunity-search-form" action="/{{#compare @root.request.url.pathname "/map"}}map{{else}}search{{/compare}}" method="GET" class="search-form" novalidate>
   {{/if}}
-    <input type="hidden" name="sort" value="{{@root.request.params.query.sort}}" id="{{instance_id}}-sort">
+  <input type="hidden" name="sort" value="{{@root.request.params.query.sort}}" id="{{instance_id}}-sort">
+  <input type="hidden" name="only_la" value="{{@root.request.params.query.only_la}}">
     <div class="h-padding">
       <div class="mdc-layout-grid">
         <div class="mdc-layout-grid__inner">
@@ -60,7 +61,6 @@
       </div>
       <input type="hidden" name="lat" value="{{#if @root.request.params.query.location}}{{@root.request.params.query.lat}}{{/if}}" id="location-lat" />
       <input type="hidden" name="lng" value="{{#if @root.request.params.query.location}}{{@root.request.params.query.lng}}{{/if}}" id="location-lng" />
-      <input type="hidden" name="la" value="{{#if @root.request.params.query.location}}{{@root.request.params.query.la}}{{/if}}" id="location-la" />
 
       <div class="header mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon mdc-text-field-tt" data-mdc-auto-init="MDCTextField">
         <input type="text" id="what-primary-content" name="keywords" class="mdc-text-field__input" placeholder="" value="{{@root.request.params.query.keywords}}" data-lpignore="true" data-typeahead='{

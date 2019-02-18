@@ -1,6 +1,7 @@
 {
   "name": "opportunity_map",
   "pattern": "/map",
+  "debug": true,
   "metaData": {
     "title": "Volunteer Scotland Search",
     "sidebarButton": {
@@ -28,6 +29,31 @@
             "index": "web-content-production",
             "type": "milo-volunteering-opportunity",
             "template": ">context.metaData.handlebars.queries.opportunities_search-map"
+          }
+        ]
+      },
+      "renderer": "handlebars"
+    },
+    {
+      "name": "search_data_areas",
+      "taskModule": "elasticsearch",
+      "config": {
+        "connectionStringTemplate": "{$../../elasticsearch-url.txt}",
+        "elasticsearchConfig": {
+          "apiVersion": "5.6"
+        },
+        "queryTemplates": [
+          {
+            "name": "map_results",
+            "index": "web-content-production",
+            "type": "milo-volunteering-opportunity",
+            "template": ">context.metaData.handlebars.queries.opportunities_search-map-areas"
+          },
+          {
+            "name": "la_results",
+            "index": "geo_data",
+            "type": "district",
+            "template": ">context.metaData.handlebars.queries.opportunities_local-authority-areas"
           }
         ]
       },

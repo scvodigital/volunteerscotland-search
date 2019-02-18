@@ -208,12 +208,12 @@
               {{/each ~}}
             {{/if ~}}
           {{/each ~}}
-          {{#each (split "keywords,location,lat,lng,la" ",")}}
+          {{#each (split "keywords,only_la,location,lat,lng,la" ",")}}
             {{#if (getProperty @root.request.params.query this) ~}}
               <input type="hidden" name="{{this}}" value="{{getProperty @root.request.params.query this}}" />
             {{/if ~}}
           {{/each ~}}
-          <input type="hidden" name="distance" value="{{#if @root.request.params.query.distance}}{{@root.request.params.query.distance}}{{else}}10{{/if}}" />
+          <input type="hidden" name="distance" value="{{default @root.request.params.query.distance 10}}" />
           {{> opportunity_search_sort}}
         </form>
       {{/compare ~}}

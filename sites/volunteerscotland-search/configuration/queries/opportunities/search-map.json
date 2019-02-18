@@ -5,6 +5,7 @@
     "title",
     "organisation_name",
     "description",
+    "postcode",
     "geo_coords",
     "slug"
   ],
@@ -34,6 +35,12 @@
             "from": {{default @root.request.params.query.distance "1000"}}
           }
         ]
+      }
+    },
+    "all_advertised_areas": {
+      "terms": {
+        "field": "advertised_areas",
+        "size" : 10000
       }
     }
   },

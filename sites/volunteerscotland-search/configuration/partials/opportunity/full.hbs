@@ -6,18 +6,18 @@
       <div class="mdc-layout-grid__inner">
         <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone action">
           {{#>components_tab_bar id="opportunity-tab-bar" defaultTabIdentifier="hash"}}
-          {{>components_tab iconClasses="far fa-list-ul fa-fw" label="Information" active=true tabName="panel-1"}}
-          {{>components_tab iconClasses="far fa-edit fa-fw" label="Notes" active=false tabName="notes"}}
+          {{>components_tab iconClasses="far fa-list-ul fa-fw" label="Information" active=true tabName="information"}}
           {{#if geo_coords}}
-          {{>components_tab iconClasses="far fa-map-marker-alt fa-fw" label="Location" active=false tabName="panel-2"}}
+          {{>components_tab iconClasses="far fa-map-marker-alt fa-fw" label="Location" active=false tabName="location"}}
           {{/if}}
+          {{>components_tab iconClasses="far fa-edit fa-fw" label="Notes" active=false tabName="notes"}}
           {{/components_tab_bar}}
         </div>
       </div>
     </div>
     <hr class="mdc-list-divider" />
     <div class="panels" for="opportunity-tab-bar">
-      <div class="panel panel--active mdc-card--full-content" role="tabpanel" aria-hidden="false" data-tab-name="panel-1">
+      <div class="panel panel--active mdc-card--full-content" role="tabpanel" aria-hidden="false" data-tab-name="information">
         <div class="key-info-extra">
           <ul class="fa-ul">
             {{#compare (length activities) ">" 0 ~}}
@@ -137,39 +137,6 @@
           </div>
         </div>
       </div>
-      <div class="panel mdc-card--full-content" role="tabpanel" aria-hidden="true" data-tab-name="panel-2">
-        <div class="location-info">
-          {{#compare (length (arrayify geo_coords)) ">" 0 ~}}
-          <div class="container-content container-map">
-            <div id="map-content-primary" data-map-name="opportunityMap" data-map-clustered-options='{}'>
-              {{#each (arrayify geo_coords) ~}}
-              <marker style="display:none;" data-map="opportunityMap" data-lat="{{lat}}" data-lng="{{lon}}" data-title="{{../organisation_name}} - {{../title}}">
-                <h3 class="mdc-typography--headline7">{{../organisation_name}}</h3>
-                <p class="mdc-typography--body2">{{../title}}</p>
-              </marker>
-              {{/each ~}}
-            </div>
-          </div>
-          {{else}}
-          <div class="container-content detailed-info">
-            <p class="mdc-typography--body1">
-              {{#compare advertised_areas.length ">" 0 ~}}
-                This opportunity is not listed at a specific location but is advertised across
-                {{#compare (getType advertised_areas) "string" ~}}
-                {{{advertised_areas}}}.
-                {{else}}
-                {{#each advertised_areas ~}}
-                  {{{this}}}{{#unless @last}}, {{else}}.{{/unless}}
-                {{/each ~}}
-                {{/compare ~}}
-              {{else}}
-                This opportunity is not listed at a specific location.
-              {{/compare ~}}
-            </p>
-          </div>
-          {{/compare ~}}
-        </div>
-      </div>
 
       <div class="panel mdc-card--full-content" role="tabpanel" aria-hidden="true" data-tab-name="notes">
         <div class="text-field-container user-notes">
@@ -217,6 +184,54 @@
             </p>
           </div>
           {{/if ~}}
+        </div>
+      </div>
+
+      <div class="panel mdc-card--full-content" role="tabpanel" aria-hidden="true" data-tab-name="location">
+        <div class="location-info">
+          {{#compare (length (arrayify geo_coords)) ">" 0 ~}}
+          <div class="container-content container-map">
+            <div id="map-content-primary" data-map-name="opportunityMap" data-map-clustered-options='{}'>
+              {{#each (arrayify geo_coords) ~}}
+              <marker style="display:none;" data-map="opportunityMap" data-lat="{{lat}}" data-lng="{{lon}}" data-title="{{../organisation_name}} - {{../title}}">
+                <h3 class="mdc-typography--headline7">{{../organisation_name}}</h3>
+                <p class="mdc-typography--body2">{{../title}}</p>
+              </marker>
+              {{/each ~}}
+            </div>
+          </div>
+          {{#compare advertised_areas.length ">" 0 ~}}
+          <div class="detailed-info">
+            <p class="mdc-typography--body1">
+                This opportunity is also advertised across
+                {{#compare (getType advertised_areas) "string" ~}}
+                {{{advertised_areas}}}.
+                {{else}}
+                {{#each advertised_areas ~}}
+                  {{{this}}}{{#unless @last}}, {{else}}.{{/unless}}
+                {{/each ~}}
+                {{/compare ~}}
+            </p>
+          </div>
+          {{/compare ~}}
+          {{else}}
+          <div class="container-content detailed-info">
+            <p class="mdc-typography--body1">
+              {{#compare advertised_areas.length ">" 0 ~}}
+                This opportunity is not listed at a specific location but is advertised across
+                {{#compare (getType advertised_areas) "string" ~}}
+                {{{advertised_areas}}}.
+                {{else}}
+                {{#each advertised_areas ~}}
+                  {{{this}}}{{#unless @last}}, {{else}}.{{/unless}}
+                {{/each ~}}
+                {{/compare ~}}
+              {{else}}
+                This opportunity is not listed at a specific location.
+              {{/compare ~}}
+            </p>
+          </div>
+          {{/compare ~}}
         </div>
       </div>
     </div>
