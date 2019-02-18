@@ -17,8 +17,9 @@
           {{#with @root.data.location_data.la_results.aggregations.local_authority_areas ~}}
           {{#each buckets ~}}
           {{#if (contains (map @root.data.search_data.map_results.aggregations.all_advertised_areas.buckets (getProp "key")) (replace (replace (replace key " and " " & ") " City" "") "City of " "")) ~}}
-          <span class="area">{{{replace (replace (replace key " and " " & ") " City" "") "City of " ""}}}</span> {{#if @last}}{{#compare @root.data.location_data.home_results.hits.total ">" 0}} and from home.{{/compare}}{{/if}}
+          <span class="area">{{{replace (replace (replace key " and " " & ") " City" "") "City of " ""}}}</span>
           {{/if ~}}
+          {{#if @last}}{{#compare @root.data.location_data.home_results.hits.total ">" 0}} and from home.{{/compare}}{{/if}}
           {{/each ~}}
           {{/with ~}}
           {{else}}
