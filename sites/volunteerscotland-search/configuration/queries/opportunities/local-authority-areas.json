@@ -1,7 +1,7 @@
 {
   "size": 0,
-  "_source": false
-  {{#ifAll @root.request.params.query.location @root.request.params.query.lat @root.request.params.query.lng @root.request.params.query.distance ~}},
+  "_source": false,
+  {{#ifAll @root.request.params.query.location @root.request.params.query.lat @root.request.params.query.lng @root.request.params.query.distance ~}}
   "query": {
     "bool": {
       "filter": [
@@ -23,12 +23,16 @@
     }
   },
   "aggs": {
-    "all_advertised_areas": {
+    "all_areas": {
       "terms": {
         "field": "place",
         "size" : 10000
       }
     }
+  }
+  {{else}}
+  "query": {
+    "match_none": {}
   }
   {{/ifAll ~}}
 }

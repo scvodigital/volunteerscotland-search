@@ -50,6 +50,12 @@
             "template": ">context.metaData.handlebars.queries.opportunities_search-map-areas"
           },
           {
+            "name": "home_results",
+            "index": "web-content-production",
+            "type": "milo-volunteering-opportunity",
+            "template": ">context.metaData.handlebars.queries.opportunities_search-map-home"
+          },
+          {
             "name": "la_results",
             "index": "geo_data",
             "type": "district",
