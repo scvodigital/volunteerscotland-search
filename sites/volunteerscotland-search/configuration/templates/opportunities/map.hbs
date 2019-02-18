@@ -12,6 +12,7 @@
       <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone pagination-desktop">
         <div class="mdc-typography--body2 pull-right">
           <a href="/search{{@root.request.url.search}}&exclude=locations">List {{subtract @root.data.search_data.map_results.hits.total @root.data.search_data.map_results.aggregations.geo_search.buckets.[0].doc_count}} other volunteering opportunities</a>
+          {{#compare @root.data.search_data.map_areas.aggregations.all_advertised_areas.buckets.length ">" 0 ~}}
           available across
           {{#with @root.data.search_data_areas.la_results.aggregations.local_authority_areas ~}}
           {{#each buckets ~}}
@@ -20,6 +21,9 @@
           {{/if ~}}
           {{/each ~}}
           {{/with ~}}
+          {{else}}
+          available from home.
+          {{/compare ~}}
         </div>
       </div>
       {{/compare ~}}
