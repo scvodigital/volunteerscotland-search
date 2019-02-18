@@ -178,7 +178,7 @@
           </div>
           {{/unless ~}}
           {{/if ~}}
-          <button type="submit" class="mdc-button mdc-button--raised b-margin-full" id="register-interest-submit">
+        <button data-sitekey="{{@root.context.metaData.reCaptchaSiteKey}}" data-callback='onSubmit' class="mdc-button mdc-button--raised b-margin-full g-recaptcha" id="register-interest-submit">
             <span class="far fa-hand-paper mdc-list-item__graphic" aria-hidden="true"></span>
             Register interest
           </button>
@@ -190,3 +190,10 @@
 
   </div>
 {{/with ~}}
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script>
+  function onSubmit(token) {
+    document.getElementById("register-interest-form").submit();
+  }
+</script>
