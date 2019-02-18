@@ -1,6 +1,12 @@
 <div class="mdc-card__info--content-primary-row">
   <div class="mdc-card__info--content-primary">
+    {{#ifAny (compare @root.route.name "===" "opportunity_search") (compare @root.route.name "===" "opportunities_in") ~}}
+    {{#ifAll @root.request.params.query.location @root.request.params.query.lat @root.request.params.query.lng ~}}
+    {{#if distance ~}}
     {{> opportunity_distance distance=distance advertised_areas=advertised_areas}}
+    {{/if ~}}
+    {{/ifAll ~}}
+    {{/ifAny ~}}
     {{#compare @root.route.name "===" "opportunity" ~}}
     {{#if goodhq_organisation.image_url ~}}
     <div class="mdc-card__media mdc-card__media--content-secondary pull-right">

@@ -1,7 +1,4 @@
 <div class="v-margin pull-right mdc-card__info--search-distance">
-  {{#ifAny (compare @root.route.name "===" "opportunity_search") (compare @root.route.name "===" "opportunities_in") ~}}
-  {{#ifAll @root.request.params.query.location @root.request.params.query.lat @root.request.params.query.lng ~}}
-  {{#if distance ~}}
   {{#ifAll (compare distance "!==" "Infinity") (compare distance "<=" @root.request.params.query.distance) ~}}
   <ul class="fa-ul">
     <li class="mdc-typography--body2">
@@ -48,7 +45,4 @@
   {{/ifAny ~}}
   {{/if ~}}
   {{/ifAll ~}}
-  {{/if ~}}
-  {{/ifAll ~}}
-  {{/ifAny ~}}
 </div>
