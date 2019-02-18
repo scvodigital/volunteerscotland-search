@@ -3917,7 +3917,8 @@ a.mdc-drawer__content-heading {
     border-top: none;
     .tt-suggestion:hover,
     .tt-cursor {
-      background-color: $brand-secondary-turquoise;
+      background-color: $brand-secondary-darkblue;
+      color: white;
     }
   }
 }

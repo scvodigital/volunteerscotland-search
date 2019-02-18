@@ -23,7 +23,7 @@
     }
   },
   "aggs": {
-    "all_areas": {
+    "local_authority_areas": {
       "terms": {
         "field": "place",
         "size" : 10000

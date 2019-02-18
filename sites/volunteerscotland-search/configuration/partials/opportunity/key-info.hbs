@@ -3,7 +3,25 @@
     {{#ifAny (compare @root.route.name "===" "opportunity_search") (compare @root.route.name "===" "opportunities_in") ~}}
     {{#ifAll @root.request.params.query.location @root.request.params.query.lat @root.request.params.query.lng ~}}
     {{#if distance ~}}
-    {{> opportunity_distance distance=distance advertised_areas=advertised_areas}}
+    <div class="v-margin pull-right mdc-card__info--search-distance">
+      {{#ifAll (compare distance "!==" "Infinity") (compare distance "<=" @root.request.params.query.distance) ~}}
+      {{> opportunity_location_distance distance=distance}}
+      {{else}}
+      {{#if (contains volunteersearch_type "Home-based volunteering") ~}}
+      {{> opportunity_location_home}}
+      {{else}}
+      {{#ifAny (compare (getType advertised_areas) "string") (compare advertised_areas.length ">" 0) ~}}
+      {{> opportunity_location_areas advertised_areas=advertised_areas}}
+      {{/ifAny ~}}
+      {{/if ~}}
+      {{/ifAll ~}}
+    </div>
+    {{/if ~}}
+    {{else}}
+    {{#if (contains volunteersearch_type "Home-based volunteering") ~}}
+    <div class="v-margin pull-right mdc-card__info--search-distance">
+      {{> opportunity_location_home}}
+    </div>
     {{/if ~}}
     {{/ifAll ~}}
     {{/ifAny ~}}
@@ -47,7 +65,7 @@
       {{/compare ~}}
       {{/if ~}}
     </ul>
-    <ul class="fa-ul last">
+    <!-- <ul class="fa-ul last">
       {{#compare work_location "===" "At Home" ~}}
         {{#unless (contains volunteersearch_type "Home-based volunteering") ~}}
         <li class="mdc-card__info--content-primary-location mdc-typography--body1">
@@ -72,7 +90,7 @@
           {{/if ~}}
         {{/compare ~}}
       {{/compare ~}}
-    </ul>
+    </ul> -->
   </div>
   {{#if (contains (map @root.data.registeredInterest.items.[0] (getProp "value")) Id) ~}}
   {{#ifAny opportunity_contact_first_name opportunity_contact_last_name organisation_website ~}}

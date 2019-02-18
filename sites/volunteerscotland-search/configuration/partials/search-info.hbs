@@ -8,15 +8,15 @@
   {{else}}
   volunteering {{inflect paging.totalResults "opportunity" "opportunities"}}
   {{/compare ~}}
-  {{if @root.request.params.query.only_la "(filtered)"}}
+  {{if @root.request.params.query.exclude "(filtered)"}}
   {{#compare @root.route.name "!==" "opportunity_map" ~}}
   {{#compare paging.totalResults ">" 10 ~}} -
   <span class="hide-sm">showing</span>
   page {{addCommas paging.currentPage}} of {{addCommas paging.totalPages}}
   {{/compare ~}}
   {{/compare ~}}
-  {{#if @root.request.params.query.only_la ~}}
-  <a href="/search{{replace @root.request.url.search "&only_la=true" ""}}">Show all</a>
+  {{#if @root.request.params.query.exclude ~}}
+  <a href="/search{{replace @root.request.url.search "&exclude=locations" ""}}">Show all</a>
   {{/if ~}}
 </div>
 {{else}}

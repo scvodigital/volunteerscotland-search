@@ -6,9 +6,9 @@
   <form id="opportunity-search-form" action="/{{#compare @root.request.url.pathname "/map"}}map{{else}}search{{/compare}}" method="GET" class="search-form" novalidate>
   {{/if}}
     <input type="hidden" name="sort" value="{{@root.request.params.query.sort}}" id="{{instance_id}}-sort">
-    {{#if @root.request.params.query.only_la ~}}
-    {{#compare @root.request.params.query.only_la "!==" "" ~}}
-    <input type="hidden" name="only_la" value="true">
+    {{#if @root.request.params.query.exclude ~}}
+    {{#compare @root.request.params.query.exclude "!==" "" ~}}
+    <input type="hidden" name="exclude" value="locations">
     {{/compare ~}}
     {{/if ~}}
     <div class="h-padding">
