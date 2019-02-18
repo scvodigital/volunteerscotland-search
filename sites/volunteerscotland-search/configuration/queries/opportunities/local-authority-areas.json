@@ -30,5 +30,9 @@
       }
     }
   }
+  {{else}}
+  "query": {
+    "match_none": {}
+  }
   {{/ifAll ~}}
 }
