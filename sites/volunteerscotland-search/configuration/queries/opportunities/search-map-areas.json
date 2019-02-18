@@ -7,32 +7,11 @@
       "filter": [
         {{>queries_opportunity_common_filters @root.request.params.query}},
         {{>queries_opportunity_search_filters @root.request.params.query}},
-        {
-          "geo_shape": {
-            "shape_advertised_areas": {
-              "shape": {
-                "type": "circle",
-                "coordinates": [
-                  {{@root.request.params.query.lng}},
-                  {{@root.request.params.query.lat}}
-                ],
-                "radius": "{{default @root.request.params.query.distance "10"}}mi"
-              }
-            }
-          }
-        }
+        {{>queries_opportunity_search_filters_areas @root.request.params.query}}
       ],
       "must": [
         {{>queries_opportunity_search_must @root.request.params.query}}
       ]
-    }
-  },
-  "aggs": {
-    "all_advertised_areas": {
-      "terms": {
-        "field": "advertised_areas",
-        "size" : 10000
-      }
     }
   }
   {{else}}

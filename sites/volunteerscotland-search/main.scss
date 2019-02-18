@@ -2094,6 +2094,17 @@ body.favouritees {
 .mdc-layout-grid {
   padding: 0;
 }
+.areas {
+  .area {
+    display: inline;
+  }
+  .area::after {
+    content: ", ";
+  }
+  .area:last-child::after {
+    content: "";
+  }
+}
 
 footer,
 .browse main,

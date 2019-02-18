@@ -10,14 +10,14 @@
       </div>
       {{#compare (subtract @root.data.search_data.map_results.hits.total @root.data.search_data.map_results.aggregations.geo_search.buckets.[0].doc_count) ">" 0 ~}}
       <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone pagination-desktop">
-        <div class="mdc-typography--body2 pull-right">
-          <a href="/search{{@root.request.url.search}}&exclude=locations">List {{subtract @root.data.search_data.map_results.hits.total @root.data.search_data.map_results.aggregations.geo_search.buckets.[0].doc_count}} other volunteering opportunities</a>
-          {{#compare @root.data.search_data.map_areas.aggregations.all_advertised_areas.buckets.length ">" 0 ~}}
+        <div class="mdc-typography--body2 pull-right areas">
+          <a href="/search{{@root.request.url.search}}&exclude=locations">List {{subtract @root.data.search_data.map_results.hits.total @root.data.location_data.locations_results.hits.total}} other volunteering opportunities</a>
+          {{#compare @root.data.search_data.map_results.aggregations.all_advertised_areas.buckets.length ">" 0 ~}}
           available across
-          {{#with @root.data.search_data_areas.la_results.aggregations.local_authority_areas ~}}
+          {{#with @root.data.location_data.la_results.aggregations.local_authority_areas ~}}
           {{#each buckets ~}}
-          {{#if (contains (map @root.data.search_data.map_areas.aggregations.all_advertised_areas.buckets (getProp "key")) (replace (replace (replace key " and " " & ") " City" "") "City of " "")) ~}}
-          {{{replace (replace (replace key " and " " & ") " City" "") "City of " ""}}}{{#if @last}}{{#compare ../buckets.length ">" 1}},{{/compare}}{{#compare @root.data.search_data_areas.home_results.hits.total ">" 0}} and from home{{/compare}}.{{else}}, {{/if}}
+          {{#if (contains (map @root.data.search_data.map_results.aggregations.all_advertised_areas.buckets (getProp "key")) (replace (replace (replace key " and " " & ") " City" "") "City of " "")) ~}}
+          <span class="area">{{{replace (replace (replace key " and " " & ") " City" "") "City of " ""}}}</span> {{#if @last}}{{#compare @root.data.location_data.home_results.hits.total ">" 0}} and from home.{{/compare}}{{/if}}
           {{/if ~}}
           {{/each ~}}
           {{/with ~}}
@@ -30,42 +30,52 @@
     </div>
   </div>
   {{#if @root.data.search_data.map_results.pagination.totalResults ~}}
-    <div class="card-loader" id="opportunity-map-loader" style="display: flex">
-      <div class="card-loader-inner">
-        <span class="far fa-2x fa-spinner-third fa-spin"></span>
-      </div>
+  {{#compare @root.data.search_data.map_results.aggregations.geo_search.buckets.[0].doc_count ">" 0 ~}}
+  <div class="card-loader" id="opportunity-map-loader" style="display: flex">
+    <div class="card-loader-inner">
+      <span class="far fa-2x fa-spinner-third fa-spin"></span>
     </div>
-    <div id="map-full" data-map-name="fullMap" class="grid-content" data-map-clustered-options='{
-   {{#ifAll @root.request.params.query.distance @root.request.params.query.lat @root.request.params.query.lng ~}}
-    "circle": {
-      "lat": {{@root.request.params.query.lat}},
-      "lng": {{@root.request.params.query.lng}},
-      "radius": {{default (multiply @root.request.params.query.distance 1.60934) 0}},
-      "color": "#7bc143"
-    }
+  </div>
+  <div id="map-full" data-map-name="fullMap" class="grid-content" data-map-clustered-options='{
+  {{#ifAll @root.request.params.query.distance @root.request.params.query.lat @root.request.params.query.lng ~}}
+  "circle": {
+    "lat": {{@root.request.params.query.lat}},
+    "lng": {{@root.request.params.query.lng}},
+    "radius": {{default (multiply @root.request.params.query.distance 1.60934) 0}},
+    "color": "#7bc143"
+  }
   {{/ifAll ~}}
   }'>
-      <!-- Markers for map -->
-      {{#each @root.data.search_data.map_results.hits.hits ~}}
-        {{#if _source.geo_coords ~}}
-          {{#each (arrayify _source.geo_coords) ~}}
-            {{#if @root.request.params.query.distance ~}}
-              {{#compare (itemAt ../fields.distance @index) "<" @root.request.params.query.distance ~}}
-                <marker style="display:none;" data-map="fullMap" data-lat="{{lat}}" data-lng="{{lon}}" data-shortlisted="{{#each @root.data.favourites.items}}{{#compare id "===" ../../_source.Id}}true{{/compare}}{{/each}}" data-title="{{../_source.title}}">
-                  {{> opportunity_map ../_source}}
-                </marker>
-              {{/compare ~}}
-            {{else}}
+    <!-- Markers for map -->
+    {{#each @root.data.search_data.map_results.hits.hits ~}}
+      {{#if _source.geo_coords ~}}
+        {{#each (arrayify _source.geo_coords) ~}}
+          {{#if @root.request.params.query.distance ~}}
+            {{#compare (itemAt ../fields.distance @index) "<" @root.request.params.query.distance ~}}
               <marker style="display:none;" data-map="fullMap" data-lat="{{lat}}" data-lng="{{lon}}" data-shortlisted="{{#each @root.data.favourites.items}}{{#compare id "===" ../../_source.Id}}true{{/compare}}{{/each}}" data-title="{{../_source.title}}">
                 {{> opportunity_map ../_source}}
               </marker>
-            {{/if ~}}
-          {{/each ~}}
-        {{/if ~}}
-      {{/each ~}}
-    </div>
+            {{/compare ~}}
+          {{else}}
+            <marker style="display:none;" data-map="fullMap" data-lat="{{lat}}" data-lng="{{lon}}" data-shortlisted="{{#each @root.data.favourites.items}}{{#compare id "===" ../../_source.Id}}true{{/compare}}{{/each}}" data-title="{{../_source.title}}">
+              {{> opportunity_map ../_source}}
+            </marker>
+          {{/if ~}}
+        {{/each ~}}
+      {{/if ~}}
+    {{/each ~}}
+  </div>
   {{else}}
+  <div class="grid-content">
+    <div class="search-info">
+      No location-specific results could be found
+    </div>
+  </div>
+  {{/compare ~}}
+  {{else}}
+  <div class="grid-content">
     {{> search_info paging=@root.data.search_data.detailed_results.pagination}}
+  </div>
   {{/if ~}}
 </div>
 

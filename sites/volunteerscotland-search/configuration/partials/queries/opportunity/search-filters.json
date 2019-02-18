@@ -12,7 +12,7 @@
           }
         }
       },
-      {{#each @root.data.search_data_areas.la_results.aggregations.local_authority_areas.buckets ~}}
+      {{#each @root.data.location_data.la_results.aggregations.local_authority_areas.buckets ~}}
       {{>queries_term field="advertised_areas" term=(replace (replace (replace key " and " " & ") "City of " "") " City" "")}},
       {{/each}}
       {{/ifAll ~}}

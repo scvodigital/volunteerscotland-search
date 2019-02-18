@@ -20,7 +20,7 @@
     "context.metaData.commonTasks.favouritesData",
     "context.metaData.commonTasks.registeredInterestData",
     {
-      "name": "search_data_areas",
+      "name": "location_data",
       "taskModule": "elasticsearch",
       "config": {
         "connectionStringTemplate": "{$../../elasticsearch-url.txt}",
