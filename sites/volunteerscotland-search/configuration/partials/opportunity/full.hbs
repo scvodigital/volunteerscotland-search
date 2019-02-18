@@ -213,7 +213,7 @@
                 {{{advertised_areas}}}.
                 {{else}}
                 {{#each advertised_areas ~}}
-                  {{{this}}}{{#unless @last}}, {{else}}.{{/unless}}
+                {{#if @last}} and {{/if}}{{{this}}}{{#unless @last}}{{#compare ../advertised_areas.length ">" 2}},{{/compare}} {{else}}.{{/unless}}
                 {{/each ~}}
                 {{/compare ~}}
             </p>
@@ -228,7 +228,7 @@
                 {{{advertised_areas}}}.
                 {{else}}
                 {{#each advertised_areas ~}}
-                  {{#if @last}} and {{/if}}{{{this}}}{{#unless @last}}{{#compare ../advertised_areas.length ">" 2}},{{/compare}} {{else}}.{{/unless}}
+                {{#if @last}} and {{/if}}{{{this}}}{{#unless @last}}{{#compare ../advertised_areas.length ">" 2}},{{/compare}} {{else}}.{{/unless}}
                 {{/each ~}}
                 {{/compare ~}}
               {{else}}
