@@ -18,7 +18,7 @@
             {{#with @root.data.search_data_areas.la_results.aggregations.all_areas ~}}
             {{#each buckets ~}}
             {{#if (contains (map @root.data.search_data_areas.map_results.aggregations.all_advertised_areas.buckets (getProp "key")) (replace (replace (replace key " and " " & ") " City" "") "City of " "")) ~}}
-            {{{replace (replace (replace key " and " " & ") " City" "") "City of " ""}}}{{#if @last}}{{#compare ../buckets.length ">" 1}},{{/compare}} and from home.{{else}}, {{/if}}
+            {{{replace (replace (replace key " and " " & ") " City" "") "City of " ""}}}{{#if @last}}{{#compare ../buckets.length ">" 1}},{{/compare}}{{#compare @root.data.search_data_areas.home_results.hits.total ">" 0}} and from home{{/compare}}.{{else}}, {{/if}}
             {{/if ~}}
             {{/each ~}}
             {{/with ~}}
