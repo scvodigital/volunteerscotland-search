@@ -194,7 +194,12 @@
             <div id="map-content-primary" data-map-name="opportunityMap" data-map-clustered-options='{}'>
               {{#each (arrayify geo_coords) ~}}
               <marker style="display:none;" data-map="opportunityMap" data-lat="{{lat}}" data-lng="{{lon}}" data-title="{{../organisation_name}} - {{../title}}">
-                <h3 class="mdc-typography--headline7">{{../organisation_name}}</h3>
+                <h4 class="mdc-typography--headline7">{{../organisation_name}}</h4>
+                {{#if ../postcode ~}}
+                <div class="mdc-typography--body2 v-margin">
+                  Postcode: {{../postcode}}
+                </div>
+                {{/if ~}}
                 <p class="mdc-typography--body2">{{../title}}</p>
               </marker>
               {{/each ~}}
@@ -223,7 +228,7 @@
                 {{{advertised_areas}}}.
                 {{else}}
                 {{#each advertised_areas ~}}
-                  {{{this}}}{{#unless @last}}, {{else}}.{{/unless}}
+                  {{#if @last}} and {{/if}}{{{this}}}{{#unless @last}}{{#compare ../advertised_areas.length ">" 2}},{{/compare}} {{else}}.{{/unless}}
                 {{/each ~}}
                 {{/compare ~}}
               {{else}}
