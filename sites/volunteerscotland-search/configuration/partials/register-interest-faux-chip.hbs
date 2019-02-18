@@ -1,4 +1,3 @@
-{{#if @root.data.auth ~}}
   {{#unless (contains (map @root.data.registeredInterest.items.[0] (getProp "value")) id)}}
     <a href="register-interest/{{slug}}" class="mdc-chip mdc-chip--register-interest">
       <span class="far fa-hand-paper mdc-chip__icon mdc-chip__icon--leading" aria-hidden="true"></span>
@@ -10,9 +9,3 @@
       <span class="mdc-chip__text noselect">Interest registered</span>
     </div>
   {{/unless}}
-{{else}}
-  <div class="mdc-chip mdc-chip--register-interest" data-dialog-target="#volunteer-dialog">
-    <span class="far fa-hand-paper mdc-chip__icon mdc-chip__icon--leading" aria-hidden="true"></span>
-    <div class="mdc-chip__text noselect">I want to volunteer</div>
-  </div>
-{{/if ~}}

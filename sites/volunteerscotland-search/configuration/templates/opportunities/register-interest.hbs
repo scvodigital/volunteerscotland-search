@@ -5,6 +5,32 @@
       <div class="mdc-typography--headline5">
         <a href="/opportunity/{{slug}}">{{title}}</a> with <a href="/organisation/{{organisation_slug}}">{{organisation_name}}</a>
       </div>
+      {{#if @root.request.params.query.applied}}
+        <div class="mdc-typography--headline6">
+          Thank you for registering interest in this opportunity.
+        </div>
+        <p class="mdc-typography--body1 t-margin-full">If you want to contact the organisation directly about this opportunity, please use the details below:</p>
+
+        {{#ifAny opportunity_contact_first_name opportunity_contact_last_name ~}}
+            <div class="mdc-typography--body1">
+              <strong>Contact Name: </strong> {{{opportunity_contact_first_name}}} {{{opportunity_contact_last_name}}}
+            </div>
+        {{/ifAny ~}}
+
+        {{#if opportunity_contact_email ~}}
+            <div class="mdc-typography--body1">
+              <strong>Contact Email: </strong> <a href="mailto:{{{opportunity_contact_email}}}">{{{opportunity_contact_email}}}</a>
+            </div>
+        {{/if ~}}
+
+        {{#if organisation_website ~}}
+            <div class="mdc-typography--body1">
+              <strong>Website: </strong> <a href="{{fixUrl organisation_website 'http'}}">{{{organisation_website}}}</a>
+            </div>
+
+        {{/if}}
+      {{else}}
+
       {{#unless @root.data.auth ~}}
         <div class="mdc-typography--headline6">
           If you would like to save this data for future applications you must first <a href="/sign-in">sign in</a> or <a href="/sign-up">sign up</a>.
@@ -14,7 +40,7 @@
       {{#unless opportunity_contact_email ~}}
         <p>You can't volunteer for this opportunity using this site. {{#if organisation_website}}Please contact the organisation directly using <a href="{{fixUrl organisation_website 'http'}}">{{{organisation_website}}}</a> for more information.{{/if}}</p>
       {{else}}
-        {{#if (contains (map @root.data.registeredInterest.items.[0] (getProp "value")) Id)}}
+        {{#if (contains (map @root.data.registeredInterest.items.[0] (getProp "value")) Id) }}
           <p>You have already registered interest in this opportunity</p>
         {{else}}
 
@@ -156,8 +182,11 @@
             <span class="far fa-hand-paper mdc-list-item__graphic" aria-hidden="true"></span>
             Register interest
           </button>
-        {{/if ~}}
+        {{/if~}}
       {{/unless ~}}
+      {{/if~}}
+
     </form>
+
   </div>
 {{/with ~}}
