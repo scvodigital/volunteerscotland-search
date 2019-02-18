@@ -2,21 +2,11 @@
 {
   "bool": {
     "should": [
-      {{#ifAll location lat lng distance ~}}
-      {
-        "geo_distance": {
-          "distance": "{{default distance "10"}}mi",
-          "geo_coords": {
-            "lat": {{lat}},
-            "lon": {{lng}}
-          }
-        }
-      },
-      {{#each @root.data.location_data.la_results.aggregations.local_authority_areas.buckets ~}}
-      {{>queries_term field="advertised_areas" term=(replace (replace (replace key " and " " & ") "City of " "") " City" "")}},
-      {{/each}}
-      {{/ifAll ~}}
-      {{>queries_term field="volunteersearch_type_slugs" term="home-based-volunteering"}},
+      {{>queries_opportunity_search_filters_locations @root.request.params.query}},
+      {{#compare @root.data.location_data.la_results.aggregations.local_authority_areas.buckets.length ">" 0 ~}}
+      {{>queries_opportunity_search_filters_areas @root.request.params.query}},
+      {{/compare ~}}
+      {{>queries_opportunity_search_filters_home @root.request.params.query}},
       {{>queries_do_nothing}}
     ],
     "minimum_should_match": {{#if distance}}2{{else}}1{{/if}}
