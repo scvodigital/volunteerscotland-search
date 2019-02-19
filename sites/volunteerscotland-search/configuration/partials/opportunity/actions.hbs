@@ -12,6 +12,8 @@
       {{#compare @root.route.name "!==" "home" ~}}
       {{#if opportunity_contact_email ~}}
       {{> register_interest_faux_chip id=Id}}
+      {{else}}
+        {{> register_interest_faux_chip disabled=true}}
       {{/if ~}}
       {{/compare ~}}
       {{> favourite_chip id=Id}}
