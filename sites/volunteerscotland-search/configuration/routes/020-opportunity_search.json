@@ -30,8 +30,8 @@
         "queryTemplates": [
           {
             "name": "la_results",
-            "index": "geo_data",
-            "type": "district",
+            "index": "geo_lookup",
+            "type": "es_district",
             "template": ">context.metaData.handlebars.queries.opportunities_local-authority-areas"
           }
         ]
