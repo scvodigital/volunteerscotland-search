@@ -2830,6 +2830,17 @@ footer.mdc-layout__footer {
       grid-column-end: span 5;
     }
   }
+  .search-form {
+    .distance-within {
+      margin-top: 0 !important;
+    }
+    .distance-label {
+      line-height: 1 !important;
+      margin-top: -($unit/4);
+      margin-left: $unit/2;
+      margin-bottom: $unit/2;
+    }
+  }
 }
 @media screen and (max-width: 479px) {
   .content-primary-search .head {
@@ -4017,6 +4028,9 @@ a.mdc-drawer__content-heading {
   .distance-within {
     margin-bottom: -$unit;
     margin-top: $unit/4;
+  }
+  .distance-label {
+    line-height: 48px;
   }
 }
 
