@@ -1,0 +1,59 @@
+{{#if stars ~}}
+  <ul class="hearts">
+    {{#compare stars '<' 0.25 ~}}
+      <li class="empty"><span aria-hidden="true" class="icon-heart"></span></li>
+    {{/compare ~}}
+    {{#compare stars '>=' 0.25 ~}}
+      {{#compare stars '<' 0.75 ~}}
+        <li class="half"><span aria-hidden="true" class="icon-heart"></span></li>
+      {{/compare ~}}
+      {{#compare stars '>=' 0.75 ~}}
+        <li class="filled"><span aria-hidden="true" class="icon-heart"></span></li>
+      {{/compare ~}}
+    {{/compare ~}}
+    {{#compare stars '<' 1.25 ~}}
+      <li class="empty"><span aria-hidden="true" class="icon-heart"></span></li>
+    {{/compare ~}}
+    {{#compare stars '>=' 1.25 ~}}
+      {{#compare stars '<' 1.75 ~}}
+        <li class="half"><span aria-hidden="true" class="icon-heart"></span></li>
+      {{/compare ~}}
+      {{#compare stars '>=' 1.75 ~}}
+        <li class="filled"><span aria-hidden="true" class="icon-heart"></span></li>
+      {{/compare ~}}
+    {{/compare ~}}
+    {{#compare stars '<' 2.25 ~}}
+      <li class="empty"><span aria-hidden="true" class="icon-heart"></span></li>
+    {{/compare ~}}
+    {{#compare stars '>=' 2.25 ~}}
+      {{#compare stars '<' 2.75 ~}}
+        <li class="half"><span aria-hidden="true" class="icon-heart"></span></li>
+      {{/compare ~}}
+      {{#compare stars '>=' 2.75 ~}}
+        <li class="filled"><span aria-hidden="true" class="icon-heart"></span></li>
+      {{/compare ~}}
+    {{/compare ~}}
+    {{#compare stars '<' 3.25 ~}}
+      <li class="empty"><span aria-hidden="true" class="icon-heart"></span></li>
+    {{/compare ~}}
+    {{#compare stars '>=' 3.25 ~}}
+      {{#compare stars '<' 3.75 ~}}
+        <li class="half"><span aria-hidden="true" class="icon-heart"></span></li>
+      {{/compare ~}}
+      {{#compare stars '>=' 3.75 ~}}
+        <li class="filled"><span aria-hidden="true" class="icon-heart"></span></li>
+      {{/compare ~}}
+    {{/compare ~}}
+    {{#compare stars '<' 4.25 ~}}
+      <li class="empty"><span aria-hidden="true" class="icon-heart"></span></li>
+    {{/compare ~}}
+    {{#compare stars '>=' 4.25 ~}}
+      {{#compare stars '<' 4.75 ~}}
+        <li class="half"><span aria-hidden="true" class="icon-heart"></span></li>
+      {{/compare ~}}
+      {{#compare stars '>=' 4.75 ~}}
+        <li class="filled"><span aria-hidden="true" class="icon-heart"></span></li>
+      {{/compare ~}}
+    {{/compare ~}}
+  </ul>
+{{/if ~}}

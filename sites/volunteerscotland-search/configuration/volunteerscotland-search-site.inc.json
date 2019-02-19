@@ -17,6 +17,7 @@
     "emailSendSettings": "{:./email-send-settings.json}",
     "menus": "{:./volunteerscotland-search-menus.json}",
     "accountInfoValidation": "{:./account-info-validation.json}",
+    "reCaptchaSiteKey": "6Ld7L5IUAAAAAGg1Luu1I9njFa2m-BALdtHja-cp",
     "elasticsearchUrl": "{$../elasticsearch-url.txt}",
     "termTypeLabels": {
       "age_groups": {

@@ -2,8 +2,8 @@
   <div class="mdc-card__info--content-primary">
     {{#ifAny (compare @root.route.name "===" "opportunity_search") (compare @root.route.name "===" "opportunities_in") ~}}
     {{#ifAll @root.request.params.query.location @root.request.params.query.lat @root.request.params.query.lng ~}}
-    {{#if distance ~}}
     <div class="v-margin pull-right mdc-card__info--search-distance">
+      {{#if distance ~}}
       {{#ifAll (compare distance "!==" "Infinity") (compare distance "<=" @root.request.params.query.distance) ~}}
       {{> opportunity_location_distance distance=distance}}
       {{else}}
@@ -15,8 +15,12 @@
       {{/ifAny ~}}
       {{/if ~}}
       {{/ifAll ~}}
+      {{else}}
+      {{#compare distance "===" 0 ~}}
+      {{> opportunity_location_distance distance=0.1}}
+      {{/compare ~}}
+      {{/if ~}}
     </div>
-    {{/if ~}}
     {{else}}
     {{#if (contains volunteersearch_type "Home-based volunteering") ~}}
     <div class="v-margin pull-right mdc-card__info--search-distance">
