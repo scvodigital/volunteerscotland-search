@@ -14,9 +14,7 @@
         {
           "bool": {
             "should": [
-              {{#compare @root.data.location_data.la_results.aggregations.local_authority_areas.buckets.length ">" 0 ~}}
-              {{>queries_opportunity_search_filters_areas @root.request.params.query}},
-              {{/compare ~}}
+              {{>queries_opportunity_search_filters_areas @root.request.params.query}}
               {{>queries_do_nothing}}
             ],
             "minimum_should_match": {{#if distance}}2{{else}}1{{/if}}
@@ -24,6 +22,14 @@
         }
         {{/if ~}}
       ]
+    }
+  },
+  "aggs": {
+    "all_advertised_areas": {
+      "terms": {
+        "field": "advertised_areas",
+        "size" : 10000
+      }
     }
   }
   {{else}}

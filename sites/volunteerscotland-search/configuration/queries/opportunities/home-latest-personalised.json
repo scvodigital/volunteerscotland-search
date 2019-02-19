@@ -27,37 +27,37 @@
   "query": {
     "bool": {
       "filter": [
-        {{>queries_opportunity_common_filters request.params.query}}
+        {{>queries_opportunity_common_filters @root.request.params.query}}
       ],
-{{#ifAll @root.data.auth @root.data.searches.items.[0] ~}}
-"should": [
-{{#each @root.data.searches.items.[0] ~}}
-{{#with (querystring querystring) ~}}
-{
-"bool": {
-"filter": [
-{{>queries_opportunity_search_filters this}}
-],
-"must": [
-{{>queries_opportunity_search_must this}}
-]
-}
-}
-{{#unless @last}},{{/unless}}
-{{/with ~}}
-{{/each ~}}
-],
-"minimum_should_match": 1
-{{else}}
-"must": [
-{
-"match_none": {}
-}
-]
-{{/ifAll ~}}
-}
-},
-"sort": {
-"start_date": "desc"
-}
+      {{#ifAll @root.data.auth @root.data.searches.items.[0] ~}}
+      "should": [
+        {{#each @root.data.searches.items.[0] ~}}
+        {{#with (querystring querystring) ~}}
+        {
+          "bool": {
+            "filter": [
+              {{>queries_opportunity_search_filters this}}
+            ],
+            "must": [
+              {{>queries_opportunity_search_must this}}
+            ]
+          }
+        }
+        {{#unless @last}},{{/unless}}
+        {{/with ~}}
+        {{/each ~}}
+      ],
+      "minimum_should_match": 1
+      {{else}}
+      "must": [
+        {
+          "match_none": {}
+        }
+      ]
+      {{/ifAll ~}}
+    }
+  },
+  "sort": {
+    "start_date": "desc"
+  }
 }

@@ -10,12 +10,12 @@
       </div>
       {{#compare (subtract @root.data.search_data.map_results.hits.total @root.data.search_data.map_results.aggregations.geo_search.buckets.[0].doc_count) ">" 0 ~}}
       <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone pagination-desktop">
-        <div class="mdc-typography--body2 pull-right areas">
+        <div class="mdc-typography--body2 pull-right">
           <a href="/search{{@root.request.url.search}}&exclude=locations">List {{subtract @root.data.search_data.map_results.hits.total @root.data.search_data.map_results.aggregations.geo_search.buckets.[0].doc_count}} {{#compare @root.data.location_data.locations_results.hits.total ">" 0}}other{{/compare}} volunteering {{inflect (subtract @root.data.search_data.map_results.hits.total @root.data.search_data.map_results.aggregations.geo_search.buckets.[0].doc_count) "opportunity" "opportunities"}}</a>
           {{#compare @root.data.search_data.map_results.aggregations.all_advertised_areas.buckets.length ">" 0 ~}}
           available
           {{#compare @root.data.search_data.areas_results.hits.total ">" 0 ~}}
-          across
+          <span class="areas areas-fulltext">
           {{/compare ~}}
           {{#with @root.data.location_data.la_results.aggregations.local_authority_areas ~}}
           {{#each buckets ~}}
@@ -24,7 +24,7 @@
           {{/if ~}}
           {{#if @last}}{{#compare @root.data.location_data.home_results.hits.total ">" 0}}
           {{#compare @root.data.search_data.areas_results.hits.total ">" 0 ~}}
-          and
+          </span>
           {{/compare ~}}
           from home.{{/compare}}{{/if}}
           {{/each ~}}
