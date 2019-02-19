@@ -76,14 +76,14 @@
           {{/if ~}}
 
 
-          {{> goodhq_heart_rating}}
           {{#if goodhq_organisation ~}}
           {{#compare goodhq_organisation.xid "!==" null ~}}
           <li class="mdc-card__info--content-secondary-goodhq mdc-typography--body1">
             <span class="fa-li"><span class="fas fa-heart fa-fw" title="Good HQ"></span></span>
             <a href="https://goodhq.org/{{goodhq_organisation.xid}}">@{{goodhq_organisation.xid}}</a>
             {{#compare goodhq_organisation.status "===" "Open" ~}}
-            –
+              <a href="https://goodhq.org/{{goodhq_organisation.xid}}?mode=reviews">{{> goodhq_heart_rating stars=goodhq_organisation.stars}}</a>
+              –
             {{#compare @root.data.goodhq.reviews.hits.total ">" 0 ~}}
             <a href="https://goodhq.org/{{goodhq_organisation.xid}}?mode=reviews">{{inflect @root.data.goodhq.reviews.hits.total "review" "reviews" true}}</a> {{#compare @root.data.goodhq.posts.hits.total ">" 0}} and {{/compare ~}}
             {{/compare ~}}

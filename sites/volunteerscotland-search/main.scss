@@ -1,5 +1,16 @@
 @import url('//cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css');
 @import url('https://fonts.googleapis.com/css?family=Rambla:400,700');
+@font-face {
+  font-family: 'goodhq';
+  src: url("assets/fonts/goodhq.eot");
+  src: url("assets/fonts/goodhq.eot?#iefix") format("embedded-opentype"),
+  url("assets/fonts/goodhq.woff") format("woff"),
+  url("assets/fonts/goodhq.ttf") format("truetype"),
+  url("assets/fonts/goodhq.svg#goodhq") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
 
 $brand-primary-black: rgb(64, 64, 65);
 $brand-primary-grey: rgb(218, 211, 204);
@@ -4223,6 +4234,83 @@ footer.mdc-layout__footer {
     max-width: 100%;
   }
 }
+
+// Good HQ Hearts =====
+.icon-heart:before,
+.icon-globe:before,
+.icon-vote:before,
+.hearts li:before {
+  display: inline-block;
+  font-family: 'goodhq';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.click-anyway {
+  pointer-events: auto !important;
+}
+.hearts {
+  margin: 0 0 0 0.15rem;
+  padding: 0;
+  min-width: auto;
+  display: inline-block;
+  list-style: none;
+  li {
+    text-align: unset;
+    margin-right: -2px;
+    list-style-type: none;
+    display: inline-block;
+    .icon-heart {
+      position: relative;
+      top: 2px;
+    }
+    p {
+      display: inline;
+    }
+  }
+  li:last-of-type {
+    margin-right: 0;
+  }
+  li:before {
+    margin: 5px 0 0 -30px;
+    float: left;
+    color: white;
+    font-size: 1.3rem;
+  }
+  li span.icon-heart:before {
+    content: '\004a';
+  }
+  li.half span.icon-heart:before {
+    content: '\0049';
+  }
+}
+.icon-heart:before,
+ul.hearts li.filled span.icon-heart:before {
+  content: '\0048';
+}
+.icon-globe-europe:before {
+  content: '\0047';
+}
+.icon-vote:before {
+  content: '\0056';
+}
+.icon-heart-verified:before {
+  content: '\004c';
+  color: purple;
+  position: absolute;
+  top: 0.2rem;
+  margin-left: 0.2rem;
+}
+.username .icon-heart-verified:before {
+  position: relative;
+  font-size: $unit*1.1;
+}
+.btn-primary span.icon-heart-verified:before {
+  color: white;
+}
+
 
 // Fade-in ============
 
