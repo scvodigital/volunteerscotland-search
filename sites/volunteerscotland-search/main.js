@@ -54,14 +54,15 @@ export class VolunteerScotlandSearch {
     ci.options.message = "We use cookies to track anonymous usage statistics and do not collect any personal information that can be used to identify you. By continuing to visit this site you agree to our use of cookies.";
     ci.options.fontFamily = "'Open Sans',Helvetica,Arial,sans-serif";
     ci.options.bg = "#fff";
-    ci.options.link = "#c2185b";
+    ci.options.link = "#00a0af";
     ci.options.divlink = "#fff";
-    ci.options.divlinkbg = "#c2185b";
+    ci.options.divlinkbg = "#00a0af";
     ci.options.position = "bottom";
     ci.options.acceptOnScroll = "true";
     ci.options.moreinfo = "/cookies";
     ci.options.cookie = "CookieInfoScript";
     ci.options.textAlign = "left";
+    ci.options.fontFamily = "Rambla";
     ci.run();
   }
 

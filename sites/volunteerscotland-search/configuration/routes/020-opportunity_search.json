@@ -20,6 +20,25 @@
     "context.metaData.commonTasks.favouritesData",
     "context.metaData.commonTasks.registeredInterestData",
     {
+      "name": "location_data",
+      "taskModule": "elasticsearch",
+      "config": {
+        "connectionStringTemplate": "{$../../elasticsearch-url.txt}",
+        "elasticsearchConfig": {
+          "apiVersion": "5.6"
+        },
+        "queryTemplates": [
+          {
+            "name": "la_results",
+            "index": "geo_data",
+            "type": "district",
+            "template": ">context.metaData.handlebars.queries.opportunities_local-authority-areas"
+          }
+        ]
+      },
+      "renderer": "handlebars"
+    },
+    {
       "name": "search_data",
       "taskModule": "elasticsearch",
       "config": {
@@ -33,12 +52,6 @@
             "index": "web-content-production",
             "type": "milo-volunteering-opportunity",
             "template": ">context.metaData.handlebars.queries.opportunities_search-list"
-          },
-          {
-            "name": "la_results",
-            "index": "geo_data",
-            "type": "district",
-            "template": ">context.metaData.handlebars.queries.opportunities_local-authority-areas"
           }
         ]
       },

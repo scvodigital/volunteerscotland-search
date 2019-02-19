@@ -2094,6 +2094,28 @@ body.favouritees {
 .mdc-layout-grid {
   padding: 0;
 }
+.areas {
+  .area {
+    display: inline;
+  }
+  .area::after {
+    content: ", ";
+  }
+  .area:last-child::after {
+    content: "";
+  }
+}
+.areas-fulltext {
+  .area:first-child::before {
+    content: " across ";
+  }
+  .area:last-child::after {
+    content: ", and ";
+  }
+  .area:only-child::after {
+    content: " and ";
+  }
+}
 
 footer,
 .browse main,
@@ -3917,7 +3939,8 @@ a.mdc-drawer__content-heading {
     border-top: none;
     .tt-suggestion:hover,
     .tt-cursor {
-      background-color: $brand-secondary-turquoise;
+      background-color: $brand-secondary-darkblue;
+      color: white;
     }
   }
 }

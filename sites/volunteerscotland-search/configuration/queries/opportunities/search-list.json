@@ -38,7 +38,8 @@
           "should": [
             {{>queries_opportunity_search_should @root.request.params.query}}
           ]
-          {{#if @root.request.params.query.only_la ~}},
+          {{#if @root.request.params.query.exclude ~}}
+          {{#compare @root.request.params.query.exclude "!==" "" ~}},
           "must_not": [
             {
               "geo_distance": {
@@ -50,6 +51,7 @@
               }
             }
           ]
+          {{/compare ~}}
           {{/if ~}}
         }
       },
@@ -84,7 +86,9 @@
       }
     }
     {{else}}
-    "_score"
+    {
+      "date_last_modified": "desc"
+    }
     {{/ifAll ~}}
     {{else}}
     {{#compare @root.request.params.query.sort "===" "newest" ~}}
@@ -97,12 +101,16 @@
       "start_date": "asc"
     }
     {{else}}
-    "_score"
+    {
+      "date_last_modified": "desc"
+    }
     {{/compare ~}}
     {{/compare ~}}
     {{/compare ~}}
     {{else}}
-    "_score"
+    {
+      "date_last_modified": "desc"
+    }
     {{/if ~}}
     {{#ifAll @root.request.params.query.location @root.request.params.query.lat @root.request.params.query.lng ~}},
     {
