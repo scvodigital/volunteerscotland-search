@@ -2105,6 +2105,17 @@ body.favouritees {
     content: "";
   }
 }
+.areas-fulltext {
+  .area:first-child::before {
+    content: " across ";
+  }
+  .area:last-child::after {
+    content: ", and ";
+  }
+  .area:only-child::after {
+    content: " and ";
+  }
+}
 
 footer,
 .browse main,
