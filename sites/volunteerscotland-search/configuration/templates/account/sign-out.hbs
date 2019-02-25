@@ -7,6 +7,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
       volunteerscotland.setCookie('gi_cookie');
       window.location.href = '/';
     }).catch(function(err) {
+      volunteerscotland.setCookie('gi_token');
+      volunteerscotland.setCookie('gi_cookie');
       console.error('Error signing out:', err);
     });
   }, 1000);
