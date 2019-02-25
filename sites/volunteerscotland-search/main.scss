@@ -3772,6 +3772,15 @@ a:hover {
   background-color: $brand-secondary-darkblue;
   color: white;
 }
+
+.mdc-card .mdc-chip.mdc-chip--disabled,
+.mdc-chip.mdc-chip--disabled {
+  background-color: $brand-primary-grey;
+  color: white;
+}
+
+
+
 .mdc-card .mdc-chip.mdc-chip--selected:hover,
 .mdc-chip.mdc-chip--selected:hover {
   background-color: $brand-secondary-darkblue;

@@ -176,6 +176,8 @@
               </div>
             </label>
           </div>
+          {{else}}
+            <input type="hidden" name="store_profile_info" value="true">
           {{/unless ~}}
           {{/if ~}}
         <button data-sitekey="{{@root.context.metaData.reCaptchaSiteKey}}" data-callback='onSubmit' class="mdc-button mdc-button--raised b-margin-full g-recaptcha" id="register-interest-submit">

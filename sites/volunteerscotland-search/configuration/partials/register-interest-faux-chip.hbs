@@ -1,4 +1,10 @@
-  {{#unless (contains (map @root.data.registeredInterest.items.[0] (getProp "value")) id)}}
+{{#if disabled}}
+<div title="You can't volunteer for this opportunity using this site" class="mdc-chip mdc-chip--disabled mdc-chip--register-interest">
+  <span class="far fa-envelope mdc-chip__icon" aria-hidden="true"></span>
+  <span class="mdc-chip__text noselect">I want to volunteer</span>
+</div>
+{{else}}
+{{#unless (contains (map @root.data.registeredInterest.items.[0] (getProp "value")) id)}}
     <a href="register-interest/{{slug}}" class="mdc-chip mdc-chip--register-interest">
       <span class="far fa-hand-paper mdc-chip__icon mdc-chip__icon--leading" aria-hidden="true"></span>
       <span class="mdc-chip__text noselect">I want to volunteer</span>
@@ -9,3 +15,4 @@
       <span class="mdc-chip__text noselect">Interest registered</span>
     </div>
   {{/unless}}
+{{/if}}
