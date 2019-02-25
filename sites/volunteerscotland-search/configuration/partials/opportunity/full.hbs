@@ -36,12 +36,24 @@
               {{/each}}
             </li>
             {{/compare ~}}
-            {{#if start_date ~}}
+            {{#ifAll start_date end_date ~}}
             <li class="mdc-card__info--content-primary-from mdc-typography--body1">
               <span class="fa-li"><span class="far fa-calendar-plus fa-fw" title="Start date"></span></span>
               Opportunity start date: {{momentFormat (moment start_date "x") "Do MMMM YYYY"}}
             </li>
-            {{/if ~}}
+              <li class="mdc-card__info--content-primary-from mdc-typography--body1">
+                <span class="fa-li"><span class="far fa-calendar-times fa-fw" title="End date"></span></span>
+                Opportunity end date: {{momentFormat (moment end_date "x") "Do MMMM YYYY"}}
+              </li>
+            {{else}}
+          {{#compare start_date ">" (moment)}}
+            <li class="mdc-card__info--content-primary-from mdc-typography--body1">
+              <span class="fa-li"><span class="far fa-calendar-plus fa-fw" title="Start date"></span></span>
+              Opportunity start date: {{momentFormat (moment start_date "x") "Do MMMM YYYY"}}
+            </li>
+          {{/compare}}
+
+            {{/ifAll ~}}
           </ul>
         </div>
 
