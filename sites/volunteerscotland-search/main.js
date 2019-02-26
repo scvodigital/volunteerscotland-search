@@ -1,21 +1,17 @@
-import * as firebase from 'firebase/app';
-import 'firebase/auth';
 import "@babel/polyfill";
 import 'leaflet';
 import 'mapbox.js';
 import { default as Headroom } from 'headroom.js';
 import * as mdc from 'material-components-web';
 import { ComponentsInitialiser } from '../../lib/components-initialiser';
+import { Auth } from '../../lib/firebase-auth';
 
 import * as cookieInfoScript from '../../lib/cookie-info-script' ;
-
-window.firebase = firebase;
-
 
 export class VolunteerScotlandSearch {
   constructor(firebaseConfig) {
     this.firebaseConfig = firebaseConfig;
-    this.app = firebase.initializeApp(this.firebaseConfig);
+    this.auth = new Auth(this.firebaseConfig, '/upgrade-token?token={idToken}', 'gi_cookie');
 
     this.displayMode = null;
     this.displayModes = [
