@@ -77,7 +77,6 @@
             "path": "/"
           },
           "appName": "volunteerscotland-search",
-          "noTokenRoute": "",
           "notAuthenticatedRoute": ""
         }
       },
@@ -93,7 +92,6 @@
             "path": "/"
           },
           "appName": "volunteerscotland-search",
-          "noTokenRoute": "sign_in",
           "notAuthenticatedRoute": "sign_in"
         }
       },

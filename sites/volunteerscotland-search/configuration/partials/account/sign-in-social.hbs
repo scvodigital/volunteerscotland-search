@@ -18,28 +18,6 @@
     var $twitter = $('#continue-with-twitter');
     var $facebook = $('#continue-with-facebook');
 
-    var providers = {
-      google: {
-        getProvider: function() { return new firebase.auth.GoogleAuthProvider(); },
-        scopes: [ 'email' ],
-        label: 'Google'
-      },
-      facebook: {
-        getProvider: function() { return new firebase.auth.FacebookAuthProvider(); },
-        scopes: [ 'email' ],
-        label: 'Facebook'
-      },
-      twitter: {
-        getProvider: function() { return new firebase.auth.TwitterAuthProvider(); },
-        label: 'Twitter'
-      },
-      github: {
-        gitProvider: function() { return new firebase.auth.GithubAuthProvider(); },
-        scopes: [ 'user:email' ],
-        label: 'Github'
-      }
-    };
-
     $google.on('click', function(evt) { socialSignIn('google'); });
     $facebook.on('click', function(evt) { socialSignIn('facebook'); });
     $twitter.on('click', function(evt) { socialSignIn('twitter'); });
@@ -48,6 +26,7 @@
         // Redirect them to newsletter settings if they're new and not in the middle of something.
       var referer = '{{{@root.request.headers.referer}}}'
       if (!newUser) return referer;
+      
       var host = referer.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
       if (referer.match(host + "/$") || referer.match(host + "/sign-in/?$") || referer.match(host + "/sign-up/$") ) {
         return "/newsletters?newuser=true";
@@ -56,33 +35,14 @@
       }
     }
 
-
     function socialSignIn(providerName) {
       $loader.show();
-      var providerInfo = providers[providerName];
-      var provider = providerInfo.getProvider();
-      if (providerInfo.scopes) {
-        providerInfo.scopes.forEach(function(scope) {
-          provider.addScope(scope);
-        });
-      }
-      volunteerscotland.setCookie('gi_token', '');
-      volunteerscotland.setCookie('gi_cookie', '');
-      volunteerscotland.app.auth().signInWithPopup(provider).then(function(result) {
-        if (result) {
-          // console.log('Registered user:', result);
-          result.user.getIdTokenResult().then(function(idTokenResult) {
-            // console.log('ID Token Result', idTokenResult);
-            volunteerscotland.setCookie('gi_token', idTokenResult.token, 7);
-            var redirect = getRedirect(result.additionalUserInfo && result.additionalUserInfo.isNewUser);
-            window.location.href = redirect;
-          });
-        } else {
-          $message.text('Something went wrong, registerd but no user?').show();
-          $loader.css('display', 'none');
-        }
+      volunteerscotland.auth.signInProvider(providerName).then(function(user) {
+        console.log('Registered user:', user);
+        var redirect = getRedirect(user.additionalUserInfo && user.additionalUserInfo.isNewUser);
+        window.location.href = redirect;
       }).catch(function(err) {
-        console.error(providerInfo.label, 'Error:', err);
+        console.error(err);
         $message.text(err.message).show();
         $loader.css('display', 'none');
       });
