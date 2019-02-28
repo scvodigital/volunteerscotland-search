@@ -8,15 +8,16 @@
   <script>
     document.addEventListener("DOMContentLoaded", function(event) {
       window.setTimeout(function() {
-        volunteerscotland.app.auth().onAuthStateChanged(function(user) {
-          if (user) {
-            user.delete().then(function() {
-              volunteerscotland.setCookie('gi_token');
-              volunteerscotland.setCookie('gi_cookie');
-              window.location.href = '/';
-            }).catch(function(err) {
-              console.error('Failed to delete user', user, err);
-            });
+        volunteerscotland.auth.deleteUser().then(function(user) {
+          window.setTimeout(function() {
+            window.location.href = '/';
+          }, 1000);
+        }).catch(function(err) {
+          console.error('Failed to delete user', err);
+          if (err.code === 'auth/requires-recent-login') {
+            window.setTimeout(function() {
+              window.location.href = '/sign-in?reauth=true';
+            }, 1000);
           }
         });
       }, 1000);

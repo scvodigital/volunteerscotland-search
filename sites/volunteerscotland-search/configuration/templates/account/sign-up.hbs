@@ -1,13 +1,3 @@
-{{#if @root.data.auth ~}}
-{{> account_sign_out_loader}}
-<script>
-document.addEventListener("DOMContentLoaded", function(event) {
-  window.setTimeout(function() {
-    window.location.href = '/';
-  }, 100);
-});
-</script>
-{{else}}
 <form id="sign-up-form" method="POST" class="sign-in-form sign-up-form">
   <div class="mdc-card mdc-elevation--z0">
     <div class="mdc-card__info--content-primary">
@@ -116,18 +106,20 @@ document.addEventListener("DOMContentLoaded", function(event) {
   function getSubscriptions() {
     var subscribed = [];
     try{
-    var formArray = $form.serializeArray();
-    var identifier = "newsletter-";
-    formArray.forEach((function (item){
-      if (item.name.indexOf(identifier) === 0 && item.value === "on") subscribed.push(item.name.substr(identifier.length));
-    }))
+      var formArray = $form.serializeArray();
+      var identifier = "newsletter-";
+      formArray.forEach(function(item) {
+        if (item.name.indexOf(identifier) === 0 && item.value === "on") {
+          subscribed.push(item.name.substr(identifier.length));
+        }
+      });
     } finally {
       // Better to fail to sign up to newsletters, than to fail and block sign up.
       return subscribed;
     }
   }
 
-  $form.on('submit', function (evt) {
+  $form.on('submit', function(evt) {
     $loader.css('display', 'flex');
     evt.preventDefault();
 
@@ -136,45 +128,21 @@ document.addEventListener("DOMContentLoaded", function(event) {
     var password = $password.val();
     var passwordConfirm = $passwordConfirm.val();
 
-    if (email !== emailConfirm) {
-      $message.text('The two email addresses entered do not match').show();
-      $loader.css('display', 'none');
-      document.body.scrollTop = document.documentElement.scrollTop = 0;
-      return;
-    }
-
-    if (password !== passwordConfirm) {
-      $message.text('The two passwords entered do not match').show();
-      $loader.css('display', 'none');
-      document.body.scrollTop = document.documentElement.scrollTop = 0;
-      return;
-    }
-    volunteerscotland.setCookie('gi_token', '');
-    volunteerscotland.setCookie('gi_cookie', '');
-    volunteerscotland.app.auth().createUserWithEmailAndPassword(email, password).then(function (user) {
-      if (user) {
-        console.log('Registered user:', user);
-        user.user.getIdTokenResult().then(function (idTokenResult) {
-          console.log('ID Token Result', idTokenResult);
-          volunteerscotland.setCookie('gi_token', idTokenResult.token, 7);
-          var subscriptions = getSubscriptions();
-          if (subscriptions.length){
-            window.location.href = '/add-newsletter-subscription/' + subscriptions.join() + "?redirect=home";
-          } else {
+    volunteerscotland.auth.createAccount(email, emailConfirm, password, passwordConfirm)
+      .then(function(user) {
+        var subscriptions = getSubscriptions();
+        if (subscriptions.length){
+          window.location.href = '/add-newsletter-subscription/' + subscriptions.join() + "?redirect=home";
+        } else {
           window.location.href = '/';
-          }
-        })
-      } else {
-        $message.text('Something went wrong, signed up but no user?').show();
+        }
+      })
+      .catch(function(err) {
+        $message.text(err.message || 'There was a problem creating your account').show();
         $loader.css('display', 'none');
         document.body.scrollTop = document.documentElement.scrollTop = 0;
-      }
-    }).catch(function (err) {
-      $message.text(err.message).show();
-      $loader.css('display', 'none');
-      document.body.scrollTop = document.documentElement.scrollTop = 0;
-    });
+        return;
+      });
   });
 })
 </script>
-{{/if ~}}
