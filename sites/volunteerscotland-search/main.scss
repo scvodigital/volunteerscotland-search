@@ -1607,7 +1607,7 @@ hr {
   }
   .mdc-list-item {
     border-radius: 0 $unit*2 $unit*2 0;
-    margin-right: $unit/2 !important;
+    margin-right: $unit/2;
   }
   .mdc-list-item--activated:hover,
   .mdc-list-item--activated {
