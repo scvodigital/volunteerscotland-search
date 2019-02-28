@@ -74,83 +74,87 @@
 
 <div class="mdc-drawer__content">
   <form action="/{{#compare @root.request.url.pathname "organisations/map"}}organisations/map{{else}}organisations/search{{/compare}}" method="GET" class="search-form" novalidate>
-    <input type="hidden" name="sort" value="{{@root.request.params.query.sort}}" id="{{instance_id}}-sort">
-    <div class="h-padding">
-      <div class="mdc-layout-grid__inner">
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
-          <div class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon" data-mdc-auto-init="MDCTextField" style="z-index:5;">
-            <span class="fas fa-map-marker-alt mdc-text-field__icon geo-lookup" tabindex="0" title="Find my location" role="button" style="pointer-events: initial !important;"></span>
-            <input type="text" id="{{instance_id}}-location" name="location" class="mdc-text-field__input mdc-text-field--fullwidth search-location" value="{{#ifAll @root.request.params.query.lat @root.request.params.query.lng}}{{@root.request.params.query.location}}{{/ifAll}}" placeholder="" data-lpignore="true" data-location-search='{
-                "latSelector": "[name=\"lat\"]",
-                "lngSelector": "[name=\"lng\"]",
-                "locationServicesSelector": ".geo-lookup"
-              }'>
-            <label class="mdc-floating-label" for="{{instance_id}}-location">
-              Location
-            </label>
-            <div class="mdc-line-ripple"></div>
-          </div>
-        </div>
-      </div>
-      <div class="mdc-layout-grid__inner">
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-9-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
-          <div class="">
-            Within
-          </div>
-        </div>
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
-          <div class="h-padding">
-            <div data-slider data-slider-value-target="#slider-distance-value" data-slider-display-target="#slider-distance-display" class="mdc-slider mdc-slider--discrete" tabindex="0" role="slider" aria-valuemin="5" aria-valuemax="50" data-step="5" name="distance" aria-valuenow="{{default @root.request.params.query.distance 10}}" aria-label="Select distance">
-              <div class="mdc-slider__track-container">
-                <div class="mdc-slider__track"></div>
-              </div>
-              <div class="mdc-slider__thumb-container">
-                <div class="mdc-slider__pin">
-                  <span class="mdc-slider__pin-value-marker"></span>
-                </div>
-                <svg class="mdc-slider__thumb" width="21" height="21">
-                  <circle cx="10.5" cy="10.5" r="7.875"></circle>
-                </svg>
-                <div class="mdc-slider__focus-ring"></div>
-              </div>
+    <div class="h-padding-full">
+      <input type="hidden" name="sort" value="{{@root.request.params.query.sort}}" id="{{instance_id}}-sort">
+      <div class="">
+        <div class="mdc-layout-grid__inner">
+          <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
+            <div class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon" data-mdc-auto-init="MDCTextField" style="z-index:5;">
+              <span class="fas fa-map-marker-alt mdc-text-field__icon geo-lookup" tabindex="0" title="Find my location" role="button" style="pointer-events: initial !important;"></span>
+              <input type="text" id="{{instance_id}}-location" name="location" class="mdc-text-field__input mdc-text-field--fullwidth search-location" value="{{#ifAll @root.request.params.query.lat @root.request.params.query.lng}}{{@root.request.params.query.location}}{{/ifAll}}" placeholder="" data-lpignore="true" data-location-search='{
+                  "latSelector": "[name=\"lat\"]",
+                  "lngSelector": "[name=\"lng\"]",
+                  "locationServicesSelector": ".geo-lookup"
+                }'>
+              <label class="mdc-floating-label" for="{{instance_id}}-location">
+                Location
+              </label>
+              <div class="mdc-line-ripple"></div>
             </div>
-            <div class="mdc-line-ripple"></div>
           </div>
         </div>
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone">
-          <span id="slider-distance-display">{{default @root.request.params.query.distance 10}}</span> miles
+        <div class="mdc-layout-grid__inner">
+          <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-9-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
+            <div class="mdc-list-group__subheader distance-within">
+              Within
+            </div>
+          </div>
+          <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
+            <div class="h-padding">
+              <div data-slider data-slider-value-target="#slider-distance-value" data-slider-display-target="#slider-distance-display" class="mdc-slider mdc-slider--discrete" tabindex="0" role="slider" aria-valuemin="5" aria-valuemax="50" data-step="5" name="distance" aria-valuenow="{{default @root.request.params.query.distance 10}}" aria-label="Select distance">
+                <div class="mdc-slider__track-container">
+                  <div class="mdc-slider__track"></div>
+                </div>
+                <div class="mdc-slider__thumb-container">
+                  <div class="mdc-slider__pin">
+                    <span class="mdc-slider__pin-value-marker"></span>
+                  </div>
+                  <svg class="mdc-slider__thumb" width="21" height="21">
+                    <circle cx="10.5" cy="10.5" r="7.875"></circle>
+                  </svg>
+                  <div class="mdc-slider__focus-ring"></div>
+                </div>
+              </div>
+              <div class="mdc-line-ripple"></div>
+            </div>
+          </div>
+          <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone">
+            <div class="distance-label">
+              <span id="slider-distance-display">{{default @root.request.params.query.distance 10}}</span> miles
+            </div>
+          </div>
+          <input type="hidden" name="distance" id="slider-distance-value" value="{{default @root.request.params.query.distance 10}}">
         </div>
-        <input type="hidden" name="distance" id="slider-distance-value" value="{{default @root.request.params.query.distance 10}}">
       </div>
-    </div>
 
-    <input type="hidden" name="lat" value="{{@root.request.params.query.lat}}">
-    <input type="hidden" name="lng" value="{{@root.request.params.query.lng}}">
+      <input type="hidden" name="lat" value="{{@root.request.params.query.lat}}">
+      <input type="hidden" name="lng" value="{{@root.request.params.query.lng}}">
 
-    <!-- <div class="h-padding">
-      <strong>Refine by</strong>
-    </div> -->
+      <!-- <div class="h-padding">
+        <strong>Refine by</strong>
+      </div> -->
 
-    <div class="h-padding">
-      <div class="mdc-text-field mdc-text-field--box mdc-text-field--with-trailing-icon" data-mdc-auto-init="MDCTextField">
-        <input type="text" id="{{instance_id}}-keywords" name="keywords" class="mdc-text-field__input mdc-text-field--fullwidth" value="{{@root.request.params.query.keywords}}" data-lpignore="true" autocomplete="off">
-        <label class="mdc-floating-label" for="keywords">
-          Keywords
-        </label>
-        <div class="mdc-line-ripple"></div>
-        <span class="fas fa-search active-search-icon mdc-text-field__icon" role="button" onclick=" $(this).parents('form:first').submit();" style="pointer-events: initial !important; z-index: 500;" tabindex="-1"></span></a>
+      <div class="">
+        <div class="mdc-text-field mdc-text-field--box mdc-text-field--with-trailing-icon" data-mdc-auto-init="MDCTextField">
+          <input type="text" id="{{instance_id}}-keywords" name="keywords" class="mdc-text-field__input mdc-text-field--fullwidth" value="{{@root.request.params.query.keywords}}" data-lpignore="true" autocomplete="off">
+          <label class="mdc-floating-label" for="keywords">
+            Keywords
+          </label>
+          <div class="mdc-line-ripple"></div>
+          <span class="fas fa-search active-search-icon mdc-text-field__icon" role="button" onclick=" $(this).parents('form:first').submit();" style="pointer-events: initial !important; z-index: 500;" tabindex="-1"></span></a>
+        </div>
       </div>
-    </div>
 
-    {{#each (split "organisation_activities" ",") ~}}
-      {{> term_filter type=this instance_id=instance_id ~}}
-    {{/each ~}}
+      {{#each (split "organisation_activities" ",") ~}}
+        {{> term_filter type=this instance_id=instance_id ~}}
+      {{/each ~}}
 
-    <div class="h-margin mdc-drawer--occasional-ie11">
-      <button class="mdc-button mdc-button--raised mdc-button--large mdc-button--fullwidth mdc-ripple-surface mdc-ripple-surface--primary" type="submit" id="{{instance_id}}-search-submit" data-mdc-auto-init="MDCRipple">
-        Search
-        <span class="far fa-search fa-fw" aria-hidden="true"></span>
-      </button>
+      <div class="mdc-drawer--occasional-ie11">
+        <button class="mdc-button mdc-button--raised mdc-button--large mdc-button--fullwidth mdc-ripple-surface mdc-ripple-surface--primary" type="submit" id="{{instance_id}}-search-submit" data-mdc-auto-init="MDCRipple">
+          Search
+          <span class="far fa-search fa-fw" aria-hidden="true"></span>
+        </button>
+      </div>
     </div>
   </form>
 </div>
