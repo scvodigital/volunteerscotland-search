@@ -1597,10 +1597,22 @@ hr {
   }
 }
 .mdc-drawer__content {
-  padding: 0 $unit/2 $unit;
+  padding: 0 0 $unit;
+  h3.mdc-typography--headline6 {
+    padding: 0 $unit/2;
+  }
   #search-tab-bar {
     padding: 0 $unit/2;
     box-sizing: border-box;
+  }
+  .mdc-list-item {
+    border-radius: 0 $unit*2 $unit*2 0;
+    margin-right: $unit/2 !important;
+  }
+  .mdc-list-item--activated:hover,
+  .mdc-list-item--activated {
+    font-weight: $heading-font-weight;
+    color: $brand-secondary-turquoise;
   }
 }
 .mdc-drawer__content.mdc-list {
