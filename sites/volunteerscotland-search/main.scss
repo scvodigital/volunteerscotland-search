@@ -751,8 +751,10 @@ footer h3,
 .mdc-list-group,
 .advanced-checkbox-list {
   .mdc-list-item:last-child {
+    border-radius: 0;
     height: auto !important;
     padding: $unit/2 0;
+    margin-right: 0 !important;
     border-top: 1px solid $brand-primary-grey;
   }
 }
@@ -1277,6 +1279,9 @@ a {
   width: 100%;
   background-color: $brand-primary-lightgrey;
   margin-bottom: $unit*1.5;
+  .mdc-card__info--content-primary .mdc-card__info--content-primary-title {
+    margin-top: $unit/2 !important;
+  }
   .mdc-card__info--content-primary-row {
     padding: $unit/2;
   }
@@ -1607,7 +1612,7 @@ hr {
   }
   .mdc-list-item {
     border-radius: 0 $unit*2 $unit*2 0;
-    margin-right: $unit/2;
+    margin-right: $unit/2 !important;
   }
   .mdc-list-item--activated:hover,
   .mdc-list-item--activated {
@@ -1853,7 +1858,7 @@ body.favouritees {
     flex-direction: column;
     padding: 0 $unit/2;
     .mdc-card__info--content-primary-title {
-      margin: $unit/2 0 $unit*(3/4);
+      margin: 0 0 $unit*(3/4);
       a .top-content {
         margin-left: 0;
         margin-right: $unit/5;
@@ -1992,6 +1997,12 @@ body.favouritees {
 }
 .search-form {
   padding-top: $unit/2;
+  .mdc-list {
+    .mdc-list-item {
+      padding-right: 0;
+      margin-right: $unit/4 !important;
+    }
+  }
   .mdc-typography--headline5 {
     margin-top: $unit*1.5;
     margin-left: $unit;
@@ -3999,6 +4010,7 @@ a.mdc-drawer__content-heading {
 }
 
 .container-content {
+  margin-left: $unit/2;
   .mdc-tab--active .mdc-tab__text-label {
     color: $brand-secondary-darkturquoise !important;
   }
