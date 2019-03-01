@@ -68,6 +68,11 @@
           <p class="mdc-typography--body1">
             {{>opportunity_timings_display availability_slugs}}
           </p>
+          {{#if timings_description ~}}
+          <p class="mdc-typography--body1">
+            {{{timings_description}}}
+          </p>
+          {{/if ~}}
           {{/if ~}}
           {{#if frequency_commitment_details ~}}
           <h4 class="mdc-typography--headline6">Frequency and commitment details</h4>
