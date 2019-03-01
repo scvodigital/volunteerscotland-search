@@ -941,7 +941,10 @@ a:hover {
   padding: 0;
   margin-bottom: 0;
   .mdc-chip {
-    margin: $unit/2 $unit/2 0 0;
+    margin: 0 $unit/2 0 0;
+  }
+  .mdc-chip:last-child {
+    margin-right: 0;
   }
   a {
     color: white;
@@ -2778,9 +2781,9 @@ footer.mdc-layout__footer {
   .mdc-card.mini,
   .mdc-card.gist,
   .mdc-card.search-result {
-    .mdc-chip--register-interest {
-      display: none;
-    }
+    // .mdc-chip--register-interest {
+    //   display: none;
+    // }
     .search-result-article__snippet,
     .search-result-article__notes {
       padding: 0 $unit/2 $unit/2;
