@@ -1111,6 +1111,7 @@ a {
 .search-form .mdc-button .fa-search-plus {
   position: absolute;
   right: $unit*(2/3);
+  left: auto;
 }
 
 .mdc-button--raised:hover {
