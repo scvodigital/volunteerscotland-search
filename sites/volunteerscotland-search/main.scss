@@ -1107,9 +1107,11 @@ a {
   left: 0;
   // margin-right: $unit/2;
 }
-.mdc-button .fa-search-plus {
+.search-form .mdc-button .fa-search,
+.search-form .mdc-button .fa-search-plus {
   position: absolute;
   right: $unit*(2/3);
+  left: auto;
 }
 
 .mdc-button--raised:hover {
