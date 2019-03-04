@@ -14,8 +14,8 @@
             "textBag": "16 17 year old"
           },
           "over-18": {
-            "label": "Over 18",
-            "textBag": "Over 18 19 20 21 22 23 24 25 year old"
+            "label": "18 and over",
+            "textBag": "18 19 20 21 22 23 24 25 year old over"
           },
           "under-12": {
             "label": "Under 12",
