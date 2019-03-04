@@ -1607,7 +1607,7 @@ hr {
 .mdc-drawer__content {
   padding: 0 0 $unit;
   h3.mdc-typography--headline6 {
-    padding: 0 $unit/2;
+    padding: 0 $unit;
   }
   #search-tab-bar {
     padding: 0 $unit/2;
@@ -1615,6 +1615,7 @@ hr {
   }
   .mdc-list-item {
     border-radius: 0 $unit*2 $unit*2 0;
+    padding-left: $unit !important;
     margin-right: $unit/2 !important;
   }
   .mdc-list-item--activated:hover,
