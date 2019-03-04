@@ -7,7 +7,8 @@
 {{#unless (contains (map @root.data.registeredInterest.items.[0] (getProp "value")) id)}}
     <a href="register-interest/{{slug}}" class="mdc-chip mdc-chip--register-interest">
       <span class="far fa-hand-paper mdc-chip__icon mdc-chip__icon--leading" aria-hidden="true"></span>
-      <span class="mdc-chip__text noselect">I want to volunteer</span>
+      <span class="mdc-chip__text noselect hide-lg hide-md">Volunteer</span>
+      <span class="mdc-chip__text noselect hide-sm">I want to volunteer</span>
     </a>
   {{else}}
     <div class="mdc-chip mdc-chip--selected mdc-chip--register-interest">

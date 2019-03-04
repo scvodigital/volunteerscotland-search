@@ -3,6 +3,7 @@
   "_source": [
     "Id",
     "slug",
+    "date_last_modified",
     "milo_ref",
     "start_date",
     "themes",
@@ -67,6 +68,7 @@
     "sunday_morning",
     "availability",
     "availability_slugs",
+    "timings_description",
     "taster_available",
     "taster_details",
     "volunteersearch_age_group",
