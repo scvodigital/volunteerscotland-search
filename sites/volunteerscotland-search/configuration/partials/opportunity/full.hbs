@@ -36,12 +36,23 @@
               {{/each}}
             </li>
             {{/compare ~}}
-            {{#if start_date ~}}
+            {{#ifAll start_date end_date ~}}
             <li class="mdc-card__info--content-primary-from mdc-typography--body1">
               <span class="fa-li"><span class="far fa-calendar-plus fa-fw" title="Start date"></span></span>
               Opportunity start date: {{momentFormat (moment start_date "x") "Do MMMM YYYY"}}
             </li>
-            {{/if ~}}
+              <li class="mdc-card__info--content-primary-from mdc-typography--body1">
+                <span class="fa-li"><span class="far fa-calendar-times fa-fw" title="End date"></span></span>
+                Opportunity end date: {{momentFormat (moment end_date "x") "Do MMMM YYYY"}}
+              </li>
+            {{else}}
+              {{#compare start_date ">" (moment)}}
+                <li class="mdc-card__info--content-primary-from mdc-typography--body1">
+                  <span class="fa-li"><span class="far fa-calendar-plus fa-fw" title="Start date"></span></span>
+                  Opportunity start date: {{momentFormat (moment start_date "x") "Do MMMM YYYY"}}
+                </li>
+              {{/compare}}
+            {{/ifAll ~}}
           </ul>
         </div>
 
@@ -53,9 +64,12 @@
           </p>
           {{/ifAny ~}}
           {{#if weblink ~}}
-          <p class="mdc-typography--body1">
-            <a href="{{fixUrl weblink "http"}}"{{#if weblink_tooltip}} title="{{weblink_tooltip}}"{{/if}}>{{#if weblink_title}}{{weblink_title}}{{else}}{{weblink}}{{/if}}</a>
-          </p>
+          <ul class="fa-ul">
+            <li class="mdc-typography--body1">
+              <span class="fa-li"><span class="far fa-link fa-fw" title="Website"></span></span>
+              <a href="{{fixUrl weblink "http"}}"{{#if weblink_tooltip}} title="{{weblink_tooltip}}"{{/if}}>{{#if weblink_title}}{{weblink_title}}{{else}}{{weblink}}{{/if}}</a>
+            </li>
+          </ul>
           {{/if ~}}
           {{#if organisation_aims_and_objectives ~}}
           <h4 class="mdc-typography--headline6">Organisation aims and objectives</h4>
@@ -119,7 +133,8 @@
             {{/if ~}}
             {{#if taster_details ~}}
               <strong>Taster details: </strong> {{{taster_details}}}<br />
-            {{/if ~}}            {{#if support_options ~}}
+            {{/if ~}}
+            {{#if support_options ~}}
             <strong>Support: </strong>
             {{#compare (getType support_options) "===" "string" ~}}
             {{{support_options}}}<br />
@@ -136,10 +151,16 @@
           <p class="mdc-typography--body1">You can't volunteer for this opportunity using this site. {{#if organisation_website}}Please contact the organisation directly using <a href="{{fixUrl organisation_website 'http'}}">{{{organisation_website}}}</a> for more information.{{/if}}</p>
           {{/unless}}
 
-          <div class="mdc-typography--body1 report">
+          <div class="mdc-typography--body1 report pull-right">
             <span class="fas fa-flag fa-fw" title="Report this opportunity"></span>
             <a href="mailto:milosupport@scvo.org.uk?subject=Report%20opportunity:%20{{urlencode title}}%20({{urlencode milo_ref}})%20via%20Volunteer%20Scotland%20Search&body=I%20would%20like%20to%20report%20this%20opportunity%20for%20the%20following%20reasons:">Report this opportunity</a>
           </div>
+
+          <div class="mdc-typography--body2 last-modified">
+            <span class="far fa-calendar-alt" aria-hidden="true"></span>
+            Last updated on {{momentFormat (moment date_last_modified "x") "YYYY-MM-DD"}}
+          </div>
+
         </div>
       </div>
 
@@ -200,9 +221,9 @@
               {{#each (arrayify geo_coords) ~}}
               <marker style="display:none;" data-map="opportunityMap" data-lat="{{lat}}" data-lng="{{lon}}" data-title="{{../organisation_name}} - {{../title}}">
                 <h4 class="mdc-typography--headline7">{{../organisation_name}}</h4>
-                {{#if ../postcode ~}}
+                {{#if (itemAt (arrayify (split ../postcode ",")) @index) ~}}
                 <div class="mdc-typography--body2 v-margin">
-                  Postcode: {{../postcode}}
+                  Postcode: {{itemAt (arrayify (split ../postcode ",")) @index}}
                 </div>
                 {{/if ~}}
                 <p class="mdc-typography--body2">{{../title}}</p>

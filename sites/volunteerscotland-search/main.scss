@@ -1107,9 +1107,11 @@ a {
   left: 0;
   // margin-right: $unit/2;
 }
-.mdc-button .fa-search {
+.search-form .mdc-button .fa-search,
+.search-form .mdc-button .fa-search-plus {
   position: absolute;
   right: $unit*(2/3);
+  left: auto;
 }
 
 .mdc-button--raised:hover {
@@ -3711,11 +3713,15 @@ header {
   }
 }
 
+.last-modified {
+  color: lighten($brand-primary-black, 10%);
+}
+
 .mdc-card .report,
 .report {
   opacity: 0.85;
   font-size: 85%;
-  margin-top: $unit/2;
+  // margin-top: $unit/2;
   .fa-fw,
   a,
   a:active,
@@ -3928,6 +3934,11 @@ a:hover {
   .content-primary-info-container {
     border-radius: 0;
     background-color: white;
+    h2,
+    h3,
+    h4 {
+      color: $brand-secondary-darkturquoise;
+    }
   }
   .mdc-card--full-content {
     .key-info-extra {
