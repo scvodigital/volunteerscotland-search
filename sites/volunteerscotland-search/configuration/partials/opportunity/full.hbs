@@ -46,13 +46,12 @@
                 Opportunity end date: {{momentFormat (moment end_date "x") "Do MMMM YYYY"}}
               </li>
             {{else}}
-          {{#compare start_date ">" (moment)}}
-            <li class="mdc-card__info--content-primary-from mdc-typography--body1">
-              <span class="fa-li"><span class="far fa-calendar-plus fa-fw" title="Start date"></span></span>
-              Opportunity start date: {{momentFormat (moment start_date "x") "Do MMMM YYYY"}}
-            </li>
-          {{/compare}}
-
+              {{#compare start_date ">" (moment)}}
+                <li class="mdc-card__info--content-primary-from mdc-typography--body1">
+                  <span class="fa-li"><span class="far fa-calendar-plus fa-fw" title="Start date"></span></span>
+                  Opportunity start date: {{momentFormat (moment start_date "x") "Do MMMM YYYY"}}
+                </li>
+              {{/compare}}
             {{/ifAll ~}}
           </ul>
         </div>
@@ -65,9 +64,12 @@
           </p>
           {{/ifAny ~}}
           {{#if weblink ~}}
-          <p class="mdc-typography--body1">
-            <a href="{{fixUrl weblink "http"}}"{{#if weblink_tooltip}} title="{{weblink_tooltip}}"{{/if}}>{{#if weblink_title}}{{weblink_title}}{{else}}{{weblink}}{{/if}}</a>
-          </p>
+          <ul class="fa-ul">
+            <li class="mdc-typography--body1">
+              <span class="fa-li"><span class="far fa-link fa-fw" title="Website"></span></span>
+              <a href="{{fixUrl weblink "http"}}"{{#if weblink_tooltip}} title="{{weblink_tooltip}}"{{/if}}>{{#if weblink_title}}{{weblink_title}}{{else}}{{weblink}}{{/if}}</a>
+            </li>
+          </ul>
           {{/if ~}}
           {{#if organisation_aims_and_objectives ~}}
           <h4 class="mdc-typography--headline6">Organisation aims and objectives</h4>
@@ -131,7 +133,8 @@
             {{/if ~}}
             {{#if taster_details ~}}
               <strong>Taster details: </strong> {{{taster_details}}}<br />
-            {{/if ~}}            {{#if support_options ~}}
+            {{/if ~}}
+            {{#if support_options ~}}
             <strong>Support: </strong>
             {{#compare (getType support_options) "===" "string" ~}}
             {{{support_options}}}<br />

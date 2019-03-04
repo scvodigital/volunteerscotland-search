@@ -1107,7 +1107,7 @@ a {
   left: 0;
   // margin-right: $unit/2;
 }
-.mdc-button .fa-search {
+.mdc-button .fa-search-plus {
   position: absolute;
   right: $unit*(2/3);
 }
@@ -3932,6 +3932,11 @@ a:hover {
   .content-primary-info-container {
     border-radius: 0;
     background-color: white;
+    h2,
+    h3,
+    h4 {
+      color: $brand-secondary-darkturquoise;
+    }
   }
   .mdc-card--full-content {
     .key-info-extra {
