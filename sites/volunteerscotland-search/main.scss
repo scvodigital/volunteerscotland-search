@@ -3711,11 +3711,15 @@ header {
   }
 }
 
+.last-modified {
+  color: lighten($brand-primary-black, 10%);
+}
+
 .mdc-card .report,
 .report {
   opacity: 0.85;
   font-size: 85%;
-  margin-top: $unit/2;
+  // margin-top: $unit/2;
   .fa-fw,
   a,
   a:active,

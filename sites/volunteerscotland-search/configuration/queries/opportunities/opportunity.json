@@ -3,6 +3,7 @@
   "_source": [
     "Id",
     "slug",
+    "date_last_modified",
     "milo_ref",
     "start_date",
     "themes",
