@@ -5,17 +5,17 @@
       "other": {
         "label": "Other",
         "terms": {
-          "12-to-15": {
-            "label": "12 to 15",
-            "textBag": "12 13 14 15 year old"
+          "over-18": {
+            "label": "18 and over",
+            "textBag": "18 19 20 21 22 23 24 25 year old over"
           },
           "16-to-17": {
             "label": "16 to 17",
             "textBag": "16 17 year old"
           },
-          "over-18": {
-            "label": "18 and over",
-            "textBag": "18 19 20 21 22 23 24 25 year old over"
+          "12-to-15": {
+            "label": "12 to 15",
+            "textBag": "12 13 14 15 year old"
           },
           "under-12": {
             "label": "Under 12",
