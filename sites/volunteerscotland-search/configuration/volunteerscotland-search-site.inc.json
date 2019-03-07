@@ -18,7 +18,7 @@
     "menus": "{:./volunteerscotland-search-menus.json}",
     "accountInfoValidation": "{:./account-info-validation.json}",
     "reCaptchaSiteKey": "6Ld7L5IUAAAAAGg1Luu1I9njFa2m-BALdtHja-cp",
-    "elasticsearchUrl": "{$../elasticsearch-url.txt}",
+    "elasticsearchUrl": "{$../../elasticsearch-url.txt}",
     "termTypeLabels": {
       "age_groups": {
         "singular": "Volunteer Age Group",
@@ -163,7 +163,7 @@
         "name": "opportunitySupplimentary",
         "taskModule": "elasticsearch",
         "config": {
-          "connectionStringTemplate": "{$../elasticsearch-url.txt}",
+          "connectionStringTemplate": "{$../../elasticsearch-url.txt}",
           "elasticsearchConfig": {
             "apiVersion": "5.6"
           },
@@ -188,7 +188,7 @@
         "name": "organisationSupplimentary",
         "taskModule": "elasticsearch",
         "config": {
-          "connectionStringTemplate": "{$../elasticsearch-url.txt}",
+          "connectionStringTemplate": "{$../../elasticsearch-url.txt}",
           "elasticsearchConfig": {
             "apiVersion": "5.6"
           },
@@ -213,7 +213,7 @@
         "name": "organisationsWithOpportunities",
         "taskModule": "elasticsearch",
         "config": {
-          "connectionStringTemplate": "{$../elasticsearch-url.txt}",
+          "connectionStringTemplate": "{$../../elasticsearch-url.txt}",
           "elasticsearchConfig": {
             "apiVersion": "5.6"
           },

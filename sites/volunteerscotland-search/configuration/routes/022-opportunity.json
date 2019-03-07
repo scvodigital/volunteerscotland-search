@@ -21,7 +21,7 @@
       "name": "primaryResponse",
       "taskModule": "elasticsearch",
       "config": {
-        "connectionStringTemplate": "{$../../elasticsearch-url.txt}",
+        "connectionStringTemplate": "{$../../../elasticsearch-url.txt}",
         "elasticsearchConfig": {
           "apiVersion": "5.6"
         },
@@ -37,7 +37,7 @@
       "name": "opportunitySupplimentary",
       "taskModule": "elasticsearch",
       "config": {
-        "connectionStringTemplate": "{$../../elasticsearch-url.txt}",
+        "connectionStringTemplate": "{$../../../elasticsearch-url.txt}",
         "elasticsearchConfig": {
           "apiVersion": "5.6"
         },
@@ -68,7 +68,7 @@
       "name": "posts",
       "taskModule": "elasticsearch",
       "config": {
-        "connectionStringTemplate": "{$../../elasticsearch-url.txt}",
+        "connectionStringTemplate": "{$../../../elasticsearch-url.txt}",
         "elasticsearchConfig": {
           "apiVersion": "5.6"
         },
