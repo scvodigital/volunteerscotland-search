@@ -408,7 +408,6 @@ li,
 footer h3,
 .mdc-chip,
 .mdc-card,
-.mdc-button,
 .mdc-select,
 .mdc-button,
 .mdc-form-field,
@@ -2087,7 +2086,7 @@ body.favouritees {
   li.disabled a.pagination-arrow {
     cursor: default;
     pointer-events: none;
-    opacity: 0.5;
+    opacity: 0.9;
   }
   li:first-child a {
     padding-left: 0;
@@ -3524,7 +3523,7 @@ header {
         }
       }
       .mdc-tab:hover {
-        background-color: $brand-secondary-darkturquoise;
+        background-color: $brand-secondary-darkturquoise !important;
       }
       // .mdc-tab:last-child {
       //   margin-right: 0;
@@ -4063,15 +4062,15 @@ a.mdc-drawer__content-heading {
   }
 }
 
+.mdc-button {
+  background-color: $brand-secondary-turquoise;
+}
+.mdc-button:hover {
+  background-color: $brand-secondary-darkturquoise;
+  box-shadow: none;
+}
 .search-form {
   background: white;
-  .mdc-button {
-    background-color: $brand-secondary-turquoise;
-  }
-  .mdc-button:hover {
-    background-color: $brand-secondary-darkturquoise;
-    box-shadow: none;
-  }
   .geo-lookup,
   .active-search-icon {
     color: $brand-secondary-darkgreen !important;

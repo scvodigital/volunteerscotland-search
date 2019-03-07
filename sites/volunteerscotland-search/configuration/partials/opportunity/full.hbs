@@ -18,6 +18,7 @@
     <hr class="mdc-list-divider" />
     <div class="panels" for="opportunity-tab-bar">
       <div class="panel panel--active mdc-card--full-content" role="tabpanel" aria-hidden="false" data-tab-name="information">
+        {{#ifAny activities.length themes.length end_date (compare start_date ">" (moment)) ~}}
         <div class="key-info-extra">
           <ul class="fa-ul">
             {{#compare (length activities) ">" 0 ~}}
@@ -31,9 +32,9 @@
             {{#compare (length themes) ">" 0 ~}}
             <li class="mdc-card__info--content-primary-client-group mdc-typography--body1">
               <span class="fa-li"><span class="far fa-users fa-fw" title="Themes"></span></span>
-              {{#each themes}}
+              {{#each themes ~}}
               <a href="/search?themes={{urlencode (slugify (replace this "/" "-"))}}">{{{this}}}</a>{{#unless @last}}, {{/unless}}
-              {{/each}}
+              {{/each ~}}
             </li>
             {{/compare ~}}
             {{#ifAll start_date end_date ~}}
@@ -41,20 +42,21 @@
               <span class="fa-li"><span class="far fa-calendar-plus fa-fw" title="Start date"></span></span>
               Opportunity start date: {{momentFormat (moment start_date "x") "Do MMMM YYYY"}}
             </li>
-              <li class="mdc-card__info--content-primary-from mdc-typography--body1">
-                <span class="fa-li"><span class="far fa-calendar-times fa-fw" title="End date"></span></span>
-                Opportunity end date: {{momentFormat (moment end_date "x") "Do MMMM YYYY"}}
-              </li>
+            <li class="mdc-card__info--content-primary-from mdc-typography--body1">
+              <span class="fa-li"><span class="far fa-calendar-times fa-fw" title="End date"></span></span>
+              Opportunity end date: {{momentFormat (moment end_date "x") "Do MMMM YYYY"}}
+            </li>
             {{else}}
-              {{#compare start_date ">" (moment)}}
-                <li class="mdc-card__info--content-primary-from mdc-typography--body1">
-                  <span class="fa-li"><span class="far fa-calendar-plus fa-fw" title="Start date"></span></span>
-                  Opportunity start date: {{momentFormat (moment start_date "x") "Do MMMM YYYY"}}
-                </li>
-              {{/compare}}
+            {{#compare start_date ">" (moment) ~}}
+            <li class="mdc-card__info--content-primary-from mdc-typography--body1">
+              <span class="fa-li"><span class="far fa-calendar-plus fa-fw" title="Start date"></span></span>
+              Opportunity start date: {{momentFormat (moment start_date "x") "Do MMMM YYYY"}}
+            </li>
+            {{/compare ~}}
             {{/ifAll ~}}
           </ul>
         </div>
+        {{/ifAny ~}}
 
         <div class="detailed-info">
           {{#ifAny description description_html ~}}
@@ -126,13 +128,13 @@
             <strong>Expenses paid: </strong> {{#compare expenses_paid "===" true}}Yes{{else}}No{{/compare}}<br />
             {{/if ~}}
             {{#if travel_expenses ~}}
-              <strong>Expenses details: </strong> {{{travel_expenses}}}<br />
+            <strong>Expenses details: </strong> {{{travel_expenses}}}<br />
             {{/if ~}}
             {{#if taster_available ~}}
             <strong>Taster available: </strong> {{#compare taster_available "===" true}}Yes{{else}}No{{/compare}}<br />
             {{/if ~}}
             {{#if taster_details ~}}
-              <strong>Taster details: </strong> {{{taster_details}}}<br />
+            <strong>Taster details: </strong> {{{taster_details}}}<br />
             {{/if ~}}
             {{#if support_options ~}}
             <strong>Support: </strong>
@@ -172,103 +174,103 @@
             "failureMessage": "Failed to save notes",
             "successCallback": "notesSaved",
             "id": "{{Id}}"
-            }'>
-            <div>
-              <textarea class="mdc-text-field__input" data-simple-mde='{
-                "forceSync": true,
-                "toolbar": ["heading-1", "heading-2", "bold", "italic", "|", "unordered-list", "ordered-list", "link"]
-              }' name="notes" id="notes-{{Id}}" data-id="{{Id}}">{{getProperty @root.data.profileInfo.notes Id}}</textarea>
-              <input type="hidden" name="id" value="{{Id}}">
-            </div>
-            <div class="save-button-block">
-              <button type="submit" class="mdc-button mdc-button--raised">
-                <span class="far fa-save mdc-list-item__graphic" aria-hidden="true"></span>
-                Save notes
-              </button>
-              <button type="button" class="mdc-button mdc-button--raised mdc-button--warning" id="delete-notes-{{Id}}" data-id="{{Id}}"
-              data-ajax-button='{
-                "url": "/delete-notes",
-                "method": "POST",
-                "successMessage": "Notes deleted",
-                "failureMessage": "Failed to delete notes",
-                "successCallback": "clearNotes",
-                "postBody": { "id": "{{Id}}" }
-              }' {{#unless (getProperty @root.data.profileInfo.notes Id)}}disabled{{/unless}}>
-                <span class="far fa-remove mdc-list-item__graphic" aria-hidden="true"></span>
-                Delete notes
-              </button>
-              <div class="mdc-typography--caption">
-                Any notes you write here are private on your account and are not shared with {{organisation_name}}. Read our <a href="/privacy" target="_blank">privacy notice</a>.
-              </div>
-            </div>
-          </form>
-          {{else}}
-          <div class="detailed-info">
-            <p class="mdc-typography--body1">
-              If you <a href="/sign-up">sign up</a>, you can private write notes here.
-              <a href="/sign-in">Sign in</a> if you already have a My Volunteer account.
-            </p>
+          }'>
+          <div>
+            <textarea class="mdc-text-field__input" data-simple-mde='{
+              "forceSync": true,
+              "toolbar": ["heading-1", "heading-2", "bold", "italic", "|", "unordered-list", "ordered-list", "link"]
+            }' name="notes" id="notes-{{Id}}" data-id="{{Id}}">{{getProperty @root.data.profileInfo.notes Id}}</textarea>
+            <input type="hidden" name="id" value="{{Id}}">
           </div>
-          {{/if ~}}
+          <div class="save-button-block">
+            <button type="submit" class="mdc-button mdc-button--raised">
+              <span class="far fa-save mdc-list-item__graphic" aria-hidden="true"></span>
+              Save notes
+            </button>
+            <button type="button" class="mdc-button mdc-button--raised mdc-button--warning" id="delete-notes-{{Id}}" data-id="{{Id}}"
+            data-ajax-button='{
+              "url": "/delete-notes",
+              "method": "POST",
+              "successMessage": "Notes deleted",
+              "failureMessage": "Failed to delete notes",
+              "successCallback": "clearNotes",
+              "postBody": { "id": "{{Id}}" }
+            }' {{#unless (getProperty @root.data.profileInfo.notes Id)}}disabled{{/unless}}>
+            <span class="far fa-remove mdc-list-item__graphic" aria-hidden="true"></span>
+            Delete notes
+          </button>
+          <div class="mdc-typography--caption">
+            Any notes you write here are private on your account and are not shared with {{organisation_name}}. Read our <a href="/privacy" target="_blank">privacy notice</a>.
+          </div>
         </div>
+      </form>
+      {{else}}
+      <div class="detailed-info">
+        <p class="mdc-typography--body1">
+          If you <a href="/sign-up">sign up</a>, you can private write notes here.
+          <a href="/sign-in">Sign in</a> if you already have a My Volunteer account.
+        </p>
       </div>
-
-      <div class="panel mdc-card--full-content" role="tabpanel" aria-hidden="true" data-tab-name="location">
-        <div class="location-info">
-          {{#compare (length (arrayify geo_coords)) ">" 0 ~}}
-          <div class="container-content container-map">
-            <div id="map-content-primary" data-map-name="opportunityMap" data-map-clustered-options='{}'>
-              {{#each (arrayify geo_coords) ~}}
-              <marker style="display:none;" data-map="opportunityMap" data-lat="{{lat}}" data-lng="{{lon}}" data-title="{{../organisation_name}} - {{../title}}">
-                <h4 class="mdc-typography--headline7">{{../organisation_name}}</h4>
-                {{#if (itemAt (arrayify (split ../postcode ",")) @index) ~}}
-                <div class="mdc-typography--body2 v-margin">
-                  Postcode: {{itemAt (arrayify (split ../postcode ",")) @index}}
-                </div>
-                {{/if ~}}
-                <p class="mdc-typography--body2">{{../title}}</p>
-              </marker>
-              {{/each ~}}
-            </div>
-          </div>
-          {{#compare advertised_areas.length ">" 0 ~}}
-          <div class="detailed-info">
-            <p class="mdc-typography--body1">
-                This opportunity is also advertised across
-                {{#compare (getType advertised_areas) "string" ~}}
-                {{{advertised_areas}}}.
-                {{else}}
-                {{#each advertised_areas ~}}
-                {{#if @last}} and {{/if}}{{{this}}}{{#unless @last}}{{#compare ../advertised_areas.length ">" 2}},{{/compare}} {{else}}.{{/unless}}
-                {{/each ~}}
-                {{/compare ~}}
-            </p>
-          </div>
-          {{/compare ~}}
-          {{else}}
-          <div class="container-content detailed-info">
-            <p class="mdc-typography--body1">
-              {{#compare advertised_areas.length ">" 0 ~}}
-                This opportunity is not listed at a specific location but is advertised across
-                {{#compare (getType advertised_areas) "string" ~}}
-                {{{advertised_areas}}}.
-                {{else}}
-                {{#each advertised_areas ~}}
-                {{#if @last}} and {{/if}}{{{this}}}{{#unless @last}}{{#compare ../advertised_areas.length ">" 2}},{{/compare}} {{else}}.{{/unless}}
-                {{/each ~}}
-                {{/compare ~}}
-              {{else}}
-                This opportunity is not listed at a specific location.
-              {{/compare ~}}
-            </p>
-          </div>
-          {{/compare ~}}
-        </div>
-      </div>
+      {{/if ~}}
     </div>
-
-    {{> opportunity_actions slug=slug Id=Id action="organisation"}}
   </div>
+
+  <div class="panel mdc-card--full-content" role="tabpanel" aria-hidden="true" data-tab-name="location">
+    <div class="location-info">
+      {{#compare (length (arrayify geo_coords)) ">" 0 ~}}
+      <div class="container-content container-map">
+        <div id="map-content-primary" data-map-name="opportunityMap" data-map-clustered-options='{}'>
+          {{#each (arrayify geo_coords) ~}}
+          <marker style="display:none;" data-map="opportunityMap" data-lat="{{lat}}" data-lng="{{lon}}" data-title="{{../organisation_name}} - {{../title}}">
+            <h4 class="mdc-typography--headline7">{{../organisation_name}}</h4>
+            {{#if (itemAt (arrayify (split ../postcode ",")) @index) ~}}
+            <div class="mdc-typography--body2 v-margin">
+              Postcode: {{itemAt (arrayify (split ../postcode ",")) @index}}
+            </div>
+            {{/if ~}}
+            <p class="mdc-typography--body2">{{../title}}</p>
+          </marker>
+          {{/each ~}}
+        </div>
+      </div>
+      {{#compare advertised_areas.length ">" 0 ~}}
+      <div class="detailed-info">
+        <p class="mdc-typography--body1">
+          This opportunity is also advertised across
+          {{#compare (getType advertised_areas) "string" ~}}
+          {{{advertised_areas}}}.
+          {{else}}
+          {{#each advertised_areas ~}}
+          {{#if @last}} and {{/if}}{{{this}}}{{#unless @last}}{{#compare ../advertised_areas.length ">" 2}},{{/compare}} {{else}}.{{/unless}}
+          {{/each ~}}
+          {{/compare ~}}
+        </p>
+      </div>
+      {{/compare ~}}
+      {{else}}
+      <div class="container-content detailed-info">
+        <p class="mdc-typography--body1">
+          {{#compare advertised_areas.length ">" 0 ~}}
+          This opportunity is not listed at a specific location but is advertised across
+          {{#compare (getType advertised_areas) "string" ~}}
+          {{{advertised_areas}}}.
+          {{else}}
+          {{#each advertised_areas ~}}
+          {{#if @last}} and {{/if}}{{{this}}}{{#unless @last}}{{#compare ../advertised_areas.length ">" 2}},{{/compare}} {{else}}.{{/unless}}
+          {{/each ~}}
+          {{/compare ~}}
+          {{else}}
+          This opportunity is not listed at a specific location.
+          {{/compare ~}}
+        </p>
+      </div>
+      {{/compare ~}}
+    </div>
+  </div>
+</div>
+
+{{> opportunity_actions slug=slug Id=Id action="organisation"}}
+</div>
 </div>
 {{#if @root.request.params.query.email ~}}
 {{> ga documentType="milo-volunteering-opportunity" documentId=Id hitType="full-from-email"}}

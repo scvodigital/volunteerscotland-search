@@ -20,7 +20,7 @@
       "name": "primaryResponse",
       "taskModule": "elasticsearch",
       "config": {
-        "connectionStringTemplate": "{$../../elasticsearch-url.txt}",
+        "connectionStringTemplate": "{$../../../elasticsearch-url.txt}",
         "elasticsearchConfig": {
           "apiVersion": "5.6"
         },
@@ -39,7 +39,7 @@
       "name": "organisationOpportunities",
       "taskModule": "elasticsearch",
       "config": {
-        "connectionStringTemplate": "{$../../elasticsearch-url.txt}",
+        "connectionStringTemplate": "{$../../../elasticsearch-url.txt}",
         "elasticsearchConfig": {
           "apiVersion": "5.6"
         },
@@ -58,7 +58,7 @@
       "name": "goodhq",
       "taskModule": "elasticsearch",
       "config": {
-        "connectionStringTemplate": "{$../../elasticsearch-url.txt}",
+        "connectionStringTemplate": "{$../../../elasticsearch-url.txt}",
         "elasticsearchConfig": {
           "apiVersion": "5.6"
         },
