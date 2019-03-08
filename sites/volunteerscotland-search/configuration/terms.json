@@ -17,7 +17,7 @@
             "label": "12 to 15",
             "textBag": "12 13 14 15 year old"
           },
-          "under-12": {
+          "11-and-under": {
             "label": "Under 12",
             "textBag": "8 9 10 11 12 under year old"
           }
