@@ -21,8 +21,8 @@
     "elasticsearchUrl": "{$../../elasticsearch-url.txt}",
     "termTypeLabels": {
       "age_groups": {
-        "singular": "For Volunteers Aged",
-        "plural": "For Volunteers Aged"
+        "singular": "For volunteers aged",
+        "plural": "For volunteers aged"
       },
       "availability": {
         "singular": "Availability",
