@@ -87,7 +87,7 @@
     }
     {{else}}
     {
-      "date_last_modified": "desc"
+      "_score": "desc"
     }
     {{/ifAll ~}}
     {{else}}
@@ -102,14 +102,40 @@
     }
     {{else}}
     {
-      "date_last_modified": "desc"
+      {{#ifAll @root.request.params.query.location @root.request.params.query.lat @root.request.params.query.lng ~}}
+      "_geo_distance": {
+        "geo_coords": {
+          "lat": {{@root.request.params.query.lat}},
+          "lon": {{@root.request.params.query.lng}}
+        },
+        "order": "asc",
+        "unit": "mi",
+        "mode": "min",
+        "distance_type": "arc"
+      }
+      {{else}}
+      "_score": "desc"
+      {{/ifAll ~}}
     }
     {{/compare ~}}
     {{/compare ~}}
     {{/compare ~}}
     {{else}}
     {
-      "date_last_modified": "desc"
+      {{#ifAll @root.request.params.query.location @root.request.params.query.lat @root.request.params.query.lng ~}}
+      "_geo_distance": {
+        "geo_coords": {
+          "lat": {{@root.request.params.query.lat}},
+          "lon": {{@root.request.params.query.lng}}
+        },
+        "order": "asc",
+        "unit": "mi",
+        "mode": "min",
+        "distance_type": "arc"
+      }
+      {{else}}
+      "_score": "desc"
+      {{/ifAll ~}}
     }
     {{/if ~}}
     {{#ifAll @root.request.params.query.location @root.request.params.query.lat @root.request.params.query.lng ~}},
