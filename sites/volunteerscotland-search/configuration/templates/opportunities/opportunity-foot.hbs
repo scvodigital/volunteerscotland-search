@@ -2,7 +2,7 @@
 <script type="text/javascript">
   var mdeEditors = [];
   $(document).ready(function() {
-    {{#if data.auth}}
+    {{#ifAll @root.data.auth (compare @root.data.primaryResponse.hits.total ">" 0) ~}}
       var recentlyViewed = volunteerscotland.getCookie('recently_viewed') || '';
       // console.log('Recently Viewed:', recentlyViewed, '| opportunity Id:', opportunityId);
       recentlyViewed = recentlyViewed.split(',');
@@ -17,6 +17,6 @@
       newRecentlyViewed = newRecentlyViewed.join(',');
       // console.log('New Recently Viewed:', newRecentlyViewed);
       volunteerscotland.setCookie('recently_viewed', newRecentlyViewed, 7);
-    {{/if}}
+    {{/ifAll ~}}
   });
 </script>
