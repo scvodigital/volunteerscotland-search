@@ -745,6 +745,11 @@ footer h3,
   }
   .mdc-list-item {
     height: auto !important;
+    label {
+      display: block;
+      height: 100%;
+      width: 100%;
+    }
   }
 }
 .mdc-list-group,
