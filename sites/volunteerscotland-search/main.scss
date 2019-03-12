@@ -716,9 +716,13 @@ footer h3,
 }
 
 .mdc-drawer .mdc-list-item {
-  margin: 0 !important;
+  margin: 0;
   border-radius: 0;
   font-size: 1rem;
+}
+
+.mdc-drawer .mdc-select {
+    margin-top: $unit;
 }
 
 .mdc-icon-toggle-xs {
@@ -745,6 +749,11 @@ footer h3,
   }
   .mdc-list-item {
     height: auto !important;
+    label {
+      display: block;
+      height: 100%;
+      width: 100%;
+    }
   }
 }
 .mdc-list-group,
@@ -1617,7 +1626,7 @@ hr {
   .mdc-list-item {
     border-radius: 0 $unit*2 $unit*2 0;
     padding-left: $unit !important;
-    margin-right: $unit/2 !important;
+    margin-right: $unit/2;
   }
   .mdc-list-item--activated:hover,
   .mdc-list-item--activated {
@@ -2005,7 +2014,7 @@ body.favouritees {
   .mdc-list {
     .mdc-list-item {
       padding-right: 0;
-      margin-right: $unit/4 !important;
+      margin-right: $unit/4;
     }
   }
   .mdc-typography--headline5 {
@@ -2890,7 +2899,6 @@ footer.mdc-layout__footer {
   }
   .home-banner .banner-search .page-content .search-form .filter-distance .filter-distance-value {
     line-height: 1 !important;
-    margin: -$unit 0 $unit/2 $unit/5;
   }
 }
 @media screen and (max-width: $mobile-breakpoint) {
@@ -4156,7 +4164,6 @@ footer,
         .filter-distance {
           .mdc-layout-grid {
             position: relative;
-            top: $unit/4;
             .mdc-floating-label {
               top: 1.1rem;
               color: rgba(0, 0, 0, 0.6);

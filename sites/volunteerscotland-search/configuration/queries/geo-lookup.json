@@ -3,6 +3,19 @@
   "_source": ["place", "display", "point"],
   "query": {
     "bool": {
+      "filter": [
+        {
+          "terms": {
+            "_type": [
+              {{#compare (length @root.request.params.query.q) ">" 4}}
+                "os_place", "postcode"
+              {{else}}
+                "os_place", "outcode"
+              {{/compare}}
+            ] 
+          }
+        }
+      ],
       "must": [
         {
           "query_string": {

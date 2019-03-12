@@ -30,36 +30,20 @@
               <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone filter-distance">
                 <div class="mdc-layout-grid">
                   <div class="mdc-layout-grid__inner">
-                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-9-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
-                      <div class="mdc-floating-label">
-                        Within
-                      </div>
-                    </div>
-                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop mdc-layout-grid__cell--span-6-tablet mdc-layout-grid__cell--span-4-phone">
-                      <div class="h-padding">
-                        <div data-slider data-slider-value-target="#slider-distance-value" data-slider-display-target="#slider-distance-display" class="mdc-slider mdc-slider--discrete" tabindex="0" role="slider" aria-valuemin="5" aria-valuemax="50" data-step="5" name="distance" aria-valuenow="{{default @root.request.params.query.distance 10}}" aria-label="Select distance">
-                          <div class="mdc-slider__track-container">
-                            <div class="mdc-slider__track"></div>
-                          </div>
-                          <div class="mdc-slider__thumb-container">
-                            <div class="mdc-slider__pin">
-                              <span class="mdc-slider__pin-value-marker"></span>
-                            </div>
-                            <svg class="mdc-slider__thumb" width="21" height="21">
-                              <circle cx="10.5" cy="10.5" r="7.875"></circle>
-                            </svg>
-                            <div class="mdc-slider__focus-ring"></div>
-                          </div>
-                        </div>
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
+                      <div class="mdc-select" data-mdc-auto-init="MDCSelect">
+                        <span class="mdc-select__dropdown-icon"></span>
+                        <select class="mdc-select__native-control" id="distance" name="distance">
+                          {{#each (split "5,10,15,20,25,30,35,40,45,50" ",")}}
+                            <option value="{{this}}" {{#compare (default @root.request.params.query.distance "10") "===" this}}selected{{/compare}}>{{this}} miles</option>
+                          {{/each}}
+                        </select>
+                        <label class="mdc-floating-label mdc-select__label--float-above" for="sort">
+                          Within
+                        </label>
                         <div class="mdc-line-ripple"></div>
                       </div>
                     </div>
-                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-2-tablet mdc-layout-grid__cell--span-4-phone">
-                      <div class="filter-distance-value">
-                        <span id="slider-distance-display">{{default @root.request.params.query.distance 10}}</span> miles
-                      </div>
-                    </div>
-                    <input type="hidden" name="distance" id="slider-distance-value" value="{{default @root.request.params.query.distance 10}}">
                   </div>
                 </div>
               </div>

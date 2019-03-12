@@ -1,6 +1,9 @@
 {
   "name": "opportunity",
-  "pattern": "/opportunity/:slug",
+  "pattern": {
+    "slug": "/opportunity/:slug",
+    "id": "/opp/:id"
+  },
   "metaData": {
     "title": "Volunteer Scotland Search",
     "sidebarButton": {

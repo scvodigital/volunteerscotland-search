@@ -3,7 +3,7 @@
   {{#compare @root.data.primaryResponse.hits.total ">" 0}}
   <div class="content-primary">
     {{#each @root.data.primaryResponse.hits.hits ~}}
-      {{> opportunity_full _source}}
+      {{> opportunity_full _source view="full"}}
     {{/each ~}}
   </div>
 
