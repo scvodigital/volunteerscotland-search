@@ -88,14 +88,14 @@
       "must": [
         {
           "term": {
-            {{#if (includes @root.request.params.query.id "-") ~}}
-           "Id": "{{request.params.query.id}}"
-            {{else}}
+            {{#if @root.request.params.slug ~}}
             {{#if (includes @root.request.params.slug "-") ~}}
-            "slug": "{{request.params.slug}}"
+            "slug": "{{@root.request.params.slug}}"
             {{else}}
-            "Id": "{{request.params.slug}}"
+            "Id": "{{@root.request.params.slug}}"
             {{/if ~}}
+            {{else}}
+            "Id": "{{@root.request.params.id}}"
             {{/if ~}}
           }
         }

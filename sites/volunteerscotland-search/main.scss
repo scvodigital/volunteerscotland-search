@@ -721,6 +721,10 @@ footer h3,
   font-size: 1rem;
 }
 
+.mdc-drawer .mdc-select {
+    margin-top: $unit;
+}
+
 .mdc-icon-toggle-xs {
   height: 32px;
   width: 32px;
@@ -2895,7 +2899,6 @@ footer.mdc-layout__footer {
   }
   .home-banner .banner-search .page-content .search-form .filter-distance .filter-distance-value {
     line-height: 1 !important;
-    margin: -$unit 0 $unit/2 $unit/5;
   }
 }
 @media screen and (max-width: $mobile-breakpoint) {
@@ -4161,7 +4164,6 @@ footer,
         .filter-distance {
           .mdc-layout-grid {
             position: relative;
-            top: $unit/4;
             .mdc-floating-label {
               top: 1.1rem;
               color: rgba(0, 0, 0, 0.6);
