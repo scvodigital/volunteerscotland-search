@@ -126,18 +126,9 @@
         "size": 10000
       }
     },
-    "local_authorities": {
+    "advertised_areas": {
       "terms": {
-        "field": "local_authority",
-        "order": {
-          "_term": "asc"
-        },
-        "size": 10000
-      }
-    },
-    "local_authorities_slugs": {
-      "terms": {
-        "field": "local_authority_slug",
+        "field": "advertised_areas",
         "order": {
           "_term": "asc"
         },

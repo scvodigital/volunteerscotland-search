@@ -63,24 +63,12 @@
         Areas
       </div>
       <ul class="mdc-list areas">
-        {{#each @root.data.opportunitySupplimentary.types.aggregations.local_authorities.buckets ~}}
+        {{#each @root.data.opportunitySupplimentary.types.aggregations.advertised_areas.buckets ~}}
           {{#if key ~}}
             <a class="mdc-list-item" href="/opportunities-in/{{urlencode (slugify (replace key "/" "-"))}}" role="menuitem" onclick="gtag('event', 'navigation', { event_category: '{{default ../eventContext "category-browser"}}', event_label: 'Area: {{slugify (replace key "/" "-")}}' })">
               <span class="mdc-list-item__text">
                 {{{key}}}
               </span>
-              {{#compare doc_count ">" 0 ~}}
-              <span class="mdc-list-item__meta">
-                <span class="fas fa-location-arrow fa-fw" title="Opportunities at a specific location in {{{key}}}"></span>
-                {{doc_count}}
-              </span>
-              {{/compare ~}}
-              {{#compare (getProperty (firstItem (filter @root.data.opportunitySupplimentary.types.aggregations.advertised_areas_slugs.buckets "key" "===" (slugify (replace key "/" "-")))) "doc_count") ">" 0 ~}}
-              <span class="mdc-list-item__meta">
-                <span class="far fa-location-arrow fa-fw" title="Opportunities advertised across {{{key}}}"></span>
-                {{getProperty (firstItem (filter @root.data.opportunitySupplimentary.types.aggregations.advertised_areas_slugs.buckets "key" "===" (slugify (replace key "/" "-")))) "doc_count"}}
-              </span>
-              {{/compare ~}}
             </a>
           {{/if ~}}
         {{/each ~}}
