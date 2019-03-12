@@ -716,7 +716,7 @@ footer h3,
 }
 
 .mdc-drawer .mdc-list-item {
-  margin: 0 !important;
+  margin: 0;
   border-radius: 0;
   font-size: 1rem;
 }
@@ -1617,7 +1617,7 @@ hr {
   .mdc-list-item {
     border-radius: 0 $unit*2 $unit*2 0;
     padding-left: $unit !important;
-    margin-right: $unit/2 !important;
+    margin-right: $unit/2;
   }
   .mdc-list-item--activated:hover,
   .mdc-list-item--activated {
@@ -2005,7 +2005,7 @@ body.favouritees {
   .mdc-list {
     .mdc-list-item {
       padding-right: 0;
-      margin-right: $unit/4 !important;
+      margin-right: $unit/4;
     }
   }
   .mdc-typography--headline5 {
