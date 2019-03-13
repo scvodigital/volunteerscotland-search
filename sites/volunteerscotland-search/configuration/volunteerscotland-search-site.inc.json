@@ -1,9 +1,7 @@
 {
   "domains": [
-    "localhost",
     "search.volunteerscotland.net",
-    "volunteerscotland-search.local",
-    "127.0.0.1"
+    "volunteerscotland-search.local"
   ],
   "routes": [
     "{:./routes/*.json}"
