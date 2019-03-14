@@ -38,6 +38,31 @@ export class VolunteerScotlandSearch {
     this.componentsInitialiser = new ComponentsInitialiser();
     this.componentsInitialiser.initialise();
 
+    this.initialSort = $('[name="sort"]').val();
+
+    $('.search-form').on('change.acl', (evt) => {
+      const hasKeywords = !!$('[name="keywords"').val();
+      const hasLocation = !!$('[name="lat"]').val();
+      
+      if (hasLocation && !hasKeywords) {
+        $('[name="sort"]').val('distance');
+      } else {
+        $('[name="sort"]').val(initialSort);
+      }
+
+      //let hasOther = false;
+      //const ignore = ['sort', 'location', 'distance', 'lat', 'lng'];
+      //const formState = $(evt.currentTarget).serializeArray();
+      //for (const field of formState) {
+      //  if (ignore.indexOf(field.name) === -1 && !!field.value) {
+      //    hasOther = true;
+      //  }        
+      //}
+      //if (hasLocation && !hasOther) {
+      //  $('[name="sort"]').val('distance');
+      //}
+    });
+
     // Headroom
     // var header = document.querySelector("header.top-bar-stuck");
     // var headroom  = new Headroom(header, {

@@ -1426,7 +1426,7 @@ a {
 .mdc-layout-grid.equal-height .mdc-layout-grid__cell {
   display: flex;
   .mdc-card {
-    justify-content: start;
+    justify-content: flex-start;
     .mdc-card__supporting-text {
       flex: 1 0 auto;
     }
