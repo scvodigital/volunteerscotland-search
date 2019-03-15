@@ -1,1 +1,7 @@
+{
+  "exists": {
+    "boost": 5,
+    "field": "geo_coords"
+  }
+},
 {{>queries_do_nothing}}

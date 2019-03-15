@@ -1,0 +1,106 @@
+{
+  "size": 100,
+  "from": 0,
+  "explain": false,
+  "_source": false,
+  "highlight": {
+    "fields": {
+      "text_bag": {},
+      "text_bag_boost": {}
+    }
+  },
+  "script_fields": {
+    "last_modified":{
+      "script": {
+        "source": "new Date(doc['date_last_modified'].value)"
+      }
+    },
+    "distance": {
+      "script": {
+        "params": {
+          "lat": 55.95334433815015,
+          "lon": -3.18910566059015
+        },
+        "source": "doc['geo_coords'].arcDistance(params.lat, params.lon)"
+      }
+    }
+  },
+  "query": {
+    "function_score": {
+      "query": {
+        "bool": {
+          "filter": [
+            {
+              "geo_distance": {
+                "distance": "10mi",
+                "geo_coords": {
+                  "lat": 55.95334433815015,
+                  "lon": -3.18910566059015
+                }
+              }
+            },
+            {
+              "range": {
+                "date_last_modified": {
+                  "gt": "now-12M",
+                  "boost": 1
+                }
+              }
+            },
+            {
+              "bool": {
+                "should": [
+                  {
+                    "terms": {
+                      "advertised_areas": [
+                        "East Lothian", "Edinburgh", "Fife", "Midlothian", "West Lothian"
+                      ]
+                    }
+                  },
+                  {
+                    "term": {
+                      "volunteersearch_type_slugs": "home-based-volunteering"
+                    }
+                  }
+                ],
+                "minimum_should_match": 1
+              }
+            }
+          ],
+          "must": [
+            {
+              "exists": {
+                "field": "title"
+              }
+            }
+          ]
+        }
+      },
+      "boost_mode": "multiply",
+      "boost": 1, 
+      "functions": [
+        {
+          "gauss": {
+            "date_last_modified": {
+              "scale": "10d",
+              "decay": 0.1
+            }
+          }
+        },
+        {
+          "exp": {
+            "geo_coords": {
+              "origin": {
+                "lat": 55.95334433815015,
+                "lon": -3.18910566059015
+              },
+              "scale": "1km",
+              "offset": "1km",
+              "decay": 0.3
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,6 +1,12 @@
 {
   "size": 10,
   "from": {{multiply (subtract (default @root.request.params.query.page 1) 1) 10}},
+  "highlight": {
+    "fields": {
+      "text_bag": {},
+      "text_bag_boost": {}
+    }
+  },
   "_source": [
     "Id",
     "slug",
@@ -24,6 +30,19 @@
     "activities_slugs",
     "opportunity_contact_email"
   ],
+  {{#ifAll @root.request.params.query.lat @root.request.params.query.lng}}
+  "script_fields": {
+    "distance": {
+      "script": {
+        "params": {
+          "lat": {{@root.request.params.query.lat}},
+          "lon": {{@root.request.params.query.lng}}
+        },
+        "source": "if (!doc['geo_coords'].empty) { doc['geo_coords'].arcDistance(params.lat, params.lon) * 0.000621371; }"
+      }
+    }
+  },
+  {{/ifAll}}
   "query": {
     "function_score": {
       "query": {
@@ -38,41 +57,57 @@
           "should": [
             {{>queries_opportunity_search_should @root.request.params.query}}
           ]
-          {{#if @root.request.params.query.exclude ~}}
-          {{#compare @root.request.params.query.exclude "!==" "" ~}},
-          "must_not": [
-            {
-              "geo_distance": {
-                "distance": "{{default @root.request.params.query.distance "10"}}mi",
-                "geo_coords": {
-                  "lat": {{@root.request.params.query.lat}},
-                  "lon": {{@root.request.params.query.lng}}
+          {{#ifAll @root.request.params.query.exclude @root.request.params.query.lat @root.request.params.query.lng ~}},
+            "must_not": [
+              {
+                "geo_distance": {
+                  "distance": "{{default @root.request.params.query.distance "10"}}mi",
+                  "geo_coords": {
+                    "lat": {{@root.request.params.query.lat}},
+                    "lon": {{@root.request.params.query.lng}}
+                  }
                 }
               }
-            }
-          ]
-          {{/compare ~}}
-          {{/if ~}}
+            ]
+          {{/ifAll ~}}
         }
       },
       "boost_mode": "multiply",
       "functions" : [
-        {
-          "weight": "8",
-          "gauss": {
-            "date_last_modified": {
-              "scale": "10d",
-              "decay": "0.1"
+        {{!-- If we are sorting there is no need to do scoring --}}
+        {{#unless @root.request.params.query.sort}}
+          {
+            "gauss": {
+              "date_last_modified": {
+                "scale": "10d",
+                "decay": 0.1
+              }
             }
           }
-        }
+          {{#ifAll @root.request.params.query.lat @root.request.params.query.lng}},
+            {
+              "exp": {
+                "geo_coords": {
+                  "origin": {
+                    "lat": {{@root.request.params.query.lat}},
+                    "lon": {{@root.request.params.query.lng}}
+                  },
+                  "scale": "1km",
+                  "offset": "1km",
+                  "decay": 0.3
+                }
+              }
+            }
+          {{/ifAll}}
+        {{/unless}}
       ]
     }
-  },
+  }
+  {{#if @root.request.params.query.sort}},
   "sort": [
-    {{#if @root.request.params.query.sort ~}}
-      {{#compare @root.request.params.query.sort "===" "distance" ~}}
-        {{#ifAll @root.request.params.query.location @root.request.params.query.lat @root.request.params.query.lng ~}}
+    {{#switch @root.request.params.query.sort}}
+      {{#case "distance"}}
+        {{#ifAll @root.request.params.query.lat @root.request.params.query.lng}}
           {
             "_geo_distance": {
               "geo_coords": {
@@ -85,46 +120,19 @@
               "distance_type": "arc"
             }
           }
-        {{else}}
-          {
-            "date_last_modified": "desc"
-          }
-        {{/ifAll ~}}
-      {{else}}
-        {{#compare @root.request.params.query.sort "===" "newest" ~}}
-          {
-            "start_date": "desc"
-          }
-        {{else}}
-          {{#compare @root.request.params.query.sort "===" "oldest" ~}}
-            {
-              "start_date": "asc"
-            }
-          {{else}}
-            {
-              "date_last_modified": "desc"
-            }
-          {{/compare ~}}
-        {{/compare ~}}
-      {{/compare ~}}
-    {{else}}
-      {
-        "date_last_modified": "desc"
-      }
-    {{/if ~}}
-    {{#ifAll @root.request.params.query.location @root.request.params.query.lat @root.request.params.query.lng ~}},
-      {
-        "_geo_distance": {
-          "geo_coords": {
-            "lat": {{@root.request.params.query.lat}},
-            "lon": {{@root.request.params.query.lng}}
-          },
-          "order": "asc",
-          "unit": "mi",
-          "mode": "min",
-          "distance_type": "arc"
+        {{/ifAll}}
+      {{/case}}
+      {{#case "newest"}}
+        {
+          "date_last_modified": "desc"
         }
-      }
-    {{/ifAll ~}}
+      {{/case}}
+      {{#case "oldest"}}
+        {
+          "date_last_modified": "asc"
+        }
+      {{/case}}
+    {{/switch}}
   ]
+  {{/if}}
 }
