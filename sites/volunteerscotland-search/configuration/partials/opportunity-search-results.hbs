@@ -222,7 +222,25 @@
 </div>
 
 {{#each @root.data.search_data.detailed_results.hits.hits ~}}
-  {{> opportunity_search_result _source distance=sort.[1]}}
+  {{#if @root.request.params.query.debug_results}}
+    <div class="v-padding-full">
+      <pre>
+SCORE: {{_score}}
+DISTANCE: {{numberFormat fields.distance.[0] "en-GB" 1}} miles
+LAST MODIFIED: {{#with (momentDistance (moment _source.date_last_modified "x") null "days")~}}
+  {{~#compare this "<=" 0~}}
+    {{replace (concat this "") "-" ""}} days ago
+  {{~else~}}
+    {{this}} days in the future
+  {{~/compare~}}
+{{/with}}
+
+HIGHLIGHTS: 
+{{{safeStringify highlight}}}
+      </pre>
+    </div>
+  {{/if}}
+  {{> opportunity_search_result _source distance=fields.distance.[0]}}
 {{/each ~}}
 
 <div class="foot">
