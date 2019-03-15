@@ -38,7 +38,7 @@ export class VolunteerScotlandSearch {
     this.componentsInitialiser = new ComponentsInitialiser();
     this.componentsInitialiser.initialise();
 
-    this.initialSort = $('[name="sort"]').val();
+    this.initialSort = $('[name="sort"]').val() || "";
 
     $('.search-form').on('change.acl', (evt) => {
       const hasKeywords = !!$('[name="keywords"]').val();
