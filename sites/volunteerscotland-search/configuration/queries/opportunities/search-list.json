@@ -77,24 +77,25 @@
         {{!-- If we are sorting there is no need to do scoring --}}
         {{#unless @root.request.params.query.sort}}
           {
-            "gauss": {
+            "{{@root.context.metaData.searchKnobs.dateLastModified.function}}": {
               "date_last_modified": {
-                "scale": "10d",
-                "decay": 0.1
+                "scale": {{{stringify @root.context.metaData.searchKnobs.dateLastModified.scale}}},
+                "offset": {{{stringify @root.context.metaData.searchKnobs.dateLastModified.offset}}},
+                "decay": {{{stringify @root.context.metaData.searchKnobs.dateLastModified.decay}}}
               }
             }
           }
           {{#ifAll @root.request.params.query.lat @root.request.params.query.lng}},
             {
-              "exp": {
+              "{{@root.context.metaData.searchKnobs.distance.function}}": {
                 "geo_coords": {
                   "origin": {
                     "lat": {{@root.request.params.query.lat}},
                     "lon": {{@root.request.params.query.lng}}
                   },
-                  "scale": "1km",
-                  "offset": "1km",
-                  "decay": 0.3
+                  "scale": {{{stringify @root.context.metaData.searchKnobs.distance.scale}}},
+                  "offset": {{{stringify @root.context.metaData.searchKnobs.distance.offset}}},
+                  "decay": {{{stringify @root.context.metaData.searchKnobs.distance.decay}}}
                 }
               }
             }

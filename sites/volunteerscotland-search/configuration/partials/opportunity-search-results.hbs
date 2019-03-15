@@ -214,6 +214,7 @@
             {{/if ~}}
           {{/each ~}}
           <input type="hidden" name="distance" value="{{default @root.request.params.query.distance 10}}" />
+          <input type="hidden" name="debug_results" value="{{@root.request.params.query.debug_results}}">
           {{> opportunity_search_sort}}
         </form>
       {{/compare ~}}
@@ -221,6 +222,14 @@
   </div>
 </div>
 
+{{#if @root.request.params.query.debug_results}}
+  <div class="v-padding-full">
+    <pre>
+{{{safeStringify @root.data.search_data.detailed_results.request}}}
+    </pre>
+  </div>
+{{/if}}
+  
 {{#each @root.data.search_data.detailed_results.hits.hits ~}}
   {{#if @root.request.params.query.debug_results}}
     <div class="v-padding-full">

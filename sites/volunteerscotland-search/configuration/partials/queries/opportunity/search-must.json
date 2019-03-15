@@ -1,6 +1,6 @@
 {{#if keywords ~}}
 {{>queries_query_string
   querystring=keywords
-  fields=(split "text_bag_boost^5,text_bag" ",")
+  fields=(split (concat "text_bag_boost^" @root.context.metaData.searchKnobs.textBagBoost ",text_bag") ",")
 }}
 {{/if ~}}

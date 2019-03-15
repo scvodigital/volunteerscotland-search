@@ -17,6 +17,22 @@
     "accountInfoValidation": "{:./account-info-validation.json}",
     "reCaptchaSiteKey": "6Ld7L5IUAAAAAGg1Luu1I9njFa2m-BALdtHja-cp",
     "elasticsearchUrl": "{$../../elasticsearch-url.txt}",
+    "searchKnobs": {
+      "dateLastModified": {
+        "function": "gauss",
+        "scale": "10d",
+        "decay": 0.1,
+        "offset": 0
+      },
+      "distance": {
+        "function": "exp",
+        "scale": "1km",
+        "offset": "1km",
+        "decay": 0.3
+      },
+      "geoCoordBoost": 5,
+      "textBagBoost": 5
+    },
     "termTypeLabels": {
       "age_groups": {
         "singular": "For volunteers aged",
