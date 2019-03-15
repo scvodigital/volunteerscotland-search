@@ -22,7 +22,7 @@
         "function": "gauss",
         "scale": "10d",
         "decay": 0.1,
-        "offset": "2m"
+        "offset": "60d"
       },
       "distance": {
         "function": "exp",
