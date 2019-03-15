@@ -1,6 +1,6 @@
 {
   "exists": {
-    "boost": 5,
+    "boost": {{{stringify @root.context.metaData.searchKnobs.geoCoordBoost}}},
     "field": "geo_coords"
   }
 },
