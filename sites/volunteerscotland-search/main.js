@@ -38,16 +38,16 @@ export class VolunteerScotlandSearch {
     this.componentsInitialiser = new ComponentsInitialiser();
     this.componentsInitialiser.initialise();
 
-    this.initialSort = $('[name="sort"]').val();
+    this.initialSort = $('[name="sort"]').val() || "";
 
     $('.search-form').on('change.acl', (evt) => {
-      const hasKeywords = !!$('[name="keywords"').val();
+      const hasKeywords = !!$('[name="keywords"]').val();
       const hasLocation = !!$('[name="lat"]').val();
       
       if (hasLocation && !hasKeywords) {
         $('[name="sort"]').val('distance');
       } else {
-        $('[name="sort"]').val(initialSort);
+        $('[name="sort"]').val(this.initialSort);
       }
 
       //let hasOther = false;

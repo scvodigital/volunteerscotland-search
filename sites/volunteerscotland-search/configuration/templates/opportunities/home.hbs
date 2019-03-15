@@ -80,23 +80,30 @@
                       }
                     ],
                     "datasets": [
-                    {{#each (split "activities,themes,services,age_groups" ",") ~}}
+                      {{#each @root.context.metaData.terms}}
+                      {{#each termGroups}}
                       {
-                        "name": "{{this}}",
+                        "name": {{{stringify @../key}}},
                         "templates": {
-                          "header": "<h3>{{getProperty @root.context.metaData.termTypeLabels (concat this ".plural")}}</h3>"
-                        },
-                        "display": "label",
-                        "items": [
-                          {{#each (getProperty @root.data.opportunitySupplimentary.types.aggregations (concat this ".buckets"))}}
-                            {
-                            "label": {{{stringify key}}},
-                            "value": {{{stringify (slugify key)}}}
-                            }{{#unless @last}},{{/unless}}
-                          {{/each}}
-                          ]
-                    }{{#unless @last}},{{/unless}}
-                  {{/each}}
+                        {{#compare (length (getKeys ../termGroups)) 1}}
+                        "header": "<h3>{{{../label}}}</h3>"
+                        {{else}}
+                        "header": "<h3>{{{../label}}} &gt; {{{label}}}</h3>"
+                        {{/compare}}
+                      },
+                      "display": "other",
+                      "items": [
+                        {{#each terms}}
+                        {
+                          "label": {{{stringify label}}},
+                          "value": {{{stringify @key}}},
+                          "other": {{{stringify label}}}
+                        }{{#unless @last}},{{/unless}}
+                        {{/each}}
+                      ]
+                      }{{#unlessAll @last @../last}},{{/unlessAll}}
+                      {{/each}}
+                    {{/each}}
                     ]
                   }'>
                   <label for="what-opportunities" class="mdc-floating-label">
@@ -140,7 +147,7 @@
     </div>
   </div>
 
-  {{#if @root.data.auth ~}}
+{{#if @root.data.auth ~}}
     <div class="mdc-layout-grid home-heading">
       <div class="mdc-layout-grid__inner">
         <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
@@ -167,9 +174,9 @@
         </p>
       {{/components_horizontal_card_scroller}}
     </div>
-  {{/if ~}}
+{{/if ~}}
 
-  {{#compare @root.data.opportunitySupplimentary.home_latest.hits.total ">" 0}}
+{{#compare @root.data.opportunitySupplimentary.home_latest.hits.total ">" 0}}
     <div class="mdc-layout-grid home-heading">
       <div class="mdc-layout-grid__inner">
         <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
@@ -215,36 +222,36 @@
       {{/components_horizontal_card_scroller}}
     </div>
   </div>
-  {{/compare}}
+{{/compare}}
 
-  {{#if @root.data.auth.email ~}}
-    {{#compare @root.data.opportunitySupplimentary.recently_viewed.hits.total ">" 0 ~}}
-      <div class="mdc-layout-grid home-heading">
-        <div class="mdc-layout-grid__inner">
-          <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
-            <div class="mdc-typography--headline7">
-              Recently viewed&ensp;
-              <span class="mdc-typography--body1">
+{{#if @root.data.auth.email ~}}
+  {{#compare @root.data.opportunitySupplimentary.recently_viewed.hits.total ">" 0 ~}}
+    <div class="mdc-layout-grid home-heading">
+      <div class="mdc-layout-grid__inner">
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
+          <div class="mdc-typography--headline7">
+            Recently viewed&ensp;
+            <span class="mdc-typography--body1">
                 <a href="/search?sort=newest&page=1">Find more</a>
               </span>
-            </div>
           </div>
         </div>
       </div>
-      <div class="home-content-primary">
-        {{#>components_horizontal_card_scroller
-          outerClasses="home-latest"
-          scrollLeftIconClasses="fal fa-fw fa-angle-left"
-          scrollRightIconClasses="fal fa-fw fa-angle-right"
-          itemClasses="latest-primary-content"
-          items=(map
-            (sortByIndex @root.data.opportunitySupplimentary.recently_viewed.hits.hits (split @root.request.cookies.recently_viewed ',') '_id') (getProp "_source")
-          )
-          itemsPartial="opportunity_mini"
-          moreUrl="/search?sort=newest&page=1"
-          moreText="Find more opportunities"}}
-        {{/components_horizontal_card_scroller}}
-      </div>
-    {{/compare ~}}
-  {{/if ~}}
+    </div>
+    <div class="home-content-primary">
+      {{#>components_horizontal_card_scroller
+        outerClasses="home-latest"
+        scrollLeftIconClasses="fal fa-fw fa-angle-left"
+        scrollRightIconClasses="fal fa-fw fa-angle-right"
+        itemClasses="latest-primary-content"
+        items=(map
+          (sortByIndex @root.data.opportunitySupplimentary.recently_viewed.hits.hits (split @root.request.cookies.recently_viewed ',') '_id') (getProp "_source")
+        )
+        itemsPartial="opportunity_mini"
+        moreUrl="/search?sort=newest&page=1"
+        moreText="Find more opportunities"}}
+      {{/components_horizontal_card_scroller}}
+    </div>
+  {{/compare ~}}
+{{/if ~}}
 </div>
