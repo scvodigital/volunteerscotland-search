@@ -45,7 +45,9 @@
           </div>
         </div>
       </div>
-      <input type="hidden" name="debug_results" value="{{@root.request.params.query.debug_results}}">
+      {{#if @root.request.params.query.debug_results}}
+        <input type="hidden" name="debug_results" value="{{@root.request.params.query.debug_results}}">
+      {{/if}}
       <input type="hidden" name="lat" value="{{#if @root.request.params.query.location}}{{@root.request.params.query.lat}}{{/if}}" id="location-lat" />
       <input type="hidden" name="lng" value="{{#if @root.request.params.query.location}}{{@root.request.params.query.lng}}{{/if}}" id="location-lng" />
 
