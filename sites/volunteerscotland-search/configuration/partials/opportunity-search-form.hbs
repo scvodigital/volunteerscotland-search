@@ -69,6 +69,7 @@
           ],
           "datasets": [
           {{#each @root.context.metaData.terms}}
+          {{#unless noTypeAhead}}
           {{#each termGroups}}
           {
             "name": {{{stringify @../key}}},
@@ -91,6 +92,7 @@
             ]
           }{{#unlessAll @last @../last}},{{/unlessAll}}
           {{/each}}
+          {{/unless}}
           {{/each}}
           ]
         }'>
@@ -101,7 +103,7 @@
         <div class="mdc-line-ripple"></div>
       </div>
       {{#each @root.context.metaData.terms ~}}
-        {{#compare @key "!==" "availability"}}
+        {{#unless noSearchFilter}}
       {{#unless (getProperty @root.data.currentSite.fixedFilters @key) ~}}
       {{#> components_advanced_checkbox_list name=@key label=label}}
       {{#each termGroups ~}}
@@ -113,7 +115,7 @@
       {{/each ~}}
       {{/components_advanced_checkbox_list}}
       {{/unless ~}}
-       {{/compare ~}}
+       {{/unless ~}}
       {{/each ~}}
 
       <div class="mdc-list-group">

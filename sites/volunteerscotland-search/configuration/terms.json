@@ -545,6 +545,7 @@
   },
   "availability": {
     "label": "Availability",
+    "noSearchFilter": true,
     "termGroups": {
       "monday": {
         "label": "Monday",
@@ -663,6 +664,152 @@
             "label": "Sunday Evening",
             "textBag": "sunday evening"
           }
+        }
+      }
+    }
+  },
+  "advertised_areas": {
+    "label": "Advertised Areas",
+    "noSearchFilter": true,
+    "noTypeAhead" : true,
+    "termGroups": {
+      "other": {
+        "label": "Other",
+        "terms": {
+          "aberdeen": {
+            "label": "Aberdeen",
+            "textBag": "aberdeen"
+          },
+          "aberdeenshire": {
+            "label": "Aberdeenshire",
+            "textBag": "aberdeenshire"
+          },
+          "angus": {
+            "label": "Angus",
+            "textBag": "angus"
+          },
+          "argyll-bute": {
+            "label": "Argyll & Bute",
+            "textBag": "argyll bute"
+          },
+          "angus": {
+            "label": "Angus",
+            "textBag": "angus"
+          },
+          "clackmannanshire": {
+            "label": "Clackmannanshire",
+            "textBag": "clackmannanshire"
+          },
+          "dumfries-galloway": {
+            "label": "Dumfries & Galloway",
+            "textBag": "dumfries galloway"
+          },
+          "dundee": {
+            "label": "Dundee",
+            "textBag": "dundee"
+          },
+          "east-ayrshire": {
+            "label": "East Ayrshire",
+            "textBag": "east ayrshire"
+          },
+          "east-dunbartonshire": {
+            "label": "East Dunbartonshire",
+            "textBag": "east dunbartonshire"
+          },
+          "east-lothian": {
+            "label": "East Lothian",
+            "textBag": "east lothian"
+          },
+          "east-renfrewshire": {
+            "label": "East Renfrewshire",
+            "textBag": "east renfrewshire"
+          },
+          "edinburgh": {
+            "label": "Edinburgh",
+            "textBag": "edinburgh"
+          },
+          "falkirk": {
+            "label": "Falkirk",
+            "textBag": "falkirk"
+          },
+          "fife": {
+            "label": "Fife",
+            "textBag": "fife"
+          },
+          "glasgow": {
+            "label": "Glasgow",
+            "textBag": "glasgow"
+          },
+          "highland": {
+            "label": "Highland",
+            "textBag": "highland"
+          },
+          "inverclyde": {
+            "label": "Inverclyde",
+            "textBag": "inverclyde"
+          },
+          "midlothian": {
+            "label": "Midlothian",
+            "textBag": "midlothian"
+          },
+          "moray": {
+            "label": "Moray",
+            "textBag": "moray"
+          },
+          "na-h-eileanan-siar": {
+            "label": "Na h-Eileanan Siar",
+            "textBag": "na eileanan siar"
+          },
+          "north-ayrshire": {
+            "label": "North Ayrshire",
+            "textBag": "north ayrshire"
+          },
+          "north-lanarkshire": {
+            "label": "North Lanarkshire",
+            "textBag": "north lanarkshire"
+          },
+          "orkney": {
+            "label": "Orkney",
+            "textBag": "orkney"
+          },
+          "perth-kinross": {
+            "label": "Perth & Kinross",
+            "textBag": "perth kinross"
+          },
+          "renfrewshire": {
+            "label": "Renfrewshire",
+            "textBag": "renfrewshire"
+          },
+          "scottish-borders": {
+            "label": "Scottish Borders",
+            "textBag": "scottish borders"
+          },
+          "shetland": {
+            "label": "Shetland",
+            "textBag": "shetland"
+          },
+          "south-ayrshire": {
+            "label": "South Ayrshire",
+            "textBag": "south ayrshire"
+          },
+          "south-lanarkshire": {
+            "label": "South Lanarkshire",
+            "textBag": "south lanarkshire"
+          },
+          "stirling": {
+            "label": "Stirling",
+            "textBag": "stirling"
+          },
+          "west-dunbartonshire": {
+            "label": "West Dunbartonshire",
+            "textBag": "west dunbartonshire"
+          },
+          "west-lothian": {
+            "label": "West Lothian",
+            "textBag": "west lothian"
+          }
+
+
         }
       }
     }
