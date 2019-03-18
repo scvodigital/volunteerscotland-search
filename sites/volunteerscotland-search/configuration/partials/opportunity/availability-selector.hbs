@@ -9,13 +9,14 @@
       </tr>
     </thead>
     <tbody>
-      {{#each (split "monday,tuesday,wednesday,thursday,friday,saturday,sunday" ",")}}
+
+      {{#each @root.context.metaData.terms.availability.termGroups}}
       <tr>
-        <th><p>{{capitalize this}}</p></th>
-        {{#each (split "morning,afternoon,evening" ",")}}
+        <th><p>{{capitalize label}}</p></th>
+        {{#each this.terms}}
         <td>
           <div class="mdc-checkbox">
-            <input type="checkbox" name="availability[]" class="mdc-checkbox__native-control" value="{{concat ../this "-" this}}"{{#if (contains @root.request.params.query.availability (concat ../this "-" this))}} checked{{/if}}>
+            <input type="checkbox" name="availability[]" class="mdc-checkbox__native-control" value="{{@key}}"{{#if (contains @root.request.params.query.availability @key)}} checked{{/if}}>
             <div class="mdc-checkbox__background">
               <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
                 <path class="mdc-checkbox__checkmark__path" fill="none" stroke="white" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>

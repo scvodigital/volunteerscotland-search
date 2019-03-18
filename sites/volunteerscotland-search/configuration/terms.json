@@ -546,8 +546,8 @@
   "availability": {
     "label": "Availability",
     "termGroups": {
-      "other": {
-        "label": "Other",
+      "monday": {
+        "label": "Monday",
         "terms": {
           "monday-morning": {
             "label": "Monday Morning",
@@ -557,10 +557,15 @@
             "label": "Monday Afternoon",
             "textBag": "monday afternoon"
           },
-          "monday-morning": {
+          "monday-evening": {
             "label": "Monday Evening",
             "textBag": "monday evening"
-          },
+          }
+        }
+      },
+      "tuesday": {
+        "label": "Tuesday",
+        "terms": {
           "tuesday-morning": {
             "label": "Tuesday Morning",
             "textBag": "tuesday morning"
@@ -569,10 +574,15 @@
             "label": "Tuesday Afternoon",
             "textBag": "tuesday afternoon"
           },
-          "tuesday-morning": {
+          "tuesday-evening": {
             "label": "Tuesday Evening",
             "textBag": "tuesday evening"
-          },
+          }
+        }
+      },
+      "wednesday": {
+        "label": "Wednesday",
+        "terms": {
           "wednesday-morning": {
             "label": "Wednesday Morning",
             "textBag": "wednesday morning"
@@ -581,10 +591,15 @@
             "label": "Wednesday Afternoon",
             "textBag": "wednesday afternoon"
           },
-          "wednesday-morning": {
+          "wednesday-evening": {
             "label": "Wednesday Evening",
             "textBag": "wednesday evening"
-          },
+          }
+        }
+      },
+      "thursday": {
+        "label": "Thursday",
+        "terms": {
           "thursday-morning": {
             "label": "Thursday Morning",
             "textBag": "thursday morning"
@@ -593,10 +608,15 @@
             "label": "Thursday Afternoon",
             "textBag": "thursday afternoon"
           },
-          "thursday-morning": {
+          "thursday-evening": {
             "label": "Thursday Evening",
             "textBag": "thursday evening"
-          },
+          }
+        }
+      },
+      "friday": {
+        "label": "Friday",
+        "terms": {
           "friday-morning": {
             "label": "Friday Morning",
             "textBag": "friday morning"
@@ -605,10 +625,15 @@
             "label": "Friday Afternoon",
             "textBag": "friday afternoon"
           },
-          "friday-morning": {
+          "friday-evening": {
             "label": "Friday Evening",
             "textBag": "friday evening"
-          },
+          }
+        }
+      },
+      "saturday": {
+        "label": "Saturday",
+        "terms": {
           "saturday-morning": {
             "label": "Saturday Morning",
             "textBag": "saturday morning"
@@ -617,10 +642,15 @@
             "label": "Saturday Afternoon",
             "textBag": "saturday afternoon"
           },
-          "saturday-morning": {
+          "saturday-evening": {
             "label": "Saturday Evening",
             "textBag": "saturday evening"
-          },
+          }
+        }
+      },
+      "sunday": {
+        "label": "Sunday",
+        "terms": {
           "sunday-morning": {
             "label": "Sunday Morning",
             "textBag": "sunday morning"
@@ -629,7 +659,7 @@
             "label": "Sunday Afternoon",
             "textBag": "sunday afternoon"
           },
-          "sunday-morning": {
+          "sunday-evening": {
             "label": "Sunday Evening",
             "textBag": "sunday evening"
           }
