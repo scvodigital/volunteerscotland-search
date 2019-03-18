@@ -52,7 +52,6 @@
       </div>
       <ul class="mdc-list areas">
         {{#each @root.context.metaData.terms.advertised_areas.termGroups.other.terms ~}}
-          {{@key}}
           {{#if @key ~}}
             <a class="mdc-list-item" href="/opportunities-in/{{@key}}" role="menuitem" onclick="gtag('event', 'navigation', { event_category: '{{default ../eventContext "category-browser"}}', event_label: 'Area: {{label}}' })">
               <span class="mdc-list-item__text">
