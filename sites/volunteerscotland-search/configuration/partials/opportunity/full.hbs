@@ -160,7 +160,7 @@
 
           <div class="mdc-typography--body2 last-modified">
             <span class="far fa-calendar-alt" aria-hidden="true"></span>
-            <span title="Updated on {{momentFormat (moment date_last_modified "x") "DD MMM hh:mm"}}" >Last updated {{momentDistance moment date_last_modified 'days'}} days ago</span>
+            <span title="Updated on {{momentFormat (moment date_last_modified "x") "YYYY-MM-DD hh:mm"}}">Last updated {{momentFromNow date_last_modified}}</span>
           </div>
 
         </div>
