@@ -15,18 +15,6 @@
           </span>
         </a>
         {{/each ~}}
-        {{!-- #each @root.data.opportunitySupplimentary.types.aggregations.themes.buckets ~}}
-          {{#if key ~}}
-            <a class="mdc-list-item" href="/search?themes%5B%5D={{urlencode (slugify (replace key "/" "-"))}}" role="menuitem" onclick="gtag('event', 'navigation', { event_category: '{{default ../eventContext "category-browser"}}', event_label: 'Theme: {{slugify (replace key "/" "-")}}' })">
-              <span class="mdc-list-item__text">
-                {{{key}}}
-              </span>
-              <span class="mdc-list-item__meta" aria-label="{{doc_count}} opportunities">
-                {{doc_count}}
-              </span>
-            </a>
-          {{/if ~}}
-        {{/each ~ --}}
       </ul>
     </div>
     <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone content page-content">

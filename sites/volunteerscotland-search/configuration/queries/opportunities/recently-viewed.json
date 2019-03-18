@@ -20,8 +20,6 @@
     "organisation_slug",
     "organisation_name",
     "organisation_aims_and_objectives",
-    "organisation_website",
-    "organisation_website_url",
     "organisation_twitter",
     "organisation_twitter_url",
     "organisation_facebook",
@@ -65,7 +63,6 @@
     "volunteersearch_age_group_slugs",
     "volunteersearch_support_option",
     "volunteersearch_support_option_slugs",
-    "opportunity_contact_email"
   ],
   "query": {
     "bool": {
