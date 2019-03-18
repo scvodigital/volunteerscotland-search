@@ -542,5 +542,99 @@
         }
       }
     }
+  },
+  "availability": {
+    "label": "Availability",
+    "termGroups": {
+      "other": {
+        "label": "Other",
+        "terms": {
+          "monday-morning": {
+            "label": "Monday Morning",
+            "textBag": "monday morning"
+          },
+          "monday-afternoon": {
+            "label": "Monday Afternoon",
+            "textBag": "monday afternoon"
+          },
+          "monday-morning": {
+            "label": "Monday Evening",
+            "textBag": "monday evening"
+          },
+          "tuesday-morning": {
+            "label": "Tuesday Morning",
+            "textBag": "tuesday morning"
+          },
+          "tuesday-afternoon": {
+            "label": "Tuesday Afternoon",
+            "textBag": "tuesday afternoon"
+          },
+          "tuesday-morning": {
+            "label": "Tuesday Evening",
+            "textBag": "tuesday evening"
+          },
+          "wednesday-morning": {
+            "label": "Wednesday Morning",
+            "textBag": "wednesday morning"
+          },
+          "wednesday-afternoon": {
+            "label": "Wednesday Afternoon",
+            "textBag": "wednesday afternoon"
+          },
+          "wednesday-morning": {
+            "label": "Wednesday Evening",
+            "textBag": "wednesday evening"
+          },
+          "thursday-morning": {
+            "label": "Thursday Morning",
+            "textBag": "thursday morning"
+          },
+          "thursday-afternoon": {
+            "label": "Thursday Afternoon",
+            "textBag": "thursday afternoon"
+          },
+          "thursday-morning": {
+            "label": "Thursday Evening",
+            "textBag": "thursday evening"
+          },
+          "friday-morning": {
+            "label": "Friday Morning",
+            "textBag": "friday morning"
+          },
+          "friday-afternoon": {
+            "label": "Friday Afternoon",
+            "textBag": "friday afternoon"
+          },
+          "friday-morning": {
+            "label": "Friday Evening",
+            "textBag": "friday evening"
+          },
+          "saturday-morning": {
+            "label": "Saturday Morning",
+            "textBag": "saturday morning"
+          },
+          "saturday-afternoon": {
+            "label": "Saturday Afternoon",
+            "textBag": "saturday afternoon"
+          },
+          "saturday-morning": {
+            "label": "Saturday Evening",
+            "textBag": "saturday evening"
+          },
+          "sunday-morning": {
+            "label": "Sunday Morning",
+            "textBag": "sunday morning"
+          },
+          "sunday-afternoon": {
+            "label": "Sunday Afternoon",
+            "textBag": "sunday afternoon"
+          },
+          "sunday-morning": {
+            "label": "Sunday Evening",
+            "textBag": "sunday evening"
+          }
+        }
+      }
+    }
   }
 }

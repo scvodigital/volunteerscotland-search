@@ -1,7 +1,7 @@
 {
   "name": "testpage",
   "debug": true,
-  "pattern": "/testpage/:list_ids",
+  "pattern": "/testpage",
   "acceptedVerbs": "GET",
   "defaultParams": {
     "context": "results"
@@ -11,17 +11,30 @@
   },
   "tasks": [
     "context.metaData.commonTasks.authNotRequired",
-    "context.metaData.commonTasks.allNewsletterInfo",
+    "context.metaData.commonTasks.opportunitySupplimentary",
     {
-      "name": "remove-subscription",
-      "taskModule": "render",
+      "name": "destination",
+      "taskModule": "renderLayout",
+      "renderer": "handlebars",
       "config": {
-        "template": ">context.metaData.handlebars.templates.newsletters_remove-subscriptions",
-        "parseJson": true,
-        "output" : "body"
-
-      },
-      "renderer": "handlebars"
+        "logic": {
+          "if": [
+            "default"
+          ]
+        },
+        "output": "body",
+        "layouts": {
+          "default": {
+            "layout": ">context.metaData.handlebars.layouts.default",
+            "parts": {
+              "head": ">context.metaData.handlebars.templates.pages_page-head-tags",
+              "body": ">context.metaData.handlebars.templates.pages_test",
+              "foot": ""
+            },
+            "contentType": "text/html"
+          }
+        }
+      }
     }
   ]
 }

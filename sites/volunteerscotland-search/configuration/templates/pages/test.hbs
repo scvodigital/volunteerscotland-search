@@ -1,0 +1,29 @@
+{
+{{#each (split "volunteersearch_types,themes,activities,availability,age_groups,services,advertised_areas" ",")}}
+  "{{this}}": {
+  "slugsMap": {
+  {{#each (getProperty @root.data.opportunitySupplimentary.types.aggregations (concat this ".buckets")) ~}}
+    {{#if key ~}}
+      "{{slugify key}}": {
+      "term": {{{stringify key}}},
+      "count": {{doc_count}}
+      }{{#unless @last}},{{/unless}}
+    {{/if ~}}
+  {{/each}}
+  }
+  }{{#unless @last}},{{/unless}}
+{{/each}}
+}
+
+
+{{#each (split "volunteersearch_types,themes,activities,availability,age_groups,services,advertised_areas" ",")}}
+  {{#each (getProperty @root.context.metaData.terms (concat this ".termGroups"))}}
+    {{#each terms}}
+      "{{@key}}" : {
+      "term": "{{label}}",
+      "count": 0
+      }
+
+{{/each}}
+{{/each}}
+{{/each}}

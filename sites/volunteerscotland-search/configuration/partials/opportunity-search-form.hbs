@@ -101,6 +101,7 @@
         <div class="mdc-line-ripple"></div>
       </div>
       {{#each @root.context.metaData.terms ~}}
+        {{#compare @key "!==" "availability"}}
       {{#unless (getProperty @root.data.currentSite.fixedFilters @key) ~}}
       {{#> components_advanced_checkbox_list name=@key label=label}}
       {{#each termGroups ~}}
@@ -112,6 +113,7 @@
       {{/each ~}}
       {{/components_advanced_checkbox_list}}
       {{/unless ~}}
+       {{/compare ~}}
       {{/each ~}}
 
       <div class="mdc-list-group">
