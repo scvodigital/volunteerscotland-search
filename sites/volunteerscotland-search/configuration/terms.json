@@ -545,7 +545,6 @@
   },
   "availability": {
     "label": "Availability",
-    "noSearchFilter": true,
     "termGroups": {
       "monday": {
         "label": "Monday",
@@ -671,90 +670,69 @@
   "advertised_areas": {
     "label": "Advertised Areas",
     "noSearchFilter": true,
-    "noTypeAhead" : true,
     "termGroups": {
       "other": {
         "label": "Other",
         "terms": {
           "aberdeen": {
-            "label": "Aberdeen",
-            "textBag": "aberdeen"
+            "label": "Aberdeen"
           },
           "aberdeenshire": {
-            "label": "Aberdeenshire",
-            "textBag": "aberdeenshire"
+            "label": "Aberdeenshire"
           },
           "angus": {
-            "label": "Angus",
-            "textBag": "angus"
+            "label": "Angus"
           },
           "argyll-bute": {
-            "label": "Argyll & Bute",
-            "textBag": "argyll bute"
+            "label": "Argyll & Bute"
           },
           "angus": {
-            "label": "Angus",
-            "textBag": "angus"
+            "label": "Angus"
           },
           "clackmannanshire": {
-            "label": "Clackmannanshire",
-            "textBag": "clackmannanshire"
+            "label": "Clackmannanshire"
           },
           "dumfries-galloway": {
-            "label": "Dumfries & Galloway",
-            "textBag": "dumfries galloway"
+            "label": "Dumfries & Galloway"
           },
           "dundee": {
-            "label": "Dundee",
-            "textBag": "dundee"
+            "label": "Dundee"
           },
           "east-ayrshire": {
-            "label": "East Ayrshire",
-            "textBag": "east ayrshire"
+            "label": "East Ayrshire"
           },
           "east-dunbartonshire": {
-            "label": "East Dunbartonshire",
-            "textBag": "east dunbartonshire"
+            "label": "East Dunbartonshire"
           },
           "east-lothian": {
-            "label": "East Lothian",
-            "textBag": "east lothian"
+            "label": "East Lothian"
           },
           "east-renfrewshire": {
-            "label": "East Renfrewshire",
-            "textBag": "east renfrewshire"
+            "label": "East Renfrewshire"
           },
           "edinburgh": {
-            "label": "Edinburgh",
-            "textBag": "edinburgh"
+            "label": "Edinburgh"
           },
           "falkirk": {
-            "label": "Falkirk",
-            "textBag": "falkirk"
+            "label": "Falkirk"
           },
           "fife": {
-            "label": "Fife",
-            "textBag": "fife"
+            "label": "Fife"
           },
           "glasgow": {
-            "label": "Glasgow",
-            "textBag": "glasgow"
+            "label": "Glasgow"
           },
           "highland": {
-            "label": "Highland",
-            "textBag": "highland"
+            "label": "Highland"
           },
           "inverclyde": {
-            "label": "Inverclyde",
-            "textBag": "inverclyde"
+            "label": "Inverclyde"
           },
           "midlothian": {
-            "label": "Midlothian",
-            "textBag": "midlothian"
+            "label": "Midlothian"
           },
           "moray": {
-            "label": "Moray",
-            "textBag": "moray"
+            "label": "Moray"
           },
           "na-h-eileanan-siar": {
             "label": "Na h-Eileanan Siar",

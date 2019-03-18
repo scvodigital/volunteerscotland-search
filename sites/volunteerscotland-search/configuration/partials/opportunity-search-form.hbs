@@ -69,7 +69,6 @@
           ],
           "datasets": [
           {{#each @root.context.metaData.terms}}
-          {{#unless noTypeAhead}}
           {{#each termGroups}}
           {
             "name": {{{stringify @../key}}},
@@ -92,7 +91,6 @@
             ]
           }{{#unlessAll @last @../last}},{{/unlessAll}}
           {{/each}}
-          {{/unless}}
           {{/each}}
           ]
         }'>
@@ -103,7 +101,7 @@
         <div class="mdc-line-ripple"></div>
       </div>
       {{#each @root.context.metaData.terms ~}}
-        {{#unless noSearchFilter}}
+      {{#unless noSearchFilter ~}}
       {{#unless (getProperty @root.data.currentSite.fixedFilters @key) ~}}
       {{#> components_advanced_checkbox_list name=@key label=label}}
       {{#each termGroups ~}}
@@ -115,22 +113,8 @@
       {{/each ~}}
       {{/components_advanced_checkbox_list}}
       {{/unless ~}}
-       {{/unless ~}}
+      {{/unless ~}}
       {{/each ~}}
-
-      <div class="mdc-list-group">
-        <div data-collapse-target="#{{instance_id}}-availability-collapse" data-collapse-icon="#{{instance_id}}-availability-draw-icon" role="button" aria-pressed="false" aria-label="Show {{getProperty @root.context.metaData.termTypeLabels (concat type ".plural")}}" tabindex="0">
-          <h3 class="mdc-list-group__subheader cursor-pointer noselect">
-            Availability
-          </h3>
-        </div>
-        <div class="mdc-drawer--occasional-ie11" id="{{instance_id}}-availability-collapse" style="{{#unless @root.request.params.query.availability}}display:none{{/unless}}">
-          {{>opportunity_availability_selector type="availability"}}
-        </div>
-        <li class="mdc-list-item cursor-pointer noselect" data-collapse-icon="#{{instance_id}}-availability-draw-icon" data-collapse-target="#{{instance_id}}-availability-collapse">
-          <span id="{{instance_id}}-availability-draw-icon" class="fas {{#unless @root.request.params.query.availability}}fa-chevron-down{{else}}fa-chevron-up{{/unless}} pull-centre" ></span>
-        </li>
-      </div>
 
       <div class="v-margin">
         <button class="mdc-button mdc-button--raised mdc-button--large mdc-button--fullwidth mdc-ripple-surface mdc-ripple-surface--primary" type="submit" id="{{instance_id}}-search-submit" data-mdc-auto-init="MDCRipple">
