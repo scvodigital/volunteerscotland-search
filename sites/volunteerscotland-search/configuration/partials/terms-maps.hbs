@@ -5,8 +5,7 @@
         {{#each (getProperty @root.context.metaData.terms (concat this ".termGroups"))}}
         {{#each terms}}
           "{{@key}}" : {
-            "term": "{{{label}}}",
-            "count": 0
+            "term": "{{{label}}}"
           } {{#unless @last}},{{/unless}}
         {{/each}} {{#unless @last}},{{/unless}}
       {{/each}}
@@ -15,8 +14,7 @@
         {{#each (getProperty @root.context.metaData.terms (concat this ".termGroups"))}}
           {{#each terms}}
             "{{{label}}}" : {
-            "term": "{{@key}}",
-            "count": 0
+            "term": "{{@key}}"
           } {{#unless @last}},{{/unless}}
           {{/each}} {{#unless @last}},{{/unless}}
         {{/each}}
