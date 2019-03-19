@@ -95,7 +95,7 @@
                       "items": [
                         {{#each terms}}
                         {
-                          "label": {{{stringify label}}},
+                          "label": {{{stringify (concat @../key ' ' textBag)}}},
                           "value": {{{stringify @key}}},
                           "other": {{{stringify label}}}
                         }{{#unless @last}},{{/unless}}
