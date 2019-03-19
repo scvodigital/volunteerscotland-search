@@ -183,12 +183,6 @@
           },
           "queryTemplates": [
             {
-              "name": "types",
-              "index": "web-content-production",
-              "type": "milo-volunteering-opportunity",
-              "template": ">context.metaData.handlebars.queries.opportunities_types"
-            },
-            {
               "name": "not_found",
               "index": "web-content-production",
               "type": "milo-volunteering-opportunity",

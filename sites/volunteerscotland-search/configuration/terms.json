@@ -542,5 +542,239 @@
         }
       }
     }
+  },
+  "availability": {
+    "label": "Availability",
+    "termGroups": {
+      "monday": {
+        "label": "Monday",
+        "terms": {
+          "monday-morning": {
+            "label": "Monday Morning",
+            "textBag": "monday morning"
+          },
+          "monday-afternoon": {
+            "label": "Monday Afternoon",
+            "textBag": "monday afternoon"
+          },
+          "monday-evening": {
+            "label": "Monday Evening",
+            "textBag": "monday evening"
+          }
+        }
+      },
+      "tuesday": {
+        "label": "Tuesday",
+        "terms": {
+          "tuesday-morning": {
+            "label": "Tuesday Morning",
+            "textBag": "tuesday morning"
+          },
+          "tuesday-afternoon": {
+            "label": "Tuesday Afternoon",
+            "textBag": "tuesday afternoon"
+          },
+          "tuesday-evening": {
+            "label": "Tuesday Evening",
+            "textBag": "tuesday evening"
+          }
+        }
+      },
+      "wednesday": {
+        "label": "Wednesday",
+        "terms": {
+          "wednesday-morning": {
+            "label": "Wednesday Morning",
+            "textBag": "wednesday morning"
+          },
+          "wednesday-afternoon": {
+            "label": "Wednesday Afternoon",
+            "textBag": "wednesday afternoon"
+          },
+          "wednesday-evening": {
+            "label": "Wednesday Evening",
+            "textBag": "wednesday evening"
+          }
+        }
+      },
+      "thursday": {
+        "label": "Thursday",
+        "terms": {
+          "thursday-morning": {
+            "label": "Thursday Morning",
+            "textBag": "thursday morning"
+          },
+          "thursday-afternoon": {
+            "label": "Thursday Afternoon",
+            "textBag": "thursday afternoon"
+          },
+          "thursday-evening": {
+            "label": "Thursday Evening",
+            "textBag": "thursday evening"
+          }
+        }
+      },
+      "friday": {
+        "label": "Friday",
+        "terms": {
+          "friday-morning": {
+            "label": "Friday Morning",
+            "textBag": "friday morning"
+          },
+          "friday-afternoon": {
+            "label": "Friday Afternoon",
+            "textBag": "friday afternoon"
+          },
+          "friday-evening": {
+            "label": "Friday Evening",
+            "textBag": "friday evening"
+          }
+        }
+      },
+      "saturday": {
+        "label": "Saturday",
+        "terms": {
+          "saturday-morning": {
+            "label": "Saturday Morning",
+            "textBag": "saturday morning"
+          },
+          "saturday-afternoon": {
+            "label": "Saturday Afternoon",
+            "textBag": "saturday afternoon"
+          },
+          "saturday-evening": {
+            "label": "Saturday Evening",
+            "textBag": "saturday evening"
+          }
+        }
+      },
+      "sunday": {
+        "label": "Sunday",
+        "terms": {
+          "sunday-morning": {
+            "label": "Sunday Morning",
+            "textBag": "sunday morning"
+          },
+          "sunday-afternoon": {
+            "label": "Sunday Afternoon",
+            "textBag": "sunday afternoon"
+          },
+          "sunday-evening": {
+            "label": "Sunday Evening",
+            "textBag": "sunday evening"
+          }
+        }
+      }
+    }
+  },
+  "advertised_areas": {
+    "label": "Advertised Areas",
+    "noSearchFilter": true,
+    "termGroups": {
+      "other": {
+        "label": "Other",
+        "terms": {
+          "aberdeen": {
+            "label": "Aberdeen"
+          },
+          "aberdeenshire": {
+            "label": "Aberdeenshire"
+          },
+          "angus": {
+            "label": "Angus"
+          },
+          "argyll-bute": {
+            "label": "Argyll & Bute"
+          },
+          "angus": {
+            "label": "Angus"
+          },
+          "clackmannanshire": {
+            "label": "Clackmannanshire"
+          },
+          "dumfries-galloway": {
+            "label": "Dumfries & Galloway"
+          },
+          "dundee": {
+            "label": "Dundee"
+          },
+          "east-ayrshire": {
+            "label": "East Ayrshire"
+          },
+          "east-dunbartonshire": {
+            "label": "East Dunbartonshire"
+          },
+          "east-lothian": {
+            "label": "East Lothian"
+          },
+          "east-renfrewshire": {
+            "label": "East Renfrewshire"
+          },
+          "edinburgh": {
+            "label": "Edinburgh"
+          },
+          "falkirk": {
+            "label": "Falkirk"
+          },
+          "fife": {
+            "label": "Fife"
+          },
+          "glasgow": {
+            "label": "Glasgow"
+          },
+          "highland": {
+            "label": "Highland"
+          },
+          "inverclyde": {
+            "label": "Inverclyde"
+          },
+          "midlothian": {
+            "label": "Midlothian"
+          },
+          "moray": {
+            "label": "Moray"
+          },
+          "na-h-eileanan-siar": {
+            "label": "Na h-Eileanan Siar"
+          },
+          "north-ayrshire": {
+            "label": "North Ayrshire"
+          },
+          "north-lanarkshire": {
+            "label": "North Lanarkshire"
+          },
+          "orkney": {
+            "label": "Orkney"
+          },
+          "perth-kinross": {
+            "label": "Perth & Kinross"
+          },
+          "renfrewshire": {
+            "label": "Renfrewshire"
+          },
+          "scottish-borders": {
+            "label": "Scottish Borders"
+          },
+          "shetland": {
+            "label": "Shetland"
+          },
+          "south-ayrshire": {
+            "label": "South Ayrshire"
+          },
+          "south-lanarkshire": {
+            "label": "South Lanarkshire"
+          },
+          "stirling": {
+            "label": "Stirling"
+          },
+          "west-dunbartonshire": {
+            "label": "West Dunbartonshire"
+          },
+          "west-lothian": {
+            "label": "West Lothian"
+          }
+        }
+      }
+    }
   }
 }
