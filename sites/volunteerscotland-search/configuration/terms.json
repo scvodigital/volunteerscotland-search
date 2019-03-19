@@ -735,59 +735,44 @@
             "label": "Moray"
           },
           "na-h-eileanan-siar": {
-            "label": "Na h-Eileanan Siar",
-            "textBag": "na eileanan siar"
+            "label": "Na h-Eileanan Siar"
           },
           "north-ayrshire": {
-            "label": "North Ayrshire",
-            "textBag": "north ayrshire"
+            "label": "North Ayrshire"
           },
           "north-lanarkshire": {
-            "label": "North Lanarkshire",
-            "textBag": "north lanarkshire"
+            "label": "North Lanarkshire"
           },
           "orkney": {
-            "label": "Orkney",
-            "textBag": "orkney"
+            "label": "Orkney"
           },
           "perth-kinross": {
-            "label": "Perth & Kinross",
-            "textBag": "perth kinross"
+            "label": "Perth & Kinross"
           },
           "renfrewshire": {
-            "label": "Renfrewshire",
-            "textBag": "renfrewshire"
+            "label": "Renfrewshire"
           },
           "scottish-borders": {
-            "label": "Scottish Borders",
-            "textBag": "scottish borders"
+            "label": "Scottish Borders"
           },
           "shetland": {
-            "label": "Shetland",
-            "textBag": "shetland"
+            "label": "Shetland"
           },
           "south-ayrshire": {
-            "label": "South Ayrshire",
-            "textBag": "south ayrshire"
+            "label": "South Ayrshire"
           },
           "south-lanarkshire": {
-            "label": "South Lanarkshire",
-            "textBag": "south lanarkshire"
+            "label": "South Lanarkshire"
           },
           "stirling": {
-            "label": "Stirling",
-            "textBag": "stirling"
+            "label": "Stirling"
           },
           "west-dunbartonshire": {
-            "label": "West Dunbartonshire",
-            "textBag": "west dunbartonshire"
+            "label": "West Dunbartonshire"
           },
           "west-lothian": {
-            "label": "West Lothian",
-            "textBag": "west lothian"
+            "label": "West Lothian"
           }
-
-
         }
       }
     }
