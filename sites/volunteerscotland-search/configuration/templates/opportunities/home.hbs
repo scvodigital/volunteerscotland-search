@@ -64,7 +64,7 @@
                           "removeSelectorTemplate": "#remove-\{{dataset.name}}-\{{item.value}}",
                           "template": {{#blockStringify this~}}
                             <div class="mdc-chip mdc-theme--primary-bg" tabindex="0" id="\{{dataset.name}}-\{{item.value}}">
-                              <div class="mdc-chip__text">\{{item.label}}</div>
+                              <div class="mdc-chip__text">\{{item.other}}</div>
                               <input type="hidden" name="\{{dataset.name}}[]" value="\{{item.value}}">
                               <i class="far fa-times-circle mdc-chip__icon mdc-chip__icon--trailing" tabindex="0" role="button" id="remove-\{{dataset.name}}-\{{item.value}}"></i>
                             </div>
