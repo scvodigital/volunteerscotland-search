@@ -62,13 +62,10 @@
     "volunteersearch_age_group",
     "volunteersearch_age_group_slugs",
     "volunteersearch_support_option",
-    "volunteersearch_support_option_slugs",
+    "volunteersearch_support_option_slugs"
   ],
   "query": {
     "bool": {
-      "filter": [
-        {{>queries_opportunity_common_filters request.params.query}}
-      ],
       "must": [
         {{#if @root.request.cookies.recently_viewed}}
         {
