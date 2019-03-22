@@ -102,7 +102,6 @@
       </div>
       {{#each @root.context.metaData.terms ~}}
       {{#unless noSearchFilter ~}}
-      {{#unless (getProperty @root.data.currentSite.fixedFilters @key) ~}}
       {{#> components_advanced_checkbox_list name=@key label=label}}
       {{#each termGroups ~}}
       {{#> components_advanced_checkbox_group name=(concat @../key '-' @key) label=label hideParent=(compare (length (getKeys ../../termGroups)) 1)}}
@@ -112,7 +111,6 @@
       {{/components_advanced_checkbox_group}}
       {{/each ~}}
       {{/components_advanced_checkbox_list}}
-      {{/unless ~}}
       {{/unless ~}}
       {{/each ~}}
 
