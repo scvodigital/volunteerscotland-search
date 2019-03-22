@@ -6,7 +6,7 @@
         "label": "Other",
         "terms": {
           "over-18": {
-            "label": "Over 18",
+            "label": "18 and over",
             "textBag": "18 19 20 21 22 23 24 25 year old over"
           },
           "16-to-17": {
