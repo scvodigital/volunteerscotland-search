@@ -12,7 +12,7 @@
           <mj-text font-size="16px" padding="0px" line-height="20px" color="#000000" font-family="Montserrat, Helvetica, Arial, sans-serif">
             <p>Hello {{opportunity_contact_first_name}},</p>
 
-            <p>{{first_name}} {{last_name}} would like to apply for opportunity {{opportunity_title}} with {{organisation_name}} (ref:{{opportunity_milo_ref}}) as advertised on Volunteer Scotland.
+            <p>{{first_name}} {{last_name}} would like to apply for opportunity <a href="https://search.volunteerscotland.net/opportunity/{{slug}}?utm_source=alert&utm_medium=email" color="#42842A" style="color:#42842A;font-weight:bold;">{{{opportunity_title}}}</a> with {{organisation_name}} (ref:{{opportunity_milo_ref}}) as advertised on Volunteer Scotland.
               {{#if message}} Please find their contact message below:</p>
             <strong>{{message}}</strong>
             {{/if}}
@@ -23,18 +23,6 @@
             <p>Kind Regards,</p>
 
             <p>The Volunteer Scotland Team</p>
-          </mj-text>
-        </mj-column>
-      </mj-section>
-
-
-
-      <mj-section background-color="#D7D3CC" padding="0px">
-        <mj-column padding="10px">
-          <mj-text font-size="16px" color="#ffffff" font-family="Montserrat, helvetica, Arial, sans-serif" padding="0px">
-            <p style="margin:0px;">
-              <a href="https://search.volunteerscotland.net/favourites" color="#fff" style="color:#fff;font-weight:bold;text-decoration:none;">Change your alert preferences</a> or <a href="%unsubscribe_url%" color="#fff" style="color:#fff;font-weight:bold;text-decoration:none;">unsubscribe</a>
-            </p>
           </mj-text>
         </mj-column>
       </mj-section>
