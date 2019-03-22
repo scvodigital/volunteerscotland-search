@@ -58,6 +58,6 @@
     }
   },
   "sort": {
-    "start_date": "desc"
+    "date_last_modified": "desc"
   }
 }
