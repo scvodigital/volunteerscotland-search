@@ -3,7 +3,7 @@
 {
 "from": {{{stringify (getProperty @root.context.metaData.emailSendSettings (concat this '.from'))}}},
 "h:sender": {{{stringify (getProperty @root.context.metaData.emailSendSettings (concat this '.from'))}}},
-"to": "anuttgens@gmail.com", {{!-- getProperty this (concat 'email-' this) --}}
+"to": {{{stringify (default (getProperty @root.request.body (concat 'email-' this)) @root.request.body.email)}}},
 "o:tag": {{{stringify (if testEmail (concat 'test-' this) else=this)}}},
 "o:tracking": true,
 {{!-- "o:testmode": true, --}}
