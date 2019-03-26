@@ -11,6 +11,7 @@
     "context.metaData.commonTasks.registeredInterestData",
     "context.metaData.commonTasks.favouritesData",
     "context.metaData.commonTasks.searchesData",
+    "context.metaData.commonTasks.termsMaps",
     {
       "name": "opportunitySupplimentary",
       "taskModule": "elasticsearch",

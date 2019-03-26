@@ -40,10 +40,36 @@ export class VolunteerScotlandSearch {
 
     this.initialSort = $('[name="sort"]').val() || "";
 
+    // Filter button code?
+    // Filter button container code
+    this.filterButtonContainerOuter = $('#filter-container-outer');
+    this.filterButtonContainerInner = $('#filter-container-inner');
+    this.filterIndicator = $('#filter-indicator');
+    this.filterButton = $('#perm-search-submit');
+    if (this.filterButton.length > 0) {
+      this.filterButtonFixed = false;
+      this.filterButtonFrame = window.requestAnimationFrame(() => { this.handleFilterButton() });
+    }
+    this.searchInitialState = $('.search-form').serialize();
+    this.searchLastState = this.searchInitialState;
+    this.searchLastStateArray = $('.search-form').serializeArray();
+    this.searchLastStateSelectors = this.searchLastStateArray
+      .filter(field => { return field.name !== 'keywords'; })
+      .map(field => '[name="' + field.name + '"][value="' + field.value + '"]');
+
+    // // Headroom
+    // var header = document.querySelector("header.top-bar-stuck");
+    // var headroom  = new Headroom(header, {
+    //   "offset": 100,
+    //   "tolerance": 5
+    // });
+    // headroom.init();
+
+
     $('.search-form').on('change.acl', (evt) => {
       const hasKeywords = !!$('[name="keywords"]').val();
       const hasLocation = !!$('[name="lat"]').val();
-      
+
       if (hasLocation && !hasKeywords) {
         $('[name="sort"]').val('distance');
       } else {
@@ -56,7 +82,7 @@ export class VolunteerScotlandSearch {
       //for (const field of formState) {
       //  if (ignore.indexOf(field.name) === -1 && !!field.value) {
       //    hasOther = true;
-      //  }        
+      //  }
       //}
       //if (hasLocation && !hasOther) {
       //  $('[name="sort"]').val('distance');
@@ -86,6 +112,63 @@ export class VolunteerScotlandSearch {
     ci.options.fontFamily = "Rambla";
     ci.run();
   }
+
+  handleFilterButton() {
+    window.cancelAnimationFrame(this.filterButtonFrame);
+    const bottom = $(window).scrollTop() + $(window).height();
+    const filterButtonHeight = this.filterButtonContainerInner.outerHeight();
+    const filterButtonContainerTop = this.filterButtonContainerOuter.offset().top;
+    if (filterButtonContainerTop + filterButtonHeight > bottom && !this.filterButtonFixed) {
+      const filterButtonContainerWidth = this.filterButtonContainerOuter.innerWidth();
+      this.filterButtonContainerInner.addClass('filter-button-fixed');
+      this.filterButtonContainerOuter.css('height', filterButtonHeight);
+      this.filterButtonContainerInner.css('width', filterButtonContainerWidth);
+      this.filterButtonFixed = true;
+      this.filterIndicator.css({
+        'bottom': filterButtonHeight,
+        'left': (filterButtonContainerWidth / 2) - (this.filterIndicator.outerWidth() / 2)
+      });
+    } else if (filterButtonContainerTop + filterButtonHeight <= bottom && this.filterButtonFixed) {
+      this.filterButtonContainerInner.removeClass('filter-button-fixed');
+      this.filterButtonContainerOuter.css('height', 'auto');
+      this.filterButtonContainerInner.css('width', '100%');
+      this.filterButtonFixed = false;
+      this.filterIndicator.hide();
+    }
+
+    const searchNewState = $('.search-form').serialize();
+    if (searchNewState !== this.searchLastState) {
+      if (searchNewState !== this.searchInitialState) {
+        this.filterButton.prop('disabled', false);
+        this.filterButton.removeClass('mdc-button--disabled');
+      } else {
+        this.filterButton.prop('disabled', true);
+        this.filterButton.addClass('mdc-button--disabled');
+      }
+
+      //find change
+      const searchNewStateArray = $('.search-form').serializeArray();
+      const searchNewStateSelectors = searchNewStateArray
+        .filter(field => { return (field.name !== 'keywords' && field.name !== 'location'); })
+        .map(field => '[name="' + field.name + '"][value="' + field.value + '"]');
+
+      for (const selector of searchNewStateSelectors) {
+        if (this.searchLastStateSelectors.indexOf(selector) === -1) {
+          const fieldTop = $(selector).offset().top;
+          if (fieldTop > bottom && this.filterButtonFixed) {
+            this.filterIndicator.hide().fadeTo(250, 0.8).delay(1000).fadeOut(250);
+          }
+        }
+      }
+
+      this.searchLastState = searchNewState;
+      this.searchLastStateArray = searchNewStateArray;
+      this.searchLastStateSelectors = searchNewStateSelectors;
+    }
+
+    this.filterButtonFrame = window.requestAnimationFrame(() => { this.handleFilterButton() });
+  }
+
 
   windowResized() {
     var width = $(window).width();
@@ -179,4 +262,6 @@ export class VolunteerScotlandSearch {
     currentPage.hide();
     nextPage.show();
   }
+
+
 }

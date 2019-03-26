@@ -113,13 +113,15 @@
       {{/components_advanced_checkbox_list}}
       {{/unless ~}}
       {{/each ~}}
-
-      <div class="v-margin">
-        <button class="mdc-button mdc-button--raised mdc-button--large mdc-button--fullwidth mdc-ripple-surface mdc-ripple-surface--primary" type="submit" id="{{instance_id}}-search-submit" data-mdc-auto-init="MDCRipple">
-          <span class="far fa-search fa-fw" aria-hidden="true"></span>
-          Filter
-        </button>
+      <div id="filter-container-outer">
+        <div id="filter-container-inner">
+          <button class="mdc-button mdc-button--raised mdc-button--large mdc-button--fullwidth mdc-button--disabled mdc-ripple-surface mdc-ripple-surface--primary" type="submit" id="{{instance_id}}-search-submit" data-mdc-auto-init="MDCRipple" disabled>
+            <span class="far fa-search fa-fw mdc-list-item__graphic" aria-hidden="true"></span>
+            Filter
+          </button>
+        </div>
       </div>
+      <span id="filter-indicator" class="fal fa-angle-double-down fa-3x" style="display:none;"></span>
     </div>
   </form>
 </div>
