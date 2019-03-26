@@ -1,7 +1,6 @@
 {
   "name": "upgrade_token",
   "pattern": "/upgrade-token",
-  "debug": true,
   "tasks": [
     {
       "name": "auth",
