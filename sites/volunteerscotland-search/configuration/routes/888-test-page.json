@@ -1,6 +1,5 @@
 {
   "name": "testpage",
-  "debug": true,
   "pattern": "/testpage",
   "acceptedVerbs": "GET",
   "defaultParams": {

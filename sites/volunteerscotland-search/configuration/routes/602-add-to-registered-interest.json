@@ -1,6 +1,5 @@
 {
   "name": "add-to-registered-interest",
-  "debug": true,
   "pattern": "/add-to-registered-interest",
   "acceptedVerbs": "POST",
   "metaData" : {
