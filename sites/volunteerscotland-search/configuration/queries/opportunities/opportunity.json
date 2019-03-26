@@ -78,7 +78,8 @@
     "opportunity_contact_email",
     "weblink",
     "weblink_title",
-    "weblink_tooltip"
+    "weblink_tooltip",
+    "organisation_website"
   ],
   "query": {
     "bool": {
