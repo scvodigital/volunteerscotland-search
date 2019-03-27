@@ -1,52 +1,52 @@
 <div class="mdc-layout-grid home-content-primary">
   <div class="mdc-layout-grid__inner">
     <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone content page-content">
-      <div class="browse-title browse-title-roles mdc-typography--headline8">
+      <div class="browse-title browse-title-roles mdc-typography--headline6">
         Themes
       </div>
       <ul class="mdc-list themes">
-        {{#each @root.data.termsMaps.themes.slugsMap ~}}
-          <a class="mdc-list-item" href="/search?activities={{urlencode @key}}&group=true" role="menuitem" >
+        {{#each @root.context.metaData.terms.themes.termGroups ~}}
+        <li class="mdc-typography--body2 t-margin">{{{label}}}</li>
+        {{#each terms ~}}
+        <a class="mdc-list-item" href="/search?themes={{urlencode @key}}" role="menuitem">
           <span class="mdc-list-item__text">
-            {{{term}}}
-          </span>
-            <span class="mdc-list-item__meta">
-
-          </span>
-          </a>
-        {{/each ~}}
-      </ul>
-    </div>
-    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone content page-content">
-      <div class="browse-title browse-title-activities mdc-typography--headline8">
-        Activities
-      </div>
-      <ul class="mdc-list activities">
-        {{#each @root.data.termsMaps.activities.slugsMap ~}}
-        <a class="mdc-list-item" href="/search?activities={{urlencode @key}}&group=true" role="menuitem" onclick="gtag('event', 'navigation', { event_category: '{{default ../eventContext "category-browser"}}', event_label: 'Theme: {{@key}})">
-          <span class="mdc-list-item__text">
-            {{{term}}}
-          </span>
-          <span class="mdc-list-item__meta">
-
+            {{{label}}}
           </span>
         </a>
         {{/each ~}}
+        {{/each ~}}
       </ul>
     </div>
     <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone content page-content">
-      <div class="browse-title browse-title-areas mdc-typography--headline8">
+      <div class="browse-title browse-title-activities mdc-typography--headline6">
+        Activities
+      </div>
+      <ul class="mdc-list activities">
+        {{#each @root.context.metaData.terms.activities.termGroups ~}}
+        <li class="mdc-typography--body2 t-margin">{{{label}}}</li>
+        {{#each terms ~}}
+        <a class="mdc-list-item" href="/search?activities={{urlencode @key}}" role="menuitem">
+          <span class="mdc-list-item__text">
+            {{{label}}}
+          </span>
+        </a>
+        {{/each ~}}
+        {{/each ~}}
+      </ul>
+    </div>
+    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone content page-content">
+      <div class="browse-title browse-title-areas mdc-typography--headline6">
         Areas
       </div>
-      <ul class="mdc-list areas">
+      <ul class="mdc-list areas t-margin">
         {{#each @root.context.metaData.terms.advertised_areas.termGroups.other.terms ~}}
-          {{#if @key ~}}
-            <a class="mdc-list-item" href="/opportunities-in/{{@key}}" role="menuitem">
-              <span class="mdc-list-item__text">
-                {{{label}}}
-              </span>
-            </a>
-          {{/if ~}}
+        {{#if @key ~}}
+        <a class="mdc-list-item" href="/opportunities-in/{{@key}}" role="menuitem">
+          <span class="mdc-list-item__text">
+            {{{label}}}
+          </span>
+        </a>
+        {{/if ~}}
         {{/each ~}}
       </ul>
     </div>
