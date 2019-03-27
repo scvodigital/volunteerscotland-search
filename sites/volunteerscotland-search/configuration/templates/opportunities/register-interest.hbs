@@ -48,7 +48,7 @@
             <div class="mdc-layout-grid__inner">
               <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
                 <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
-                  <input id="first_name" name="first_name"
+                  <input required id="first_name" name="first_name"
                          {{>form_validation_attributes @root.context.metaData.accountInfoValidation.first_name}}class="mdc-text-field__input mdc-text-field--fullwidth"
                          value="{{@root.data.profileInfo.profile.first_name}}">
                   <label class="mdc-floating-label" for="first_name">
@@ -58,7 +58,7 @@
               </div>
               <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
                 <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
-                  <input id="last_name" name="last_name"
+                  <input required id="last_name" name="last_name"
                     {{>form_validation_attributes @root.context.metaData.accountInfoValidation.last_name}} class="mdc-text-field__input mdc-text-field--fullwidth"
                          value="{{@root.data.profileInfo.profile.last_name}}">
                   <label class="mdc-floating-label" for="last_name">
@@ -115,7 +115,7 @@
             <div class="mdc-layout-grid__inner">
               <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
                 <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
-                  <input id="email" name="email"
+                  <input required id="email" name="email"
                     {{>form_validation_attributes @root.context.metaData.accountInfoValidation.email}}
                          class="mdc-text-field__input mdc-text-field--fullwidth"
                          value="{{@root.data.profileInfo.profile.email}}">
@@ -180,7 +180,12 @@
             <input type="hidden" name="store_profile_info" value="true">
           {{/unless ~}}
           {{/if ~}}
-        <button data-sitekey="{{@root.context.metaData.reCaptchaSiteKey}}" data-callback='onSubmit' class="mdc-button mdc-button--raised b-margin-full g-recaptcha" id="register-interest-submit">
+          <div class="g-recaptcha"
+               data-sitekey="{{@root.context.metaData.reCaptchaSiteKey}}"
+               data-callback='onSubmit'
+               data-size="invisible">
+          </div>
+        <button class="mdc-button mdc-button--raised b-margin-full" id="register-interest-submit" onclick="preSubmit()">
             <span class="far fa-hand-paper mdc-list-item__graphic" aria-hidden="true"></span>
             Register interest
           </button>
@@ -195,6 +200,11 @@
 
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script>
+  function preSubmit() {
+    var form = document.getElementById("register-interest-form");
+    var isValid = form.checkValidity();
+    if (isValid)  grecaptcha.execute();
+  }
   function onSubmit(token) {
     document.getElementById("register-interest-form").submit();
   }
