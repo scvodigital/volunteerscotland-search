@@ -21,16 +21,16 @@
       "dateLastModified": {
         "function": "gauss",
         "scale": "10d",
-        "decay": 0.1,
+        "decay": 0.95,
         "offset": "60d"
       },
       "distance": {
-        "function": "exp",
+        "function": "gauss",
         "scale": "1km",
         "offset": "1km",
-        "decay": 0.3
+        "decay": 0.999
       },
-      "geoCoordBoost": 5,
+      "geoCoordBoost": 25,
       "textBagBoost": 5
     },
     "termTypeLabels": {
