@@ -231,7 +231,7 @@
     </pre>
   </div>
 {{/if}}
-  
+
 {{#each @root.data.search_data.detailed_results.hits.hits ~}}
   {{#if @root.request.params.query.debug_results}}
     <div class="v-padding-full">
@@ -246,7 +246,7 @@ LAST MODIFIED: {{#with (momentDistance (moment _source.date_last_modified "x") n
   {{~/compare~}}
 {{/with}}
 
-HIGHLIGHTS: 
+HIGHLIGHTS:
 {{{safeStringify highlight}}}
       </pre>
     </div>
@@ -257,8 +257,47 @@ HIGHLIGHTS:
 <div class="foot">
   {{> pagination firstLastNavigation=true paging=@root.data.search_data.detailed_results.pagination}}
 
-  <button class="mdc-button mdc-button--raised save-search hide-lg" id="save-search-button-foot" data-dialog-target="#save-search-dialog">
-    <span class="fas fa-search-plus mdc-list-item__graphic" aria-hidden="true"></span>
-    Save/email this search
-  </button>
+  {{#if @root.data.auth ~}}
+    {{#with (
+      querystringify (obj)
+      keywords=@root.request.params.query.keywords
+      volunteersearch_types=@root.request.params.query.volunteersearch_types
+      activities=@root.request.params.query.activities
+      themes=@root.request.params.query.themes
+      services=@root.request.params.query.services
+      age_groups=@root.request.params.query.age_groups
+      availability=@root.request.params.query.availability
+      distance=@root.request.params.query.distance
+      lat=@root.request.params.query.lat
+      lng=@root.request.params.query.lng
+      location=@root.request.params.query.location
+    ) ~}}
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          console.log('Current Query String:', {{{stringify this}}});
+          console.log('Saved Search Query Strings:', {{{stringify (map @root.data.searches.items.[0] (getProp 'querystring'))}}});
+        });
+      </script>
+      {{#if (itemAt @root.data.searches.items.[0] (indexOf (map @root.data.searches.items.[0] (getProp 'querystring')) this)) ~}}
+        {{#with (itemAt @root.data.searches.items.[0] (indexOf (map @root.data.searches.items.[0] (getProp 'querystring')) this))}}
+          <div class="pull-right">
+            Saved search&ensp;
+            <span class="mdc-typography--body1">
+              <a name="#" data-dialog-target="#edit-search-dialog" style="cursor:pointer;">{{{partition}}}</a>
+            </span>
+          </div>
+        {{/with ~}}
+      {{else}}
+        <button class="mdc-button mdc-button--raised save-search hide-lg" id="save-search-button" data-dialog-target="#save-search-dialog">
+          <span class="fas fa-search-plus mdc-list-item__graphic" aria-hidden="true"></span>
+          Save/email this search
+        </button>
+      {{/if ~}}
+    {{/with ~}}
+  {{else}}
+    <a href="/sign-up" class="mdc-button mdc-button--raised save-search hide-lg" id="save-search-button">
+      <span class="fas fa-sign-in-alt mdc-list-item__graphic" aria-hidden="true"></span>
+      Sign up to create email alerts
+    </a>
+  {{/if ~}}
 </div>
