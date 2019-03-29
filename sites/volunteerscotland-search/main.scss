@@ -111,6 +111,7 @@ h3,
 h4 {
   margin-bottom: $unit/2;
   font-family: $heading-font-family, $base-font-family, Helvetica, Arial, sans-serif;
+  font-display: auto;
   font-weight: $heading-font-weight;
   letter-spacing: -0.03rem;
   strong {
@@ -451,6 +452,7 @@ footer h3,
 .mdc-drawer .mdc-list-group__subheader,
 .mdc-list {
   font-family: $base-font-family, Helvetica, Arial, sans-serif;
+  font-display: auto;
   font-weight: $base-font-weight;
   letter-spacing: 0.01rem;
 }
@@ -469,6 +471,7 @@ footer h3,
 .mdc-drawer__content-heading,
 .supplimentary-list-title {
   font-family: $heading-font-family, $base-font-family, Helvetica, Arial, sans-serif;
+  font-display: auto;
   font-weight: $heading-font-weight;
   letter-spacing: -0.03rem;
 }
@@ -516,6 +519,7 @@ footer h3,
 .mdc-typography--title,
 .supplimentary-list-title {
   font-family: $heading-font-family, $base-font-family, Helvetica, Arial, sans-serif;
+  font-display: auto;
   font-weight: $heading-font-weight;
 }
 .mdc-drawer--temporary {
@@ -593,6 +597,12 @@ footer h3,
 }
 .mdc-dialog {
   z-index: 5;
+  .mdc-dialog__actions {
+    .mdc-button:hover {
+      background: transparent;
+      color: $brand-secondary-darkturquoise;
+    }
+  }
 }
 .mdc-dialog__backdrop {
   z-index: 10;
@@ -709,6 +719,7 @@ footer h3,
   font-weight: $heading-font-weight !important;
   color: $brand-primary-black;
   font-family: $base-font-family, Helvetica, Arial, sans-serif !important;
+  font-display: auto;
   padding-left: $unit/4 !important;
   line-height: 2rem !important;
   border-radius: 0;
@@ -2614,11 +2625,13 @@ footer.mdc-layout__footer {
   z-index: 2;
   p, li, div {
     font-family: $footer-font-family;
+    font-display: auto;
     font-weight: $footer-font-weight;
     font-size: 0.85rem;
   }
   h3, a, strong {
     font-family: $footer-font-family;
+    font-display: auto;
     font-weight: 400;
   }
   .footer-main,
