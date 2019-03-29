@@ -14,7 +14,7 @@
 
   {{#compare @root.data.registered_interest_opportunities.current.hits.total ">" 0}}
     {{#each @root.data.registered_interest_opportunities.current.hits.hits ~}}
-    <div class="{{#compare _source.Id "===" @root.request.params.query.id}}fade-in{{/compare}}">
+    <div class="{{#compare _source.Id "===" @root.request.params.query.id}}fade-in{{/compare}} b-margin-full">
       {{> opportunity_search_result _source action="remove"}}
     </div>
     {{/each ~}}
@@ -25,7 +25,6 @@
 </div>
 
 <script>
-
   function sqlRemoveInterest(Id){
       $link = $(this);
       $.ajax({

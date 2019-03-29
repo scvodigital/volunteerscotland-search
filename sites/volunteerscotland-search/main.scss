@@ -597,6 +597,12 @@ footer h3,
 }
 .mdc-dialog {
   z-index: 5;
+  .mdc-dialog__actions {
+    .mdc-button:hover {
+      background: transparent;
+      color: $brand-secondary-darkturquoise;
+    }
+  }
 }
 .mdc-dialog__backdrop {
   z-index: 10;
