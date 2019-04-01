@@ -1,4 +1,4 @@
-{{#unless (contains (lowercase @root.request.headers.user-agent) "googlebot")}}
+{{#unless (contains (lowercase @root.request.headers.user-agent) "bot")}}
   {{#compare paging.totalPages ">" 1 ~}}
     <ul class="pagination inline-list">
       {{#if firstLastNavigation ~}}
