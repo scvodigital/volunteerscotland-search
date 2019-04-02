@@ -3722,8 +3722,10 @@ header {
     .mdc-tab-scroller__scroll-area {
       margin-bottom: 0;
       height: 56px;
+      overflow:visible;
       .mdc-tab {
         height: 56px;
+        overflow:visible;
       }
       .mdc-tab,
       .mdc-tab .mdc-tab__icon,
