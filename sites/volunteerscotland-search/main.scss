@@ -3711,6 +3711,10 @@ header {
   }
 }
 
+.mdc-tab-scroller.iehack{
+  overflow:visible;
+}
+
 .content-primary-search {
   padding-bottom: $unit;
   .head {
@@ -3718,9 +3722,6 @@ header {
     margin-left: 0;
     .mdc-tab-bar {
       height: 56px;
-    }
-    .mdc-tab-scroller{
-      overflow:visible;
     }
     .mdc-tab-scroller__scroll-area {
       margin-bottom: 0;
