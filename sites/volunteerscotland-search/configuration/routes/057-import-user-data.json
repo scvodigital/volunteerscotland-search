@@ -13,7 +13,7 @@
       "renderer": "handlebars",
       "config": {
         "appName": "volunteerscotland-search",
-        "pathTemplate": "/notes/{{data.auth.uid}}",
+        "pathTemplate": "/notes/{{default data.auth.uid 'no-such-profile'}}",
         "setOrUpdate": "update",
         "dataTemplate": ">context.metaData.handlebars.templates.account_import-notes"
       }
