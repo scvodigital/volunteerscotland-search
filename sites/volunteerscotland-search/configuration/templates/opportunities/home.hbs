@@ -85,7 +85,7 @@
                       {
                         "name": {{{stringify @../key}}},
                         "templates": {
-                        {{#compare (length (getKeys ../termGroups)) 1}}
+                        {{#compare (length ../termGroups) 1}}
                         "header": "<h3>{{{../label}}}</h3>"
                         {{else}}
                         "header": "<h3>{{{../label}}} &gt; {{{label}}}</h3>"
@@ -95,8 +95,8 @@
                       "items": [
                         {{#each terms}}
                         {
-                          "label": {{{stringify (concat @../key ' ' textBag)}}},
-                          "value": {{{stringify @key}}},
+                          "label": {{{stringify (concat ../key ' ' textBag)}}},
+                          "value": {{{stringify key}}},
                           "other": {{{stringify label}}}
                         }{{#unless @last}},{{/unless}}
                         {{/each}}
