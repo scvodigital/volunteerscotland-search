@@ -364,75 +364,6 @@
     "key": "themes"
   },
   {
-    "label": "Services",
-    "termGroups": [
-      {
-        "label": "Other",
-        "terms": [
-          {
-            "label": "Childcare",
-            "textBag": "Childcare",
-            "key": "childcare"
-          },
-          {
-            "label": "Expenses Paid",
-            "textBag": "Expenses Paid",
-            "key": "expenses-paid"
-          },
-          {
-            "label": "Named Contact For Volunteer",
-            "textBag": "Named Contact For Volunteer",
-            "key": "named-contact-for-volunteer"
-          },
-          {
-            "label": "Taster Available",
-            "textBag": "Taster Available",
-            "key": "taster-available"
-          },
-          {
-            "label": "Wheelchair Access/Disabled Access Toilet",
-            "textBag": "Wheelchair Access/Disabled Access Toilet",
-            "key": "wheelchair-access-disabled-access-toilet"
-          }
-        ],
-        "key": "other"
-      }
-    ],
-    "key": "services"
-  },
-  {
-    "label": "Specialist roles",
-    "termGroups": [
-      {
-        "label": "Other",
-        "terms": [
-          {
-            "label": "Board/trustee role",
-            "textBag": "Board/trustee role",
-            "key": "board-trustee-role"
-          },
-          {
-            "label": "Home-based volunteering",
-            "textBag": "Home-based volunteering",
-            "key": "home-based-volunteering"
-          },
-          {
-            "label": "One-off volunteering",
-            "textBag": "One-off volunteering",
-            "key": "one-off-volunteering"
-          },
-          {
-            "label": "Suitable for groups",
-            "textBag": "Suitable for groups",
-            "key": "suitable-for-groups"
-          }
-        ],
-        "key": "other"
-      }
-    ],
-    "key": "volunteersearch_types"
-  },
-  {
     "label": "Activities",
     "termGroups": [
       {
@@ -670,6 +601,75 @@
       }
     ],
     "key": "activities"
+  },
+  {
+    "label": "Services",
+    "termGroups": [
+      {
+        "label": "Other",
+        "terms": [
+          {
+            "label": "Childcare",
+            "textBag": "Childcare",
+            "key": "childcare"
+          },
+          {
+            "label": "Expenses Paid",
+            "textBag": "Expenses Paid",
+            "key": "expenses-paid"
+          },
+          {
+            "label": "Named Contact For Volunteer",
+            "textBag": "Named Contact For Volunteer",
+            "key": "named-contact-for-volunteer"
+          },
+          {
+            "label": "Taster Available",
+            "textBag": "Taster Available",
+            "key": "taster-available"
+          },
+          {
+            "label": "Wheelchair Access/Disabled Access Toilet",
+            "textBag": "Wheelchair Access/Disabled Access Toilet",
+            "key": "wheelchair-access-disabled-access-toilet"
+          }
+        ],
+        "key": "other"
+      }
+    ],
+    "key": "services"
+  },
+  {
+    "label": "Specialist roles",
+    "termGroups": [
+      {
+        "label": "Other",
+        "terms": [
+          {
+            "label": "Board/trustee role",
+            "textBag": "Board/trustee role",
+            "key": "board-trustee-role"
+          },
+          {
+            "label": "Home-based volunteering",
+            "textBag": "Home-based volunteering",
+            "key": "home-based-volunteering"
+          },
+          {
+            "label": "One-off volunteering",
+            "textBag": "One-off volunteering",
+            "key": "one-off-volunteering"
+          },
+          {
+            "label": "Suitable for groups",
+            "textBag": "Suitable for groups",
+            "key": "suitable-for-groups"
+          }
+        ],
+        "key": "other"
+      }
+    ],
+    "key": "volunteersearch_types"
   },
   {
     "label": "Availability",
