@@ -71,9 +71,9 @@
           {{#each @root.context.metaData.terms}}
           {{#each termGroups}}
           {
-            "name": {{{stringify @../key}}},
+            "name": {{{stringify ../key}}},
             "templates": {
-              {{#compare (length (getKeys ../termGroups)) 1}}
+              {{#compare (length ../termGroups) 1}}
               "header": "<h3>{{{../label}}}</h3>"
               {{else}}
               "header": "<h3>{{{../label}}} &gt; {{{label}}}</h3>"
@@ -83,8 +83,8 @@
             "items": [
             {{#each terms}}
             {
-              "label": {{{stringify (concat @../key ' ' textBag)}}},
-              "value": {{{stringify @key}}},
+              "label": {{{stringify (concat ../key ' ' textBag)}}},
+              "value": {{{stringify key}}},
               "other": {{{stringify label}}}
             }{{#unless @last}},{{/unless}}
             {{/each}}
@@ -101,17 +101,28 @@
         <div class="mdc-line-ripple"></div>
       </div>
       {{#each @root.context.metaData.terms ~}}
-      {{#unless noSearchFilter ~}}
-      {{#> components_advanced_checkbox_list name=@key label=label}}
-      {{#each termGroups ~}}
-      {{#> components_advanced_checkbox_group name=(concat @../key '-' @key) label=label hideParent=(compare (length (getKeys ../../termGroups)) 1)}}
-      {{#each terms ~}}
-      {{> components_advanced_checkbox_item name=@../../../../key value=@key label=label checked=(contains (getProperty @root.request.params.query @../../../../key) @key) group=(concat @../../../../key '-' @../../../key) noIndent=(compare (length (getKeys ../../../../termGroups)) 1)}}
-      {{/each ~}}
-      {{/components_advanced_checkbox_group}}
-      {{/each ~}}
-      {{/components_advanced_checkbox_list}}
-      {{/unless ~}}
+        {{#unless noSearchFilter ~}}
+          {{#> components_advanced_checkbox_list name=key label=label}}
+            {{#each termGroups ~}}
+              {{#> components_advanced_checkbox_group 
+                  name=(concat ../key '-' key) 
+                  label=label 
+                  hideParent=(compare (length ../../termGroups) 1)}}
+                {{#each terms ~}}
+                  <!-- termGroups Length: {{length ../../../termGroups}} -->
+                  <!-- noIndent: {{compare (length ../../../termGroups) 1}} -->
+                  {{> components_advanced_checkbox_item 
+                      name=../../../../key 
+                      value=key 
+                      label=label 
+                      checked=(contains (getProperty @root.request.params.query ../../../../key) key) 
+                      group=(concat ../../../key '-' ../key) 
+                      noIndent=(compare (length ../../../termGroups) 1)}}
+                {{/each ~}}
+              {{/components_advanced_checkbox_group}}
+            {{/each ~}}
+          {{/components_advanced_checkbox_list}}
+        {{/unless ~}}
       {{/each ~}}
       <div id="filter-container-outer">
         <div id="filter-container-inner">
