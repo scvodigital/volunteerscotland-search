@@ -23,14 +23,15 @@ function getConfig(site, library) {
       pattern: './sites/' + site + '/**/*.inc.json',
       output: './build/' + site
     }),
-    new HardSourceWebpackPlugin(),
   ];
 
   if (process.env.TRAVIS) {
     plugins.push(new UglifyJsPlugin({
       uglifyOptions: {
         ecma: 5,
-        sourceMap: true
+        sourceMap: true,
+        comments: false,
+        parallel: true,
       }
     }));
     plugins.push(new CompressionPlugin({
@@ -125,7 +126,7 @@ function getConfig(site, library) {
         },
         {
           test: /\.js$/,
-          loader: 'babel-loader',
+          loader: 'babel-loader' + (!process.env.TRAVIS ? '?cacheLoader' : ''),
           query: {
             presets: ['@babel/preset-env'],
             compact: false,
