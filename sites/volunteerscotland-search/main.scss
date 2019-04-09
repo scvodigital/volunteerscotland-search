@@ -809,12 +809,13 @@ footer h3,
 }
 .mdc-list-group,
 .advanced-checkbox-list {
-  .mdc-list-item:last-child {
+  .collapse-trigger {
     border-radius: 0;
     height: auto !important;
     padding: $unit/2 0;
     margin-right: 0 !important;
     border-top: 1px solid $brand-primary-grey;
+    text-align: center;
   }
 }
 

@@ -3105,11 +3105,12 @@ form.inline-form {
   .mdc-list-item {
     height: auto !important;
   }
-  .mdc-list-item:last-child {
+  .collapse-trigger {
     border-top: 1px solid #cccccc;
     border-radius: 0 0 4px 4px;
     padding: $unit/2 0;
     margin-right: 0 !important;
+    text-align: center;
   }
   .mdc-icon-toggle-xs {
     height: 24px;
