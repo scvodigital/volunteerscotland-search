@@ -1,6 +1,6 @@
 {
   "EmailAddress": "{{@root.data.auth.email}}",
-  "Name": "Subscriber",
+  "Name": "{{default @root.request.params.greetingName 'Subscriber'}}",
   "Resubscribe": true,
   "ConsentToTrack":"No"
 }

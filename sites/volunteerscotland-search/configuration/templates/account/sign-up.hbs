@@ -51,7 +51,18 @@
           <div class="mdc-line-ripple"></div>
         </div>
       </div>
-      <p>
+
+
+      <div class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon" data-mdc-auto-init="MDCTextField">
+        <span class="far fa-key mdc-text-field__icon" tabindex="-1"></span>
+        <input type="text" id="first-name" class="mdc-text-field__input mdc-text-field--fullwidth" data-lpignore="true" autocomplete="off" />
+        <label class="mdc-floating-label" for="newsletter-firstname">
+          First Name (Optional)
+        </label>
+        <div class="mdc-line-ripple"></div>
+      </div>
+
+    <p>
         Check the boxes below to receive regular email updates in areas that interest you.
       </p>
       {{#each @root.data.all-newsletter-info.result}}
@@ -70,6 +81,8 @@
         </label>
       </div>
       {{/each}}
+    </div>
+
       <div id="form-section-sign-up-buttons">
         <button class="mdc-button mdc-button--raised" type="submit" id="sign-up-submit">
           Sign up
@@ -103,6 +116,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
   var $register = $('#sign-up-submit');
   var $loader = $('#sign-up-loader');
 
+
+  function getName() {
+    return $form.find('input[name="first-name"]').val();
+  }
+
   function getSubscriptions() {
     var subscribed = [];
     try{
@@ -122,27 +140,30 @@ document.addEventListener("DOMContentLoaded", function(event) {
   $form.on('submit', function(evt) {
     $loader.css('display', 'flex');
     evt.preventDefault();
+    $form.attr('action', '/add-newsletter-subscription')
+    $form.submit();
 
-    var email = $email.val();
-    var emailConfirm = $emailConfirm.val();
-    var password = $password.val();
-    var passwordConfirm = $passwordConfirm.val();
-
-    volunteerscotland.auth.createAccount(email, emailConfirm, password, passwordConfirm)
-      .then(function(user) {
-        var subscriptions = getSubscriptions();
-        if (subscriptions.length){
-          window.location.href = '/add-newsletter-subscription/' + subscriptions.join() + "?redirect=home";
-        } else {
-          window.location.href = '/';
-        }
-      })
-      .catch(function(err) {
-        $message.text(err.message || 'There was a problem creating your account').show();
-        $loader.css('display', 'none');
-        document.body.scrollTop = document.documentElement.scrollTop = 0;
-        return;
-      });
+//    var email = $email.val();
+//    var emailConfirm = $emailConfirm.val();
+//    var password = $password.val();
+//    var passwordConfirm = $passwordConfirm.val();
+//
+//    volunteerscotland.auth.createAccount(email, emailConfirm, password, passwordConfirm)
+//      .then(function(user) {
+//        var subscriptions = getSubscriptions();
+//        var greetingName = getName();
+//        if (subscriptions.length){
+//          $form.attr('action', '/add-newsletter-subscription')
+//        } else {
+//          window.location.href = '/';
+//        }
+//      })
+//      .catch(function(err) {
+//        $message.text(err.message || 'There was a problem creating your account').show();
+//        $loader.css('display', 'none');
+//        document.body.scrollTop = document.documentElement.scrollTop = 0;
+//        return;
+//      });
   });
 })
 </script>

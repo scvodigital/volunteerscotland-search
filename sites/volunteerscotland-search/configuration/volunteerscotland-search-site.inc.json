@@ -173,6 +173,17 @@
           "dataTemplate": ">context.metaData.handlebars.queries.profile"
         }
       },
+      "storeProfile": {
+        "name": "store-firstname",
+        "taskModule": "firebaseRtbSet",
+        "renderer": "handlebars",
+        "config": {
+          "appName": "volunteerscotland-search",
+          "pathTemplate": "/profile-info/{{default data.auth.uid 'no-such-profile'}}/profile",
+          "setOrUpdate": "set",
+          "dataTemplate": ">context.metaData.handlebars.queries.profile-firstname"
+        }
+      },
       "opportunitySupplimentary": {
         "name": "opportunitySupplimentary",
         "taskModule": "elasticsearch",
