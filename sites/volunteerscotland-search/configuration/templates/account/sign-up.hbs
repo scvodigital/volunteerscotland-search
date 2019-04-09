@@ -1,4 +1,4 @@
-<form id="sign-up-form" method="POST" class="sign-in-form sign-up-form">
+<form id="sign-up-form" method="GET" class="sign-in-form sign-up-form">
   <div class="mdc-card mdc-elevation--z0">
     <div class="mdc-card__info--content-primary">
       <div class="mdc-card__info--content-primary-title mdc-typography--headline4 x-padding">
@@ -55,8 +55,8 @@
 
       <div class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon" data-mdc-auto-init="MDCTextField">
         <span class="far fa-key mdc-text-field__icon" tabindex="-1"></span>
-        <input type="text" id="first-name" class="mdc-text-field__input mdc-text-field--fullwidth" data-lpignore="true" autocomplete="off" />
-        <label class="mdc-floating-label" for="newsletter-firstname">
+        <input type="text" id="first_name" name="first_name" class="mdc-text-field__input mdc-text-field--fullwidth" data-lpignore="true" autocomplete="off" />
+        <label class="mdc-floating-label" for="first_name">
           First Name (Optional)
         </label>
         <div class="mdc-line-ripple"></div>
@@ -68,7 +68,7 @@
       {{#each @root.data.all-newsletter-info.result}}
       <div class="mdc-form-field">
         <div class="mdc-checkbox">
-          <input type="checkbox" class="mdc-checkbox__native-control" name="newsletter-{{ListID}}" id="newsletter-{{ListID}}" />
+          <input type="checkbox" class="mdc-checkbox__native-control" name="list-{{ListID}}" id="list-{{ListID}}" />
           <div class="mdc-checkbox__background">
             <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
               <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
@@ -76,7 +76,7 @@
             <div class="mdc-checkbox__mixedmark"></div>
           </div>
         </div>
-        <label for="newsletter-{{ListID}}">
+        <label for="list-{{ListID}}">
           {{Name}}
         </label>
       </div>
@@ -103,6 +103,7 @@
     </div>
   </div>
 </div>
+  <input type="hidden" name="redirect" id="redirect" value="home"/>
 </form>
 <script>
 document.addEventListener("DOMContentLoaded", function(event) {
@@ -117,43 +118,38 @@ document.addEventListener("DOMContentLoaded", function(event) {
   var $loader = $('#sign-up-loader');
 
 
-  function getName() {
-    return $form.find('input[name="first-name"]').val();
-  }
 
-  function getSubscriptions() {
-    var subscribed = [];
+  function hasSubscriptions() {
+    var subs = false;
     try{
       var formArray = $form.serializeArray();
-      var identifier = "newsletter-";
+      var identifier = "list-";
       formArray.forEach(function(item) {
         if (item.name.indexOf(identifier) === 0 && item.value === "on") {
-          subscribed.push(item.name.substr(identifier.length));
+          subs = true;
         }
       });
-    } finally {
+      return subs;
+    } catch {
       // Better to fail to sign up to newsletters, than to fail and block sign up.
-      return subscribed;
+      return false;
     }
   }
+
 
   $form.on('submit', function(evt) {
     $loader.css('display', 'flex');
     evt.preventDefault();
-    $form.attr('action', '/add-newsletter-subscription')
-    $form.submit();
+    var email = $email.val();
+    var emailConfirm = $emailConfirm.val();
+    var password = $password.val();
+    var passwordConfirm = $passwordConfirm.val();
 
-//    var email = $email.val();
-//    var emailConfirm = $emailConfirm.val();
-//    var password = $password.val();
-//    var passwordConfirm = $passwordConfirm.val();
-//
 //    volunteerscotland.auth.createAccount(email, emailConfirm, password, passwordConfirm)
 //      .then(function(user) {
-//        var subscriptions = getSubscriptions();
-//        var greetingName = getName();
-//        if (subscriptions.length){
-//          $form.attr('action', '/add-newsletter-subscription')
+//        if (hasSubscriptions()){
+          $form.attr('action', '/add-newsletter-subscription')
+          evt.currentTarget.submit();
 //        } else {
 //          window.location.href = '/';
 //        }

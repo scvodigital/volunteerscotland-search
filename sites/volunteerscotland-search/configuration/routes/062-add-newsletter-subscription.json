@@ -1,7 +1,8 @@
 {
   "name": "add-newsletter-subscription",
   "pattern": "/add-newsletter-subscription",
-  "acceptedVerbs": "POST",
+  "debug":true,
+  "acceptedVerbs": "GET",
   "defaultParams": {
     "context": "results"
   },
@@ -16,7 +17,33 @@
         "output" : "data",
         "parseJson" : true
       }
+    },
+    {
+      "name": "add-subscriptions",
+      "taskModule": "request",
+      "config": {
+        "optionsTemplates": ">data.templateOpts"
+      },
+      "renderer": "handlebars"
+    },
+    {
+      "name": "reroute-redirect",
+      "taskModule": "reroute",
+      "config":
+      {
+        "if":[{"==":[{"var": "request.params.query.redirect"}, "home"]},
+          "redirect-home",
+          null
+        ]}
+    },
+    {
+      "name": "destination",
+      "taskModule": "render",
+      "renderer": "handlebars",
+      "config": {
+        "output": "body",
+        "template": "Added Subscription"
+      }
     }
-
   ]
 }

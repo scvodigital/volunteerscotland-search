@@ -1,5 +1,11 @@
 {
-{{#eachJoin (filter (entries @root.request.body) "key" "testIn" "newsletter-")) ','}}
-{{stringify this}}
+{{#eachJoin (filter (keyValue @root.request.params.query) "key" "testIn" "list-") ','}}
+"{{{key}}}":{{#blockStringify this}}{
+"method": "POST",
+"url": "\{{@root.secrets.vs_campaign_monitor.baseURL}}subscribers/{{substring key (length 'list-')}}.json",
+"body": {{> newsletter_post_body}},
+"auth": {"user" : "\{{@root.secrets.vs_campaign_monitor.auth.user}}"},
+"json": true
+}{{/blockStringify}}
 {{/eachJoin}}
 }
