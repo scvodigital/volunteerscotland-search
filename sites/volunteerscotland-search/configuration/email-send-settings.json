@@ -1,7 +1,8 @@
 {
   "register-interest": {
     "mailgunConnection": "mg_volunteerscotland_net",
-    "from": "Volunteer Scotland <register.interest@mg.volunteerscotland.net>",
+    "from": "Volunteer Scotland <register.interest@volunteerscotland.net>",
+    "replyTo": "Volunteer Scotland <register.interest@volunteerscotland.net>",
     "sendIfEmpty": false,
     "subjectPartial": "emails_register_interest_subject",
     "bodyPartial": "emails_register_interest_body",
@@ -9,7 +10,8 @@
   },
   "user-confirmation": {
     "mailgunConnection": "mg_volunteerscotland_net",
-    "from": "Volunteer Scotland <register.interest@mg.volunteerscotland.net>",
+    "from": "Volunteer Scotland <register.interest@volunteerscotland.net>",
+    "replyTo": "Volunteer Scotland <register.interest@volunteerscotland.net>",
     "sendIfEmpty": false,
     "subjectPartial": "emails_confirmation_subject",
     "bodyPartial": "emails_confirmation_body",
