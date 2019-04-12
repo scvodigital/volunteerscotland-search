@@ -1,6 +1,7 @@
 {
   "name": "newsletters",
   "pattern": "/newsletters",
+  "debug": true,
   "metaData": {
     "hideSearch": true,
     "title": "Newsletters - Volunteer Scotland Search"
@@ -11,6 +12,7 @@
   "tasks": [
     "context.metaData.commonTasks.authRequired",
     "context.metaData.commonTasks.allNewsletterInfo",
+    "context.metaData.commonTasks.profileInfoData",
     "context.metaData.commonTasks.getRawUserSubscriptions",
     "context.metaData.commonTasks.userNewsletterSubscriptions",
     {

@@ -1,5 +1,5 @@
 {
-{{#eachJoin (filter (keyValue @root.request.params.query) "key" "testIn" "list-") ','}}
+{{#eachJoin (filter (keyValue @root.request.body) "key" "testIn" "list-") ','}}
 {{#compare value "===" "off"}}
 "{{{key}}}":{{#blockStringify this}}{
 "method": "POST",

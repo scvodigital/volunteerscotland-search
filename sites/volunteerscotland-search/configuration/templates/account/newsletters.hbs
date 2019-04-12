@@ -14,13 +14,12 @@
     <div class="mdc-card mdc-elevation--z0">
       <div class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon" data-mdc-auto-init="MDCTextField">
         <span class="far fa-key mdc-text-field__icon" tabindex="-1"></span>
-        <input type="text" id="first_name" name="first_name" class="mdc-text-field__input mdc-text-field--fullwidth" data-lpignore="true" autocomplete="off" />
-        <label class="mdc-floating-label" for="first_name">
+        <input type="text" id="first_name" name="first_name" class="mdc-text-field__input mdc-text-field--fullwidth" value="{{@root.data.profileInfo.profile.first_name}}" data-lpignore="true" autocomplete="off" />
+        <label class="mdc-floating-label mdc-floating-label--float-above" for="first_name">
           First Name (Optional)
         </label>
         <div class="mdc-line-ripple"></div>
       </div>
-
       <p>
         Check the boxes below to receive regular email updates in areas that interest you.
       </p>
@@ -75,11 +74,10 @@
       var formdata = $form.serialize();
       $.ajax({
         url: '/add-newsletter-subscription',
-        type: 'GET',
+        type: 'POST',
         data: formdata, // serializes the form's elements.
       });
       volunteerscotland.componentsInitialiser.snackbar.show({message:'Newsletters updated'})
-
     })
   })
 </script>

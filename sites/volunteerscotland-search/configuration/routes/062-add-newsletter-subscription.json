@@ -2,12 +2,13 @@
   "name": "add-newsletter-subscription",
   "pattern": "/add-newsletter-subscription",
   "debug":true,
-  "acceptedVerbs": "GET",
+  "acceptedVerbs": "POST",
   "defaultParams": {
     "context": "results"
   },
   "tasks": [
     "context.metaData.commonTasks.authNotRequired",
+    "context.metaData.commonTasks.updateProfile",
     {
       "name": "templateOptsOn",
       "taskModule": "render",
