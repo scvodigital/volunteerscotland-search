@@ -38,7 +38,7 @@ const app = admin.initializeApp({
 })();
 
 async function uploadAssets(sites) {
-  const uploadOptions = getUploadOptions(sites);
+  const uploadOptions = await getUploadOptions(sites);
   const total = uploadOptions.length;
   let successful = 0;
   let failed = 0;
@@ -61,11 +61,17 @@ async function uploadAssets(sites) {
       extraInfo.push('boring');
     }
 
+    if (uploadOption.alreadyUploaded) {
+      extraInfo.push('already uploaded');
+    }
+
     try {
-      await storage.bucket(BUCKET).upload(uploadOption.path, uploadOption.options);
+      if (!uploadOption.alreadyUploaded) {
+        await storage.bucket(BUCKET).upload(uploadOption.path, uploadOption.options);
+      }
       successful++;
       message = 'SUCCESS -> ' + uploadOption.options.destination;
-      if (uploadOption.gzipped) {
+      if (!uploadOption.alreadyUploaded && uploadOption.gzipped) {
         const response = await storage.bucket(BUCKET).file(uploadOption.options.destination).setMetadata(uploadOption.options.metaData);
       }
     } catch(err) {
@@ -80,9 +86,10 @@ async function uploadAssets(sites) {
   console.log('Finished uploading', successful, 'successful assets with', failed, 'failures');
 }
 
-function getUploadOptions(sites) {
+async function getUploadOptions(sites) {
   const uploadOptions = [];
 
+  console.log('Preparing all assets for upload (including checking if they need rehosting'); 
   for (const site of sites) {
     const siteDir = path.join(BUILD_DIR, site);
     const configPath = path.join(siteDir, site + '-site.json');
@@ -114,7 +121,9 @@ function getUploadOptions(sites) {
           options.metaData.contentEncoding = 'gzip';
         }
 
-        uploadOptions.push({ path: asset, versioned, gzipped, options });
+        const alreadyUploaded = await isAlreadyUploaded(asset, options.destination);
+        
+        uploadOptions.push({ path: asset, versioned, gzipped, options, alreadyUploaded });
       } catch(err) {
         console.error('Failed to get options for asset:', asset, err);
       }
@@ -152,4 +161,16 @@ async function uploadConfigs(sites) {
   }
 
   console.log('Finished successfully uploading', successful, 'site configurations with', failed, 'failures');
+}
+
+async function isAlreadyUploaded(source, destination) {
+  try {  
+    const size = await fs.statSync(source).size;
+    const file = await storage.bucket(BUCKET).file(destination);
+    const metaData = await file.getMetadata();
+    return !metaData.errors && Array.isArray(metaData) && metaData.length > 1 && parseInt(metaData[0].size, 10) == size;
+  } catch(err) {
+    return false;
+  }
+  process.exit();
 }
