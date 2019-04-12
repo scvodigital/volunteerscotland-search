@@ -1,14 +1,16 @@
 {
   "name": "add-newsletter-subscription",
-  "pattern": "/add-newsletter-subscription/:list_ids",
-  "acceptedVerbs": "GET",
+  "pattern": "/add-newsletter-subscription",
+  "debug":true,
+  "acceptedVerbs": "POST",
   "defaultParams": {
     "context": "results"
   },
   "tasks": [
     "context.metaData.commonTasks.authNotRequired",
+    "context.metaData.commonTasks.updateProfile",
     {
-      "name": "templateOpts",
+      "name": "templateOptsOn",
       "taskModule": "render",
       "renderer": "handlebars",
       "config": {
@@ -21,7 +23,25 @@
       "name": "add-subscriptions",
       "taskModule": "request",
       "config": {
-        "optionsTemplates": ">data.templateOpts"
+        "optionsTemplates": ">data.templateOptsOn"
+      },
+      "renderer": "handlebars"
+    },
+    {
+      "name": "templateOptsOff",
+      "taskModule": "render",
+      "renderer": "handlebars",
+      "config": {
+        "template": ">context.metaData.handlebars.templates.newsletters_remove-subscriptions",
+        "output" : "data",
+        "parseJson" : true
+      }
+    },
+    {
+      "name": "remove-subscriptions",
+      "taskModule": "request",
+      "config": {
+        "optionsTemplates": ">data.templateOptsOff"
       },
       "renderer": "handlebars"
     },

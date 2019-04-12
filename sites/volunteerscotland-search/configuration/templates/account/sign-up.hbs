@@ -51,13 +51,24 @@
           <div class="mdc-line-ripple"></div>
         </div>
       </div>
-      <p>
+
+
+      <div class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon" data-mdc-auto-init="MDCTextField">
+        <span class="far fa-key mdc-text-field__icon" tabindex="-1"></span>
+        <input type="text" id="first_name" name="first_name" class="mdc-text-field__input mdc-text-field--fullwidth" data-lpignore="true" autocomplete="off" />
+        <label class="mdc-floating-label" for="first_name">
+          First name (Optional)
+        </label>
+        <div class="mdc-line-ripple"></div>
+      </div>
+
+    <p>
         Check the boxes below to receive regular email updates in areas that interest you.
       </p>
       {{#each @root.data.all-newsletter-info.result}}
-      <div class="mdc-form-field">
+        <div class="mdc-form-field">
         <div class="mdc-checkbox">
-          <input type="checkbox" class="mdc-checkbox__native-control" name="newsletter-{{ListID}}" id="newsletter-{{ListID}}" />
+          <input type="checkbox" class="mdc-checkbox__native-control" name="list-{{ListID}}" id="list-{{ListID}}" />
           <div class="mdc-checkbox__background">
             <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
               <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
@@ -65,11 +76,14 @@
             <div class="mdc-checkbox__mixedmark"></div>
           </div>
         </div>
-        <label for="newsletter-{{ListID}}">
+        <label for="list-{{ListID}}">
           {{Name}}
         </label>
-      </div>
+
+        </div>
       {{/each}}
+    </div>
+
       <div id="form-section-sign-up-buttons">
         <button class="mdc-button mdc-button--raised" type="submit" id="sign-up-submit">
           Sign up
@@ -90,6 +104,7 @@
     </div>
   </div>
 </div>
+  <input type="hidden" name="redirect" id="redirect" value="home"/>
 </form>
 <script>
 document.addEventListener("DOMContentLoaded", function(event) {
@@ -103,36 +118,25 @@ document.addEventListener("DOMContentLoaded", function(event) {
   var $register = $('#sign-up-submit');
   var $loader = $('#sign-up-loader');
 
-  function getSubscriptions() {
-    var subscribed = [];
-    try{
-      var formArray = $form.serializeArray();
-      var identifier = "newsletter-";
-      formArray.forEach(function(item) {
-        if (item.name.indexOf(identifier) === 0 && item.value === "on") {
-          subscribed.push(item.name.substr(identifier.length));
-        }
-      });
-    } finally {
-      // Better to fail to sign up to newsletters, than to fail and block sign up.
-      return subscribed;
-    }
+
+
+  function hasSubscriptions() {
+    return ($("input[name^='list']:checked")).length > 0;
   }
+
 
   $form.on('submit', function(evt) {
     $loader.css('display', 'flex');
     evt.preventDefault();
-
     var email = $email.val();
     var emailConfirm = $emailConfirm.val();
     var password = $password.val();
     var passwordConfirm = $passwordConfirm.val();
-
     volunteerscotland.auth.createAccount(email, emailConfirm, password, passwordConfirm)
       .then(function(user) {
-        var subscriptions = getSubscriptions();
-        if (subscriptions.length){
-          window.location.href = '/add-newsletter-subscription/' + subscriptions.join() + "?redirect=home";
+        if (hasSubscriptions()){
+          $form.attr('action', '/add-newsletter-subscription?redirect=home');
+          evt.currentTarget.submit();
         } else {
           window.location.href = '/';
         }

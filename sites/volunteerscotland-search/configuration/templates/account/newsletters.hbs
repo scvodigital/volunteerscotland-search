@@ -2,65 +2,82 @@
   <h1 class="mdc-typography--headline4 v-margin-full">
     Newsletters
     {{#unless @root.request.params.query.newuser ~}}
-    <span class="mdc-typography--body2">&ensp;Sent on a quarterly basis</span>
+      <span class="mdc-typography--body2">&ensp;Sent on a quarterly basis</span>
     {{/unless ~}}
   </h1>
   {{#if @root.request.params.query.newuser ~}}
-  <h2 class="mdc-typography--headline6 v-margin-full">
-    Use the buttons below to opt in to quarterly email updates or <a href="/">start looking for opportunities</a>.
-  </h2>
+    <h2 class="mdc-typography--headline6 v-margin-full">
+      Use the form below to opt in to quarterly email updates or <a href="/">start looking for opportunities</a>.
+    </h2>
   {{/if ~}}
-  <ul class="mdc-list mdc-list--two-line mdc-list--avatar-list mdc-elevation--z0">
-    <li class="mdc-list-item mdc-list-item--header hide-sm">
-      <span class="mdc-list-item__graphic far hide-sm" aria-hidden="true"></span>
-      <div class="mdc-layout-grid">
-        <div class="mdc-layout-grid__inner">
-          <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-10-desktop mdc-layout-grid__cell--span-6-tablet mdc-layout-grid__cell--span-4-phone saved-search">
-          <span class="mdc-list-item__text">
-            <strong>Newsletter</strong>
-          </span>
-          </div>
-          <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-2-desktop mdc-layout-grid__cell--span-2-tablet mdc-layout-grid__cell--span-4-phone align-centre">
-          <span class="mdc-list-item__text">
-            <strong>Subscribe</strong>
-          </span>
-          </div>
-        </div>
+  <form id="newsletter-form" method="GET" class="sign-in-form sign-up-form">
+    <div class="mdc-card mdc-elevation--z0">
+      <div class="mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon" data-mdc-auto-init="MDCTextField">
+        <span class="far fa-key mdc-text-field__icon" tabindex="-1"></span>
+        <input type="text" id="first_name" name="first_name" class="mdc-text-field__input mdc-text-field--fullwidth" value="{{@root.data.profileInfo.profile.first_name}}" data-lpignore="true" autocomplete="off" />
+        <label class="mdc-floating-label mdc-floating-label--float-above" for="first_name">
+          First Name (Optional)
+        </label>
+        <div class="mdc-line-ripple"></div>
       </div>
-    </li>
-
-    {{#each @root.data.all-newsletter-info.result}}
-      <li class="mdc-list-item mdc-ripple-upgraded">
-        <span class="mdc-list-item__graphic far fa-newspaper fa-2x hide-sm" aria-hidden="true"></span>
-        <div class="mdc-layout-grid">
-          <div class="mdc-layout-grid__inner">
-            <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-10-desktop mdc-layout-grid__cell--span-6-tablet mdc-layout-grid__cell--span-4-phone saved-search">
-            <span class="mdc-list-item__text">
-              <p>{{{Name}}}</p>
-            </span>
-            </div>
-            <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-2-desktop mdc-layout-grid__cell--span-2-tablet mdc-layout-grid__cell--span-4-phone align-centre">
-              <div class="mdc-chip-set mdc-chip-set--filter">
-                {{#> ajax_chip
-                  onUrl=(concat "/add-newsletter-subscription/" ListID)
-                  offUrl=(concat "/remove-newsletter-subscription/" ListID)
-                  onText="Email"
-                  offText="Email"
-                  onMethod="GET"
-                  offMethod="GET"
-                  iconClasses="far fa-envelope"
-                  on=(contains @root.data.user-newsletter-subscriptions ListID)
-                }}
-                  {}
-                {{/ajax_chip}}
-              </div>
+      <p>
+        Check the boxes below to receive regular email updates in areas that interest you.
+      </p>
+      {{#each @root.data.all-newsletter-info.result}}
+      <h2 class="mdc-typography--headline6 v-margin-full">{{Name}}</h2>
+        <div class="mdc-form-field">
+          <div class="mdc-radio">
+            <input class="mdc-radio__native-control" type="radio" id="{{ListID}}-on" name="list-{{ListID}}" value="on" {{#if (contains @root.data.user-newsletter-subscriptions ListID)}}checked{{/if}}>
+            <div class="mdc-radio__background">
+              <div class="mdc-radio__outer-circle"></div>
+              <div class="mdc-radio__inner-circle"></div>
             </div>
           </div>
+          <label for="list-{{ListID}}-off">
+            On
+          </label>
+          <div class="mdc-radio">
+            <input class="mdc-radio__native-control" type="radio" id="{{ListID}}-off" name="list-{{ListID}}" value="{{#if (contains @root.data.user-newsletter-subscriptions ListID)}}off{{else}}dud{{/if}}" {{#unless (contains @root.data.user-newsletter-subscriptions ListID)}}checked{{/unless}}>
+            <div class="mdc-radio__background">
+              <div class="mdc-radio__outer-circle"></div>
+              <div class="mdc-radio__inner-circle"></div>
+            </div>
+          </div>
+          <label for="list-{{ListID}}-off">
+            Off
+          </label>
         </div>
-      </li>
-      {{#unless @last}}
-        <li class="mdc-list-divider hide-sm" role="separator"></li>
-      {{/unless ~}}
-    {{/each ~}}
-  </ul>
+      {{/each}}
+    </div>
+
+
+    <div id="form-section-sign-up-buttons">
+      <button class="mdc-button mdc-button--raised" type="submit" id="newsletter-submit">
+        Submit
+      </button>
+    </div>
+    <div class="card-loader" id="sign-up-loader">
+      <div class="card-loader-background"></div>
+      <div class="card-loader-inner">
+        <span class="far fa-2x fa-spinner-third fa-spin"></span>
+      </div>
+    </div>
+  </form>
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var $form = $('#newsletter-form');
+
+    $form.on('submit', function(evt) {
+      evt.preventDefault();
+      var formdata = $form.serialize();
+      $.ajax({
+        url: '/add-newsletter-subscription',
+        type: 'POST',
+        data: formdata, // serializes the form's elements.
+      });
+      volunteerscotland.componentsInitialiser.snackbar.show({message:'Newsletters updated'})
+    })
+  })
+</script>
