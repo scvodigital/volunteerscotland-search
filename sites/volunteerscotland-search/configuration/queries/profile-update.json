@@ -1,0 +1,6 @@
+{
+{{#eachJoin (split "first_name,last_name,location_address,location_city,date_of_birth,location_postcode,email,phone" ",") ","}}
+{{#if (getProperty @root.request.body this)}}"{{this}}" : "{{getProperty @root.request.body this}}"{{/if}}
+{{/eachJoin}}
+}
+
