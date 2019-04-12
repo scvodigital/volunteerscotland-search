@@ -45,6 +45,7 @@
     "copy-webpack-plugin": "^4.5.3",
     "css-loader": "^1.0.0",
     "expose-loader": "^0.7.5",
+    "extra-watch-webpack-plugin": "^1.0.3",
     "extract-loader": "^3.0.0",
     "file-loader": "^2.0.0",
     "filewatcher-webpack-plugin": "^1.2.0",
