@@ -9,7 +9,7 @@
   "tasks": [
     "context.metaData.commonTasks.authNotRequired",
     {
-      "name": "templateOpts",
+      "name": "templateOptsOn",
       "taskModule": "render",
       "renderer": "handlebars",
       "config": {
@@ -22,7 +22,25 @@
       "name": "add-subscriptions",
       "taskModule": "request",
       "config": {
-        "optionsTemplates": ">data.templateOpts"
+        "optionsTemplates": ">data.templateOptsOn"
+      },
+      "renderer": "handlebars"
+    },
+    {
+      "name": "templateOptsOff",
+      "taskModule": "render",
+      "renderer": "handlebars",
+      "config": {
+        "template": ">context.metaData.handlebars.templates.newsletters_remove-subscriptions",
+        "output" : "data",
+        "parseJson" : true
+      }
+    },
+    {
+      "name": "remove-subscriptions",
+      "taskModule": "request",
+      "config": {
+        "optionsTemplates": ">data.templateOptsOff"
       },
       "renderer": "handlebars"
     },

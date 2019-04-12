@@ -66,7 +66,7 @@
         Check the boxes below to receive regular email updates in areas that interest you.
       </p>
       {{#each @root.data.all-newsletter-info.result}}
-      <div class="mdc-form-field">
+        <div class="mdc-form-field">
         <div class="mdc-checkbox">
           <input type="checkbox" class="mdc-checkbox__native-control" name="list-{{ListID}}" id="list-{{ListID}}" />
           <div class="mdc-checkbox__background">
@@ -79,7 +79,8 @@
         <label for="list-{{ListID}}">
           {{Name}}
         </label>
-      </div>
+
+        </div>
       {{/each}}
     </div>
 
@@ -120,20 +121,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 
   function hasSubscriptions() {
-    var subs = false;
-    try{
-      var formArray = $form.serializeArray();
-      var identifier = "list-";
-      formArray.forEach(function(item) {
-        if (item.name.indexOf(identifier) === 0 && item.value === "on") {
-          subs = true;
-        }
-      });
-      return subs;
-    } catch {
-      // Better to fail to sign up to newsletters, than to fail and block sign up.
-      return false;
-    }
+    return ($("input[name^='list']:checked")).length > 0;
   }
 
 
@@ -144,22 +132,21 @@ document.addEventListener("DOMContentLoaded", function(event) {
     var emailConfirm = $emailConfirm.val();
     var password = $password.val();
     var passwordConfirm = $passwordConfirm.val();
-
-//    volunteerscotland.auth.createAccount(email, emailConfirm, password, passwordConfirm)
-//      .then(function(user) {
-//        if (hasSubscriptions()){
+    volunteerscotland.auth.createAccount(email, emailConfirm, password, passwordConfirm)
+      .then(function(user) {
+        if (hasSubscriptions()){
           $form.attr('action', '/add-newsletter-subscription')
           evt.currentTarget.submit();
-//        } else {
-//          window.location.href = '/';
-//        }
-//      })
-//      .catch(function(err) {
-//        $message.text(err.message || 'There was a problem creating your account').show();
-//        $loader.css('display', 'none');
-//        document.body.scrollTop = document.documentElement.scrollTop = 0;
-//        return;
-//      });
+        } else {
+          window.location.href = '/';
+        }
+      })
+      .catch(function(err) {
+        $message.text(err.message || 'There was a problem creating your account').show();
+        $loader.css('display', 'none');
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
+        return;
+      });
   });
 })
 </script>
