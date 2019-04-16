@@ -6,7 +6,7 @@ const CompressionPlugin = require('compression-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const JsonIncWebpackPlugin = require('../../json-inc-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const FileWatcherWebpackPlugin = require('filewatcher-webpack-plugin');
+const ExtraWatchWebpackPlugin = require('extra-watch-webpack-plugin');
 
 const package = require('../../package.json');
 
@@ -41,10 +41,8 @@ function getConfig(site, library) {
       exclude: /-site\.json$/
     }));
   } else {
-    plugins.push(new FileWatcherWebpackPlugin({
-      watchFileRegex: ['./sites/' + site + '/configuration/**/*', './sites/global/**/*', './sites/' + site + '/assets/**/*'],
-			onAddDirCallback: (path) => { },
-			onReadyCallback: () => { }
+    plugins.push(new ExtraWatchWebpackPlugin({
+      files: ['./sites/' + site + '/configuration/**/*', './sites/global/**/*', './sites/' + site + '/assets/**/*']
     }));
 	}
 
