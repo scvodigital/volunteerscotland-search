@@ -168,7 +168,7 @@
         "renderer": "handlebars",
         "config": {
           "appName": "volunteerscotland-search",
-          "pathTemplate": "/profile-info/{{default data.auth.uid 'no-such-profile'}}/profile",
+          "pathTemplate": "/profile-info/{{default data.auth.uid 'no-such-write-profile'}}/profile",
           "setOrUpdate": "set",
           "dataTemplate": ">context.metaData.handlebars.queries.profile"
         }
@@ -179,7 +179,7 @@
         "renderer": "handlebars",
         "config": {
           "appName": "volunteerscotland-search",
-          "pathTemplate": "/profile-info/{{default data.auth.uid 'no-such-profile'}}/profile",
+          "pathTemplate": "/profile-info/{{default data.auth.uid 'no-such-write-profile'}}/profile",
           "setOrUpdate": "update",
           "dataTemplate": ">context.metaData.handlebars.queries.profile-update"
         }
