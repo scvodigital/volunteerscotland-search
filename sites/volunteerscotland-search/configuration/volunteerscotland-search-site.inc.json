@@ -109,6 +109,24 @@
           "notAuthenticatedRoute": "sign_in"
         }
       },
+      "noAuthOnly": {
+        "name": "noAuthOnly",
+        "taskModule": "reroute",
+        "config": {
+          "if": [
+            {
+              "!=": [
+                {
+                  "var": "data.auth.uid"
+                },
+                null
+              ]
+            },
+            "redirect-home",
+            null
+          ]
+        }
+      },
       "allNewsletterInfo": {
         "name": "all-newsletter-info",
         "taskModule": "request",
