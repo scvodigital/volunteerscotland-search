@@ -9,7 +9,7 @@
         {{#each termGroups ~}}
         <li class="mdc-typography--body2 t-margin">{{{label}}}</li>
         {{#each terms ~}}
-        <a class="mdc-list-item" href="/search?themes={{urlencode @key}}" role="menuitem">
+        <a class="mdc-list-item" href="/search?themes={{urlencode key}}" role="menuitem">
           <span class="mdc-list-item__text">
             {{{label}}}
           </span>
@@ -29,7 +29,7 @@
   {{#each termGroups ~}}
         <li class="mdc-typography--body2 t-margin">{{{label}}}</li>
         {{#each terms ~}}
-        <a class="mdc-list-item" href="/search?activities={{urlencode @key}}" role="menuitem">
+        <a class="mdc-list-item" href="/search?activities={{urlencode key}}" role="menuitem">
           <span class="mdc-list-item__text">
             {{{label}}}
           </span>
