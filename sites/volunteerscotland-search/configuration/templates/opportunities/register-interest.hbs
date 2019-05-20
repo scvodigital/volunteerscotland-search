@@ -152,7 +152,12 @@
     <input type="hidden" name="opportunity_contact_first_name" value="{{opportunity_contact_first_name}}">
     <input type="hidden" name="opportunity_contact_last_name" value="{{opportunity_contact_last_name}}">
     <input type="hidden" name="opportunity_contact_phone" value="{{opportunity_contact_phone}}">
-    <input type="hidden" name="opportunity_contact_via_tsi" value="{{opportunity_contact_via_tsi}}">
+
+      <input type="hidden" name="tsi_contact_first_name" value="{{opportunity_contact_first_name}}">
+      <input type="hidden" name="tsi_contact_last_name" value="{{opportunity_contact_last_name}}">
+      <input type="hidden" name="tsi_contact_phone" value="{{opportunity_contact_phone}}">
+
+      <input type="hidden" name="opportunity_contact_via_tsi" value="{{opportunity_contact_via_tsi}}">
     <input type="hidden" name="opportunity_milo_ref" value="{{milo_ref}}">
     <input type="hidden" name="opportunity_title" value="{{title}}">
     <input type="hidden" name="opportunity_minimum_age" value="{{minimum_age}}">
@@ -195,8 +200,59 @@
     {{/unless ~}}
     {{/if~}}
 
+  {{!-- --}}
   </form>
-</div>
+  <div class="mdc-layout-grid">
+  <div class="mdc-layout-grid__inner">
+    {{#if organisation_contact_email}}
+    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
+      <p><strong>Your application will be sent to:</strong></p>
+
+      <div class="mdc-typography--headline7">
+        <strong>{{{organisation_name}}}</strong>
+      </div>
+
+      {{#ifAny organisation_contact_first_name organisation_contact_last_name ~}}
+        <div class="mdc-typography--body1">
+          <strong>Contact Name: </strong> {{{organisation_contact_first_name}}} {{{organisation_contact_last_name}}}
+        </div>
+    {{/ifAny ~}}
+
+    {{#if organisation_contact_email ~}}
+        <div class="mdc-typography--body1">
+          <strong>Contact Email: </strong> <a href="mailto:{{{organisation_contact_email}}}">{{{organisation_contact_email}}}</a>
+        </div>
+    {{/if ~}}
+
+    {{#if organisation_website ~}}
+        <div class="mdc-typography--body1">
+          <strong>Website: </strong> <a href="{{fixUrl organisation_website 'http'}}">{{{organisation_website}}}</a>
+        </div>
+    {{/if}}
+    </div>
+    {{/if}}
+
+    {{#ifAll opportunity_contact_via_tsi tsi_contact_email}}
+    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
+      {{#unless organisation_contact_email}}
+        <p><strong>Your application will be managed by:</strong></p>
+      {{else}}
+        <p><strong>A copy will be sent to:</strong></p>
+      {{/unless}}
+      {{#ifAny tsi_contact_first_name tsi_contact_last_name ~}}
+        <div class="mdc-typography--body1">
+          <strong>Contact Name: </strong> {{{tsi_contact_first_name}}} {{{tsi_contact_last_name}}}
+        </div>
+      {{/ifAny ~}}
+
+      {{#if tsi_contact_email ~}}
+        <div class="mdc-typography--body1">
+          <strong>Contact Email: </strong> <a href="mailto:{{{tsi_contact_email}}}">{{{tsi_contact_email}}}</a>
+        </div>
+      {{/if ~}}
+
+    </div>
+    {{/ifAll}}
 {{/with ~}}
 
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
