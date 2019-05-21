@@ -2,16 +2,19 @@
   "name": "add-to-registered-interest",
   "pattern": "/add-to-registered-interest",
   "acceptedVerbs": "POST",
-  "metaData" : {
-    "emailTypes" : [
-      "register-interest",
-      "user-confirmation"
-    ]
-  },
+  "debug": true,
   "tasks": [
     "context.metaData.commonTasks.authNotRequired",
-    "context.metaData.commonTasks.authNotRequired",
-
+    {
+      "name": "emailTypes",
+      "taskModule": "render",
+      "renderer": "handlebars",
+      "config": {
+        "output": "data",
+        "template": ">context.metaData.handlebars.templates.email_email-types",
+        "parseJson": true
+      }
+    },
     {
       "name": "send_email",
       "taskModule": "mailgun",

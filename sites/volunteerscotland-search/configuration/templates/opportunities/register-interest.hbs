@@ -144,18 +144,24 @@
       </label>
     </div>
 
-    <input type="hidden" name="email-register-interest" value="{{opportunity_contact_email}}">
-      <input type="hidden" name="email-register-interest-tsi" value="{{opportunity_contact_email}}">
+    <input type="hidden" name="email-register-interest" value="{{organisation_contact_email}}">
+      <input type="hidden" name="email-register-interest-tsi" value="{{tsi_contact_email}}">
 
     <input type="hidden" name="tsi_name" value="{{tsi_name}}">
     <input type="hidden" name="organisation_name" value="{{organisation_name}}">
-    <input type="hidden" name="opportunity_contact_first_name" value="{{opportunity_contact_first_name}}">
-    <input type="hidden" name="opportunity_contact_last_name" value="{{opportunity_contact_last_name}}">
-    <input type="hidden" name="opportunity_contact_phone" value="{{opportunity_contact_phone}}">
 
-    <input type="hidden" name="tsi_contact_first_name" value="{{opportunity_contact_first_name}}">
-    <input type="hidden" name="tsi_contact_last_name" value="{{opportunity_contact_last_name}}">
-    <input type="hidden" name="tsi_contact_phone" value="{{opportunity_contact_phone}}">
+      <input type="hidden" name="opportunity_contact_first_name" value="{{opportunity_contact_first_name}}">
+      <input type="hidden" name="opportunity_contact_last_name" value="{{opportunity_contact_last_name}}">
+      <input type="hidden" name="opportunity_contact_phone" value="{{opportunity_contact_phone}}">
+      <input type="hidden" name="opportunity_contact_email" value="{{opportunity_contact_email}}">
+
+      <input type="hidden" name="organisation_contact_first_name" value="{{organisation_contact_first_name}}">
+      <input type="hidden" name="organisation_contact_last_name" value="{{organisation_contact_last_name}}">
+      <input type="hidden" name="organisation_contact_phone" value="{{organisation_contact_phone}}">
+
+    <input type="hidden" name="tsi_contact_first_name" value="{{tsi_contact_first_name}}">
+    <input type="hidden" name="tsi_contact_last_name" value="{{tsi_contact_last_name}}">
+    <input type="hidden" name="tsi_contact_phone" value="{{tsi_contact_phone}}">
 
     <input type="hidden" name="opportunity_contact_via_tsi" value="{{opportunity_contact_via_tsi}}">
     <input type="hidden" name="opportunity_contact_via_organisation" value="{{opportunity_contact_via_organisation}}">
@@ -237,9 +243,9 @@
     {{#if opportunity_contact_via_tsi}}
     <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
       {{#unless opportunity_contact_via_organisation}}
-        <p><strong>Your application will be managed by the local organisation that advertised the opportunity:</strong></p>
+        <p><strong>Your application will sent to the organisation that manages volunteering in the {{tsi_name}} region:</strong></p>
       {{else}}
-        <p><strong>A copy will be sent to the local organisation that advertised the opportunity:</strong></p>
+        <p><strong>A copy will be sent to the an organisation that manages volunteering in {{tsi_name}}:</strong></p>
       {{/unless}}
       {{#ifAny tsi_contact_first_name tsi_contact_last_name ~}}
         <div class="mdc-typography--body1">

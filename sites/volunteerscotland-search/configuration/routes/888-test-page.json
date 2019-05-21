@@ -5,9 +5,6 @@
   "defaultParams": {
     "context": "results"
   },
-  "metaData" : {
-    "emailTypes" : ["user-confirmation", "register-interest"]
-  },
   "tasks": [
     "context.metaData.commonTasks.authNotRequired",
     "context.metaData.commonTasks.opportunitySupplimentary",
@@ -17,7 +14,8 @@
       "renderer": "handlebars",
       "config": {
         "output": "data",
-        "template": ">context.metaData.handlebars.templates.email_email-types"
+        "template": ">context.metaData.handlebars.templates.email_email-types",
+        "parseJson": true
       }
     },
     {
