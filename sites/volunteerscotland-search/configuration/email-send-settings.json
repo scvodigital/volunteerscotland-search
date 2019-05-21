@@ -8,6 +8,15 @@
     "bodyPartial": "emails_register_interest_body",
     "metaData": {}
   },
+  "register-interest-tsi": {
+    "mailgunConnection": "mg_volunteerscotland_net",
+    "from": "Volunteer Scotland <register.interest@volunteerscotland.org.uk>",
+    "replyTo": "Volunteer Scotland <register.interest@volunteerscotland.org.uk>",
+    "sendIfEmpty": false,
+    "subjectPartial": "emails_register_interest_subject",
+    "bodyPartial": "emails_register_interest_tsi_body",
+    "metaData": {}
+  },
   "user-confirmation": {
     "mailgunConnection": "mg_volunteerscotland_net",
     "from": "Volunteer Scotland <register.interest@volunteerscotland.org.uk>",

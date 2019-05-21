@@ -1,5 +1,5 @@
 [
-{{#eachJoin @root.route.metaData.emailTypes ","}}
+{{#eachJoin @root.data.emailTypes ","}}
 {
 "from": {{{stringify (getProperty @root.context.metaData.emailSendSettings (concat this '.from'))}}},
 "h:sender": {{{stringify (getProperty @root.context.metaData.emailSendSettings (concat this '.from'))}}},

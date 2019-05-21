@@ -10,7 +10,7 @@
       <mj-section>
         <mj-column padding="0px">
           <mj-text font-size="16px" padding="0px" line-height="20px" color="#000000" font-family="Montserrat, Helvetica, Arial, sans-serif">
-            <p>Hello {{organisation_contact_first_name}},</p>
+            <p>Hello {{tsi_contact_first_name}},</p>
 
             <p>The person below has shown an interest inf the following opportunity, <a href="https://search.volunteerscotland.net/opportunity/{{opportunity_slug}}?utm_source=alert&utm_medium=email" color="#42842A" style="color:#42842A;font-weight:bold;">{{{opportunity_title}}}</a> with {{organisation_name}} (ref:{{opportunity_milo_ref}}) as advertised on Volunteer Scotland's website.
             <ul style="list-style-type:none;">
@@ -42,19 +42,10 @@
             <li>Date of Enquiry: {{momentFormat (moment) 'YYYY-MM-DD'}}</li>
           </ul>
 
-            {{#compare opportunity_contact_email "===" opportunity_contact_email}}
+            {{#compare opportunity_contact_email "===" tsi_contact_email}}
             <p>Please contact them at your earliest convenience. They may contact you directly to discuss their enquiry.</p>
             {{else}}
-            <p>This email is for your information only. The primary contact for this enquiry is the Third Sector Interface (TSI). They can be contacted using details below:</p>
-
-            {{#ifAny tsi_contact_first_name tsi_contact_last_name}}
-            <li>{{tsi_contact_first_name}} {{tsi_contact_last_name}}</li>
-            {{/ifAny}}
-            <li><a href="mailto:{{tsi_contact_email}}">{{tsi_contact_email}}</a></li>
-            {{#if tsi_contact_phone}}
-            <li>{{tsi_contact_phone}}</li>
-            {{/if}}
-            </ul>
+            <p>This email is for your information only. The primary contact for this opportunity is the organisation itself.</p>
             {{/compare}}
 
             <p>Thank you</p>
