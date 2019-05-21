@@ -237,9 +237,9 @@
     {{#if opportunity_contact_via_tsi}}
     <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
       {{#unless opportunity_contact_via_organisation}}
-        <p><strong>Your application will be managed by:</strong></p>
+        <p><strong>Your application will be managed by the local organisation that advertised the opportunity:</strong></p>
       {{else}}
-        <p><strong>A copy will be sent to:</strong></p>
+        <p><strong>A copy will be sent to the local organisation that advertised the opportunity:</strong></p>
       {{/unless}}
       {{#ifAny tsi_contact_first_name tsi_contact_last_name ~}}
         <div class="mdc-typography--body1">
