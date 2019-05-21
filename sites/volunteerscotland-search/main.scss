@@ -956,6 +956,10 @@ footer h3,
   color: inherit;
 }
 
+:not(.mdc-list--non-interactive) > :not(.mdc-list-item--disabled).mdc-list-item:not(.mdc-ripple-upgraded)::after,
+:not(.mdc-list--non-interactive) > :not(.mdc-list-item--disabled).mdc-list-item:hover::before {
+  opacity: 0 !important;
+}
 .icon-toggle-off {
   color: #999999;
 }
@@ -1167,7 +1171,7 @@ a {
 .mdc-button .mdc-list-item__graphic {
   position: relative;
   left: 0;
-  // margin-right: $unit/2;
+  height: auto;
 }
 .search-form .mdc-button .fa-search,
 .search-form .mdc-button .fa-search-plus {
@@ -4051,7 +4055,7 @@ a.mdc-drawer__content-heading {
 }
 
 .mdc-select--box:not(.mdc-select--disabled),
-.mdc-text-field:not(.mdc-text-field--disabled) {
+.mdc-text-field:not(.mdc-text-field--disabled):not(.mdc-text-field--outlined) {
   border-radius: 0;
   border: 1px solid #999;
   background-color: white;
