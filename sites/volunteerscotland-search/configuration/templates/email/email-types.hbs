@@ -1,0 +1,9 @@
+{{#json key='an-array' type='array'}}
+  {{#if opportunity_contact_via_organisation ~}}
+  "register-interest",
+  {{/if ~}}
+  {{#if opportunity_contact_via_tsi~}}
+  "register-interest tsi",
+  {{/if ~}}
+  "user-confirmation"
+{{/json}}
