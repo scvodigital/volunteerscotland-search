@@ -42,7 +42,11 @@
             <li>Date of Enquiry: {{momentFormat (moment) 'YYYY-MM-DD'}}</li>
           </ul>
 
+            {{#compare opportunity_contact_email "===" tsi_contact_email}}
             <p>Please contact them at your earliest convenience. They may contact you directly to discuss their enquiry.</p>
+            {{else}}
+            <p>This email is for your information only. The primary contact for this opportunity is the organisation itself.</p>
+            {{/compare}}
 
             <p>Thank you</p>
 

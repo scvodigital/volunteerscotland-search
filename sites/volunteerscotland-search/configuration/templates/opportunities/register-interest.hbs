@@ -1,6 +1,6 @@
 <div id="detailed-results-container" class="container-content content-notes">
   {{#with @root.data.primaryResponse.hits.hits.0._source ~}}
-  <form id="register-interest-form" action="/add-to-registered-interest?id={{Id}}" method="POST">
+
     <h2 class="mdc-typography--headline4">Register interest</h2>
     <div class="mdc-typography--headline5">
       <a href="/opportunity/{{slug}}">{{title}}</a> with <a href="/organisation/{{organisation_slug}}">{{organisation_name}}</a>
@@ -30,7 +30,6 @@
 
     {{/if}}
     {{else}}
-
     {{#unless @root.data.auth ~}}
     <div class="mdc-typography--headline6">
       If you would like to save this data for future applications you must first <a href="/sign-in">sign in</a> or <a href="/sign-up">sign up</a>.
@@ -43,7 +42,7 @@
     {{#if (contains (map @root.data.registeredInterest.items.[0] (getProp "value")) Id) }}
     <p>You have already registered interest in this opportunity</p>
     {{else}}
-
+    <form id="register-interest-form" action="/add-to-registered-interest?id={{Id}}" method="POST">
     <div class="mdc-layout-grid">
       <div class="mdc-layout-grid__inner">
         <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
@@ -158,10 +157,13 @@
       <input type="hidden" name="organisation_contact_first_name" value="{{organisation_contact_first_name}}">
       <input type="hidden" name="organisation_contact_last_name" value="{{organisation_contact_last_name}}">
       <input type="hidden" name="organisation_contact_phone" value="{{organisation_contact_phone}}">
+      <input type="hidden" name="organisation_contact_email" value="{{organisation_contact_email}}">
 
     <input type="hidden" name="tsi_contact_first_name" value="{{tsi_contact_first_name}}">
     <input type="hidden" name="tsi_contact_last_name" value="{{tsi_contact_last_name}}">
     <input type="hidden" name="tsi_contact_phone" value="{{tsi_contact_phone}}">
+      <input type="hidden" name="tsi_contact_email" value="{{tsi_contact_email}}">
+
 
     <input type="hidden" name="opportunity_contact_via_tsi" value="{{opportunity_contact_via_tsi}}">
     <input type="hidden" name="opportunity_contact_via_organisation" value="{{opportunity_contact_via_organisation}}">
@@ -205,61 +207,64 @@
       Register interest
     </button>
     {{/if~}}
+    </form>
     {{/unless ~}}
+
+
+    <div class="mdc-layout-grid">
+    <div class="mdc-layout-grid__inner">
+      {{#if opportunity_contact_via_organisation}}
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
+          <p><strong>Your application will be sent to:</strong></p>
+
+          <div class="mdc-typography--headline7">
+            <strong>{{{organisation_name}}}</strong>
+          </div>
+
+          {{#ifAny organisation_contact_first_name organisation_contact_last_name ~}}
+            <div class="mdc-typography--body1">
+              <strong>Contact Name: </strong> {{{organisation_contact_first_name}}} {{{organisation_contact_last_name}}}
+            </div>
+          {{/ifAny ~}}
+
+          {{#if organisation_contact_email ~}}
+            <div class="mdc-typography--body1">
+              <strong>Contact Email: </strong> <a href="mailto:{{{organisation_contact_email}}}">{{{organisation_contact_email}}}</a>
+            </div>
+          {{/if ~}}
+
+          {{#if organisation_website ~}}
+            <div class="mdc-typography--body1">
+              <strong>Website: </strong> <a href="{{fixUrl organisation_website 'http'}}">{{{organisation_website}}}</a>
+            </div>
+          {{/if}}
+        </div>
+      {{/if}}
+
+      {{#if opportunity_contact_via_tsi}}
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
+          {{#unless opportunity_contact_via_organisation}}
+            <p><strong>Your application will sent to the organisation that manages volunteering in the {{tsi_name}} region:</strong></p>
+          {{else}}
+            <p><strong>A copy will be sent to the an organisation that manages volunteering in {{tsi_name}}:</strong></p>
+          {{/unless}}
+          {{#ifAny tsi_contact_first_name tsi_contact_last_name ~}}
+            <div class="mdc-typography--body1">
+              <strong>Contact Name: </strong> {{{tsi_contact_first_name}}} {{{tsi_contact_last_name}}}
+            </div>
+          {{/ifAny ~}}
+
+          {{#if tsi_contact_email ~}}
+            <div class="mdc-typography--body1">
+              <strong>Contact Email: </strong> <a href="mailto:{{{tsi_contact_email}}}">{{{tsi_contact_email}}}</a>
+            </div>
+          {{/if ~}}
+        </div>
+      {{/if}}
     {{/if~}}
 
   {{!-- --}}
-  </form>
-  <div class="mdc-layout-grid">
-  <div class="mdc-layout-grid__inner">
-    {{#if opportunity_contact_via_organisation}}
-    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
-      <p><strong>Your application will be sent to:</strong></p>
 
-      <div class="mdc-typography--headline7">
-        <strong>{{{organisation_name}}}</strong>
-      </div>
-
-      {{#ifAny organisation_contact_first_name organisation_contact_last_name ~}}
-        <div class="mdc-typography--body1">
-          <strong>Contact Name: </strong> {{{organisation_contact_first_name}}} {{{organisation_contact_last_name}}}
-        </div>
-    {{/ifAny ~}}
-
-    {{#if organisation_contact_email ~}}
-        <div class="mdc-typography--body1">
-          <strong>Contact Email: </strong> <a href="mailto:{{{organisation_contact_email}}}">{{{organisation_contact_email}}}</a>
-        </div>
-    {{/if ~}}
-
-    {{#if organisation_website ~}}
-        <div class="mdc-typography--body1">
-          <strong>Website: </strong> <a href="{{fixUrl organisation_website 'http'}}">{{{organisation_website}}}</a>
-        </div>
-    {{/if}}
-    </div>
-    {{/if}}
-
-    {{#if opportunity_contact_via_tsi}}
-    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
-      {{#unless opportunity_contact_via_organisation}}
-        <p><strong>Your application will sent to the organisation that manages volunteering in the {{tsi_name}} region:</strong></p>
-      {{else}}
-        <p><strong>A copy will be sent to the an organisation that manages volunteering in {{tsi_name}}:</strong></p>
-      {{/unless}}
-      {{#ifAny tsi_contact_first_name tsi_contact_last_name ~}}
-        <div class="mdc-typography--body1">
-          <strong>Contact Name: </strong> {{{tsi_contact_first_name}}} {{{tsi_contact_last_name}}}
-        </div>
-      {{/ifAny ~}}
-
-      {{#if tsi_contact_email ~}}
-        <div class="mdc-typography--body1">
-          <strong>Contact Email: </strong> <a href="mailto:{{{tsi_contact_email}}}">{{{tsi_contact_email}}}</a>
-        </div>
-      {{/if ~}}
-    </div>
-    {{/if}}
 {{/with ~}}
 
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>

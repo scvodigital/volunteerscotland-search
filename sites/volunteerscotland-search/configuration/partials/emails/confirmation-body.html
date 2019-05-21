@@ -224,12 +224,13 @@
                                         <div style="font-family:Montserrat, Helvetica, Arial, sans-serif;font-size:16px;line-height:20px;text-align:left;color:#000000;">
                                           <p>Hello {{first_name}},</p>
                                           <p>Thank you for registering interest for <a href="https://search.volunteerscotland.net/opportunity/{{opportunity_slug}}?utm_source=alert&utm_medium=email" color="#42842A" style="color:#42842A;font-weight:bold;">{{{opportunity_title}}}</a> with {{organisation_name}} (ref:{{opportunity_milo_ref}}) as advertised on Volunteer Scotland's website.</p>
-                                          <p>{{organisation_name}} have received your registration of interest and should be in touch shortly. You can also contact {{#if opportunity_contact_via_tsi}}via {{tsi_name}} {{else}}{{organisation_name}}{{/if}}using the details below:</p>
+                                          <p>{{organisation_name}} have received your registration of interest and should be in touch shortly. You can also contact {{#compare opportunity_contact_email "===" tsi_contact_email}}via the organisation that manages volunteering in {{tsi_name}}
+                                              {{else}}{{organisation_name}}{{/compare}} using the details below:</p>
                                           <ul style="list-style-type:none;">
-                                            {{#if opportunity_contact_first_name}}
-                                              <li>{{opportunity_contact_first_name}}</li>
-                                            {{/if}}
-                                            <li><a href="mailto:{{email-register-interest}}">{{email-register-interest}}</a></li>
+                                            {{#ifAny opportunity_contact_first_name opportunity_contact_last_name}}
+                                              <li>{{opportunity_contact_first_name}} {{opportunity_contact_last_name}}</li>
+                                            {{/ifAny}}
+                                            <li><a href="mailto:{{opportunity_contact_email}}">{{opportunity_contact_email}}</a></li>
                                             {{#if opportunity_contact_phone}}
                                               <li>{{opportunity_contact_phone}}</li>
                                             {{/if}}
