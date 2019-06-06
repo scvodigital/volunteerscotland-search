@@ -22,7 +22,7 @@
     "circle": {
       "lat": {{@root.request.params.query.lat}},
       "lng": {{@root.request.params.query.lng}},
-      "radius": {{default @root.request.params.query.distance 0}},
+      "radius": {{default (multiply @root.request.params.query.distance 1.60934) 0}},
       "color": "#7BC143"
     }
   {{/ifAll ~}}
