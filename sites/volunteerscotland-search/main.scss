@@ -1585,6 +1585,7 @@ a {
     }
     .detailed-info {
       padding: $unit;
+      box-sizing: border-box;
       hr {
         height: 0;
         border: none;

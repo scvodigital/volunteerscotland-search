@@ -21,6 +21,8 @@
       {{else}}
       {{#if (contains volunteersearch_type "Home-based volunteering") ~}}
       {{> opportunity_location_home}}
+      {{else}}
+      {{> opportunity_location_areas advertised_areas=advertised_areas}}
       {{/if ~}}
       {{/compare ~}}
       {{/if ~}}
