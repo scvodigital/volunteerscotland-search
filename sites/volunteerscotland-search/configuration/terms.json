@@ -155,7 +155,7 @@
         "terms": [
           {
             "label": "Disaster / Emergencies",
-            "textBag": "Disaster / Emergencies",
+            "textBag": "Disaster Emergencies",
             "key": "disaster-emergencies"
           },
           {
@@ -192,7 +192,7 @@
         "terms": [
           {
             "label": "Education / Literacy",
-            "textBag": "Education / Literacy",
+            "textBag": "Education Literacy",
             "key": "education-literacy"
           },
           {
@@ -647,7 +647,7 @@
         "terms": [
           {
             "label": "Board/trustee role",
-            "textBag": "Board/trustee role",
+            "textBag": "Board trustee role",
             "key": "board-trustee-role"
           },
           {
