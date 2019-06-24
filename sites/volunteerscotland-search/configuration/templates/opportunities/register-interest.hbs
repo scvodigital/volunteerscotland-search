@@ -3,7 +3,7 @@
 
     <h2 class="mdc-typography--headline4">Register interest</h2>
     <div class="mdc-typography--headline5">
-      <a href="/opportunity/{{slug}}">{{title}}</a> with <a href="/organisation/{{organisation_slug}}">{{organisation_name}}</a>
+      <a href="/opportunity/{{Id}}/{{title_slug}}">{{title}}</a> with <a href="/organisation/{{organisation_id}}/{{organisation_name_slug}}">{{organisation_name}}</a>
     </div>
     {{#if @root.request.params.query.applied}}
     <div class="mdc-typography--headline6">
@@ -176,7 +176,8 @@
     <input type="hidden" name="opportunity_title" value="{{title}}">
     <input type="hidden" name="opportunity_minimum_age" value="{{minimum_age}}">
     <input type="hidden" name="opportunity_maximum_age" value="{{maximum_age}}">
-    <input type="hidden" name="opportunity_slug" value="{{slug}}">
+    <input type="hidden" name="opportunity_slug" value="{{title_slug}}">
+    <input type="hidden" name="opportunity_id" value="{{Id}}">
 
     {{#if @root.data.auth ~}}
     {{#unless @root.data.profileInfo.profile ~}}
