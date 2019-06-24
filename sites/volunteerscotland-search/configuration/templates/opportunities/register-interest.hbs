@@ -176,7 +176,8 @@
     <input type="hidden" name="opportunity_title" value="{{title}}">
     <input type="hidden" name="opportunity_minimum_age" value="{{minimum_age}}">
     <input type="hidden" name="opportunity_maximum_age" value="{{maximum_age}}">
-    <input type="hidden" name="opportunity_slug" value="{{title_slug}}">
+    {{!-- <input type="hidden" name="opportunity_slug" value="{{slug}}"> --}}
+    <input type="hidden" name="opportunity_title_slug" value="{{title_slug}}">
     <input type="hidden" name="opportunity_id" value="{{Id}}">
 
     {{#if @root.data.auth ~}}
