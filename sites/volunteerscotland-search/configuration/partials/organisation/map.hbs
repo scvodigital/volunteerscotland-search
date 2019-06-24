@@ -3,13 +3,13 @@
     <a href="/organisation/{{slug}}{{@root.request.url.search}}">{{title}}</a>
   </h3>
   {{#if postcode ~}}
-  <div class="mdc-typography--body1 v-margin">
+  <div class="mdc-typography--body1 post-title v-margin">
     Postcode: {{postcode}}
   </div>
   {{/if ~}}
-  <div class="mdc-typography--body2 post-info">
+  <div class="mdc-typography--body2">
     {{#if description ~}}
-    <div style="max-height: 4.2rem;"  class="post-info-item post-info-description faded-overflow">
+    <div style="max-height: 4.2rem;"  class="post-info-extra post-info-description faded-overflow">
       {{{description}}}
     </div>
     {{/if ~}}

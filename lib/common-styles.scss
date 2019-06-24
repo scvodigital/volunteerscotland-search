@@ -2782,6 +2782,29 @@ footer.mdc-layout__footer {
   .mdc-card .mdc-card__actions .mdc-card__action {
     margin-right: $unit/2;
   }
+
+  .map-content {
+    max-height: 6em;
+    text-overflow: ellipsis;
+    .popup-info {
+      max-height: 1em !important;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+    .popup-extra-info {
+      display: none;
+    }
+  }
+
+  footer.mdc-layout__footer {
+    .mdc-layout-grid__inner {
+      grid-gap: 0;
+    }
+  }
+
+
   footer.mdc-layout__footer {
     .mdc-layout-grid__inner {
       grid-gap: 0;

@@ -1,23 +1,13 @@
 {
   "name": "testpage",
   "pattern": "/testpage",
-  "acceptedVerbs": "POST",
+  "acceptedVerbs": "GET",
   "defaultParams": {
     "context": "results"
   },
   "tasks": [
     "context.metaData.commonTasks.authNotRequired",
     "context.metaData.commonTasks.opportunitySupplimentary",
-    {
-      "name": "emailTypes",
-      "taskModule": "render",
-      "renderer": "handlebars",
-      "config": {
-        "output": "data",
-        "template": ">context.metaData.handlebars.templates.email_email-types",
-        "parseJson": true
-      }
-    },
     {
       "name": "destination",
       "taskModule": "renderLayout",
