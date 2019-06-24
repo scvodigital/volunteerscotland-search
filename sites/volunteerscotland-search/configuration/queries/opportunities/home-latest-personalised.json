@@ -3,6 +3,7 @@
   "_source": [
     "Id",
     "slug",
+    "title_slug",
     "description",
     "available_from",
     "themes",
@@ -16,6 +17,8 @@
     "volunteersearch_type_slugs",
     "organisation_slug",
     "organisation_name",
+    "organisation_id",
+    "organisation_name_slug",
     "organisation_aims_and_objectives",
     "title",
     "travel_expenses",

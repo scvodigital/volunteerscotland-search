@@ -38,7 +38,7 @@
     {{#compare @root.route.name "===" "opportunity" ~}}
     {{#if goodhq_organisation.image_url ~}}
     <div class="mdc-card__media mdc-card__media--content-secondary pull-right">
-      <a href="/organisation/{{organisation_slug}}{{@root.request.url.search}}">
+      <a href="/organisation/{{organisation_id}}/{{organisation_name_slug}}{{@root.request.url.search}}">
         <img src="{{goodhq_organisation.image_url}}" alt="{{organisation_name}}" />
       </a>
     </div>
@@ -54,7 +54,7 @@
     {{/if ~}}
     {{/compare ~}}
     <h2 class="mdc-card__info--content-primary-title mdc-typography--headline6">
-      <a href="/opportunity/{{slug}}{{@root.request.url.search}}">
+      <a href="/opportunity/{{Id}}/{{title_slug}}{{@root.request.url.search}}">
         <span class="hover-underline">{{title}}</span>
       </a>
     </h2>
@@ -62,7 +62,7 @@
     <ul class="fa-ul organisation">
       <li class="mdc-card__info--content-primary-organisation mdc-typography--body1">
         <span class="fa-li"><span class="far fa-home-heart" title="Organisation"></span></span>
-        <a href="/organisation/{{organisation_slug}}{{@root.request.url.search}}">{{organisation_name}}</a>
+        <a href="/organisation/{{organisation_id}}/{{organisation_name_slug}}{{@root.request.url.search}}">{{organisation_name}}</a>
       </li>
     </ul>
     {{/ifAll ~}}

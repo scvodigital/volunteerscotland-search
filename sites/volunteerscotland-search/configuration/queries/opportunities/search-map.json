@@ -3,7 +3,10 @@
   "_source": [
     "Id",
     "title",
+    "title_slug",
     "organisation_name",
+    "organisation_id",
+    "organisation_name_slug",
     "description",
     "postcode",
     "geo_coords",

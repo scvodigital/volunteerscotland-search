@@ -3,6 +3,7 @@
   "_source": [
     "Id",
     "slug",
+    "title_slug",
     "milo_ref",
     "available_from",
     "themes",
@@ -14,6 +15,8 @@
     "postcode",
     "organisation_slug",
     "organisation_name",
+    "organisation_id",
+    "organisation_name_slug",
     "organisation_aims_and_objectives",
     "title",
     "travel_expenses",
