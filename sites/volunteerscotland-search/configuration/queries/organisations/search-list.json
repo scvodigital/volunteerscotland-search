@@ -55,7 +55,7 @@
                 "lon": {{@root.request.params.query.lng}}
               },
               "order": "asc",
-              "unit": "km",
+              "unit": "mi",
               "mode": "min",
               "distance_type": "arc"
             }

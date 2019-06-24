@@ -83,7 +83,7 @@
                       {{#each @root.context.metaData.terms}}
                       {{#each termGroups}}
                       {
-                        "name": {{{stringify @../key}}},
+                        "name": {{{stringify ../key}}},
                         "templates": {
                         {{#compare (length ../termGroups) 1}}
                         "header": "<h3>{{{../label}}}</h3>"

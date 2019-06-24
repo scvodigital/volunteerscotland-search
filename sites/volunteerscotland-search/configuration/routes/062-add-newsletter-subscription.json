@@ -1,7 +1,7 @@
 {
   "name": "add-newsletter-subscription",
   "pattern": "/add-newsletter-subscription",
-  "debug":true,
+  "debug": true,
   "acceptedVerbs": "POST",
   "defaultParams": {
     "context": "results"
@@ -15,8 +15,8 @@
       "renderer": "handlebars",
       "config": {
         "template": ">context.metaData.handlebars.templates.newsletters_add-subscriptions",
-        "output" : "data",
-        "parseJson" : true
+        "output": "data",
+        "parseJson": true
       }
     },
     {
@@ -33,8 +33,8 @@
       "renderer": "handlebars",
       "config": {
         "template": ">context.metaData.handlebars.templates.newsletters_remove-subscriptions",
-        "output" : "data",
-        "parseJson" : true
+        "output": "data",
+        "parseJson": true
       }
     },
     {
