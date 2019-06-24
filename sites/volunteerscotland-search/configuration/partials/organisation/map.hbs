@@ -1,6 +1,6 @@
 <div class="map-content">
   <h3 class="mdc-typography--headline7">
-    <a href="/organisation/{{slug}}{{@root.request.url.search}}">{{title}}</a>
+    <a href="/organisation/{{Id}}/{{title_slug}}{{@root.request.url.search}}">{{title}}</a>
   </h3>
   {{#if postcode ~}}
   <div class="mdc-typography--body1 post-title v-margin">
@@ -15,6 +15,6 @@
     {{/if ~}}
   </div>
   <div class="mdc-typography--body2">
-    <a href="/organisation/{{slug}}{{@root.request.url.search}}" class="mdc-card__action">Find out more</a>
+    <a href="/organisation/{{Id}}/{{title_slug}}{{@root.request.url.search}}" class="mdc-card__action">Find out more</a>
   </div>
 </div>

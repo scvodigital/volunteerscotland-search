@@ -3,6 +3,7 @@
   "_source": [
     "Id",
     "slug",
+    "title_slug",
     "date_last_modified",
     "milo_ref",
     "start_date",
@@ -25,6 +26,8 @@
     "volunteersearch_type_slugs",
     "organisation_slug",
     "organisation_name",
+    "organisation_id",
+    "organisation_name_slug",
     "organisation_aims_and_objectives",
     "organisation_twitter",
     "organisation_twitter_url",

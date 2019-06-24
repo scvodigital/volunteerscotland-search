@@ -3,11 +3,14 @@
   "_source": [
     "Id",
     "slug",
+    "title_slug",
     "description",
     "geo_coords",
     "geo_opportunity_info",
     "postcode",
     "organisation_name",
+    "organisation_id",
+    "organisation_name_slug",
     "title",
     "opportunity_contact_email"
   ],
