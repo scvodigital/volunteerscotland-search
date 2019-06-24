@@ -94,21 +94,19 @@
       "filter": [
         {{>queries_opportunity_common_filters @root.request.params.query}}
       ],
-      "must": [
+      "should": [
         {
           "term": {
-            {{#if @root.request.params.slug ~}}
-            {{#if (includes @root.request.params.slug "-") ~}}
-            "slug": "{{@root.request.params.slug}}"
-            {{else}}
-            "Id": "{{@root.request.params.slug}}"
-            {{/if ~}}
-            {{else}}
             "Id": "{{@root.request.params.id}}"
-            {{/if ~}}
+          }
+        },
+        {
+          "term": {
+            "slug": "{{@root.request.params.id}}"
           }
         }
-      ]
+      ],
+      "minimum_should_match": 1
     }
   }
 }
