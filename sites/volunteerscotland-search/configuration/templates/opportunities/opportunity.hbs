@@ -1,6 +1,6 @@
 
 <div class="container-content">
-  {{#compare @root.data.primaryResponse.hits.total ">" 0}}
+  {{#compare @root.data.primaryResponse.hits.total ">" 0 ~}}
   <div class="content-primary">
     {{#each @root.data.primaryResponse.hits.hits ~}}
       {{> opportunity_full _source view="full"}}
@@ -26,5 +26,5 @@
   <p>
     We could not find the opportunity you were looking for. It may have been removed or expired.
   </p>
-  {{/compare}}
+  {{/compare ~}}
 </div>
