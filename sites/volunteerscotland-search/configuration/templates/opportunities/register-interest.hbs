@@ -42,7 +42,7 @@
     {{#if (contains (map @root.data.registeredInterest.items.[0] (getProp "value")) Id) }}
     <p>You have already registered interest in this opportunity</p>
     {{else}}
-    <form id="register-interest-form" action="/add-to-registered-interest?id={{Id}}" method="POST">
+    <form id="register-interest-form" action="/add-to-registered-interest?id={{Id}}" method="POST" class="t-margin-full">
     <div class="mdc-layout-grid">
       <div class="mdc-layout-grid__inner">
         <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
@@ -220,8 +220,8 @@
     <div class="mdc-layout-grid">
     <div class="mdc-layout-grid__inner">
       {{#if opportunity_contact_via_organisation}}
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
-          <p><strong>Your application will be sent to:</strong></p>
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
+          <p>Your message will be sent to:</p>
 
           <div class="mdc-typography--headline7">
             <strong>{{{organisation_name}}}</strong>
@@ -229,13 +229,13 @@
 
           {{#ifAny organisation_contact_first_name organisation_contact_last_name ~}}
             <div class="mdc-typography--body1">
-              <strong>Contact Name: </strong> {{{organisation_contact_first_name}}} {{{organisation_contact_last_name}}}
+              <strong>Name: </strong> {{{organisation_contact_first_name}}} {{{organisation_contact_last_name}}}
             </div>
           {{/ifAny ~}}
 
           {{#if organisation_contact_email ~}}
             <div class="mdc-typography--body1">
-              <strong>Contact Email: </strong> <a href="mailto:{{{organisation_contact_email}}}">{{{organisation_contact_email}}}</a>
+              <strong>Email: </strong> <a href="mailto:{{{organisation_contact_email}}}">{{{organisation_contact_email}}}</a>
             </div>
           {{/if ~}}
 
@@ -248,21 +248,21 @@
       {{/if}}
 
       {{#if opportunity_contact_via_tsi}}
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
           {{#unless opportunity_contact_via_organisation}}
-            <p><strong>Your application will sent to the organisation that manages volunteering in the {{tsi_name}} region:</strong></p>
+            <p>Your message will sent to the organisation that manages volunteering in the {{tsi_name}} region:</p>
           {{else}}
             <p><strong>A copy will be sent to the an organisation that manages volunteering in {{tsi_name}}:</strong></p>
           {{/unless}}
           {{#ifAny tsi_contact_first_name tsi_contact_last_name ~}}
             <div class="mdc-typography--body1">
-              <strong>Contact Name: </strong> {{{tsi_contact_first_name}}} {{{tsi_contact_last_name}}}
+              <strong>Name: </strong> {{{tsi_contact_first_name}}} {{{tsi_contact_last_name}}}
             </div>
           {{/ifAny ~}}
 
           {{#if tsi_contact_email ~}}
             <div class="mdc-typography--body1">
-              <strong>Contact Email: </strong> <a href="mailto:{{{tsi_contact_email}}}">{{{tsi_contact_email}}}</a>
+              <strong>Email: </strong> <a href="mailto:{{{tsi_contact_email}}}">{{{tsi_contact_email}}}</a>
             </div>
           {{/if ~}}
         </div>
