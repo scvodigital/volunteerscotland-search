@@ -4,6 +4,7 @@
   "_source": [
     "Id",
     "slug",
+    "title_slug",
     "available_from",
     "themes",
     "themes_slugs",
@@ -17,6 +18,8 @@
     "volunteersearch_type_slugs",
     "organisation_slug",
     "organisation_name",
+    "organisation_id",
+    "organisation_name_slug",
     "organisation_aims_and_objectives",
     "local_authority",
     "title",

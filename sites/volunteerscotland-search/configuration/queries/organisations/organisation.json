@@ -5,6 +5,7 @@
     "slug",
     "charity_number",
     "title",
+    "title_slug",
     "alias",
     "description",
     "description_html",
@@ -35,13 +36,19 @@
       "filter": [
         {{>queries_organisation_common_filters @root.request.params.query}}
       ],
-      "must": [
+      "should": [
         {
           "term": {
-            "slug": "{{request.params.slug}}"
+            "Id": "{{@root.request.params.id}}"
+          }
+        },
+        {
+          "term": {
+            "slug": "{{@root.request.params.id}}"
           }
         }
-      ]
+      ],
+      "minimum_should_match": 1
     }
   }
 }

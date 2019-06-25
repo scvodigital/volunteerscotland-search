@@ -8,7 +8,7 @@
       "renderer": "handlebars",
       "config": {
         "output": "data",
-        "template": "{{#if data.auth}}registered-interest?id={{{request.params.query.id}}}{{else}}register-interest/{{request.body.opportunity_slug}}?applied=true{{/if}}"
+        "template": "{{#if data.auth}}registered-interest?id={{{request.params.query.id}}}{{else}}register-interest/{{request.body.opportunity_id}}/{{request.body.opportunity_title_slug}}?applied=true{{/if}}"
       }
     },
     {

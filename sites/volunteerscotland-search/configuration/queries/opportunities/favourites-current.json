@@ -3,11 +3,14 @@
   "_source": [
     "Id",
     "slug",
+    "title_slug",
     "description",
     "title",
     "geo_coords",
     "organisation_slug",
     "organisation_name",
+    "organisation_id",
+    "organisation_name_slug",
     "opportunity_contact_email"
   ],
   "query": {

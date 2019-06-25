@@ -1,7 +1,7 @@
 {
   "name": "opportunity",
   "pattern": {
-    "slug": "/opportunity/:slug",
+    "slug": "/opportunity/:id(/:junk)",
     "id": "/opp/:id"
   },
   "metaData": {

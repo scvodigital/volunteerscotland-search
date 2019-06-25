@@ -3,6 +3,7 @@
   "_source": [
     "Id",
     "slug",
+    "title_slug",
     "date_last_modified",
     "milo_ref",
     "start_date",
@@ -25,6 +26,8 @@
     "volunteersearch_type_slugs",
     "organisation_slug",
     "organisation_name",
+    "organisation_id",
+    "organisation_name_slug",
     "organisation_aims_and_objectives",
     "organisation_twitter",
     "organisation_twitter_url",
@@ -94,21 +97,19 @@
       "filter": [
         {{>queries_opportunity_common_filters @root.request.params.query}}
       ],
-      "must": [
+      "should": [
         {
           "term": {
-            {{#if @root.request.params.slug ~}}
-            {{#if (includes @root.request.params.slug "-") ~}}
-            "slug": "{{@root.request.params.slug}}"
-            {{else}}
-            "Id": "{{@root.request.params.slug}}"
-            {{/if ~}}
-            {{else}}
             "Id": "{{@root.request.params.id}}"
-            {{/if ~}}
+          }
+        },
+        {
+          "term": {
+            "slug": "{{@root.request.params.id}}"
           }
         }
-      ]
+      ],
+      "minimum_should_match": 1
     }
   }
 }

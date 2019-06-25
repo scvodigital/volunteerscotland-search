@@ -3,6 +3,7 @@
   "_source": [
     "Id",
     "slug",
+    "title_slug",
     "title",
     "milo_ref",
     "geo_coords",
@@ -11,6 +12,8 @@
     "organisation_website",
     "organisation_slug",
     "organisation_name",
+    "organisation_id",
+    "organisation_name_slug",
     "opportunity_contact_email"
   ],
   "query": {

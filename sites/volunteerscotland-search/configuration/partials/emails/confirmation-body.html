@@ -223,7 +223,7 @@
                                       <td align="left" style="font-size:0px;padding:0px;word-break:break-word;">
                                         <div style="font-family:Montserrat, Helvetica, Arial, sans-serif;font-size:16px;line-height:20px;text-align:left;color:#000000;">
                                           <p>Hello {{first_name}},</p>
-                                          <p>Thank you for registering interest for <a href="https://search.volunteerscotland.net/opportunity/{{opportunity_slug}}?utm_source=alert&utm_medium=email" color="#42842A" style="color:#42842A;font-weight:bold;">{{{opportunity_title}}}</a> with {{organisation_name}} (ref:{{opportunity_milo_ref}}) as advertised on Volunteer Scotland's website.</p>
+                                          <p>Thank you for registering interest for <a href="https://search.volunteerscotland.net/opportunity/{{opportunity_id}}/{{opportunity_title_slug}}?utm_source=alert&utm_medium=email" color="#42842A" style="color:#42842A;font-weight:bold;">{{{opportunity_title}}}</a> with {{organisation_name}} (ref:{{opportunity_milo_ref}}) as advertised on Volunteer Scotland's website.</p>
                                           <p>{{organisation_name}} have received your registration of interest and should be in touch shortly. You can also contact {{#compare opportunity_contact_email "===" tsi_contact_email}}via the organisation that manages volunteering in {{tsi_name}}
                                               {{else}}{{organisation_name}}{{/compare}} using the details below:</p>
                                           <ul style="list-style-type:none;">
