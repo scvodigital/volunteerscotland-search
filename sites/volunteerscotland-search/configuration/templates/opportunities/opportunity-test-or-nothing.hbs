@@ -1,0 +1,279 @@
+{{#if @root.data.trueResponse.hits.hits.[0]}}{{{stringify @root.data.trueResponse}}}{{else}}{{#unless @root.request.params.query.optimize}}{{else}}
+  {
+  "took": 5,
+  "timed_out": false,
+  "_shards": {
+  "total": 5,
+  "successful": 5,
+  "skipped": 0,
+  "failed": 0
+  },
+  "hits": {
+  "total": 1,
+  "max_score": 9.9895735,
+  "hits": [
+  {
+  "_index": "web-content-2018-04-09-1925",
+  "_type": "milo-volunteering-opportunity",
+  "_id": "a000000000IaMAT3st",
+  "_score": 9.9895735,
+  "_source": {
+  "sunday_morning": null,
+  "opportunity_contact_phone": "0131 0090210",
+  "monday_morning": null,
+  "opportunity_contact_last_name": "Thomas",
+  "opportunity_contact_first_name": "Testerton",
+  "advertised_areas": [],
+  "frequency_commitment_details": null,
+  "work_location": "At Postcode",
+  "organisation_slug": "i-like-testing-things-a000000000IaMAT3st",
+  "themes": [
+  "Older People"
+  ],
+  "milo_ref": "VO00000",
+  "organisation_id": "a000000000IaMAT3st",
+  "geo_coords": [
+  {
+  "lon": 4.633007,
+  "lat": 55.468064
+  }
+  ],
+  "organisation_website": "http://www.example.com/",
+  "timings_description": "As and when required.",
+  "wednesday_evening": null,
+  "tuesday_morning": null,
+  "themes_slugs": [
+  "older-people"
+  ],
+  "goodhq_organisation": {
+  "image_url": null
+  },
+  "saturday_afternoon": null,
+  "saturday_morning": null,
+  "activities_slugs": [
+  "care-support-worker"
+  ],
+  "maximum_age": 100,
+  "date_last_modified": 1561655086000,
+  "slug": "veterans-support-assistant-a0g1p00000atehzaaf",
+  "availability_slugs": [],
+  "organisation_name_slug": "action-on-testing-east-testshire",
+  "postcode": "KA8 8AG",
+  "organisation_name": "Action on Testing (East Testshire)",
+  "organisation_contact_last_name": "Testerton",
+  "saturday_evening": null,
+  "friday_evening": null,
+  "wednesday_afternoon": null,
+  "friday_afternoon": null,
+  "sunday_afternoon": null,
+  "organisation_contact_email": "tanya@testerton.org.uk",
+  "tuesday_afternoon": null,
+  "tsi_contact_email": "volunteering@vase.ming",
+  "weblink_tooltip": null,
+  "weblink": null,
+  "Id": "a0g1p00000AtEhzAAF",
+  "description_html": "<p>Hello there</p>\n",
+  "end_date": null,
+  "tsi_contact_first_name": "Volunteering",
+  "monday_evening": null,
+  "support_options": "Named Contact For Volunteer",
+  "organisation_contact_first_name": "Thomas",
+  "volunteersearch_type_slugs": [],
+  "sunday_evening": null,
+  "description": "You have a great chance to join our exciting new ‘Test’ team to help offer testing and more testing to testers aged 18 or over, their test-subjects and test-managers with testing or testing accessories. ",
+  "availability": [],
+  "title": "Testing Assistant",
+  "volunteersearch_type": [],
+  "travel_details": null,
+  "taster_details": null,
+  "minimum_age": 18,
+  "thursday_afternoon": null,
+  "travel_expenses": "Yes",
+  "volunteersearch_age_group": [
+  "18 and over"
+  ],
+  "volunteersearch_age_group_slugs": [
+  "18-and-over"
+  ],
+  "experience_required": "· Knowledge of or willingness to learn about issues affecting testers and test inclined people.",
+  "tuesday_evening": null,
+  "opportunity_contact_email": "thomas.denholm@hearingloss.org.uk",
+  "volunteersearch_support_option": [
+  "Taster Available"
+  ],
+  "wednesday_morning": null,
+  "opportunity_contact_via_tsi": false,
+  "volunteersearch_support_option_slugs": [
+  "taster-available"
+  ],
+  "start_date": 1547078400000,
+  "monday_afternoon": null,
+  "weblink_title": null,
+  "thursday_morning": null,
+  "thursday_evening": null,
+  "opportunity_contact_via_organisation": true,
+  "organisation_aims_and_objectives": "To provide support and advice to hearing aid users, their families, carers, community groups and professionals.",
+  "taster_available": true,
+  "restriction_details": null,
+  "url": "https://search.volunteerscotland.net/opportunity/veterans-support-assistant-a0g1p00000atehzaaf",
+  "tsi_name": "South Ayrshire",
+  "friday_morning": null,
+  "tsi_contact_last_name": "Team",
+  "activities": [
+  "Care / Support Worker"
+  ],
+  "title_slug": "veterans-support-assistant",
+  "expenses_paid": null
+  }
+  }
+  ]
+  },
+  "pagination": {
+  "from": 0,
+  "size": 1,
+  "totalResults": 1,
+  "totalPages": 1,
+  "currentPage": 1,
+  "nextPage": null,
+  "prevPage": null,
+  "pageRange": [
+  {
+  "pageNumber": 1,
+  "distance": 0
+  }
+  ]
+  },
+  "request": {
+  "index": "web-content-production",
+  "type": "milo-volunteering-opportunity",
+  "body": {
+  "size": 1,
+  "_source": [
+  "Id",
+  "slug",
+  "title_slug",
+  "date_last_modified",
+  "milo_ref",
+  "start_date",
+  "themes",
+  "themes_slugs",
+  "description",
+  "description_html",
+  "end_date",
+  "expenses_paid",
+  "experience_required",
+  "restriction_details",
+  "frequency_commitment_details",
+  "geo_coords",
+  "geo",
+  "advertised_areas",
+  "minimum_age",
+  "maximum_age",
+  "postcode",
+  "volunteersearch_type",
+  "volunteersearch_type_slugs",
+  "organisation_slug",
+  "organisation_name",
+  "organisation_id",
+  "organisation_name_slug",
+  "organisation_aims_and_objectives",
+  "organisation_twitter",
+  "organisation_twitter_url",
+  "organisation_facebook",
+  "organisation_facebook_url",
+  "organisation_linkedin",
+  "organisation_linkedin_url",
+  "organisation_contact_first_name",
+  "organisation_contact_last_name",
+  "organisation_contact_email",
+  "opportunity_contact_first_name",
+  "opportunity_contact_last_name",
+  "opportunity_contact_email",
+  "opportunity_contact_via_organisation",
+  "opportunity_contact_via_tsi",
+  "tsi_contact_first_name",
+  "tsi_contact_last_name",
+  "tsi_contact_email",
+  "tsi_name",
+  "opportunity_contact_phone",
+  "support_options",
+  "goodhq_organisation.image_url",
+  "title",
+  "travel_expenses",
+  "travel_details",
+  "work_location",
+  "activities",
+  "activities_slugs",
+  "monday_afternoon",
+  "monday_evening",
+  "monday_morning",
+  "tuesday_afternoon",
+  "tuesday_evening",
+  "tuesday_morning",
+  "wednesday_afternoon",
+  "wednesday_evening",
+  "wednesday_morning",
+  "thursday_afternoon",
+  "thursday_evening",
+  "thursday_morning",
+  "friday_afternoon",
+  "friday_evening",
+  "friday_morning",
+  "saturday_afternoon",
+  "saturday_evening",
+  "saturday_morning",
+  "sunday_afternoon",
+  "sunday_evening",
+  "sunday_morning",
+  "availability",
+  "availability_slugs",
+  "timings_description",
+  "taster_available",
+  "taster_details",
+  "url",
+  "volunteersearch_age_group",
+  "volunteersearch_age_group_slugs",
+  "volunteersearch_support_option",
+  "volunteersearch_support_option_slugs",
+  "opportunity_contact_email",
+  "weblink",
+  "weblink_title",
+  "weblink_tooltip",
+  "organisation_website"
+  ],
+  "query": {
+  "bool": {
+  "filter": [
+  {
+  "range": {
+  "date_last_modified": {
+  "gt": "now-12M",
+  "boost": 1
+  }
+  }
+  },
+  {
+  "exists": {
+  "field": "title"
+  }
+  }
+  ],
+  "should": [
+  {
+  "term": {
+  "Id": "a0g1p00000AtEhzAAF"
+  }
+  },
+  {
+  "term": {
+  "slug": "a0g1p00000AtEhzAAF"
+  }
+  }
+  ],
+  "minimum_should_match": 1
+  }
+  }
+  }
+  }
+  }
+{{/unless}}{{/if}}

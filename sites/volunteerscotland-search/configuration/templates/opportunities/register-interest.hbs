@@ -8,9 +8,12 @@
         <a href="/opportunity/{{Id}}/{{title_slug}}">{{title}}</a> with <a href="/organisation/{{organisation_id}}/{{organisation_name_slug}}">{{organisation_name}}</a>
       </div>
       {{#if @root.request.params.query.applied ~}}
+        <section class="v-margin-full-bottom">
         <div class="mdc-typography--headline6">
           Thank you for registering interest in this opportunity.
         </div>
+
+
         <p class="mdc-typography--body1 t-margin-full">
           If you want to contact the organisation directly about this opportunity, please use the details below:
         </p>
@@ -32,6 +35,10 @@
             <strong>Website: </strong> <a href="{{fixUrl organisation_website 'http'}}">{{{organisation_website}}}</a>
           </div>
         {{/if ~}}
+        </section>
+        <section>
+        {{>social_links opportunity=@root.data.registered_interest_opportunities.current.hits.hits.[0]._source }}
+        </section>
       {{else}}
         {{#unless @root.data.auth ~}}
           <div class="mdc-typography--headline6">
