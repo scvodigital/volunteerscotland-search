@@ -1,13 +1,10 @@
-Test Page
-
-<!-- Sharingbutton Facebook -->
-<a class="resp-sharing-button__link noext" href="https://facebook.com/sharer/sharer.php?u=http%3A%2F%2Fsharingbuttons.io" target="_blank" rel="noopener" aria-label="Share on Facebook">
-  <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--large"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
-  </div><span class="fab fa-facebook resp-sharing-logo" aria-label="Menu"></span> Share on Facebook</div>
+<div class="container-fluid container-content content-page">
+<a class="resp-sharing-button mdc-button mdc-button--raised noext" href="https://facebook.com/sharer/sharer.php?u={{@root.data.primaryResponse.hits.hits.[0]._source.url}}" target="_blank" rel="noopener" aria-label="Share on Facebook">
+  <span class="fab fa-facebook resp-sharing-logo mdc-list-item__graphic" aria-label="Share on Facebook"></span> Share on Facebook
 </a>
 
-<!-- Sharingbutton Twitter -->
-<a class="resp-sharing-button__link noext" href="https://twitter.com/intent/tweet/?text=Super%20fast%20and%20easy%20Social%20Media%20Sharing%20Buttons.%20No%20JavaScript.%20No%20tracking.&amp;url=http%3A%2F%2Fsharingbuttons.io" target="_blank" rel="noopener" aria-label="Share on Twitter">
-  <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--large"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
-  </div><span class="fab fa-twitter resp-sharing-logo" aria-label="Menu"> Share on Twitter</div>
+<a class="resp-sharing-button mdc-button mdc-button--raised noext" href="https://twitter.com/intent/tweet/?text={{> social_link_text opportunity=@root.data.primaryResponse.hits.hits.[0]._source}}" target="_blank" rel="noopener" aria-label="Share on Twitter">
+  <span class="fab fa-twitter resp-sharing-logo mdc-list-item__graphic" aria-label="Share on Twitter"></span> Share on Twitter
 </a>
+
+</div>

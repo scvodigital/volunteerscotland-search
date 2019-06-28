@@ -3,8 +3,11 @@
     Registered interest
   </h1>
   {{#if @root.request.params.query.id}}
-    <p class="mdc-typography--body1">Your interest in this opportunity has been registered.
-      The organisation has been contacted, and will respond to you at the email provided</p>
+
+      <p class="mdc-typography--body1">Your interest in this opportunity has been registered.
+        The organisation has been contacted, and will respond to you at the email provided</p>
+
+      {{>social_links opportunity=@root.data.registered_interest_opportunities.current.hits.hits.[0]._source }}
   {{/if}}
   {{#compare @root.data.registered_interest_opportunities.current.hits.total "===" 0}}
     <p class="mdc-typography--body1">
