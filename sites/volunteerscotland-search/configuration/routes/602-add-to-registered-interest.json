@@ -2,7 +2,7 @@
   "name": "add-to-registered-interest",
   "pattern": "/add-to-registered-interest",
   "acceptedVerbs": "POST",
-  "debug": true,
+  "debug": false,
   "tasks": [
     "context.metaData.commonTasks.authNotRequired",
     {
