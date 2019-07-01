@@ -1,0 +1,34 @@
+{
+  "name": "email-display",
+  "pattern": "/email-display",
+  "acceptedVerbs": "POST",
+  "debug": false,
+  "tasks": [
+    "context.metaData.commonTasks.authNotRequired",
+    {
+      "name": "destination",
+      "taskModule": "renderLayout",
+      "renderer": "handlebars",
+      "config": {
+        "logic": {
+          "if": [
+            "default"
+          ]
+        },
+        "output": "body",
+        "layouts": {
+          "default": {
+            "layout": ">context.metaData.handlebars.layouts.default",
+            "parts": {
+              "head": ">context.metaData.handlebars.templates.pages_page-head-tags",
+              "body": ">context.metaData.handlebars.templates.email_email-display",
+              "foot": ">context.metaData.handlebars.templates.opportunities_register-interest-foot",
+              "sidebar": ">context.metaData.handlebars.templates.opportunities_search-form"
+            },
+            "contentType": "text/html"
+          }
+        }
+      }
+    }
+  ]
+}

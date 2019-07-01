@@ -82,7 +82,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
     $loader.css('display', 'flex');
     evt.preventDefault();
     volunteerscotland.auth.signInEmailPassword(email, password).then(function(user) {
-      window.location.href = '{{#if (contains @root.request.headers.referer "sign-out")}}/{{else}}{{default @root.request.headers.referer "/"}}{{/if}}';
+      window.location.href = '
+        {{~#ifAny (contains @root.request.headers.referer "sign-out") (contains @root.request.headers.referer "reset-password")~}}
+          /
+        {{~else~}}
+          {{default @root.request.headers.referer "/"}}
+        {{~/ifAny~}}
+      ';
     }).catch(function(err) {
       $message.html(err.message+' <a href="/reset-password">Reset password</a>').show();
       $loader.css('display', 'none');
