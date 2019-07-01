@@ -224,7 +224,9 @@
                                         <div style="font-family:Montserrat, Helvetica, Arial, sans-serif;font-size:16px;line-height:20px;text-align:left;color:#000000;">
                                           <p>Hello {{organisation_contact_first_name}},</p>
                                           <p>The person below has shown an interest in the following opportunity, <a href="https://search.volunteerscotland.net/opportunity/{{opportunity_id}}/{{opportunity_title_slug}}?utm_source=alert&utm_medium=email" color="#42842A" style="color:#42842A;font-weight:bold;">{{{opportunity_title}}}</a> with {{organisation_name}} (ref:{{opportunity_milo_ref}}) as advertised on Volunteer Scotland's website. <ul style="list-style-type:none;">
-                                              <li>Name: {{first_name}} {{last_name}}</li>
+                                              {{#ifAny first_name last_name}}
+                                                <li>Name: {{first_name}} {{last_name}}</li>
+                                              {{/ifAny}}
                                               {{#ifAny location_address location_city location_postcode}}
                                                 <li>Address: <ul style="list-style-type:none;">
                                                     {{#if location_address}}
