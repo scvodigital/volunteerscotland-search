@@ -1,5 +1,5 @@
 User-agent: *
-Disallow:
+Disallow: /test-ab/
 
 User-agent: litefinder
 Disallow: /

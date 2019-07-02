@@ -1,6 +1,6 @@
 {
-  "name": "testpage",
-  "pattern": "/testpage/:id(/:junk)",
+  "name": "test-ab-variant",
+  "pattern": "/test-ab/variant/:id(/:junk)",
   "debug": true,
   "metaData": {
     "title": "Volunteer Scotland Search",
@@ -59,7 +59,7 @@
           "default": {
             "layout": ">context.metaData.handlebars.layouts.default",
             "parts": {
-              "head": ">context.metaData.handlebars.templates.opportunities_register-interest-head-tags-test",
+              "head": ">context.metaData.handlebars.templates.opportunities_register-interest-head-tags",
               "body": ">context.metaData.handlebars.templates.opportunities_register-interest-test",
               "foot": ">context.metaData.handlebars.templates.opportunities_register-interest-foot",
               "sidebar": ">context.metaData.handlebars.templates.opportunities_search-form"
