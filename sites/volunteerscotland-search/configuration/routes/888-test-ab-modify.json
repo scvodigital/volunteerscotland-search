@@ -1,0 +1,73 @@
+{
+  "name": "test-ab-modify",
+  "pattern": "/test-ab-modify/:id(/:junk)",
+  "debug": true,
+  "metaData": {
+    "title": "Volunteer Scotland Search",
+    "sidebarButton": {
+      "icon": "search",
+      "tooltip": "Search",
+      "classes": "hide-md hide-lg"
+    }
+  },
+  "defaultParams": {
+    "context": "detail"
+  },
+  "tasks": [
+    "context.metaData.commonTasks.authNotRequired",
+    "context.metaData.commonTasks.favouritesData",
+    "context.metaData.commonTasks.registeredInterestData",
+    "context.metaData.commonTasks.profileInfoData",
+    {
+      "name": "trueResponse",
+      "taskModule": "elasticsearch",
+      "config": {
+        "connectionStringTemplate": "{$../../../elasticsearch-url.txt}",
+        "elasticsearchConfig": {
+          "apiVersion": "5.6"
+        },
+        "queryTemplates": {
+          "index": "web-content-production",
+          "type": "milo-volunteering-opportunity",
+          "template": ">context.metaData.handlebars.queries.opportunities_opportunity"
+        }
+      },
+      "renderer": "handlebars"
+    },
+    {
+      "name": "primaryResponse",
+      "taskModule": "render",
+      "renderer": "handlebars",
+      "config": {
+        "output": "data",
+        "template": ">context.metaData.handlebars.templates.opportunities_opportunity-test-or-nothing",
+        "parseJson": true
+      }
+    },
+    {
+      "name": "destination",
+      "taskModule": "renderLayout",
+      "renderer": "handlebars",
+      "config": {
+        "logic": {
+          "if": [
+            "default"
+          ]
+        },
+        "output": "body",
+        "layouts": {
+          "default": {
+            "layout": ">context.metaData.handlebars.layouts.default",
+            "parts": {
+              "head": ">context.metaData.handlebars.templates.opportunities_register-interest-head-tags-test",
+              "body": ">context.metaData.handlebars.templates.opportunities_register-interest-test",
+              "foot": ">context.metaData.handlebars.templates.opportunities_register-interest-foot",
+              "sidebar": ">context.metaData.handlebars.templates.opportunities_search-form"
+            },
+            "contentType": "text/html"
+          }
+        }
+      }
+    }
+  ]
+}
