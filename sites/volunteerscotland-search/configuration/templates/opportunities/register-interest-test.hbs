@@ -2,7 +2,7 @@
   {{#compare @root.data.primaryResponse.hits.total ">" 0 ~}}
     {{#with @root.data.primaryResponse.hits.hits.0._source ~}}
       <h2 class="mdc-typography--headline4">
-        Register interest
+        Register interest - AB Test
       </h2>
       <div class="mdc-typography--headline5">
         <a href="/opportunity/{{Id}}/{{title_slug}}">{{title}}</a> with <a href="/organisation/{{organisation_id}}/{{organisation_name_slug}}">{{organisation_name}}</a>
@@ -221,6 +221,7 @@
               <span class="far fa-hand-paper mdc-list-item__graphic" aria-hidden="true"></span>
               Register interest
             </button>
+            <p>This is a test only, pressing register interest will display email copy, rather than sending emails</p>
           {{/if ~}}
         </form>
         {{/unless ~}}
