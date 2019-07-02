@@ -2,7 +2,7 @@
   {{#compare @root.data.primaryResponse.hits.total ">" 0 ~}}
     {{#with @root.data.primaryResponse.hits.hits.0._source ~}}
       <h2 class="mdc-typography--headline4">
-        Register interest - AB Test
+        Register interest - AB Test Variant
       </h2>
       <div class="mdc-typography--headline5">
         <a href="/opportunity/{{Id}}/{{title_slug}}">{{title}}</a> with <a href="/organisation/{{organisation_id}}/{{organisation_name_slug}}">{{organisation_name}}</a>
@@ -61,90 +61,12 @@
               <div class="mdc-layout-grid__inner">
                 <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
                   <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
-                    <input id="first_name" name="first_name"
-                           class="mdc-text-field__input mdc-text-field--fullwidth"
-                           value="{{@root.data.profileInfo.profile.first_name}}">
-                    <label class="mdc-floating-label" for="first_name">
-                      First name
-                    </label>
-                  </div>
-                </div>
-                <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
-                  <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
-                    <input id="last_name" name="last_name"
-                       class="mdc-text-field__input mdc-text-field--fullwidth"
-                           value="{{@root.data.profileInfo.profile.last_name}}">
-                    <label class="mdc-floating-label" for="last_name">
-                      Last name
-                    </label>
-                  </div>
-                </div>
-              </div>
-              <div class="mdc-layout-grid__inner">
-                <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
-                  <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
-                    <input id="thisfield" name="date_of_birth"
-                      {{>form_validation_attributes @root.context.metaData.accountInfoValidation.date_of_birth}} class="mdc-text-field__input mdc-text-field--fullwidth"
-                           value="{{@root.data.profileInfo.profile.date_of_birth}}">
-                    <label class="mdc-floating-label" for="date_of_birth">
-                      Date of birth
-                    </label>
-                  </div>
-                </div>
-                <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
-                  <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
-                    <input id="location_address" name="location_address"
-                      {{>form_validation_attributes @root.context.metaData.accountInfoValidation.location_address}} class="mdc-text-field__input mdc-text-field--fullwidth"
-                           value="{{@root.data.profileInfo.profile.location_address}}">
-                    <label class="mdc-floating-label" for="location_address">
-                      Address
-                    </label>
-                  </div>
-                </div>
-              </div>
-              <div class="mdc-layout-grid__inner">
-                <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
-                  <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
-                    <input id="location_city" name="location_city"
-                      {{>form_validation_attributes @root.context.metaData.accountInfoValidation.location_city}} class="mdc-text-field__input mdc-text-field--fullwidth"
-                           value="{{@root.data.profileInfo.profile.location_city}}">
-                    <label class="mdc-floating-label" for="location_city">
-                      Town/city
-                    </label>
-                  </div>
-                </div>
-                <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
-                  <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
-                    <input id="thisfield" name="phone"
-                      {{>form_validation_attributes @root.context.metaData.accountInfoValidation.phone}}
-                           class="mdc-text-field__input mdc-text-field--fullwidth"
-                           value="{{@root.data.profileInfo.profile.phone}}">
-                    <label class="mdc-floating-label" for="phone">
-                      Phone number
-                    </label>
-                  </div>
-                </div>
-              </div>
-              <div class="mdc-layout-grid__inner">
-                <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
-                  <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
                     <input required id="email" name="email"
                       {{>form_validation_attributes @root.context.metaData.accountInfoValidation.email}}
                            class="mdc-text-field__input mdc-text-field--fullwidth"
                            value="{{@root.data.profileInfo.profile.email}}">
                     <label class="mdc-floating-label" for="email">
                       Email address
-                    </label>
-                  </div>
-                </div>
-                <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
-                  <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
-                    <input id="location_postcode" name="location_postcode"
-                      {{>form_validation_attributes @root.context.metaData.accountInfoValidation.location_postcode}}
-                           class="mdc-text-field__input mdc-text-field--fullwidth"
-                           value="{{@root.data.profileInfo.profile.location_postcode}}">
-                    <label class="mdc-floating-label" for="location_postcode">
-                      Postcode
                     </label>
                   </div>
                 </div>
@@ -221,7 +143,6 @@
               <span class="far fa-hand-paper mdc-list-item__graphic" aria-hidden="true"></span>
               Register interest
             </button>
-            <p>This is a test only, pressing register interest will display email copy, rather than sending emails</p>
           {{/if ~}}
         </form>
         {{/unless ~}}
