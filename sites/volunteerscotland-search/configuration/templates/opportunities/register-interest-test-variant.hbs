@@ -1,0 +1,223 @@
+<div id="detailed-results-container" class="container-content content-register-interest">
+  {{#compare @root.data.primaryResponse.hits.total ">" 0 ~}}
+    {{#with @root.data.primaryResponse.hits.hits.0._source ~}}
+      <h2 class="mdc-typography--headline4">
+        Register interest - AB Test Variant
+      </h2>
+      <div class="mdc-typography--headline5">
+        <a href="/opportunity/{{Id}}/{{title_slug}}">{{title}}</a> with <a href="/organisation/{{organisation_id}}/{{organisation_name_slug}}">{{organisation_name}}</a>
+      </div>
+      {{#if @root.request.params.query.applied ~}}
+        <section class="v-margin-full-bottom">
+          <div class="mdc-typography--headline6">
+            Thank you for registering interest in this opportunity.
+          </div>
+
+
+          <p class="mdc-typography--body1 t-margin-full">
+            If you want to contact the organisation directly about this opportunity, please use the details below:
+          </p>
+
+          {{#ifAny opportunity_contact_first_name opportunity_contact_last_name ~}}
+            <div class="mdc-typography--body1">
+              <strong>Name: </strong> {{{opportunity_contact_first_name}}} {{{opportunity_contact_last_name}}}
+            </div>
+          {{/ifAny ~}}
+
+          {{#if opportunity_contact_email ~}}
+            <div class="mdc-typography--body1">
+              <strong>Email:</strong> <a href="mailto:{{{opportunity_contact_email}}}">{{{opportunity_contact_email}}}</a>
+            </div>
+          {{/if ~}}
+
+          {{#if organisation_website ~}}
+            <div class="mdc-typography--body1">
+              <strong>Website: </strong> <a href="{{fixUrl organisation_website 'http'}}">{{{organisation_website}}}</a>
+            </div>
+          {{/if ~}}
+        </section>
+        <section>
+          {{>social_links opportunity=@root.data.registered_interest_opportunities.current.hits.hits.[0]._source }}
+        </section>
+      {{else}}
+        {{#unless @root.data.auth ~}}
+          <div class="mdc-typography--headline6">
+            If you would like to save this data for future applications you must first <a href="/sign-in">sign in</a> or <a href="/sign-up">sign up</a>.
+          </div>
+        {{/unless ~}}
+
+        {{#unless opportunity_contact_email ~}}
+          <p>
+            You can't volunteer for this opportunity using this site.{{#if organisation_website}} Please contact the organisation directly using <a href="{{fixUrl organisation_website 'http'}}">{{{organisation_website}}}</a> for more information.{{/if}}
+          </p>
+        {{else}}
+          {{#if (contains (map @root.data.registeredInterest.items.[0] (getProp "value")) Id) }}
+            <p>
+              You have already registered interest in this opportunity
+            </p>
+          {{else}}
+          <form id="register-interest-form" action="/email-display?id={{Id}}" method="POST" class="t-margin-full">
+            <div class="mdc-layout-grid">
+              <div class="mdc-layout-grid__inner">
+                <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
+                  <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
+                    <input required id="email" name="email"
+                      {{>form_validation_attributes @root.context.metaData.accountInfoValidation.email}}
+                           class="mdc-text-field__input mdc-text-field--fullwidth"
+                           value="{{@root.data.profileInfo.profile.email}}">
+                    <label class="mdc-floating-label" for="email">
+                      Email address
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mdc-text-field mdc-text-field--outlined" data-mdc-auto-init="MDCTextField">
+              <input type="text" id="thisfield" name="message" class="mdc-text-field__input">
+              <div class="mdc-notched-outline">
+                <div class="mdc-notched-outline__leading"></div>
+                <div class="mdc-notched-outline__notch">
+                  <label for="thisfield" class="mdc-floating-label">Message</label>
+                </div>
+                <div class="mdc-notched-outline__trailing"></div>
+              </div>
+            </div>
+
+            <input type="hidden" name="email-register-interest" value="{{organisation_contact_email}}">
+            <input type="hidden" name="email-register-interest-tsi" value="{{tsi_contact_email}}">
+
+            <input type="hidden" name="tsi_name" value="{{tsi_name}}">
+            <input type="hidden" name="organisation_name" value="{{organisation_name}}">
+
+            <input type="hidden" name="opportunity_contact_first_name" value="{{opportunity_contact_first_name}}">
+            <input type="hidden" name="opportunity_contact_last_name" value="{{opportunity_contact_last_name}}">
+            <input type="hidden" name="opportunity_contact_phone" value="{{opportunity_contact_phone}}">
+            <input type="hidden" name="opportunity_contact_email" value="{{opportunity_contact_email}}">
+
+            <input type="hidden" name="organisation_contact_first_name" value="{{organisation_contact_first_name}}">
+            <input type="hidden" name="organisation_contact_last_name" value="{{organisation_contact_last_name}}">
+            <input type="hidden" name="organisation_contact_phone" value="{{organisation_contact_phone}}">
+            <input type="hidden" name="organisation_contact_email" value="{{organisation_contact_email}}">
+
+            <input type="hidden" name="tsi_contact_first_name" value="{{tsi_contact_first_name}}">
+            <input type="hidden" name="tsi_contact_last_name" value="{{tsi_contact_last_name}}">
+            <input type="hidden" name="tsi_contact_phone" value="{{tsi_contact_phone}}">
+            <input type="hidden" name="tsi_contact_email" value="{{tsi_contact_email}}">
+
+            <input type="hidden" name="opportunity_contact_via_tsi" value="{{opportunity_contact_via_tsi}}">
+            <input type="hidden" name="opportunity_contact_via_organisation" value="{{opportunity_contact_via_organisation}}">
+
+            <input type="hidden" name="opportunity_milo_ref" value="{{milo_ref}}">
+            <input type="hidden" name="opportunity_title" value="{{title}}">
+            <input type="hidden" name="opportunity_minimum_age" value="{{minimum_age}}">
+            <input type="hidden" name="opportunity_maximum_age" value="{{maximum_age}}">
+            {{!-- <input type="hidden" name="opportunity_slug" value="{{slug}}"> --}}
+            <input type="hidden" name="opportunity_title_slug" value="{{title_slug}}">
+            <input type="hidden" name="opportunity_id" value="{{Id}}">
+
+            {{#if @root.data.auth ~}}
+              {{#unless @root.data.profileInfo.profile ~}}
+                <div class="mdc-form-field">
+                  <div class="mdc-checkbox">
+                    <input type="checkbox" class="mdc-checkbox__native-control" name="store_profile_info" id="store-details"/>
+                    <div class="mdc-checkbox__background">
+                      <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                        <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                      </svg>
+                      <div class="mdc-checkbox__mixedmark"></div>
+                    </div>
+                  </div>
+                  <label for="store-details">
+                    Remember details for future applications?
+                    <div class="mdc-typography--caption">
+                      We will not use these details for anything but volunteering applications and newsletters which you have opted in to. Read our <a href="/privacy" target="_blank">privacy notice</a>.
+                    </div>
+                  </label>
+                </div>
+              {{else}}
+                <input type="hidden" name="store_profile_info" value="true">
+              {{/unless ~}}
+            {{/if ~}}
+            <div class="g-recaptcha" data-sitekey="{{@root.context.metaData.reCaptchaSiteKey}}" data-callback="onSubmit" data-size="invisible"></div>
+            <button class="mdc-button mdc-button--raised b-margin-full" id="register-interest-submit" onclick="preSubmit()">
+              <span class="far fa-hand-paper mdc-list-item__graphic" aria-hidden="true"></span>
+              Register interest
+            </button>
+          {{/if ~}}
+        </form>
+        {{/unless ~}}
+
+      <div class="mdc-layout-grid">
+      <div class="mdc-layout-grid__inner">
+        {{#if opportunity_contact_via_organisation ~}}
+          <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
+            <p>Your message will be sent to:</p>
+
+            <div class="mdc-typography--headline7">
+              <strong>{{{organisation_name}}}</strong>
+            </div>
+
+            {{#ifAny organisation_contact_first_name organisation_contact_last_name ~}}
+              <div class="mdc-typography--body1">
+                <strong>Name: </strong> {{{organisation_contact_first_name}}} {{{organisation_contact_last_name}}}
+              </div>
+            {{/ifAny ~}}
+
+            {{#if organisation_contact_email ~}}
+              <div class="mdc-typography--body1">
+                <strong>Email: </strong> <a href="mailto:{{{organisation_contact_email}}}">{{{organisation_contact_email}}}</a>
+              </div>
+            {{/if ~}}
+
+            {{#if organisation_website ~}}
+              <div class="mdc-typography--body1">
+                <strong>Website: </strong> <a href="{{fixUrl organisation_website 'http'}}">{{{organisation_website}}}</a>
+              </div>
+            {{/if ~}}
+          </div>
+        {{/if ~}}
+
+        {{#if opportunity_contact_via_tsi}}
+          <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
+            {{#unless opportunity_contact_via_organisation ~}}
+              <p>
+                Your message will sent to the organisation that manages volunteering in the {{tsi_name}} region:
+              </p>
+            {{else}}
+              <p>
+                A copy will be sent to the an organisation that manages volunteering in {{tsi_name}}:
+              </p>
+            {{/unless ~}}
+            {{#ifAny tsi_contact_first_name tsi_contact_last_name ~}}
+              <div class="mdc-typography--body1">
+                <strong>Name: </strong> {{{tsi_contact_first_name}}} {{{tsi_contact_last_name}}}
+              </div>
+            {{/ifAny ~}}
+
+            {{#if tsi_contact_email ~}}
+              <div class="mdc-typography--body1">
+                <strong>Email: </strong> <a href="mailto:{{{tsi_contact_email}}}">{{{tsi_contact_email}}}</a>
+              </div>
+            {{/if ~}}
+          </div>
+        {{/if ~}}
+      {{/if~}}
+    </div>
+    </div>
+    {{/with ~}}
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script type="text/javascript">
+      function preSubmit() {
+        var form = document.getElementById("register-interest-form");
+        var isValid = form.checkValidity();
+        if (isValid)  grecaptcha.execute();
+      }
+      function onSubmit(token) {}
+    </script>
+  {{else}}
+    <p>
+      We could not find the opportunity you were looking for. It may have been removed or expired.
+    </p>
+  {{/compare ~}}
+</div>
