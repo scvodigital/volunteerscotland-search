@@ -1,6 +1,6 @@
 {
   "name": "test-ab-redirect",
-  "pattern": "/test-ab-redirect/:id(/:junk)",
+  "pattern": "/test-ab/redirect/:id(/:junk)",
   "debug": true,
   "metaData": {
     "title": "Volunteer Scotland Search",
