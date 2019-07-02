@@ -59,7 +59,7 @@
           "default": {
             "layout": ">context.metaData.handlebars.layouts.default",
             "parts": {
-              "head": ">context.metaData.handlebars.templates.opportunities_register-interest-head-tags",
+              "head": ">context.metaData.handlebars.templates.opportunities_register-interest-head-tags-test",
               "body": ">context.metaData.handlebars.templates.opportunities_register-interest-test-variant",
               "foot": ">context.metaData.handlebars.templates.opportunities_register-interest-foot",
               "sidebar": ">context.metaData.handlebars.templates.opportunities_search-form"
