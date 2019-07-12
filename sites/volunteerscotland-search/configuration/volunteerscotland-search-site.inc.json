@@ -327,19 +327,6 @@
           "defaultData": ""
         }
       }
-    },
-    "firebaseDefaultDomain": {
-      "name": "volunteerscotland-search",
-      "label": "Volunteer Scotland",
-      "logoUrl": "",
-      "config" : {
-        "apiKey": "AIzaSyAwCMOrTj2eq8tVAdgD3vrgRqz9oIluiYk",
-        "authDomain": "auth.search.volunteerscotland.net",
-        "databaseURL": "https://scvo-volunteerscotland-search.firebaseio.com",
-        "projectId": "scvo-volunteerscotland-search",
-        "storageBucket": "scvo-volunteerscotland-search.appspot.com",
-        "messagingSenderId": "7952458796"
-      }
     }
   }
 }
