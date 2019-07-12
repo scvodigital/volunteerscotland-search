@@ -7,6 +7,7 @@
     {{/each ~}}
   </div>
 
+  {{#compare @root.data.eventSupplimentary.related.hits.total ">" 0 ~}}
   <div class="content-related">
     <div class="mdc-typography--headline5 v-margin-full">
       Similar events
@@ -21,6 +22,7 @@
       </div>
     </div>
   </div>
+  {{/compare ~}}
 
   {{else}}
   <p>
