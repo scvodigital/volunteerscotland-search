@@ -102,10 +102,10 @@
           "default": {
             "layout": ">context.metaData.handlebars.layouts.default",
             "parts": {
-              "head": ">context.metaData.handlebars.templates.opportunities_opportunity-head-tags",
-              "body": ">context.metaData.handlebars.templates.opportunities_opportunity",
-              "foot": ">context.metaData.handlebars.templates.opportunities_opportunity-foot",
-              "sidebar": ">context.metaData.handlebars.templates.opportunities_search-form"
+              "head": ">context.metaData.handlebars.templates.events_event-head-tags",
+              "body": ">context.metaData.handlebars.templates.events_event",
+              "foot": ">context.metaData.handlebars.templates.events_event-foot",
+              "sidebar": ">context.metaData.handlebars.templates.events_search-form"
             },
             "contentType": "text/html"
           }
