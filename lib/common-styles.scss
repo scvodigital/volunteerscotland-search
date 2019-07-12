@@ -68,6 +68,7 @@ h4 {
   font-family: $heading-font-family, $base-font-family, Helvetica, Arial, sans-serif;
   font-weight: $heading-font-weight;
   letter-spacing: -0.03rem;
+  strong a,
   strong {
     font-weight: $heading-font-weight;
   }
@@ -306,6 +307,7 @@ footer h3,
 .mdc-floating-label,
 .mdc-card__subtitle,
 .mdc-snackbar__text,
+.mdc-snackbar__label,
 .mdc-dialog__content,
 .mdc-dialog__actions,
 .mdc-drawer__subtitle,
@@ -2448,7 +2450,7 @@ footer.mdc-layout__footer {
     margin: 0 0 0 $unit*1.5;
     li {
       margin-bottom: 0;
-      height: $unit*1.5;
+      min-height: $unit*1.5;
       a {
         text-decoration: none;
       }

@@ -1,6 +1,7 @@
 {
   "name": "favourites",
   "pattern": "/favourites",
+  "debug": false,
   "metaData": {
     "hideSearch": true,
     "title": "My favourites - Volunteer Scotland Search"

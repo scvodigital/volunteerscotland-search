@@ -1,6 +1,7 @@
 {
   "name": "stop-all-emails",
   "pattern": "/stop-all-emails",
+  "debug": false,
   "acceptedVerbs": "GET",
   "tasks": [
     "context.metaData.commonTasks.authRequired",

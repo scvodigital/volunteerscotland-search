@@ -1,0 +1,21 @@
+<script type="text/javascript">
+  var mdeEditors = [];
+  $(document).ready(function() {
+    {{#ifAll @root.data.auth (compare @root.data.primaryResponse.hits.total ">" 0) ~}}
+      var recentlyViewed = volunteerscotland.getCookie('recently_viewed') || '';
+      // console.log('Recently Viewed:', recentlyViewed, '| event Id:', eventId);
+      recentlyViewed = recentlyViewed.split(',');
+      recentlyViewed.unshift(eventId);
+      var newRecentlyViewed = [];
+      for (var i = 0; i < Math.min(recentlyViewed.length, 10); ++i) {
+        var item = recentlyViewed[i];
+        if (item && newRecentlyViewed.indexOf(item) === -1) {
+          newRecentlyViewed.push(item);
+        }
+      };
+      newRecentlyViewed = newRecentlyViewed.join(',');
+      // console.log('New Recently Viewed:', newRecentlyViewed);
+      volunteerscotland.setCookie('recently_viewed', newRecentlyViewed, 7);
+    {{/ifAll ~}}
+  });
+</script>

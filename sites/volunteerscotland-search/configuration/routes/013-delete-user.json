@@ -1,6 +1,7 @@
 {
   "name": "delete-user",
   "pattern": "/delete-user",
+  "debug": false,
   "tasks": [
     "context.metaData.commonTasks.authRequired",
     {

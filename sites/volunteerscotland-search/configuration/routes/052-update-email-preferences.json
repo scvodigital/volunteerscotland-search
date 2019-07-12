@@ -1,6 +1,7 @@
 {
   "name": "update-email-preferences",
   "pattern": "/update-email-preferences",
+  "debug": false,
   "acceptedVerbs": "POST",
   "tasks": [
     "context.metaData.commonTasks.authRequired",

@@ -1,6 +1,7 @@
 {
   "name": "notes",
   "pattern": "/notes",
+  "debug": false,
   "metaData": {
     "hideSearch": true,
     "title": "My notes - Volunteer Scotland Search"

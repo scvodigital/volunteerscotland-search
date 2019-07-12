@@ -1,0 +1,25 @@
+<div class="map-content" data-event-id="{{Id}}" data-event-layout="Map" data-event-context="{{default viewContext "Map"}}">
+  <h3 class="mdc-typography--headline7 map-info post-title">
+    <a href="/event/{{Id}}/{{title_slug}}{{@root.request.url.search}}">{{title}}</a>
+  </h3>
+  {{#if organisation_name ~}}
+  <div class="mdc-typography--body1 v-margin post-info-item">
+    {{organisation_name}}
+  </div>
+  {{/if ~}}
+  {{#if map_postcode ~}}
+  <div class="mdc-typography--body2 v-margin post-info-extra">
+    Postcode: {{map_postcode}}
+  </div>
+  {{/if ~}}
+  <div class="mdc-typography--body2 post-info post-info-extra">
+    {{#if description ~}}
+    <div style="max-height: 2.8rem;"  class="post-info-item post-info-description faded-overflow">
+      {{{description}}}
+    </div>
+    {{/if ~}}
+  </div>
+  <div class="mdc-typography--body2">
+    <a href="/event/{{Id}}/{{title_slug}}{{@root.request.url.search}}" class="mdc-card__action">Find out more</a>
+  </div>
+</div>

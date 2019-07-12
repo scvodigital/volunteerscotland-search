@@ -1,0 +1,25 @@
+<div class="mdc-card__actions">
+  <div class="mdc-card__action-buttons demo-card__action-buttons--text-only mdc-card__actions--full-bleed">
+    {{#compare action "===" "organisation" ~}}
+    <a href="/organisation/{{organisation_id}}/{{organisation_name_slug}}{{@root.request.url.search}}" class="mdc-card__action hide-sm">Find out more about {{organisation_name}}</a>
+    {{else}}
+    <a href="/event/{{Id}}/{{title_slug}}{{@root.request.url.search}}" class="mdc-card__action hide-sm">Find out more</a>
+    <a href="/event/{{Id}}/{{title_slug}}{{@root.request.url.search}}" class="mdc-card__action hide-md hide-lg"><span class="fal fa-info-circle fa-fw fa-2x" aria-hidden="true"></span></a>
+    {{/compare ~}}
+  </div>
+  <div class="mdc-card__action-icons pull-right">
+    {{!-- <div id="action-chips" class="mdc-chip-set mdc-chip-set--filter">
+      {{#compare @root.route.name "!==" "home" ~}}
+      {{#if event_contact_email ~}}
+      {{> register_interest_faux_chip id=Id}}
+      {{else}}
+        {{> register_interest_faux_chip disabled=true}}
+      {{/if ~}}
+      {{/compare ~}}
+      {{> favourite_chip id=Id}}
+    </div>
+    {{#compare action "===" "remove" ~}}
+    <a href="{{{@root.request.fullUrl}}}" onclick="sqlRemoveInterest('{{Id}}')" class="mdc-icon-button mdc-card__action mdc-card__action--icon" title="Remove from this list"><span class="far fa-ban"></span></a>
+    {{/compare ~}} --}}
+  </div>
+</div>

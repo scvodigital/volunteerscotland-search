@@ -1,0 +1,66 @@
+{
+  "size": 10,
+  "_source": [
+    "Id",
+    "slug",
+    "title_slug",
+    "description",
+    "available_from",
+    "themes",
+    "themes_slugs",
+    "description",
+    "end_date",
+    "geo_coords",
+    "geo",
+    "postcode",
+    "volunteersearch_type",
+    "volunteersearch_type_slugs",
+    "organisation_slug",
+    "organisation_name",
+    "organisation_id",
+    "organisation_name_slug",
+    "organisation_aims_and_objectives",
+    "title",
+    "travel_expenses",
+    "work_location",
+    "activities",
+    "activities_slugs",
+    "opportunity_contact_email"
+  ],
+  "query": {
+    "bool": {
+      "filter": [
+        {{>queries_opportunity_common_filters @root.request.params.query}}
+      ],
+      {{#ifAll @root.data.auth @root.data.searches.items.[0] ~}}
+      "should": [
+        {{#each @root.data.searches.items.[0] ~}}
+        {{#with (querystring querystring) ~}}
+        {
+          "bool": {
+            "filter": [
+              {{>queries_opportunity_search_filters this}}
+            ],
+            "must": [
+              {{>queries_opportunity_search_must this}}
+            ]
+          }
+        }
+        {{#unless @last}},{{/unless}}
+        {{/with ~}}
+        {{/each ~}}
+      ],
+      "minimum_should_match": 1
+      {{else}}
+      "must": [
+        {
+          "match_none": {}
+        }
+      ]
+      {{/ifAll ~}}
+    }
+  },
+  "sort": {
+    "date_last_modified": "desc"
+  }
+}

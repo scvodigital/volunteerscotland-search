@@ -1,6 +1,7 @@
 {
   "name": "delete-profile-info",
   "pattern": "/delete-profile-info",
+  "debug": false,
   "acceptedVerbs": "POST",
   "tasks": [
     "context.metaData.commonTasks.authRequired",

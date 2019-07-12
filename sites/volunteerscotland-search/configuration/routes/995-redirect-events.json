@@ -1,0 +1,16 @@
+{
+  "name": "redirect-events",
+  "pattern": "/events",
+  "tasks": [
+    {
+      "name": "destination",
+      "taskModule": "redirect",
+      "config": {
+        "location": "/events/search",
+        "statusCode": 302
+      }
+    }
+
+  ]
+}
+

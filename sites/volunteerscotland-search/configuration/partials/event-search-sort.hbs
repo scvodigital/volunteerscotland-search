@@ -1,0 +1,13 @@
+<div class="mdc-select pull-right" data-mdc-auto-init="MDCSelect">
+  <span class="mdc-select__dropdown-icon"></span>
+  <select class="mdc-select__native-control" id="sort" name="sort" onchange="this.form.submit();">
+    <option value="relevance" {{#unless @root.request.params.query.sort}} selected {{/unless}}>Relevance</option>
+    {{#if @root.request.params.query.location}}<option value="distance"{{#compare @root.request.params.query.sort "===" "distance"}} selected{{/compare}}{{#compare @root.request.params.query.exclude "===" "locations"}} disabled{{else}}{{#compare @root.request.params.query.location "===" ""}} disabled{{/compare}}{{/compare}}>Distance</option>{{/if}}
+    <option value="newest"{{#compare @root.request.params.query.sort "===" "newest"}} selected{{/compare}}>Newest</option>
+    <option value="oldest"{{#compare @root.request.params.query.sort "===" "oldest"}} selected{{/compare}}>Oldest</option>
+  </select>
+  <div class="mdc-floating-label mdc-select__label--float-above" for="sort">
+    Sort by
+  </div>
+  <div class="mdc-line-ripple"></div>
+</div>

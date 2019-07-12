@@ -1,0 +1,14 @@
+<div class="mdc-card content-primary gist" data-event-id="{{Id}}">
+  <div class="mdc-card__info--content-primary-row">
+    <div class="mdc-card__media mdc-card__media--square demo-card__media search-result-card__media--content-secondary" style="background-image:url({{organisation_logo_url}});"></div>
+    <div class="mdc-card__info--content-primary">
+      <div class="mdc-card__info--content-primary-title mdc-typography--headline7">
+        {{title}}
+      </div>
+      <div class="mdc-card__info--content-primary-secondary mdc-typography--body1">
+        <a href="/organisation/{{organisation_id}}/{{organisation_name_slug}}{{@root.request.url.search}}">{{organisation_name}}</a>
+      </div>
+    </div>
+  </div>
+  {{> event_actions slug=slug Id=Id}}
+</div>

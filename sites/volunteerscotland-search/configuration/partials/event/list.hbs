@@ -1,0 +1,6 @@
+<div class="mdc-card content-primary list" data-event-id="{{Id}}" data-event-layout="List" data-event-context="{{default viewContext "Other"}}">
+  {{> event_key_info}}
+  <hr class="mdc-list-divider" />
+  {{> event_description limit="10.5rem" description=description}}
+  {{> event_actions slug=slug Id=Id}}
+</div>

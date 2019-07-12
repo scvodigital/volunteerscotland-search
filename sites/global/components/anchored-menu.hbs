@@ -1,9 +1,8 @@
 {{#with (default menuId (concat "menu-" (random 1000 9999))) as |menuId|}}
 <div class="mdc-menu-surface--anchor {{../anchorClasses}}">
   <button class="mdc-button {{../buttonClasses}}" id="{{menuId}}-trigger">
-
     {{#if ../imageUrl ~}}
-      <img src="{{../imageUrl}}" class="{{../imageClasses}}" />
+      <img src="{{../imageUrl}}" class="{{../imageClasses}}" loading="lazy" />
     {{/if}}
     {{#if ../iconClasses}}
       <span class="{{../iconClasses}}"></span>

@@ -1,6 +1,7 @@
 {
   "name": "remove-newsletter-subscription",
   "pattern": "/remove-newsletter-subscription/:list_ids",
+  "debug": false,
   "acceptedVerbs": "GET",
   "defaultParams": {
     "context": "results"

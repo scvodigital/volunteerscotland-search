@@ -1,0 +1,16 @@
+{
+  "name": "redirect-organisations",
+  "pattern": "/organisations",
+  "tasks": [
+    {
+      "name": "destination",
+      "taskModule": "redirect",
+      "config": {
+        "location": "/organisations/search",
+        "statusCode": 302
+      }
+    }
+
+  ]
+}
+

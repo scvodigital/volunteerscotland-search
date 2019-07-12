@@ -1,6 +1,7 @@
 {
   "name": "toggle-shortlist-subscription",
   "pattern": "/toggle-shortlist-subscription",
+  "debug": false,
   "acceptedVerbs": "POST",
   "tasks": [
     "context.metaData.commonTasks.authRequired",

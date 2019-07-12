@@ -1,8 +1,8 @@
 {
   "name": "add-to-registered-interest",
   "pattern": "/add-to-registered-interest",
-  "acceptedVerbs": "POST",
   "debug": false,
+  "acceptedVerbs": "POST",
   "tasks": [
     "context.metaData.commonTasks.authNotRequired",
     {

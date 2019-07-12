@@ -1,0 +1,135 @@
+{
+  "name": "event_map",
+  "pattern": "/events/map",
+  "debug": true,
+  "metaData": {
+    "title": "Volunteer Scotland Search",
+    "sidebarButton": {
+      "icon": "search",
+      "tooltip": "Search",
+      "classes": "hide-md hide-lg"
+    }
+  },
+  "defaultParams": {
+    "context": "results"
+  },
+  "tasks": [
+    "context.metaData.commonTasks.authNotRequired",
+    {
+      "name": "location_data",
+      "taskModule": "elasticsearch",
+      "config": {
+        "connectionStringTemplate": "{$../../../elasticsearch-url.txt}",
+        "elasticsearchConfig": {
+          "apiVersion": "5.6"
+        },
+        "queryTemplates": [
+          {
+            "name": "locations_results",
+            "index": "web-content-production",
+            "type": "milo-volunteering-event",
+            "template": ">context.metaData.handlebars.queries.events_search-map-locations"
+          },
+          {
+            "name": "home_results",
+            "index": "web-content-production",
+            "type": "milo-volunteering-event",
+            "template": ">context.metaData.handlebars.queries.events_search-map-home"
+          },
+          {
+            "name": "la_results",
+            "index": "geo_lookup",
+            "type": "es_district",
+            "template": ">context.metaData.handlebars.queries.events_local-authority-areas"
+          }
+        ]
+      },
+      "renderer": "handlebars"
+    },
+    {
+      "name": "search_data",
+      "taskModule": "elasticsearch",
+      "config": {
+        "connectionStringTemplate": "{$../../../elasticsearch-url.txt}",
+        "elasticsearchConfig": {
+          "apiVersion": "5.6"
+        },
+        "queryTemplates": [
+          {
+            "name": "map_results",
+            "index": "web-content-production",
+            "type": "milo-volunteering-event",
+            "template": ">context.metaData.handlebars.queries.events_search-map"
+          },
+          {
+            "name": "areas_results",
+            "index": "web-content-production",
+            "type": "milo-volunteering-event",
+            "template": ">context.metaData.handlebars.queries.events_search-map-areas"
+          }
+        ]
+      },
+      "renderer": "handlebars"
+    },
+    "context.metaData.commonTasks.eventSupplimentary",
+    "context.metaData.commonTasks.termsMaps",
+    {
+      "name": "destination",
+      "taskModule": "renderLayout",
+      "renderer": "handlebars",
+      "config": {
+        "logic": {
+          "if": [
+            {
+              "in": [
+                "view=rss",
+                {
+                  "var": "request.fullUrl"
+                }
+              ]
+            },
+            "rss",
+            {
+              "in": [
+                "view=json",
+                {
+                  "var": "request.fullUrl"
+                }
+              ]
+            },
+            "data",
+            "default"
+          ]
+        },
+        "output": "body",
+        "layouts": {
+          "rss": {
+            "layout": ">context.metaData.handlebars.layouts.rss",
+            "parts": {
+              "head": ">context.metaData.handlebars.templates.events_search-rss-head-tags",
+              "body": ">context.metaData.handlebars.templates.events_search-rss"
+            },
+            "contentType": "application/rss+xml"
+          },
+          "default": {
+            "layout": ">context.metaData.handlebars.layouts.default",
+            "parts": {
+              "head": ">context.metaData.handlebars.templates.events_search-head-tags",
+              "body": ">context.metaData.handlebars.templates.events_map",
+              "foot": ">context.metaData.handlebars.templates.events_map-foot",
+              "sidebar": ">context.metaData.handlebars.templates.events_search-form"
+            },
+            "contentType": "text/html"
+          },
+          "data": {
+            "layout": ">context.metaData.handlebars.layouts.data",
+            "parts": {
+              "content": ">context.metaData.handlebars.templates.events_search-json"
+            },
+            "contentType": "application/json"
+          }
+        }
+      }
+    }
+  ]
+}

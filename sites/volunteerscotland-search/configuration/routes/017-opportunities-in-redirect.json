@@ -1,6 +1,7 @@
 {
   "name": "opportunities_in_redirect",
   "pattern": "/opportunities-in/area",
+  "debug": false,
   "tasks": [
     {
       "name": "detect_area",
