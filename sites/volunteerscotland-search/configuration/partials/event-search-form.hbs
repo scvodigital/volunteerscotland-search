@@ -48,56 +48,15 @@
       <input type="hidden" name="lat" value="{{#if @root.request.params.query.location}}{{@root.request.params.query.lat}}{{/if}}" id="location-lat" />
       <input type="hidden" name="lng" value="{{#if @root.request.params.query.location}}{{@root.request.params.query.lng}}{{/if}}" id="location-lng" />
 
-      <div class="header mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon mdc-text-field-tt" data-mdc-auto-init="MDCTextField">
-        <input type="text" id="what-primary-content" name="keywords" class="mdc-text-field__input" placeholder="" value="{{@root.request.params.query.keywords}}" data-lpignore="true" data-typeahead='{
-          "typeaheadOptions": {
-            "highlight": true,
-            "minlength": 0
-          },
-          "outputs": [
-          {
-            "type": "prop",
-            "options": {
-              "selectorTemplate": "#cb-\{{item.datasetName}}-\{{item.value}}",
-              "prop": "checked",
-              "valueTemplate": "checked"
-            }
-          }
-          ],
-          "datasets": [
-          {{#each @root.context.metaData.terms}}
-          {{#each termGroups}}
-          {
-            "name": {{{stringify ../key}}},
-            "templates": {
-              {{#compare (length ../termGroups) 1}}
-              "header": "<h3>{{{../label}}}</h3>"
-              {{else}}
-              "header": "<h3>{{{../label}}} &gt; {{{label}}}</h3>"
-              {{/compare}}
-            },
-            "display": "other",
-            "items": [
-            {{#each terms}}
-            {
-              "label": {{{stringify (concat ../key ' ' textBag)}}},
-              "value": {{{stringify key}}},
-              "other": {{{stringify label}}}
-            }{{#unless @last}},{{/unless}}
-            {{/each}}
-            ]
-          }{{#unlessAll @last @../last}},{{/unlessAll}}
-          {{/each}}
-          {{/each}}
-          ]
-        }'>
+      <div class="header mdc-text-field mdc-text-field--box mdc-text-field--with-leading-icon mdc-text-field-tt b-margin-full" data-mdc-auto-init="MDCTextField">
+        <input type="text" id="what-primary-content" name="keywords" class="mdc-text-field__input" placeholder="" value="{{@root.request.params.query.keywords}}" data-lpignore="true">
         <span class="fas fa-search active-search-icon mdc-text-field__icon" role="button" onclick=" $(this).parents('form:first').submit();" style="pointer-events: initial !important; z-index: 500;" tabindex="-1"></span></a>
         <label for="what-primary-content" class="mdc-floating-label">
           Keywords / categories
         </label>
         <div class="mdc-line-ripple"></div>
       </div>
-      {{#each @root.context.metaData.terms ~}}
+      {{!-- {{#each @root.context.metaData.terms ~}}
         {{#unless noSearchFilter ~}}
           {{#> components_advanced_checkbox_list name=key label=label}}
             {{#each termGroups ~}}
@@ -120,10 +79,10 @@
             {{/each ~}}
           {{/components_advanced_checkbox_list}}
         {{/unless ~}}
-      {{/each ~}}
+      {{/each ~}} --}}
       <div id="filter-container-outer">
         <div id="filter-container-inner">
-          <button class="mdc-button mdc-button--raised mdc-button--large mdc-button--fullwidth mdc-button--disabled mdc-ripple-surface mdc-ripple-surface--primary" type="submit" id="{{instance_id}}-search-submit" data-mdc-auto-init="MDCRipple" disabled>
+          <button class="mdc-button mdc-button--raised mdc-button--large mdc-button--fullwidth mdc-ripple-surface mdc-ripple-surface--primary" type="submit" id="{{instance_id}}-search-submit" data-mdc-auto-init="MDCRipple">
             <span class="far fa-search fa-fw mdc-list-item__graphic" aria-hidden="true"></span>
             Filter
           </button>
