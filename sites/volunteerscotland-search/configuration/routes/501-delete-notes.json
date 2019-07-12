@@ -1,6 +1,7 @@
 {
   "name": "delete-notes",
   "pattern": "/delete-notes",
+  "debug": false,
   "acceptedVerbs": "POST",
   "tasks": [
     "context.metaData.commonTasks.authRequired",

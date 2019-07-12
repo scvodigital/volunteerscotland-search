@@ -1,6 +1,7 @@
 {
   "name": "searches",
   "pattern": "/searches",
+  "debug": false,
   "metaData": {
     "hideSearch": true,
     "title": "My saved searches - Volunteer Scotland Search"

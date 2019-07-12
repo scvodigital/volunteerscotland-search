@@ -221,6 +221,25 @@
         },
         "renderer": "handlebars"
       },
+      "eventSupplimentary": {
+        "name": "eventSupplimentary",
+        "taskModule": "elasticsearch",
+        "config": {
+          "connectionStringTemplate": "{$../../elasticsearch-url.txt}",
+          "elasticsearchConfig": {
+            "apiVersion": "5.6"
+          },
+          "queryTemplates": [
+            {
+              "name": "not_found",
+              "index": "web-content-production",
+              "type": "milo-volunteering-event",
+              "template": ">context.metaData.handlebars.queries.pages_not-found"
+            }
+          ]
+        },
+        "renderer": "handlebars"
+      },
       "organisationSupplimentary": {
         "name": "organisationSupplimentary",
         "taskModule": "elasticsearch",

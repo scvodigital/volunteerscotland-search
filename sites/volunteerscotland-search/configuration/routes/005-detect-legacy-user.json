@@ -1,6 +1,7 @@
 {
   "name": "detect-legacy-user",
   "pattern": "/detect-legacy-user",
+  "debug": false,
   "tasks": [
     {
       "name": "getUser",

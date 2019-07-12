@@ -1,6 +1,7 @@
 {
   "name": "organisation",
   "pattern": "/organisation/:id(/:junk)",
+  "debug": false,
   "defaultParams": {
     "context": "detail"
   },

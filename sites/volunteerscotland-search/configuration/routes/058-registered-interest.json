@@ -1,6 +1,7 @@
 {
   "name": "registered-interest",
   "pattern": "/registered-interest",
+  "debug": false,
   "metaData": {
     "hideSearch": true,
     "title": "Registered interest - Volunteer Scotland Search"

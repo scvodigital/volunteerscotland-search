@@ -1,6 +1,7 @@
 {
   "name": "geo-lookup",
   "pattern": "/geo-lookup",
+  "debug": false,
   "doNotZip": true,
   "tasks": [
     {

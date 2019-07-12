@@ -1,10 +1,10 @@
 {
-  "name": "opportunity",
+  "name": "event",
   "pattern": {
-    "slug": "/opportunity/:id(/:junk)",
-    "id": "/opp/:id"
+    "slug": "/event/:id(/:junk)",
+    "id": "/e/:id"
   },
-  "debug": false,
+  "debug": true,
   "metaData": {
     "title": "Volunteer Scotland Search",
     "sidebarButton": {
@@ -31,14 +31,14 @@
         },
         "queryTemplates": {
           "index": "web-content-production",
-          "type": "milo-volunteering-opportunity",
-          "template": ">context.metaData.handlebars.queries.opportunities_opportunity"
+          "type": "milo-volunteering-event",
+          "template": ">context.metaData.handlebars.queries.events_event"
         }
       },
       "renderer": "handlebars"
     },
     {
-      "name": "opportunitySupplimentary",
+      "name": "eventSupplimentary",
       "taskModule": "elasticsearch",
       "config": {
         "connectionStringTemplate": "{$../../../elasticsearch-url.txt}",
@@ -49,19 +49,19 @@
           {
             "name": "types",
             "index": "web-content-production",
-            "type": "milo-volunteering-opportunity",
-            "template": ">context.metaData.handlebars.queries.opportunities_types"
+            "type": "milo-volunteering-event",
+            "template": ">context.metaData.handlebars.queries.events_types"
           },
           {
             "name": "related",
             "index": "web-content-production",
-            "type": "milo-volunteering-opportunity",
-            "template": ">context.metaData.handlebars.queries.opportunities_related"
+            "type": "milo-volunteering-event",
+            "template": ">context.metaData.handlebars.queries.events_related"
           },
           {
             "name": "not_found",
             "index": "web-content-production",
-            "type": "milo-volunteering-opportunity",
+            "type": "milo-volunteering-event",
             "template": ">context.metaData.handlebars.queries.pages_not-found"
           }
         ]

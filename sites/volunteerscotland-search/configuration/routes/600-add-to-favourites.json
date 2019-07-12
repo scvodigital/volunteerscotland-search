@@ -1,6 +1,7 @@
 {
   "name": "add-to-favourites",
   "pattern": "/add-to-favourites",
+  "debug": false,
   "acceptedVerbs": "GET",
   "tasks": [
     "context.metaData.commonTasks.authRequired",

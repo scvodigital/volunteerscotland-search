@@ -1,7 +1,7 @@
 {
-  "name": "opportunity_map",
-  "pattern": "/map",
-  "debug": false,
+  "name": "event_map",
+  "pattern": "/events/map",
+  "debug": true,
   "metaData": {
     "title": "Volunteer Scotland Search",
     "sidebarButton": {
@@ -27,14 +27,14 @@
           {
             "name": "locations_results",
             "index": "web-content-production",
-            "type": "milo-volunteering-opportunity",
-            "template": ">context.metaData.handlebars.queries.opportunities_search-map-locations"
+            "type": "milo-volunteering-event",
+            "template": ">context.metaData.handlebars.queries.events_search-map-locations"
           },
           {
             "name": "home_results",
             "index": "web-content-production",
-            "type": "milo-volunteering-opportunity",
-            "template": ">context.metaData.handlebars.queries.opportunities_search-map-home"
+            "type": "milo-volunteering-event",
+            "template": ">context.metaData.handlebars.queries.events_search-map-home"
           },
           {
             "name": "la_results",
@@ -58,20 +58,20 @@
           {
             "name": "map_results",
             "index": "web-content-production",
-            "type": "milo-volunteering-opportunity",
-            "template": ">context.metaData.handlebars.queries.opportunities_search-map"
+            "type": "milo-volunteering-event",
+            "template": ">context.metaData.handlebars.queries.events_search-map"
           },
           {
             "name": "areas_results",
             "index": "web-content-production",
-            "type": "milo-volunteering-opportunity",
-            "template": ">context.metaData.handlebars.queries.opportunities_search-map-areas"
+            "type": "milo-volunteering-event",
+            "template": ">context.metaData.handlebars.queries.event_search-map-areas"
           }
         ]
       },
       "renderer": "handlebars"
     },
-    "context.metaData.commonTasks.opportunitySupplimentary",
+    "context.metaData.commonTasks.eventSupplimentary",
     "context.metaData.commonTasks.termsMaps",
     {
       "name": "destination",

@@ -1,6 +1,7 @@
 {
   "name": "import-user-data",
   "pattern": "/import-user-data",
+  "debug": false,
   "acceptedVerbs": "POST",
   "defaultParams": {
     "context": "results"

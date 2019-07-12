@@ -1,0 +1,45 @@
+{
+  "size": 0,
+  "_source": [
+    "Id",
+    "title",
+    "title_slug",
+    "organisation_name",
+    "closing_date",
+    "geo_coords",
+    "slug"
+  ],
+  "query": {
+    "bool": {
+      "filter": [
+        {{>queries_opportunity_common_filters @root.request.params.query}},
+        {{>queries_opportunity_search_filters @root.request.params.query}}
+      ],
+      "must": [
+        {{>queries_opportunity_search_must @root.request.params.query}}
+      ]
+    }
+  },
+  "aggs" : {
+    "admin_district": {
+      "terms": {
+        "field": "geo.codes.admin_district",
+        "size": 3000
+      }
+    }
+  }
+  {{#ifAll @root.request.params.query.lat @root.request.params.query.lon}},
+  "sort": {
+    "_geo_distance": {
+      "geo_coords": {
+        "lat": {{@root.request.params.query.lat}},
+        "lon": {{@root.request.params.query.lon}}
+      },
+      "order": "asc",
+      "unit": "mi",
+      "mode": "min",
+      "distance_type": "arc"
+    }
+  }
+  {{/ifAll}}
+}

@@ -1,9 +1,8 @@
 {
-  "name": "opportunity_map",
-  "pattern": "/map",
+  "name": "opportunities_in",
+  "pattern": "/opportunities-in/:local_authority",
   "debug": false,
   "metaData": {
-    "title": "Volunteer Scotland Search",
     "sidebarButton": {
       "icon": "search",
       "tooltip": "Search",
@@ -15,37 +14,10 @@
   },
   "tasks": [
     "context.metaData.commonTasks.authNotRequired",
-    {
-      "name": "location_data",
-      "taskModule": "elasticsearch",
-      "config": {
-        "connectionStringTemplate": "{$../../../elasticsearch-url.txt}",
-        "elasticsearchConfig": {
-          "apiVersion": "5.6"
-        },
-        "queryTemplates": [
-          {
-            "name": "locations_results",
-            "index": "web-content-production",
-            "type": "milo-volunteering-opportunity",
-            "template": ">context.metaData.handlebars.queries.opportunities_search-map-locations"
-          },
-          {
-            "name": "home_results",
-            "index": "web-content-production",
-            "type": "milo-volunteering-opportunity",
-            "template": ">context.metaData.handlebars.queries.opportunities_search-map-home"
-          },
-          {
-            "name": "la_results",
-            "index": "geo_lookup",
-            "type": "es_district",
-            "template": ">context.metaData.handlebars.queries.opportunities_local-authority-areas"
-          }
-        ]
-      },
-      "renderer": "handlebars"
-    },
+    "context.metaData.commonTasks.profileInfoData",
+    "context.metaData.commonTasks.searchesData",
+    "context.metaData.commonTasks.favouritesData",
+    "context.metaData.commonTasks.registeredInterestData",
     {
       "name": "search_data",
       "taskModule": "elasticsearch",
@@ -56,16 +28,16 @@
         },
         "queryTemplates": [
           {
+            "name": "detailed_results",
+            "index": "web-content-production",
+            "type": "milo-volunteering-opportunity",
+            "template": ">context.metaData.handlebars.queries.opportunities_opportunities-in-list"
+          },
+          {
             "name": "map_results",
             "index": "web-content-production",
             "type": "milo-volunteering-opportunity",
-            "template": ">context.metaData.handlebars.queries.opportunities_search-map"
-          },
-          {
-            "name": "areas_results",
-            "index": "web-content-production",
-            "type": "milo-volunteering-opportunity",
-            "template": ">context.metaData.handlebars.queries.opportunities_search-map-areas"
+            "template": ">context.metaData.handlebars.queries.opportunities_opportunities-in-map"
           }
         ]
       },
@@ -82,7 +54,7 @@
           "if": [
             {
               "in": [
-                "view=rss",
+                "rss",
                 {
                   "var": "request.fullUrl"
                 }
@@ -115,8 +87,8 @@
             "layout": ">context.metaData.handlebars.layouts.default",
             "parts": {
               "head": ">context.metaData.handlebars.templates.opportunities_search-head-tags",
-              "body": ">context.metaData.handlebars.templates.opportunities_map",
-              "foot": ">context.metaData.handlebars.templates.opportunities_map-foot",
+              "body": ">context.metaData.handlebars.templates.opportunities_opportunities-in",
+              "foot": ">context.metaData.handlebars.templates.opportunities_search-foot",
               "sidebar": ">context.metaData.handlebars.templates.opportunities_search-form"
             },
             "contentType": "text/html"

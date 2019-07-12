@@ -1,6 +1,7 @@
 {
   "name": "export-user-data",
   "pattern": "/export-user-data",
+  "debug": false,
   "defaultParams": {
     "context": "results"
   },

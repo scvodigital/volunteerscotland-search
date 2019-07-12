@@ -1,6 +1,7 @@
 {
   "name": "save-notes",
   "pattern": "/save-notes",
+  "debug": false,
   "acceptedVerbs": "POST",
   "tasks": [
     "context.metaData.commonTasks.authRequired",

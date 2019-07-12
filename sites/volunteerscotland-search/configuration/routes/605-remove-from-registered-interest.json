@@ -1,6 +1,7 @@
 {
   "name": "remove-from-registered-interest",
   "pattern": "/remove-from-registered-interest",
+  "debug": false,
   "acceptedVerbs": "GET",
   "tasks": [
     "context.metaData.commonTasks.authRequired",

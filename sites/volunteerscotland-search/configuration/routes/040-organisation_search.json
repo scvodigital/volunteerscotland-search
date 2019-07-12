@@ -1,6 +1,7 @@
 {
-  "name": "browse",
-  "pattern": "/browse",
+  "name": "organisation_search",
+  "pattern": "/organisations/search",
+  "debug": false,
   "metaData": {
     "title": "Volunteer Scotland Search",
     "sidebarButton": {
@@ -9,10 +10,14 @@
       "classes": "hide-md hide-lg"
     }
   },
+  "defaultParams": {
+    "context": "results"
+  },
   "tasks": [
     "context.metaData.commonTasks.authNotRequired",
+    "context.metaData.commonTasks.organisationsWithOpportunities",
     {
-      "name": "opportunitySupplimentary",
+      "name": "search_data",
       "taskModule": "elasticsearch",
       "config": {
         "connectionStringTemplate": "{$../../../elasticsearch-url.txt}",
@@ -21,15 +26,18 @@
         },
         "queryTemplates": [
           {
-            "name": "types",
+            "name": "detailed_results",
             "index": "web-content-production",
-            "type": "milo-volunteering-opportunity",
-            "template": ">context.metaData.handlebars.queries.opportunities_types"
+            "type": "milo-volunteering-organisation",
+            "template": ">context.metaData.handlebars.queries.organisations_search-list"
           }
         ]
       },
       "renderer": "handlebars"
     },
+    "context.metaData.commonTasks.opportunitySupplimentary",
+    "context.metaData.commonTasks.organisationSupplimentary",
+    "context.metaData.commonTasks.termsMaps",
     {
       "name": "destination",
       "taskModule": "renderLayout",
@@ -45,10 +53,10 @@
           "default": {
             "layout": ">context.metaData.handlebars.layouts.default",
             "parts": {
-              "head": ">context.metaData.handlebars.templates.pages_page-head-tags",
-              "body": ">context.metaData.handlebars.templates.opportunities_browse",
-              "foot": "",
-              "sidebar": ">context.metaData.handlebars.templates.opportunities_search-form"
+              "head": ">context.metaData.handlebars.templates.organisations_search-head-tags",
+              "body": ">context.metaData.handlebars.templates.organisations_search",
+              "sidebar": ">context.metaData.handlebars.templates.organisations_search-form"
+
             },
             "contentType": "text/html"
           }

@@ -1,6 +1,7 @@
 {
   "name": "save-search",
   "pattern": "/save-search",
+  "debug": false,
   "acceptedVerbs": "POST",
   "tasks": [
     "context.metaData.commonTasks.authRequired",

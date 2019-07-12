@@ -1,6 +1,7 @@
 {
   "name": "sign_up",
   "pattern": "/sign-up",
+  "debug": false,
   "metaData": {
     "hideSearch": true,
     "title": "Sign up - Volunteer Scotland Search"

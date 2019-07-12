@@ -1,6 +1,7 @@
 {
   "name": "toggle-subscription",
   "pattern": "/toggle-subscription",
+  "debug": false,
   "acceptedVerbs": "POST",
   "tasks": [
     "context.metaData.commonTasks.authRequired",

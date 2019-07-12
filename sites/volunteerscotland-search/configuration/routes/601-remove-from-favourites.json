@@ -1,6 +1,7 @@
 {
   "name": "remove-from-favourites",
   "pattern": "/remove-from-favourites",
+  "debug": false,
   "acceptedVerbs": "GET",
   "tasks": [
     "context.metaData.commonTasks.authRequired",
