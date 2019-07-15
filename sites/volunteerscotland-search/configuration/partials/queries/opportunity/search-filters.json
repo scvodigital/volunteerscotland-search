@@ -10,7 +10,22 @@
   }
 },
 {{/if ~}}
-{{#if age ~}}
-{{>queries_term field="volunteersearch_age_slugs" term=age}},
+{{#if volunteersearch_types ~}}
+{{>queries_terms field="volunteersearch_type_slugs" terms=volunteersearch_types}},
+{{/if ~}}
+{{#if activities ~}}
+{{>queries_terms field="activities_slugs" terms=activities}},
+{{/if ~}}
+{{#if themes ~}}
+{{>queries_terms field="themes_slugs" terms=themes}},
+{{/if ~}}
+{{#if services ~}}
+{{>queries_terms field="volunteersearch_support_option_slugs" terms=services}},
+{{/if ~}}
+{{#if age_groups ~}}
+{{>queries_terms field="volunteersearch_age_group_slugs" terms=age_groups}},
+{{/if ~}}
+{{#if availability ~}}
+{{>queries_terms field="availability_slugs" terms=availability}},
 {{/if ~}}
 {{>queries_do_nothing}}
