@@ -169,7 +169,6 @@
           "parseJson": true
         }
       },
-
       "termsMaps": {
         "name": "termsMaps",
         "taskModule": "render",
