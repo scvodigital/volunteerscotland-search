@@ -1,0 +1,78 @@
+{{!--
+{{#each @root.context.metaData.terms ~}}
+  {{#unless noSearchFilter ~}}
+    {{#> components_advanced_checkbox_list name=key label=label}}
+      {{#each termGroups ~}}
+        {{#> components_advanced_checkbox_group
+            name=(concat ../key '-' key)
+            label=label
+            hideParent=(compare (length ../../termGroups) 1)}}
+          {{#each terms ~}}
+            {{> components_advanced_checkbox_item
+                name=../../../../key
+                value=key
+                label=label
+                checked=(contains (getProperty @root.request.params.query ../../../../key) key)
+                group=(concat ../../../key '-' ../key)
+                noIndent=(compare (length ../../../termGroups) 1)}}
+          {{/each ~}}
+        {{/components_advanced_checkbox_group}}
+      {{/each ~}}
+    {{/components_advanced_checkbox_list}}
+  {{/unless ~}}
+{{/each ~}}
+--}}
+<style>
+  .multi-select .mdl-menu {
+    overflow: auto;
+    height: 200px !important;
+    padding: 0 !important;
+  }
+
+  .multi-select .mdl-list__item {
+    padding: 0.5rem;
+  }
+
+  .multi-select .mdl-list__item:hover {
+    background-color: #eaeaea;
+  }
+</style>
+<div class="mdl-grid">
+  {{#each (filter @root.context.metaData.terms "noSearchFilter" "===" undefined)}}
+    {{#ifAll (compare @index ">" 0) (modulo @index 4 0)}}
+      </div>
+      <div class="mdl-grid">
+    {{/ifAll}}
+    <div class="mdl-cell mdl-cell--3-col">
+      <div class="multi-select" data-component="MultiSelect" data-config='{ "labelItemCount": 4 }'>
+        <button type="button" id="multi-{{key}}" class="mdl-button mdl-button--raised mdl-js-button">
+          {{label}}
+          <span class="multi-select-count"></span>
+        </button>
+        <ul class="mdl-menu mdl-js-menu" for="multi-{{key}}">
+          {{#each termGroups}}
+            <li class="mdl-list__item">
+              <strong>{{label}}</strong>
+            </li>
+            {{#each terms}}
+              <li class="mdl-list__item mdl-js-ripple-effect" for="volops-group-{{../key}}_{{key}}">
+                <span class="mdl-list__item-primary-content">
+                  {{label}}
+                </span>
+                <span class="mdl-list__item-secondary-action">
+                  <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="volops-group-{{../key}}_{{key}}">
+                    <input type="checkbox" id="volops-group-{{../key}}_{{key}}" class="mdl-checkbox__input" value="{{key}}" />
+                  </label>
+                </span>
+              </li>
+            {{/each}}
+          {{/each}}
+        </ul>
+        <div>
+          <strong>Selected: </strong>
+          <span class="multi-select-selected"></span>
+        </div>
+      </div>
+    </div>
+  {{/each}}
+</div>
