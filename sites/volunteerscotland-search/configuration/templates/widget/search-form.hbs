@@ -1,53 +1,17 @@
-{{!--
-{{#each @root.context.metaData.terms ~}}
-  {{#unless noSearchFilter ~}}
-    {{#> components_advanced_checkbox_list name=key label=label}}
-      {{#each termGroups ~}}
-        {{#> components_advanced_checkbox_group
-            name=(concat ../key '-' key)
-            label=label
-            hideParent=(compare (length ../../termGroups) 1)}}
-          {{#each terms ~}}
-            {{> components_advanced_checkbox_item
-                name=../../../../key
-                value=key
-                label=label
-                checked=(contains (getProperty @root.request.params.query ../../../../key) key)
-                group=(concat ../../../key '-' ../key)
-                noIndent=(compare (length ../../../termGroups) 1)}}
-          {{/each ~}}
-        {{/components_advanced_checkbox_group}}
-      {{/each ~}}
-    {{/components_advanced_checkbox_list}}
-  {{/unless ~}}
-{{/each ~}}
---}}
 <style>
-  .multi-select .mdl-menu {
-    overflow: auto;
-    height: 200px !important;
-    padding: 0 !important;
-  }
 
-  .multi-select .mdl-list__item {
-    padding: 0.5rem;
-  }
-
-  .multi-select .mdl-list__item:hover {
-    background-color: #eaeaea;
-  }
 </style>
 <div class="mdl-grid">
   {{#each (filter @root.context.metaData.terms "noSearchFilter" "===" undefined)}}
-    {{#ifAll (compare @index ">" 0) (modulo @index 4 0)}}
+    {{#ifAll (compare @index ">" 0) (modulo @index 3 0)}}
       </div>
       <div class="mdl-grid">
     {{/ifAll}}
-    <div class="mdl-cell mdl-cell--3-col">
-      <div class="multi-select" data-component="MultiSelect" data-config='{ "labelItemCount": 4 }'>
-        <button type="button" id="multi-{{key}}" class="mdl-button mdl-button--raised mdl-js-button">
+    <div class="mdl-cell mdl-cell--4-col">
+      <div class="multi-select" data-component="MultiSelect" data-config='{ "selectedListLimit": 4, "selectedListLabel": "Selected" }'>
+        <div class="mdl-badge mdl-badge--overlap multi-select-count" data-badge="0"></div>
+        <button type="button" id="multi-{{key}}" class="mdl-button mdl-button--raised mdl-js-button full-width">
           {{label}}
-          <span class="multi-select-count"></span>
         </button>
         <ul class="mdl-menu mdl-js-menu" for="multi-{{key}}">
           {{#each termGroups}}
@@ -55,24 +19,104 @@
               <strong>{{label}}</strong>
             </li>
             {{#each terms}}
-              <li class="mdl-list__item mdl-js-ripple-effect" for="volops-group-{{../key}}_{{key}}">
+              <li class="mdl-list__item mdl-js-ripple-effect" for="volops-{{../../key}}_{{key}}">
                 <span class="mdl-list__item-primary-content">
                   {{label}}
                 </span>
                 <span class="mdl-list__item-secondary-action">
-                  <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="volops-group-{{../key}}_{{key}}">
-                    <input type="checkbox" id="volops-group-{{../key}}_{{key}}" class="mdl-checkbox__input" value="{{key}}" />
+                  <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="volops-{{../../key}}_{{key}}">
+                    <input type="checkbox" id="volops-{{../../key}}_{{key}}" class="mdl-checkbox__input" value="{{key}}" />
                   </label>
                 </span>
               </li>
             {{/each}}
           {{/each}}
         </ul>
-        <div>
-          <strong>Selected: </strong>
-          <span class="multi-select-selected"></span>
-        </div>
       </div>
     </div>
   {{/each}}
+</div>
+<div class="mdl-grid">
+  <div class="mdl-cell mdl-cell--5-col">
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label full-width">
+      <input class="mdl-textfield__input full-width" type="text" name="keywords" id="volops-keywords"
+          data-component="Typeahead" data-config='{{#json}}
+            {{#json key="typeaheadOptions"}}
+              {{{json key="highlight" value=2}}},
+              {{{json key="minLength" value=0}}}
+            {{/json}},
+            {{#json key="domManipulatorRules"}}
+              {{#json key="run" type="array"}}
+                {{#json type="string"}}
+                  $("#volops-" + this.dataset.name + "_" + this.suggestion.value).parent().trigger("click")
+                {{/json}},
+                {{#json type="string"}}
+                  this.instance.element.typeahead("val", "").typeahead("close")
+                {{/json}}
+              {{/json}}
+            {{/json}},
+            {{#json key="datasets" type="array"}}
+              {{#each @root.context.metaData.terms}}
+                {{#each termGroups}}
+                  {{#json}}
+                    {{{json key="name" value=../key}}},
+                    {{#json key="templates"}}
+                      {{#compare (length ../termGroups) 1}}
+                        {{#json key="header" type="string"}}
+                          <h3>{{{../label}}}</h3>
+                        {{/json}}
+                      {{else}}
+                        {{#json key="header" type="string"}}
+                          <h3>{{{../label}}} &gt; {{{label}}}</h3>
+                        {{/json}}
+                      {{/compare}}
+                    {{/json}},
+                    {{{json key="display" value="other"}}},
+                    {{#json key="bloodhound"}}
+                      {{{json key="datumTokenizer" value="objWhitespace"}}},
+                      {{{json key="datumTokenizerField" value="label"}}},
+                      {{{json key="queryTokenizer" value="whitespace"}}},
+                      {{#json key="local" type="array"}}
+                        {{#each terms}}
+                          {{#json}}
+                            "label": {{{stringify (concat ../key ' ' textBag)}}},
+                            "value": {{{stringify key}}},
+                            "other": {{{stringify label}}}
+                          {{/json}},
+                        {{/each}}
+                      {{/json}}
+                    {{/json}}
+                  {{/json}},
+                {{/each}}
+              {{/each}}
+            {{/json}},
+            {{{json key="clearIfNothingSelected" value=true}}}
+          {{/json}}'>
+      <label class="mdl-textfield__label" for="volops-keywords">Keywords</label>
+    </div>
+  </div>
+  <div class="mdl-cell mdl-cell--5-col">
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label full-width">
+      <input class="mdl-textfield__input" type="text" name="location" id="volops-location">
+      <label class="mdl-textfield__label" for="volops-location">Location</label>
+    </div>
+  </div>
+  <div class="mdl-cell mdl-cell--2-col">
+
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <select class="mdl-textfield__input" id="volops-distance" name="distance">
+        <option value="5">5 miles</option>
+        <option value="10" selected="">10 miles</option>
+        <option value="15">15 miles</option>
+        <option value="20">20 miles</option>
+        <option value="25">25 miles</option>
+        <option value="30">30 miles</option>
+        <option value="35">35 miles</option>
+        <option value="40">40 miles</option>
+        <option value="45">45 miles</option>
+        <option value="50">50 miles</option>
+      </select>
+      <label class="mdl-textfield__label" for="volops-distance">Distance</label>
+    </div>
+  </div>
 </div>

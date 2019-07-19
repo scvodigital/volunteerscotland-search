@@ -1,7 +1,7 @@
 {
   "name": "widget-search-form",
   "pattern": "/widget/search-form",
-  "debug": false,
+  "debug": true,
   "acceptedVerbs": "GET",
   "tasks": [
     {
