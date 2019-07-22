@@ -212,7 +212,7 @@
           "queryTemplates": [
             {
               "name": "not_found",
-              "index": "web-content-production",
+              "index": "{$../../elasticsearch-index.txt}",
               "type": "milo-volunteering-opportunity",
               "template": ">context.metaData.handlebars.queries.pages_not-found"
             }
@@ -231,7 +231,7 @@
           "queryTemplates": [
             {
               "name": "not_found",
-              "index": "web-content-production",
+              "index": "{$../../elasticsearch-index.txt}",
               "type": "milo-volunteering-event",
               "template": ">context.metaData.handlebars.queries.pages_not-found"
             }
@@ -250,13 +250,13 @@
           "queryTemplates": [
             {
               "name": "types",
-              "index": "web-content-production",
+              "index": "{$../../elasticsearch-index.txt}",
               "type": "milo-volunteering-organisation",
               "template": ">context.metaData.handlebars.queries.organisations_types"
             },
             {
               "name": "not_found",
-              "index": "web-content-production",
+              "index": "{$../../elasticsearch-index.txt}",
               "type": "milo-volunteering-organisation",
               "template": ">context.metaData.handlebars.queries.pages_not-found"
             }
@@ -275,7 +275,7 @@
           "queryTemplates": [
             {
               "name": "opportunities",
-              "index": "web-content-production",
+              "index": "{$../../elasticsearch-index.txt}",
               "type": "milo-volunteering-opportunity",
               "template": ">context.metaData.handlebars.queries.opportunities_organisations"
             }

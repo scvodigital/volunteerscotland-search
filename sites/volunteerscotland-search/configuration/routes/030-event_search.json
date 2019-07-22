@@ -49,7 +49,7 @@
         "queryTemplates": [
           {
             "name": "detailed_results",
-            "index": "web-content-production",
+            "index": "{$../../../elasticsearch-index.txt}",
             "type": "milo-volunteering-event",
             "template": ">context.metaData.handlebars.queries.events_search-list"
           }

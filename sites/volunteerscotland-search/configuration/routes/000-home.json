@@ -23,25 +23,25 @@
         "queryTemplates": [
           {
             "name": "recently_viewed",
-            "index": "web-content-production",
+            "index": "{$../../../elasticsearch-index.txt}",
             "type": "milo-volunteering-opportunity",
             "template": ">context.metaData.handlebars.queries.opportunities_recently-viewed"
           },
           {
             "name": "favourites_current",
-            "index": "web-content-production",
+            "index": "{$../../../elasticsearch-index.txt}",
             "type": "milo-volunteering-opportunity",
             "template": ">context.metaData.handlebars.queries.opportunities_favourites-current"
           },
           {
             "name": "home_latest",
-            "index": "web-content-production",
+            "index": "{$../../../elasticsearch-index.txt}",
             "type": "milo-volunteering-opportunity",
             "template": ">context.metaData.handlebars.queries.opportunities_home-latest"
           },
           {
             "name": "home_latest_personalised",
-            "index": "web-content-production",
+            "index": "{$../../../elasticsearch-index.txt}",
             "type": "milo-volunteering-opportunity",
             "template": ">context.metaData.handlebars.queries.opportunities_home-latest-personalised"
           }
@@ -61,8 +61,8 @@
         "queryTemplates": [
           {
             "name": "tfn_latest",
-            "index": "web-content-production",
-            "type": "tfn-news-post,tfn-feature",
+            "index": "{$../../../elasticsearch-index.txt}",
+            "type": "tfn-legacy-post-news,tfn-legacy-feature",
             "template": ">context.metaData.handlebars.queries.posts_tfn-latest"
           }
         ]

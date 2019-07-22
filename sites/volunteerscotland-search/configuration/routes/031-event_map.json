@@ -26,13 +26,13 @@
         "queryTemplates": [
           {
             "name": "locations_results",
-            "index": "web-content-production",
+            "index": "{$../../../elasticsearch-index.txt}",
             "type": "milo-volunteering-event",
             "template": ">context.metaData.handlebars.queries.events_search-map-locations"
           },
           {
             "name": "home_results",
-            "index": "web-content-production",
+            "index": "{$../../../elasticsearch-index.txt}",
             "type": "milo-volunteering-event",
             "template": ">context.metaData.handlebars.queries.events_search-map-home"
           },
@@ -57,13 +57,13 @@
         "queryTemplates": [
           {
             "name": "map_results",
-            "index": "web-content-production",
+            "index": "{$../../../elasticsearch-index.txt}",
             "type": "milo-volunteering-event",
             "template": ">context.metaData.handlebars.queries.events_search-map"
           },
           {
             "name": "areas_results",
-            "index": "web-content-production",
+            "index": "{$../../../elasticsearch-index.txt}",
             "type": "milo-volunteering-event",
             "template": ">context.metaData.handlebars.queries.events_search-map-areas"
           }
