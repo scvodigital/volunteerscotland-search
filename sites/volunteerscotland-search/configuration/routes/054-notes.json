@@ -25,7 +25,7 @@
         "queryTemplates": [
           {
             "name": "open",
-            "index": "web-content-production",
+            "index": "{$../../../elasticsearch-index.txt}",
             "type": "milo-volunteering-opportunity",
             "template": ">context.metaData.handlebars.queries.opportunities_notes-open"
           }

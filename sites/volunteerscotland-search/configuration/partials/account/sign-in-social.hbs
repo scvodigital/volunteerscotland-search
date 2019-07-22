@@ -3,10 +3,10 @@
     <span class="fab fa-2x google-logo"><img src="https://storage.googleapis.com/scvo-assets/test/volunteerscotland-search/images/logos/g-logo.png" /></span> Sign in with Google
   </button>
   <button class="disabled mdc-button mdc-ripple-surface mdc-ripple-surface--primary" id="continue-with-twitter" type="button">
-    <span class="fab fa-twitter fa-2x"></span> Sign in with Twitter
+    <span class="fab fa-twitter-square fa-2x"></span> Sign in with Twitter
   </button>
   <button class="disabled mdc-button mdc-ripple-surface mdc-ripple-surface--primary" id="continue-with-facebook" type="button">
-    <span class="fab fa-facebook fa-2x"></span> Sign in with Facebook
+    <span class="fab fa-facebook-square fa-2x"></span> Sign in with Facebook
   </button>
 </div>
 
@@ -43,7 +43,7 @@
       if (creationTime.getTime() === lastSignInTime.getTime() && (new Date().getTime() - lastSignInTime.getTime() < 36000)) return true;
       return false;
     }
-    
+
     function socialSignIn(providerName) {
       $loader.show();
       volunteerscotland.auth.signInProvider(providerName).then(function(user) {

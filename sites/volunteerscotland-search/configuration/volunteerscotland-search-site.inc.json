@@ -169,7 +169,6 @@
           "parseJson": true
         }
       },
-
       "termsMaps": {
         "name": "termsMaps",
         "taskModule": "render",
@@ -213,7 +212,7 @@
           "queryTemplates": [
             {
               "name": "not_found",
-              "index": "web-content-production",
+              "index": "{$../../elasticsearch-index.txt}",
               "type": "milo-volunteering-opportunity",
               "template": ">context.metaData.handlebars.queries.pages_not-found"
             }
@@ -232,7 +231,7 @@
           "queryTemplates": [
             {
               "name": "not_found",
-              "index": "web-content-production",
+              "index": "{$../../elasticsearch-index.txt}",
               "type": "milo-volunteering-event",
               "template": ">context.metaData.handlebars.queries.pages_not-found"
             }
@@ -251,13 +250,13 @@
           "queryTemplates": [
             {
               "name": "types",
-              "index": "web-content-production",
+              "index": "{$../../elasticsearch-index.txt}",
               "type": "milo-volunteering-organisation",
               "template": ">context.metaData.handlebars.queries.organisations_types"
             },
             {
               "name": "not_found",
-              "index": "web-content-production",
+              "index": "{$../../elasticsearch-index.txt}",
               "type": "milo-volunteering-organisation",
               "template": ">context.metaData.handlebars.queries.pages_not-found"
             }
@@ -276,7 +275,7 @@
           "queryTemplates": [
             {
               "name": "opportunities",
-              "index": "web-content-production",
+              "index": "{$../../elasticsearch-index.txt}",
               "type": "milo-volunteering-opportunity",
               "template": ">context.metaData.handlebars.queries.opportunities_organisations"
             }
@@ -326,19 +325,6 @@
           "pathTemplate": "/profile-info/{{default data.auth.uid 'no-such-profile'}}",
           "defaultData": ""
         }
-      }
-    },
-    "firebaseDefaultDomain": {
-      "name": "volunteerscotland-search",
-      "label": "Volunteer Scotland",
-      "logoUrl": "",
-      "config" : {
-        "apiKey": "AIzaSyAwCMOrTj2eq8tVAdgD3vrgRqz9oIluiYk",
-        "authDomain": "auth.search.volunteerscotland.net",
-        "databaseURL": "https://scvo-volunteerscotland-search.firebaseio.com",
-        "projectId": "scvo-volunteerscotland-search",
-        "storageBucket": "scvo-volunteerscotland-search.appspot.com",
-        "messagingSenderId": "7952458796"
       }
     }
   }
