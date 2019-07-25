@@ -1,6 +1,6 @@
 {
   "register-interest": {
-    "mailgunConnection": "mg_volunteerscotland_net",
+    "mailgunConnection": "mg_volunteerscotland",
     "from": "Volunteer Scotland <register.interest@volunteerscotland.org.uk>",
     "replyTo": "Volunteer Scotland <register.interest@volunteerscotland.org.uk>",
     "sendIfEmpty": false,
@@ -9,7 +9,7 @@
     "metaData": {}
   },
   "register-interest-tsi": {
-    "mailgunConnection": "mg_volunteerscotland_net",
+    "mailgunConnection": "mg_volunteerscotland",
     "from": "Volunteer Scotland <register.interest@volunteerscotland.org.uk>",
     "replyTo": "Volunteer Scotland <register.interest@volunteerscotland.org.uk>",
     "sendIfEmpty": false,
@@ -18,7 +18,7 @@
     "metaData": {}
   },
   "user-confirmation": {
-    "mailgunConnection": "mg_volunteerscotland_net",
+    "mailgunConnection": "mg_volunteerscotland",
     "from": "Volunteer Scotland <register.interest@volunteerscotland.org.uk>",
     "replyTo": "Volunteer Scotland <register.interest@volunteerscotland.org.uk>",
     "sendIfEmpty": false,

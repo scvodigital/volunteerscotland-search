@@ -1,7 +1,7 @@
 {
   "name": "opportunity_search",
   "pattern": "/search",
-  "debug": false,
+  "debug": true,
   "metaData": {
     "title": "Volunteer Scotland Search",
     "sidebarButton": {
@@ -77,6 +77,15 @@
             "rss",
             {
               "in": [
+                "view=widget",
+                {
+                  "var": "request.fullUrl"
+                }
+              ]
+            },
+            "widget",
+            {
+              "in": [
                 "view=json",
                 {
                   "var": "request.fullUrl"
@@ -113,6 +122,13 @@
               "content": ">context.metaData.handlebars.templates.opportunities_search-json"
             },
             "contentType": "application/json"
+          },
+          "widget": {
+            "layout": ">context.metaData.handlebars.layouts.data",
+            "parts": {
+              "content": ">context.metaData.handlebars.templates.widget_search-results"
+            },
+            "contentType": "text/html"
           }
         }
       }

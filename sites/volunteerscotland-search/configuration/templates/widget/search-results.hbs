@@ -1,0 +1,19 @@
+<div class="volops-main">
+  <div class="volops-inner">
+    <h1>Volunteer opportunty search</h1>
+    {{>widget_search_form}}
+
+    {{#each @root.data.search_data.detailed_results.hits.hits}}
+      <div class="mdl-card mdl-shadow--2dp full-width v-margin-full">
+        <div class="mdl-card__title">
+          <div class="mdl-card__title-text">{{_source.title}} - <small>{{_source.organisation_name}}</small></div>
+        </div>
+        <div class="mdl-card__supporting-text">
+          {{_source.description}}
+        </div>
+      </div>
+    {{else}}
+      <strong>No results</strong>
+    {{/each}}
+  </div>
+</div>

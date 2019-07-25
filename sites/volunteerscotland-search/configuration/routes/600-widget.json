@@ -1,6 +1,6 @@
 {
-  "name": "widget-search-form",
-  "pattern": "/widget/search-form",
+  "name": "widget",
+  "pattern": "/widget",
   "debug": true,
   "acceptedVerbs": "GET",
   "tasks": [
@@ -10,7 +10,7 @@
       "renderer": "handlebars",
       "config": {
         "output": "body",
-        "template": ">context.metaData.handlebars.templates.widget_search-form"
+        "template": ">context.metaData.handlebars.templates.widget_widget"
       }
     }
   ]
