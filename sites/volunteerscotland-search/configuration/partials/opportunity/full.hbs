@@ -261,9 +261,14 @@
       {{/unless ~}}
     </div>
 
-    {{#unless (compare type 'widget') ~}}
+    {{#compare type 'widget' ~}}
+    <a href="https://search.volunteerscotland.net/register-interest/{{Id}}/{{title_slug}}?utm_source={{default @root.request.headers.referer 'widget'}}&utm_campaign=search&utm_medium=widget" class="mdl-button mdl-button--raised mdl-button--colored b-margin-full" download>
+      <span class="underline">Register interest</span>
+      <span class="material-icons icon-right" aria-hidden="true">print</span>
+    </a>
+    {{else}}
     {{> opportunity_actions slug=slug Id=Id action="organisation"}}
-    {{/unless ~}}
+    {{/compare ~}}
   </div>
 </div>
 <script>

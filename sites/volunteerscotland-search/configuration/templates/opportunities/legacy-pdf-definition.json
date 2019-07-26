@@ -24,47 +24,15 @@
       "bold": true
     }
   },
-  "content": [{
-      "height": 150,
-      "width": 150,
-      "fit": [150, 150],
-      "image": {
-        "_eval": "images.logo"
-      },
-      "alignment": "center",
-      "margin": [0, 15]
-    },
-    {
-      "text": {
-        "_eval": "request.params.query.title"
-      },
-      "fontSize": 26,
-      "bold": true,
-      "alignment": "center",
-      "margin": [0, 15]
-    },
-    {
-      "text": {
-        "_if": "request.params.query['subtitle']",
-        "then": {
-          "_eval": "request.params.query.subtitle"
-        },
-        "else": ""
-      },
-      "fontSize": 18,
-      "bold": true,
-      "alignment": "center",
-      "pageBreak": "after",
-      "margin": [0, 15]
-    },
+  "content": [
     {
       "_map": {
-        "_eval": "data.search_data.detailed_results.hits.hits"
+        "_eval": "data.primaryResponse.hits.hits"
       },
       "each(x)": [{
           "style": "h1",
           "text": {
-            "_eval": "x._source.name"
+            "_eval": "x._source.title"
           }
         },
         {
@@ -79,7 +47,7 @@
         {
           "stack": [{
               "style": "h2",
-              "text": "Fund Details"
+              "text": "Details"
             },
             {
               "text": [{
@@ -88,9 +56,9 @@
                 },
                 {
                   "text": {
-                    "_if": "x._source['fund_status']",
+                    "_if": "x._source['title']",
                     "then": {
-                      "_eval": "x._source['fund_status']"
+                      "_eval": "x._source['title']"
                     },
                     "else": "No status"
                   }
@@ -104,9 +72,9 @@
                 },
                 {
                   "text": {
-                    "_if": "x._source['type_of_funding']",
+                    "_if": "x._source['title']",
                     "then": {
-                      "_eval": "x._source['type_of_funding']"
+                      "_eval": "x._source['title']"
                     },
                     "else": "No type provided"
                   }
@@ -120,9 +88,9 @@
                 },
                 {
                   "text": {
-                    "_if": "x._source['source_of_fund']",
+                    "_if": "x._source['title']",
                     "then": {
-                      "_eval": "x._source['source_of_fund']"
+                      "_eval": "x._source['title']"
                     },
                     "else": "No source provided"
                   }
@@ -136,9 +104,9 @@
                 },
                 {
                   "text": {
-                    "_if": "x._source['when_to_apply']",
+                    "_if": "x._source['title']",
                     "then": {
-                      "_eval": "x._source['when_to_apply']"
+                      "_eval": "x._source['title']"
                     },
                     "else": "No application date"
                   }
@@ -152,9 +120,9 @@
                 },
                 {
                   "text": {
-                    "_if": "x._source['next_deadline']",
+                    "_if": "x._source['title']",
                     "then": {
-                      "_eval": "jsone.dateFormat('Do MMMM YYYY', x._source['next_deadline'])"
+                      "_eval": "jsone.dateFormat('Do MMMM YYYY', x._source['title'])"
                     },
                     "else": "No deadline date"
                   }
@@ -168,7 +136,7 @@
                 },
                 {
                   "text": {
-                    "_if": "x._source['charities_only']",
+                    "_if": "x._source['title']",
                     "then": "Yes",
                     "else": "No"
                   }
@@ -181,14 +149,14 @@
                 "bold": true
               }, {
                 "text": {
-                  "_if": "x._source['fund_url']",
+                  "_if": "x._source['url']",
                   "then": {
-                    "_eval": "x._source['fund_url']"
+                    "_eval": "x._source['url']"
                   },
-                  "else": "No fund specific website"
+                  "else": "No specific website"
                 },
                 "link": {
-                  "_eval": "x._source['fund_url']"
+                  "_eval": "x._source['url']"
                 }
               }]
             },
@@ -219,10 +187,10 @@
                 "bold": true
               }, {
                 "text": {
-                  "_if": "x._source['fund_telephone']", 
+                  "_if": "x._source['fund_telephone']",
                   "then": {
                     "_eval": "x._source['fund_telephone']"
-                  }, 
+                  },
                   "else": "No fund specific phone number"
                 },
                 "link": {
@@ -257,10 +225,10 @@
                 },
                 {
                   "text": {
-                    "_if": "x._source['fund_exclusion']", 
+                    "_if": "x._source['fund_exclusion']",
                     "then": {
                       "_eval": "x._source['fund_exclusion']"
-                    }, 
+                    },
                     "else": "No exclusions given"
                   }
                 }
@@ -357,18 +325,18 @@
               "fontSize": 14,
               "bold": true
             }, {
-              "text": "fundingscotland@scvo.org.uk\n",
-              "link": "mailto:fundingscotland@scvo.org.uk",
+              "text": "@scvo.org.uk\n",
+              "link": "mailto:@scvo.org.uk",
               "fontSize": 10
             },
             {
-              "text": "0800 169 0022\n",
-              "link": "tel:08001690022",
+              "text": "\n",
+              "link": "tel:",
               "fontSize": 10
             },
             {
-              "text": "@fundingscotland",
-              "link": "https://twitter.com/fundingscotland",
+              "text": "@",
+              "link": "https://twitter.com/",
               "fontSize": 10
             }
           ]
@@ -380,13 +348,13 @@
               "text": "About Us\n",
               "fontSize": 14,
               "bold": true
-            }, 
+            },
             {
-              "text": "Funding Scotland lists funders with a track record of supporting projects in Scotland. It includes grants, loans, prizes and other support. It is a valuable resource for charities, community groups, social enterprises and voluntary organisations of all shapes and sizes. It does not include funding opportunities for individuals or businesses.\n",
+              "text": "Volunteer Scotland Search is run in partnership between Volunteer Scotland and the Scottish Council for Voluntary Organisations.\n",
               "fontSize": 10
             },
             {
-              "text": "This website is owned and maintained by the Scottish Council for Voluntary Organisations the umbrella body for Scotland\"s third sector.\n",
+              "text": "This website is maintained by the Scottish Council for Voluntary Organisations the umbrella body for Scotland\"s third sector.\n",
               "fontSize": 10
             }
           ]
@@ -394,6 +362,6 @@
       ],
       "margin": [30, 240]
     }
-  
+
   ]
 }

@@ -1,7 +1,7 @@
 {
   "name": "opportunity_pdf",
+  "debug": true,
   "pattern": "/opportunity-pdf/:id(/:junk)",
-  "debug": false,
   "defaultParams": {
     "context": "detail"
   },

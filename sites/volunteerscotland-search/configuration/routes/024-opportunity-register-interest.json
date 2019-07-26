@@ -1,7 +1,7 @@
 {
   "name": "register-interest",
-  "pattern": "/register-interest/:id(/:junk)",
   "debug": false,
+  "pattern": "/register-interest/:id(/:junk)",
   "metaData": {
     "title": "Volunteer Scotland Search",
     "sidebarButton": {

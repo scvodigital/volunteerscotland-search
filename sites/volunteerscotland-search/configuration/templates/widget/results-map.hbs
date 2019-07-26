@@ -7,8 +7,14 @@
     {{#compare @root.data.search_data.map_results.hits.total ">" 0}}
       <div class="mdl-tabs mdl-njs-tabs mdl-js-ripple-effect">
         <div class="mdl-tabs__tab-bar">
-          <a href="#/search?{{{substr @root.request.url.search 1}}}" class="mdl-tabs__tab">List</a>
-          <a href="#/map?{{{substr @root.request.url.search 1}}}" class="mdl-tabs__tab is-active">Map</a>
+          <a href="#/search?{{{substr @root.request.url.search 1}}}" class="mdl-tabs__tab">
+            <span class="material-icons icon-left" aria-hidden="true">list</span>
+            List
+          </a>
+          <a href="#/map?{{{substr @root.request.url.search 1}}}" class="mdl-tabs__tab is-active">
+            <span class="material-icons icon-left" aria-hidden="true">place</span>
+            Map
+          </a>
         </div>
       </div>
     {{/compare}}

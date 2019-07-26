@@ -1,10 +1,10 @@
 {
   "name": "opportunity",
+  "debug": false,
   "pattern": {
     "slug": "/opportunity/:id(/:junk)",
     "id": "/opp/:id"
   },
-  "debug": false,
   "metaData": {
     "title": "Volunteer Scotland Search",
     "sidebarButton": {
