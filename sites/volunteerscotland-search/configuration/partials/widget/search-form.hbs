@@ -221,64 +221,6 @@
         <label class="mdl-textfield__label" for="volops-distance">Distance</label>
       </div>
     </div>
-    <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--6-col-desktop">
-      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label full-width"
-          data-component="Typeahead" data-Typeahead='{{#json}}
-            {{#json key="typeaheadOptions"}}
-              {{{json key="highlight" value=2}}},
-              {{{json key="minLength" value=0}}}
-            {{/json}},
-            {{#json key="itemSelectedRules"}}
-              {{#json key="run" type="array"}}
-                {{#json type="string"}}
-                  $("#volops-" + this.dataset.name + "_" + this.suggestion.value).parent().trigger("click")
-                {{/json}},
-                {{#json type="string"}}
-                  this.instance.textbox.typeahead("val", "").typeahead("close")
-                {{/json}}
-              {{/json}}
-            {{/json}},
-            {{#json key="datasets" type="array"}}
-              {{#each @root.context.metaData.terms}}
-                {{#each termGroups}}
-                  {{#json}}
-                    {{{json key="name" value=../key}}},
-                    {{#json key="templates"}}
-                      {{#compare (length ../termGroups) 1}}
-                        {{#json key="header" type="string"}}
-                          <h3>{{{../label}}}</h3>
-                        {{/json}}
-                      {{else}}
-                        {{#json key="header" type="string"}}
-                          <h3>{{{../label}}} &gt; {{{label}}}</h3>
-                        {{/json}}
-                      {{/compare}}
-                    {{/json}},
-                    {{{json key="display" value="other"}}},
-                    {{#json key="bloodhound"}}
-                      {{{json key="datumTokenizer" value="objWhitespace"}}},
-                      {{{json key="datumTokenizerField" value="label"}}},
-                      {{{json key="queryTokenizer" value="whitespace"}}},
-                      {{#json key="local" type="array"}}
-                        {{#each terms}}
-                          {{#json}}
-                            "label": {{{stringify (concat ../key ' ' textBag)}}},
-                            "value": {{{stringify key}}},
-                            "other": {{{stringify label}}}
-                          {{/json}},
-                        {{/each}}
-                      {{/json}}
-                    {{/json}}
-                  {{/json}},
-                {{/each}}
-              {{/each}}
-            {{/json}},
-            {{{json key="clearIfNothingSelected" value=true}}}
-          {{/json}}'>
-        <input class="mdl-textfield__input full-width" type="text" name="keywords" id="volops-keywords" value="{{@root.request.params.query.keywords}}">
-        <label class="mdl-textfield__label" for="volops-keywords">Keywords</label>
-      </div>
-    </div>
   </div>
   <div style="text-align: right;" class="h-padding-full">
     <input type="hidden" name="lat" id="volops-lat" value="{{@root.request.params.query.lat}}">
