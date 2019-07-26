@@ -104,79 +104,103 @@
       </div>
     </div>
     <div class="mdl-cell mdl-cell--5-col">
-      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label full-width {{#if @root.request.params.query.lat}}typeahead-locked{{/if}}"
-          data-component="Typeahead" data-Typeahead='{{#json}}
-            {{#json key="typeaheadOptions"}}
-              {{{json key="highlight" value=2}}},
-              {{{json key="minLength" value=3}}}
-            {{/json}},
-            {{#json key="itemSelectedRules"}}
-              {{#json key="addClasses"}}
-                {{#json key=">" type="array"}}
-                  {{{json value="typeahead-locked"}}}
-                {{/json}}
-              {{/json}},
-              {{{json key="focus" value="#volops-distance"}}},
-              {{#json key="run" type="array"}}
-                {{#json type="string"}}
-                  console.log("Location", this.suggestion);
-                {{/json}}
-              {{/json}},
-              {{#json key="attributes"}}
-                {{#json key="#volops-lat"}}
-                  {{{json key="value" value="{{suggestion.point.lat}}"}}}
-                {{/json}},
-                {{#json key="#volops-lng"}}
-                  {{{json key="value" value="{{suggestion.point.lon}}"}}}
-                {{/json}}
-              {{/json}}
-            {{/json}},
-            {{#json key="nothingSelectedRules"}}
-              {{#json key="run" type="array"}}
-                {{#json type="string"}}
-                  console.log("Location cleared");
-                {{/json}}
-              {{/json}},
-              {{#json key="attributes"}}
-                {{#json key="#volops-lat"}}
-                  {{{json key="value" value="{{suggestion.point.lat}}"}}}
-                {{/json}},
-                {{#json key="#volops-lng"}}
-                  {{{json key="value" value="{{suggestion.point.lon}}"}}}
-                {{/json}}
-              {{/json}}
-            {{/json}},
-            {{#json key="datasets" type="array"}}
-              {{#json}}
-                {{{json key="name" value="geo_lookup"}}},
-                {{{json key="display" value="display"}}},
-                {{#json key="bloodhound"}}
-                  {{{json key="datumTokenizer" value="objWhitespace"}}},
-                  {{{json key="datumTokenizerField" value="place"}}},
-                  {{{json key="queryTokenizer" value="whitespace"}}},
-                  {{#json key="remote"}}
-                    {{{json key="url" value=(concat "https://" @root.request.url.hostname ":8080/geo-lookup?q=*")}}},
-                    {{{json key="wildcard" value="*"}}}
-                  {{/json}}
-                {{/json}}
-              {{/json}}
-            {{/json}},
-            {{{json key="clearIfNothingSelected" value=true}}}
-          {{/json}}'>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label full-width
+        {{~#ifAll @root.request.params.query.lat @root.request.params.query.lng @root.request.params.query.distance}} typeahead-locked{{/ifAll~}}"
+          data-component="Typeahead" data-Typeahead='{
+              "typeaheadOptions": {
+                "highlight": 2,
+                "minLength": 3
+              },
+              "itemSelectedRules": {
+                "addClasses": {
+                  ">": [
+                    "typeahead-locked"
+                  ]
+                },
+                "focus": "#volops-distance",
+                "run": [
+                  "console.log(\"Location\", this.suggestion);\n"
+                ],
+                "attributes": {
+                  "#volops-lat": {
+                    "value": "\{{suggestion.point.lat}}"
+                  },
+                  "#volops-lng": {
+                    "value": "\{{suggestion.point.lon}}"
+                  },
+                  ">input": {
+                    "readonly": "readonly"
+                  }
+                }
+              },
+              "nothingSelectedRules": {
+                "run": [
+                  "$(`#volops-location`).typeahead(`val`, ``)",
+                  "console.log(\"Location cleared\");\n"
+                ],
+                "attributes": {
+                  "#volops-lat": {
+                    "value": ""
+                  },
+                  "#volops-lng": {
+                    "value": ""
+                  },
+                  "#volops-location": {
+                    "readonly": null
+                  }
+                },
+                "removeClasses": {
+                  ">": [
+                    "typeahead-locked"
+                  ]
+                }
+              },
+              "datasets": [
+                {
+                  "name": "geo_lookup",
+                  "display": "display",
+                  "bloodhound": {
+                    "datumTokenizer": "objWhitespace",
+                    "datumTokenizerField": "place",
+                    "queryTokenizer": "whitespace",
+                    "remote": {
+                      "url": "https://volunteerscotland-search.local:8080/geo-lookup?q=*",
+                      "wildcard": "*"
+                    }
+                  }
+                }
+              ],
+              "clearIfNothingSelected": true
+            }'>
         <button type="button" class="mdl-button mdl-js-button mdl-button--icon typeahead-lock"
-            data-component="DomManipulatorTrigger" data-DomManipulatorTrigger='{{#json}}
-              {{#json key="click"}}
-                {{#json key="removeClasses"}}
-                  {{#json key="<" type="array"}}
-                    {{{json value="typeahead-locked"}}}
-                  {{/json}}
-                {{/json}},
-                {{{json key="focus" value="#volops-location"}}}
-              {{/json}}
-            {{/json}}'>
+            data-component="DomManipulatorTrigger" data-DomManipulatorTrigger='{
+                "click": {
+                  "attributes": {
+                    "#volops-lat": {
+                      "value": null
+                    },
+                    "#volops-lng": {
+                      "value": null
+                    },
+                    "#volops-location": {
+                      "readonly": null
+                    }
+                  },
+                  "removeClasses": {
+                    "<": [
+                      "typeahead-locked"
+                    ]
+                  },
+                  "run": [
+                    "$(`#volops-location`).typeahead(`val`, ``)"
+                  ],
+                  "focus": "#volops-location"
+                }
+              }'>
           <span class="material-icons">clear</span>
         </button>
-        <input class="mdl-textfield__input" type="text" name="location" id="volops-location" value="{{@root.request.params.query.location}}">
+        <input class="mdl-textfield__input" type="text" name="location" id="volops-location" value="{{@root.request.params.query.location}}"
+          {{#ifAll @root.request.params.query.lat @root.request.params.query.lng @root.request.params.query.distance}}readonly="readonly"{{/ifAll}}>
         <label class="mdl-textfield__label" for="volops-location">Location</label>
       </div>
     </div>
