@@ -43,7 +43,7 @@
                     {{{json key="lng" value=@root.request.params.query.lng}}}
                   {{/json}},
                   {{#json key="options"}}
-                    {{{json key="radius" value=(multiply @root.request.params.query.distance 1000.609344)}}}
+                    {{{json key="radius" value=(multiply @root.request.params.query.distance 1609.344)}}}
                   {{/json}}
                 {{/json}}
               {{/json}}
