@@ -4,5 +4,14 @@
     {{>widget_search_form}}
 
     <strong>Show vol op here</strong>
+
+    {{#compare @root.data.primaryResponse.hits.total ">" 0 ~}}
+    <div class="content-primary">
+      {{#each @root.data.primaryResponse.hits.hits ~}}
+        {{> opportunity_full _source view="full" type="widget"}}
+      {{/each ~}}
+    </div>
+    {{/compare ~}}
+
   </div>
 </div>

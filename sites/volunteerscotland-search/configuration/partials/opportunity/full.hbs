@@ -2,6 +2,7 @@
   {{> opportunity_key_info}}
   <hr class="mdc-list-divider" />
   <div class="content-primary-info-container">
+    {{#unless (compare type 'widget') ~}}
     <div class="mdc-layout-grid">
       <div class="mdc-layout-grid__inner">
         <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone action">
@@ -15,6 +16,7 @@
         </div>
       </div>
     </div>
+    {{/unless ~}}
     <hr class="mdc-list-divider" />
     <div class="panels" for="opportunity-tab-bar">
       <div class="panel panel--active mdc-card--full-content" role="tabpanel" aria-hidden="false" data-tab-name="information">
@@ -25,7 +27,7 @@
             <li class="mdc-card__info--content-primary-work-type reference mdc-typography--body1">
               <span class="fa-li"><span class="far fa-briefcase fa-fw" title="Activites"></span></span>
               {{#each activities}}
-              <a href="/search?activities={{urlencode (slugify (replace this "/" "-"))}}">{{{this}}}</a>{{#unless @last}}, {{/unless}}
+              <a href="{{#compare ../type 'widget'}}/#{{/compare}}/search?activities={{urlencode (slugify (replace this "/" "-"))}}{{#compare ../type 'widget'}}&view=widget{{/compare}}">{{{this}}}</a>{{#unless @last}}, {{/unless}}
               {{/each}}
             </li>
             {{/compare ~}}
@@ -33,7 +35,7 @@
             <li class="mdc-card__info--content-primary-client-group mdc-typography--body1">
               <span class="fa-li"><span class="far fa-users fa-fw" title="Themes"></span></span>
               {{#each themes ~}}
-              <a href="/search?themes={{urlencode (slugify (replace this "/" "-"))}}">{{{this}}}</a>{{#unless @last}}, {{/unless}}
+              <a href="{{#compare ../type 'widget'}}/#{{/compare}}/search?themes={{urlencode (slugify (replace this "/" "-"))}}{{#compare ../type 'widget'}}&view=widget{{/compare}}">{{{this}}}</a>{{#unless @last}}, {{/unless}}
               {{/each ~}}
             </li>
             {{/compare ~}}
@@ -165,6 +167,7 @@
         </div>
       </div>
 
+      {{#unless (compare type 'widget') ~}}
       <div class="panel mdc-card--full-content" role="tabpanel" aria-hidden="true" data-tab-name="notes">
         <div class="text-field-container user-notes">
           {{#if @root.data.auth ~}}
@@ -253,6 +256,7 @@
           {{/compare ~}}
         </div>
       </div>
+      {{/unless ~}}
     </div>
 
     {{> opportunity_actions slug=slug Id=Id action="organisation"}}
