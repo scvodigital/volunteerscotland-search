@@ -45,7 +45,7 @@
     {{/each ~}}
   </div>
   <div class="mdl-grid">
-    <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--5-col-tablet mdl-cell--5-col-desktop">
+    <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--5-col-tablet mdl-cell--4-col-desktop">
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label full-width {{#if @root.request.params.query.lat}}typeahead-locked{{/if}}"
           data-component="Typeahead" data-Typeahead='{{#json}}
             {{#json key="typeaheadOptions"}}
@@ -139,7 +139,7 @@
         <label class="mdl-textfield__label" for="volops-distance">Distance</label>
       </div>
     </div>
-    <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--5-col-desktop">
+    <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--6-col-desktop">
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label full-width"
           data-component="Typeahead" data-Typeahead='{{#json}}
             {{#json key="typeaheadOptions"}}
