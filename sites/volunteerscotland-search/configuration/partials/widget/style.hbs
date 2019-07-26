@@ -1,16 +1,31 @@
-<link type="text/css" rel="stylesheet" href="">
 <style type="text/css">
-  @import url('https://fonts.googleapis.com/css?family=Rambla:400,700');
   .scvo-widget .mdc-list-divider {
     display: none;
   }
   .scvo-widget .mdl-badge[data-badge]:after,
-  .scvo-widget .mdl-button--raised.mdl-button--colored,
-  .scvo-widget .mdl-button--raised.mdl-button--colored:hover {
+  .scvo-widget .mdl-button--raised.mdl-button--colored {
     background: #00a0af;
+  }
+  .scvo-widget .mdl-button--raised.mdl-button--colored:hover,
+  .scvo-widget .mdl-button--raised.mdl-button--colored:focus:not(:active) {
+    background: #00717c;
+  }
+  .scvo-widget .register-interest.mdl-button--raised.mdl-button--colored {
+    background: #009ddc;
+  }
+  .scvo-widget .register-interest.mdl-button--raised.mdl-button--colored:hover,
+  .scvo-widget .register-interest.mdl-button--raised.mdl-button--colored:focus:not(:active) {
+    background: #0079c1;
   }
   .scvo-widget a {
     color: #00a0af;
+    text-decoration: none;
+  }
+  .scvo-widget a:hover {
+    text-decoration: underline;
+  }
+  .scvo-widget a.mdl-button:hover {
+    text-decoration: none;
   }
   .scvo-widget .map-results {
     width: 100%;
@@ -27,9 +42,12 @@
   .scvo-widget h3,
   .scvo-widget h4,
   .scvo-widget h5,
-  .scvo-widget h6,
+  .scvo-widget h6 {
+    font-family: inherit;
+    font-weight: 400;
+  }
   .scvo-widget .mdl-button {
-    font-family: "Rambla", Helvetica, Arial, sans-serif;
+    font-family: inherit;
     font-weight: 700;
   }
   .scvo-widget p,
@@ -38,10 +56,11 @@
   .scvo-widget div,
   .scvo-widget label,
   .scvo-widget input,
+  .scvo-widget select,
   .scvo-widget .mdl-tabs__tab,
   .scvo-widget .mdl-textfield__label,
   .scvo-widget .mdc-typography--body1 {
-    font-family: "Rambla", Helvetica, Arial, sans-serif;
+    font-family: inherit;
     font-weight: 400;
     font-size: 1rem;
   }
