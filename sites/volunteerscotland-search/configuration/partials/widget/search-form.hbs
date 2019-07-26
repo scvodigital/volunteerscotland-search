@@ -7,11 +7,11 @@
       {{/json}}
     {{/json}}'>
   <div class="mdl-grid">
-    {{#each (filter @root.context.metaData.terms "noSearchFilter" "===" undefined)}}
-      {{#ifAll (compare @index ">" 0) (modulo @index 3 0)}}
+    {{#each (filter @root.context.metaData.terms "noSearchFilter" "===" undefined) ~}}
+      {{#ifAll (compare @index ">" 0) (modulo @index 3 0) ~}}
         </div>
         <div class="mdl-grid">
-      {{/ifAll}}
+      {{/ifAll ~}}
       <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--4-col-tablet mdl-cell--4-col-desktop">
         <div class="multi-select" data-component="MultiSelect" data-MultiSelect='{ "selectedListLimit": 4, "selectedListLabel": "Selected" }'>
           <div class="mdl-badge mdl-badge--overlap multi-select-count" data-badge="0"></div>
@@ -19,13 +19,13 @@
             {{{label}}}
           </button>
           <ul class="mdl-menu mdl-js-menu" for="multi-{{key}}">
-            {{#each termGroups}}
+            {{#each termGroups ~}}
               {{#unless (compare label "Other") ~}}
               <li class="mdl-list__item">
                 <strong>{{{label}}}</strong>
               </li>
               {{/unless ~}}
-              {{#each terms}}
+              {{#each terms ~}}
                 <li class="mdl-list__item mdl-js-ripple-effect" for="volops-{{../../key}}_{{key}}">
                   <span class="mdl-list__item-primary-content">
                     {{{label}}}
@@ -37,12 +37,12 @@
                     </label>
                   </span>
                 </li>
-              {{/each}}
-            {{/each}}
+              {{/each ~}}
+            {{/each ~}}
           </ul>
         </div>
       </div>
-    {{/each}}
+    {{/each ~}}
   </div>
   <div class="mdl-grid">
     <div class="mdl-cell mdl-cell--5-col">
@@ -155,7 +155,7 @@
                   {{{json key="datumTokenizerField" value="place"}}},
                   {{{json key="queryTokenizer" value="whitespace"}}},
                   {{#json key="remote"}}
-                    {{{json key="url" value="https://volunteerscotland-search.local:8080/geo-lookup?q=*"}}},
+                    {{{json key="url" value=(concat "https://" @root.request.url.hostname ":8080/geo-lookup?q=*")}}},
                     {{{json key="wildcard" value="*"}}}
                   {{/json}}
                 {{/json}}
