@@ -1,8 +1,8 @@
 <div class="mdc-card content-primary full" data-opportunity-id="{{Id}}" data-opportunity-layout="Full" data-opportunity-context="{{default viewContext "Vacancy Page"}}">
-  {{> opportunity_key_info}}
+  {{> opportunity_key_info type="full"}}
   <hr class="mdc-list-divider" />
   <div class="content-primary-info-container">
-    {{#unless (compare type 'widget') ~}}
+    {{#unless (compare view 'widget') ~}}
     <div class="mdc-layout-grid">
       <div class="mdc-layout-grid__inner">
         <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone action">
@@ -27,7 +27,7 @@
             <li class="mdc-card__info--content-primary-work-type reference mdc-typography--body1">
               <span class="fa-li"><span class="far fa-briefcase fa-fw" title="Activites"></span></span>
               {{#each activities}}
-              <a href="{{#compare ../type 'widget'}}/#{{/compare}}/search?activities={{urlencode (slugify (replace this "/" "-"))}}{{#compare ../type 'widget'}}&view=widget{{/compare}}">{{{this}}}</a>{{#unless @last}}, {{/unless}}
+              <a href="{{#compare ../view 'widget'}}/#{{/compare}}/search?activities={{urlencode (slugify (replace this "/" "-"))}}{{#compare ../view 'widget'}}&view=widget{{/compare}}">{{{this}}}</a>{{#unless @last}}, {{/unless}}
               {{/each}}
             </li>
             {{/compare ~}}
@@ -35,7 +35,7 @@
             <li class="mdc-card__info--content-primary-client-group mdc-typography--body1">
               <span class="fa-li"><span class="far fa-users fa-fw" title="Themes"></span></span>
               {{#each themes ~}}
-              <a href="{{#compare ../type 'widget'}}/#{{/compare}}/search?themes={{urlencode (slugify (replace this "/" "-"))}}{{#compare ../type 'widget'}}&view=widget{{/compare}}">{{{this}}}</a>{{#unless @last}}, {{/unless}}
+              <a href="{{#compare ../view 'widget'}}/#{{/compare}}/search?themes={{urlencode (slugify (replace this "/" "-"))}}{{#compare ../view 'widget'}}&view=widget{{/compare}}">{{{this}}}</a>{{#unless @last}}, {{/unless}}
               {{/each ~}}
             </li>
             {{/compare ~}}
@@ -155,7 +155,7 @@
           <p class="mdc-typography--body1">You can't volunteer for this opportunity using this site. {{#if organisation_website}}Please contact the organisation directly using <a href="{{fixUrl organisation_website 'http'}}">{{{organisation_website}}}</a> for more information.{{/if}}</p>
           {{/unless}}
 
-          {{#unless (compare type 'widget') ~}}
+          {{#unless (compare view 'widget') ~}}
           <div class="mdc-typography--body1 report pull-right">
             <span class="fas fa-flag fa-fw" title="Report this opportunity"></span>
             <a href="mailto:milosupport@scvo.org.uk?subject=Report%20opportunity:%20{{urlencode title}}%20({{urlencode milo_ref}})%20via%20Volunteer%20Scotland%20Search&body=I%20would%20like%20to%20report%20this%20opportunity%20for%20the%20following%20reasons:">Report this opportunity</a>
@@ -169,7 +169,7 @@
         </div>
       </div>
 
-      {{#unless (compare type 'widget') ~}}
+      {{#unless (compare view 'widget') ~}}
       <div class="panel mdc-card--full-content" role="tabpanel" aria-hidden="true" data-tab-name="notes">
         <div class="text-field-container user-notes">
           {{#if @root.data.auth ~}}
@@ -261,7 +261,7 @@
       {{/unless ~}}
     </div>
 
-    {{#compare type 'widget' ~}}
+    {{#compare view 'widget' ~}}
     <a href="https://search.volunteerscotland.net/register-interest/{{Id}}/{{title_slug}}?utm_source={{default (urlencode (replace (replace @root.request.headers.referer 'http://' '') 'https://' '')) 'widget'}}&utm_campaign=search&utm_medium=widget" class="register-interest mdl-button mdl-button--raised mdl-button--colored v-margin-full" target="_blank">
       <span class="material-icons icon-left" aria-hidden="true">open_in_new</span>
       <span class="underline">I want to volunteer</span>

@@ -44,10 +44,10 @@
     </div>
     {{/if ~}}
     {{#if @root.request.url.search ~}}
-    {{#compare view "===" "full" ~}}
+    {{#compare type "full" ~}}
     {{#ifAny @root.request.params.query.page @root.request.params.query.keywords @root.request.params.query.location @root.request.params.query.activities @root.request.params.query.themes @root.request.params.query.organisation_activities @root.request.params.query.has_opportunities @root.request.params.query.volunteersearch_types @root.request.params.query.age_groups @root.request.params.query.services ~}}
     <div class="b-margin">
-      {{#compare type 'widget' ~}}
+      {{#compare view 'widget' ~}}
       <a href="/#/search{{@root.request.url.search}}" class="pull-left mdl-button mdl-button--raised b-margin-full"><span class="far fa-chevron-circle-left" aria-hidden="true"></span>
         <span class="material-icons icon-left" aria-hidden="true">arrow_back_ios</span>
         <span class="underline">Back to results</span>
@@ -56,7 +56,7 @@
         <span class="underline">Print</span>
         <span class="material-icons icon-right" aria-hidden="true">print</span>
       </a>
-      <hr style="clear:both;" />
+      <div style="clear:both;" />
       {{else}}
       <a href="/search{{@root.request.url.search}}" class="back-to-results"><span class="far fa-chevron-circle-left" aria-hidden="true"></span> <span class="underline">Back to search results</span></a>
       {{/compare ~}}
@@ -66,19 +66,19 @@
     {{/if ~}}
     {{/compare ~}}
     <h2 class="mdc-card__info--content-primary-title mdc-typography--headline6">
-      {{#ifAny (compare @root.route.name 'opportunity') (compare type 'widget') ~}}
+      {{#compare type 'full' ~}}
       {{{title}}}
       {{else}}
-      <a href="/opportunity/{{Id}}/{{title_slug}}{{@root.request.url.search}}">
+      <a href="{{#compare view 'widget' ~}}/#{{/compare}}/opportunity/{{Id}}/{{title_slug}}{{@root.request.url.search}}">
         <span class="hover-underline">{{{title}}}</span>
       </a>
-      {{/ifAny ~}}
+      {{/compare ~}}
     </h2>
     {{#ifAll organisation_id organisation_name_slug ~}}
     <ul class="fa-ul organisation">
       <li class="mdc-card__info--content-primary-organisation mdc-typography--body1">
         <span class="fa-li"><span class="far fa-home-heart" title="Organisation"></span></span>
-        {{#compare type 'widget' ~}}
+        {{#compare view 'widget' ~}}
         {{{organisation_name}}}
         {{else}}
         <a href="/organisation/{{organisation_id}}/{{organisation_name_slug}}{{@root.request.url.search}}">{{{organisation_name}}}</a>

@@ -1,16 +1,17 @@
 {{> widget_style}}
 <div class="volops-main">
   <div class="volops-inner">
-    <h3>Search for volunteering opportunities</h3>
     {{> widget_search_form}}
-    <hr />
-    {{#compare @root.data.primaryResponse.hits.total ">" 0 ~}}
-    <div class="content-primary">
-      {{#each @root.data.primaryResponse.hits.hits ~}}
-        {{> opportunity_full _source view="full" type="widget"}}
-      {{/each ~}}
-    </div>
-    {{/compare ~}}
 
+    <div class="h-padding-full">
+      {{#compare @root.data.primaryResponse.hits.total ">" 0 ~}}
+      <hr />
+      <div class="content-primary">
+        {{#each @root.data.primaryResponse.hits.hits ~}}
+          {{> opportunity_full _source view="widget"}}
+        {{/each ~}}
+      </div>
+      {{/compare ~}}
+    </div>
   </div>
 </div>
