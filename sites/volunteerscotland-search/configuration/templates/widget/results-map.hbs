@@ -61,7 +61,7 @@
                     {{{json value=lon}}}
                   {{/json}},
                   {{#json key="popupContent" type="string"~}}
-                    <a href="#/opportunity/{{../_source.Id}}/{{../_source.slug}}?view=widget">
+                    <a href="#/opportunity/{{../_source.Id}}/{{../_source.slug}}?{{{substr @root.request.url.search 1}}}">
                       <strong>{{replace ../_source.title '"' "&quot;"}}</strong>
                     </a><br />
                     {{truncate (replace ../_source.description '"' "&quot;") "255"}}
