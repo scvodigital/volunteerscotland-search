@@ -106,7 +106,7 @@
                     "datumTokenizerField": "place",
                     "queryTokenizer": "whitespace",
                     "remote": {
-                      "url": "https://volunteerscotland-search.local:8080/geo-lookup?q=*",
+                      "url": "https://{{#compare @root.request.url.hostname "volunteerscotland-search.local"}}volunteerscotland-search.local:8080{{else}}search.volunteerscotland.net{{/compare}}/geo-lookup?q=*",
                       "wildcard": "*"
                     }
                   }
