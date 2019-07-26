@@ -1,6 +1,6 @@
 {
   "name": "@scvo/assets",
-  "version": "0.0.564",
+  "version": "0.0.565",
   "description": "Assets for SCVO's web properties (JS, CSS, images, dependencies, etc)",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,8 @@
     "publish-local": "export TRAVIS=\"true\" && npm start && export GOOGLE_APPLICATION_CREDENTIALS=\"service-accounts/gcs.json\" && node publish.js",
     "compile-vs-email-templates": "node_modules/mjml/bin/mjml sites/volunteerscotland-search/configuration/emails/*mjml -o sites/volunteerscotland-search/configuration/partials/emails/",
     "clear-build": "rm -rf build/**",
-    "clear-cache": "rm -rf node_modules/.cache/hard-source"
+    "clear-cache": "rm -rf node_modules/.cache/hard-source",
+    "push-to-prod": "git checkout production && git pull && git pull && git pull origin development && git push && git checkout development"
   },
   "husky": {
     "hooks": {
