@@ -43,7 +43,7 @@
                     {{{json key="lng" value=@root.request.params.query.lng}}}
                   {{/json}},
                   {{#json key="options"}}
-                    {{{json key="radius" value=(multiply @root.request.params.query.distance 1000.609344)}}}
+                    {{{json key="radius" value=(multiply @root.request.params.query.distance 1609.344)}}}
                   {{/json}}
                 {{/json}}
               {{/json}}
@@ -58,22 +58,42 @@
             {{{json key="boundToThis" value=true}}},
             {{#json key="markers" type="array"}}
               {{#each @root.data.search_data.map_results.hits.hits}}
-                {{#each _source.geo_coords}}
-                  {{#json}}
-                    {{#json key="latLng" type="array"}}
-                      {{{json value=lat}}},
-                      {{{json value=lon}}}
+                {{#each (arrayify _source.geo_coords) ~}}
+                  {{#if @root.request.params.query.distance ~}}
+                    {{#compare (itemAt ../fields.distance @index) "<" @root.request.params.query.distance ~}}
+                      {{#json}}
+                        {{#json key="latLng" type="array"}}
+                          {{{json value=lat}}},
+                          {{{json value=lon}}}
+                        {{/json}},
+                        {{#json key="popupContent" type="string"~}}
+                          <a href="#/opportunity/{{../_source.Id}}/{{../_source.slug}}?{{{substr @root.request.url.search 1}}}">
+                            <strong>{{replace ../_source.title '"' "&quot;"}}</strong>
+                          </a><br />
+                          {{truncate (replace ../_source.description '"' "&quot;") "255"}}
+                        {{~/json}},
+                        {{#json key="options"}}
+                          {{{json key="title" value=(replace ../_source.title "'" "&apos;")}}}
+                        {{/json}}
+                      {{/json}},
+                    {{/compare ~}}
+                  {{else}}
+                    {{#json}}
+                      {{#json key="latLng" type="array"}}
+                        {{{json value=lat}}},
+                        {{{json value=lon}}}
+                      {{/json}},
+                      {{#json key="popupContent" type="string"~}}
+                        <a href="#/opportunity/{{../_source.Id}}/{{../_source.slug}}?{{{substr @root.request.url.search 1}}}">
+                          <strong>{{replace ../_source.title '"' "&quot;"}}</strong>
+                        </a><br />
+                        {{truncate (replace ../_source.description '"' "&quot;") "255"}}
+                      {{~/json}},
+                      {{#json key="options"}}
+                        {{{json key="title" value=(replace ../_source.title "'" "&apos;")}}}
+                      {{/json}}
                     {{/json}},
-                          {{#json key="popupContent" type="string"~}}
-                      <a href="#/opportunity/{{../_source.Id}}/{{../_source.slug}}?{{{substr @root.request.url.search 1}}}">
-                        <strong>{{replace ../_source.title '"' "&quot;"}}</strong>
-                      </a><br />
-                      {{truncate (replace ../_source.description '"' "&quot;") "255"}}
-                    {{~/json}},
-                    {{#json key="options"}}
-                      {{{json key="title" value=(replace ../_source.title "'" "&apos;")}}}
-                    {{/json}}
-                  {{/json}},
+                  {{/if ~}}
                 {{/each}}
               {{/each}}
             {{/json}}
