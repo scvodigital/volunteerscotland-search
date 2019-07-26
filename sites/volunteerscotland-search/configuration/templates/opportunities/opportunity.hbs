@@ -3,11 +3,11 @@
   {{#compare @root.data.primaryResponse.hits.total ">" 0 ~}}
   <div class="content-primary">
     {{#each @root.data.primaryResponse.hits.hits ~}}
-      {{> opportunity_full _source view="full"}}
+      {{> opportunity_full _source view="website"}}
     {{/each ~}}
   </div>
 
-  {{#compare @root.data.eventSupplimentary.related.hits.total ">" 0 ~}}
+  {{#compare @root.data.opportunitySupplimentary.related.hits.total ">" 0 ~}}
   <div class="content-related">
     <div class="mdc-typography--headline5 v-margin-full">
       Similar opportunities

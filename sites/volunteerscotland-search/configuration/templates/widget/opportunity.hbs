@@ -1,0 +1,17 @@
+{{> widget_style}}
+<div class="volops-main">
+  <div class="volops-inner">
+    {{> widget_search_form}}
+
+    <div class="h-padding-full">
+      {{#compare @root.data.primaryResponse.hits.total ">" 0 ~}}
+      <hr />
+      <div class="content-primary">
+        {{#each @root.data.primaryResponse.hits.hits ~}}
+          {{> opportunity_full _source view="widget"}}
+        {{/each ~}}
+      </div>
+      {{/compare ~}}
+    </div>
+  </div>
+</div>

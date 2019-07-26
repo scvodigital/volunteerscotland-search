@@ -1,0 +1,18 @@
+[
+  {
+    "_if": "currentPage > 1",
+    "then": {
+      "canvas": [
+        {
+          "type": "line",
+          "x1": -15,
+          "y1": 5,
+          "x2": 550,
+          "y2": 5,
+          "lineWidth": 1
+        }
+      ],
+      "margin": [30, 5]
+    }
+  }
+]

@@ -10,7 +10,7 @@
       "renderer": "handlebars",
       "config": {
         "output": "body",
-        "template": ">context.metaData.handlebars.templates.widget_widget"
+        "template": ">context.metaData.handlebars.templates.widget_search"
       }
     }
   ]

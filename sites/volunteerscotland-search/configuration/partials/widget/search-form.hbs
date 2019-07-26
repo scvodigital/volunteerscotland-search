@@ -1,50 +1,34 @@
-<form action="/search?view=widget" method="GET" data-component="AjaxForm" data-AjaxForm='{{#json}}
-      {{#json key="onSubmitRules"}}
-        {{#json key="attributes"}}
-          {{#json key=">input,button,select"}}
-            {{{json key="disabled" value="disabled"}}}
-          {{/json}}
-        {{/json}}
-      {{/json}},
+<h3 class="h-padding-full v-margin">Search for volunteering opportunities</h3>
+<form action="/{{#compare @root.request.url.pathname "/map"}}map{{else}}search{{/compare}}?view=widget" method="GET" data-component="AjaxForm" data-AjaxForm='{{#json}}
       {{#json key="onSuccessRules"}}
-        {{#json key="attributes"}}
-          {{#json key=">input,button,select"}}
-            {{{json key="disabled" value=null}}}
-          {{/json}}
-        {{/json}},
         {{#json key="contents"}}
           {{{json key="#volops-main" value="{{{response}}}"}}}
-        {{/json}}
-      {{/json}},
-      {{#json key="onErrorRules"}}
-        {{#json key="attributes"}}
-          {{#json key=">input,button,select"}}
-            {{{json key="disabled" value=null}}}
-          {{/json}}
         {{/json}}
       {{/json}}
     {{/json}}'>
   <div class="mdl-grid">
-    {{#each (filter @root.context.metaData.terms "noSearchFilter" "===" undefined)}}
-      {{#ifAll (compare @index ">" 0) (modulo @index 3 0)}}
+    {{#each (filter @root.context.metaData.terms "noSearchFilter" "===" undefined) ~}}
+      {{#ifAll (compare @index ">" 0) (modulo @index 3 0) ~}}
         </div>
         <div class="mdl-grid">
-      {{/ifAll}}
-      <div class="mdl-cell mdl-cell--4-col">
+      {{/ifAll ~}}
+      <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--4-col-tablet mdl-cell--4-col-desktop">
         <div class="multi-select" data-component="MultiSelect" data-MultiSelect='{ "selectedListLimit": 4, "selectedListLabel": "Selected" }'>
           <div class="mdl-badge mdl-badge--overlap multi-select-count" data-badge="0"></div>
           <button type="button" id="multi-{{key}}" class="mdl-button mdl-button--raised mdl-js-button full-width">
-            {{label}}
+            {{{label}}}
           </button>
           <ul class="mdl-menu mdl-js-menu" for="multi-{{key}}">
-            {{#each termGroups}}
+            {{#each termGroups ~}}
+              {{#unless (compare label "Other") ~}}
               <li class="mdl-list__item">
-                <strong>{{label}}</strong>
+                <strong>{{{label}}}</strong>
               </li>
-              {{#each terms}}
+              {{/unless ~}}
+              {{#each terms ~}}
                 <li class="mdl-list__item mdl-js-ripple-effect" for="volops-{{../../key}}_{{key}}">
                   <span class="mdl-list__item-primary-content">
-                    {{label}}
+                    {{{label}}}
                   </span>
                   <span class="mdl-list__item-secondary-action">
                     <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="volops-{{../../key}}_{{key}}">
@@ -53,12 +37,12 @@
                     </label>
                   </span>
                 </li>
-              {{/each}}
-            {{/each}}
+              {{/each ~}}
+            {{/each ~}}
           </ul>
         </div>
       </div>
-    {{/each}}
+    {{/each ~}}
   </div>
   <div class="mdl-grid">
     <div class="mdl-cell mdl-cell--5-col">
@@ -115,12 +99,12 @@
             {{/json}},
             {{{json key="clearIfNothingSelected" value=true}}}
           {{/json}}'>
-        <input class="mdl-textfield__input full-width" type="text" name="keywords" id="volops-keywords">
+        <input class="mdl-textfield__input full-width" type="text" name="keywords" id="volops-keywords" value="{{@root.request.params.query.keywords}}">
         <label class="mdl-textfield__label" for="volops-keywords">Keywords</label>
       </div>
     </div>
     <div class="mdl-cell mdl-cell--5-col">
-      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label full-width"
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label full-width {{#if @root.request.params.query.lat}}typeahead-locked{{/if}}"
           data-component="Typeahead" data-Typeahead='{{#json}}
             {{#json key="typeaheadOptions"}}
               {{{json key="highlight" value=2}}},
@@ -171,7 +155,7 @@
                   {{{json key="datumTokenizerField" value="place"}}},
                   {{{json key="queryTokenizer" value="whitespace"}}},
                   {{#json key="remote"}}
-                    {{{json key="url" value="https://volunteerscotland-search.local:8080/geo-lookup?q=*"}}},
+                    {{{json key="url" value=(concat "https://" @root.request.url.hostname ":8080/geo-lookup?q=*")}}},
                     {{{json key="wildcard" value="*"}}}
                   {{/json}}
                 {{/json}}
@@ -192,7 +176,7 @@
             {{/json}}'>
           <span class="material-icons">clear</span>
         </button>
-        <input class="mdl-textfield__input" type="text" name="location" id="volops-location">
+        <input class="mdl-textfield__input" type="text" name="location" id="volops-location" value="{{@root.request.params.query.location}}">
         <label class="mdl-textfield__label" for="volops-location">Location</label>
       </div>
     </div>
@@ -214,11 +198,12 @@
       </div>
     </div>
   </div>
-  <div style="text-align: right">
-    <input type="hidden" name="lat" id="volops-lat">
-    <input type="hidden" name="lng" id="volops-lng">
-    <button type="submit" class="mdl-button mdl-button--raised">
+  <div style="text-align: right;" class="h-padding-full">
+    <input type="hidden" name="lat" id="volops-lat" value="{{@root.request.params.query.lat}}">
+    <input type="hidden" name="lng" id="volops-lng" value="{{@root.request.params.query.lng}}">
+    <button type="submit" class="mdl-button mdl-button--raised mdl-button--colored">
       Search
+      <span class="material-icons icon-right" aria-hidden="true">search</span>
     </button>
   </div>
 </form>

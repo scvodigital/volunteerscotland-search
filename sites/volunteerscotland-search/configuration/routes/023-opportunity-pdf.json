@@ -1,0 +1,36 @@
+{
+  "name": "opportunity_pdf",
+  "debug": true,
+  "pattern": "/opportunity-pdf/:id(/:junk)",
+  "defaultParams": {
+    "context": "detail"
+  },
+  "tasks": [
+    "context.metaData.commonTasks.authNotRequired",
+    {
+      "name": "primaryResponse",
+      "taskModule": "elasticsearch",
+      "config": {
+        "connectionStringTemplate": "{$../../../elasticsearch-url.txt}",
+        "elasticsearchConfig": {
+          "apiVersion": "5.6"
+        },
+        "queryTemplates": {
+          "index": "{$../../../elasticsearch-index.txt}",
+          "type": "milo-volunteering-opportunity",
+          "template": ">context.metaData.handlebars.queries.opportunities_opportunity"
+        }
+      },
+      "renderer": "handlebars"
+    },
+    {
+    "name": "destination",
+    "taskModule": "generatePdf",
+    "renderer": "jsone",
+    "config": {
+      "definitionTemplate": "{:../templates/opportunities/legacy-pdf-definition.json}",
+      "headerTemplate": "{:../templates/opportunities/legacy-pdf-header.json}",
+      "footerTemplate": "{:../templates/opportunities/legacy-pdf-footer.json}"
+    }
+  }]
+}
