@@ -24,17 +24,6 @@
       </div>
 
       {{#each @root.data.search_data.detailed_results.hits.hits ~}}
-        <div class="mdl-card mdl-shadow--2dp full-width v-margin-full">
-          <div class="mdl-card__title">
-            <div class="mdl-card__title-text">
-              <a href="#/opportunity/{{_source.Id}}/{{_source.title_slug}}?{{{substr @root.request.url.search 1}}}">{{_source.title}}</a>
-            </div>
-            <small>{{_source.organisation_name}}</small>
-          </div>
-          <div class="mdl-card__supporting-text">
-            {{_source.description}}
-          </div>
-        </div>
         {{> opportunity_search_result _source distance=fields.distance.[0] view="widget"}}
       {{/each ~}}
 
