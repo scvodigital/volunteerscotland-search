@@ -1,4 +1,4 @@
-<div class="mdc-card content-primary search-result" data-opportunity-id="{{Id}}" data-opportunity-layout="Search Result" data-opportunity-context="{{default viewContext "Search Results"}}">
+<div class="{{#compare view 'widget'}}mdl-card mdl-shadow--2dp full-width v-margin-full{{else}}mdc-card content-primary search-result{{/compare}}" data-opportunity-id="{{Id}}" data-opportunity-layout="Search Result" data-opportunity-context="{{default viewContext "Search Results"}}">
   {{> opportunity_key_info type="search_result"}}
   <hr class="mdc-list-divider" />
   {{#compare (trim (getProperty @root.data.profileInfo.notes Id)) "!==" "" ~}}

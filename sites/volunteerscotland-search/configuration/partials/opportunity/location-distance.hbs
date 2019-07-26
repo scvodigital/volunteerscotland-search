@@ -1,6 +1,10 @@
 <ul class="fa-ul">
   <li class="mdc-typography--body2">
+    {{#compare view 'widget' ~}}
+    <span class="material-icons" aria-hidden="true">near_me</span>
+    {{else}}
     <span class="fa-li"><span class="fas fa-location-arrow fa-fw" title="Distance"></span></span>
+    {{/compare ~}}
     {{#compare distance "<" 4 ~}}
       Less than {{inflect (round distance "up") "mile" "miles" true}} away
     {{else}}
