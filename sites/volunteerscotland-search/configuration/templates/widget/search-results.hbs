@@ -1,12 +1,25 @@
+{{>widget_style}}
 <div class="volops-main">
   <div class="volops-inner">
     <h1>Volunteer opportunty search</h1>
     {{>widget_search_form}}
 
+    {{#compare @root.data.search_data.detailed_results.hits.total ">" 0}}
+      <div class="mdl-tabs mdl-njs-tabs mdl-js-ripple-effect">
+        <div class="mdl-tabs__tab-bar">
+          <a href="#/search?{{{substr @root.request.url.search 1}}}" class="mdl-tabs__tab is-active">List</a>
+          <a href="#/map?{{{substr @root.request.url.search 1}}}" class="mdl-tabs__tab">Map</a>
+        </div>
+      </div>
+    {{/compare}}
+
     {{#each @root.data.search_data.detailed_results.hits.hits}}
       <div class="mdl-card mdl-shadow--2dp full-width v-margin-full">
         <div class="mdl-card__title">
-          <div class="mdl-card__title-text">{{_source.title}} - <small>{{_source.organisation_name}}</small></div>
+          <div class="mdl-card__title-text">
+            <a href="#/opportunity/{{_source.Id}}/{{_source.slug}}?{{{substr @root.request.url.search 1}}}">{{_source.title}}</a> -
+            <small>{{_source.organisation_name}}</small>
+          </div>
         </div>
         <div class="mdl-card__supporting-text">
           {{_source.description}}

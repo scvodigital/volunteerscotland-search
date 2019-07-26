@@ -1,0 +1,70 @@
+{{>widget_style}}
+<div class="volops-main">
+  <div class="volops-inner">
+    <h1>Volunteer opportunty search</h1>
+    {{>widget_search_form}}
+
+    {{#compare @root.data.search_data.map_results.hits.total ">" 0}}
+      <div class="mdl-tabs mdl-njs-tabs mdl-js-ripple-effect">
+        <div class="mdl-tabs__tab-bar">
+          <a href="#/search?{{{substr @root.request.url.search 1}}}" class="mdl-tabs__tab">List</a>
+          <a href="#/map?{{{substr @root.request.url.search 1}}}" class="mdl-tabs__tab is-active">Map</a>
+        </div>
+      </div>
+    {{/compare}}
+
+    <div class="map-results" data-component="LeafletMap" data-LeafletMap='{{#json}}
+      {{#json key="points" type="array"}}{{/json}},
+      {{#json key="mapOptions"}}
+        {{{json key="fullscreenControl" value=true}}},
+        {{{json key="scrollWheelZoom" value=false}}},
+        {{{json key="trackResize" value=false}}}
+      {{/json}},
+      {{#json key="initialLatLng"}}
+        {{{json key="lat" value=55.94528820000001}}},
+        {{{json key="lng" value=-3.200755699999945}}}
+      {{/json}},
+      {{{json key="initialZoom" value=9}}},
+      {{#json key="featureGroups" type="array"}}
+        {{#json}}
+          {{#json key="features" type="array"}}
+            {{#json}}
+              {{{json key="type" value="Circle"}}},
+              {{#json key="latLng"}}
+                {{{json key="lat" value=55.94528820000001}}},
+                {{{json key="lng" value=-3.200755699999945}}}
+              {{/json}},
+              {{#json key="options"}}
+                {{{json key="radius" value="10000"}}}
+              {{/json}}
+            {{/json}}
+          {{/json}}
+        {{/json}}
+      {{/json}},
+      {{#json key="markerClusterGroups" type="array"}}
+        {{#json}}
+          {{#json key="options"}}
+            {{{json key="showCoverageOnHover" value="false"}}}
+          {{/json}},
+          {{#json key="markers" type="array"}}
+            {{#each @root.data.search_data.map_results.hits.hits}}
+              {{#each _source.geo_coords}}
+                {{#json}}
+                  {{#json key="latLng" type="array"}}
+                    {{{json value=lat}}},
+                    {{{json value=lon}}}
+                  {{/json}},
+                  {{#json key="options"}}
+
+                  {{/json}}
+                {{/json}},
+              {{/each}}
+            {{/each}}
+          {{/json}}
+        {{/json}}
+      {{/json}}
+    {{/json}}'></div>
+
+    <pre>{{{json value=@root.data.search_data.map_results.hits.hits}}}</pre>
+  </div>
+</div>

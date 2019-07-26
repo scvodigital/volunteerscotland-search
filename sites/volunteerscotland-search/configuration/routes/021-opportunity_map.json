@@ -91,6 +91,15 @@
             "rss",
             {
               "in": [
+                "view=widget",
+                {
+                  "var": "request.fullUrl"
+                }
+              ]
+            },
+            "widget",
+            {
+              "in": [
                 "view=json",
                 {
                   "var": "request.fullUrl"
@@ -127,6 +136,13 @@
               "content": ">context.metaData.handlebars.templates.opportunities_search-json"
             },
             "contentType": "application/json"
+          },
+          "widget": {
+            "layout": ">context.metaData.handlebars.layouts.data",
+            "parts": {
+              "content": ">context.metaData.handlebars.templates.widget_map-results"
+            },
+            "contentType": "text/html"
           }
         }
       }

@@ -94,6 +94,15 @@
       "config": {
         "logic": {
           "if": [
+            {
+              "in": [
+                "view=widget",
+                {
+                  "var": "request.fullUrl"
+                }
+              ]
+            },
+            "widget",
             "default"
           ]
         },
@@ -106,6 +115,13 @@
               "body": ">context.metaData.handlebars.templates.opportunities_opportunity",
               "foot": ">context.metaData.handlebars.templates.opportunities_opportunity-foot",
               "sidebar": ">context.metaData.handlebars.templates.opportunities_search-form"
+            },
+            "contentType": "text/html"
+          },
+          "widget": {
+            "layout": ">context.metaData.handlebars.layouts.data",
+            "parts": {
+              "content": ">context.metaData.handlebars.templates.widget_opportunity"
             },
             "contentType": "text/html"
           }
