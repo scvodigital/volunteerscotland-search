@@ -62,7 +62,7 @@
                   {{/json}},
                   {{#json key="popupContent" type="string"~}}
                     <a href="#/opportunity/{{../_source.Id}}/{{../_source.slug}}?view=widget">
-                      <strong>{{../_source.title}}</strong>
+                      <strong>{{replace ../_source.title '"' "&quot;"}}</strong>
                     </a><br />
                     {{truncate (replace ../_source.description '"' "&quot;") "255"}}
                   {{~/json}},
