@@ -92,6 +92,9 @@
   font-weight: 400;
   font-size: 1rem;
 }
+.scvo-widget .mdl-textfield__label {
+  color: rgba(0, 0, 0, 0.6);
+}
 .scvo-widget .multi-select .mdl-list__item:hover {
   background-color: transparent;
 }
@@ -143,12 +146,32 @@
 .scvo-widget .mdl-checkbox.is-checked.is-disabled .mdl-checkbox__tick-outline {
   background: #387c2c;
 }
+.scvo-widget table.table-condensed {
+  width: 100%;
+  border-collapse: collapse;
+}
+.scvo-widget table.table-condensed thead th,
+.scvo-widget table.table-condensed thead td,
+.scvo-widget table.table-condensed tbody th,
+.scvo-widget table.table-condensed tbody td {
+  vertical-align: top;
+  border-top: 1px solid #ddd;
+  line-height: 2rem;
+}
+.scvo-widget table.table-condensed thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #ddd;
+  border-top: none;
+}
 .scvo-widget table.table-condensed th p {
   font-weight: 700;
   margin-bottom: 0;
 }
 .scvo-widget table.table-condensed td {
   text-align: center;
+}
+.scvo-widget .mdl-checkbox.is-upgraded {
+  padding-left: 16px;
 }
 @media screen and (max-width: 768px) {
   .scvo-widget table.table-condensed {
