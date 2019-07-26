@@ -126,7 +126,7 @@
           "widget": {
             "layout": ">context.metaData.handlebars.layouts.data",
             "parts": {
-              "content": ">context.metaData.handlebars.templates.widget_search-results"
+              "content": ">context.metaData.handlebars.templates.widget_results-list"
             },
             "contentType": "text/html"
           }

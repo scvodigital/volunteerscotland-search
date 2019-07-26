@@ -259,7 +259,9 @@
       {{/unless ~}}
     </div>
 
+    {{#unless (compare type 'widget') ~}}
     {{> opportunity_actions slug=slug Id=Id action="organisation"}}
+    {{/unless ~}}
   </div>
 </div>
 <script>

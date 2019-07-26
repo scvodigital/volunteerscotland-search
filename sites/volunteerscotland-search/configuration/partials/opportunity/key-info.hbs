@@ -54,7 +54,7 @@
     {{/if ~}}
     {{/compare ~}}
     <h2 class="mdc-card__info--content-primary-title mdc-typography--headline6">
-      {{#ifAny (compare @root.route.name "opportunity") (compare @root.route.name "widget") ~}}
+      {{#ifAny (compare @root.route.name 'opportunity') (compare type 'widget') ~}}
       {{{title}}}
       {{else}}
       <a href="/opportunity/{{Id}}/{{title_slug}}{{@root.request.url.search}}">
@@ -66,7 +66,11 @@
     <ul class="fa-ul organisation">
       <li class="mdc-card__info--content-primary-organisation mdc-typography--body1">
         <span class="fa-li"><span class="far fa-home-heart" title="Organisation"></span></span>
-        <a href="/organisation/{{organisation_id}}/{{organisation_name_slug}}{{@root.request.url.search}}">{{organisation_name}}</a>
+        {{#compare type 'widget' ~}}
+        {{{organisation_name}}}
+        {{else}}
+        <a href="/organisation/{{organisation_id}}/{{organisation_name_slug}}{{@root.request.url.search}}">{{{organisation_name}}}</a>
+        {{/compare ~}}
       </li>
     </ul>
     {{/ifAll ~}}
