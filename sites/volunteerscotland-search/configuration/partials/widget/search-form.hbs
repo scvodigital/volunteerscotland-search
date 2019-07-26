@@ -115,12 +115,12 @@
             {{/json}},
             {{{json key="clearIfNothingSelected" value=true}}}
           {{/json}}'>
-        <input class="mdl-textfield__input full-width" type="text" name="keywords" id="volops-keywords">
+        <input class="mdl-textfield__input full-width" type="text" name="keywords" id="volops-keywords" value="{{@root.request.params.query.keywords}}">
         <label class="mdl-textfield__label" for="volops-keywords">Keywords</label>
       </div>
     </div>
     <div class="mdl-cell mdl-cell--5-col">
-      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label full-width"
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label full-width {{#if @root.request.params.query.lat}}typeahead-locked{{/if}}"
           data-component="Typeahead" data-Typeahead='{{#json}}
             {{#json key="typeaheadOptions"}}
               {{{json key="highlight" value=2}}},
@@ -192,7 +192,7 @@
             {{/json}}'>
           <span class="material-icons">clear</span>
         </button>
-        <input class="mdl-textfield__input" type="text" name="location" id="volops-location">
+        <input class="mdl-textfield__input" type="text" name="location" id="volops-location" value="{{@root.request.params.query.location}}">
         <label class="mdl-textfield__label" for="volops-location">Location</label>
       </div>
     </div>
@@ -215,8 +215,8 @@
     </div>
   </div>
   <div style="text-align: right">
-    <input type="hidden" name="lat" id="volops-lat">
-    <input type="hidden" name="lng" id="volops-lng">
+    <input type="hidden" name="lat" id="volops-lat" value="{{@root.request.params.query.lat}}">
+    <input type="hidden" name="lng" id="volops-lng" value="{{@root.request.params.query.lng}}">
     <button type="submit" class="mdl-button mdl-button--raised mdl-button--colored">
       Search
       <span class="material-icons icon-right" aria-hidden="true">search</span>
