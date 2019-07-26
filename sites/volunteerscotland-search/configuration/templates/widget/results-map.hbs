@@ -60,8 +60,14 @@
                     {{{json value=lat}}},
                     {{{json value=lon}}}
                   {{/json}},
+                  {{#json key="popupContent" type="string"~}}
+                    <a href="#/opportunity/{{../_source.Id}}/{{../_source.slug}}?view=widget">
+                      <strong>{{../_source.title}}</strong>
+                    </a><br />
+                    {{truncate (replace ../_source.description '"' "&quot;") "255"}}
+                  {{~/json}},
                   {{#json key="options"}}
-
+                    {{{json key="title" value=(replace ../_source.title "'" "&apos;")}}}
                   {{/json}}
                 {{/json}},
               {{/each}}
@@ -70,7 +76,5 @@
         {{/json}}
       {{/json}}
     {{/json}}'></div>
-
-    <pre>{{{json value=@root.data.search_data.map_results.hits.hits}}}</pre>
   </div>
 </div>
