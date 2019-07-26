@@ -84,7 +84,7 @@
           {{#if availability_slugs.length ~}}
           <h4 class="mdc-typography--headline6">Availability</h4>
           <p class="mdc-typography--body1">
-            {{>opportunity_timings_display availability_slugs}}
+            {{>opportunity_timings_display availability=availability_slugs view=view}}
           </p>
           {{#if timings_description ~}}
           <p class="mdc-typography--body1">
