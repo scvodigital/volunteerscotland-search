@@ -70,9 +70,6 @@
                       {{{json key="title" value=(replace ../_source.title "'" "&apos;")}}}
                     {{/json}}
                   {{/json}},
-<<<<<<< HEAD
-                {{/each}}
-=======
                   {{#json key="popupContent" type="string"~}}
                     <a href="#/opportunity/{{../_source.Id}}/{{../_source.slug}}?{{{substr @root.request.url.search 1}}}">
                       <strong>{{replace ../_source.title '"' "&quot;"}}</strong>
@@ -83,7 +80,6 @@
                     {{{json key="title" value=(replace ../_source.title "'" "&apos;")}}}
                   {{/json}}
                 {{/json}},
->>>>>>> 2480fbca85a983983281097b3017a620e84d4749
               {{/each}}
             {{/json}}
           {{/json}}
