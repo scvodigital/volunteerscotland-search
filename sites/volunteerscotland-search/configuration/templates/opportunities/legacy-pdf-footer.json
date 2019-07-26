@@ -1,0 +1,48 @@
+[
+  {
+    "_if": "currentPage > 1",
+    "then": {
+      "canvas": [
+        {
+          "type": "line",
+          "x1": -15,
+          "y1": 5,
+          "x2": 550,
+          "y2": 5,
+          "lineWidth": 1
+        }
+      ],
+      "margin": [30, 5]
+    }
+  },
+  {
+    "_if": "currentPage > 1",
+    "then":
+    {
+      "text": "© 2019 The Scottish Council for Voluntary Organisations (SCVO) is a Scottish Charitable Incorporated Organisation. Registration number SC003558.",
+      "fontSize": 10,
+      "margin": [30, 5]
+    }
+  },
+  {
+    "_if": "currentPage > 1",
+    "then": {
+      "columns": [
+        {
+          "width": "*",
+          "text": "Page: ${currentPage} of ${pageCount}",
+          "fontSize": 10
+        },
+        {
+          "width": "*",
+          "text": {
+            "_eval": "jsone.dateFormat('dddd, Do MMMM YYYY, HH:mm:ss')"
+          },
+          "fontSize": 10,
+          "alignment": "right"
+        }
+      ],
+      "margin": [30, 5]
+    }
+  }
+]
