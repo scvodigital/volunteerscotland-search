@@ -1,3 +1,6 @@
+<script>
+console.log(localStorage.getItem('tsi'));
+</script>
 <h3 class="h-padding-full v-margin">Search for volunteering opportunities</h3>
 <form action="/{{#compare @root.request.url.pathname "/map"}}map{{else}}search{{/compare}}?view=widget" method="GET" data-component="AjaxForm" data-AjaxForm='{{#json}}
       {{#json key="onSuccessRules"}}

@@ -110,6 +110,24 @@
 .scvo-widget .mdl-button {
   font-size: 1rem;
 }
+.scvo-widget .areas .area {
+  display: inline;
+}
+.scvo-widget .areas .area::after {
+  content: ", ";
+}
+.scvo-widget .areas-fulltext .area:first-child::before {
+  content: " across ";
+}
+.scvo-widget .areas-fulltext .area:last-child::after {
+  content: ", and ";
+}
+.scvo-widget .areas-fulltext .area:only-child::after {
+  content: " and ";
+}
+.scvo-widget .areas .area:last-child::after {
+  content: "";
+}
 .scvo-widget .content-primary .mdc-card__media {
   max-width: 20%;
   margin-left: 1rem;
