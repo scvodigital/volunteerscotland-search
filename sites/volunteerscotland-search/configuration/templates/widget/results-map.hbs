@@ -73,7 +73,7 @@
         {{/json}}
       {{/json}}'></div>
 
-      <div class="post-info-extra v-margin-full">
+      {{!-- <div class="post-info-extra v-margin-full">
         <a href="#/search?{{{substr @root.request.url.search 1}}}&exclude=locations&view=widget">List {{subtract @root.data.search_data.map_results.hits.total @root.data.search_data.map_results.aggregations.geo_search.buckets.[0].doc_count}} {{#compare @root.data.location_data.locations_results.hits.total ">" 0}}other{{/compare}} volunteering {{inflect (subtract @root.data.search_data.map_results.hits.total @root.data.search_data.map_results.aggregations.geo_search.buckets.[0].doc_count) "opportunity" "opportunities"}}</a>
         {{#compare @root.data.search_data.map_results.aggregations.all_advertised_areas.buckets.length ">" 0 ~}}
         available
@@ -95,7 +95,7 @@
         {{else}}
         available from home.
         {{/compare ~}}
-      </div>
+      </div> --}}
     </div>
   </div>
 </div>
