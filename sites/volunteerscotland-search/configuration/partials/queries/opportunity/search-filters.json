@@ -28,4 +28,7 @@
 {{#if availability ~}}
 {{>queries_terms field="availability_slugs" terms=availability}},
 {{/if ~}}
+{{#if @root.request.headers.widget-tsi ~}}
+{{>queries_term field="tsi_legacy_ref" term=@root.request.headers.widget-tsi}},
+{{/if ~}}
 {{>queries_do_nothing}}
