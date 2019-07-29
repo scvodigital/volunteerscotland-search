@@ -69,9 +69,13 @@
       {{#compare type 'full' ~}}
       {{{title}}}
       {{else}}
-      <a href="{{#compare view 'widget' ~}}#{{/compare}}/opportunity/{{Id}}/{{title_slug}}{{@root.request.url.search}}">
+      {{#compare view 'widget' ~}}
+      <a href="#/opportunity/{{Id}}/{{title_slug}}?{{{substr @root.request.url.search 1}}}">{{{title}}}</a>
+      {{else}}
+      <a href="/opportunity/{{Id}}/{{title_slug}}{{@root.request.url.search}}">
         <span class="hover-underline">{{{title}}}</span>
       </a>
+      {{/compare}}
       {{/compare ~}}
       {{#compare view 'widget' ~}}
       {{#if organisation_name ~}}
