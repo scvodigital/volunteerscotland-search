@@ -52,17 +52,38 @@
             </label>
             <div class="mdc-line-ripple"></div>
           </div>
-          <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
-            <input id="colour_primary" name="colour_primary" type="text" maxlength="7" class="colorwell mdc-text-field__input mdc-text-field--fullwidth" value="{{default @root.request.body.colour_primary '#00a0af'}}" data-lpignore="true" />
-            <label class="mdc-floating-label" id="colour_primary_label" for="colour_primary">
-              Colour (primary)
-            </label>
+          <div class="mdc-layout-grid colorwells">
+            <div class="mdc-layout-grid__inner">
+              <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone">
+                <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
+                  <input id="colour_primary" name="colour_primary" type="text" maxlength="7" class="colorwell mdc-text-field__input mdc-text-field--fullwidth" value="{{default @root.request.body.colour_primary '#00a0af'}}" data-lpignore="true" />
+                  <label class="mdc-floating-label" id="colour_primary_label" for="colour_primary">
+                    Colour (primary)
+                  </label>
+                </div>
+              </div>
+              <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone">
+                <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
+                  <input id="colour_secondary" name="colour_secondary" type="text" maxlength="7" class="colorwell mdc-text-field__input mdc-text-field--fullwidth" value="{{default @root.request.body.colour_secondary '#387c2c'}}" data-lpignore="true" />
+                  <label class="mdc-floating-label" id="colour_secondary_label" for="colour_secondary">
+                    Colour (secondary)
+                  </label>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
-            <input id="colour_secondary" name="colour_secondary" type="text" maxlength="7" class="colorwell mdc-text-field__input mdc-text-field--fullwidth" value="{{default @root.request.body.colour_secondary '#387c2c'}}" data-lpignore="true" />
-            <label class="mdc-floating-label" id="colour_secondary_label" for="colour_secondary">
-              Colour (secondary)
-            </label>
+          <div class="mdc-form-field">
+            <div class="mdc-checkbox" data-mdc-auto-init="MDCCheckbox">
+              <input type="hidden" value="off" name="enable_mva">
+              <input type="checkbox" class="mdc-checkbox__native-control" name="enable_mva" id="enable_mva" value="on"{{#unless (compare @root.request.body.enable_mva 'off')}} checked{{/unless}} />
+              <div class="mdc-checkbox__background">
+                <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                  <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                </svg>
+                <div class="mdc-checkbox__mixedmark"></div>
+              </div>
+            </div>
+            <label for="enable_mva">Use 'My Volunteer Account' to register interest</label>
           </div>
         </div>
         <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
@@ -80,10 +101,10 @@
   <p class="mdc-typography--body1">
     Please use the following code to embed the specified search widget on your own website:
   </p>
-  <div class="embed copyable">&lt;script type="text/javascript" src="https://{{#compare request.url.hostname "volunteerscotland-search.local"}}volunteerscotland-search.local:9000{{else}}widget.search.volunteerscotland.net{{/compare}}/widget.js" data-url="https://{{#compare request.url.hostname "volunteerscotland-search.local"}}volunteerscotland-search.local:8080{{else}}search.volunteerscotland.net{{/compare}}/widget"{{#ifAll @root.request.body.filter (compare @root.request.body.filter "!==" "0")}} data-tsi="{{@root.request.body.filter}}"{{/ifAll}}{{#ifAll @root.request.body.colour_primary (compare @root.request.body.colour_primary "!==" "%2300a0af")}} data-colour-primary="{{@root.request.body.colour_primary}}"{{/ifAll}}{{#ifAll @root.request.body.colour_secondary (compare @root.request.body.colour_secondary "!==" "%23387c2c")}} data-colour-secondary="{{@root.request.body.colour_secondary}}"{{/ifAll}}&gt;&lt;/script&gt;</div>
+  <div class="embed copyable">&lt;script type="text/javascript" src="https://{{#compare request.url.hostname "volunteerscotland-search.local"}}volunteerscotland-search.local:9000{{else}}widget.search.volunteerscotland.net{{/compare}}/widget.js" data-url="https://{{#compare request.url.hostname "volunteerscotland-search.local"}}volunteerscotland-search.local:8080{{else}}search.volunteerscotland.net{{/compare}}/widget"{{#ifAll @root.request.body.filter (compare @root.request.body.filter "!==" "0")}} data-tsi="{{@root.request.body.filter}}"{{/ifAll}}{{#ifAll @root.request.body.colour_primary (compare @root.request.body.colour_primary "!==" "#00a0af")}} data-colour-primary="{{@root.request.body.colour_primary}}"{{/ifAll}}{{#ifAll @root.request.body.colour_secondary (compare @root.request.body.colour_secondary "!==" "#387c2c")}} data-colour-secondary="{{@root.request.body.colour_secondary}}"{{/ifAll}}{{#compare @root.request.body.enable_mva 'off'}} data-disable-mva="true"{{/compare}}&gt;&lt;/script&gt;</div>
   <button class="btn copy" data-source="embed" unselectable="on"><i aria-hidden="true" class="fa fa-clipboard"></i> Copy</button>
 
   <hr />
   <h3>Preview</h3>
-  <script type="text/javascript" src="https://{{#compare request.url.hostname "volunteerscotland-search.local"}}volunteerscotland-search.local:9000{{else}}widget.search.volunteerscotland.net{{/compare}}/widget.js" data-url="https://{{#compare request.url.hostname "volunteerscotland-search.local"}}volunteerscotland-search.local:8080{{else}}search.volunteerscotland.net{{/compare}}/widget"{{#ifAll @root.request.body.filter (compare @root.request.body.filter "!==" "0")}} data-tsi="{{@root.request.body.filter}}"{{/ifAll}}{{#ifAll @root.request.body.colour_primary (compare @root.request.body.colour_primary "!==" "%2300a0af")}} data-colour-primary="{{@root.request.body.colour_primary}}"{{/ifAll}}{{#ifAll @root.request.body.colour_secondary (compare @root.request.body.colour_secondary "!==" "%23387c2c")}} data-colour-secondary="{{@root.request.body.colour_secondary}}"{{/ifAll}}></script>
+  <script type="text/javascript" src="https://{{#compare request.url.hostname "volunteerscotland-search.local"}}volunteerscotland-search.local:9000{{else}}widget.search.volunteerscotland.net{{/compare}}/widget.js" data-url="https://{{#compare request.url.hostname "volunteerscotland-search.local"}}volunteerscotland-search.local:8080{{else}}search.volunteerscotland.net{{/compare}}/widget"{{#ifAll @root.request.body.filter (compare @root.request.body.filter "!==" "0")}} data-tsi="{{@root.request.body.filter}}"{{/ifAll}}{{#ifAll @root.request.body.colour_primary (compare @root.request.body.colour_primary "!==" "%2300a0af")}} data-colour-primary="{{@root.request.body.colour_primary}}"{{/ifAll}}{{#ifAll @root.request.body.colour_secondary (compare @root.request.body.colour_secondary "!==" "%23387c2c")}} data-colour-secondary="{{@root.request.body.colour_secondary}}"{{/ifAll}}{{#compare @root.request.body.enable_mva 'off'}} data-disable-mva="true"{{/compare}}></script>
 </div>
