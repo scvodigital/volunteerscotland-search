@@ -25,7 +25,9 @@
           <ul class="fa-ul">
             {{#compare (length activities) ">" 0 ~}}
             <li class="mdc-card__info--content-primary-work-type reference mdc-typography--body1">
+              {{#unless (compare view 'widget') ~}}
               <span class="fa-li"><span class="far fa-briefcase fa-fw" title="Activites"></span></span>
+              {{/unless ~}}
               {{#each activities}}
               <a href="{{#compare ../view 'widget'}}#{{/compare}}/search?activities={{urlencode (slugify (replace this "/" "-"))}}{{#compare ../view 'widget'}}&view=widget{{/compare}}">{{{this}}}</a>{{#unless @last}}, {{/unless}}
               {{/each}}
@@ -33,7 +35,9 @@
             {{/compare ~}}
             {{#compare (length themes) ">" 0 ~}}
             <li class="mdc-card__info--content-primary-client-group mdc-typography--body1">
+              {{#unless (compare view 'widget') ~}}
               <span class="fa-li"><span class="far fa-users fa-fw" title="Themes"></span></span>
+              {{/unless ~}}
               {{#each themes ~}}
               <a href="{{#compare ../view 'widget'}}#{{/compare}}/search?themes={{urlencode (slugify (replace this "/" "-"))}}{{#compare ../view 'widget'}}&view=widget{{/compare}}">{{{this}}}</a>{{#unless @last}}, {{/unless}}
               {{/each ~}}
@@ -41,7 +45,9 @@
             {{/compare ~}}
             {{#ifAll start_date end_date ~}}
             <li class="mdc-card__info--content-primary-from mdc-typography--body1">
+              {{#unless (compare view 'widget') ~}}
               <span class="fa-li"><span class="far fa-calendar-plus fa-fw" title="Start date"></span></span>
+              {{/unless ~}}
               Opportunity start date: {{momentFormat (moment start_date "x") "Do MMMM YYYY"}}
             </li>
             <li class="mdc-card__info--content-primary-from mdc-typography--body1">
@@ -51,7 +57,9 @@
             {{else}}
             {{#compare start_date ">" (moment) ~}}
             <li class="mdc-card__info--content-primary-from mdc-typography--body1">
+              {{#unless (compare view 'widget') ~}}
               <span class="fa-li"><span class="far fa-calendar-plus fa-fw" title="Start date"></span></span>
+              {{/unless ~}}
               Opportunity start date: {{momentFormat (moment start_date "x") "Do MMMM YYYY"}}
             </li>
             {{/compare ~}}
@@ -70,7 +78,9 @@
           {{#if weblink ~}}
           <ul class="fa-ul">
             <li class="mdc-typography--body1">
+              {{#unless (compare view 'widget') ~}}
               <span class="fa-li"><span class="far fa-link fa-fw" title="Website"></span></span>
+              {{/unless ~}}
               <a href="{{fixUrl weblink "http"}}"{{#if weblink_tooltip}} title="{{weblink_tooltip}}"{{/if}}>{{#if weblink_title}}{{weblink_title}}{{else}}{{weblink}}{{/if}}</a>
             </li>
           </ul>

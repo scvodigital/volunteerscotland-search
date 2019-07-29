@@ -41,7 +41,7 @@
     {{#ifAny @root.request.params.query.page @root.request.params.query.keywords @root.request.params.query.location @root.request.params.query.activities @root.request.params.query.themes @root.request.params.query.organisation_activities @root.request.params.query.has_opportunities @root.request.params.query.volunteersearch_types @root.request.params.query.age_groups @root.request.params.query.services ~}}
     <div class="b-margin">
       {{#compare view 'widget' ~}}
-      <a href="#/search{{@root.request.url.search}}" class="pull-left mdl-button mdl-button--raised b-margin-full">
+      <a href="#/search?{{{substr @root.request.url.search 1}}}" class="pull-left mdl-button mdl-button--raised b-margin-full">
         <span class="material-icons icon-left" aria-hidden="true">arrow_back_ios</span>
         <span class="underline">Back to results</span>
       </a>
@@ -77,10 +77,10 @@
     {{#ifAll organisation_id organisation_name_slug ~}}
     <ul class="fa-ul organisation">
       <li class="mdc-card__info--content-primary-organisation mdc-typography--body1">
-        <span class="fa-li"><span class="far fa-home-heart" title="Organisation"></span></span>
         {{#compare view 'widget' ~}}
         {{{organisation_name}}}
         {{else}}
+        <span class="fa-li"><span class="far fa-home-heart" title="Organisation"></span></span>
         <a href="/organisation/{{organisation_id}}/{{organisation_name_slug}}{{@root.request.url.search}}">{{{organisation_name}}}</a>
         {{/compare ~}}
       </li>
@@ -90,13 +90,17 @@
     <ul class="fa-ul first">
       {{#if milo_ref ~}}
         <li class="mdc-card__info--content-primary-reference mdc-typography--body1">
+          {{#unless (compare view 'widget') ~}}
           <span class="fa-li"><span class="far fa-hashtag" title="Reference"></span></span>
+          {{/unless ~}}
           {{milo_ref}}
         </li>
       {{/if ~}}
       {{#compare volunteersearch_type.length ">" 0 ~}}
         <li class="mdc-card__info--content-primary-reference mdc-typography--body1">
+          {{#unless (compare view 'widget') ~}}
           <span class="fa-li"><span class="far fa-info-circle" title="Specialist role"></span></span>
+          {{/unless ~}}
           {{#each volunteersearch_type ~}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}
         </li>
       {{/compare ~}}

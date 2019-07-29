@@ -1,6 +1,6 @@
 {{> widget_style}}
-<div class="volops-main">
-  <div class="volops-inner">
+<div class="volopps-main">
+  <div class="volopps-inner">
     {{> widget_search_form}}
 
     <div class="h-padding-full">
@@ -61,38 +61,10 @@
                 {{#each (arrayify _source.geo_coords) ~}}
                   {{#if @root.request.params.query.distance ~}}
                     {{#compare (itemAt ../fields.distance @index) "<" @root.request.params.query.distance ~}}
-                      {{#json}}
-                        {{#json key="latLng" type="array"}}
-                          {{{json value=lat}}},
-                          {{{json value=lon}}}
-                        {{/json}},
-                        {{#json key="popupContent" type="string"~}}
-                          <a href="#/opportunity/{{../_source.Id}}/{{../_source.slug}}?{{{substr @root.request.url.search 1}}}">
-                            <strong>{{replace ../_source.title '"' "&quot;"}}</strong>
-                          </a><br />
-                          {{truncate (replace ../_source.description '"' "&quot;") "255"}}
-                        {{~/json}},
-                        {{#json key="options"}}
-                          {{{json key="title" value=(replace ../_source.title "'" "&apos;")}}}
-                        {{/json}}
-                      {{/json}},
+                      {{> opportunity_map_json ../_source lat=lat lng=lon map_postcode=(itemAt (arrayify (split ../_source.postcode ",")) @index)}}
                     {{/compare ~}}
                   {{else}}
-                    {{#json}}
-                      {{#json key="latLng" type="array"}}
-                        {{{json value=lat}}},
-                        {{{json value=lon}}}
-                      {{/json}},
-                      {{#json key="popupContent" type="string"~}}
-                        <a href="#/opportunity/{{../_source.Id}}/{{../_source.slug}}?{{{substr @root.request.url.search 1}}}">
-                          <strong>{{replace ../_source.title '"' "&quot;"}}</strong>
-                        </a><br />
-                        {{truncate (replace ../_source.description '"' "&quot;") "255"}}
-                      {{~/json}},
-                      {{#json key="options"}}
-                        {{{json key="title" value=(replace ../_source.title "'" "&apos;")}}}
-                      {{/json}}
-                    {{/json}},
+                    {{> opportunity_map_json ../_source lat=lat lng=lon map_postcode=(itemAt (arrayify (split ../_source.postcode ",")) @index)}}
                   {{/if ~}}
                 {{/each}}
               {{/each}}
@@ -100,6 +72,30 @@
           {{/json}}
         {{/json}}
       {{/json}}'></div>
+
+      {{!-- <div class="post-info-extra v-margin-full">
+        <a href="#/search?{{{substr @root.request.url.search 1}}}&exclude=locations&view=widget">List {{subtract @root.data.search_data.map_results.hits.total @root.data.search_data.map_results.aggregations.geo_search.buckets.[0].doc_count}} {{#compare @root.data.location_data.locations_results.hits.total ">" 0}}other{{/compare}} volunteering {{inflect (subtract @root.data.search_data.map_results.hits.total @root.data.search_data.map_results.aggregations.geo_search.buckets.[0].doc_count) "opportunity" "opportunities"}}</a>
+        {{#compare @root.data.search_data.map_results.aggregations.all_advertised_areas.buckets.length ">" 0 ~}}
+        available
+        {{#compare @root.data.search_data.areas_results.hits.total ">" 0 ~}}
+        <span class="areas areas-fulltext">
+        {{/compare ~}}
+        {{#with @root.data.location_data.la_results.aggregations.local_authority_areas ~}}
+        {{#each buckets ~}}
+        {{#if (contains (map @root.data.search_data.map_results.aggregations.all_advertised_areas.buckets (getProp "key")) (replace (replace (replace key " and " " & ") " City" "") "City of " "")) ~}}
+        <span class="area">{{{replace (replace (replace key " and " " & ") " City" "") "City of " ""}}}</span>
+        {{/if ~}}
+        {{#if @last}}{{#compare @root.data.location_data.home_results.hits.total ">" 0}}
+        {{#compare @root.data.search_data.areas_results.hits.total ">" 0 ~}}
+        </span>
+        {{/compare ~}}
+        from home.{{/compare}}{{/if}}
+        {{/each ~}}
+        {{/with ~}}
+        {{else}}
+        available from home.
+        {{/compare ~}}
+      </div> --}}
     </div>
   </div>
 </div>

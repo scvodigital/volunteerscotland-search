@@ -1,0 +1,32 @@
+{{#json}}
+  {{#json key="latLng" type="array"}}
+    {{{json value=lat}}},
+    {{{json value=lng}}}
+  {{/json}},
+  {{#json key="popupContent" type="string"~}}
+    <h3 class="map-info post-title">
+      <a href="#/opportunity/{{this.Id}}/{{this.title_slug}}?{{{substr @root.request.url.search 1}}}">{{replace this.title '"' "&quot;"}}</a>
+    </h3>
+    {{#if this.organisation_name ~}}
+    <div class="v-margin post-info-item">
+      {{this.organisation_name}}
+    </div>
+    {{/if ~}}
+    {{#if map_postcode ~}}
+    <div class="v-margin post-info-extra">
+      Postcode: {{map_postcode}}
+    </div>
+    {{/if ~}}
+    {{#if this.description ~}}
+    <div style="max-height: 2.8rem;"  class="post-info-item post-info-extra post-info-description faded-overflow">
+      {{truncate (replace this.description '"' "&quot;") "255"}}
+    </div>
+    {{/if ~}}
+    <div class="post-info-extra">
+      <a href="#/opportunity/{{this.Id}}/{{this.title_slug}}?{{{substr @root.request.url.search 1}}}">Find out more</a>
+    </div>
+  {{~/json}},
+  {{#json key="options"}}
+    {{{json key="title" value=(replace this.title "'" "&apos;")}}}
+  {{/json}}
+{{/json}},

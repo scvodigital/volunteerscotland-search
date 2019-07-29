@@ -1,8 +1,10 @@
-<div class="{{#compare view 'widget'}}mdl-card mdl-shadow--2dp full-width v-margin-full{{else}}mdc-card content-primary search-result{{/compare}}" data-opportunity-id="{{Id}}" data-opportunity-layout="Search Result" data-opportunity-context="{{default viewContext "Search Results"}}">
+<div class="{{#compare view 'widget'}}mdl-card full-width v-margin-full{{else}}mdc-card content-primary search-result{{/compare}}" data-opportunity-id="{{Id}}" data-opportunity-layout="Search Result" data-opportunity-context="{{default viewContext "Search Results"}}">
   <div class="{{#compare view 'widget'}}mdl-card__subtitle-text h-padding-full{{/compare}}">
     {{> opportunity_key_info type="search_result"}}
   </div>
+  {{#unless (compare view 'widget') ~}}
   <hr class="mdc-list-divider" />
+  {{/unless ~}}
   {{#compare (trim (getProperty @root.data.profileInfo.notes Id)) "!==" "" ~}}
     {{> opportunity_description limit="3rem" description=description}}
     {{> opportunity_notes limit="3rem"}}
