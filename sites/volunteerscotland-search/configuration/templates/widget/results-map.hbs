@@ -61,38 +61,10 @@
                 {{#each (arrayify _source.geo_coords) ~}}
                   {{#if @root.request.params.query.distance ~}}
                     {{#compare (itemAt ../fields.distance @index) "<" @root.request.params.query.distance ~}}
-                      {{#json}}
-                        {{#json key="latLng" type="array"}}
-                          {{{json value=lat}}},
-                          {{{json value=lon}}}
-                        {{/json}},
-                        {{#json key="popupContent" type="string"~}}
-                          <a href="#/opportunity/{{../_source.Id}}/{{../_source.slug}}?{{{substr @root.request.url.search 1}}}">
-                            <strong>{{replace ../_source.title '"' "&quot;"}}</strong>
-                          </a><br />
-                          {{truncate (replace ../_source.description '"' "&quot;") "255"}}
-                        {{~/json}},
-                        {{#json key="options"}}
-                          {{{json key="title" value=(replace ../_source.title "'" "&apos;")}}}
-                        {{/json}}
-                      {{/json}},
+                      {{> opportunity_map_json ../_source lat=lat lng=lon map_postcode=(itemAt (arrayify (split ../_source.postcode ",")) @index)}}
                     {{/compare ~}}
                   {{else}}
-                    {{#json}}
-                      {{#json key="latLng" type="array"}}
-                        {{{json value=lat}}},
-                        {{{json value=lon}}}
-                      {{/json}},
-                      {{#json key="popupContent" type="string"~}}
-                        <a href="#/opportunity/{{../_source.Id}}/{{../_source.slug}}?{{{substr @root.request.url.search 1}}}">
-                          <strong>{{replace ../_source.title '"' "&quot;"}}</strong>
-                        </a><br />
-                        {{truncate (replace ../_source.description '"' "&quot;") "255"}}
-                      {{~/json}},
-                      {{#json key="options"}}
-                        {{{json key="title" value=(replace ../_source.title "'" "&apos;")}}}
-                      {{/json}}
-                    {{/json}},
+                    {{> opportunity_map_json ../_source lat=lat lng=lon map_postcode=(itemAt (arrayify (split ../_source.postcode ",")) @index)}}
                   {{/if ~}}
                 {{/each}}
               {{/each}}
