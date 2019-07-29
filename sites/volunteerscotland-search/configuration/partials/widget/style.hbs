@@ -69,7 +69,7 @@
   font-weight: 700;
 }
 .scvo-widget .mdc-card__info--search-distance {
-  color: #404041;
+  color: rgb(64, 64, 65);
   opacity: 0.8;
   margin-top: 0 !important;
 }
@@ -97,6 +97,13 @@
   font-family: inherit;
   font-weight: 400;
   font-size: 1rem;
+}
+.scvo-widget ul {
+  margin-bottom: 0;
+}
+.scvo-widget hr {
+  min-width: 100%;
+  background-image: none;
 }
 .scvo-widget .mdl-textfield__label {
   color: rgba(0, 0, 0, 0.6);
@@ -154,8 +161,15 @@
   width: 100%;
   box-sizing: border-box;
 }
+.scvo-widget body,
+.scvo-widget .mdl-card__title-text,
+.scvo-widget .mdl-card__subtitle-text,
+.scvo-widget .mdl-card__supporting-text {
+  color: #000;
+}
 .scvo-widget .mdl-card {
   min-height: 1px;
+  background-color: #f5f5f5;
 }
 .scvo-widget .mdc-card__info--content-primary ul.organisation li {
   font-weight: 700;
@@ -261,6 +275,7 @@
 }
 .scvo-widget .mdl-njs-tabs .mdl-tabs__tab {
   color: #387c2c;
+  font-size: 1.1rem;
 }
 .scvo-widget .mdl-njs-tabs .mdl-tabs__tab:hover {
   color: #27561f;
@@ -280,7 +295,7 @@
   text-transform: none;
 }
 .scvo-widget .mdl-tabs__tab .material-icons {
-  vertical-align: middle;
+  vertical-align: text-top;
 }
 .scvo-widget .pagination {
   text-align: center;
@@ -360,6 +375,9 @@
   content: "";
   position: absolute;
   top: 100%;
-  background: linear-gradient(rgba(255,255,255, 0), rgba(255,255,255, 1));
+  background: linear-gradient(rgba(245, 245, 245, 0), rgb(245, 245, 245));
+}
+.scvo-widget .leaflet-popup-content .faded-overflow::before {
+  background: linear-gradient(rgba(255, 255, 255, 0), rgb(255, 255, 255));
 }
 </style>
