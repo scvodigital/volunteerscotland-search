@@ -2174,6 +2174,30 @@ body.favouritees {
   }
 }
 
+.embed {
+  font-family: monospace;
+  display: block;
+  padding: 9.5px 9.5px 27px;
+  margin: 0 0 10px;
+  font-size: 13px;
+  line-height: 1.42857143;
+  color: rgb(51, 51, 51);
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: rgb(245, 245, 245);
+  border: 1px solid rgb(204, 204, 204);
+  border-radius: 0;
+  overflow: hidden;
+}
+.btn.copy {
+  border-radius: 0!important;
+  margin-top: -37px;
+  float: right;
+  user-select: none;
+  border-right-color: rgb(204, 204, 204)!important;
+  border-bottom-color: rgb(204, 204, 204)!important;
+}
+
 .pagination {
   padding: 0;
   margin-top: $unit/4;

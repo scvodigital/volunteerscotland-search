@@ -17,61 +17,65 @@
             </a>
           </div>
         </div>
-      {{/compare}}
 
-      <div class="map-results" data-component="LeafletMap" data-LeafletMap='{{#json}}
-        {{#json key="points" type="array"}}{{/json}},
-        {{#json key="mapOptions"}}
-          {{{json key="fullscreenControl" value=true}}},
-          {{{json key="scrollWheelZoom" value=false}}},
-          {{{json key="trackResize" value=false}}}
-        {{/json}},
-        {{#json key="initialLatLng"}}
-          {{{json key="lat" value=55.94528820000001}}},
-          {{{json key="lng" value=-3.200755699999945}}}
-        {{/json}},
-        {{{json key="initialZoom" value=9}}},
-        {{#ifAll @root.request.params.query.lat @root.request.params.query.lng @root.request.params.query.distance}}
-          {{#json key="featureGroups" type="array"}}
-            {{#json}}
-              {{{json key="boundToThis" value=true}}},
-              {{#json key="features" type="array"}}
-                {{#json}}
-                  {{{json key="type" value="Circle"}}},
-                  {{#json key="latLng"}}
-                    {{{json key="lat" value=@root.request.params.query.lat}}},
-                    {{{json key="lng" value=@root.request.params.query.lng}}}
-                  {{/json}},
-                  {{#json key="options"}}
-                    {{{json key="radius" value=(multiply @root.request.params.query.distance 1609.344)}}}
+        <div class="map-results" data-component="LeafletMap" data-LeafletMap='{{#json}}
+          {{#json key="points" type="array"}}{{/json}},
+          {{#json key="mapOptions"}}
+            {{{json key="fullscreenControl" value=true}}},
+            {{{json key="scrollWheelZoom" value=false}}},
+            {{{json key="trackResize" value=false}}}
+          {{/json}},
+          {{#json key="initialLatLng"}}
+            {{{json key="lat" value=55.94528820000001}}},
+            {{{json key="lng" value=-3.200755699999945}}}
+          {{/json}},
+          {{{json key="initialZoom" value=9}}},
+          {{#ifAll @root.request.params.query.lat @root.request.params.query.lng @root.request.params.query.distance}}
+            {{#json key="featureGroups" type="array"}}
+              {{#json}}
+                {{{json key="boundToThis" value=true}}},
+                {{#json key="features" type="array"}}
+                  {{#json}}
+                    {{{json key="type" value="Circle"}}},
+                    {{#json key="latLng"}}
+                      {{{json key="lat" value=@root.request.params.query.lat}}},
+                      {{{json key="lng" value=@root.request.params.query.lng}}}
+                    {{/json}},
+                    {{#json key="options"}}
+                      {{{json key="radius" value=(multiply @root.request.params.query.distance 1609.344)}}}
+                    {{/json}}
                   {{/json}}
                 {{/json}}
               {{/json}}
-            {{/json}}
-          {{/json}},
-        {{/ifAll}}
-        {{#json key="markerClusterGroups" type="array"}}
-          {{#json}}
-            {{#json key="options"}}
-              {{{json key="showCoverageOnHover" value=false}}}
             {{/json}},
-            {{{json key="boundToThis" value=true}}},
-            {{#json key="markers" type="array"}}
-              {{#each @root.data.search_data.map_results.hits.hits}}
-                {{#each (arrayify _source.geo_coords) ~}}
-                  {{#if @root.request.params.query.distance ~}}
-                    {{#compare (itemAt ../fields.distance @index) "<" @root.request.params.query.distance ~}}
+          {{/ifAll}}
+          {{#json key="markerClusterGroups" type="array"}}
+            {{#json}}
+              {{#json key="options"}}
+                {{{json key="showCoverageOnHover" value=false}}}
+              {{/json}},
+              {{{json key="boundToThis" value=true}}},
+              {{#json key="markers" type="array"}}
+                {{#each @root.data.search_data.map_results.hits.hits}}
+                  {{#each (arrayify _source.geo_coords) ~}}
+                    {{#if @root.request.params.query.distance ~}}
+                      {{#compare (itemAt ../fields.distance @index) "<" @root.request.params.query.distance ~}}
+                        {{> opportunity_map_json ../_source lat=lat lng=lon map_postcode=(itemAt (arrayify (split ../_source.postcode ",")) @index)}}
+                      {{/compare ~}}
+                    {{else}}
                       {{> opportunity_map_json ../_source lat=lat lng=lon map_postcode=(itemAt (arrayify (split ../_source.postcode ",")) @index)}}
-                    {{/compare ~}}
-                  {{else}}
-                    {{> opportunity_map_json ../_source lat=lat lng=lon map_postcode=(itemAt (arrayify (split ../_source.postcode ",")) @index)}}
-                  {{/if ~}}
+                    {{/if ~}}
+                  {{/each}}
                 {{/each}}
-              {{/each}}
+              {{/json}}
             {{/json}}
           {{/json}}
-        {{/json}}
-      {{/json}}'></div>
+        {{/json}}'></div>
+      {{else}}
+      <div class="v-margin-full">
+        {{> search_info paging=@root.data.search_data.detailed_results.pagination}}
+      </div>
+      {{/compare}}
 
       {{!-- <div class="post-info-extra v-margin-full">
         <a href="#/search?{{{substr @root.request.url.search 1}}}&exclude=locations&view=widget">List {{subtract @root.data.search_data.map_results.hits.total @root.data.search_data.map_results.aggregations.geo_search.buckets.[0].doc_count}} {{#compare @root.data.location_data.locations_results.hits.total ">" 0}}other{{/compare}} volunteering {{inflect (subtract @root.data.search_data.map_results.hits.total @root.data.search_data.map_results.aggregations.geo_search.buckets.[0].doc_count) "opportunity" "opportunities"}}</a>
