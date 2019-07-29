@@ -1,4 +1,4 @@
-<div class="mdc-card content-primary full" data-opportunity-id="{{Id}}" data-opportunity-layout="Full" data-opportunity-context="{{default viewContext "Vacancy Page"}}">
+<div class="{{#compare view 'widget'}}x-padding-full{{else}}mdc-card{{/compare}} content-primary full" data-opportunity-id="{{Id}}" data-opportunity-layout="Full" data-opportunity-context="{{default viewContext "Vacancy Page"}}">
   {{> opportunity_key_info type="full"}}
   <hr class="mdc-list-divider" />
   <div class="content-primary-info-container">
@@ -18,8 +18,8 @@
     </div>
     {{/unless ~}}
     <hr class="mdc-list-divider" />
-    <div class="panels" for="opportunity-tab-bar">
-      <div class="panel panel--active mdc-card--full-content" role="tabpanel" aria-hidden="false" data-tab-name="information">
+    <div{{#unless (compare view 'widget')}} class="panels" for="opportunity-tab-bar"{{/unless}}>
+      <div{{#unless (compare view 'widget')}} class="panel panel--active mdc-card--full-content" role="tabpanel" aria-hidden="false" data-tab-name="information"{{/unless}}>
         {{#ifAny activities.length themes.length end_date (compare start_date ">" (moment)) ~}}
         <div class="key-info-extra">
           <ul class="fa-ul">
@@ -215,10 +215,72 @@
           {{/if ~}}
         </div>
       </div>
+      {{/unless ~}}
 
-      <div class="panel mdc-card--full-content" role="tabpanel" aria-hidden="true" data-tab-name="location">
+      {{#compare view 'widget' ~}}
+      <a href="https://search.volunteerscotland.net/register-interest/{{Id}}/{{title_slug}}?utm_source={{default (urlencode (replace (replace @root.request.headers.referer 'http://' '') 'https://' '')) 'widget'}}&utm_campaign=search&utm_medium=widget" class="register-interest mdl-button mdl-button--raised mdl-button--colored v-margin-full" target="_blank">
+        <span class="material-icons icon-left" aria-hidden="true">open_in_new</span>
+        <span class="underline">I want to volunteer</span>
+      </a>
+      {{/compare ~}}
+
+      <div{{#unless (compare view 'widget')}} class="panel mdc-card--full-content" role="tabpanel" aria-hidden="true" data-tab-name="location"{{/unless}}>
         <div class="location-info">
           {{#compare (length (arrayify geo_coords)) ">" 0 ~}}
+          {{#compare view "widget" ~}}
+          <h4 class="mdc-typography--headline6">Location</h4>
+          <div class="map-results v-margin-full" data-component="LeafletMap" data-LeafletMap='{{#json}}
+            {{#json key="points" type="array"}}{{/json}},
+            {{#json key="mapOptions"}}
+              {{{json key="fullscreenControl" value=true}}},
+              {{{json key="scrollWheelZoom" value=false}}},
+              {{{json key="trackResize" value=false}}}
+            {{/json}},
+            {{#json key="initialLatLng"}}
+              {{{json key="lat" value=55.94528820000001}}},
+              {{{json key="lng" value=-3.200755699999945}}}
+            {{/json}},
+            {{{json key="initialZoom" value=9}}},
+            {{#ifAll @root.request.params.query.lat @root.request.params.query.lng @root.request.params.query.distance}}
+              {{#json key="featureGroups" type="array"}}
+                {{#json}}
+                  {{{json key="boundToThis" value=true}}},
+                  {{#json key="features" type="array"}}
+                    {{#json}}
+                      {{{json key="type" value="Circle"}}},
+                      {{#json key="latLng"}}
+                        {{{json key="lat" value=@root.request.params.query.lat}}},
+                        {{{json key="lng" value=@root.request.params.query.lng}}}
+                      {{/json}},
+                      {{#json key="options"}}
+                        {{{json key="radius" value=(multiply @root.request.params.query.distance 1609.344)}}}
+                      {{/json}}
+                    {{/json}}
+                  {{/json}}
+                {{/json}}
+              {{/json}},
+            {{/ifAll}}
+            {{#json key="markerClusterGroups" type="array"}}
+              {{#json}}
+                {{#json key="options"}}
+                  {{{json key="showCoverageOnHover" value=false}}}
+                {{/json}},
+                {{{json key="boundToThis" value=true}}},
+                {{#json key="markers" type="array"}}
+                  {{#each (arrayify geo_coords) ~}}
+                    {{#if @root.request.params.query.distance ~}}
+                      {{#compare (itemAt ../fields.distance @index) "<" @root.request.params.query.distance ~}}
+                        {{> opportunity_map_json ../this lat=lat lng=lon map_postcode=(itemAt (arrayify (split ../postcode ",")) @index)}}
+                      {{/compare ~}}
+                    {{else}}
+                      {{> opportunity_map_json ../this lat=lat lng=lon map_postcode=(itemAt (arrayify (split ../postcode ",")) @index)}}
+                    {{/if ~}}
+                  {{/each}}
+                {{/json}}
+              {{/json}}
+            {{/json}}
+          {{/json}}'></div>
+          {{else}}
           <div class="container-content container-map">
             <div id="map-content-primary" data-map-name="opportunityMap" data-map-clustered-options='{}'>
               {{#each (arrayify geo_coords) ~}}
@@ -234,6 +296,7 @@
               {{/each ~}}
             </div>
           </div>
+          {{/compare ~}}
           {{#compare advertised_areas.length ">" 0 ~}}
           <div class="detailed-info">
             <p class="mdc-typography--body1">
@@ -268,17 +331,11 @@
           {{/compare ~}}
         </div>
       </div>
-      {{/unless ~}}
     </div>
 
-    {{#compare view 'widget' ~}}
-    <a href="https://search.volunteerscotland.net/register-interest/{{Id}}/{{title_slug}}?utm_source={{default (urlencode (replace (replace @root.request.headers.referer 'http://' '') 'https://' '')) 'widget'}}&utm_campaign=search&utm_medium=widget" class="register-interest mdl-button mdl-button--raised mdl-button--colored v-margin-full" target="_blank">
-      <span class="material-icons icon-left" aria-hidden="true">open_in_new</span>
-      <span class="underline">I want to volunteer</span>
-    </a>
-    {{else}}
+    {{#unless (compare view 'widget') ~}}
     {{> opportunity_actions slug=slug Id=Id action="organisation"}}
-    {{/compare ~}}
+    {{/unless ~}}
   </div>
 </div>
 <script>
