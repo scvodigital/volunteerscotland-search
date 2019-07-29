@@ -268,14 +268,21 @@
                 {{{json key="boundToThis" value=true}}},
                 {{#json key="markers" type="array"}}
                   {{#each (arrayify geo_coords) ~}}
-                    {{#if @root.request.params.query.distance ~}}
-                      {{#compare (itemAt ../fields.distance @index) "<" @root.request.params.query.distance ~}}
-                        {{> opportunity_map_json ../this lat=lat lng=lon map_postcode=(itemAt (arrayify (split ../postcode ",")) @index)}}
-                      {{/compare ~}}
-                    {{else}}
-                      {{> opportunity_map_json ../this lat=lat lng=lon map_postcode=(itemAt (arrayify (split ../postcode ",")) @index)}}
-                    {{/if ~}}
-                  {{/each}}
+                    {{#json}}
+                      {{#json key="latLng" type="array"}}
+                        {{{json value=lat}}},
+                        {{{json value=lon}}}
+                      {{/json}},
+                      {{#json key="popupContent" type="string"~}}
+                        <h4>{{{../organisation_name}}}</h4>
+                        <p>Postcode: {{itemAt (arrayify (split ../postcode ",")) @index}}</p>
+                        <p>{{{../title}}}</p>
+                      {{~/json}},
+                      {{#json key="options"}}
+                        {{{json key="title" value=(replace ../title "'" "&apos;")}}}
+                      {{/json}}
+                    {{/json}},
+                  {{/each ~}}
                 {{/json}}
               {{/json}}
             {{/json}}
