@@ -172,10 +172,12 @@
           </div>
           {{/unless ~}}
 
+          {{#unless (compare view 'widget') ~}}
           <div class="mdc-typography--body2 last-modified">
             <span class="far fa-calendar-alt" aria-hidden="true"></span>
             <span title="Updated on {{momentFormat (moment date_last_modified "x") "YYYY-MM-DD hh:mm"}}">Last updated {{momentFromNow date_last_modified}}</span>
           </div>
+          {{/unless ~}}
         </div>
       </div>
 
@@ -218,10 +220,30 @@
       {{/unless ~}}
 
       {{#compare view 'widget' ~}}
+      {{#if @root.request.headers.widget-disable-mva ~}}
+      {{#ifAny opportunity_contact_first_name opportunity_contact_last_name ~}}
+      <p class="t-margin-full mdc-typography--body1">
+        Contact name: {{opportunity_contact_first_name}} {{opportunity_contact_last_name}}
+      </p>
+      {{/ifAny}}
+      {{#if opportunity_contact_email ~}}
+      <a href="mailto:{{opportunity_contact_email}}" class="register-interest mdl-button mdl-button--raised mdl-button--colored" target="_blank">
+        <span class="material-icons icon-left" aria-hidden="true">email</span>
+        <span class="underline">I want to volunteer</span>
+      </a>
+      {{else}}
+      {{#if opportunity_contact_phone ~}}
+      <p class="mdc-typography--body1">
+        {{{opportunity_contact_phone}}}
+      </p>
+      {{/if ~}}
+      {{/if ~}}
+      {{else}}
       <a href="https://search.volunteerscotland.net/register-interest/{{Id}}/{{title_slug}}?utm_source={{default (urlencode (replace (replace @root.request.headers.referer 'http://' '') 'https://' '')) 'widget'}}&utm_campaign=search&utm_medium=widget" class="register-interest mdl-button mdl-button--raised mdl-button--colored v-margin-full" target="_blank">
         <span class="material-icons icon-left" aria-hidden="true">open_in_new</span>
         <span class="underline">I want to volunteer</span>
       </a>
+      {{/if ~}}
       {{/compare ~}}
 
       <div{{#unless (compare view 'widget')}} class="panel mdc-card--full-content" role="tabpanel" aria-hidden="true" data-tab-name="location"{{/unless}}>
