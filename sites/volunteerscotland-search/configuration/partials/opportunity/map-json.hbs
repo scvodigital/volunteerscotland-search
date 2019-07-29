@@ -5,7 +5,7 @@
   {{/json}},
   {{#json key="popupContent" type="string"~}}
     <h3 class="map-info post-title">
-      <a href="#/opportunity/{{this.Id}}/{{this.title_slug}}{{@root.request.url.search}}">{{replace this.title '"' "&quot;"}}</a>
+      <a href="#/opportunity/{{this.Id}}/{{this.title_slug}}?{{{substr @root.request.url.search 1}}}">{{replace this.title '"' "&quot;"}}</a>
     </h3>
     {{#if this.organisation_name ~}}
     <div class="v-margin post-info-item">
@@ -23,7 +23,7 @@
     </div>
     {{/if ~}}
     <div class="post-info-extra">
-      <a href="#/opportunity/{{this.Id}}/{{this.title_slug}}{{@root.request.url.search}}">Find out more</a>
+      <a href="#/opportunity/{{this.Id}}/{{this.title_slug}}?{{{substr @root.request.url.search 1}}}">Find out more</a>
     </div>
   {{~/json}},
   {{#json key="options"}}
