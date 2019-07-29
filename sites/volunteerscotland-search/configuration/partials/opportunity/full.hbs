@@ -228,6 +228,7 @@
         <div class="location-info">
           {{#compare (length (arrayify geo_coords)) ">" 0 ~}}
           {{#compare view "widget" ~}}
+          <h4 class="mdc-typography--headline6">Location</h4>
           <div class="map-results v-margin-full" data-component="LeafletMap" data-LeafletMap='{{#json}}
             {{#json key="points" type="array"}}{{/json}},
             {{#json key="mapOptions"}}
