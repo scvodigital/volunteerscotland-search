@@ -23,7 +23,7 @@
           "default": {
             "layout": ">context.metaData.handlebars.layouts.default",
             "parts": {
-              "head": ">context.metaData.handlebars.templates.pages_page-head-tags",
+              "head": ">context.metaData.handlebars.templates.widget_builder-head-tags",
               "body": ">context.metaData.handlebars.templates.widget_builder",
               "foot": ""
             },

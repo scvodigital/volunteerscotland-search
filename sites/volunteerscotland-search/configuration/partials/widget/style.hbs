@@ -151,6 +151,7 @@
 .scvo-widget .key-info-extra ul,
 .scvo-widget .mdc-card__info--content-primary ul {
   padding-left: 0;
+  margin-left: 0 !important;
 }
 .scvo-widget .key-info-extra li,
 .scvo-widget .mdc-card__info--content-primary li {
@@ -176,6 +177,10 @@
 }
 .scvo-widget .mdc-card__info--content-primary ul:last-child {
   margin-bottom: 0.75rem;
+}
+.scvo-widget .content-primary.full .mdc-card__info--content-primary-row {
+  padding-top: 1rem !important;
+  border-top: 2px solid {{default @root.request.headers.widget-color-secondary "#387c2c"}};
 }
 .scvo-widget .mdl-checkbox.is-checked .mdl-checkbox__box-outline,
 .scvo-widget .mdl-checkbox.is-checked.is-disabled .mdl-checkbox__box-outline {
