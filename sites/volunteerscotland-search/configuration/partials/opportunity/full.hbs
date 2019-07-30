@@ -161,9 +161,9 @@
           </p>
           {{/ifAny ~}}
 
-          {{#unless opportunity_contact_email}}
+          {{#unless opportunity_contact_email ~}}
           <p class="mdc-typography--body1">You can't volunteer for this opportunity using this site. {{#if organisation_website}}Please contact the organisation directly using <a href="{{fixUrl organisation_website 'http'}}">{{{organisation_website}}}</a> for more information.{{/if}}</p>
-          {{/unless}}
+          {{/unless ~}}
 
           {{#unless (compare view 'widget') ~}}
           <div class="mdc-typography--body1 report pull-right">
@@ -223,7 +223,7 @@
       {{#if @root.request.headers.widget-disable-mva ~}}
       {{#ifAny opportunity_contact_first_name opportunity_contact_last_name ~}}
       <p class="t-margin-full mdc-typography--body1">
-        Contact name: {{opportunity_contact_first_name}} {{opportunity_contact_last_name}}
+        <strong>Contact name:</strong> {{opportunity_contact_first_name}} {{opportunity_contact_last_name}}
       </p>
       {{/ifAny}}
       {{#if opportunity_contact_email ~}}
@@ -234,7 +234,7 @@
       {{else}}
       {{#if opportunity_contact_phone ~}}
       <p class="mdc-typography--body1">
-        {{{opportunity_contact_phone}}}
+        <strong>Contact phone:</strong> {{{opportunity_contact_phone}}}
       </p>
       {{/if ~}}
       {{/if ~}}
