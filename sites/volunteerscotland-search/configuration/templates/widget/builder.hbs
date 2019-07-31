@@ -1,12 +1,14 @@
-{{~#*inline "widget_code" ~}}type="text/javascript" src="https://{{#compare request.url.hostname "volunteerscotland-search.local"}}volunteerscotland-search.local:9000{{else}}widget.search.volunteerscotland.net{{/compare}}/widget.js" data-url="https://{{#compare request.url.hostname "volunteerscotland-search.local"}}volunteerscotland-search.local:8080{{else}}search.volunteerscotland.net{{/compare}}/widget"{{#ifAll @root.request.body.filter (compare @root.request.body.filter "!==" "0")}} data-tsi="{{@root.request.body.filter}}"{{/ifAll}}{{#ifAll @root.request.body.colour_primary (compare @root.request.body.colour_primary "!==" "#00a0af")}} data-colour-primary="{{@root.request.body.colour_primary}}"{{/ifAll}}{{#ifAll @root.request.body.colour_secondary (compare @root.request.body.colour_secondary "!==" "#387c2c")}} data-colour-secondary="{{@root.request.body.colour_secondary}}"{{/ifAll}}{{#compare @root.request.body.enable_mva 'off'}} data-disable-mva="true"{{/compare}}{{~/inline ~}}
+{{#*inline "widget_code" ~}}
+type="text/javascript" src="https://{{#compare request.url.hostname "volunteerscotland-search.local"}}volunteerscotland-search.local:9000{{else}}widget.search.volunteerscotland.net{{/compare}}/widget.js" data-url="https://{{#compare request.url.hostname "volunteerscotland-search.local"}}volunteerscotland-search.local:8080{{else}}search.volunteerscotland.net{{/compare}}/widget"{{#ifAll @root.request.body.filter (compare @root.request.body.filter "!==" "0")}} data-tsi="{{@root.request.body.filter}}"{{/ifAll}}{{#ifAll @root.request.body.colour_primary (compare @root.request.body.colour_primary "!==" "#00a0af")}} data-colour-primary="{{@root.request.body.colour_primary}}"{{/ifAll}}{{#ifAll @root.request.body.colour_secondary (compare @root.request.body.colour_secondary "!==" "#387c2c")}} data-colour-secondary="{{@root.request.body.colour_secondary}}"{{/ifAll}}{{#compare @root.request.body.enable_mva 'off'}} data-disable-mva="true"{{/compare}}
+{{~/inline ~}}
 
 <div class="container-fluid container-content content-page">
   <h2>Search widget builder</h2>
-  <p class="mdc-typography--body1">
-    Please choose a widget type and optional location filter.
-  </p>
   <form action="{{@root.request.url.pathname}}" method="post">
     {{#unless @root.request.body.filter ~}}
+    <p class="mdc-typography--body1">
+      Please choose a widget type and optional location filter.
+    </p>
     <div class="mdc-layout-grid">
       <div class="mdc-layout-grid__inner">
         <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-5-tablet mdc-layout-grid__cell--span-4-phone">
