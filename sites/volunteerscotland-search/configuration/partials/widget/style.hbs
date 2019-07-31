@@ -135,11 +135,16 @@
 .scvo-widget .areas .area:last-child::after {
   content: "";
 }
-.scvo-widget .content-primary .mdc-card__media {
+.scvo-widget .content-primary .mdc-card__media,
+.scvo-widget .content-secondary .mdc-card__media {
   max-width: 20%;
   margin-left: 1rem;
 }
-.scvo-widget .content-primary .mdc-card__media img {
+.scvo-widget .content-secondary .mdc-card__media {
+  float: right;
+}
+.scvo-widget .content-primary .mdc-card__media img,
+.scvo-widget .content-secondary .mdc-card__media img {
   max-width: 100%;
 }
 .scvo-widget .content-primary ul {

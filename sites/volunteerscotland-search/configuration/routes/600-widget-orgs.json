@@ -1,0 +1,17 @@
+{
+  "name": "widget_organisations",
+  "pattern": "/widget/organisations",
+  "debug": true,
+  "acceptedVerbs": "GET",
+  "tasks": [
+    {
+      "name": "destination",
+      "taskModule": "render",
+      "renderer": "handlebars",
+      "config": {
+        "output": "body",
+        "template": ">context.metaData.handlebars.templates.organisations_widget_search"
+      }
+    }
+  ]
+}

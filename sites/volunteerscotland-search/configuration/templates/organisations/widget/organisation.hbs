@@ -1,0 +1,12 @@
+{{> widget_style}}
+<div class="volorgs-main">
+  <div class="volorgs-inner">
+    {{> widget_organisation_search_form}}
+
+    {{#compare @root.data.primaryResponse.hits.total ">" 0 ~}}
+    {{#each @root.data.primaryResponse.hits.hits ~}}
+    {{> organisation_full _source view="widget"}}
+    {{/each ~}}
+    {{/compare ~}}
+  </div>
+</div>

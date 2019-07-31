@@ -121,7 +121,7 @@
           "widget": {
             "layout": ">context.metaData.handlebars.layouts.data",
             "parts": {
-              "content": ">context.metaData.handlebars.templates.widget_opportunity"
+              "content": ">context.metaData.handlebars.templates.opportunities_widget_opportunity"
             },
             "contentType": "text/html"
           }
