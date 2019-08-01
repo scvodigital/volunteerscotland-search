@@ -1,4 +1,19 @@
-<div class="mdc-card full" data-organisation-id="{{Id}}">
+<div class="{{#compare view 'widget'}}x-padding-full{{else}}mdc-card{{/compare}} full content-secondary" data-organisation-id="{{Id}}">
+  {{#compare view 'widget' ~}}
+  {{#ifAny @root.request.params.query.page @root.request.params.query.keywords @root.request.params.query.location ~}}
+  <div class="">
+    <a href="#/organisations/search?{{{substr @root.request.url.search 1}}}" class="pull-left mdl-button mdl-button--raised b-margin-full">
+      <span class="material-icons icon-left" aria-hidden="true">arrow_back_ios</span>
+      Back to results
+    </a>
+    <a href="https://search.volunteerscotland.net/organisation-pdf/{{Id}}/{{title_slug}}?view=widget" class="pull-right mdl-button mdl-button--raised b-margin-full" download>
+      Print
+      <span class="material-icons icon-right" aria-hidden="true">print</span>
+    </a>
+    <div style="clear:both;" />
+  </div>
+  {{/ifAny ~}}
+  {{/compare ~}}
   <div class="mdc-card__info--content-secondary-row">
     <div class="mdc-card__info--content-secondary">
       {{#if goodhq_organisation.image_url ~}}
@@ -6,13 +21,13 @@
           <img src="{{goodhq_organisation.image_url}}" alt="{{title}}" />
         </div>
       {{/if ~}}
-      <div class="mdc-card__info--content-secondary-title mdc-typography--headline3">
+      <h2 class="mdc-card__info--content-secondary-title mdc-typography--headline3">
         {{{title}}}
-      </div>
+      </h2>
       <div class="detailed-info">
         {{#ifAny description description_html ~}}
         <div class="mdc-typography--body1 v-margin">
-          {{#if description_html}}{{{description_html}}}{{else}}{{description}}{{/if}}
+          {{#if description_html}}{{{description_html}}}{{else}}{{{description}}}{{/if}}
         </div>
         {{/ifAny ~}}
       </div>
@@ -20,10 +35,16 @@
         <ul class="fa-ul">
           {{#compare (length main_activities_global) ">" 0 ~}}
             <li class="mdc-card__info--content-primary-work-type reference mdc-typography--body1">
+              {{#compare view 'widget' ~}}
+              {{#each main_activities_global ~}}
+                {{{this}}}{{#unless @last}}, {{/unless}}
+              {{/each ~}}
+              {{else}}
               <span class="fa-li"><span class="far fa-briefcase fa-fw" title="Activities"></span></span>
               {{#each main_activities_global ~}}
                 <a href="/organisations/search?organisation_activities%5B%5D={{urlencode (slugify (replace this "/" "-"))}}">{{{this}}}</a>{{#unless @last}}, {{/unless}}
               {{/each ~}}
+              {{/compare}}
             </li>
           {{/compare ~}}
 
@@ -75,7 +96,6 @@
           {{/compare ~}}
           {{/if ~}}
 
-
           {{#if goodhq_organisation ~}}
           {{#compare goodhq_organisation.xid "!==" null ~}}
           <li class="mdc-card__info--content-secondary-goodhq mdc-typography--body1">
@@ -95,10 +115,12 @@
           </li>
           {{/compare ~}}
           {{/if ~}}
+          {{#unless (compare view 'widget') ~}}
           <li class="mdc-card__info--content-secondary-report report mdc-typography--body1">
             <span class="fa-li"><span class="fas fa-flag fa-fw" title="Report this organisation"></span></span>
             <a href="mailto:milosupport@scvo.org.uk?subject=Report%20on%20organisation:%20{{urlencode title}},%20via Volunteer%20Scotland%20Search&body=I%20would%20like%20to%20report%20this%20organisation%20for%20the%20following%20reasons:">Report this organisation</a>
           </li>
+          {{/unless ~}}
         </ul>
       </div>
     </div>

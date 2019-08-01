@@ -82,15 +82,6 @@
           "if": [
             {
               "in": [
-                "view=rss",
-                {
-                  "var": "request.fullUrl"
-                }
-              ]
-            },
-            "rss",
-            {
-              "in": [
                 "view=widget",
                 {
                   "var": "request.fullUrl"
@@ -112,14 +103,6 @@
         },
         "output": "body",
         "layouts": {
-          "rss": {
-            "layout": ">context.metaData.handlebars.layouts.rss",
-            "parts": {
-              "head": ">context.metaData.handlebars.templates.opportunities_search-rss-head-tags",
-              "body": ">context.metaData.handlebars.templates.opportunities_search-rss"
-            },
-            "contentType": "application/rss+xml"
-          },
           "default": {
             "layout": ">context.metaData.handlebars.layouts.default",
             "parts": {
@@ -140,7 +123,7 @@
           "widget": {
             "layout": ">context.metaData.handlebars.layouts.data",
             "parts": {
-              "content": ">context.metaData.handlebars.templates.widget_results-map"
+              "content": ">context.metaData.handlebars.templates.opportunities_widget_results-map"
             },
             "contentType": "text/html"
           }

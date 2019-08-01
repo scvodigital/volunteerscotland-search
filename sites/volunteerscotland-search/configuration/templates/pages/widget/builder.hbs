@@ -1,14 +1,16 @@
+{{#*inline "widget_code" ~}}
+type="text/javascript" src="https://{{#compare request.url.hostname "volunteerscotland-search.local"}}volunteerscotland-search.local:9000{{else}}widget.search.volunteerscotland.net{{/compare}}/widget.js" data-url="https://{{#compare request.url.hostname "volunteerscotland-search.local"}}volunteerscotland-search.local:8080{{else}}search.volunteerscotland.net{{/compare}}/widget/opportunities"{{#ifAll @root.request.body.filter (compare @root.request.body.filter "!==" "0")}} data-tsi="{{@root.request.body.filter}}"{{/ifAll}}{{#ifAll @root.request.body.colour_primary (compare @root.request.body.colour_primary "!==" "#00a0af")}} data-colour-primary="{{@root.request.body.colour_primary}}"{{/ifAll}}{{#ifAll @root.request.body.colour_secondary (compare @root.request.body.colour_secondary "!==" "#387c2c")}} data-colour-secondary="{{@root.request.body.colour_secondary}}"{{/ifAll}}{{#compare @root.request.body.enable_mva 'off'}} data-disable-mva="true"{{/compare}}
+{{~/inline ~}}
+
 <div class="container-fluid container-content content-page">
   <h2>Search widget builder</h2>
-  <p class="mdc-typography--body1">
-    Please choose a widget type and optional location filter.
-  </p>
   <form action="{{@root.request.url.pathname}}" method="post">
+    {{#unless @root.request.body.filter ~}}
+    <p class="mdc-typography--body1">
+      Please choose a widget type and optional location filter.
+    </p>
     <div class="mdc-layout-grid">
       <div class="mdc-layout-grid__inner">
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-3-tablet mdc-layout-grid__cell--span-4-phone">
-          <div id="colorpicker"></div>
-        </div>
         <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-5-tablet mdc-layout-grid__cell--span-4-phone">
           <div class="mdc-select" data-mdc-auto-init="MDCSelect">
             <span class="mdc-select__dropdown-icon"></span>
@@ -86,6 +88,9 @@
             <label for="enable_mva">Use 'My Volunteer Account' to register interest</label>
           </div>
         </div>
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-3-tablet mdc-layout-grid__cell--span-4-phone">
+          <div id="colorpicker"></div>
+        </div>
         <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
           <button class="mdc-button mdc-button--raised mdc-button--large mdc-button--fullwidth mdc-ripple-surface mdc-ripple-surface--primary mdc-ripple-upgraded" type="submit" data-mdc-auto-init="MDCRipple">
             <span class="far fa-cog fa-fw mdc-list-item__graphic" aria-hidden="true"></span>
@@ -94,17 +99,25 @@
         </div>
       </div>
     </div>
+    {{else}}
+    <button class="mdc-button mdc-button--raised mdc-button--large mdc-button--fullwidth mdc-ripple-surface mdc-ripple-surface--primary mdc-ripple-upgraded" type="submit" data-mdc-auto-init="MDCRipple">
+      <span class="far fa-cog fa-fw mdc-list-item__graphic" aria-hidden="true"></span>
+      Change settings
+    </button>
+    {{/unless ~}}
   </form>
 
+  {{#if @root.request.body.filter ~}}
   <hr />
   <h3>How to embed the widget</h3>
   <p class="mdc-typography--body1">
     Please use the following code to embed the specified search widget on your own website:
   </p>
-  <div class="embed copyable">&lt;script type="text/javascript" src="https://{{#compare request.url.hostname "volunteerscotland-search.local"}}volunteerscotland-search.local:9000{{else}}widget.search.volunteerscotland.net{{/compare}}/widget.js" data-url="https://{{#compare request.url.hostname "volunteerscotland-search.local"}}volunteerscotland-search.local:8080{{else}}search.volunteerscotland.net{{/compare}}/widget"{{#ifAll @root.request.body.filter (compare @root.request.body.filter "!==" "0")}} data-tsi="{{@root.request.body.filter}}"{{/ifAll}}{{#ifAll @root.request.body.colour_primary (compare @root.request.body.colour_primary "!==" "#00a0af")}} data-colour-primary="{{@root.request.body.colour_primary}}"{{/ifAll}}{{#ifAll @root.request.body.colour_secondary (compare @root.request.body.colour_secondary "!==" "#387c2c")}} data-colour-secondary="{{@root.request.body.colour_secondary}}"{{/ifAll}}{{#compare @root.request.body.enable_mva 'off'}} data-disable-mva="true"{{/compare}}&gt;&lt;/script&gt;</div>
+  <div class="embed copyable">&lt;script {{> widget_code~}}&gt;&lt;/script&gt;</div>
   <button class="btn copy" data-source="embed" unselectable="on"><i aria-hidden="true" class="fa fa-clipboard"></i> Copy</button>
 
   <hr />
   <h3>Preview</h3>
-  <script type="text/javascript" src="https://{{#compare request.url.hostname "volunteerscotland-search.local"}}volunteerscotland-search.local:9000{{else}}widget.search.volunteerscotland.net{{/compare}}/widget.js" data-url="https://{{#compare request.url.hostname "volunteerscotland-search.local"}}volunteerscotland-search.local:8080{{else}}search.volunteerscotland.net{{/compare}}/widget"{{#ifAll @root.request.body.filter (compare @root.request.body.filter "!==" "0")}} data-tsi="{{@root.request.body.filter}}"{{/ifAll}}{{#ifAll @root.request.body.colour_primary (compare @root.request.body.colour_primary "!==" "%2300a0af")}} data-colour-primary="{{@root.request.body.colour_primary}}"{{/ifAll}}{{#ifAll @root.request.body.colour_secondary (compare @root.request.body.colour_secondary "!==" "%23387c2c")}} data-colour-secondary="{{@root.request.body.colour_secondary}}"{{/ifAll}}{{#compare @root.request.body.enable_mva 'off'}} data-disable-mva="true"{{/compare}}></script>
+  <script {{> widget_code}}></script>
+  {{/if ~}}
 </div>
