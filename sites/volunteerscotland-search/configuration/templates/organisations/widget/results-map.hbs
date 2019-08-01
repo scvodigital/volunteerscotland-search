@@ -58,13 +58,9 @@
               {{#json key="markers" type="array"}}
                 {{#each @root.data.search_data.map_results.hits.hits}}
                   {{#each (arrayify _source.geo_coords) ~}}
-                    {{#if @root.request.params.query.distance ~}}
-                      {{#compare (itemAt ../fields.distance @index) "<" @root.request.params.query.distance ~}}
-                        {{> organisation_map_json ../_source lat=lat lng=lon map_postcode=(itemAt (arrayify (split ../_source.postcode ",")) @index)}}
-                      {{/compare ~}}
-                    {{else}}
-                      {{> organisation_map_json ../_source lat=lat lng=lon map_postcode=(itemAt (arrayify (split ../_source.postcode ",")) @index)}}
-                    {{/if ~}}
+                    {{#ifAll lat lon ~}}
+                      {{> organisation_map_json ../_source lat=lat lng=lon}}
+                    {{/ifAll ~}}
                   {{/each}}
                 {{/each}}
               {{/json}}

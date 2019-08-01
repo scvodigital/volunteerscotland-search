@@ -23,7 +23,7 @@
         {{> search_info paging=@root.data.search_data.detailed_results.pagination}}
       </div>
 
-      <div class="mdl-grid">
+      <div class="mdl-grid results-list">
         {{#each @root.data.search_data.detailed_results.hits.hits ~}}
         <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--4-col-tablet mdl-cell--4-col-desktop">
           {{> organisation_search_result _source distance=fields.distance.[0] view="widget"}}

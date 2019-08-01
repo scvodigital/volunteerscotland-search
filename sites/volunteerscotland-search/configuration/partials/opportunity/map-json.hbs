@@ -1,7 +1,7 @@
 {{#json}}
-  {{#json key="latLng" type="array"}}
-    {{{json value=lat}}},
-    {{{json value=lng}}}
+  {{#json key="latLng"}}
+    {{{json key="lat" value=lat}}},
+    {{{json key="lng" value=lng}}}
   {{/json}},
   {{#json key="popupContent" type="string"~}}
     <h3 class="map-info post-title">

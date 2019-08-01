@@ -23,9 +23,11 @@
         {{> search_info paging=@root.data.search_data.detailed_results.pagination}}
       </div>
 
+      <div class="results-list">
       {{#each @root.data.search_data.detailed_results.hits.hits ~}}
         {{> opportunity_search_result _source distance=fields.distance.[0] view="widget"}}
       {{/each ~}}
+      </div>
 
       <div class="foot">
         {{> pagination paging=@root.data.search_data.detailed_results.pagination type="widget"}}

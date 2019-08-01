@@ -4,6 +4,8 @@
   "debug": true,
   "acceptedVerbs": "GET",
   "tasks": [
+    "context.metaData.commonTasks.organisationsWithOpportunities",
+    "context.metaData.commonTasks.organisationSupplimentary",
     {
       "name": "destination",
       "taskModule": "render",

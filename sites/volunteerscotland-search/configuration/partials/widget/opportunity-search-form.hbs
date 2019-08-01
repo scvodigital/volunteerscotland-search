@@ -28,8 +28,7 @@
                   </span>
                   <span class="mdl-list__item-secondary-action">
                     <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="volopps-{{../../key}}_{{key}}">
-                      <input type="checkbox" name="{{../../key}}" id="volopps-{{../../key}}_{{key}}" class="mdl-checkbox__input"
-                          value="{{key}}" {{#if (contains (getProperty @root.request.params.query ../../key) key)}}checked{{/if}}/>
+                      <input type="checkbox" name="{{../../key}}" id="volopps-{{../../key}}_{{key}}" class="mdl-checkbox__input" value="{{key}}"{{#if (contains (getProperty @root.request.params.query ../../key) key)}} checked{{/if}} />
                     </label>
                   </span>
                 </li>
@@ -185,7 +184,7 @@
                         {{/json}}
                       {{/compare}}
                     {{/json}},
-                    {{{json key="display" value="other"}}},
+                    {{{json key="display" value="label"}}},
                     {{#json key="bloodhound"}}
                       {{{json key="datumTokenizer" value="objWhitespace"}}},
                       {{{json key="datumTokenizerField" value="label"}}},
@@ -193,9 +192,9 @@
                       {{#json key="local" type="array"}}
                         {{#each terms}}
                           {{#json}}
-                            "label": {{{stringify (concat ../key ' ' textBag)}}},
+                            "label": {{{stringify label}}},
                             "value": {{{stringify key}}},
-                            "other": {{{stringify label}}}
+                            "other": {{{stringify (concat ../key ' ' textBag)}}}
                           {{/json}},
                         {{/each}}
                       {{/json}}

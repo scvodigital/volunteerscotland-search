@@ -1,18 +1,18 @@
 <div class="{{#compare view 'widget'}}x-padding-full{{else}}mdc-card{{/compare}} full content-secondary" data-organisation-id="{{Id}}">
   {{#compare view 'widget' ~}}
-  {{#ifAny @root.request.params.query.page @root.request.params.query.keywords @root.request.params.query.location ~}}
   <div class="">
-    <a href="#/organisations/search?{{{substr @root.request.url.search 1}}}" class="pull-left mdl-button mdl-button--raised b-margin-full">
+    {{#ifAny @root.request.params.query.page @root.request.params.query.keywords @root.request.params.query.location @root.request.params.query.organisation_activities ~}}
+    <a href="#/organisations/search?{{{substr @root.request.url.search 1}}}" class="pull-left mdl-button b-margin-full">
       <span class="material-icons icon-left" aria-hidden="true">arrow_back_ios</span>
       Back to results
     </a>
-    <a href="https://search.volunteerscotland.net/organisation-pdf/{{Id}}/{{title_slug}}?view=widget" class="pull-right mdl-button mdl-button--raised b-margin-full" download>
+    {{/ifAny ~}}
+    {{!-- <a href="https://search.volunteerscotland.net/organisation-pdf/{{Id}}/{{title_slug}}?view=widget" class="pull-right mdl-button b-margin-full" download>
       Print
       <span class="material-icons icon-right" aria-hidden="true">print</span>
-    </a>
+    </a> --}}
     <div style="clear:both;" />
   </div>
-  {{/ifAny ~}}
   {{/compare ~}}
   <div class="mdc-card__info--content-secondary-row">
     <div class="mdc-card__info--content-secondary">
