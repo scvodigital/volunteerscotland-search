@@ -8,10 +8,6 @@
     {{/json}}'>
   <div class="mdl-grid">
     {{#each (filter @root.context.metaData.terms "noSearchFilter" "===" undefined) ~}}
-      {{!-- {{#ifAll (compare @index ">" 0) (modulo @index 3 0) ~}}
-        </div>
-        <div class="mdl-grid">
-      {{/ifAll ~}} --}}
       <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--4-col-tablet mdl-cell--4-col-desktop">
         <div class="multi-select" data-component="MultiSelect" data-MultiSelect='{ "selectedListLimit": 4, "selectedListLabel": "Selected" }'>
           <div class="mdl-badge mdl-badge--overlap multi-select-count" data-badge="0"></div>
@@ -32,8 +28,7 @@
                   </span>
                   <span class="mdl-list__item-secondary-action">
                     <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="volopps-{{../../key}}_{{key}}">
-                      <input type="checkbox" name="{{../../key}}" id="volopps-{{../../key}}_{{key}}" class="mdl-checkbox__input"
-                          value="{{key}}" {{#if (contains (getProperty @root.request.params.query ../../key) key)}}checked{{/if}}/>
+                      <input type="checkbox" name="{{../../key}}" id="volopps-{{../../key}}_{{key}}" class="mdl-checkbox__input" value="{{key}}"{{#if (contains (getProperty @root.request.params.query ../../key) key)}} checked{{/if}} />
                     </label>
                   </span>
                 </li>
@@ -189,7 +184,7 @@
                         {{/json}}
                       {{/compare}}
                     {{/json}},
-                    {{{json key="display" value="other"}}},
+                    {{{json key="display" value="label"}}},
                     {{#json key="bloodhound"}}
                       {{{json key="datumTokenizer" value="objWhitespace"}}},
                       {{{json key="datumTokenizerField" value="label"}}},
@@ -197,9 +192,9 @@
                       {{#json key="local" type="array"}}
                         {{#each terms}}
                           {{#json}}
-                            "label": {{{stringify (concat ../key ' ' textBag)}}},
+                            "label": {{{stringify label}}},
                             "value": {{{stringify key}}},
-                            "other": {{{stringify label}}}
+                            "other": {{{stringify (concat ../key ' ' textBag)}}}
                           {{/json}},
                         {{/each}}
                       {{/json}}

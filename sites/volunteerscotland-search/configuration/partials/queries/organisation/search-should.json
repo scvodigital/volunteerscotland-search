@@ -1,6 +1,12 @@
 {
   "exists": {
     "field": "goodhq_organisation.image_url",
-    "boost": 1.0
+    "boost": 1.5
+  }
+},
+{
+  "exists": {
+    "field": "description",
+    "boost": 0.5
   }
 }

@@ -1,58 +1,16 @@
 {{#*inline "term_filter"}}
   <h3 class="mdc-drawer__content-heading cursor-pointer noselect mdc-drawer--occasional-ie11" data-checkbox-collapse-target="#{{../instance_id}}-{{type}}-collapse" role="button" aria-pressed="false" aria-label="Show {{getProperty @root.context.metaData.termTypeLabels (concat type ".plural")}}" tabindex="0">
-    {{#compare type "===" "regions" ~}}
-      Region
-    {{else}}
-      {{getProperty @root.context.metaData.termTypeLabels (concat type ".plural")}}
-    {{/compare ~}}
+    {{getProperty @root.context.metaData.termTypeLabels (concat type ".plural")}}
     <span class="mdc-icon-toggle pull-right">
       <span class="far fa-chevron-down" aria-hidden="true"></span>
     </span>
   </h3>
   <div class="mdc-drawer--occasional-ie11 checkbox-toggle-display-checked" id="{{../instance_id}}-{{type}}-collapse" >
-    {{#compare type "===" "regions" ~}}
-      {{#if (any @root.data.organisationSupplimentary.types.aggregations.countries.buckets) ~}}
-        {{#each @root.data.organisationSupplimentary.types.aggregations.countries.buckets ~}}
-          {{#if key ~}}
-          {{!-- #compare (length @root.data.organisationSupplimentary.types.aggregations.countries.buckets) ">=" 1 ~}}
-            <h3 class="mdc-typography--headline7">{{{key}}}</h3>
-          {{/compare ~ --}}
-          {{/if ~}}
-          {{#compare key "Scotland" ~}}
-            {{#each this.regions_slugs.buckets ~}}
-              {{#if key ~}}
-                {{> term_checkbox slug=key field="regions" selected=@root.request.params.query.regions instance_id=../../../instance_id value=(lookup ../this.regions.buckets @index)}}
-              {{/if ~}}
-            {{/each ~}}
-          {{else}}
-            <div class="mdc-typography--headline7 checkbox-collapse-element">Other</div>
-            {{#each this.regions_slugs.buckets ~}}
-              {{#if key ~}}
-                {{> term_checkbox slug=key field="regions" selected=@root.request.params.query.regions instance_id=../../../instance_id value=(lookup ../this.regions.buckets @index)}}
-              {{/if ~}}
-            {{/each ~}}
-          {{/compare ~}}
-
-        {{/each ~}}
-        {{#ifAny (length @root.data.organisationSupplimentary.types.aggregations.home_based.buckets) (length @root.data.organisationSupplimentary.types.aggregations.various_locations.buckets) ~}}
-        {{!-- #compare (length @root.data.organisationSupplimentary.types.aggregations.countries.buckets) ">=" 1 ~}}
-          <h3 class="mdc-typography--headline7">Other</h3>
-        {{/compare ~ --}}
-          {{#compare (length @root.data.organisationSupplimentary.types.aggregations.home_based.buckets) ">=" 1 ~}}
-            {{> term_checkbox slug="true" field="home_based" selected=@root.request.params.query.home_based instance_id=../instance_id value="Home-based"}}
-          {{/compare ~}}
-          {{#compare (length @root.data.organisationSupplimentary.types.aggregations.various_locations.buckets) ">=" 1 ~}}
-            {{> term_checkbox slug="true" field="various_locations" selected=@root.request.params.query.various_locations instance_id=../instance_id value="Various locations"}}
-          {{/compare ~}}
-        {{/ifAny ~}}
+    {{#each (getProperty @root.data.organisationSupplimentary.types.aggregations (concat type "_slugs.buckets")) ~}}
+      {{#if key ~}}
+        {{> term_checkbox slug=key field=../type selected=(getProperty @root.request.params.query ../type) instance_id=../../instance_id value=(lookup (getProperty @root.data.organisationSupplimentary.types.aggregations (concat ../type ".buckets")) @index)}}
       {{/if ~}}
-    {{else}}
-      {{#each (getProperty @root.data.organisationSupplimentary.types.aggregations (concat type "_slugs.buckets")) ~}}
-        {{#if key ~}}
-          {{> term_checkbox slug=key field=../type selected=(getProperty @root.request.params.query ../type) instance_id=../../instance_id value=(lookup (getProperty @root.data.organisationSupplimentary.types.aggregations (concat ../type ".buckets")) @index)}}
-        {{/if ~}}
-      {{/each ~}}
-    {{/compare ~}}
+    {{/each ~}}
   </div>
 {{/inline}}
 

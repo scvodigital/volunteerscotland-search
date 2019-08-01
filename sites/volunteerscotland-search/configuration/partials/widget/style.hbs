@@ -2,23 +2,6 @@
 .scvo-widget .mdc-list-divider {
   display: none;
 }
-.scvo-widget .mdl-badge[data-badge]:after,
-.scvo-widget .mdl-button--colored {
-  color: white;
-  background: {{default @root.request.headers.widget-color-primary "#00a0af"}};
-}
-.scvo-widget .mdl-button--colored:hover,
-.scvo-widget .mdl-button--colored:focus:not(:active) {
-  /* background: #00717c; */
-  background: {{default @root.request.headers.widget-color-primary "#00a0af"}};
-}
-.scvo-widget .register-interest.mdl-button--colored {
-  background: #009ddc;
-}
-.scvo-widget .register-interest.mdl-button--colored:hover,
-.scvo-widget .register-interest.mdl-button--colored:focus:not(:active) {
-  background: #0079c1;
-}
 .scvo-widget a {
   text-decoration: none;
   color: {{default @root.request.headers.widget-color-primary "#00a0af"}};
@@ -69,6 +52,27 @@
 .scvo-widget .mdl-button {
   font-family: inherit;
   font-weight: 700;
+  background: rgba(0,0,0,0.05);
+}
+.scvo-widget .mdl-button.mdl-button--icon {
+  background: transparent;
+}
+.scvo-widget .mdl-badge[data-badge]:after,
+.scvo-widget .mdl-button--colored {
+  color: white !important;
+  background: {{default @root.request.headers.widget-color-primary "#00a0af"}};
+}
+.scvo-widget .mdl-button--colored:hover,
+.scvo-widget .mdl-button--colored:focus:not(:active) {
+  /* background: #00717c; */
+  background: {{default @root.request.headers.widget-color-primary "#00a0af"}};
+}
+.scvo-widget .register-interest.mdl-button--colored {
+  background: #009ddc;
+}
+.scvo-widget .register-interest.mdl-button--colored:hover,
+.scvo-widget .register-interest.mdl-button--colored:focus:not(:active) {
+  background: #0079c1;
 }
 .scvo-widget .mdc-card__info--search-distance {
   color: rgb(64, 64, 65);
@@ -83,6 +87,13 @@
 }
 .scvo-widget .mdc-card__info--content-primary {
   width: 100%;
+}
+.scvo-widget .mdc-card__info--content-secondary-title {
+  margin: 0;
+}
+.scvo-widget .volorgs-main .mdl-grid.results-list {
+  margin-left: -16px;
+  margin-right: -16px;
 }
 .scvo-widget p,
 .scvo-widget ul,
@@ -111,10 +122,10 @@
   color: rgba(0, 0, 0, 0.6);
 }
 .scvo-widget .multi-select .mdl-list__item:hover {
-  background-color: transparent;
+  background: transparent;
 }
 .scvo-widget .multi-select .mdl-list__item.mdl-js-ripple-effect:hover {
-  background-color: #eaeaea;
+  background: #eaeaea;
 }
 .scvo-widget .mdl-button {
   font-size: 1rem;
@@ -177,7 +188,7 @@
 }
 .scvo-widget .mdl-card {
   min-height: 1px;
-  background-color: #f5f5f5;
+  background: #f5f5f5;
 }
 .scvo-widget .colorwells .mdc-text-field:not(.mdc-text-field--disabled):not(.mdc-text-field--outlined) {
   border: none !important;
@@ -188,7 +199,8 @@
 .scvo-widget .mdc-card__info--content-primary ul:last-child {
   margin-bottom: 0.75rem;
 }
-.scvo-widget .content-primary.full .mdc-card__info--content-primary-row {
+.scvo-widget .content-primary.full .mdc-card__info--content-primary-row,
+.scvo-widget .content-secondary.full .mdc-card__info--content-secondary-row {
   padding-top: 1rem !important;
   border-top: 2px solid {{default @root.request.headers.widget-color-secondary "#387c2c"}};
 }
@@ -298,11 +310,11 @@
 }
 .scvo-widget .mdl-njs-tabs .mdl-tabs__tab.is-active:hover {
   color: white;
-  /* background-color: #27561f; */
+  /* background: #27561f; */
 }
 .scvo-widget .mdl-njs-tabs .mdl-tabs__tab.is-active {
   color: white;
-  background-color: {{default @root.request.headers.widget-color-secondary "#387c2c"}};
+  background: {{default @root.request.headers.widget-color-secondary "#387c2c"}};
 }
 .scvo-widget .mdl-njs-tabs a.is-active {
   border-bottom: none;
@@ -359,7 +371,7 @@
 }
 .scvo-widget .pagination li.current-page {
   border-radius: 50%;
-  background-color: {{default @root.request.headers.widget-color-primary "#00a0af"}};
+  background: {{default @root.request.headers.widget-color-primary "#00a0af"}};
 }
 .scvo-widget .pagination li.current-page a {
   color: #fff;
@@ -369,11 +381,11 @@
   border-radius: 50%;
   text-decoration: none;
   color: #fff;
-  /* background-color: #00717c; */
-  background-color: {{default @root.request.headers.widget-color-primary "#00a0af"}};
+  /* background: #00717c; */
+  background: {{default @root.request.headers.widget-color-primary "#00a0af"}};
 }
 .scvo-widget .pagination li.disabled:hover a {
-  background-color: inherit !important;
+  background: inherit !important;
 }
 .scvo-widget .tt-dataset h3,
 .scvo-widget .tt-dataset .tt-selectable {

@@ -87,7 +87,7 @@
           "widget": {
             "layout": ">context.metaData.handlebars.layouts.data",
             "parts": {
-              "content": ">context.metaData.handlebars.templates.opportunities_widget_results-map"
+              "content": ">context.metaData.handlebars.templates.organisations_widget_results-map"
             },
             "contentType": "text/html"
           }

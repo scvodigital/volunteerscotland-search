@@ -1,17 +1,28 @@
 {{#*inline "widget_code" ~}}
-type="text/javascript" src="https://{{#compare request.url.hostname "volunteerscotland-search.local"}}volunteerscotland-search.local:9000{{else}}widget.search.volunteerscotland.net{{/compare}}/widget.js" data-url="https://{{#compare request.url.hostname "volunteerscotland-search.local"}}volunteerscotland-search.local:8080{{else}}search.volunteerscotland.net{{/compare}}/widget/opportunities"{{#ifAll @root.request.body.filter (compare @root.request.body.filter "!==" "0")}} data-tsi="{{@root.request.body.filter}}"{{/ifAll}}{{#ifAll @root.request.body.colour_primary (compare @root.request.body.colour_primary "!==" "#00a0af")}} data-colour-primary="{{@root.request.body.colour_primary}}"{{/ifAll}}{{#ifAll @root.request.body.colour_secondary (compare @root.request.body.colour_secondary "!==" "#387c2c")}} data-colour-secondary="{{@root.request.body.colour_secondary}}"{{/ifAll}}{{#compare @root.request.body.enable_mva 'off'}} data-disable-mva="true"{{/compare}}
+type="text/javascript" src="https://{{#compare request.url.hostname "volunteerscotland-search.local"}}volunteerscotland-search.local:9000{{else}}widget.search.volunteerscotland.net{{/compare}}/widget.js" data-url="https://{{#compare request.url.hostname "volunteerscotland-search.local"}}volunteerscotland-search.local:8080{{else}}search.volunteerscotland.net{{/compare}}/widget/{{@root.request.body.type}}"{{#ifAll @root.request.body.filter (compare @root.request.body.filter "!==" "0")}} data-tsi="{{@root.request.body.filter}}"{{/ifAll}}{{#ifAll @root.request.body.colour_primary (compare @root.request.body.colour_primary "!==" "#00a0af")}} data-colour-primary="{{@root.request.body.colour_primary}}"{{/ifAll}}{{#ifAll @root.request.body.colour_secondary (compare @root.request.body.colour_secondary "!==" "#387c2c")}} data-colour-secondary="{{@root.request.body.colour_secondary}}"{{/ifAll}}{{#compare @root.request.body.enable_mva 'off'}} data-disable-mva="true"{{/compare}}
 {{~/inline ~}}
 
 <div class="container-fluid container-content content-page">
   <h2>Search widget builder</h2>
   <form action="{{@root.request.url.pathname}}" method="post">
-    {{#unless @root.request.body.filter ~}}
+    {{#unless @root.request.body.type ~}}
     <p class="mdc-typography--body1">
       Please choose a widget type and optional location filter.
     </p>
     <div class="mdc-layout-grid">
       <div class="mdc-layout-grid__inner">
         <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-5-tablet mdc-layout-grid__cell--span-4-phone">
+          <div class="mdc-select" data-mdc-auto-init="MDCSelect">
+            <span class="mdc-select__dropdown-icon"></span>
+            <select class="mdc-select__native-control" id="type" name="type">
+              <option value="opportunities"{{#compare @root.request.body.type "opportunities"}} selected{{/compare}}>Volunteering opportunities</option>
+              <option value="organisations"{{#compare @root.request.body.type "organisations"}} selected{{/compare}}>Volunteering organisations</option>
+            </select>
+            <label class="mdc-floating-label" for="type">
+              Widget type
+            </label>
+            <div class="mdc-line-ripple"></div>
+          </div>
           <div class="mdc-select" data-mdc-auto-init="MDCSelect">
             <span class="mdc-select__dropdown-icon"></span>
             <select class="mdc-select__native-control" id="filter" name="filter">
@@ -85,7 +96,7 @@ type="text/javascript" src="https://{{#compare request.url.hostname "volunteersc
                 <div class="mdc-checkbox__mixedmark"></div>
               </div>
             </div>
-            <label for="enable_mva">Use 'My Volunteer Account' to register interest</label>
+            <label for="enable_mva">Use 'My Volunteer Account' to register interest for opportunities</label>
           </div>
         </div>
         <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-3-tablet mdc-layout-grid__cell--span-4-phone">
@@ -100,14 +111,20 @@ type="text/javascript" src="https://{{#compare request.url.hostname "volunteersc
       </div>
     </div>
     {{else}}
-    <button class="mdc-button mdc-button--raised mdc-button--large mdc-button--fullwidth mdc-ripple-surface mdc-ripple-surface--primary mdc-ripple-upgraded" type="submit" data-mdc-auto-init="MDCRipple">
-      <span class="far fa-cog fa-fw mdc-list-item__graphic" aria-hidden="true"></span>
-      Change settings
-    </button>
+    <div class="mdc-layout-grid">
+      <div class="mdc-layout-grid__inner">
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
+          <button class="mdc-button mdc-button--raised mdc-button--large mdc-button--fullwidth mdc-ripple-surface mdc-ripple-surface--primary mdc-ripple-upgraded" type="submit" data-mdc-auto-init="MDCRipple">
+            <span class="far fa-cog fa-fw mdc-list-item__graphic" aria-hidden="true"></span>
+            Change settings
+          </button>
+        </div>
+      </div>
+    </div>
     {{/unless ~}}
   </form>
 
-  {{#if @root.request.body.filter ~}}
+  {{#if @root.request.body.type ~}}
   <hr />
   <h3>How to embed the widget</h3>
   <p class="mdc-typography--body1">

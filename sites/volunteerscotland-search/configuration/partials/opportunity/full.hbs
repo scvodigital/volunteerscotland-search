@@ -291,9 +291,9 @@
                 {{#json key="markers" type="array"}}
                   {{#each (arrayify geo_coords) ~}}
                     {{#json}}
-                      {{#json key="latLng" type="array"}}
-                        {{{json value=lat}}},
-                        {{{json value=lon}}}
+                      {{#json key="latLng"}}
+                        {{{json key="lat" value=lat}}},
+                        {{{json key="lng" value=lon}}}
                       {{/json}},
                       {{#json key="popupContent" type="string"~}}
                         <h4>{{{../organisation_name}}}</h4>

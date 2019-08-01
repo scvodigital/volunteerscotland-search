@@ -4,7 +4,10 @@
     {{addCommas paging.totalResults}}
   </strong>
   {{#compare @root.route.name "===" "organisation_search" ~}}
-  {{inflect paging.totalResults "organisation" "organisations"}} with current volunteering opportunities
+  {{inflect paging.totalResults "organisation" "organisations"}}
+  {{#compare @root.request.params.query.view "!==" "widget" ~}}
+  with current volunteering opportunities
+  {{/compare ~}}
   {{else}}
   volunteering {{inflect paging.totalResults "opportunity" "opportunities"}}
   {{/compare ~}}

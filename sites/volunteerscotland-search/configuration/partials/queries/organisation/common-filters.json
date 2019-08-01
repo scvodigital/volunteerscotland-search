@@ -1,5 +1,11 @@
+{{#compare @root.request.params.query.view 'widget' ~}}
+{
+  "match_all": {}
+}
+{{else}}
 {
   "terms": {
     "Id": {{{stringify (map @root.data.organisationsWithOpportunities.opportunities.aggregations.organisations.buckets (getProp "key"))}}}
   }
 }
+{{/compare ~}}

@@ -1,7 +1,7 @@
 {
   "name": "organisation_search",
   "pattern": "/organisations/search",
-  "debug": false,
+  "debug": true,
   "metaData": {
     "title": "Volunteer Scotland Search",
     "sidebarButton": {
@@ -72,7 +72,8 @@
           "widget": {
             "layout": ">context.metaData.handlebars.layouts.data",
             "parts": {
-              "content": ">context.metaData.handlebars.templates.organisations_widget_results-list"
+              "content": ">context.metaData.handlebars.templates.organisations_widget_results-list",
+              "filter": "widget"
             },
             "contentType": "text/html"
           }

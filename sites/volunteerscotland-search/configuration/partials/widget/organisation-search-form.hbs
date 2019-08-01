@@ -2,11 +2,82 @@
 <form action="/{{#compare @root.request.url.pathname "/organisations/map"}}organisations/map{{else}}organisations/search{{/compare}}?view=widget" method="GET" data-component="AjaxForm" data-AjaxForm='{{#json}}
       {{#json key="onSuccessRules"}}
         {{#json key="contents"}}
-          {{{json key="#volopps-main" value="{{{response}}}"}}}
+          {{{json key="#volorgs-main" value="{{{response}}}"}}}
         {{/json}}
       {{/json}}
     {{/json}}'>
   <div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--4-col-tablet mdl-cell--4-col-desktop">
+      <div class="multi-select" data-component="MultiSelect" data-MultiSelect='{ "selectedListLimit": 4, "selectedListLabel": "Selected" }'>
+        <div class="mdl-badge mdl-badge--overlap multi-select-count" data-badge="0"></div>
+        <button type="button" id="multi-activities" class="mdl-button mdl-js-button full-width">
+          Activities
+        </button>
+        <ul class="mdl-menu mdl-js-menu" for="multi-activities">
+          {{#each @root.data.organisationSupplimentary.types.aggregations.organisation_activities_slugs.buckets ~}}
+            <li class="mdl-list__item mdl-js-ripple-effect" for="volorgs-organisation_activities_{{key}}">
+              <span class="mdl-list__item-primary-content">
+                {{{getProperty (lookup @root.data.organisationSupplimentary.types.aggregations.organisation_activities.buckets @index) "key"}}}
+              </span>
+              <span class="mdl-list__item-secondary-action">
+                <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="volorgs-organisation_activities_{{key}}">
+                  <input type="checkbox" name="organisation_activities" id="volorgs-organisation_activities_{{key}}" class="mdl-checkbox__input" value="{{key}}"{{#if (contains @root.request.params.query.organisation_activities key)}} checked{{/if}} />
+                </label>
+              </span>
+            </li>
+          {{/each ~}}
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--6-col-desktop">
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label full-width"
+          data-component="Typeahead" data-Typeahead='{{#json}}
+            {{#json key="typeaheadOptions"}}
+              {{{json key="highlight" value=2}}},
+              {{{json key="minLength" value=0}}}
+            {{/json}},
+            {{#json key="itemSelectedRules"}}
+              {{#json key="run" type="array"}}
+                {{#json type="string"}}
+                  $("#volorgs-" + this.dataset.name + "_" + this.suggestion.value).parent().trigger("click")
+                {{/json}},
+                {{#json type="string"}}
+                  this.instance.textbox.typeahead("val", "").typeahead("close")
+                {{/json}}
+              {{/json}}
+            {{/json}},
+            {{#json key="datasets" type="array"}}
+              {{#json}}
+                {{{json key="name" value="organisation_activities"}}},
+                {{#json key="templates"}}
+                  {{#json key="header" type="string"}}
+                    <h3>Activities</h3>
+                  {{/json}}
+                {{/json}},
+                {{{json key="display" value="label"}}},
+                {{#json key="bloodhound"}}
+                  {{{json key="datumTokenizer" value="objWhitespace"}}},
+                  {{{json key="datumTokenizerField" value="label"}}},
+                  {{{json key="queryTokenizer" value="whitespace"}}},
+                  {{#json key="local" type="array"}}
+                    {{#each @root.data.organisationSupplimentary.types.aggregations.organisation_activities_slugs.buckets}}
+                      {{#json}}
+                        "label": {{{stringify (getProperty (lookup (getProperty @root.data.organisationSupplimentary.types.aggregations "organisation_activities.buckets") @index) "key")}}},
+                        "value": {{{stringify key}}}
+                      {{/json}},
+                    {{/each}}
+                  {{/json}}
+                {{/json}}
+              {{/json}},
+            {{/json}},
+            {{{json key="clearIfNothingSelected" value=true}}}
+          {{/json}}'>
+        <input class="mdl-textfield__input full-width" type="text" name="keywords" id="volorgs-keywords" value="{{@root.request.params.query.keywords}}">
+        <label class="mdl-textfield__label" for="volorgs-keywords">Keywords</label>
+      </div>
+    </div>
     <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--5-col-tablet mdl-cell--4-col-desktop">
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label full-width
         {{~#ifAll @root.request.params.query.lat @root.request.params.query.lng @root.request.params.query.distance}} typeahead-locked{{/ifAll~}}"
@@ -21,15 +92,15 @@
                     "typeahead-locked"
                   ]
                 },
-                "focus": "#volopps-distance",
+                "focus": "#volorgs-distance",
                 "run": [
                   "console.log(\"Location\", this.suggestion);\n"
                 ],
                 "attributes": {
-                  "#volopps-lat": {
+                  "#volorgs-lat": {
                     "value": "\{{suggestion.point.lat}}"
                   },
-                  "#volopps-lng": {
+                  "#volorgs-lng": {
                     "value": "\{{suggestion.point.lon}}"
                   },
                   ">input": {
@@ -39,17 +110,17 @@
               },
               "nothingSelectedRules": {
                 "run": [
-                  "$(`#volopps-location`).typeahead(`val`, ``)",
+                  "$(`#volorgs-location`).typeahead(`val`, ``)",
                   "console.log(\"Location cleared\");\n"
                 ],
                 "attributes": {
-                  "#volopps-lat": {
+                  "#volorgs-lat": {
                     "value": ""
                   },
-                  "#volopps-lng": {
+                  "#volorgs-lng": {
                     "value": ""
                   },
-                  "#volopps-location": {
+                  "#volorgs-location": {
                     "readonly": null
                   }
                 },
@@ -80,13 +151,13 @@
             data-component="DomManipulatorTrigger" data-DomManipulatorTrigger='{
                 "click": {
                   "attributes": {
-                    "#volopps-lat": {
+                    "#volorgs-lat": {
                       "value": null
                     },
-                    "#volopps-lng": {
+                    "#volorgs-lng": {
                       "value": null
                     },
-                    "#volopps-location": {
+                    "#volorgs-location": {
                       "readonly": null
                     }
                   },
@@ -96,91 +167,33 @@
                     ]
                   },
                   "run": [
-                    "$(`#volopps-location`).typeahead(`val`, ``)"
+                    "$(`#volorgs-location`).typeahead(`val`, ``)"
                   ],
-                  "focus": "#volopps-location"
+                  "focus": "#volorgs-location"
                 }
               }'>
           <span class="material-icons">clear</span>
         </button>
-        <input class="mdl-textfield__input" type="text" name="location" id="volopps-location" value="{{@root.request.params.query.location}}"
+        <input class="mdl-textfield__input" type="text" name="location" id="volorgs-location" value="{{@root.request.params.query.location}}"
           {{#ifAll @root.request.params.query.lat @root.request.params.query.lng @root.request.params.query.distance}}readonly="readonly"{{/ifAll}}>
-        <label class="mdl-textfield__label" for="volopps-location">Location</label>
+        <label class="mdl-textfield__label" for="volorgs-location">Location</label>
       </div>
     </div>
     <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--3-col-tablet mdl-cell--2-col-desktop">
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <select class="mdl-textfield__input" id="volopps-distance" name="distance">
+        <select class="mdl-textfield__input" id="volorgs-distance" name="distance">
           {{#each (split "5,10,15,20,25,30,35,40,45,50" ",")}}
           <option value="{{this}}" {{#compare (default @root.request.params.query.distance "10") "===" this}}selected{{/compare}}>{{this}} miles</option>
           {{/each}}
         </select>
-        <label class="mdl-textfield__label" for="volopps-distance">Distance</label>
-      </div>
-    </div>
-    <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--6-col-desktop">
-      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label full-width"
-          data-component="Typeahead" data-Typeahead='{{#json}}
-            {{#json key="typeaheadOptions"}}
-              {{{json key="highlight" value=2}}},
-              {{{json key="minLength" value=0}}}
-            {{/json}},
-            {{#json key="itemSelectedRules"}}
-              {{#json key="run" type="array"}}
-                {{#json type="string"}}
-                  $("#volopps-" + this.dataset.name + "_" + this.suggestion.value).parent().trigger("click")
-                {{/json}},
-                {{#json type="string"}}
-                  this.instance.textbox.typeahead("val", "").typeahead("close")
-                {{/json}}
-              {{/json}}
-            {{/json}},
-            {{#json key="datasets" type="array"}}
-              {{#each @root.context.metaData.terms}}
-                {{#each termGroups}}
-                  {{#json}}
-                    {{{json key="name" value=../key}}},
-                    {{#json key="templates"}}
-                      {{#compare (length ../termGroups) 1}}
-                        {{#json key="header" type="string"}}
-                          <h3>{{{../label}}}</h3>
-                        {{/json}}
-                      {{else}}
-                        {{#json key="header" type="string"}}
-                          <h3>{{{../label}}} &gt; {{{label}}}</h3>
-                        {{/json}}
-                      {{/compare}}
-                    {{/json}},
-                    {{{json key="display" value="other"}}},
-                    {{#json key="bloodhound"}}
-                      {{{json key="datumTokenizer" value="objWhitespace"}}},
-                      {{{json key="datumTokenizerField" value="label"}}},
-                      {{{json key="queryTokenizer" value="whitespace"}}},
-                      {{#json key="local" type="array"}}
-                        {{#each terms}}
-                          {{#json}}
-                            "label": {{{stringify (concat ../key ' ' textBag)}}},
-                            "value": {{{stringify key}}},
-                            "other": {{{stringify label}}}
-                          {{/json}},
-                        {{/each}}
-                      {{/json}}
-                    {{/json}}
-                  {{/json}},
-                {{/each}}
-              {{/each}}
-            {{/json}},
-            {{{json key="clearIfNothingSelected" value=true}}}
-          {{/json}}'>
-        <input class="mdl-textfield__input full-width" type="text" name="keywords" id="volopps-keywords" value="{{@root.request.params.query.keywords}}">
-        <label class="mdl-textfield__label" for="volopps-keywords">Keywords</label>
+        <label class="mdl-textfield__label" for="volorgs-distance">Distance</label>
       </div>
     </div>
   </div>
   <div style="text-align: right;" class="h-padding-full">
-    <input type="hidden" name="lat" id="volopps-lat" value="{{@root.request.params.query.lat}}">
-    <input type="hidden" name="lng" id="volopps-lng" value="{{@root.request.params.query.lng}}">
-    <button type="submit" class="mdl-button mdl-button--raised mdl-button--colored">
+    <input type="hidden" name="lat" id="volorgs-lat" value="{{@root.request.params.query.lat}}">
+    <input type="hidden" name="lng" id="volorgs-lng" value="{{@root.request.params.query.lng}}">
+    <button type="submit" class="mdl-button mdl-button--colored">
       Search
       <span class="material-icons icon-right" aria-hidden="true">search</span>
     </button>
