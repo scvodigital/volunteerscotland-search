@@ -3,13 +3,13 @@
     <div class="mdc-card__info--content-secondary">
       {{#if goodhq_organisation.image_url ~}}
       <div class="mdc-card__media mdc-card__media--content-secondary">
-        <a href="/organisation/{{Id}}/{{title_slug}}{{@root.request.url.search}}">
+        <a href="{{#compare view 'widget' ~}}#{{/compare}}/organisation/{{Id}}/{{title_slug}}{{@root.request.url.search}}">
           <img src="{{goodhq_organisation.image_url}}" alt="{{title}}" />
         </a>
       </div>
       {{/if ~}}
       <div class="mdc-card__info--content-secondary-title mdc-typography--headline7">
-        <a href="/organisation/{{Id}}/{{title_slug}}{{@root.request.url.search}}">{{title}}</a>
+        <a href="{{#compare view 'widget' ~}}#{{/compare}}/organisation/{{Id}}/{{title_slug}}{{@root.request.url.search}}">{{title}}</a>
       </div>
       <div class="search-result-article__snippet mdc-typography--body1">
         {{{og_summary}}}

@@ -1,49 +1,11 @@
-<h3 class="h-padding-full v-margin">Search for volunteering opportunities</h3>
-<form action="/{{#compare @root.request.url.pathname "/map"}}map{{else}}search{{/compare}}?view=widget" method="GET" data-component="AjaxForm" data-AjaxForm='{{#json}}
+<h3 class="h-padding-full v-margin">Search for organisations</h3>
+<form action="/{{#compare @root.request.url.pathname "/organisations/map"}}organisations/map{{else}}organisations/search{{/compare}}?view=widget" method="GET" data-component="AjaxForm" data-AjaxForm='{{#json}}
       {{#json key="onSuccessRules"}}
         {{#json key="contents"}}
           {{{json key="#volopps-main" value="{{{response}}}"}}}
         {{/json}}
       {{/json}}
     {{/json}}'>
-  <div class="mdl-grid">
-    {{#each (filter @root.context.metaData.terms "noSearchFilter" "===" undefined) ~}}
-      {{!-- {{#ifAll (compare @index ">" 0) (modulo @index 3 0) ~}}
-        </div>
-        <div class="mdl-grid">
-      {{/ifAll ~}} --}}
-      <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--4-col-tablet mdl-cell--4-col-desktop">
-        <div class="multi-select" data-component="MultiSelect" data-MultiSelect='{ "selectedListLimit": 4, "selectedListLabel": "Selected" }'>
-          <div class="mdl-badge mdl-badge--overlap multi-select-count" data-badge="0"></div>
-          <button type="button" id="multi-{{key}}" class="mdl-button mdl-button--raised mdl-js-button full-width">
-            {{{label}}}
-          </button>
-          <ul class="mdl-menu mdl-js-menu" for="multi-{{key}}">
-            {{#each termGroups ~}}
-              {{#unless (compare label "Other") ~}}
-              <li class="mdl-list__item">
-                <strong>{{{label}}}</strong>
-              </li>
-              {{/unless ~}}
-              {{#each terms ~}}
-                <li class="mdl-list__item mdl-js-ripple-effect" for="volopps-{{../../key}}_{{key}}">
-                  <span class="mdl-list__item-primary-content">
-                    {{{label}}}
-                  </span>
-                  <span class="mdl-list__item-secondary-action">
-                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="volopps-{{../../key}}_{{key}}">
-                      <input type="checkbox" name="{{../../key}}" id="volopps-{{../../key}}_{{key}}" class="mdl-checkbox__input"
-                          value="{{key}}" {{#if (contains (getProperty @root.request.params.query ../../key) key)}}checked{{/if}}/>
-                    </label>
-                  </span>
-                </li>
-              {{/each ~}}
-            {{/each ~}}
-          </ul>
-        </div>
-      </div>
-    {{/each ~}}
-  </div>
   <div class="mdl-grid">
     <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--5-col-tablet mdl-cell--4-col-desktop">
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label full-width

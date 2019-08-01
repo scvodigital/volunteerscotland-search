@@ -46,13 +46,13 @@
           "if": [
             {
               "in": [
-                "view=rss",
+                "view=widget",
                 {
                   "var": "request.fullUrl"
                 }
               ]
             },
-            "rss",
+            "widget",
             {
               "in": [
                 "view=json",
@@ -83,6 +83,13 @@
               "content": ">context.metaData.handlebars.templates.organisations_search-json"
             },
             "contentType": "application/json"
+          },
+          "widget": {
+            "layout": ">context.metaData.handlebars.layouts.data",
+            "parts": {
+              "content": ">context.metaData.handlebars.templates.opportunities_widget_results-map"
+            },
+            "contentType": "text/html"
           }
         }
       }

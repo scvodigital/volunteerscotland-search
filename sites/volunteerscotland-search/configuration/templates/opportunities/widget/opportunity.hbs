@@ -1,7 +1,7 @@
 {{> widget_style}}
 <div class="volopps-main">
   <div class="volopps-inner">
-    {{> widget_search_form}}
+    {{> widget_opportunity_search_form}}
 
     {{#compare @root.data.primaryResponse.hits.total ">" 0 ~}}
     {{#each @root.data.primaryResponse.hits.hits ~}}

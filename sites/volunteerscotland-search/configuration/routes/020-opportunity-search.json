@@ -98,14 +98,6 @@
         },
         "output": "body",
         "layouts": {
-          "rss": {
-            "layout": ">context.metaData.handlebars.layouts.rss",
-            "parts": {
-              "head": ">context.metaData.handlebars.templates.opportunities_search-rss-head-tags",
-              "body": ">context.metaData.handlebars.templates.opportunities_search-rss"
-            },
-            "contentType": "application/rss+xml"
-          },
           "default": {
             "layout": ">context.metaData.handlebars.layouts.default",
             "parts": {
@@ -115,6 +107,14 @@
               "sidebar": ">context.metaData.handlebars.templates.opportunities_search-form"
             },
             "contentType": "text/html"
+          },
+          "rss": {
+            "layout": ">context.metaData.handlebars.layouts.rss",
+            "parts": {
+              "head": ">context.metaData.handlebars.templates.opportunities_search-rss-head-tags",
+              "body": ">context.metaData.handlebars.templates.opportunities_search-rss"
+            },
+            "contentType": "application/rss+xml"
           },
           "data": {
             "layout": ">context.metaData.handlebars.layouts.data",
@@ -126,7 +126,7 @@
           "widget": {
             "layout": ">context.metaData.handlebars.layouts.data",
             "parts": {
-              "content": ">context.metaData.handlebars.templates.widget_results-list"
+              "content": ">context.metaData.handlebars.templates.opportunities_widget_results-list"
             },
             "contentType": "text/html"
           }

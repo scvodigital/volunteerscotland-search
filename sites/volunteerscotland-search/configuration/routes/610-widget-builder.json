@@ -1,7 +1,7 @@
 {
   "name": "widget_builder",
   "debug": true,
-  "pattern": "/widget-builder",
+  "pattern": "/widget",
   "metaData": {
     "hideSearch": true,
     "title": "Search widget builder – Volunteer Scotland"
@@ -23,8 +23,8 @@
           "default": {
             "layout": ">context.metaData.handlebars.layouts.default",
             "parts": {
-              "head": ">context.metaData.handlebars.templates.widget_builder-head-tags",
-              "body": ">context.metaData.handlebars.templates.widget_builder",
+              "head": ">context.metaData.handlebars.templates.pages_widget_builder-head-tags",
+              "body": ">context.metaData.handlebars.templates.pages_widget_builder",
               "foot": ""
             },
             "contentType": "text/html"

@@ -1,6 +1,6 @@
 {
-  "name": "widget",
-  "pattern": "/widget",
+  "name": "widget_oportunities",
+  "pattern": "/widget/opportunities",
   "debug": true,
   "acceptedVerbs": "GET",
   "tasks": [
@@ -10,7 +10,7 @@
       "renderer": "handlebars",
       "config": {
         "output": "body",
-        "template": ">context.metaData.handlebars.templates.widget_search"
+        "template": ">context.metaData.handlebars.templates.opportunities_widget_search"
       }
     }
   ]

@@ -3,18 +3,20 @@
   display: none;
 }
 .scvo-widget .mdl-badge[data-badge]:after,
-.scvo-widget .mdl-button--raised.mdl-button--colored {
+.scvo-widget .mdl-button--colored {
+  color: white;
   background: {{default @root.request.headers.widget-color-primary "#00a0af"}};
 }
-.scvo-widget .mdl-button--raised.mdl-button--colored:hover,
-.scvo-widget .mdl-button--raised.mdl-button--colored:focus:not(:active) {
+.scvo-widget .mdl-button--colored:hover,
+.scvo-widget .mdl-button--colored:focus:not(:active) {
   /* background: #00717c; */
+  background: {{default @root.request.headers.widget-color-primary "#00a0af"}};
 }
-.scvo-widget .register-interest.mdl-button--raised.mdl-button--colored {
+.scvo-widget .register-interest.mdl-button--colored {
   background: #009ddc;
 }
-.scvo-widget .register-interest.mdl-button--raised.mdl-button--colored:hover,
-.scvo-widget .register-interest.mdl-button--raised.mdl-button--colored:focus:not(:active) {
+.scvo-widget .register-interest.mdl-button--colored:hover,
+.scvo-widget .register-interest.mdl-button--colored:focus:not(:active) {
   background: #0079c1;
 }
 .scvo-widget a {
@@ -135,11 +137,16 @@
 .scvo-widget .areas .area:last-child::after {
   content: "";
 }
-.scvo-widget .content-primary .mdc-card__media {
+.scvo-widget .content-primary .mdc-card__media,
+.scvo-widget .content-secondary .mdc-card__media {
   max-width: 20%;
   margin-left: 1rem;
 }
-.scvo-widget .content-primary .mdc-card__media img {
+.scvo-widget .content-secondary .mdc-card__media {
+  float: right;
+}
+.scvo-widget .content-primary .mdc-card__media img,
+.scvo-widget .content-secondary .mdc-card__media img {
   max-width: 100%;
 }
 .scvo-widget .content-primary ul {

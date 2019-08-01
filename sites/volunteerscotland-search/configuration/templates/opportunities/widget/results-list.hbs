@@ -1,0 +1,35 @@
+{{> widget_style}}
+<div class="volopps-main">
+  <div class="volopps-inner">
+    {{> widget_opportunity_search_form}}
+
+    <div class="h-padding-full">
+      {{#compare @root.data.search_data.detailed_results.hits.total ">" 0}}
+        <div class="mdl-tabs mdl-njs-tabs mdl-js-ripple-effect">
+          <div class="mdl-tabs__tab-bar">
+            <a href="#/search?{{{substr @root.request.url.search 1}}}" class="mdl-tabs__tab is-active">
+              <span class="material-icons icon-left" aria-hidden="true">list</span>
+              List
+            </a>
+            <a href="#/map?{{{substr @root.request.url.search 1}}}" class="mdl-tabs__tab">
+              <span class="material-icons icon-left" aria-hidden="true">place</span>
+              Map
+            </a>
+          </div>
+        </div>
+      {{/compare}}
+
+      <div class="v-margin-full">
+        {{> search_info paging=@root.data.search_data.detailed_results.pagination}}
+      </div>
+
+      {{#each @root.data.search_data.detailed_results.hits.hits ~}}
+        {{> opportunity_search_result _source distance=fields.distance.[0] view="widget"}}
+      {{/each ~}}
+
+      <div class="foot">
+        {{> pagination paging=@root.data.search_data.detailed_results.pagination type="widget"}}
+      </div>
+    </div>
+  </div>
+</div>
