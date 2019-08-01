@@ -8,10 +8,6 @@
     {{/json}}'>
   <div class="mdl-grid">
     {{#each (filter @root.context.metaData.terms "noSearchFilter" "===" undefined) ~}}
-      {{!-- {{#ifAll (compare @index ">" 0) (modulo @index 3 0) ~}}
-        </div>
-        <div class="mdl-grid">
-      {{/ifAll ~}} --}}
       <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--4-col-tablet mdl-cell--4-col-desktop">
         <div class="multi-select" data-component="MultiSelect" data-MultiSelect='{ "selectedListLimit": 4, "selectedListLabel": "Selected" }'>
           <div class="mdl-badge mdl-badge--overlap multi-select-count" data-badge="0"></div>

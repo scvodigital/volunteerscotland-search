@@ -26,4 +26,7 @@
   {{>queries_terms field="main_activities_global_slugs" terms=organisation_activities}},
 {{/if ~}}
 {{>queries_bounding_box}},
+{{#if @root.request.headers.widget-tsi ~}}
+{{>queries_term field="owner_tsi_legacy_ref" term=@root.request.headers.widget-tsi}},
+{{/if ~}}
 {{>queries_do_nothing}}
