@@ -3,7 +3,7 @@
   <strong>
     {{addCommas paging.totalResults}}
   </strong>
-  {{#compare @root.route.name "===" "organisation_search" ~}}
+  {{#compare @root.route.name "===" "volunteering_organisation_search" ~}}
   {{inflect paging.totalResults "organisation" "organisations"}}
   {{#compare @root.request.params.query.view "!==" "widget" ~}}
   with current volunteering opportunities
