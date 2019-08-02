@@ -1989,6 +1989,13 @@ body.favouritees {
     margin: $unit/2 $unit/2 0 $unit/2;
     padding: 0;
     overflow: hidden;
+    a {
+      background: rgb(245, 245, 245);
+      img {
+        mix-blend-mode: exclusion;
+        filter: invert(1);
+      }
+    }
     img {
       max-width: $unit*8;
       max-height: $unit*8;
@@ -4080,6 +4087,9 @@ hr {
 
 a.mdc-drawer__content-heading {
   color: rgba(0, 0, 0, 0.87);
+}
+.mdc-drawer__content-heading .mdc-icon-toggle {
+  margin-top: 0;
 }
 
 .mdc-icon-button {
