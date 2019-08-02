@@ -3,6 +3,7 @@
 <script type="text/javascript" charset="utf-8" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 <script type="text/javascript" src="{{~>asset_url url='libraries/farbtastic/farbtastic.js'~}}"></script>
 <link rel="stylesheet" href="{{~>asset_url url='libraries/farbtastic/farbtastic.css'~}}" type="text/css" />
+{{#unless @root.request.body.type ~}}
 <script type="text/javascript">
 $(document).ready(function() {
   jQuery.fn.farbtastic = function (callback) {
@@ -361,3 +362,4 @@ $(document).ready(function() {
 
   });
 </script>
+{{/unless ~}}

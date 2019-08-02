@@ -50,7 +50,9 @@
 
           {{#if geo ~}}
             <li class="mdc-card__info--content-primary-work-type reference mdc-typography--body1">
+              {{#unless (compare view 'widget') ~}}
               <span class="fa-li"><span class="far fa-map-marker-alt fa-fw" title="Location"></span></span>
+              {{/unless ~}}
               {{geo.admin_ward}}, {{replace (replace geo.admin_district "City of " "") " City" ""}}
             </li>
           {{/if}}
@@ -59,7 +61,9 @@
           {{#compare website "!==" null ~}}
           {{#compare website "!==" "http://" ~}}
           <li class="mdc-card__info--content-secondary-website mdc-typography--body1">
+            {{#unless (compare view 'widget') ~}}
             <span class="fa-li"><span class="far fa-link fa-fw" title="Website"></span></span>
+            {{/unless ~}}
             <a href="{{fixUrl website "http"}}">{{website}}</a>
           </li>
           {{/compare ~}}
@@ -69,7 +73,9 @@
           {{#compare twitter "!==" null ~}}
           {{#compare twitter "!==" "http://" ~}}
           <li class="mdc-card__info--content-secondary-twitter mdc-typography--body1">
+            {{#unless (compare view 'widget') ~}}
             <span class="fa-li"><span class="fab fa-twitter fa-fw" title="Twitter"></span></span>
+            {{/unless ~}}
             <a href="{{#unless (contains twitter "twitter.com")}}http://twitter.com/{{/unless}}{{twitter}}">{{twitter}}</a>
           </li>
           {{/compare ~}}
@@ -79,7 +85,9 @@
           {{#compare facebook "!==" null ~}}
           {{#compare facebook "!==" "http://" ~}}
           <li class="mdc-card__info--content-secondary-facebook mdc-typography--body1">
+            {{#unless (compare view 'widget') ~}}
             <span class="fa-li"><span class="fab fa-facebook fa-fw" title="Facebook"></span></span>
+            {{/unless ~}}
             <a href="{{fixUrl facebook "http"}}">{{facebook}}</a>
           </li>
           {{/compare ~}}
@@ -89,7 +97,9 @@
           {{#compare linkedin "!==" null ~}}
           {{#compare linkedin "!==" "http://" ~}}
           <li class="mdc-card__info--content-secondary-linkedin mdc-typography--body1">
+            {{#unless (compare view 'widget') ~}}
             <span class="fa-li"><span class="fab fa-linkedin fa-fw" title="LinkedIn"></span></span>
+            {{/unless ~}}
             <a href="{{fixUrl linkedin "http"}}">{{linkedin}}</a>
           </li>
           {{/compare ~}}
@@ -99,7 +109,9 @@
           {{#if goodhq_organisation ~}}
           {{#compare goodhq_organisation.xid "!==" null ~}}
           <li class="mdc-card__info--content-secondary-goodhq mdc-typography--body1">
+            {{#unless (compare view 'widget') ~}}
             <span class="fa-li"><span class="fas fa-heart fa-fw" title="Good HQ"></span></span>
+            {{/unless ~}}
             <a href="https://goodhq.org/{{goodhq_organisation.xid}}">@{{goodhq_organisation.xid}}</a>
             {{#compare goodhq_organisation.status "===" "Open" ~}}
               <a href="https://goodhq.org/{{goodhq_organisation.xid}}?mode=reviews">{{> goodhq_heart_rating stars=goodhq_organisation.stars}}</a>
