@@ -1,6 +1,6 @@
 {
   "name": "widget_organisations",
-  "pattern": "/widget/organisations",
+  "pattern": "/widget/organisations-all",
   "debug": true,
   "acceptedVerbs": "GET",
   "tasks": [

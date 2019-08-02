@@ -1,5 +1,5 @@
 {
-  "name": "opportunity_pdf",
+  "name": "volunteering_opportunity_pdf",
   "debug": true,
   "pattern": "/opportunity-pdf/:id(/:junk)",
   "defaultParams": {

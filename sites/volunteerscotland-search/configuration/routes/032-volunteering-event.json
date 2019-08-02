@@ -1,5 +1,5 @@
 {
-  "name": "event",
+  "name": "volunteering_event",
   "pattern": {
     "slug": "/event/:id(/:junk)",
     "id": "/e/:id"

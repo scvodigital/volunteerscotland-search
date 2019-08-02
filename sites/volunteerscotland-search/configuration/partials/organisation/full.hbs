@@ -2,7 +2,7 @@
   {{#compare view 'widget' ~}}
   <div class="">
     {{#ifAny @root.request.params.query.page @root.request.params.query.keywords @root.request.params.query.location @root.request.params.query.organisation_activities ~}}
-    <a href="#/organisations/search?{{{substr @root.request.url.search 1}}}" class="pull-left mdl-button b-margin-full">
+    <a href="#/organisations-all/search?{{{substr @root.request.url.search 1}}}" class="pull-left mdl-button b-margin-full">
       <span class="material-icons icon-left" aria-hidden="true">arrow_back_ios</span>
       Back to results
     </a>
@@ -48,6 +48,17 @@
             </li>
           {{/compare ~}}
 
+          {{#ifAny location_street location_city location_region ~}}
+          <li class="mdc-card__info--content-primary-work-type reference mdc-typography--body1">
+            {{#unless (compare view 'widget') ~}}
+            <span class="fa-li"><span class="far fa-map-marker-alt fa-fw" title="Location"></span></span>
+            {{/unless ~}}
+            {{#if location_street}}{{location_street}}, {{/if}}
+            {{#if location_city}}{{location_city}}, {{/if}}
+            {{#if location_region}}{{replace (replace location_region "City of " "") " City" ""}}, {{/if}}
+            {{#if location_postcode}}{{location_postcode}}{{/if}}
+          </li>
+          {{else}}
           {{#if geo ~}}
             <li class="mdc-card__info--content-primary-work-type reference mdc-typography--body1">
               {{#unless (compare view 'widget') ~}}
@@ -55,7 +66,8 @@
               {{/unless ~}}
               {{geo.admin_ward}}, {{replace (replace geo.admin_district "City of " "") " City" ""}}
             </li>
-          {{/if}}
+          {{/if ~}}
+          {{/ifAny ~}}
 
           {{#if website ~}}
           {{#compare website "!==" null ~}}
