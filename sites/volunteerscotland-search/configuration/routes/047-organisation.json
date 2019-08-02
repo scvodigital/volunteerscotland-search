@@ -1,9 +1,9 @@
 {
-  "name": "opportunity",
+  "name": "organisation",
+  "pattern": "/organisation-all/:id(/:junk)",
   "debug": false,
-  "pattern": {
-    "slug": "/opportunity/:id(/:junk)",
-    "id": "/opp/:id"
+  "defaultParams": {
+    "context": "detail"
   },
   "metaData": {
     "title": "Volunteer Scotland Search",
@@ -13,14 +13,10 @@
       "classes": "hide-md hide-lg"
     }
   },
-  "defaultParams": {
-    "context": "detail"
-  },
   "tasks": [
     "context.metaData.commonTasks.authNotRequired",
-    "context.metaData.commonTasks.registeredInterestData",
     "context.metaData.commonTasks.favouritesData",
-    "context.metaData.commonTasks.profileInfoData",
+    "context.metaData.commonTasks.organisationsWithOpportunities",
     {
       "name": "primaryResponse",
       "taskModule": "elasticsearch",
@@ -31,14 +27,17 @@
         },
         "queryTemplates": {
           "index": "{$../../../elasticsearch-index.txt}",
-          "type": "milo-volunteering-opportunity",
-          "template": ">context.metaData.handlebars.queries.opportunities_opportunity"
+          "type": "milo-organisation",
+          "template": ">context.metaData.handlebars.queries.organisations_organisation"
         }
       },
       "renderer": "handlebars"
     },
+    "context.metaData.commonTasks.organisationSupplimentary",
+    "context.metaData.commonTasks.opportunitySupplimentary",
+
     {
-      "name": "opportunitySupplimentary",
+      "name": "organisationOpportunities",
       "taskModule": "elasticsearch",
       "config": {
         "connectionStringTemplate": "{$../../../elasticsearch-url.txt}",
@@ -47,29 +46,17 @@
         },
         "queryTemplates": [
           {
-            "name": "types",
+            "name": "opportunities_open",
             "index": "{$../../../elasticsearch-index.txt}",
             "type": "milo-volunteering-opportunity",
-            "template": ">context.metaData.handlebars.queries.opportunities_types"
-          },
-          {
-            "name": "related",
-            "index": "{$../../../elasticsearch-index.txt}",
-            "type": "milo-volunteering-opportunity",
-            "template": ">context.metaData.handlebars.queries.opportunities_related"
-          },
-          {
-            "name": "not_found",
-            "index": "{$../../../elasticsearch-index.txt}",
-            "type": "milo-volunteering-opportunity",
-            "template": ">context.metaData.handlebars.queries.pages_not-found"
+            "template": ">context.metaData.handlebars.queries.opportunities_organisation-opportunities-open"
           }
         ]
       },
       "renderer": "handlebars"
     },
     {
-      "name": "posts",
+      "name": "goodhq",
       "taskModule": "elasticsearch",
       "config": {
         "connectionStringTemplate": "{$../../../elasticsearch-url.txt}",
@@ -78,10 +65,22 @@
         },
         "queryTemplates": [
           {
-            "name": "tfn_latest",
+            "name": "posts",
             "index": "{$../../../elasticsearch-index.txt}",
-            "type": "tfn-legacy-post-news,tfn-legacy-post-blog,tfn-legacy-feature",
-            "template": ">context.metaData.handlebars.queries.posts_tfn-latest"
+            "type": "goodhq-post",
+            "template": ">context.metaData.handlebars.queries.goodhq_posts"
+          },
+          {
+            "name": "reviews",
+            "index": "{$../../../elasticsearch-index.txt}",
+            "type": "goodhq-review",
+            "template": ">context.metaData.handlebars.queries.goodhq_reviews"
+          },
+          {
+            "name": "volunteering",
+            "index": "{$../../../elasticsearch-index.txt}",
+            "type": "milo-volunteering-opportunity",
+            "template": ">context.metaData.handlebars.queries.goodhq_volunteering"
           }
         ]
       },
@@ -111,17 +110,18 @@
           "default": {
             "layout": ">context.metaData.handlebars.layouts.default",
             "parts": {
-              "head": ">context.metaData.handlebars.templates.opportunities_opportunity-head-tags",
-              "body": ">context.metaData.handlebars.templates.opportunities_opportunity",
-              "foot": ">context.metaData.handlebars.templates.opportunities_opportunity-foot",
-              "sidebar": ">context.metaData.handlebars.templates.opportunities_search-form"
+              "head": ">context.metaData.handlebars.templates.organisations_organisation-head-tags",
+              "body": ">context.metaData.handlebars.templates.organisations_organisation",
+              "foot": "",
+              "sidebar": ">context.metaData.handlebars.templates.organisations_search-form"
+
             },
             "contentType": "text/html"
           },
           "widget": {
             "layout": ">context.metaData.handlebars.layouts.data",
             "parts": {
-              "content": ">context.metaData.handlebars.templates.opportunities_widget_opportunity"
+              "content": ">context.metaData.handlebars.templates.organisations_widget_organisation"
             },
             "contentType": "text/html"
           }

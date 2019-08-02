@@ -16,7 +16,7 @@ type="text/javascript" src="https://{{#compare request.url.hostname "volunteersc
             <span class="mdc-select__dropdown-icon"></span>
             <select class="mdc-select__native-control" id="type" name="type">
               <option value="opportunities"{{#compare @root.request.body.type "opportunities"}} selected{{/compare}}>Volunteering opportunities</option>
-              <option value="organisations"{{#compare @root.request.body.type "organisations"}} selected{{/compare}}>Volunteering organisations</option>
+              <option value="organisations-all"{{#compare @root.request.body.type "organisations-all"}} selected{{/compare}}>Volunteering organisations</option>
             </select>
             <label class="mdc-floating-label" for="type">
               Widget type

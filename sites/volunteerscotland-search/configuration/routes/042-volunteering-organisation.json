@@ -1,5 +1,5 @@
 {
-  "name": "organisation",
+  "name": "volunteering_organisation",
   "pattern": "/organisation/:id(/:junk)",
   "debug": false,
   "defaultParams": {

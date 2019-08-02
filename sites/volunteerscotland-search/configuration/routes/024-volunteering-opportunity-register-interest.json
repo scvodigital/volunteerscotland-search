@@ -1,5 +1,5 @@
 {
-  "name": "register-interest",
+  "name": "volunteering_opportunity_register_interest",
   "debug": false,
   "pattern": "/register-interest/:id(/:junk)",
   "metaData": {
