@@ -71,7 +71,6 @@
       {{/compare ~}}
     {{else}}
       {
-        "_score": "desc",
         "date_last_modified": "desc"
       }
     {{/if ~}}
