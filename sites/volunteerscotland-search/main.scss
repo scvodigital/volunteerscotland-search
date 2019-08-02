@@ -1504,7 +1504,8 @@ a {
     margin: 0 0 $unit/2 !important;
   }
   .mdc-card__info--content-primary .detailed-info,
-  .content-secondary-type {
+  .content-secondary-type,
+  .organisation-type {
     margin: $unit/2 0 $unit;
     small {
       font-size: 0.92rem;
