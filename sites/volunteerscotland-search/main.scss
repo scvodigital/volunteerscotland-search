@@ -3414,6 +3414,10 @@ table th {
 .b-margin-full { margin-bottom: $unit !important; }
 .l-margin-full { margin-left: $unit !important; }
 .r-margin-full { margin-right: $unit !important; }
+.t-margin-none { margin-top: 0 !important; }
+.b-margin-none { margin-bottom: 0 !important; }
+.l-margin-none { margin-left: 0 !important; }
+.r-margin-none { margin-right: 0 !important; }
 
 .cursor-pointer { cursor: pointer; }
 .cursor-arrow { cursor: default; }
