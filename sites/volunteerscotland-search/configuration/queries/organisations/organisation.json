@@ -33,7 +33,7 @@
     "website",
     "website_url",
     "rendered.json_ld",
-    "rendered.goodmoves_charity_info"
+    "rendered.charity_info"
   ],
   "query": {
     "bool": {
