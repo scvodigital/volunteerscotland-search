@@ -8,8 +8,8 @@
     </a>
     {{/ifAny ~}}
     {{!-- <a href="https://search.volunteerscotland.net/organisation-pdf/{{Id}}/{{title_slug}}?view=widget" class="pull-right mdl-button b-margin-full" download>
-      Print
-      <span class="material-icons icon-right" aria-hidden="true">print</span>
+    Print
+    <span class="material-icons icon-right" aria-hidden="true">print</span>
     </a> --}}
     <div style="clear:both;" />
   </div>
@@ -17,35 +17,39 @@
   <div class="mdc-card__info--content-secondary-row">
     <div class="mdc-card__info--content-secondary">
       {{#if goodhq_organisation.image_url ~}}
-        <div class="mdc-card__media mdc-card__media--content-secondary">
-          <img src="{{goodhq_organisation.image_url}}" alt="{{title}}" />
-        </div>
+      <div class="mdc-card__media mdc-card__media--content-secondary">
+        <img src="{{goodhq_organisation.image_url}}" alt="{{title}}" />
+      </div>
       {{/if ~}}
       <h2 class="mdc-card__info--content-secondary-title mdc-typography--headline3">
         {{{title}}}
       </h2>
+      {{#if rendered.charity_info ~}}
+      {{{rendered.charity_info}}}
+      {{/if ~}}
+
       <div class="detailed-info">
         {{#ifAny description description_html ~}}
         <div class="mdc-typography--body1 v-margin">
-          {{#if description_html}}{{{description_html}}}{{else}}{{{description}}}{{/if}}
+          {{#if description_html}}{{{description_html}}}{{else}}{{{replace (replace description "\r\n" "<br />") "\n" "<br />"}}}{{/if}}
         </div>
         {{/ifAny ~}}
       </div>
       <div class="key-info-extra">
         <ul class="fa-ul">
           {{#compare (length main_activities_global) ">" 0 ~}}
-            <li class="mdc-card__info--content-primary-work-type reference mdc-typography--body1">
-              {{#compare view 'widget' ~}}
-              {{#each main_activities_global ~}}
-                {{{this}}}{{#unless @last}}, {{/unless}}
-              {{/each ~}}
-              {{else}}
-              <span class="fa-li"><span class="far fa-briefcase fa-fw" title="Activities"></span></span>
-              {{#each main_activities_global ~}}
-                <a href="/organisations/search?organisation_activities%5B%5D={{urlencode (slugify (replace this "/" "-"))}}">{{{this}}}</a>{{#unless @last}}, {{/unless}}
-              {{/each ~}}
-              {{/compare}}
-            </li>
+          <li class="mdc-card__info--content-primary-work-type reference mdc-typography--body1">
+            {{#compare view 'widget' ~}}
+            {{#each main_activities_global ~}}
+            {{{this}}}{{#unless @last}}, {{/unless}}
+            {{/each ~}}
+            {{else}}
+            <span class="fa-li"><span class="far fa-briefcase fa-fw" title="Activities"></span></span>
+            {{#each main_activities_global ~}}
+            <a href="/organisations/search?organisation_activities%5B%5D={{urlencode (slugify (replace this "/" "-"))}}">{{{this}}}</a>{{#unless @last}}, {{/unless}}
+            {{/each ~}}
+            {{/compare}}
+          </li>
           {{/compare ~}}
 
           {{#ifAny location_street location_city location_region ~}}
@@ -60,12 +64,12 @@
           </li>
           {{else}}
           {{#if geo ~}}
-            <li class="mdc-card__info--content-primary-work-type reference mdc-typography--body1">
-              {{#unless (compare view 'widget') ~}}
-              <span class="fa-li"><span class="far fa-map-marker-alt fa-fw" title="Location"></span></span>
-              {{/unless ~}}
-              {{geo.admin_ward}}, {{replace (replace geo.admin_district "City of " "") " City" ""}}
-            </li>
+          <li class="mdc-card__info--content-primary-work-type reference mdc-typography--body1">
+            {{#unless (compare view 'widget') ~}}
+            <span class="fa-li"><span class="far fa-map-marker-alt fa-fw" title="Location"></span></span>
+            {{/unless ~}}
+            {{geo.admin_ward}}, {{replace (replace geo.admin_district "City of " "") " City" ""}}
+          </li>
           {{/if ~}}
           {{/ifAny ~}}
 
@@ -122,15 +126,15 @@
           {{#compare goodhq_organisation.xid "!==" null ~}}
           <li class="mdc-card__info--content-secondary-goodhq mdc-typography--body1">
             {{#unless (compare view 'widget') ~}}
-            <span class="fa-li"><span class="fas fa-heart fa-fw" title="Good HQ"></span></span>
+            <span class="fa-li"><span class="far fa-heart fa-fw" title="Good HQ"></span></span>
             {{/unless ~}}
             <a href="https://goodhq.org/{{goodhq_organisation.xid}}">@{{goodhq_organisation.xid}}</a>
             {{#compare goodhq_organisation.status "===" "Open" ~}}
-              <a href="https://goodhq.org/{{goodhq_organisation.xid}}?mode=reviews">{{> goodhq_heart_rating stars=goodhq_organisation.stars}}</a>
+            <a href="https://goodhq.org/{{goodhq_organisation.xid}}?mode=reviews" class="no-underline">{{> goodhq_heart_rating stars=goodhq_organisation.stars}}</a>
             {{#compare @root.data.goodhq.reviews.hits.total ">" 0 ~}}
-            <a href="https://goodhq.org/{{goodhq_organisation.xid}}?mode=reviews">{{inflect @root.data.goodhq.reviews.hits.total "review" "reviews" true}}</a> {{#compare @root.data.goodhq.posts.hits.total ">" 0}} and {{/compare ~}}
+            from <a href="https://goodhq.org/{{goodhq_organisation.xid}}?mode=reviews">{{inflect @root.data.goodhq.reviews.hits.total "review" "reviews" true}}</a> {{#compare @root.data.goodhq.posts.hits.total ">" 0}} and {{/compare ~}}
             {{/compare ~}}
-              {{#compare @root.data.goodhq.posts.hits.total ">" 0 ~}}
+            {{#compare @root.data.goodhq.posts.hits.total ">" 0 ~}}
             <a href="https://goodhq.org/{{goodhq_organisation.xid}}?mode=posts">{{inflect @root.data.goodhq.posts.hits.total "post" "posts" true}}</a>
             {{/compare ~}}
             {{/compare ~}}
@@ -139,6 +143,7 @@
           </li>
           {{/compare ~}}
           {{/if ~}}
+
           {{#unless (compare view 'widget') ~}}
           <li class="mdc-card__info--content-secondary-report report mdc-typography--body1">
             <span class="fa-li"><span class="fas fa-flag fa-fw" title="Report this organisation"></span></span>
