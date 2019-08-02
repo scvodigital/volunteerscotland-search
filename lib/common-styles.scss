@@ -1984,12 +1984,15 @@ body.shortlist {
 .mdc-layout-grid {
   padding: 0;
 }
+.mdc-tab--active,
 .mdc-menu .mdc-list-item.mdc-list-item--activated,
 .mdc-list-item--activated {
   font-weight: $heading-medium-font-weight !important;
+  .mdc-tab__icon.fal,
   .mdc-list-item__graphic.fal {
     font-weight: 400;
   }
+  .mdc-tab__icon.far,
   .mdc-list-item__graphic.far {
     font-weight: 900;
   }
