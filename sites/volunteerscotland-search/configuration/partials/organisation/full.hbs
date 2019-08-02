@@ -92,7 +92,7 @@
             {{#unless (compare view 'widget') ~}}
             <span class="fa-li"><span class="fab fa-twitter fa-fw" title="Twitter"></span></span>
             {{/unless ~}}
-            <a href="{{#unless (contains twitter "twitter.com")}}http://twitter.com/{{/unless}}{{twitter}}">{{twitter}}</a>
+            <a href="{{#unless (contains twitter "twitter.com")}}https://twitter.com/{{/unless}}{{twitter}}">@{{replace twitter "https://twitter.com/" ""}}</a>
           </li>
           {{/compare ~}}
           {{/compare ~}}
