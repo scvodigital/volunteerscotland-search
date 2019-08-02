@@ -3,14 +3,14 @@
   <strong>
     {{addCommas paging.totalResults}}
   </strong>
-  {{#compare @root.route.name "===" "volunteering_organisation_search" ~}}
+  {{#if (contains @root.route.name "organisation_search") ~}}
   {{inflect paging.totalResults "organisation" "organisations"}}
   {{#compare @root.request.params.query.view "!==" "widget" ~}}
   with current volunteering opportunities
   {{/compare ~}}
   {{else}}
   volunteering {{inflect paging.totalResults "opportunity" "opportunities"}}
-  {{/compare ~}}
+  {{/if ~}}
   {{if @root.request.params.query.exclude "(filtered)"}}
   {{#compare @root.route.name "!==" "opportunity_map" ~}}
   {{#compare paging.totalResults ">" 10 ~}} -
