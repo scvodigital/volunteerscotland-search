@@ -1,5 +1,5 @@
 {{#*inline "widget_code" ~}}
-type="text/javascript" src="https://{{#compare request.url.hostname "volunteerscotland-search.local"}}volunteerscotland-search.local:9000{{else}}widget.search.volunteerscotland.net{{/compare}}/widget.js" data-url="https://{{#compare request.url.hostname "volunteerscotland-search.local"}}volunteerscotland-search.local:8080{{else}}search.volunteerscotland.net{{/compare}}/widget/{{@root.request.body.type}}"{{#ifAll @root.request.body.filter (compare @root.request.body.filter "!==" "0")}} data-tsi="{{@root.request.body.filter}}"{{/ifAll}}{{#ifAll @root.request.body.colour_primary (compare @root.request.body.colour_primary "!==" "#00a0af")}} data-colour-primary="{{@root.request.body.colour_primary}}"{{/ifAll}}{{#ifAll @root.request.body.colour_secondary (compare @root.request.body.colour_secondary "!==" "#387c2c")}} data-colour-secondary="{{@root.request.body.colour_secondary}}"{{/ifAll}}{{#compare @root.request.body.enable_mva 'off'}} data-disable-mva="true"{{/compare}}
+type="text/javascript" src="https://{{#compare request.url.hostname "volunteerscotland-search.local"}}volunteerscotland-search.local:9000{{else}}widget.search.volunteerscotland.net{{/compare}}/widget.js" data-url="https://{{#compare request.url.hostname "volunteerscotland-search.local"}}volunteerscotland-search.local:8080{{else}}search.volunteerscotland.net{{/compare}}/widget/{{@root.request.body.type}}"{{#ifAll @root.request.body.filter (compare @root.request.body.filter "!==" "0")}} data-tsi="{{@root.request.body.filter}}"{{/ifAll}}{{#ifAll @root.request.body.colour_primary (compare @root.request.body.colour_primary "!==" "#00a0af")}} data-colour-primary="{{@root.request.body.colour_primary}}"{{/ifAll}}{{#ifAll @root.request.body.colour_secondary (compare @root.request.body.colour_secondary "!==" "#387c2c")}} data-colour-secondary="{{@root.request.body.colour_secondary}}"{{/ifAll}}{{#ifAll (compare @root.request.body.type 'opportunities') (compare @root.request.body.enable_mva 'off')}} data-disable-mva="true"{{/ifAll}}
 {{~/inline ~}}
 
 <div class="container-fluid container-content content-page">
@@ -130,8 +130,47 @@ type="text/javascript" src="https://{{#compare request.url.hostname "volunteersc
   <p class="mdc-typography--body1">
     Please use the following code to embed the specified search widget on your own website:
   </p>
-  <div class="embed copyable">&lt;script {{> widget_code~}}&gt;&lt;/script&gt;</div>
-  <button class="btn copy" data-source="embed" unselectable="on"><i aria-hidden="true" class="fa fa-clipboard"></i> Copy</button>
+  <div class="embed copyable" id="code">&lt;script {{> widget_code~}}&gt;&lt;/script&gt;</div>
+  <button class="btn copy js-copy-code-btn" data-source="embed" unselectable="on">
+    <span class="fal fa-clipboard" aria-hidden="true"></span>
+    Copy
+  </button>
+  <script type="text/javascript">
+  function fallbackCopyTextToClipboard(text) {
+    var textArea = document.createElement("textarea");
+    textArea.value = text;
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+
+    try {
+      var successful = document.execCommand('copy');
+      var msg = successful ? 'successful' : 'unsuccessful';
+      console.log('Fallback: Copying text command was ' + msg);
+    } catch (err) {
+      console.error('Fallback: Oops, unable to copy', err);
+    }
+
+    document.body.removeChild(textArea);
+  }
+  function copyTextToClipboard(text) {
+    if (!navigator.clipboard) {
+      fallbackCopyTextToClipboard(text);
+      return;
+    }
+    navigator.clipboard.writeText(text).then(function() {
+      console.log('Async: Copying to clipboard was successful!');
+    }, function(err) {
+      console.error('Async: Could not copy text: ', err);
+    });
+  }
+
+  var copyCodeBtn = document.querySelector('.js-copy-code-btn');
+
+  copyCodeBtn.addEventListener('click', function(event) {
+    copyTextToClipboard($('#code')[0].innerText);
+  });
+  </script>
 
   <hr />
   <h3>Preview</h3>
