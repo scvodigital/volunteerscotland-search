@@ -856,10 +856,6 @@ a {
   opacity: 1;
 }
 
-.mdc-list-item--activated {
-  font-weight: $heading-medium-font-weight;
-}
-
 .mdc-form-field,
 .mdc-button,
 .mdc-card__supporting-text,
@@ -1987,6 +1983,16 @@ body.shortlist {
 }
 .mdc-layout-grid {
   padding: 0;
+}
+.mdc-menu .mdc-list-item.mdc-list-item--activated,
+.mdc-list-item--activated {
+  font-weight: $heading-medium-font-weight !important;
+  .mdc-list-item__graphic.fal {
+    font-weight: 400;
+  }
+  .mdc-list-item__graphic.far {
+    font-weight: 900;
+  }
 }
 
 footer,
