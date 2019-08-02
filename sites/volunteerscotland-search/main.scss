@@ -1668,6 +1668,9 @@ hr {
   border: none;
   .mdc-list-item--activated {
     color: rgba(0, 0, 0, 0.87);
+    .far {
+      font-weight: 900;
+    }
   }
 }
 .mdc-drawer__content {
