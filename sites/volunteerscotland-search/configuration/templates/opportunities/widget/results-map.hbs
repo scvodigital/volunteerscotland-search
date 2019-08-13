@@ -46,27 +46,32 @@
                     {{/json}}
                   {{/json}}
                 {{/json}}
-              {{/json}},
-              {{#json}}
-                {{{json key="boundToThis" value=true}}},
-                {{#json key="features" type="array"}}
-                  {{#each @root.data.search_data.map_results.hits.hits}}
-                    {{#each (arrayify _source.geo_coords) ~}}
-                      {{#ifAll lat lon ~}}
-                        {{#if @root.request.params.query.distance ~}}
-                          {{#compare (itemAt ../fields.distance @index) "<" @root.request.params.query.distance ~}}
-                            {{> opportunity_map_json ../_source lat=lat lng=lon map_postcode=(itemAt (arrayify (split ../_source.postcode ",")) @index)}}
-                          {{/compare ~}}
-                        {{else}}
-                          {{> opportunity_map_json ../_source lat=lat lng=lon map_postcode=(itemAt (arrayify (split ../_source.postcode ",")) @index)}}
-                        {{/if ~}}
-                      {{/ifAll ~}}
-                    {{/each}}
-                  {{/each}}
-                {{/json}}
               {{/json}}
             {{/json}},
           {{/ifAll}}
+          {{#json key="markerClusterGroups" type="array"}}
+            {{#json}}
+              {{#json key="options"}}
+                {{{json key="showCoverageOnHover" value=false}}}
+              {{/json}},
+              {{{json key="boundToThis" value=true}}},
+              {{#json key="markers" type="array"}}
+                {{#each @root.data.search_data.map_results.hits.hits}}
+                  {{#each (arrayify _source.geo_coords) ~}}
+                    {{#ifAll lat lon ~}}
+                      {{#if @root.request.params.query.distance ~}}
+                        {{#compare (itemAt ../fields.distance @index) "<" @root.request.params.query.distance ~}}
+                          {{> opportunity_map_json ../_source lat=lat lng=lon map_postcode=(itemAt (arrayify (split ../_source.postcode ",")) @index)}}
+                        {{/compare ~}}
+                      {{else}}
+                        {{> opportunity_map_json ../_source lat=lat lng=lon map_postcode=(itemAt (arrayify (split ../_source.postcode ",")) @index)}}
+                      {{/if ~}}
+                    {{/ifAll ~}}
+                  {{/each}}
+                {{/each}}
+              {{/json}}
+            {{/json}}
+          {{/json}}
         {{/json}}'></div>
       {{else}}
       <div class="v-margin-full">
