@@ -72,7 +72,7 @@
       {{{title}}}
       {{else}}
       {{#compare view 'widget' ~}}
-      <a href="#/opportunity/{{Id}}/{{title_slug}}?{{{substr @root.request.url.search 1}}}">{{{title}}}</a>
+      <a href="{{#compare type 'list'}}https://search.volunteerscotland.net{{else}}#{{/compare}}/opportunity/{{Id}}/{{title_slug}}?{{{substr (replace @root.request.url.search '&view=widget' '') 1}}}">{{{title}}}</a>
       {{else}}
       <a href="/opportunity/{{Id}}/{{title_slug}}{{@root.request.url.search}}">
         <span class="hover-underline">{{{title}}}</span>
@@ -98,15 +98,17 @@
     {{#ifAny milo_ref (compare volunteersearch_type.length ">" 0) ~}}
     <ul class="fa-ul first">
       {{#if milo_ref ~}}
+        {{#unless (compare type 'list') ~}}
         <li class="mdc-card__info--content-primary-reference mdc-typography--body1">
           {{#unless (compare view 'widget') ~}}
           <span class="fa-li"><span class="far fa-hashtag" title="Reference"></span></span>
           {{/unless ~}}
           {{milo_ref}}
         </li>
+        {{/unless ~}}
       {{/if ~}}
       {{#compare volunteersearch_type.length ">" 0 ~}}
-        <li class="mdc-card__info--content-primary-reference mdc-typography--body1">
+        <li class="mdc-card__info--content-primary-info mdc-typography--body1">
           {{#unless (compare view 'widget') ~}}
           <span class="fa-li"><span class="far fa-info-circle" title="Specialist role"></span></span>
           {{/unless ~}}
