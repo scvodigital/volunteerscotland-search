@@ -1,200 +1,239 @@
-{{#*inline "widget_code" ~}}
-  {{#withExtend this
-    widgetHost=(if (compare @root.request.url.hostname "volunteerscotland-search.local") "volunteerscotland-search.local:9000" else="widget.search.volunteerscotland.net")
-    endpointHost=(if (compare @root.request.url.hostname "volunteerscotland-search.local") "volunteerscotland-search.local:8080" else="search.volunteerscotland.net")
-  }}
-    type="text/javascript" src="https://{{widgetHost}}/widget.js"
-    data-url="https://{{endpointHost}}/widget/{{@root.request.body.type}}"
-    {{#ifAll @root.request.body.filter (compare @root.request.body.filter "!==" "0")}}
-      data-tsi="{{@root.request.body.filter}}"
-    {{/ifAll}}
-    {{#ifAll @root.request.body.colour_primary (compare @root.request.body.colour_primary "!==" "#00a0af")}}
-      data-colour-primary="{{@root.request.body.colour_primary}}"
-    {{/ifAll}}
-    {{#ifAll @root.request.body.colour_secondary (compare @root.request.body.colour_secondary "!==" "#387c2c")}}
-      data-colour-secondary="{{@root.request.body.colour_secondary}}"
-    {{/ifAll}}
-    {{#ifAll (compare @root.request.body.type 'opportunities') (compare @root.request.body.enable_mva 'off')}}
-      data-disable-mva="true"
-    {{/ifAll}}
-  {{/withExtend}}
-{{~/inline ~}}
-
-<div class="container-fluid container-content content-page">
-  <h2>Search widget builder</h2>
-  <form action="{{@root.request.url.pathname}}" method="post">
-    {{#unless @root.request.body.type ~}}
-    <p class="mdc-typography--body1">
-      Please choose a widget type and optional location filter.
-    </p>
-    <div class="mdc-layout-grid">
-      <div class="mdc-layout-grid__inner">
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-5-tablet mdc-layout-grid__cell--span-4-phone">
-          <div class="mdc-select" data-mdc-auto-init="MDCSelect">
-            <span class="mdc-select__dropdown-icon"></span>
-            <select class="mdc-select__native-control" id="type" name="type">
-              <option value="opportunities"{{#compare @root.request.body.type "opportunities"}} selected{{/compare}}>Volunteering opportunities</option>
-              <option value="organisations-all"{{#compare @root.request.body.type "organisations-all"}} selected{{/compare}}>Volunteering organisations</option>
-            </select>
-            <label class="mdc-floating-label" for="type">
-              Widget type
-            </label>
-            <div class="mdc-line-ripple"></div>
-          </div>
-          <div class="mdc-select" data-mdc-auto-init="MDCSelect">
-            <span class="mdc-select__dropdown-icon"></span>
-            <select class="mdc-select__native-control" id="filter" name="filter">
-              <option value="0">All of Scotland (no filter)</option>
-              <option value="1"{{#compare @root.request.body.filter "1"}} selected{{/compare}}>Aberdeen</option>
-              <option value="2"{{#compare @root.request.body.filter "2"}} selected{{/compare}}>Aberdeenshire</option>
-              <option value="3"{{#compare @root.request.body.filter "3"}} selected{{/compare}}>Angus</option>
-              <option value="4"{{#compare @root.request.body.filter "4"}} selected{{/compare}}>Argyll and Bute</option>
-              <option value="5"{{#compare @root.request.body.filter "5"}} selected{{/compare}}>Clackmannanshire</option>
-              <option value="6"{{#compare @root.request.body.filter "6"}} selected{{/compare}}>Dumfries and Galloway</option>
-              <option value="7"{{#compare @root.request.body.filter "7"}} selected{{/compare}}>Dundee</option>
-              <option value="8"{{#compare @root.request.body.filter "8"}} selected{{/compare}}>East Ayrshire</option>
-              <option value="9"{{#compare @root.request.body.filter "9"}} selected{{/compare}}>East Dunbartonshire</option>
-              <option value="10"{{#compare @root.request.body.filter "10"}} selected{{/compare}}>East Lothian</option>
-              <option value="11"{{#compare @root.request.body.filter "11"}} selected{{/compare}}>East Renfrewshire</option>
-              <option value="12"{{#compare @root.request.body.filter "12"}} selected{{/compare}}>Edinburgh</option>
-              <option value="13"{{#compare @root.request.body.filter "13"}} selected{{/compare}}>Falkirk</option>
-              <option value="14"{{#compare @root.request.body.filter "14"}} selected{{/compare}}>Fife</option>
-              <option value="15"{{#compare @root.request.body.filter "15"}} selected{{/compare}}>Glasgow</option>
-              <option value="16"{{#compare @root.request.body.filter "16"}} selected{{/compare}}>Highland</option>
-              <option value="17"{{#compare @root.request.body.filter "17"}} selected{{/compare}}>Inverclyde</option>
-              <option value="18"{{#compare @root.request.body.filter "18"}} selected{{/compare}}>Midlothian</option>
-              <option value="19"{{#compare @root.request.body.filter "19"}} selected{{/compare}}>Moray</option>
-              <option value="32"{{#compare @root.request.body.filter "32"}} selected{{/compare}}>Na h-Eileanan Siar (Western Isles)</option>
-              <option value="20"{{#compare @root.request.body.filter "20"}} selected{{/compare}}>North Ayrshire</option>
-              <option value="21"{{#compare @root.request.body.filter "21"}} selected{{/compare}}>North Lanarkshire</option>
-              <option value="22"{{#compare @root.request.body.filter "22"}} selected{{/compare}}>Orkney Islands</option>
-              <option value="23"{{#compare @root.request.body.filter "23"}} selected{{/compare}}>Perth and Kinross</option>
-              <option value="24"{{#compare @root.request.body.filter "24"}} selected{{/compare}}>Renfrewshire</option>
-              <option value="25"{{#compare @root.request.body.filter "25"}} selected{{/compare}}>Scottish Borders</option>
-              <option value="26"{{#compare @root.request.body.filter "26"}} selected{{/compare}}>Shetland Islands</option>
-              <option value="27"{{#compare @root.request.body.filter "27"}} selected{{/compare}}>South Ayrshire</option>
-              <option value="28"{{#compare @root.request.body.filter "28"}} selected{{/compare}}>South Lanarkshire</option>
-              <option value="29"{{#compare @root.request.body.filter "29"}} selected{{/compare}}>Stirling</option>
-              <option value="30"{{#compare @root.request.body.filter "30"}} selected{{/compare}}>West Dunbartonshire</option>
-              <option value="31"{{#compare @root.request.body.filter "31"}} selected{{/compare}}>West Lothian</option>
-            </select>
-            <label class="mdc-floating-label" for="filter">
-              Search filter
-            </label>
-            <div class="mdc-line-ripple"></div>
-          </div>
-          <div class="mdc-layout-grid colorwells">
-            <div class="mdc-layout-grid__inner">
-              <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone">
-                <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
-                  <input id="colour_primary" name="colour_primary" type="text" maxlength="7" class="colorwell mdc-text-field__input mdc-text-field--fullwidth" value="{{default @root.request.body.colour_primary '#00a0af'}}" data-lpignore="true" />
-                  <label class="mdc-floating-label" id="colour_primary_label" for="colour_primary">
-                    Colour (primary)
-                  </label>
+{{#withExtend this settings=@root.request.params.query}}
+  <div class="container-fluid container-content content-page">
+    <h2>Search widget builder</h2>
+    <form id="widget-builder">
+      <p class="mdc-typography--body1">
+        Please choose a widget type and optional location filter.
+      </p>
+      <div class="mdc-layout-grid">
+        <div class="mdc-layout-grid__inner">
+          <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-9-desktop mdc-layout-grid__cell--span-9-tablet mdc-layout-grid__cell--span-4-phone">
+            <div class="mdc-select" data-mdc-auto-init="MDCSelect">
+              <span class="mdc-select__dropdown-icon"></span>
+              <select class="mdc-select__native-control" id="type" name="type">
+                <option value="opportunities"{{#compare settings.type "opportunities"}} selected{{/compare}}>Volunteering opportunities</option>
+                <option value="organisations-all"{{#compare settings.type "organisations-all"}} selected{{/compare}}>Volunteering organisations</option>
+              </select>
+              <label class="mdc-floating-label" for="type">
+                Widget type
+              </label>
+              <div class="mdc-line-ripple"></div>
+            </div>
+            <div class="mdc-select" data-mdc-auto-init="MDCSelect">
+              <span class="mdc-select__dropdown-icon"></span>
+              <select class="mdc-select__native-control" id="filter" name="filter">
+                <option value="0">All of Scotland (no filter)</option>
+                <option value="1"{{#compare settings.filter "1"}} selected{{/compare}}>Aberdeen</option>
+                <option value="2"{{#compare settings.filter "2"}} selected{{/compare}}>Aberdeenshire</option>
+                <option value="3"{{#compare settings.filter "3"}} selected{{/compare}}>Angus</option>
+                <option value="4"{{#compare settings.filter "4"}} selected{{/compare}}>Argyll and Bute</option>
+                <option value="5"{{#compare settings.filter "5"}} selected{{/compare}}>Clackmannanshire</option>
+                <option value="6"{{#compare settings.filter "6"}} selected{{/compare}}>Dumfries and Galloway</option>
+                <option value="7"{{#compare settings.filter "7"}} selected{{/compare}}>Dundee</option>
+                <option value="8"{{#compare settings.filter "8"}} selected{{/compare}}>East Ayrshire</option>
+                <option value="9"{{#compare settings.filter "9"}} selected{{/compare}}>East Dunbartonshire</option>
+                <option value="10"{{#compare settings.filter "10"}} selected{{/compare}}>East Lothian</option>
+                <option value="11"{{#compare settings.filter "11"}} selected{{/compare}}>East Renfrewshire</option>
+                <option value="12"{{#compare settings.filter "12"}} selected{{/compare}}>Edinburgh</option>
+                <option value="13"{{#compare settings.filter "13"}} selected{{/compare}}>Falkirk</option>
+                <option value="14"{{#compare settings.filter "14"}} selected{{/compare}}>Fife</option>
+                <option value="15"{{#compare settings.filter "15"}} selected{{/compare}}>Glasgow</option>
+                <option value="16"{{#compare settings.filter "16"}} selected{{/compare}}>Highland</option>
+                <option value="17"{{#compare settings.filter "17"}} selected{{/compare}}>Inverclyde</option>
+                <option value="18"{{#compare settings.filter "18"}} selected{{/compare}}>Midlothian</option>
+                <option value="19"{{#compare settings.filter "19"}} selected{{/compare}}>Moray</option>
+                <option value="32"{{#compare settings.filter "32"}} selected{{/compare}}>Na h-Eileanan Siar (Western Isles)</option>
+                <option value="20"{{#compare settings.filter "20"}} selected{{/compare}}>North Ayrshire</option>
+                <option value="21"{{#compare settings.filter "21"}} selected{{/compare}}>North Lanarkshire</option>
+                <option value="22"{{#compare settings.filter "22"}} selected{{/compare}}>Orkney Islands</option>
+                <option value="23"{{#compare settings.filter "23"}} selected{{/compare}}>Perth and Kinross</option>
+                <option value="24"{{#compare settings.filter "24"}} selected{{/compare}}>Renfrewshire</option>
+                <option value="25"{{#compare settings.filter "25"}} selected{{/compare}}>Scottish Borders</option>
+                <option value="26"{{#compare settings.filter "26"}} selected{{/compare}}>Shetland Islands</option>
+                <option value="27"{{#compare settings.filter "27"}} selected{{/compare}}>South Ayrshire</option>
+                <option value="28"{{#compare settings.filter "28"}} selected{{/compare}}>South Lanarkshire</option>
+                <option value="29"{{#compare settings.filter "29"}} selected{{/compare}}>Stirling</option>
+                <option value="30"{{#compare settings.filter "30"}} selected{{/compare}}>West Dunbartonshire</option>
+                <option value="31"{{#compare settings.filter "31"}} selected{{/compare}}>West Lothian</option>
+              </select>
+              <label class="mdc-floating-label" for="filter">
+                Search filter
+              </label>
+              <div class="mdc-line-ripple"></div>
+            </div>
+            <div class="mdc-layout-grid colorwells">
+              <div class="mdc-layout-grid__inner">
+                <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone">
+                  <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
+                    <input id="colour_primary" name="colour_primary" type="text" maxlength="7" class="colorwell mdc-text-field__input mdc-text-field--fullwidth"
+                        value="{{default settings.colour_primary '#00a0af'}}" data-lpignore="true" />
+                    <label class="mdc-floating-label" id="colour_primary_label" for="colour_primary">
+                      Colour (primary)
+                    </label>
+                  </div>
                 </div>
-              </div>
-              <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone">
-                <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
-                  <input id="colour_secondary" name="colour_secondary" type="text" maxlength="7" class="colorwell mdc-text-field__input mdc-text-field--fullwidth" value="{{default @root.request.body.colour_secondary '#387c2c'}}" data-lpignore="true" />
-                  <label class="mdc-floating-label" id="colour_secondary_label" for="colour_secondary">
-                    Colour (secondary)
-                  </label>
+                <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone">
+                  <div class="mdc-text-field mdc-text-field--box" data-mdc-auto-init="MDCTextField">
+                    <input id="colour_secondary" name="colour_secondary" type="text" maxlength="7" class="colorwell mdc-text-field__input mdc-text-field--fullwidth"
+                        value="{{default settings.colour_secondary '#387c2c'}}" data-lpignore="true" />
+                    <label class="mdc-floating-label" id="colour_secondary_label" for="colour_secondary">
+                      Colour (secondary)
+                    </label>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="mdc-form-field">
-            <div class="mdc-checkbox" data-mdc-auto-init="MDCCheckbox">
-              <input type="hidden" value="off" name="enable_mva">
-              <input type="checkbox" class="mdc-checkbox__native-control" name="enable_mva" id="enable_mva" value="on"{{#unless (compare @root.request.body.enable_mva 'off')}} checked{{/unless}} />
-              <div class="mdc-checkbox__background">
-                <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
-                  <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
-                </svg>
-                <div class="mdc-checkbox__mixedmark"></div>
+            <div class="mdc-form-field">
+              <div class="mdc-checkbox" data-mdc-auto-init="MDCCheckbox">
+                <input type="checkbox" class="mdc-checkbox__native-control" name="no_conflict" id="no_conflict" value="off"
+                    {{#if (compare settings.no_conflict 'on')}}checked{{/if}}/>
+                <div class="mdc-checkbox__background">
+                  <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                    <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                  </svg>
+                  <div class="mdc-checkbox__mixedmark"></div>
+                </div>
               </div>
+              <label for="no_conflict">Use a "No conflict" version of the widget</label>
             </div>
-            <label for="enable_mva">Use 'My Volunteer Account' to register interest for opportunities</label>
+            <p class="mdc-typography--body2 t-margin-none">
+              In the unlikely instance that you run into any problems caused by conflicting Javascript modules on the page you
+              are embedding the widget check this box.
+            </p>
+            <div class="mdc-form-field">
+              <div class="mdc-checkbox" data-mdc-auto-init="MDCCheckbox">
+                <input type="checkbox" class="mdc-checkbox__native-control" name="enable_mva" id="enable_mva" value="on"
+                    {{#unless (compare settings.enable_mva 'off')}} checked{{/unless}} />
+                <div class="mdc-checkbox__background">
+                  <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                    <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                  </svg>
+                  <div class="mdc-checkbox__mixedmark"></div>
+                </div>
+              </div>
+              <label for="enable_mva">Use 'My Volunteer Account' to register interest for opportunities</label>
+            </div>
+            <p class="mdc-typography--body2 t-margin-none">
+              My Volunteer Account allows volunteers to easily manage their own profile and save opportunities for later, and
+              enables better tracking of opportunity registrations for TSIs and VIOs. If you choose not to use this option,
+              the volunteer will be provided with the contact email for the opportunity.
+            </p>
           </div>
-          <p class="mdc-typography--body2 t-margin-none">
-            My Volunteer Account allows volunteers to easily manage their own profile and save opportunities for later, and enables better tracking of opportunity registrations for TSIs and VIOs. If you choose not to use this option, the volunteer will be provided with the contact email for the opportunity.
-          </p>
-        </div>
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-3-tablet mdc-layout-grid__cell--span-4-phone">
-          <div id="colorpicker"></div>
-        </div>
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
-          <button class="mdc-button mdc-button--raised mdc-button--large mdc-button--fullwidth mdc-ripple-surface mdc-ripple-surface--primary mdc-ripple-upgraded" type="submit" data-mdc-auto-init="MDCRipple">
-            <span class="far fa-cog fa-fw mdc-list-item__graphic" aria-hidden="true"></span>
-            Generate
-          </button>
+          <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-3-tablet mdc-layout-grid__cell--span-4-phone">
+            <div id="colorpicker"></div>
+          </div>
         </div>
       </div>
+      <button class="mdc-button mdc-button--raised mdc-button--large mdc-button--fullwidth mdc-ripple-surface mdc-ripple-surface--primary mdc-ripple-upgraded"
+          type="submit" data-mdc-auto-init="MDCRipple">
+        <span class="far fa-cog fa-fw mdc-list-item__graphic" aria-hidden="true"></span>
+        Generate
+      </button>
+    </form>
+
+    <div id="widget-preview-panel" style="display: none;">
+      <h3>How to embed the widget</h3>
+      <p class="mdc-typography--body1">
+        Please use the following code to embed the specified search widget on your own website:
+      </p>
+      <div class="embed copyable" id="code"></div>
+      <button class="btn copy js-copy-code-btn" data-source="embed" unselectable="on">
+        <span class="fal fa-clipboard" aria-hidden="true"></span>
+        Copy
+      </button>
+
+      <h3>Preview</h3>
+      <div id="widget-preview"></div>
     </div>
-    {{else}}
-    <div class="mdc-layout-grid">
-      <div class="mdc-layout-grid__inner">
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone">
-          <button class="mdc-button mdc-button--raised mdc-button--large mdc-button--fullwidth mdc-ripple-surface mdc-ripple-surface--primary mdc-ripple-upgraded" type="submit" data-mdc-auto-init="MDCRipple">
-            <span class="far fa-cog fa-fw mdc-list-item__graphic" aria-hidden="true"></span>
-            Change settings
-          </button>
-        </div>
-      </div>
-    </div>
-    {{/unless ~}}
-  </form>
+    <script type="text/javascript">
+      function fallbackCopyTextToClipboard(text) {
+        var textArea = document.createElement("textarea");
+        textArea.value = text;
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
 
-  {{#if @root.request.body.type ~}}
-  <hr />
-  <h3>How to embed the widget</h3>
-  <p class="mdc-typography--body1">
-    Please use the following code to embed the specified search widget on your own website:
-  </p>
-  <div class="embed copyable" id="code">&lt;script {{> widget_code~}}&gt;&lt;/script&gt;</div>
-  <button class="btn copy js-copy-code-btn" data-source="embed" unselectable="on">
-    <span class="fal fa-clipboard" aria-hidden="true"></span>
-    Copy
-  </button>
-  <script type="text/javascript">
-  function fallbackCopyTextToClipboard(text) {
-    var textArea = document.createElement("textarea");
-    textArea.value = text;
-    document.body.appendChild(textArea);
-    textArea.focus();
-    textArea.select();
+        try {
+          var successful = document.execCommand('copy');
+          var msg = successful ? 'successful' : 'unsuccessful';
+          console.log('Fallback: Copying text command was ' + msg);
+        } catch (err) {
+          console.error('Fallback: Oops, unable to copy', err);
+        }
 
-    try {
-      var successful = document.execCommand('copy');
-      var msg = successful ? 'successful' : 'unsuccessful';
-      console.log('Fallback: Copying text command was ' + msg);
-    } catch (err) {
-      console.error('Fallback: Oops, unable to copy', err);
-    }
+        document.body.removeChild(textArea);
+      }
+      function copyTextToClipboard(text) {
+        if (!navigator.clipboard) {
+          fallbackCopyTextToClipboard(text);
+          return;
+        }
+        navigator.clipboard.writeText(text).then(function() {
+          console.log('Async: Copying to clipboard was successful!');
+        }, function(err) {
+          console.error('Async: Could not copy text: ', err);
+        });
+      }
 
-    document.body.removeChild(textArea);
-  }
-  function copyTextToClipboard(text) {
-    if (!navigator.clipboard) {
-      fallbackCopyTextToClipboard(text);
-      return;
-    }
-    navigator.clipboard.writeText(text).then(function() {
-      console.log('Async: Copying to clipboard was successful!');
-    }, function(err) {
-      console.error('Async: Could not copy text: ', err);
-    });
-  }
+      var copyCodeBtn = document.querySelector('.js-copy-code-btn');
 
-  var copyCodeBtn = document.querySelector('.js-copy-code-btn');
+      copyCodeBtn.addEventListener('click', function(event) {
+        copyTextToClipboard($('#code')[0].innerText);
+      });
 
-  copyCodeBtn.addEventListener('click', function(event) {
-    copyTextToClipboard($('#code')[0].innerText);
-  });
-  </script>
+      document.querySelector('#widget-builder').addEventListener('submit', function(evt) {
+        evt.preventDefault();
+        updateScriptTags();
+      });
 
-  <hr />
-  <h3>Preview</h3>
-  <script {{> widget_code}}></script>
-  {{/if ~}}
-</div>
+      function updateScriptTags() {
+        $('#widget-preview-panel').css('display', 'block');
+        $('#widget-preview').empty();
+        window.location.hash = '';
+
+        var type = $('#type').val();
+        var filter = $('#filter').val();
+        var colour_primary = $('#colour_primary').val();
+        var colour_secondary = $('#colour_secondary').val();
+        var no_conflict = $('#no_conflict').is(':checked');
+        var enable_mva = $('#enable_mva').is(':checked');
+
+        var widgetSrc = 'https://widget.search.volunteerscotland.net/' + (no_conflict ? 'no-conflict-' : '') + 'widget.js';
+        var dataUri = 'https://search.volunteerscotland.net/widget/' + type;
+
+        if (window.location.hostname === 'volunteerscotland-search.local') {
+          widgetSrc = widgetSrc.replace('widget.search.volunteerscotland.net', 'volunteerscotland-search.local:9000');
+          dataUrl = dataUri.replace('search.volunteerscotland.net', 'volunteerscotland-search.local:8080');
+        }
+
+        var scriptTag = $('<script>').attr({
+          'src': widgetSrc,
+          'data-url': dataUrl
+        });
+
+        if (filter && filter !== '0') {
+          scriptTag.attr('data-tsi', filter);
+        }
+
+        if (colour_primary && colour_primary !== "#00a0af") {
+          scriptTag.attr('data-colour-primary', colour_primary);
+        }
+
+        if (colour_secondary && colour_secondary !== "#387c2c") {
+          scriptTag.attr('data-colour-secondary', colour_secondary);
+        }
+
+        if (type === 'opportunities' && !enable_mva) {
+          scriptTag.attr('data-disable-mva', 'true');
+        }
+
+        var scriptTagHtml = scriptTag[0].outerHTML;
+        $('#code').text(scriptTagHtml);
+
+        scriptTag.attr('src', scriptTag.attr('src').replace('widget.js', 'no-conflict-widget.js'));
+        console.log(scriptTag[0].outerHTML);
+        $('#widget-preview')[0].insertAdjacentElement('afterbegin', scriptTag[0]);
+      }
+    </script>
+  </div>
+{{/withExtend}}
