@@ -1,5 +1,23 @@
 {{#*inline "widget_code" ~}}
-type="text/javascript" src="https://{{#compare request.url.hostname "volunteerscotland-search.local"}}volunteerscotland-search.local:9000{{else}}widget.search.volunteerscotland.net{{/compare}}/widget.js" data-url="https://{{#compare request.url.hostname "volunteerscotland-search.local"}}volunteerscotland-search.local:8080{{else}}search.volunteerscotland.net{{/compare}}/widget/{{@root.request.body.type}}"{{#ifAll @root.request.body.filter (compare @root.request.body.filter "!==" "0")}} data-tsi="{{@root.request.body.filter}}"{{/ifAll}}{{#ifAll @root.request.body.colour_primary (compare @root.request.body.colour_primary "!==" "#00a0af")}} data-colour-primary="{{@root.request.body.colour_primary}}"{{/ifAll}}{{#ifAll @root.request.body.colour_secondary (compare @root.request.body.colour_secondary "!==" "#387c2c")}} data-colour-secondary="{{@root.request.body.colour_secondary}}"{{/ifAll}}{{#ifAll (compare @root.request.body.type 'opportunities') (compare @root.request.body.enable_mva 'off')}} data-disable-mva="true"{{/ifAll}}
+  {{#withExtend this
+    widgetHost=(if (compare @root.request.url.hostname "volunteerscotland-search.local") "volunteerscotland-search.local:9000" else="widget.search.volunteerscotland.net")
+    endpointHost=(if (compare @root.request.url.hostname "volunteerscotland-search.local") "volunteerscotland-search.local:8080" else="search.volunteerscotland.net")
+  }}
+    type="text/javascript" src="https://{{widgetHost}}/widget.js"
+    data-url="https://{{endpointHost}}/widget/{{@root.request.body.type}}"
+    {{#ifAll @root.request.body.filter (compare @root.request.body.filter "!==" "0")}}
+      data-tsi="{{@root.request.body.filter}}"
+    {{/ifAll}}
+    {{#ifAll @root.request.body.colour_primary (compare @root.request.body.colour_primary "!==" "#00a0af")}}
+      data-colour-primary="{{@root.request.body.colour_primary}}"
+    {{/ifAll}}
+    {{#ifAll @root.request.body.colour_secondary (compare @root.request.body.colour_secondary "!==" "#387c2c")}}
+      data-colour-secondary="{{@root.request.body.colour_secondary}}"
+    {{/ifAll}}
+    {{#ifAll (compare @root.request.body.type 'opportunities') (compare @root.request.body.enable_mva 'off')}}
+      data-disable-mva="true"
+    {{/ifAll}}
+  {{/withExtend}}
 {{~/inline ~}}
 
 <div class="container-fluid container-content content-page">
