@@ -3,7 +3,7 @@
     {{#compare action "===" "organisation" ~}}
     <a href="/organisation/{{organisation_id}}/{{organisation_name_slug}}{{@root.request.url.search}}" class="mdc-card__action hide-sm">Find out more about {{organisation_name}}</a>
     {{else}}
-    <a href="/opportunity/{{Id}}/{{title_slug}}{{@root.request.url.search}}" class="mdc-card__action hide-sm">Find out more</a>
+    <a href="{{#compare view 'widget'}}https://{{/compare}}/opportunity/{{Id}}/{{title_slug}}{{@root.request.url.search}}" class="mdc-card__action hide-sm">Find out more</a>
     <a href="/opportunity/{{Id}}/{{title_slug}}{{@root.request.url.search}}" class="mdc-card__action hide-md hide-lg"><span class="fal fa-info-circle fa-fw fa-2x" aria-hidden="true"></span></a>
     {{/compare ~}}
   </div>

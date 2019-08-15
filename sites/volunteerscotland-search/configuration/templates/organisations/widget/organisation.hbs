@@ -8,5 +8,16 @@
     {{> organisation_full _source view="widget"}}
     {{/each ~}}
     {{/compare ~}}
+
+    {{#compare @root.data.organisationOpportunities.opportunities_open.hits.total ">" 0 ~}}
+    <div class="x-padding-full">
+      <h3 class="mdc-typography--headline5">
+        Current opportunities
+      </h3>
+      {{#each @root.data.organisationOpportunities.opportunities_open.hits.hits ~}}
+      {{> opportunity_list _source view="widget"}}
+      {{/each ~}}
+    </div>
+    {{/compare ~}}
   </div>
 </div>
