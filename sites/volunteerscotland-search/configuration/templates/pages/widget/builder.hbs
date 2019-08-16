@@ -22,12 +22,12 @@
             <div class="mdc-select" data-mdc-auto-init="MDCSelect">
               <span class="mdc-select__dropdown-icon"></span>
               <select class="mdc-select__native-control" id="filter" name="filter">
-                <option value="0">All of Scotland (no filter)</option>
-                <option value="1"{{#compare settings.filter "1"}} selected{{/compare}}>Aberdeen</option>
-                <option value="2"{{#compare settings.filter "2"}} selected{{/compare}}>Aberdeenshire</option>
-                <option value="3"{{#compare settings.filter "3"}} selected{{/compare}}>Angus</option>
-                <option value="4"{{#compare settings.filter "4"}} selected{{/compare}}>Argyll and Bute</option>
-                <option value="5"{{#compare settings.filter "5"}} selected{{/compare}}>Clackmannanshire</option>
+                <option value="all">All of Scotland (no filter)</option>
+                <option value="aberdeen"{{#compare settings.filter "aberdeen"}} selected{{/compare}}>Aberdeen</option>
+                <option value="aberdeenshire"{{#compare settings.filter "aberdeenshire"}} selected{{/compare}}>Aberdeenshire</option>
+                <option value="angus"{{#compare settings.filter "angus"}} selected{{/compare}}>Angus</option>
+                <option value="argyll-and-bute"{{#compare settings.filter "argyll-and-bute"}} selected{{/compare}}>Argyll and Bute</option>
+                <option value="clackmannanshire"{{#compare settings.filter "Clackmannanshire"}} selected{{/compare}}>Clackmannanshire</option>
                 <option value="6"{{#compare settings.filter "6"}} selected{{/compare}}>Dumfries and Galloway</option>
                 <option value="7"{{#compare settings.filter "7"}} selected{{/compare}}>Dundee</option>
                 <option value="8"{{#compare settings.filter "8"}} selected{{/compare}}>East Ayrshire</option>
@@ -211,7 +211,7 @@
           'data-url': dataUrl
         });
 
-        if (filter && filter !== '0') {
+        if (filter && filter !== 'all') {
           scriptTag.attr('data-tsi', filter);
         }
 
