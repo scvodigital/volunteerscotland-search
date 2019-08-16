@@ -72,7 +72,11 @@
       {{{title}}}
       {{else}}
       {{#compare view 'widget' ~}}
-      <a href="{{#compare type 'list'}}https://search.volunteerscotland.net{{else}}#{{/compare}}/opportunity/{{Id}}/{{title_slug}}?{{{substr (replace @root.request.url.search '&view=widget' '') 1}}}">{{{title}}}</a>
+      {{#compare type 'list'}}
+      <a href="https://search.volunteerscotland.net/opportunity/{{Id}}/{{title_slug}}?{{{substr (replace @root.request.url.search '&view=widget' '') 1}}}">{{{title}}}</a>
+      {{else}}
+      <a href="#/opportunity/{{Id}}/{{title_slug}}?{{{substr @root.request.url.search 1}}}">{{{title}}}</a>
+      {{/compare}}
       {{else}}
       <a href="/opportunity/{{Id}}/{{title_slug}}{{@root.request.url.search}}">
         <span class="hover-underline">{{{title}}}</span>
