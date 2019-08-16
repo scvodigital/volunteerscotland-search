@@ -199,7 +199,7 @@
         var enable_mva = $('#enable_mva').is(':checked');
 
         var widgetSrc = 'https://widget.search.volunteerscotland.net/' + (no_conflict ? 'no-conflict-' : '') + 'widget.js';
-        var dataUri = 'https://search.volunteerscotland.net/widget/' + type;
+        var dataUrl = 'https://search.volunteerscotland.net/widget/' + type;
 
         if (window.location.hostname === 'volunteerscotland-search.local') {
           widgetSrc = widgetSrc.replace('widget.search.volunteerscotland.net', 'volunteerscotland-search.local:9000');
