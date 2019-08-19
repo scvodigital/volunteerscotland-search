@@ -31,7 +31,9 @@
     "title",
     "activities",
     "activities_slugs",
-    "opportunity_contact_email"
+    "opportunity_contact_email",
+    "start_date",
+    "end_date"
   ],
   {{#ifAll @root.request.params.query.lat @root.request.params.query.lng}}
   "script_fields": {

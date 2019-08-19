@@ -66,7 +66,28 @@
       </li>
     </ul>
     {{/ifAll ~}}
+    {{#ifAny start_date end_date milo_ref volunteersearch_type ~}}
     <ul class="fa-ul first">
+      {{#ifAll start_date end_date ~}}
+      {{#compare (momentFormat (moment start_date "x") "Do MMMM YYYY") (momentFormat (moment end_date "x") "Do MMMM YYYY") ~}}
+      <li class="mdc-card__info--content-primary-from mdc-typography--body1">
+        <span class="fa-li"><span class="far fa-calendar-alt fa-fw" title="Start date"></span></span>
+        Date: {{momentFormat (moment start_date "x") "Do MMMM YYYY"}}
+      </li>
+      {{else}}
+      <li class="mdc-card__info--content-primary-from mdc-typography--body1">
+        <span class="fa-li"><span class="far fa-calendar-alt fa-fw" title="Start date"></span></span>
+        Dates: {{momentFormat (moment start_date "x") "Do MMMM YYYY"}} – {{momentFormat (moment end_date "x") "Do MMMM YYYY"}}
+      </li>
+      {{/compare ~}}
+      {{else}}
+      {{#compare start_date ">" (moment) ~}}
+      <li class="mdc-card__info--content-primary-from mdc-typography--body1">
+        <span class="fa-li"><span class="far fa-calendar-alt fa-fw" title="Start date"></span></span>
+        Date: {{momentFormat (moment start_date "x") "Do MMMM YYYY"}}
+      </li>
+      {{/compare ~}}
+      {{/ifAll ~}}
       {{#if milo_ref ~}}
         <li class="mdc-card__info--content-primary-reference mdc-typography--body1">
           <span class="fa-li"><span class="far fa-hashtag" title="Reference"></span></span>
@@ -82,6 +103,7 @@
       {{/compare ~}}
       {{/if ~}}
     </ul>
+    {{/ifAny ~}}
     <!-- <ul class="fa-ul last">
       {{#compare work_location "===" "At Home" ~}}
         {{#unless (contains volunteersearch_type "Home-based volunteering") ~}}
