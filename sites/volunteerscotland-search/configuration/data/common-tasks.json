@@ -125,14 +125,14 @@
     "name": "opportunitySupplimentary",
     "taskModule": "elasticsearch",
     "config": {
-      "connectionStringTemplate": "{$../../elasticsearch-url.txt}",
+      "connectionStringTemplate": "{$../../../elasticsearch-url.txt}",
       "elasticsearchConfig": {
         "apiVersion": "5.6"
       },
       "queryTemplates": [
         {
           "name": "not_found",
-          "index": "{$../../elasticsearch-index.txt}",
+          "index": "{$../../../elasticsearch-index.txt}",
           "type": "milo-volunteering-opportunity",
           "template": ">context.metaData.handlebars.queries.pages_not-found"
         }
@@ -144,14 +144,14 @@
     "name": "eventSupplimentary",
     "taskModule": "elasticsearch",
     "config": {
-      "connectionStringTemplate": "{$../../elasticsearch-url.txt}",
+      "connectionStringTemplate": "{$../../../elasticsearch-url.txt}",
       "elasticsearchConfig": {
         "apiVersion": "5.6"
       },
       "queryTemplates": [
         {
           "name": "not_found",
-          "index": "{$../../elasticsearch-index.txt}",
+          "index": "{$../../../elasticsearch-index.txt}",
           "type": "milo-volunteering-event",
           "template": ">context.metaData.handlebars.queries.pages_not-found"
         }
@@ -163,20 +163,20 @@
     "name": "organisationSupplimentary",
     "taskModule": "elasticsearch",
     "config": {
-      "connectionStringTemplate": "{$../../elasticsearch-url.txt}",
+      "connectionStringTemplate": "{$../../../elasticsearch-url.txt}",
       "elasticsearchConfig": {
         "apiVersion": "5.6"
       },
       "queryTemplates": [
         {
           "name": "types",
-          "index": "{$../../elasticsearch-index.txt}",
+          "index": "{$../../../elasticsearch-index.txt}",
           "type": "milo-volunteering-organisation",
           "template": ">context.metaData.handlebars.queries.organisations_types"
         },
         {
           "name": "not_found",
-          "index": "{$../../elasticsearch-index.txt}",
+          "index": "{$../../../elasticsearch-index.txt}",
           "type": "milo-volunteering-organisation",
           "template": ">context.metaData.handlebars.queries.pages_not-found"
         }
@@ -188,14 +188,14 @@
     "name": "organisationsWithOpportunities",
     "taskModule": "elasticsearch",
     "config": {
-      "connectionStringTemplate": "{$../../elasticsearch-url.txt}",
+      "connectionStringTemplate": "{$../../../elasticsearch-url.txt}",
       "elasticsearchConfig": {
         "apiVersion": "5.6"
       },
       "queryTemplates": [
         {
           "name": "opportunities",
-          "index": "{$../../elasticsearch-index.txt}",
+          "index": "{$../../../elasticsearch-index.txt}",
           "type": "milo-volunteering-opportunity",
           "template": ">context.metaData.handlebars.queries.opportunities_organisations"
         }
