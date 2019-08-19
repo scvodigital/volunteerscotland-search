@@ -9,7 +9,11 @@
   with current volunteering opportunities
   {{/compare ~}}
   {{else}}
+  {{#if (contains @root.route.name "volunteering_event_search") ~}}
+  volunteering {{inflect paging.totalResults "event" "events"}}
+  {{else}}
   volunteering {{inflect paging.totalResults "opportunity" "opportunities"}}
+  {{/if ~}}
   {{/if ~}}
   {{if @root.request.params.query.exclude "(filtered)"}}
   {{#compare @root.route.name "!==" "opportunity_map" ~}}
