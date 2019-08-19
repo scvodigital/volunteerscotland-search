@@ -1,249 +1,239 @@
 {
-  "authNotRequired": {
-    "name": "auth",
-    "taskModule": "firebaseAuth",
-    "config": {
-      "tokenPath": "request.cookies.gi_token",
-      "cookieName": "gi_cookie",
-      "cookieOptions": {
-        "maxAge": 1209600000,
-        "secure": true,
-        "path": "/"
-      },
-      "appName": "volunteerscotland-search",
-      "notAuthenticatedRoute": ""
-    }
-  },
-  "authRequired": {
-    "name": "auth",
-    "taskModule": "firebaseAuth",
-    "config": {
-      "tokenPath": "request.cookies.gi_token",
-      "cookieName": "gi_cookie",
-      "cookieOptions": {
-        "maxAge": 1209600000,
-        "secure": true,
-        "path": "/"
-      },
-      "appName": "volunteerscotland-search",
-      "notAuthenticatedRoute": "sign_in"
-    }
-  },
-  "noAuthOnly": {
-    "name": "noAuthOnly",
-    "taskModule": "reroute",
-    "config": {
-      "if": [
-        {
-          "!=": [
-            {
-              "var": "data.auth.uid"
-            },
-            null
-          ]
-        },
-        "redirect-home",
-        null
-      ]
-    }
-  },
-  "allNewsletterInfo": {
-    "name": "all-newsletter-info",
-    "taskModule": "request",
-    "config": {
-        "optionsTemplates":{
-          "result" : "{ \"url\": {{{stringify (concat @root.secrets.vs_campaign_monitor.baseURL 'clients/' @root.secrets.vs_campaign_monitor.clientID '/lists.json') }}}, \"auth\": {{{stringify @root.secrets.vs_campaign_monitor.auth}}}, \"json\": true }"
-        }
+	"authNotRequired": {
+		"name": "auth",
+		"taskModule": "firebaseAuth",
+		"config": {
+			"tokenPath": "request.cookies.gi_token",
+			"cookieName": "gi_cookie",
+			"cookieOptions": {
+				"maxAge": 1209600000,
+				"secure": true,
+				"path": "/"
+			},
+			"appName": "volunteerscotland-search",
+			"notAuthenticatedRoute": ""
+		}
+	},
+	"authRequired": {
+		"name": "auth",
+		"taskModule": "firebaseAuth",
+		"config": {
+			"tokenPath": "request.cookies.gi_token",
+			"cookieName": "gi_cookie",
+			"cookieOptions": {
+				"maxAge": 1209600000,
+				"secure": true,
+				"path": "/"
+			},
+			"appName": "volunteerscotland-search",
+			"notAuthenticatedRoute": "sign_in"
+		}
+	},
+	"noAuthOnly": {
+		"name": "noAuthOnly",
+		"taskModule": "reroute",
+		"config": {
+			"if": [{
+					"!=": [{
+							"var": "data.auth.uid"
+						},
+						null
+					]
+				},
+				"redirect-home",
+				null
+			]
+		}
+	},
+	"allNewsletterInfo": {
+		"name": "all-newsletter-info",
+		"taskModule": "request",
+		"config": {
+			"optionsTemplates": {
+				"result": "{ \"url\": {{{stringify (concat @root.secrets.vs_campaign_monitor.baseURL 'clients/' @root.secrets.vs_campaign_monitor.clientID '/lists.json') }}}, \"auth\": {{{stringify @root.secrets.vs_campaign_monitor.auth}}}, \"json\": true }"
+			}
 
-    },
-    "renderer": "handlebars"
-  },
-  "getRawUserSubscriptions": {
-    "name": "subscriptions-raw",
-    "taskModule": "request",
-    "config": {
-      "optionsTemplates":{
-      "result" : "{ \"url\": {{{stringify (concat @root.secrets.vs_campaign_monitor.baseURL 'clients/' @root.secrets.vs_campaign_monitor.clientID '/listsforemail.json?email=' @root.data.auth.email) }}}, \"auth\": {{{stringify @root.secrets.vs_campaign_monitor.auth}}}, \"json\": true }"
-      }
-    },
-    "renderer": "handlebars"
-  },
-  "userNewsletterSubscriptions": {
-    "name": "user-newsletter-subscriptions",
-    "taskModule": "render",
-    "renderer" : "handlebars",
-    "config": {
-      "template" : "[{{#eachJoin (default @root.data.subscriptions-raw.result '[]' ) ','}}{{#compare SubscriberState '===' 'Active'}}\"{{{ListID}}}\"{{/compare}}{{/eachJoin}}]",
-      "output": "data",
-      "parseJson": true
-    },
-    "renderer": "handlebars"
-  },
-  "getSubscriptionPostBody" : {
-    "name": "add-subscription-body",
-    "taskModule": "render",
-    "renderer": "handlebars",
-    "config": {
-      "output" : "data",
-      "template": ">context.metaData.handlebars.templates.newsletter_subscription-post-body",
-      "parseJson": true
-    }
-  },
-  "termsMaps": {
-    "name": "termsMaps",
-    "taskModule": "render",
-    "renderer": "handlebars",
-    "config": {
-      "template": ">context.metaData.handlebars.partials.terms_maps",
-      "output": "data",
-      "parseJson": true
-    }
-  },
-  "storeProfile": {
-    "name": "store-profile",
-    "taskModule": "firebaseRtbSet",
-    "renderer": "handlebars",
-    "config": {
-      "appName": "volunteerscotland-search",
-      "pathTemplate": "/profile-info/{{default data.auth.uid 'no-such-write-profile'}}/profile",
-      "setOrUpdate": "set",
-      "dataTemplate": ">context.metaData.handlebars.queries.profile"
-    }
-  },
-  "updateProfile": {
-    "name": "update-profile",
-    "taskModule": "firebaseRtbSet",
-    "renderer": "handlebars",
-    "config": {
-      "appName": "volunteerscotland-search",
-      "pathTemplate": "/profile-info/{{default data.auth.uid 'no-such-write-profile'}}/profile",
-      "setOrUpdate": "update",
-      "dataTemplate": ">context.metaData.handlebars.queries.profile-update"
-    }
-  },
-  "opportunitySupplimentary": {
-    "name": "opportunitySupplimentary",
-    "taskModule": "elasticsearch",
-    "config": {
-      "connectionStringTemplate": "{$../../../elasticsearch-url.txt}",
-      "elasticsearchConfig": {
-        "apiVersion": "5.6"
-      },
-      "queryTemplates": [
-        {
-          "name": "not_found",
-          "index": "{$../../../elasticsearch-index.txt}",
-          "type": "milo-volunteering-opportunity",
-          "template": ">context.metaData.handlebars.queries.pages_not-found"
-        }
-      ]
-    },
-    "renderer": "handlebars"
-  },
-  "eventSupplimentary": {
-    "name": "eventSupplimentary",
-    "taskModule": "elasticsearch",
-    "config": {
-      "connectionStringTemplate": "{$../../../elasticsearch-url.txt}",
-      "elasticsearchConfig": {
-        "apiVersion": "5.6"
-      },
-      "queryTemplates": [
-        {
-          "name": "not_found",
-          "index": "{$../../../elasticsearch-index.txt}",
-          "type": "milo-volunteering-event",
-          "template": ">context.metaData.handlebars.queries.pages_not-found"
-        }
-      ]
-    },
-    "renderer": "handlebars"
-  },
-  "organisationSupplimentary": {
-    "name": "organisationSupplimentary",
-    "taskModule": "elasticsearch",
-    "config": {
-      "connectionStringTemplate": "{$../../../elasticsearch-url.txt}",
-      "elasticsearchConfig": {
-        "apiVersion": "5.6"
-      },
-      "queryTemplates": [
-        {
-          "name": "types",
-          "index": "{$../../../elasticsearch-index.txt}",
-          "type": "milo-volunteering-organisation",
-          "template": ">context.metaData.handlebars.queries.organisations_types"
-        },
-        {
-          "name": "not_found",
-          "index": "{$../../../elasticsearch-index.txt}",
-          "type": "milo-volunteering-organisation",
-          "template": ">context.metaData.handlebars.queries.pages_not-found"
-        }
-      ]
-    },
-    "renderer": "handlebars"
-  },
-  "organisationsWithOpportunities": {
-    "name": "organisationsWithOpportunities",
-    "taskModule": "elasticsearch",
-    "config": {
-      "connectionStringTemplate": "{$../../../elasticsearch-url.txt}",
-      "elasticsearchConfig": {
-        "apiVersion": "5.6"
-      },
-      "queryTemplates": [
-        {
-          "name": "opportunities",
-          "index": "{$../../../elasticsearch-index.txt}",
-          "type": "milo-volunteering-opportunity",
-          "template": ">context.metaData.handlebars.queries.opportunities_organisations"
-        }
-      ]
-    },
-    "renderer": "handlebars"
-  },
-  "searchesData": {
-    "name": "searches",
-    "taskModule": "mysql",
-    "config": {
-      "connectionName": "volunteerscotland_notifications",
-      "queryTemplates": {
-        "items": ">context.metaData.handlebars.queries.notifications_get-saved-searches"
-      }
-    },
-    "renderer": "handlebars"
-  },
-  "favouritesData": {
-    "name": "favourites",
-    "taskModule": "mysql",
-    "config": {
-      "connectionName": "volunteerscotland_notifications",
-      "queryTemplates": {
-        "items": ">context.metaData.handlebars.queries.notifications_get-favourites"
-      }
-    },
-    "renderer": "handlebars"
-  },
-  "registeredInterestData": {
-    "name": "registeredInterest",
-    "taskModule": "mysql",
-    "config": {
-      "connectionName": "volunteerscotland_notifications",
-      "queryTemplates": {
-        "items": ">context.metaData.handlebars.queries.notifications_get-registered-interest"
-      }
-    },
-    "renderer": "handlebars"
-  },
-  "profileInfoData": {
-    "name": "profileInfo",
-    "taskModule": "firebaseRtbGet",
-    "renderer": "handlebars",
-    "config": {
-      "appName": "volunteerscotland-search",
-      "pathTemplate": "/profile-info/{{default data.auth.uid 'no-such-profile'}}",
-      "defaultData": ""
-    }
-  }
+		},
+		"renderer": "handlebars"
+	},
+	"getRawUserSubscriptions": {
+		"name": "subscriptions-raw",
+		"taskModule": "request",
+		"config": {
+			"optionsTemplates": {
+				"result": "{ \"url\": {{{stringify (concat @root.secrets.vs_campaign_monitor.baseURL 'clients/' @root.secrets.vs_campaign_monitor.clientID '/listsforemail.json?email=' @root.data.auth.email) }}}, \"auth\": {{{stringify @root.secrets.vs_campaign_monitor.auth}}}, \"json\": true }"
+			}
+		},
+		"renderer": "handlebars"
+	},
+	"userNewsletterSubscriptions": {
+		"name": "user-newsletter-subscriptions",
+		"taskModule": "render",
+		"renderer": "handlebars",
+		"config": {
+			"template": "[{{#eachJoin (default @root.data.subscriptions-raw.result '[]' ) ','}}{{#compare SubscriberState '===' 'Active'}}\"{{{ListID}}}\"{{/compare}}{{/eachJoin}}]",
+			"output": "data",
+			"parseJson": true
+		}
+	},
+	"getSubscriptionPostBody": {
+		"name": "add-subscription-body",
+		"taskModule": "render",
+		"renderer": "handlebars",
+		"config": {
+			"output": "data",
+			"template": ">context.metaData.handlebars.templates.newsletter_subscription-post-body",
+			"parseJson": true
+		}
+	},
+	"termsMaps": {
+		"name": "termsMaps",
+		"taskModule": "render",
+		"renderer": "handlebars",
+		"config": {
+			"template": ">context.metaData.handlebars.partials.terms_maps",
+			"output": "data",
+			"parseJson": true
+		}
+	},
+	"storeProfile": {
+		"name": "store-profile",
+		"taskModule": "firebaseRtbSet",
+		"renderer": "handlebars",
+		"config": {
+			"appName": "volunteerscotland-search",
+			"pathTemplate": "/profile-info/{{default data.auth.uid 'no-such-write-profile'}}/profile",
+			"setOrUpdate": "set",
+			"dataTemplate": ">context.metaData.handlebars.queries.profile"
+		}
+	},
+	"updateProfile": {
+		"name": "update-profile",
+		"taskModule": "firebaseRtbSet",
+		"renderer": "handlebars",
+		"config": {
+			"appName": "volunteerscotland-search",
+			"pathTemplate": "/profile-info/{{default data.auth.uid 'no-such-write-profile'}}/profile",
+			"setOrUpdate": "update",
+			"dataTemplate": ">context.metaData.handlebars.queries.profile-update"
+		}
+	},
+	"opportunitySupplimentary": {
+		"name": "opportunitySupplimentary",
+		"taskModule": "elasticsearch",
+		"config": {
+			"connectionStringTemplate": "{$../../../elasticsearch-url.txt}",
+			"elasticsearchConfig": {
+				"apiVersion": "5.6"
+			},
+			"queryTemplates": [{
+				"name": "not_found",
+				"index": "{$../../../elasticsearch-index.txt}",
+				"type": "milo-volunteering-opportunity",
+				"template": ">context.metaData.handlebars.queries.pages_not-found"
+			}]
+		},
+		"renderer": "handlebars"
+	},
+	"eventSupplimentary": {
+		"name": "eventSupplimentary",
+		"taskModule": "elasticsearch",
+		"config": {
+			"connectionStringTemplate": "{$../../../elasticsearch-url.txt}",
+			"elasticsearchConfig": {
+				"apiVersion": "5.6"
+			},
+			"queryTemplates": [{
+				"name": "not_found",
+				"index": "{$../../../elasticsearch-index.txt}",
+				"type": "milo-volunteering-event",
+				"template": ">context.metaData.handlebars.queries.pages_not-found"
+			}]
+		},
+		"renderer": "handlebars"
+	},
+	"organisationSupplimentary": {
+		"name": "organisationSupplimentary",
+		"taskModule": "elasticsearch",
+		"config": {
+			"connectionStringTemplate": "{$../../../elasticsearch-url.txt}",
+			"elasticsearchConfig": {
+				"apiVersion": "5.6"
+			},
+			"queryTemplates": [{
+					"name": "types",
+					"index": "{$../../../elasticsearch-index.txt}",
+					"type": "milo-volunteering-organisation",
+					"template": ">context.metaData.handlebars.queries.organisations_types"
+				},
+				{
+					"name": "not_found",
+					"index": "{$../../../elasticsearch-index.txt}",
+					"type": "milo-volunteering-organisation",
+					"template": ">context.metaData.handlebars.queries.pages_not-found"
+				}
+			]
+		},
+		"renderer": "handlebars"
+	},
+	"organisationsWithOpportunities": {
+		"name": "organisationsWithOpportunities",
+		"taskModule": "elasticsearch",
+		"config": {
+			"connectionStringTemplate": "{$../../../elasticsearch-url.txt}",
+			"elasticsearchConfig": {
+				"apiVersion": "5.6"
+			},
+			"queryTemplates": [{
+				"name": "opportunities",
+				"index": "{$../../../elasticsearch-index.txt}",
+				"type": "milo-volunteering-opportunity",
+				"template": ">context.metaData.handlebars.queries.opportunities_organisations"
+			}]
+		},
+		"renderer": "handlebars"
+	},
+	"searchesData": {
+		"name": "searches",
+		"taskModule": "mysql",
+		"config": {
+			"connectionName": "volunteerscotland_notifications",
+			"queryTemplates": {
+				"items": ">context.metaData.handlebars.queries.notifications_get-saved-searches"
+			}
+		},
+		"renderer": "handlebars"
+	},
+	"favouritesData": {
+		"name": "favourites",
+		"taskModule": "mysql",
+		"config": {
+			"connectionName": "volunteerscotland_notifications",
+			"queryTemplates": {
+				"items": ">context.metaData.handlebars.queries.notifications_get-favourites"
+			}
+		},
+		"renderer": "handlebars"
+	},
+	"registeredInterestData": {
+		"name": "registeredInterest",
+		"taskModule": "mysql",
+		"config": {
+			"connectionName": "volunteerscotland_notifications",
+			"queryTemplates": {
+				"items": ">context.metaData.handlebars.queries.notifications_get-registered-interest"
+			}
+		},
+		"renderer": "handlebars"
+	},
+	"profileInfoData": {
+		"name": "profileInfo",
+		"taskModule": "firebaseRtbGet",
+		"renderer": "handlebars",
+		"config": {
+			"appName": "volunteerscotland-search",
+			"pathTemplate": "/profile-info/{{default data.auth.uid 'no-such-profile'}}",
+			"defaultData": ""
+		}
+	}
 }

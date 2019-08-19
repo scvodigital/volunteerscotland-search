@@ -1,39 +1,39 @@
 {
-  "domains": [
-    "search.volunteerscotland.net",
-    "volunteerscotland-search.local"
-  ],
-  "routes": [
-    "{:./routes/*.json}"
-  ],
-  "metaData": {
-    "assetsVersion": "{:../../../package.json@version}",
-    "assetsBase": "https://storage.googleapis.com/scvo-assets/test/volunteerscotland-search/",
-    "favouritesCampaignName": "vs-favourites",
-    "registeredInterestCampaignName": "vs-registered-interest",
-    "emailCampaignName": "vs-saved-searches",
-    "emailSendSettings": "{:./data/email-send-settings.json}",
-    "menus": "{:./data/menus.json}",
-    "accountInfoValidation": "{:./data/account-info-validation.json}",
-    "reCaptchaSiteKey": "6Ld7L5IUAAAAAGg1Luu1I9njFa2m-BALdtHja-cp",
-    "elasticsearchUrl": "{$../../elasticsearch-url.txt}",
-    "searchKnobs": "{:./data/search-knobs.json}",
-    "termTypeLabels": "{:./data/term-type-labels.json}",
-    "terms": "{:./data/terms.json}",
-    "handlebars": {
-      "partials": {
-        "{$./partials/**/*.*}": "includeRelativePath=false&regexExpression=(-)&regexOptions=gi&regexReplace=_"
-      },
-      "templates": {
-        "{$./templates/**/*.*}": ""
-      },
-      "layouts": {
-        "{$./layouts/**/*.*}": ""
-      },
-      "queries": {
-        "{$./queries/**/*.*}": ""
-      }
-    },
-    "commonTasks": "{:./data/common-tasks.json}"
-  }
+	"domains": [
+		"search.volunteerscotland.net",
+		"volunteerscotland-search.local"
+	],
+	"routes": [
+		"{:./routes/*.json}"
+	],
+	"metaData": {
+		"assetsVersion": "{:../../../package.json@version}",
+		"assetsBase": "https://storage.googleapis.com/scvo-assets/test/volunteerscotland-search/",
+		"favouritesCampaignName": "vs-favourites",
+		"registeredInterestCampaignName": "vs-registered-interest",
+		"emailCampaignName": "vs-saved-searches",
+		"emailSendSettings": "{:./data/email-send-settings.json}",
+		"menus": "{:./data/menus.json}",
+		"accountInfoValidation": "{:./data/account-info-validation.json}",
+		"reCaptchaSiteKey": "6Ld7L5IUAAAAAGg1Luu1I9njFa2m-BALdtHja-cp",
+		"elasticsearchUrl": "{$../../elasticsearch-url.txt}",
+		"searchKnobs": "{:./data/search-knobs.json}",
+		"termTypeLabels": "{:./data/term-type-labels.json}",
+		"terms": "{:./data/terms.json}",
+		"handlebars": {
+			"partials": {
+				"{$./partials/**/*.*}": "includeRelativePath=false&regexExpression=(-)&regexOptions=gi&regexReplace=_"
+			},
+			"templates": {
+				"{$./templates/**/*.*}": ""
+			},
+			"layouts": {
+				"{$./layouts/**/*.*}": ""
+			},
+			"queries": {
+				"{$./queries/**/*.*}": ""
+			}
+		},
+		"commonTasks": "{:./data/common-tasks.json}"
+	}
 }

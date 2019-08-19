@@ -18,7 +18,7 @@
     <hr class="mdc-list-divider" />
     <div class="panels" for="event-tab-bar">
       <div class="panel panel--active mdc-card--full-content" role="tabpanel" aria-hidden="false" data-tab-name="information">
-        {{#ifAny activities.length themes.length end_date (compare start_date ">" (moment)) ~}}
+        {{#ifAny activities.length themes.length ~}}
         <div class="key-info-extra">
           <ul class="fa-ul">
             {{#compare (length activities) ">" 0 ~}}
@@ -37,23 +37,6 @@
               {{/each ~}}
             </li>
             {{/compare ~}}
-            {{#ifAll start_date end_date ~}}
-            <li class="mdc-card__info--content-primary-from mdc-typography--body1">
-              <span class="fa-li"><span class="far fa-calendar-plus fa-fw" title="Start date"></span></span>
-              Event start date: {{momentFormat (moment start_date "x") "Do MMMM YYYY"}}
-            </li>
-            <li class="mdc-card__info--content-primary-from mdc-typography--body1">
-              <span class="fa-li"><span class="far fa-calendar-times fa-fw" title="End date"></span></span>
-              Event end date: {{momentFormat (moment end_date "x") "Do MMMM YYYY"}}
-            </li>
-            {{else}}
-            {{#compare start_date ">" (moment) ~}}
-            <li class="mdc-card__info--content-primary-from mdc-typography--body1">
-              <span class="fa-li"><span class="far fa-calendar-plus fa-fw" title="Start date"></span></span>
-              Event start date: {{momentFormat (moment start_date "x") "Do MMMM YYYY"}}
-            </li>
-            {{/compare ~}}
-            {{/ifAll ~}}
           </ul>
         </div>
         {{/ifAny ~}}
