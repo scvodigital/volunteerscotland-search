@@ -1,0 +1,30 @@
+{
+  "age_groups": {
+    "singular": "For volunteers aged",
+    "plural": "For volunteers aged"
+  },
+  "availability": {
+    "singular": "Availability",
+    "plural": "Availability"
+  },
+  "services": {
+    "singular": "Services",
+    "plural": "Services"
+  },
+  "types": {
+    "singular": "Type",
+    "plural": "Types"
+  },
+  "activities": {
+    "singular": "Activity",
+    "plural": "Activities"
+  },
+  "organisation_activities": {
+    "singular": "Activity",
+    "plural": "Activities"
+  },
+  "themes": {
+    "singular": "Theme",
+    "plural": "Themes"
+  }
+}

@@ -296,9 +296,9 @@
                         {{{json key="lng" value=lon}}}
                       {{/json}},
                       {{#json key="popupContent" type="string"~}}
-                        <h4>{{{../organisation_name}}}</h4>
+                        <h4>{{../organisation_name}}</h4>
                         <p>Postcode: {{itemAt (arrayify (split ../postcode ",")) @index}}</p>
-                        <p>{{{../title}}}</p>
+                        <p>{{../title}}</p>
                       {{~/json}},
                       {{#json key="options"}}
                         {{{json key="title" value=(replace ../title "'" "&apos;")}}}

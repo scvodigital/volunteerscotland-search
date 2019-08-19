@@ -12,58 +12,14 @@
     "favouritesCampaignName": "vs-favourites",
     "registeredInterestCampaignName": "vs-registered-interest",
     "emailCampaignName": "vs-saved-searches",
-    "emailSendSettings": "{:./email-send-settings.json}",
-    "menus": "{:./volunteerscotland-search-menus.json}",
-    "accountInfoValidation": "{:./account-info-validation.json}",
+    "emailSendSettings": "{:./data/email-send-settings.json}",
+    "menus": "{:./data/menus.json}",
+    "accountInfoValidation": "{:./data/account-info-validation.json}",
     "reCaptchaSiteKey": "6Ld7L5IUAAAAAGg1Luu1I9njFa2m-BALdtHja-cp",
     "elasticsearchUrl": "{$../../elasticsearch-url.txt}",
-    "searchKnobs": {
-      "dateLastModified": {
-        "function": "gauss",
-        "scale": "10d",
-        "decay": 0.95,
-        "offset": "60d"
-      },
-      "distance": {
-        "function": "gauss",
-        "scale": "1km",
-        "offset": "1km",
-        "decay": 0.999
-      },
-      "geoCoordBoost": 25,
-      "textBagBoost": 5
-    },
-    "termTypeLabels": {
-      "age_groups": {
-        "singular": "For volunteers aged",
-        "plural": "For volunteers aged"
-      },
-      "availability": {
-        "singular": "Availability",
-        "plural": "Availability"
-      },
-      "services": {
-        "singular": "Services",
-        "plural": "Services"
-      },
-      "types": {
-        "singular": "Type",
-        "plural": "Types"
-      },
-      "activities": {
-        "singular": "Activity",
-        "plural": "Activities"
-      },
-      "organisation_activities": {
-        "singular": "Activity",
-        "plural": "Activities"
-      },
-      "themes": {
-        "singular": "Theme",
-        "plural": "Themes"
-      }
-    },
-    "terms": "{:./terms.json}",
+    "searchKnobs": "{:./data/search-knobs.json}",
+    "termTypeLabels": "{:./data/term-type-labels.json}",
+    "terms": "{:./data/terms.json}",
     "handlebars": {
       "partials": {
         "{$./partials/**/*.*}": "includeRelativePath=false&regexExpression=(-)&regexOptions=gi&regexReplace=_"
@@ -78,6 +34,6 @@
         "{$./queries/**/*.*}": ""
       }
     },
-    "commonTasks": "{:./common-tasks.json}"
+    "commonTasks": "{:./data/common-tasks.json}"
   }
 }
