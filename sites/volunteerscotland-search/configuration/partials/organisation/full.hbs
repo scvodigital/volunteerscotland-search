@@ -2,7 +2,7 @@
   {{#compare view 'widget' ~}}
   <div class="">
     {{#ifAny @root.request.params.query.page @root.request.params.query.keywords @root.request.params.query.location @root.request.params.query.organisation_activities ~}}
-    <a href="#/organisations-all/search?{{{substr @root.request.url.search 1}}}" class="pull-left mdl-button b-margin-full">
+    <a href="#/organisations-all/search{{> query_search}}" class="pull-left mdl-button b-margin-full">
       <span class="material-icons icon-left" aria-hidden="true">arrow_back_ios</span>
       Back to results
     </a>

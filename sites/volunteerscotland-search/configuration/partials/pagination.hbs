@@ -3,13 +3,13 @@
     <ul class="pagination inline-list">
       {{#if firstLastNavigation ~}}
         <li class="{{#if paging.prevPage}}{{else}}disabled{{/if}}">
-          <a class="pagination-arrow" href="{{#compare type 'widget'}}#{{/compare}}{{@root.request.params.uri.pathname}}?{{{querystringify @root.request.params.query page=1 json=false}}}">
+          <a class="pagination-arrow" href="{{#compare type 'widget'}}#{{/compare}}{{@root.request.params.uri.pathname}}?{{{querystringify @root.request.params.query utm_source=null utm_campaign=null utm_medium=null page=1 json=false}}}">
             <i class="far fa-fw fa-chevron-double-left"></i>
           </a>
         </li>
       {{/if ~}}
       <li class="{{#if paging.prevPage}}{{else}}disabled{{/if}}">
-        <a class="pagination-arrow" href="{{#compare type 'widget'}}#{{/compare}}{{@root.request.params.uri.pathname}}?{{{querystringify @root.request.params.query page=paging.prevPage json=false}}}">
+        <a class="pagination-arrow" href="{{#compare type 'widget'}}#{{/compare}}{{@root.request.params.uri.pathname}}?{{{querystringify @root.request.params.query utm_source=null utm_campaign=null utm_medium=null page=paging.prevPage json=false}}}">
           {{#compare type 'widget' ~}}
           <span class="material-icons" aria-hidden="true">chevron_left</span>
           {{else}}
@@ -19,13 +19,13 @@
       </li>
       {{#each paging.pageRange ~}}
         <li class="{{#compare ../paging.currentPage "===" this.pageNumber}}current-page {{/compare}}pagination-distance-{{this.distance}}">
-          <a class="pagination-page" href="{{#compare ../type 'widget'}}#{{/compare}}{{@root.request.params.uri.pathname}}?{{{querystringify @root.request.params.query page=this.pageNumber json=false}}}">
+          <a class="pagination-page" href="{{#compare ../type 'widget'}}#{{/compare}}{{@root.request.params.uri.pathname}}?{{{querystringify @root.request.params.query utm_source=null utm_campaign=null utm_medium=null page=this.pageNumber json=false}}}">
             {{this.pageNumber}}
           </a>
         </li>
       {{/each ~}}
       <li class="{{#if paging.nextPage}}{{else}}disabled{{/if}}">
-        <a class="pagination-arrow" href="{{#compare type 'widget'}}#{{/compare}}{{@root.request.params.uri.pathname}}?{{{querystringify @root.request.params.query page=paging.nextPage json=false}}}">
+        <a class="pagination-arrow" href="{{#compare type 'widget'}}#{{/compare}}{{@root.request.params.uri.pathname}}?{{{querystringify @root.request.params.query utm_source=null utm_campaign=null utm_medium=null page=paging.nextPage json=false}}}">
           {{#compare type 'widget' ~}}
           <span class="material-icons" aria-hidden="true">chevron_right</span>
           {{else}}
@@ -35,7 +35,7 @@
       </li>
       {{#if firstLastNavigation ~}}
         <li class="{{#if paging.nextPage}}{{else}}disabled{{/if}}">
-          <a class="pagination-arrow" href="{{#compare type 'widget'}}#{{/compare}}{{@root.request.params.uri.pathname}}?{{{querystringify @root.request.params.query page=paging.totalPages json=false}}}">
+          <a class="pagination-arrow" href="{{#compare type 'widget'}}#{{/compare}}{{@root.request.params.uri.pathname}}?{{{querystringify @root.request.params.query utm_source=null utm_campaign=null utm_medium=null page=paging.totalPages json=false}}}">
             <i class="far fa-fw fa-chevron-double-right"></i>
           </a>
         </li>

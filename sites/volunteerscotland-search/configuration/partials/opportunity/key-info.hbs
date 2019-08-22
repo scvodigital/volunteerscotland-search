@@ -36,12 +36,12 @@
     {{/ifAll ~}}
     {{/ifAny ~}}
     {{#compare @root.route.name "===" "opportunity" ~}}
-    {{#if @root.request.url.search ~}}
+    {{#unless (compare (querystringify @root.request.params.query utm_source=null utm_campaign=null utm_medium=null) "") ~}}
     {{#compare type "full" ~}}
     <div class="b-margin">
       {{#compare view 'widget' ~}}
       {{#ifAny @root.request.params.query.page @root.request.params.query.keywords @root.request.params.query.location @root.request.params.query.activities @root.request.params.query.themes @root.request.params.query.organisation_activities @root.request.params.query.has_opportunities @root.request.params.query.volunteersearch_types @root.request.params.query.age_groups @root.request.params.query.services ~}}
-      <a href="#/search?{{{substr @root.request.url.search 1}}}" class="pull-left mdl-button mdl-button--raised b-margin-full">
+      <a href="#/search{{> query_search}}" class="pull-left mdl-button mdl-button--raised b-margin-full">
         <span class="material-icons icon-left" aria-hidden="true">arrow_back_ios</span>
         Back to results
       </a>
@@ -53,15 +53,15 @@
       <div style="clear:both;" />
       {{else}}
       {{#ifAny @root.request.params.query.page @root.request.params.query.keywords @root.request.params.query.location @root.request.params.query.activities @root.request.params.query.themes @root.request.params.query.organisation_activities @root.request.params.query.has_opportunities @root.request.params.query.volunteersearch_types @root.request.params.query.age_groups @root.request.params.query.services ~}}
-      <a href="/search{{@root.request.url.search}}" class="back-to-results"><span class="far fa-chevron-circle-left" aria-hidden="true"></span> <span class="underline">Back to search results</span></a>
+      <a href="/search{{> query_search}}" class="back-to-results"><span class="far fa-chevron-circle-left" aria-hidden="true"></span> <span class="underline">Back to search results</span></a>
       {{/ifAny ~}}
       {{/compare ~}}
     </div>
     {{/compare ~}}
-    {{/if ~}}
+    {{/unless ~}}
     {{#if goodhq_organisation.image_url ~}}
     <div class="mdc-card__media mdc-card__media--content-secondary pull-right">
-      <a href="/organisation/{{organisation_id}}/{{organisation_name_slug}}{{@root.request.url.search}}">
+      <a href="/organisation/{{organisation_id}}/{{organisation_name_slug}}{{> query_search}}">
         <img src="{{goodhq_organisation.image_url}}" alt="{{organisation_name}}" />
       </a>
     </div>
@@ -73,12 +73,12 @@
       {{else}}
       {{#compare view 'widget' ~}}
       {{#compare type 'list'}}
-      <a href="https://search.volunteerscotland.net/opportunity/{{Id}}/{{title_slug}}?{{{substr (replace @root.request.url.search '&view=widget' '') 1}}}">{{{title}}}</a>
+      <a href="https://search.volunteerscotland.net/opportunity/{{Id}}/{{title_slug}}?{{{querystringify @root.request.params.query utm_source=null utm_campaign=null utm_medium=null view=null}}}">{{{title}}}</a>
       {{else}}
-      <a href="#/opportunity/{{Id}}/{{title_slug}}?{{{substr @root.request.url.search 1}}}">{{{title}}}</a>
+      <a href="#/opportunity/{{Id}}/{{title_slug}}{{> query_search}}">{{{title}}}</a>
       {{/compare}}
       {{else}}
-      <a href="/opportunity/{{Id}}/{{title_slug}}{{@root.request.url.search}}">
+      <a href="/opportunity/{{Id}}/{{title_slug}}{{> query_search}}">
         <span class="hover-underline">{{{title}}}</span>
       </a>
       {{/compare}}
@@ -94,7 +94,7 @@
     <ul class="fa-ul organisation">
       <li class="mdc-card__info--content-primary-organisation mdc-typography--body1">
         <span class="fa-li"><span class="far fa-home-heart" title="Organisation"></span></span>
-        <a href="/organisation/{{organisation_id}}/{{organisation_name_slug}}{{@root.request.url.search}}">{{{organisation_name}}}</a>
+        <a href="/organisation/{{organisation_id}}/{{organisation_name_slug}}{{> query_search}}">{{{organisation_name}}}</a>
       </li>
     </ul>
     {{/ifAll ~}}
