@@ -7,11 +7,11 @@
       {{#compare @root.data.search_data.detailed_results.hits.total ">" 0}}
         <div class="mdl-tabs mdl-njs-tabs mdl-js-ripple-effect">
           <div class="mdl-tabs__tab-bar">
-            <a href="#/organisations/search?{{{substr @root.request.url.search 1}}}" class="mdl-tabs__tab is-active">
+            <a href="#/organisations/search{{> query_search}}" class="mdl-tabs__tab is-active">
               <span class="material-icons icon-left" aria-hidden="true">list</span>
               List
             </a>
-            <a href="#/organisations/map?{{{substr @root.request.url.search 1}}}" class="mdl-tabs__tab">
+            <a href="#/organisations/map{{> query_search}}" class="mdl-tabs__tab">
               <span class="material-icons icon-left" aria-hidden="true">place</span>
               Map
             </a>

@@ -1,6 +1,6 @@
 <div class="map-content" data-opportunity-id="{{Id}}" data-opportunity-layout="Map" data-opportunity-context="{{default viewContext "Map"}}">
   <h3 class="mdc-typography--headline7 map-info post-title">
-    <a href="/opportunity/{{Id}}/{{title_slug}}{{@root.request.url.search}}">{{title}}</a>
+    <a href="/opportunity/{{Id}}/{{title_slug}}{{> query_search}}">{{title}}</a>
   </h3>
   {{#if organisation_name ~}}
   <div class="mdc-typography--body1 v-margin post-info-item">
@@ -20,6 +20,6 @@
     {{/if ~}}
   </div>
   <div class="mdc-typography--body2">
-    <a href="/opportunity/{{Id}}/{{title_slug}}{{@root.request.url.search}}" class="mdc-card__action">Find out more</a>
+    <a href="/opportunity/{{Id}}/{{title_slug}}{{> query_search}}" class="mdc-card__action">Find out more</a>
   </div>
 </div>

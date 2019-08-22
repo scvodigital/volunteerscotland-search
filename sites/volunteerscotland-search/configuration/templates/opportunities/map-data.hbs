@@ -19,7 +19,7 @@
   {
     "title": "{{_source.title}}",
     "subtitle": "{{_source.organisation_name}}",
-    "URL": "/opportunity/{{_source.Id}}/{{_source.title_slug}}{{@root.request.url.search}}",
+    "URL": "/opportunity/{{_source.Id}}/{{_source.title_slug}}{{> query_search}}",
     "geo_coords": {
       "lat": {{_source.geo_coords.lat}},
       "lon": {{_source.geo_coords.lon}}

@@ -7,11 +7,11 @@
       {{#compare @root.data.search_data.map_results.hits.total ">" 0}}
       <div class="mdl-tabs mdl-njs-tabs mdl-js-ripple-effect">
         <div class="mdl-tabs__tab-bar">
-          <a href="#/search?{{{substr @root.request.url.search 1}}}" class="mdl-tabs__tab">
+          <a href="#/search{{> query_search}}" class="mdl-tabs__tab">
             <span class="material-icons icon-left" aria-hidden="true">list</span>
             List
           </a>
-          <a href="#/map?{{{substr @root.request.url.search 1}}}" class="mdl-tabs__tab is-active">
+          <a href="#/map{{> query_search}}" class="mdl-tabs__tab is-active">
             <span class="material-icons icon-left" aria-hidden="true">place</span>
             Map
           </a>
@@ -20,7 +20,7 @@
 
       {{#compare (subtract @root.data.search_data.map_results.hits.total @root.data.search_data.map_results.aggregations.geo_search.buckets.[0].doc_count) ">" 0 ~}}
       <div class="mdc-typography--body2 v-margin-full">
-        <a href="#/search{{@root.request.url.search}}&exclude=locations">List {{subtract @root.data.search_data.map_results.hits.total @root.data.search_data.map_results.aggregations.geo_search.buckets.[0].doc_count}} {{#compare @root.data.location_data.locations_results.hits.total ">" 0}}other{{/compare}} volunteering {{inflect (subtract @root.data.search_data.map_results.hits.total @root.data.search_data.map_results.aggregations.geo_search.buckets.[0].doc_count) "opportunity" "opportunities"}}</a>
+        <a href="#/search{{> query_search}}&exclude=locations">List {{subtract @root.data.search_data.map_results.hits.total @root.data.search_data.map_results.aggregations.geo_search.buckets.[0].doc_count}} {{#compare @root.data.location_data.locations_results.hits.total ">" 0}}other{{/compare}} volunteering {{inflect (subtract @root.data.search_data.map_results.hits.total @root.data.search_data.map_results.aggregations.geo_search.buckets.[0].doc_count) "opportunity" "opportunities"}}</a>
         {{#compare @root.data.search_data.map_results.aggregations.all_advertised_areas.buckets.length ">" 0 ~}}
         available
         {{#compare @root.data.search_data.areas_results.hits.total ">" 0 ~}}
@@ -106,7 +106,7 @@
       {{/compare}}
 
       {{!-- <div class="post-info-extra v-margin-full">
-        <a href="#/search?{{{substr @root.request.url.search 1}}}&exclude=locations&view=widget">List {{subtract @root.data.search_data.map_results.hits.total @root.data.search_data.map_results.aggregations.geo_search.buckets.[0].doc_count}} {{#compare @root.data.location_data.locations_results.hits.total ">" 0}}other{{/compare}} volunteering {{inflect (subtract @root.data.search_data.map_results.hits.total @root.data.search_data.map_results.aggregations.geo_search.buckets.[0].doc_count) "opportunity" "opportunities"}}</a>
+        <a href="#/search{{> query_search}}&exclude=locations&view=widget">List {{subtract @root.data.search_data.map_results.hits.total @root.data.search_data.map_results.aggregations.geo_search.buckets.[0].doc_count}} {{#compare @root.data.location_data.locations_results.hits.total ">" 0}}other{{/compare}} volunteering {{inflect (subtract @root.data.search_data.map_results.hits.total @root.data.search_data.map_results.aggregations.geo_search.buckets.[0].doc_count) "opportunity" "opportunities"}}</a>
         {{#compare @root.data.search_data.map_results.aggregations.all_advertised_areas.buckets.length ">" 0 ~}}
         available
         {{#compare @root.data.search_data.areas_results.hits.total ">" 0 ~}}

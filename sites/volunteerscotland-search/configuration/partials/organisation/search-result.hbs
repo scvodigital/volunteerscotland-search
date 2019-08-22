@@ -4,14 +4,14 @@
       {{#unless (compare view 'widget') ~}}
       {{#if goodhq_organisation.image_url ~}}
       <div class="mdc-card__media mdc-card__media--content-secondary">
-        <a href="{{#compare view 'widget' ~}}#/organisation-all{{else}}/organisation{{/compare}}/{{Id}}/{{title_slug}}{{@root.request.url.search}}">
+        <a href="{{#compare view 'widget' ~}}#/organisation-all{{else}}/organisation{{/compare}}/{{Id}}/{{title_slug}}{{> query_search}}">
           <img src="{{goodhq_organisation.image_url}}" alt="{{title}}" />
         </a>
       </div>
       {{/if ~}}
       {{/unless ~}}
       <h3 class="mdc-card__info--content-secondary-title mdc-typography--headline7">
-        <a href="{{#compare view 'widget' ~}}#/organisation-all{{else}}/organisation{{/compare}}/{{Id}}/{{title_slug}}{{@root.request.url.search}}">{{title}}</a>
+        <a href="{{#compare view 'widget' ~}}#/organisation-all{{else}}/organisation{{/compare}}/{{Id}}/{{title_slug}}{{> query_search}}">{{title}}</a>
       </h3>
       <div class="search-result-article__snippet mdc-typography--body1">
         {{{truncate (default og_summary description) 280}}}
