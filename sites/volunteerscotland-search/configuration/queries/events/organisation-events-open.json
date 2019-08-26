@@ -18,7 +18,6 @@
     "organisation_name_slug",
     "title",
     "travel_expenses",
-    "work_location",
     "activities",
     "activities_slugs",
     "opportunity_contact_email"

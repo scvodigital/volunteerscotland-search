@@ -104,32 +104,6 @@
       {{/if ~}}
     </ul>
     {{/ifAny ~}}
-    <!-- <ul class="fa-ul last">
-      {{#compare work_location "===" "At Home" ~}}
-        {{#unless (contains volunteersearch_type "Home-based volunteering") ~}}
-        <li class="mdc-card__info--content-primary-location mdc-typography--body1">
-          <span class="fa-li"><span class="far fa-map-marker-alt fa-fw" title="Location"></span></span>
-          Work from home
-        </li>
-        {{/unless ~}}
-      {{else}}
-        {{#compare (length geo) ">" 1 ~}}
-          <li class="mdc-card__info--content-primary-location mdc-typography--body1">
-            <span class="fa-li"><span class="far fa-map-marker-alt fa-fw" title="Location"></span></span>
-            {{#each geo ~}}
-              {{{this.admin_ward}}}{{#unless @last}}, {{/unless}}
-            {{/each ~}}
-          </li>
-        {{else}}
-          {{#if geo ~}}
-            <li class="mdc-card__info--content-primary-location mdc-typography--body1">
-              <span class="fa-li"><span class="far fa-map-marker-alt fa-fw" title="Location"></span></span>
-              {{{geo.admin_ward}}}
-            </li>
-          {{/if ~}}
-        {{/compare ~}}
-      {{/compare ~}}
-    </ul> -->
   </div>
   {{#if (contains (map @root.data.registeredInterest.items.[0] (getProp "value")) Id) ~}}
   {{#ifAny event_contact_first_name event_contact_last_name organisation_website ~}}
