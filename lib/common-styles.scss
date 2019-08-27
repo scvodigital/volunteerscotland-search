@@ -3128,6 +3128,14 @@ form.inline-form {
   opacity: 0.5;
   filter: grayscale(100%);
 }
+.mdc-button--raised:disabled {
+  .fal,
+  .far,
+  .fas,
+  .mdc-list-item__graphic {
+    color: rgba(0, 0, 0, 0.37);
+  }
+}
 
 .advanced-checkbox-list {
   .checkbox-list-parent {

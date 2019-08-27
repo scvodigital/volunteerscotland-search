@@ -9,7 +9,7 @@
         {{#compare @root.route.name "===" "notes" ~}}
           {{{markdown (getProperty @root.data.profileInfo.notes Id)}}}
         {{else}}
-          <div style="max-height: {{limit}};" class="faded-overflow">
+          <div style="height: {{limit}};" class="faded-overflow">
           {{{markdown (truncate (getProperty @root.data.profileInfo.notes Id) limit)}}}
           </div>
           <a href="/opportunity/{{Id}}/{{title_slug}}{{> query_search}}#notes">Read more</a>
