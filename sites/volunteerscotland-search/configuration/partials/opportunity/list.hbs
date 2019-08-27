@@ -3,7 +3,7 @@
   {{#unless (compare view 'widget') ~}}
   <hr class="mdc-list-divider" />
   {{/unless ~}}
-  {{> opportunity_description limit="10.5rem" description=description}}
+  {{> opportunity_description description=description}}
   {{#unless (compare view 'widget') ~}}
   {{> opportunity_actions slug=slug Id=Id}}
   {{/unless ~}}

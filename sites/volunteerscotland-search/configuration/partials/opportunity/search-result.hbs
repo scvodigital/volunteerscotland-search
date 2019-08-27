@@ -7,7 +7,7 @@
   {{/unless ~}}
   {{#compare (trim (getProperty @root.data.profileInfo.notes Id)) "!==" "" ~}}
     {{> opportunity_description limit="3rem" description=description}}
-    {{> opportunity_notes limit="3rem"}}
+    {{> opportunity_notes limit="5rem"}}
   {{else}}
     {{> opportunity_description limit="6rem" description=description}}
   {{/compare ~}}
