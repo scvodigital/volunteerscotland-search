@@ -10,7 +10,7 @@
   {{#compare @root.data.opportunitySupplimentary.related.hits.total ">" 0 ~}}
   <div class="content-related">
     <div class="mdc-typography--headline5 v-margin-full">
-      Similar opportunities
+      Similar {{inflect @root.data.opportunitySupplimentary.related.hits.total "opportunity" "opportunities"}}
     </div>
     <div class="mdc-layout-grid equal-height">
       <div class="mdc-layout-grid__inner">

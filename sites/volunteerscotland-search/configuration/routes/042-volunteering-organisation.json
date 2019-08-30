@@ -46,6 +46,12 @@
         },
         "queryTemplates": [
           {
+            "name": "events_upcoming",
+            "index": "{$../../../elasticsearch-index.txt}",
+            "type": "milo-volunteering-event",
+            "template": ">context.metaData.handlebars.queries.opportunities_organisation-events-upcoming"
+          },
+          {
             "name": "opportunities_open",
             "index": "{$../../../elasticsearch-index.txt}",
             "type": "milo-volunteering-opportunity",

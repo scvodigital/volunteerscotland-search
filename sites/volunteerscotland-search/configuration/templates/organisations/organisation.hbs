@@ -5,10 +5,20 @@
 
   {{> organisation_full organisation}}
 
+  {{!-- {{#compare @root.data.organisationOpportunities.events_upcoming.hits.total ">" 0 ~}}
+  <hr />
+  <div class="mdc-typography--headline5">
+    Upcoming events
+  </div>
+  {{#each @root.data.organisationOpportunities.events_upcoming.hits.hits ~}}
+  {{> event_list _source}}
+  {{/each ~}}
+  {{/compare ~}} --}}
+
   {{#compare @root.data.organisationOpportunities.opportunities_open.hits.total ">" 0 ~}}
   <hr />
   <div class="mdc-typography--headline5">
-    Current opportunities
+    Current {{inflect @root.data.organisationOpportunities.opportunities_open.hits.total "opportunity" "opportunities"}}
   </div>
   {{#each @root.data.organisationOpportunities.opportunities_open.hits.hits ~}}
   {{> opportunity_list _source}}
@@ -20,7 +30,7 @@
   <hr />
   {{/compare ~}}
   <div class="mdc-typography--headline5">
-    Closed opportunities
+    Closed {{inflect @root.data.organisationOpportunities.opportunities_closed.hits.total "opportunity" "opportunities"}}
   </div>
   {{#each @root.data.organisationOpportunities.opportunities_closed.hits.hits ~}}
   {{> opportunity_list _source}}
