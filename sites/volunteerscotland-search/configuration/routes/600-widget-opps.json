@@ -1,9 +1,10 @@
 {
   "name": "widget_oportunities",
   "pattern": "/widget/opportunities",
-  "debug": true,
+  "debug": false,
   "acceptedVerbs": "GET",
   "tasks": [
+    "context.metaData.commonTasks.widgetAnalytics",
     {
       "name": "destination",
       "taskModule": "render",

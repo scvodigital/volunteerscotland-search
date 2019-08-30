@@ -2,6 +2,7 @@
   "name": "volunteering_opportunity_map",
   "debug": false,
   "pattern": "/map",
+  "acceptedVerbs": "GET",
   "metaData": {
     "title": "Volunteer Scotland Search",
     "sidebarButton": {
@@ -73,6 +74,7 @@
     },
     "context.metaData.commonTasks.opportunitySupplimentary",
     "context.metaData.commonTasks.termsMaps",
+    "context.metaData.commonTasks.widgetAnalytics",
     {
       "name": "destination",
       "taskModule": "renderLayout",

@@ -235,5 +235,22 @@
 			"pathTemplate": "/profile-info/{{default data.auth.uid 'no-such-profile'}}",
 			"defaultData": ""
 		}
+	},
+	"widgetAnalytics": {
+		"name": "ga",
+		"taskModule": "gaSet",
+		"renderer": "handlebars",
+		"config": {
+			"options": {
+				"tid": "UA-123427666-2",
+				"strictCidFormat": false
+			},
+			"actions": [
+				{
+					"action": "pageview",
+					"template": ">context.metaData.handlebars.queries.analytics_widget-page-view"
+				}
+			]
+		}
 	}
 }

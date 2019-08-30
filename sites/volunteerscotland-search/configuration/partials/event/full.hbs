@@ -18,7 +18,7 @@
     <hr class="mdc-list-divider" />
     <div class="panels" for="event-tab-bar">
       <div class="panel panel--active mdc-card--full-content" role="tabpanel" aria-hidden="false" data-tab-name="information">
-        {{#ifAny activities.length themes.length ~}}
+        {{!-- {{#ifAny activities.length themes.length ~}}
         <div class="key-info-extra">
           <ul class="fa-ul">
             {{#compare (length activities) ">" 0 ~}}
@@ -39,7 +39,7 @@
             {{/compare ~}}
           </ul>
         </div>
-        {{/ifAny ~}}
+        {{/ifAny ~}} --}}
 
         <div class="detailed-info">
           {{#ifAny description description_html ~}}

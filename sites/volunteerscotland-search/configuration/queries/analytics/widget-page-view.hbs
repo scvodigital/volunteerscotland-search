@@ -1,0 +1,7 @@
+{{#if (contains @root.request.url.path "widget")}}
+  {{#json}}
+    {{{json key="dp" value=@root.request.url.path}}},
+    {{{json key="dt" value=@root.route.name}}},
+    {{{json key="dh" value=(getProperty (parseUrl (default @root.request.headers.referer "search.volunteerscotland.net")) "hostname")}}}
+  {{/json}}
+{{/if}}

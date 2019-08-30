@@ -1,11 +1,12 @@
 {
   "name": "widget_organisations",
   "pattern": "/widget/organisations-all",
-  "debug": true,
+  "debug": false,
   "acceptedVerbs": "GET",
   "tasks": [
     "context.metaData.commonTasks.organisationsWithOpportunities",
     "context.metaData.commonTasks.organisationSupplimentary",
+    "context.metaData.commonTasks.widgetAnalytics",
     {
       "name": "destination",
       "taskModule": "render",
