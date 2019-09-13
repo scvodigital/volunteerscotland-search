@@ -1,6 +1,6 @@
 {
   "name": "volunteering_opportunity",
-  "debug": false,
+  "debug": true,
   "acceptedVerbs": "GET",
   "pattern": {
     "slug": "/opportunity/:id(/:junk)",
