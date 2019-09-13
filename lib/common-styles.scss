@@ -1986,15 +1986,19 @@ body.shortlist {
 }
 .mdc-tab--active,
 .mdc-menu .mdc-list-item.mdc-list-item--activated,
+.mdc-drawer .mdc-list-item--activated,
 .mdc-list-item--activated {
   font-weight: $heading-medium-font-weight !important;
+  color: $mdc-theme-primary;
   .mdc-tab__icon.fal,
   .mdc-list-item__graphic.fal {
     font-weight: 400;
+    color: $mdc-theme-primary;
   }
   .mdc-tab__icon.far,
   .mdc-list-item__graphic.far {
     font-weight: 900;
+    color: $mdc-theme-primary;
   }
 }
 
@@ -3092,11 +3096,11 @@ form.inline-form {
 .faded-overflow {
   overflow: hidden;
   position: relative;
-  min-height: 2rem;
+  // min-height: 2rem;
   &:before {
     display: block;
-    margin-top: -$unit*1.5;
-    height: $unit*1.5;
+    margin-top: -$unit*2.5;
+    height: $unit*2.5;
     width: 100%;
     content: "";
     position: absolute;
